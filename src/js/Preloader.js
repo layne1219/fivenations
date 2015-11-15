@@ -32,7 +32,12 @@ define("Preloader", function() {
             this.load.image('starfield.star.fast-1', 'assets/images/star-f-1.png');
             this.load.image('starfield.star.fast-2', 'assets/images/star-f-1.png');
             this.load.image('starfield.star.fast-3', 'assets/images/star-f-1.png');
-          
+
+            // ----------------------------------------------------------------------------------
+            // Human spacecrafts
+            // ----------------------------------------------------------------------------------            
+            this.load.spritesheet('test-ship', 'assets/images/ship.png', 64, 64, 24);
+
         },
 
         create: function () {
