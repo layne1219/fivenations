@@ -1,7 +1,7 @@
 define("Game", ["Map"], function(Map) {
     'use strict';
 
-    var cursors;
+    var cursors, sprites = [];
 
     function Game() {}
 
@@ -44,16 +44,15 @@ define("Game", ["Map"], function(Map) {
             // TENTATIVE CODE SNIPPET
             for (var i = 25, sprite; i >= 0; i--) {
                 sprite = this.game.add.sprite(0, 0, 'test-ship');
+                sprite.setAnchor(0.5, 0.5);
                 this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
                 sprite.x = window.fivenations.util.rnd(0, 640);
-                sprite.y = window.fivenations.util.rnd(0, 480);
-                sprite.body.velocity.x = 1;
-                sprite.body.velocity.y = 1;            
-                sprite.body.acceleration.x = window.fivenations.util.rnd(0, 100);
-                sprite.body.acceleration.y = window.fivenations.util.rnd(0, 100);            
+                sprite.y = window.fivenations.util.rnd(0, 480);                    
                 sprite.body.maxVelocity.x = 500;
                 sprite.body.maxVelocity.y = 500;
-            };
+                sprite.targetX = 400;
+                sprites.push(sprite);
+            }
 
             
         },
@@ -65,6 +64,13 @@ define("Game", ["Map"], function(Map) {
 
             // Rendering the map
             this.map.update();
+
+            // TEST CODE
+            sprites.forEach(function(sprite){
+                if (sprite.x < sprite.targetX){
+                    sprite.body.acceleration.x = 100;
+                }
+            });
         }
 
     };
