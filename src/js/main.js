@@ -13,6 +13,10 @@ window.addEventListener('load', function () {
 	ns.util = {
 		rnd: function(min, max){
 			return Math.floor(Math.random() * max ) + min;
+		},
+
+		between: function(value, min, max){
+			return value >= min && value <= max;
 		}
 	};
 

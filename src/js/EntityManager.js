@@ -1,12 +1,12 @@
-define('ObjectManager', function(){
+define('EntityManager', function(){
 	
 	// intentionally hiding these variables from the outside world
 	var game,
 		singleton,
 
-		objects = [];
+		entities = [];
 
-	function ObjectManager(){
+	function EntityManager(){
 
 	}
 
@@ -16,31 +16,31 @@ define('ObjectManager', function(){
 			
 		},
 
-		remove: function(object){
-			for (var i = objects.length - 1; i >= 0; i--) {
-				if (object === objects[i]){
-					objects.splice(i, 1);
+		remove: function(entity){
+			for (var i = entities.length - 1; i >= 0; i--) {
+				if (entity === entities[i]){
+					entities.splice(i, 1);
 				}
 			}
-			object = null;
-			delete object;
+			entity = null;
+			delete entity;
 		},
 
 		get: function(id){
-			for (var i = objects.length - 1; i >= 0; i--) {
-				if (id === objects[i].getId()){
-					return objects[i];
+			for (var i = entities.length - 1; i >= 0; i--) {
+				if (id === entities[i].getId()){
+					return entities[i];
 				} 
 			}
 			return null;
 		},
 
 		getAll: function(){
-			return objects;
+			return entities;
 		},
 		
 		reset: function(){
-			objects = [];
+			entities = [];
 		}
 
 	};
@@ -53,7 +53,7 @@ define('ObjectManager', function(){
 
 		getInstance: function(){
 			if (!game){
-				throw 'Invoke setGame first to pass the Phaser Game object!';
+				throw 'Invoke setGame first to pass the Phaser Game entity!';
 			}
 			if (!singleton){
 				singleton = new ObjectManager();
