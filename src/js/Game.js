@@ -2,10 +2,12 @@ define("Game", ["Map"], function(Map) {
     'use strict';
 
     var ns = window.fivenations,
+        game,
         cursors, 
         objects = [];
 
-    function Entity(sprite){
+    function Entity(game, sprite){
+        this.game = game;
         this.sprite = sprite;
         this.effects = [];
     }
@@ -57,48 +59,55 @@ define("Game", ["Map"], function(Map) {
 
             this.sprite.targetX = targetX;
             this.sprite.targetY = targetY;
-            this.sprite.targetDistance = Phaser.Math.distance(x, y, targetX, targetY);
+            this.sprite.targetInitialDistance = Phaser.Math.distance(x, y, targetX, targetY);
+            this.sprite.targetInitialDistanceX = Math.abs(x - targetX);
+            this.sprite.targetInitialDistanceY = Math.abs(y - targetY);
+            this.sprite.rotation = this.game.physics.arcade.angleToXY(this.sprite, targetX, targetY);
 
-        },
-
-        updateMovemenet: function(){
-            this.sprite.targetDistanceX = Math.abs(x - targetX);
-            this.sprite.targetDistanceY = Math.abs(y - targetY);
-        },
-
-        easeInToTarget: function(){
-            if (ns.util.between(this.sprite.targetDistanceX, 1, 100)){
-                if (this.sprite.x < this.sprite.targetX){
-                    this.sprite.body.velocity.x += 25;
-                } else if (this.sprite.x > this.sprite.targetX){
-                    this.sprite.body.acceleration.x -= -25;
-                }
-            }
-            if (ns.util.between(this.sprite.targetDistanceY, 1, 100)){
-                if (this.sprite.y < this.sprite.targetY){
-                    this.sprite.body.velocity.y += 25;
-                } else if (this.sprite.y > this.sprite.targetY){
-                    this.sprite.body.acceleration.y -= -25;
-                }
-            } 
         },
 
         moveToTarget: function(){
+            var distanceX = Math.abs(this.sprite.x - this.sprite.targetX),
+                distanceY = Math.abs(this.sprite.y - this.sprite.targetY),
+                currentDistance = Phaser.Math.distance(this.sprite.x, this.sprite.y, this.sprite.targetX, this.sprite.targetY),
+                velocityX = this.sprite.body.maxVelocity.x,
+                velocityY = this.sprite.body.maxVelocity.y,
+                easeInOutThreshold = 50,
+                easeInOutprogress;
 
-            if (this.sprite.x < this.sprite.targetX){
-                this.sprite.body.velocity.x = this.sprite.body.maxVelocity.x;
-            } else if (this.sprite.x > this.sprite.targetX){
-                this.sprite.body.acceleration.x = -this.sprite.body.maxVelocity.x;
+            // easing on the horizontal axis
+            /*if (this.sprite.targetInitialDistanceX - distanceX < easeInOutThreshold){
+                easeInOutprogress = Math.max(1, this.sprite.targetInitialDistanceX - distanceX) / easeInOutThreshold;
+                velocityX = this.sprite.body.maxVelocity.x * easeInOutprogress;
+            } else if (distanceX < easeInOutThreshold){
+                velocityX = Math.min(distanceX, this.sprite.body.maxVelocity.x);
             }
-            if (this.sprite.y < this.sprite.targetY){
-                this.sprite.body.acceleration.y = this.sprite.body.maxVelocity.y;
-            } else if (this.sprite.y > this.sprite.targetY){
-                this.sprite.body.acceleration.y = -this.sprite.body.maxVelocity.y;
-            }   
+
+            // easing on the vertical axis 
+            if (this.sprite.targetInitialDistanceY - distanceY < easeInOutThreshold){
+                easeInOutprogress = Math.max(1, this.sprite.targetInitialDistanceX - distanceX) / easeInOutThreshold;
+                velocityY = this.sprite.body.maxVelocity.y * easeInOutprogress;
+            } else if (distanceY < easeInOutThreshold){
+                velocityY = Math.min(distanceY, this.sprite.body.maxVelocity.y);
+            } */
+
+            //this.sprite.rotation = this.game.physics.arcade.angleToXY(this.sprite, this.sprite.targetX, this.sprite.targetY);
+
+            if (currentDistance > 50){
+                this.game.physics.arcade.accelerationFromRotation(this.sprite.rotation, 500, this.sprite.body.acceleration);
+            } else {
+                this.sprite.body.acceleration.set(0);
+            }
+
+            console.log(currentDistance);
+        },
+
+        getSprite: function(){
+            return this.sprite;
         },
 
         update: function(){
-            
+            this.moveToTarget();
         }
 
     };
@@ -146,14 +155,16 @@ define("Game", ["Map"], function(Map) {
                 sprite = this.game.add.sprite(0, 0, 'test-ship');
                 sprite.anchor.set(0.5);
                 this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-                sprite.x = window.fivenations.util.rnd(0, 640);
-                sprite.y = window.fivenations.util.rnd(0, 480);                    
-                sprite.body.maxVelocity.x = 500;
-                sprite.body.maxVelocity.y = 500;
-                objects.push(new Entity(sprite));
+                sprite.x = window.fivenations.util.rnd(0, 0);
+                sprite.y = window.fivenations.util.rnd(0, 0);                    
+                sprite.body.drag.set(250);
+                sprite.body.maxVelocity.set(200);
+                objects.push(new Entity(this.game, sprite));
             }
 
-            objects[0].moveTo(50, 50);
+            
+            objects[0].moveTo(200,200);
+            
             
         },
 
@@ -169,6 +180,7 @@ define("Game", ["Map"], function(Map) {
             objects.forEach(function(object){
                 object.update();            
             });
+
         }
 
     };
