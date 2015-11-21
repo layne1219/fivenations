@@ -14,7 +14,7 @@ define("Game", ["Map"], function(Map) {
         MOVEMENT_DECCELERATING = 4;
 
     function Entity(game, sprite){
-
+        this.effects = [];
         this.game = game;
         this.sprite = sprite;
         this.state = {
@@ -32,13 +32,20 @@ define("Game", ["Map"], function(Map) {
             this.effects.push([effect].concat(params));
         },
 
+        resetEffects: function(){
+            for (var i = this.effects.length - 1; i >= 0; i--) {
+                this.effects[i] = null;
+            }
+            this.effects = [];
+        },
+
         removeEffect: function(effect){
             if ("function" !== effect){
                 return false;
             }
             for (var i = this.effects.length - 1; i >= 0; i--) {
                 if (effect === this.effects[i][0]){
-                    array.splice(i, 1);
+                    this.effects.splice(i, 1);
                 }
             }
         },
@@ -51,15 +58,19 @@ define("Game", ["Map"], function(Map) {
                 }
             }
             // Determining whether or not it's a valid function
-            if ("function" !== effect){
+            if ("function" !== typeof effect){
                 return false;
             }
             return true;
         },
 
         updateEffects: function(){
-            for (var i = this.effects.length - 1; i >= 0; i--) {
-                this.effects[i][0].apply(this, this.effects[i].slice(1));
+            while(this.effects[0]){
+                if (!this.effects[0][0].apply(this, this.effects[0].slice(1))){
+                    this.effects.splice(0, 1);
+                } else {
+                    return false;
+                }
             }
         },
 
@@ -72,6 +83,13 @@ define("Game", ["Map"], function(Map) {
             this.sprite.targetInitialDistance = Phaser.Math.distance(x, y, targetX, targetY);
             this.sprite.originX = x;
             this.sprite.originY = y;
+
+            this.resetEffects();
+
+            this.addEffect(this.accelerateToTarget);
+            this.addEffect(this.moveToTarget);
+            this.addEffect(this.dragToTarget);
+            this.addEffect(this.stop);
 
             this.state.movement = MOVEMENT_WAITING;
        },
@@ -120,21 +138,22 @@ define("Game", ["Map"], function(Map) {
             this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
             this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;
 
-            return distanceInverse > this.sprite.drag;
+            return distanceInverse < this.sprite.drag;
         },
 
         dragToTarget: function(){
 
             var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
                 angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x),
-                speed = distance / this.sprite.drag;
+                speed = distance / this.sprite.drag,
+                distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.originX, this.sprite.originY);
 
             this.state.movement = MOVEMENT_DECCELERATING;
 
             this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
             this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;
 
-            return distance > this.sprite.drag;            
+            return distance > 1 && distanceFromOrigin < this.sprite.targetInitialDistance;            
         },
 
         stop: function(){
@@ -159,15 +178,8 @@ define("Game", ["Map"], function(Map) {
                 }
             }
 
-            console.log(this.state.movement);
-
         },
 
-        updateMovementState: function(){
-
-
-
-        },
 
         getSprite: function(){
             return this.sprite;
@@ -175,8 +187,9 @@ define("Game", ["Map"], function(Map) {
 
         update: function(){
 
-            this.updateMovement();
+            this.updateEffects();
 
+            console.log(this.state.movement)
         }
 
     };
