@@ -6,10 +6,20 @@ define("Game", ["Map"], function(Map) {
         cursors, 
         objects = [];
 
+
+    var MOVEMENT_STOPPED = 0,
+        MOVEMENT_WAITING = 1,
+        MOVEMENT_MOVING = 2,
+        MOVEMENT_ACCELERATING = 3,
+        MOVEMENT_DECCELERATING = 4;
+
     function Entity(game, sprite){
+
         this.game = game;
         this.sprite = sprite;
-        this.effects = [];
+        this.state = {
+            movement: MOVEMENT_STOPPED
+        };
     }
 
     Entity.prototype = {
@@ -60,46 +70,103 @@ define("Game", ["Map"], function(Map) {
             this.sprite.targetX = targetX;
             this.sprite.targetY = targetY;
             this.sprite.targetInitialDistance = Phaser.Math.distance(x, y, targetX, targetY);
-            this.sprite.targetInitialDistanceX = Math.abs(x - targetX);
-            this.sprite.targetInitialDistanceY = Math.abs(y - targetY);
-            this.sprite.rotation = this.game.physics.arcade.angleToXY(this.sprite, targetX, targetY);
+            this.sprite.originX = x;
+            this.sprite.originY = y;
+
+            this.state.movement = MOVEMENT_WAITING;
+       },
+
+        /**
+        * Move the given display object towards the x/y coordinates at a steady velocity.
+        * If you specify a easeInOutThreshold then it will adjust the speed (over-writing what you set) so it arrives at the destination in that number of seconds.
+        * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
+        * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
+        * Note: The display object doesn't stop moving once it reaches the destination coordinates.
+        * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
+        *
+        * @method Phaser.Physics.Arcade#moveToXY
+        * @param {any} displayObject - The display object to move.
+        * @param {number} x - The x coordinate to move towards.
+        * @param {number} y - The y coordinate to move towards.
+        * @param {number} acceleration - The y coordinate to move towards.
+        * @param {number} [easeInOutThreshold=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
+        * @return {number} The angle (in radians) that the object should be visually set to in order to match its new velocity.
+        */
+        moveToTarget: function () {
+
+            var arcade = this.game.physics.arcade,
+                distance = arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
+                distanceInverse = this.sprite.targetInitialDistance - distance,
+                angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x); 
+
+            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x;
+            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y;
+
+            this.state.movement = MOVEMENT_MOVING;
+
+            return distance > this.sprite.drag;
 
         },
 
-        moveToTarget: function(){
-            var distanceX = Math.abs(this.sprite.x - this.sprite.targetX),
-                distanceY = Math.abs(this.sprite.y - this.sprite.targetY),
-                currentDistance = Phaser.Math.distance(this.sprite.x, this.sprite.y, this.sprite.targetX, this.sprite.targetY),
-                velocityX = this.sprite.body.maxVelocity.x,
-                velocityY = this.sprite.body.maxVelocity.y,
-                easeInOutThreshold = 50,
-                easeInOutprogress;
+        accelerateToTarget: function(){
 
-            // easing on the horizontal axis
-            /*if (this.sprite.targetInitialDistanceX - distanceX < easeInOutThreshold){
-                easeInOutprogress = Math.max(1, this.sprite.targetInitialDistanceX - distanceX) / easeInOutThreshold;
-                velocityX = this.sprite.body.maxVelocity.x * easeInOutprogress;
-            } else if (distanceX < easeInOutThreshold){
-                velocityX = Math.min(distanceX, this.sprite.body.maxVelocity.x);
+            var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
+                distanceInverse = this.sprite.targetInitialDistance - distance,
+                angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x),
+                speed = Math.min(1, (distanceInverse / this.sprite.drag) + (this.sprite.acceleration / 1000));          
+
+            this.state.movement = MOVEMENT_ACCELERATING;
+           
+            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
+            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;
+
+            return distanceInverse > this.sprite.drag;
+        },
+
+        dragToTarget: function(){
+
+            var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
+                angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x),
+                speed = distance / this.sprite.drag;
+
+            this.state.movement = MOVEMENT_DECCELERATING;
+
+            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
+            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;
+
+            return distance > this.sprite.drag;            
+        },
+
+        stop: function(){
+            this.state.movement = MOVEMENT_STOPPED;
+        },
+
+        updateMovement: function(){
+            var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
+                distanceInverse = this.sprite.targetInitialDistance - distance,
+                distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.originX, this.sprite.originY);
+
+            // If the distance is less then a fixed threshold - or - the object has overdrifted
+            if (this.state.movement !== MOVEMENT_STOPPED){   
+                if (distance <= 1 || distanceFromOrigin >= this.sprite.targetInitialDistance){
+                    this.stop();  
+                } else if (distance < this.sprite.drag){
+                    this.dragToTarget();
+                } else if (distanceInverse < this.sprite.drag){ 
+                    this.accelerateToTarget();
+                } else {
+                    this.moveToTarget();
+                }
             }
 
-            // easing on the vertical axis 
-            if (this.sprite.targetInitialDistanceY - distanceY < easeInOutThreshold){
-                easeInOutprogress = Math.max(1, this.sprite.targetInitialDistanceX - distanceX) / easeInOutThreshold;
-                velocityY = this.sprite.body.maxVelocity.y * easeInOutprogress;
-            } else if (distanceY < easeInOutThreshold){
-                velocityY = Math.min(distanceY, this.sprite.body.maxVelocity.y);
-            } */
+            console.log(this.state.movement);
 
-            //this.sprite.rotation = this.game.physics.arcade.angleToXY(this.sprite, this.sprite.targetX, this.sprite.targetY);
+        },
 
-            if (currentDistance > 50){
-                this.game.physics.arcade.accelerationFromRotation(this.sprite.rotation, 500, this.sprite.body.acceleration);
-            } else {
-                this.sprite.body.acceleration.set(0);
-            }
+        updateMovementState: function(){
 
-            console.log(currentDistance);
+
+
         },
 
         getSprite: function(){
@@ -107,7 +174,9 @@ define("Game", ["Map"], function(Map) {
         },
 
         update: function(){
-            this.moveToTarget();
+
+            this.updateMovement();
+
         }
 
     };
@@ -153,18 +222,26 @@ define("Game", ["Map"], function(Map) {
             // TENTATIVE CODE SNIPPET
             for (var i = 0, sprite; i >= 0; i--) {
                 sprite = this.game.add.sprite(0, 0, 'test-ship');
-                sprite.anchor.set(0.5);
+                sprite.anchor.setTo(0.5, 0.5);
+
                 this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-                sprite.x = window.fivenations.util.rnd(0, 0);
-                sprite.y = window.fivenations.util.rnd(0, 0);                    
-                sprite.body.drag.set(250);
-                sprite.body.maxVelocity.set(200);
+
+                sprite.x = ns.util.rnd(0, 0);
+                sprite.y = ns.util.rnd(0, 0);
+                // Not equal to the properties can be found in Sprite.body since 
+                // using custom logic for providing RTS like unit movements (drifting)
+                sprite.acceleration = 200;
+                sprite.drag = 100;
+
+                // velocity limit for both coordinates
+                sprite.body.maxVelocity.set(250);
+                //  Tell it we don't want physics to manage the rotation
+                sprite.body.allowRotation = false;
+
                 objects.push(new Entity(this.game, sprite));
             }
-
             
-            objects[0].moveTo(200,200);
-            
+                   
             
         },
 
@@ -181,6 +258,9 @@ define("Game", ["Map"], function(Map) {
                 object.update();            
             });
 
+            if (this.game.input.activePointer.isDown){
+                objects[0].moveTo(this.game.camera.x + this.game.input.mousePointer.x, this.game.camera.y + this.game.input.mousePointer.y); 
+            }
         }
 
     };
