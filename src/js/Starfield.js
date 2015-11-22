@@ -132,7 +132,7 @@ define('Starfield.StarLayer', ['Starfield.Star'], function(Star){
 	}
 
 	function addStar(sprite){
-		var z = Math.min(Math.random() + 0.15, 1) + (0.75 * (ns.util.rnd(0, 10) >= 5 ? 1 : 0)),
+		var z = Math.min(Math.random() + 0.15 + (0.75 * (ns.util.rnd(0, 10) >= 5 ? 1 : 0)), 0.9),
 			sprite = getSpriteFromZ(z),
 
 			star = new Star().setX( ns.util.rnd(0, width) )

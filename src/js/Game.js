@@ -16,7 +16,26 @@ define("Game", ["Map"], function(Map) {
     function Entity(game, sprite){
         this.effects = [];
         this.game = game;
+
+        sprite.anchor.setTo(0.5, 0.5);
+
+        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
+        sprite.x = ns.util.rnd(0, 0);
+        sprite.y = ns.util.rnd(0, 0);
+        // Not equal to the properties can be found in Sprite.body since 
+        // using custom logic for providing RTS like unit movements (drifting)
+        sprite.acceleration = 200;
+        sprite.maxDrag = 100;
+        sprite.angularVelocity = 200;
+
+        // velocity limit for both coordinates
+        sprite.body.maxVelocity.set(250);
+        //  Tell it we don't want physics to manage the rotation
+        sprite.body.allowRotation = false;
+
         this.sprite = sprite;
+
         this.state = {
             movement: MOVEMENT_STOPPED
         };
@@ -65,6 +84,7 @@ define("Game", ["Map"], function(Map) {
         },
 
         updateEffects: function(){
+            // invoking the first effect until it returns false when removing it and going on
             while(this.effects[0]){
                 if (!this.effects[0][0].apply(this, this.effects[0].slice(1))){
                     this.effects.splice(0, 1);
@@ -76,22 +96,24 @@ define("Game", ["Map"], function(Map) {
 
         moveTo: function(targetX, targetY){
             var x = this.sprite.x,
-                y = this.sprite.y;
+                y = this.sprite.y,
+                distance = Phaser.Math.distance(x, y, targetX, targetY);
 
             this.sprite.targetX = targetX;
             this.sprite.targetY = targetY;
-            this.sprite.targetInitialDistance = Phaser.Math.distance(x, y, targetX, targetY);
+            this.sprite.targetInitialDistance = distance;
+            this.sprite.targetAngle = Math.atan2(targetY - y, targetX - x);
             this.sprite.originX = x;
             this.sprite.originY = y;
+            this.sprite.drag = Math.min(this.sprite.maxDrag, distance / 2);
 
             this.resetEffects();
-
             this.addEffect(this.accelerateToTarget);
             this.addEffect(this.moveToTarget);
             this.addEffect(this.dragToTarget);
             this.addEffect(this.stop);
 
-            this.state.movement = MOVEMENT_WAITING;
+            this.setMovementState(MOVEMENT_WAITING);
        },
 
         /**
@@ -102,84 +124,72 @@ define("Game", ["Map"], function(Map) {
         * Note: The display object doesn't stop moving once it reaches the destination coordinates.
         * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
         *
-        * @method Phaser.Physics.Arcade#moveToXY
-        * @param {any} displayObject - The display object to move.
-        * @param {number} x - The x coordinate to move towards.
-        * @param {number} y - The y coordinate to move towards.
-        * @param {number} acceleration - The y coordinate to move towards.
-        * @param {number} [easeInOutThreshold=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
-        * @return {number} The angle (in radians) that the object should be visually set to in order to match its new velocity.
+        * @return {boolean} returning false when the effect is no longer must be applied on the entity
         */
         moveToTarget: function () {
 
-            var arcade = this.game.physics.arcade,
-                distance = arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
-                distanceInverse = this.sprite.targetInitialDistance - distance,
-                angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x); 
+            this.updateMovementHelpers();
+            this.updateVelocity(this.sprite.targetAngle, 1);
+            this.setMovementState(MOVEMENT_MOVING);
 
-            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x;
-            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y;
+            return this.sprite.distance > this.sprite.drag;
 
-            this.state.movement = MOVEMENT_MOVING;
-
-            return distance > this.sprite.drag;
-
-        },
+        },     
 
         accelerateToTarget: function(){
+            var speed = Math.min(1, (this.sprite.distanceInverse / this.sprite.maxDrag) + (this.sprite.acceleration / 1000));
 
-            var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
-                distanceInverse = this.sprite.targetInitialDistance - distance,
-                angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x),
-                speed = Math.min(1, (distanceInverse / this.sprite.drag) + (this.sprite.acceleration / 1000));          
+            this.updateMovementHelpers();
+            this.updateVelocity(this.sprite.targetAngle, speed);     
+            this.setMovementState(MOVEMENT_ACCELERATING);
 
-            this.state.movement = MOVEMENT_ACCELERATING;
-           
-            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
-            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;
-
-            return distanceInverse < this.sprite.drag;
+            return this.sprite.distanceInverse < this.sprite.drag;
         },
 
         dragToTarget: function(){
+            var speed = this.sprite.distance / this.sprite.maxDrag;
 
-            var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
-                angle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x),
-                speed = distance / this.sprite.drag,
-                distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.originX, this.sprite.originY);
+            this.updateMovementHelpers();
+            this.updateVelocity(this.sprite.targetAngle, speed);
+            this.setMovementState(MOVEMENT_DECCELERATING);
 
-            this.state.movement = MOVEMENT_DECCELERATING;
-
-            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
-            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;
-
-            return distance > 1 && distanceFromOrigin < this.sprite.targetInitialDistance;            
-        },
+            return this.sprite.distance > 1 && this.sprite.distanceFromOrigin < this.sprite.targetInitialDistance;            
+        },        
 
         stop: function(){
-            this.state.movement = MOVEMENT_STOPPED;
+
+            this.updateVelocity(this.sprite.targetAngle, 0);
+            this.setMovementState(MOVEMENT_STOPPED);
         },
 
-        updateMovement: function(){
-            var distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
-                distanceInverse = this.sprite.targetInitialDistance - distance,
-                distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.originX, this.sprite.originY);
-
-            // If the distance is less then a fixed threshold - or - the object has overdrifted
-            if (this.state.movement !== MOVEMENT_STOPPED){   
-                if (distance <= 1 || distanceFromOrigin >= this.sprite.targetInitialDistance){
-                    this.stop();  
-                } else if (distance < this.sprite.drag){
-                    this.dragToTarget();
-                } else if (distanceInverse < this.sprite.drag){ 
-                    this.accelerateToTarget();
-                } else {
-                    this.moveToTarget();
-                }
-            }
-
+        /**
+        * Updating all the helper variables that take place in calculating the appropriate motions
+        * according to the current effects applied on the Entity
+        *
+        * @return {void} 
+        */
+        updateMovementHelpers: function(){
+            this.sprite.distance = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.targetX, this.sprite.targetY),
+            this.sprite.distanceInverse = this.sprite.targetInitialDistance - this.sprite.distance,
+            this.sprite.distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.sprite.originX, this.sprite.originY);
+            this.sprite.targetAngle = Math.atan2(this.sprite.targetY - this.sprite.y, this.sprite.targetX - this.sprite.x);
         },
 
+        /**
+        * Calculating the velocity according to the applied effects altering the coordinates of the Entity
+        *
+        * @param {number} angle - rotation toward the target in radian
+        * @param {number} speed - speed factor going from 0 to 1 where 1 means the entity will be going with max speed
+        * @return {void} 
+        */
+        updateVelocity: function(angle, speed){
+            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
+            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;        
+        },
+
+        setMovementState: function(state){
+            this.state.movement = state;
+        },    
 
         getSprite: function(){
             return this.sprite;
@@ -189,7 +199,6 @@ define("Game", ["Map"], function(Map) {
 
             this.updateEffects();
 
-            console.log(this.state.movement)
         }
 
     };
@@ -233,25 +242,13 @@ define("Game", ["Map"], function(Map) {
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
             // TENTATIVE CODE SNIPPET
-            for (var i = 0, sprite; i >= 0; i--) {
+            for (var i = 0, sprite, entity; i >= 0; i--) {
                 sprite = this.game.add.sprite(0, 0, 'test-ship');
-                sprite.anchor.setTo(0.5, 0.5);
 
-                this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-
-                sprite.x = ns.util.rnd(0, 0);
-                sprite.y = ns.util.rnd(0, 0);
-                // Not equal to the properties can be found in Sprite.body since 
-                // using custom logic for providing RTS like unit movements (drifting)
-                sprite.acceleration = 200;
-                sprite.drag = 100;
-
-                // velocity limit for both coordinates
-                sprite.body.maxVelocity.set(250);
-                //  Tell it we don't want physics to manage the rotation
-                sprite.body.allowRotation = false;
-
-                objects.push(new Entity(this.game, sprite));
+                entity = new Entity(this.game, sprite);
+                entity.moveTo(ns.util.rnd(0, 640), ns.util.rnd(0, 480));
+                objects.push(entity);
+                
             }
             
                    
