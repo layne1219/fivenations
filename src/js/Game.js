@@ -25,12 +25,19 @@ define("Game", ["Map"], function(Map) {
         sprite.y = ns.util.rnd(0, 0);
         // Not equal to the properties can be found in Sprite.body since 
         // using custom logic for providing RTS like unit movements (drifting)
-        sprite.acceleration = 200;
-        sprite.maxDrag = 100;
         sprite.angularVelocity = 200;
 
+        sprite.velocity = 0;
+        sprite.drag = 200;
+        sprite.acceleration = 0;
+
+        sprite.maxVelocity = 250;
+        sprite.maxAcceleration = 250;
+        sprite.maxDrag = 250;
+        sprite.maxTargetDragTreshold = 200;
+
         // velocity limit for both coordinates
-        sprite.body.maxVelocity.set(250);
+        sprite.body.maxVelocity.set(sprite.maxVelocity);
         //  Tell it we don't want physics to manage the rotation
         sprite.body.allowRotation = false;
 
@@ -105,14 +112,21 @@ define("Game", ["Map"], function(Map) {
             this.sprite.targetAngle = Math.atan2(targetY - y, targetX - x);
             this.sprite.originX = x;
             this.sprite.originY = y;
-            this.sprite.drag = Math.min(this.sprite.maxDrag, distance / 2);
+            this.sprite.targetDragTreshold = Math.min(this.sprite.maxTargetDragTreshold, distance / 2);
 
             this.resetEffects();
             this.addEffect(this.accelerateToTarget);
             this.addEffect(this.moveToTarget);
-            this.addEffect(this.dragToTarget);
-            this.addEffect(this.stop);
+            this.addEffect(this.stopping);
+            this.addEffect(this.resetMovement);
 
+            this.setMovementState(MOVEMENT_WAITING);
+       },
+
+       stop: function(){
+            this.resetEffects();
+            this.addEffect(this.stopping);
+            this.addEffect(this.resetMovement);
             this.setMovementState(MOVEMENT_WAITING);
        },
 
@@ -128,38 +142,46 @@ define("Game", ["Map"], function(Map) {
         */
         moveToTarget: function () {
 
+            this.sprite.acceleration = 0;
+
             this.updateMovementHelpers();
-            this.updateVelocity(this.sprite.targetAngle, 1);
+            this.updateVelocity();
             this.setMovementState(MOVEMENT_MOVING);
 
-            return this.sprite.distance > this.sprite.drag;
-
+            return this.sprite.distance > this.sprite.targetDragTreshold;
         },     
 
         accelerateToTarget: function(){
-            var speed = Math.min(1, (this.sprite.distanceInverse / this.sprite.maxDrag) + (this.sprite.acceleration / 1000));
+            
+            this.sprite.acceleration = this.sprite.maxAcceleration;
 
             this.updateMovementHelpers();
-            this.updateVelocity(this.sprite.targetAngle, speed);     
+            this.updateVelocity();
             this.setMovementState(MOVEMENT_ACCELERATING);
 
-            return this.sprite.distanceInverse < this.sprite.drag;
+            return this.sprite.distanceInverse < this.sprite.targetDragTreshold && this.sprite.velocity < this.sprite.maxVelocity;
         },
 
-        dragToTarget: function(){
-            var speed = this.sprite.distance / this.sprite.maxDrag;
+        stopping: function(){
 
+            this.sprite.acceleration = -this.sprite.maxAcceleration;
+            
             this.updateMovementHelpers();
-            this.updateVelocity(this.sprite.targetAngle, speed);
+            this.updateVelocity();
             this.setMovementState(MOVEMENT_DECCELERATING);
 
-            return this.sprite.distance > 1 && this.sprite.distanceFromOrigin < this.sprite.targetInitialDistance;            
+            return this.sprite.distance > 0 && this.sprite.distanceFromOrigin < this.sprite.targetInitialDistance && this.sprite.velocity > 0;            
         },        
 
-        stop: function(){
+        resetMovement: function(){
 
-            this.updateVelocity(this.sprite.targetAngle, 0);
+            this.sprite.acceleration = 0;
+            this.sprite.velocity = 0;
+
+            this.updateVelocity();
             this.setMovementState(MOVEMENT_STOPPED);
+
+            return false;
         },
 
         /**
@@ -176,16 +198,39 @@ define("Game", ["Map"], function(Map) {
         },
 
         /**
-        * Calculating the velocity according to the applied effects altering the coordinates of the Entity
+        * Updating the velocity according to the applied effects altering the coordinates of the Entity
         *
         * @param {number} angle - rotation toward the target in radian
         * @param {number} speed - speed factor going from 0 to 1 where 1 means the entity will be going with max speed
         * @return {void} 
         */
-        updateVelocity: function(angle, speed){
-            this.sprite.body.velocity.x = Math.cos(angle) * this.sprite.body.maxVelocity.x * speed;
-            this.sprite.body.velocity.y = Math.sin(angle) * this.sprite.body.maxVelocity.y * speed;        
-        },
+        updateVelocity: function(){
+            
+            if (this.sprite.acceleration){
+                this.sprite.velocity += this.sprite.acceleration * this.game.time.physicsElapsed;
+            }
+            else if (this.sprite.drag){
+                this.sprite.drag *= this.game.time.physicsElapsed;
+                if (this.sprite.velocity - this.sprite.drag > 0){
+                    this.sprite.velocity -= this.sprite.drag;
+                }
+                else if (this.sprite.velocity + this.sprite.drag < 0){
+                    this.sprite.velocity += this.sprite.drag;
+                }
+                else {
+                    this.sprite.velocity = 0;
+                }
+            }
+
+            if (this.sprite.velocity > this.sprite.maxVelocity){
+                this.sprite.velocity = this.sprite.maxVelocity;
+            } else if (this.sprite.velocity < -this.sprite.maxVelocity){
+                this.sprite.velocity = -this.sprite.maxVelocity;
+            }            
+
+            this.sprite.body.velocity.x = Math.cos(this.sprite.targetAngle) * this.sprite.velocity;
+            this.sprite.body.velocity.y = Math.sin(this.sprite.targetAngle) * this.sprite.velocity;        
+        },     
 
         setMovementState: function(state){
             this.state.movement = state;
@@ -198,6 +243,8 @@ define("Game", ["Map"], function(Map) {
         update: function(){
 
             this.updateEffects();
+
+            console.log(this.state.movement);
 
         }
 
@@ -250,8 +297,6 @@ define("Game", ["Map"], function(Map) {
                 objects.push(entity);
                 
             }
-            
-                   
             
         },
 
