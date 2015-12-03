@@ -1,19 +1,34 @@
-define('EntityManager', function(){
+define('EntityManager', ['Entity'], function(Entity){
 	
 	// intentionally hiding these variables from the outside world
-	var game,
+	var phaser_game,
 		singleton,
 
+		// unique indentifier for maintaning the units in an array
+		id = 0,
+
+		// Array for storing all the entities on the map
 		entities = [];
 
-	function EntityManager(){
 
+	function EntityManager(){
+		if (!phaser_game){
+			throw 'Invoke setGame first to pass the Phaser Game entity!';
+		}		
+		this.game = phaser_game;
 	}
 
-	ObjectManager.prototype = {
+	EntityManager.prototype = {
 
-		add: function(uid){
+		add: function(entity_id){
 			
+			var sprite = this.game.add.sprite(0, 0, 'test-ship');
+			entities.push( new Entity(this, sprite) );
+
+		},
+
+		getNextId: function(){
+			return id++;
 		},
 
 		remove: function(entity){
@@ -25,38 +40,43 @@ define('EntityManager', function(){
 			entity = null;
 			delete entity;
 		},
+		
+		reset: function(){
+			entities = [];
+		},
+
+		getGame: function(){
+			return this.game;
+		},
 
 		get: function(id){
+			if (undefined === id){
+				return entities;
+			}
+
 			for (var i = entities.length - 1; i >= 0; i--) {
 				if (id === entities[i].getId()){
 					return entities[i];
 				} 
 			}
-			return null;
-		},
 
-		getAll: function(){
-			return entities;
-		},
-		
-		reset: function(){
-			entities = [];
+			return null;
 		}
 
 	};
 
 	return {
 
-		setGame: function(phaser_game){
-			game = phaser_game;
+		setGame: function(game){
+			phaser_game = game;
 		},
 
 		getInstance: function(){
-			if (!game){
+			if (!phaser_game){
 				throw 'Invoke setGame first to pass the Phaser Game entity!';
-			}
+			}			
 			if (!singleton){
-				singleton = new ObjectManager();
+				singleton = new EntityManager();
 			}
 			return singleton;
 		}
