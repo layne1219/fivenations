@@ -1,7 +1,7 @@
 // ************************************************************************************************
 // 												Star 
 // ************************************************************************************************
-define('Starfield.Star', ['color'], function(color){
+define('Starfield.Star', function(){
 
 	var ns = window.fivenations,
 		width = ns.window.width,
@@ -64,7 +64,7 @@ define('Starfield.Star', ['color'], function(color){
 // ************************************************************************************************
 // 												Layer 
 // ************************************************************************************************
-define('Starfield.StarLayer', ['Starfield.Star'], function(Star){
+define('Starfield.StarLayer', ['Starfield.Star', 'Util'], function(Star, Util){
 
 	var MAX_STAR_NUMBER = 100,
 
@@ -132,11 +132,11 @@ define('Starfield.StarLayer', ['Starfield.Star'], function(Star){
 	}
 
 	function addStar(sprite){
-		var z = Math.min(Math.random() + 0.15 + (0.75 * (ns.util.rnd(0, 10) >= 5 ? 1 : 0)), 0.9),
+		var z = Math.min(Math.random() + 0.15 + (0.75 * (Util.rnd(0, 10) >= 5 ? 1 : 0)), 0.9),
 			sprite = getSpriteFromZ(z),
 
-			star = new Star().setX( ns.util.rnd(0, width) )
-						 	 .setY( ns.util.rnd(0, height) )
+			star = new Star().setX( Util.rnd(0, width) )
+						 	 .setY( Util.rnd(0, height) )
 						 	 .setZ( z )
 						 	 .setSprite( sprite );
 
@@ -144,7 +144,7 @@ define('Starfield.StarLayer', ['Starfield.Star'], function(Star){
 	}
 
 	function getSpriteFromZ(z){
-		var index = ns.util.rnd(0, 3),
+		var index = Util.rnd(0, 3),
 			key = 'slow',
 			sprites = ns.cache.starfield.sprites;
 

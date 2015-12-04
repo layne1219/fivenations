@@ -9,17 +9,6 @@ window.addEventListener('load', function () {
 		height: 480
 	};
 
-	// Game utility functions 
-	ns.util = {
-		rnd: function(min, max){
-			return Math.floor(Math.random() * max ) + min;
-		},
-
-		between: function(value, min, max){
-			return value >= min && value <= max;
-		}
-	};
-
 	// Cache for assets don't required to be loaded more than once
 	ns.cache = {};
 

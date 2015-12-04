@@ -1,4 +1,4 @@
-define('Game', ['Map', 'EntityManager'], function(Map, EntityManager) {
+define('Game', ['Map', 'EntityManager', 'UserPointer'], function(Map, EntityManager, UserPointer) {
     'use strict';
 
     var ns = window.fivenations,
@@ -43,6 +43,15 @@ define('Game', ['Map', 'EntityManager'], function(Map, EntityManager) {
             EntityManager.setGame(this.game);
             this.entityManger = EntityManager.getInstance();
 
+            // Set up User pointer
+            UserPointer.setGame(this.game);
+            this.userPointer = UserPointer.getInstance();
+            this.userPointer.on('mousedown', (function(){
+                this.entityManger
+                    .get(0)
+                    .moveTo(this.game.camera.x + this.game.input.mousePointer.x, this.game.camera.y + this.game.input.mousePointer.y); 
+            }).bind(this));
+
             // Activating the basic physic engine 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -66,9 +75,6 @@ define('Game', ['Map', 'EntityManager'], function(Map, EntityManager) {
                 entity.update();
             });
 
-            if (this.game.input.activePointer.isDown){
-                this.entityManger.get(0).moveTo(this.game.camera.x + this.game.input.mousePointer.x, this.game.camera.y + this.game.input.mousePointer.y); 
-            }
         }
 
     };

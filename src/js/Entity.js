@@ -19,12 +19,8 @@ define('Entity', function(){
         // Container to store the applied effects 
         this.effects = [];
 
-        sprite.anchor.setTo(0.5, 0.5);
-
-        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-
-        sprite.x = 0;
-        sprite.y = 0;
+        // Whether the Entity is selected or not 
+        this.selected = false;
 
         // Not equal to the properties can be found in Sprite.body since 
         // using custom logic for providing RTS like unit movements (drifting)
@@ -37,7 +33,15 @@ define('Entity', function(){
             maxAcceleration: 250,
             maxDrag: 250,
             maxTargetDragTreshold: 200,
-        };       
+        };
+
+        // Set up the Phaser.Sprite object
+        sprite.anchor.setTo(0.5, 0.5);
+
+        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
+        sprite.x = 0;
+        sprite.y = 0;        
 
         // velocity limit for both coordinates
         sprite.body.maxVelocity.set(this.movement.maxVelocity);
@@ -237,7 +241,17 @@ define('Entity', function(){
 
             this.updateEffects();
 
+        },
+
+        select: function(){
+        	this.selected = true;
+        },
+
+        unselect: function(){
+        	this.selected = false;
         }
+
+        // sprite onInputDown and onInputOut
 	}
 
 	return Entity;
