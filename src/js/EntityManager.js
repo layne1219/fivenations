@@ -45,6 +45,14 @@ define('EntityManager', ['Entity'], function(Entity){
 			entities = [];
 		},
 
+		unselectAll: function(){
+			this.get().forEach(function(entity){
+				if (entity.isSelected()){
+					entity.unselect();
+				}
+			});
+		},
+
 		getGame: function(){
 			return this.game;
 		},
@@ -60,9 +68,20 @@ define('EntityManager', ['Entity'], function(Entity){
 				} 
 			}
 
-			return null;
-		}
+			return [];
+		},
 
+		getAllSelected: function(){
+			return this.get().filter(function(entity){
+				return entity.isSelected();
+			});
+		},
+
+		getAllHover: function(){
+			return this.get().filter(function(entity){
+				return entity.isHover();
+			});
+		}		
 	};
 
 	return {

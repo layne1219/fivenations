@@ -1,4 +1,4 @@
-define('Entity', function(){
+define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPointer){
 	
 	var 
 		// Private constant like values
@@ -9,6 +9,9 @@ define('Entity', function(){
         MOVEMENT_DECCELERATING = 4;
 
 	function Entity(entityManager, sprite){
+
+		// storing entityManager locally to prevent recursive mutual dependency
+		this.entityManager = entityManager;
 
 		// retrive the Phaser.Game object
         this.game = entityManager.getGame();
@@ -35,23 +38,47 @@ define('Entity', function(){
             maxTargetDragTreshold: 200,
         };
 
-        // Set up the Phaser.Sprite object
-        sprite.anchor.setTo(0.5, 0.5);
-
-        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-
-        sprite.x = 0;
-        sprite.y = 0;        
-
-        // velocity limit for both coordinates
-        sprite.body.maxVelocity.set(this.movement.maxVelocity);
-        //  Tell it we don't want physics to manage the rotation
-        sprite.body.allowRotation = false;
-
-        this.sprite = sprite;
+        this.setSprite(sprite);
     }
 
 	Entity.prototype = {
+
+		setSprite: function(sprite){
+	        // actiavting the ARCADE physics on the sprite object
+	        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
+	        // Set up the Phaser.Sprite object
+	        sprite.anchor.setTo(0.5, 0.5);        
+
+	        // enabling input events applied on the sprite object
+	        sprite.inputEnabled = true;
+
+	        // helper variable for storing whether the input is over the sprite
+	        sprite.hover = false;
+
+	        // input events registered on the sprite object
+			sprite.events.onInputDown.add(function(){
+				if (UserPointer.getInstance().isLeftButtonDown()){
+					// If the user holds SHIFT we will extend the number of selected entities
+					if (!UserKeyboard.getInstance().isDown( Phaser.KeyCode.SHIFT )){
+						this.entityManager.unselectAll();
+					}
+					this.select();
+				}
+			}, this);
+			sprite.events.onInputOut.add(function(){
+				sprite.hover = false;
+			}, this);
+			sprite.events.onInputOver.add(function(){
+				sprite.hover = true;
+			}, this);			
+
+	        // coords
+	        sprite.x = 0;
+	        sprite.y = 0;        
+
+	        this.sprite = sprite;  
+		},
 
  		addEffect: function(effect){
             var params = Array.prototype.slice(arguments, 1);
@@ -238,9 +265,7 @@ define('Entity', function(){
         },
 
         update: function(){
-
             this.updateEffects();
-
         },
 
         select: function(){
@@ -249,6 +274,14 @@ define('Entity', function(){
 
         unselect: function(){
         	this.selected = false;
+        },
+
+        isSelected: function(){
+        	return this.selected;
+        },
+
+        isHover: function(){
+        	return this.sprite.hover;
         }
 
         // sprite onInputDown and onInputOut

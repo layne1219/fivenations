@@ -1,4 +1,10 @@
-define('Game', ['Map', 'EntityManager', 'UserPointer'], function(Map, EntityManager, UserPointer) {
+define('Game', [
+    'Map', 
+    'EntityManager', 
+    'UserPointer', 
+    'UserKeyboard', 
+    'Util'
+], function(Map, EntityManager, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,
@@ -35,30 +41,68 @@ define('Game', ['Map', 'EntityManager', 'UserPointer'], function(Map, EntityMana
             // handling the curser key events
             cursors = this.game.input.keyboard.createCursorKeys();
 
+            // -----------------------------------------------------------------------
+            //                                  Map
+            // -----------------------------------------------------------------------
             // Generate a Map
             this.map = new Map();
             this.map.append(this.game);
 
+            // -----------------------------------------------------------------------
+            //                              EntityManager
+            // -----------------------------------------------------------------------
             // Set up the EntityManager
             EntityManager.setGame(this.game);
-            this.entityManger = EntityManager.getInstance();
+            this.entityManager = EntityManager.getInstance();
 
+
+            // -----------------------------------------------------------------------
+            //                              UserPointer
+            // -----------------------------------------------------------------------
             // Set up User pointer
             UserPointer.setGame(this.game);
             this.userPointer = UserPointer.getInstance();
-            this.userPointer.on('mousedown', (function(){
-                this.entityManger
-                    .get(0)
-                    .moveTo(this.game.camera.x + this.game.input.mousePointer.x, this.game.camera.y + this.game.input.mousePointer.y); 
+
+            // Right Mouse Button to send units to a position
+            this.userPointer.on('rightmousedown', (function(){
+
+                var camera = this.game.camera,
+                    mousePointer = this.game.input.mousePointer;
+
+                this.entityManager
+                    .getAllSelected().forEach(function(entity){
+                        entity.moveTo(camera.x + mousePointer.x, camera.y + mousePointer.y); 
+                    });
+                    
             }).bind(this));
+
+            // Unselecting units when clicking over an area with no entities underneath
+            this.userPointer.on('leftmousedown', (function(){
+
+                if (this.entityManager.getAllHover().length === 0){
+                    this.entityManager.unselectAll();
+                }               
+                
+            }).bind(this));
+
+            // -----------------------------------------------------------------------
+            //                              UserKeyboard
+            // -----------------------------------------------------------------------
+            // Set up UserKeyboard
+            UserKeyboard.setGame(this.game);
+            this.UserKeyboard = UserKeyboard.getInstance();
+
 
             // Activating the basic physic engine 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
             // TENTATIVE CODE SNIPPET
-            for (var i = 0; i >= 0; i--) {
-                this.entityManger.add(1);
+            for (var i = 10; i >= 0; i--) {
+                this.entityManager.add(1);
             }
+            this.entityManager.get().forEach(function(entity){
+                entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
+            });
             
         },
 
@@ -71,7 +115,7 @@ define('Game', ['Map', 'EntityManager', 'UserPointer'], function(Map, EntityMana
             this.map.update();
 
             // Rendering the units
-            this.entityManger.get().forEach(function(entity){
+            this.entityManager.get().forEach(function(entity){
                 entity.update();
             });
 

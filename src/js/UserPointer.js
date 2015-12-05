@@ -6,25 +6,51 @@ define('UserPointer', ['Util'], function(Util){
 
 	function UserPointer(){
 		init.call(this);
+		registerEventListeners.call(this);
 	}
 
 	function init(){
 		dispatcher = new Util.EventDispatcher;
+	}
 
-		phaser_game.input.onDown.add(function(){
-			dispatcher.dispatch('mousedown');
-		}, this);
-		
+	function registerEventListeners(){
+		// Releasing either of the mouse buttons
 		phaser_game.input.onUp.add(function(){
-			dispatcher.dispatch('mouseup');
-		}, this);		
+			dispatcher.dispatch("mouseup");
+		}, this);
+
+		// Pressing either of the mouse buttons
+		phaser_game.input.onDown.add(function(){
+
+            // left mouse button
+            if (phaser_game.input.mousePointer.leftButton.isDown){
+            	dispatcher.dispatch("leftmousedown");
+            } 
+            // right mouse button
+            else if (phaser_game.input.mousePointer.rightButton.isDown){
+            	dispatcher.dispatch("rightmousedown");
+            }
+
+            // invoking all the registred functions for the the unified event
+			dispatcher.dispatch("mousedown");	
+
+		}, this);
+
 	}
 
 	UserPointer.prototype = {
 
 		on: function(event, callback){
 			dispatcher.addEventListener(event, callback);
-		}
+		},
+
+		isLeftButtonDown: function(){
+			return phaser_game.input.mousePointer.leftButton.isDown;
+		},
+
+		isRightButtonDown: function(){
+			return phaser_game.input.mousePointer.rightButton.isDown;
+		}		
 
 	};
 
