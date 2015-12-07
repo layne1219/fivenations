@@ -2,7 +2,8 @@ define('UserPointer', ['Util'], function(Util){
 	
 	var singleton,
 		phaser_game,
-		dispatcher;
+		dispatcher,
+		multiselector;
 
 	function UserPointer(){
 		init.call(this);
@@ -11,12 +12,27 @@ define('UserPointer', ['Util'], function(Util){
 
 	function init(){
 		dispatcher = new Util.EventDispatcher;
+		multiselector = new Phaser.Rectangle(0, 0, 0, 0);
+		multiselector.active = false;
 	}
+
 
 	function registerEventListeners(){
 		// Releasing either of the mouse buttons
 		phaser_game.input.onUp.add(function(){
 			dispatcher.dispatch("mouseup");
+
+			if (multiselector.active){
+
+				dispatcher.dispatch("multiselectorup", multiselector);
+
+				multiselector.active = false;
+				multiselector.x = 0;
+				multiselector.y = 0;
+				multiselector.width = 0;
+				multiselector.height = 0;				
+			}
+
 		}, this);
 
 		// Pressing either of the mouse buttons
@@ -25,6 +41,12 @@ define('UserPointer', ['Util'], function(Util){
             // left mouse button
             if (phaser_game.input.mousePointer.leftButton.isDown){
             	dispatcher.dispatch("leftmousedown");
+
+            	multiselector.active = true;
+				multiselector.x = phaser_game.camera.x + phaser_game.input.mousePointer.x;
+				multiselector.y = phaser_game.camera.y + phaser_game.input.mousePointer.y;
+				multiselector.width = 0;
+				multiselector.height = 0;         	
             } 
             // right mouse button
             else if (phaser_game.input.mousePointer.rightButton.isDown){
@@ -42,6 +64,15 @@ define('UserPointer', ['Util'], function(Util){
 
 		on: function(event, callback){
 			dispatcher.addEventListener(event, callback);
+		},
+
+		update: function(){
+			phaser_game.debug.geom(multiselector,'#0fffff', false);
+
+			if ( phaser_game.input.mousePointer.leftButton.isDown && multiselector.active){
+				multiselector.width = Math.abs(multiselector.x - (phaser_game.camera.x + phaser_game.input.mousePointer.x));
+				multiselector.height = Math.abs(multiselector.y - (phaser_game.camera.y + phaser_game.input.mousePointer.y));				
+			}
 		},
 
 		isLeftButtonDown: function(){

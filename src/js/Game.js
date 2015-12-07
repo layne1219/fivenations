@@ -85,6 +85,10 @@ define('Game', [
                 
             }).bind(this));
 
+            this.userPointer.on('multiselectorup', function(multiselector){
+                
+            });
+
             // -----------------------------------------------------------------------
             //                              UserKeyboard
             // -----------------------------------------------------------------------
@@ -118,6 +122,9 @@ define('Game', [
             this.entityManager.get().forEach(function(entity){
                 entity.update();
             });
+
+            // Rendering the Selector
+            this.userPointer.update();
 
         }
 
