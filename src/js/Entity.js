@@ -282,6 +282,10 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
         isHover: function(){
         	return this.sprite.hover;
+        },
+
+        isInside: function(obj){
+        	console.log(obj);
         }
 
         // sprite onInputDown and onInputOut
