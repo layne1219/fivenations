@@ -196,7 +196,7 @@
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 10253,
+				"buffer_size": 10325,
 				"line_ending": "Unix",
 				"name": "define('Object', ['ObjectManager'], function(Objec"
 			}
@@ -446,7 +446,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -512,15 +512,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10253,
+						"buffer_size": 10325,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1530,
-								1530
+								10242,
+								10242
 							]
 						],
 						"settings":
@@ -529,10 +529,10 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 357.0,
+						"translation.y": 4326.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -562,7 +562,7 @@
 						"translation.y": 1020.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -590,7 +590,7 @@
 						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{

@@ -81,13 +81,19 @@ define('Game', [
 
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
-                }               
+                }         
                 
             }).bind(this));
 
-            this.userPointer.on('multiselectorup', function(multiselector){
+            this.userPointer.on('multiselectorup', (function(multiselector){
                 
-            });
+                this.entityManager.get().forEach(function(entity){
+                    if (entity.isInside(multiselector)){
+                        console.log(entity);
+                    }
+                });
+
+            }).bind(this));
 
             // -----------------------------------------------------------------------
             //                              UserKeyboard

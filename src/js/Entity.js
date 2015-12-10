@@ -285,10 +285,22 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
         },
 
         isInside: function(obj){
-        	console.log(obj);
+        	if (this.sprite.x + this.sprite.body.width < obj.x){
+        		return false;
+        	}
+        	if (this.sprite.x + this.sprite.body.width > obj.x + obj.width){
+        		return false;
+        	} 
+        	if (this.sprite.y + this.sprite.body.width < obj.y){
+        		return false;
+        	}
+        	if (this.sprite.y + this.sprite.body.width > obj.y + obj.height){
+        		return false;
+        	}
+        	return true;        	      	
         }
 
-        // sprite onInputDown and onInputOut
+       
 	}
 
 	return Entity;

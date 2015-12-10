@@ -24,7 +24,9 @@ define('UserPointer', ['Util'], function(Util){
 
 			if (multiselector.active){
 
-				dispatcher.dispatch("multiselectorup", multiselector);
+				if (multiselector.width > 0 || multiselector.height > 0){
+					dispatcher.dispatch("multiselectorup", multiselector);
+				}
 
 				multiselector.active = false;
 				multiselector.x = 0;
