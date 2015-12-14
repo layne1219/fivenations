@@ -22,7 +22,7 @@ define('EntityManager', ['Entity'], function(Entity){
 
 		add: function(entity_id){
 			
-			var sprite = this.game.add.sprite(0, 0, 'test-ship');
+			var sprite = this.game.add.sprite(0, 0, 'hurricane');
 			entities.push( new Entity(this, sprite) );
 
 		},

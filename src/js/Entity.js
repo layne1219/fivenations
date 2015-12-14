@@ -140,6 +140,15 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
             this.movement.targetY = targetY;
             this.movement.targetInitialDistance = distance;
             this.movement.targetAngle = Math.atan2(targetY - y, targetX - x);
+            
+            this.movement.calculatedAngle = Phaser.Math.radToDeg(this.movement.targetAngle);
+            if (this.movement.calculatedAngle < 0){
+            	this.movement.calculatedAngle = 360 - Math.abs(this.movement.calculatedAngle);
+            }
+            this.movement.targetCalculatedAngle = Math.floor(this.movement.calculatedAngle / (360/16));
+            console.log(this.movement.targetCalculatedAngle);
+            
+
             this.movement.originX = x;
             this.movement.originY = y;
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
@@ -266,6 +275,7 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
         update: function(){
             this.updateEffects();
+            this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height));
         },
 
         select: function(){
@@ -285,16 +295,16 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
         },
 
         isInside: function(obj){
-        	if (this.sprite.x + this.sprite.body.width < obj.x){
+        	if (this.sprite.x + this.sprite.body.width / 2 < obj.x){
         		return false;
         	}
-        	if (this.sprite.x + this.sprite.body.width > obj.x + obj.width){
+        	if (this.sprite.x - this.sprite.body.width / 2 > obj.x + obj.width){
         		return false;
         	} 
-        	if (this.sprite.y + this.sprite.body.width < obj.y){
+        	if (this.sprite.y + this.sprite.body.height / 2 < obj.y){
         		return false;
         	}
-        	if (this.sprite.y + this.sprite.body.width > obj.y + obj.height){
+        	if (this.sprite.y - this.sprite.body.height / 2 > obj.y + obj.height){
         		return false;
         	}
         	return true;        	      	

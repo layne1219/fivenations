@@ -37,6 +37,7 @@ define("Preloader", function() {
             // Human spacecrafts
             // ----------------------------------------------------------------------------------            
             this.load.spritesheet('test-ship', 'assets/images/ship.png', 64, 64, 24);
+            this.load.atlasJSONHash('hurricane', 'assets/images/units/fed/fed_unit01_c01.png', 'assets/images/units/fed/fed_unit01_c01.json');
 
         },
 

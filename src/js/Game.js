@@ -89,7 +89,7 @@ define('Game', [
                 
                 this.entityManager.get().forEach(function(entity){
                     if (entity.isInside(multiselector)){
-                        console.log(entity);
+                        entity.select();
                     }
                 });
 
