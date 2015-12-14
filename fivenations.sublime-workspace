@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"ca",
+				"calculatedAngle"
+			],
+			[
+				"ent",
+				"entity"
+			],
+			[
 				"user",
 				"userPointer"
 			],
@@ -18,10 +26,6 @@
 			[
 				"User",
 				"UserKeyboard"
-			],
-			[
-				"ent",
-				"entityManager"
 			],
 			[
 				"reg",
@@ -176,14 +180,6 @@
 	"buffers":
 	[
 		{
-			"file": "src/css/main.css",
-			"settings":
-			{
-				"buffer_size": 97,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/js/EntityManager.js",
 			"settings":
 			{
@@ -193,35 +189,27 @@
 			}
 		},
 		{
+			"file": "src/js/Preloader.js",
+			"settings":
+			{
+				"buffer_size": 2333,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 10325,
+				"buffer_size": 11604,
 				"line_ending": "Unix",
 				"name": "define('Object', ['ObjectManager'], function(Objec"
 			}
 		},
 		{
-			"file": "src/js/Game.js",
+			"file": "src/assets/images/units/fed/fed_unit01_c01.json",
 			"settings":
 			{
-				"buffer_size": 4323,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/UserPointer.js",
-			"settings":
-			{
-				"buffer_size": 2602,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/UserKeyboard.js",
-			"settings":
-			{
-				"buffer_size": 783,
+				"buffer_size": 4112,
 				"line_ending": "Unix"
 			}
 		}
@@ -278,25 +266,30 @@
 		"/home/bence/dev/silversword/fivenations",
 		"/home/bence/dev/silversword/fivenations/src",
 		"/home/bence/dev/silversword/fivenations/src/assets",
+		"/home/bence/dev/silversword/fivenations/src/assets/images",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/units",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed",
 		"/home/bence/dev/silversword/fivenations/src/bower_components",
 		"/home/bence/dev/silversword/fivenations/src/css",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
-		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
+		"/home/bence/dev/silversword/fivenations/src/css/main.css",
+		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
+		"/home/bence/dev/silversword/fivenations/src/js/UserKeyboard.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
 		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
 		"/home/bence/dev/silversword/fivenations/gulpfile.js",
 		"/home/bence/dev/silversword/fivenations/src/index.html",
 		"/home/bence/dev/silversword/fivenations/src/js/Map.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/star-s-2.png",
 		"/home/bence/dev/silversword/fivenations/src/js/Boot.js",
-		"/home/bence/dev/silversword/fivenations/src/css/main.css",
 		"/home/bence/dev/silversword/fivenations/sass/main.scss",
 		"/home/bence/dev/ionic/projectdomination/www/js/GoogleMapController.js",
 		"/home/bence/dev/ionic/projectdomination/www/js/controllers.js",
@@ -321,6 +314,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"targetCalculatedAngle",
+			"\"w\":300,\"h\":300",
+			".x",
 			"Entity",
 			"UserKeyboard",
 			"EntityManager",
@@ -451,34 +447,6 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/css/main.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 97,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								97,
-								97
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "src/js/EntityManager.js",
 					"semi_transient": false,
 					"settings":
@@ -490,8 +458,8 @@
 						"selection":
 						[
 							[
-								439,
-								439
+								563,
+								563
 							]
 						],
 						"settings":
@@ -500,56 +468,27 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 204.0,
+						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/js/Entity.js",
+					"buffer": 1,
+					"file": "src/js/Preloader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10325,
+						"buffer_size": 2333,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10242,
-								10242
-							]
-						],
-						"settings":
-						{
-							"auto_name": "define('Object', ['ObjectManager'], function(Objec",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 4326.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/js/Game.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4323,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3071,
-								3071
+								1935,
+								1935
 							]
 						],
 						"settings":
@@ -559,66 +498,68 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1020.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/js/UserPointer.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2602,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								573,
-								573
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 204.0,
+						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/js/UserKeyboard.js",
+					"buffer": 2,
+					"file": "src/js/Entity.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 783,
+						"buffer_size": 11604,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								281,
-								281
+								7926,
+								7926
 							]
 						],
 						"settings":
 						{
+							"auto_name": "define('Object', ['ObjectManager'], function(Objec",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 204.0,
+						"translation.y": 2910.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/assets/images/units/fed/fed_unit01_c01.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3351,
+								3351
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

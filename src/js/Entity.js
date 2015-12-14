@@ -36,6 +36,8 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
             maxAcceleration: 250,
             maxDrag: 250,
             maxTargetDragTreshold: 200,
+            targetConsolidatedAngle: 0,
+            currentConsolidatedAngle: 0
         };
 
         this.setSprite(sprite);
@@ -48,7 +50,7 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 	        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
 	        // Set up the Phaser.Sprite object
-	        sprite.anchor.setTo(0.5, 0.5);        
+	        //sprite.anchor.setTo(0.5, 0.5);        
 
 	        // enabling input events applied on the sprite object
 	        sprite.inputEnabled = true;
@@ -75,7 +77,7 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
 	        // coords
 	        sprite.x = 0;
-	        sprite.y = 0;        
+	        sprite.y = 0;
 
 	        this.sprite = sprite;  
 		},
@@ -145,9 +147,7 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
             if (this.movement.calculatedAngle < 0){
             	this.movement.calculatedAngle = 360 - Math.abs(this.movement.calculatedAngle);
             }
-            this.movement.targetCalculatedAngle = Math.floor(this.movement.calculatedAngle / (360/16));
-            console.log(this.movement.targetCalculatedAngle);
-            
+            this.movement.targetConsolidatedAngle = (Math.floor(this.movement.calculatedAngle / (360/16)) + 12) % 16;            
 
             this.movement.originX = x;
             this.movement.originY = y;
@@ -220,6 +220,11 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
             return false;
         },
 
+        rotateToTarget: function(){
+
+
+        },
+
         /**
         * Updating the velocity according to the applied effects altering the coordinates of the Entity
         *
@@ -275,7 +280,15 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
         update: function(){
             this.updateEffects();
-            this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height));
+            if (this._a === undefined){
+            	this._a = 0;
+            }
+            this._a += 0.1;
+            if (this._a > 1){
+            	this.sprite.frame++;
+            	this._a = 0;
+            }
+            this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height),'#0fffff', false);
         },
 
         select: function(){
