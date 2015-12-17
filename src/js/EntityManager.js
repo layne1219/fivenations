@@ -1,7 +1,8 @@
-define('EntityManager', ['Entity'], function(Entity){
+define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 	
-	// intentionally hiding these variables from the outside world
-	var phaser_game,
+	var ns = window.fivenations,
+
+		phaser_game,
 		singleton,
 
 		// unique indentifier for maintaning the units in an array
@@ -22,8 +23,14 @@ define('EntityManager', ['Entity'], function(Entity){
 
 		add: function(entity_id){
 			
-			var sprite = this.game.add.sprite(0, 0, 'hurricane');
-			entities.push( new Entity(this, sprite) );
+			if (Object.keys(ns.entities).indexOf(entity_id) === -1){
+				throw "The requrested entity is not registered!";
+			}
+
+			var sprite = this.game.add.sprite(0, 0, entity_id),
+				dataObject = new DataObject(this.game.cache.getJSON(entity_id));
+
+			entities.push( new Entity(this, sprite, dataObject) );
 
 		},
 

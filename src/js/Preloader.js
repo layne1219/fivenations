@@ -1,7 +1,19 @@
 define("Preloader", function() {
 'use strict';
 
-    var preloader;
+    var preloader,
+        ns = window.fivenations;
+
+    // Entity details
+    // const like object to describe all the entities participating in the gameplay 
+    ns.entities = ns.entities || {
+        hurricane: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_unit01_c01.png',
+            atlasURL: 'assets/images/units/fed/fed_unit01_c01.json',
+            dataURL: 'assets/data/units/fed/hurricane.json'
+        }
+    };
 
     function Preloader() {
         this.ready = false;
@@ -34,11 +46,16 @@ define("Preloader", function() {
             this.load.image('starfield.star.fast-3', 'assets/images/star-f-1.png');
 
             // ----------------------------------------------------------------------------------
-            // Human spacecrafts
+            // Entities (sprite, atlas, data)
             // ----------------------------------------------------------------------------------            
-            this.load.spritesheet('test-ship', 'assets/images/ship.png', 64, 64, 24);
-            this.load.atlasJSONHash('hurricane', 'assets/images/units/fed/fed_unit01_c01.png', 'assets/images/units/fed/fed_unit01_c01.json');
-
+            Object.keys(ns.entities).forEach(function(key){
+                if (!ns.entities[key].preloading){
+                    return;
+                }
+                this.load.atlasJSONHash(key, ns.entities[key].spriteURL, ns.entities[key].atlasURL);
+                this.load.json(key, ns.entities[key].dataURL);   
+            }, this);
+ 
         },
 
         create: function () {

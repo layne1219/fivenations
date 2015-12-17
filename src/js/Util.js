@@ -10,6 +10,18 @@ define('Util', function(){
 			return value >= min && value <= max;
 		},
 
+		calculateStepTo: function(start, target, max, step){
+			var stepCount = 0;
+			while (start !== target && stepCount < max){
+				start = (start + step) % max;
+				if (start < 0){
+					start = max - 1;
+				}
+				++stepCount;
+			}
+			return stepCount;
+		},
+
 		// Eventlistener object
 		EventDispatcher: (function(){
 

@@ -1,14 +1,7 @@
-define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPointer){
+define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard, UserPointer, Util){
 	
-	var 
-		// Private constant like values
-		MOVEMENT_STOPPED = 0,
-        MOVEMENT_WAITING = 1,
-        MOVEMENT_MOVING = 2,
-        MOVEMENT_ACCELERATING = 3,
-        MOVEMENT_DECCELERATING = 4;
-
-	function Entity(entityManager, sprite){
+	
+	function Entity(entityManager, sprite, dataObject){
 
 		// storing entityManager locally to prevent recursive mutual dependency
 		this.entityManager = entityManager;
@@ -19,6 +12,9 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
         // unique identifier in order to obtain the very entity
         this.uid = entityManager.getNextId();
 
+        // setting up the dataObject
+        this.dataObject = dataObject;
+
         // Container to store the applied effects 
         this.effects = [];
 
@@ -28,16 +24,21 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
         // Not equal to the properties can be found in Sprite.body since 
         // using custom logic for providing RTS like unit movements (drifting)
         this.movement = {
-            angularVelocity: 200,
             velocity: 0,
-            drag: 200,
             acceleration: 0,
-            maxVelocity: 250,
-            maxAcceleration: 250,
-            maxDrag: 250,
-            maxTargetDragTreshold: 200,
+            maxVelocity: dataObject.getSpeed(),
+            maxAcceleration: dataObject.getSpeed(),
+            maxTargetDragTreshold: dataObject.getSpeed()
+        };
+
+        // Properties to store angular rotation and spinning informations
+        this.rotation = {
             targetConsolidatedAngle: 0,
-            currentConsolidatedAngle: 0
+            currentConsolidatedAngle: 0,
+            maxAngleCount: dataObject.getDirections(),
+            angularVelocity: 0,
+            angularVelocityHelper: 0,
+            maxAngularVelocity: dataObject.getManeuverability(),
         };
 
         this.setSprite(sprite);
@@ -143,30 +144,33 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
             this.movement.targetInitialDistance = distance;
             this.movement.targetAngle = Math.atan2(targetY - y, targetX - x);
             
-            this.movement.calculatedAngle = Phaser.Math.radToDeg(this.movement.targetAngle);
-            if (this.movement.calculatedAngle < 0){
-            	this.movement.calculatedAngle = 360 - Math.abs(this.movement.calculatedAngle);
+            this.rotation.calculatedAngle = Phaser.Math.radToDeg(this.movement.targetAngle);
+            if (this.rotation.calculatedAngle < 0){
+            	this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
             }
-            this.movement.targetConsolidatedAngle = (Math.floor(this.movement.calculatedAngle / (360/16)) + 12) % 16;            
+            this.rotation.angularVelocityHelper = 0;
+            this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + 12) % this.rotation.maxAngleCount;            
+
+        	this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
+        	this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
 
             this.movement.originX = x;
             this.movement.originY = y;
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.resetEffects();
+            this.addEffect(this.rotateToTarget);
             this.addEffect(this.accelerateToTarget);
             this.addEffect(this.moveToTarget);
             this.addEffect(this.stopping);
             this.addEffect(this.resetMovement);
 
-            this.setMovementState(MOVEMENT_WAITING);
        },
 
        stop: function(){
             this.resetEffects();
             this.addEffect(this.stopping);
             this.addEffect(this.resetMovement);
-            this.setMovementState(MOVEMENT_WAITING);
        },
 
         /**
@@ -183,9 +187,6 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
             this.movement.acceleration = 0;
 
-            this.updateVelocity();
-            this.setMovementState(MOVEMENT_MOVING);
-
             return this.movement.distance > this.movement.targetDragTreshold;
         },     
 
@@ -193,18 +194,12 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
             
             this.movement.acceleration = this.movement.maxAcceleration;
 
-            this.updateVelocity();
-            this.setMovementState(MOVEMENT_ACCELERATING);
-
             return this.movement.distanceInverse < this.movement.targetDragTreshold && this.movement.velocity < this.movement.maxVelocity;
         },
 
         stopping: function(){
 
             this.movement.acceleration = -this.movement.maxAcceleration;
-            
-            this.updateVelocity();
-            this.setMovementState(MOVEMENT_DECCELERATING);
 
             return this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0;            
         },        
@@ -213,26 +208,32 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
             this.movement.acceleration = 0;
             this.movement.velocity = 0;
-
-            this.updateVelocity();
-            this.setMovementState(MOVEMENT_STOPPED);
+            this.rotation.angularVelocity = 0;
 
             return false;
         },
 
         rotateToTarget: function(){
 
+        	// if the entity is already accrelerating than it doesn't have to stop for rotating
+        	if (this.movement.velocity > 0){
+        		// it also can rotate with a lot higher speed to mimic flying units in Blizzard's Starcraft
+        		this.rotation.angularVelocity = this.rotation.maxAngularVelocity * 5;
+        		// jumping to the next effect
+        		return false;
+        	}
 
+        	// rotating with default speed until the entity arrives at the target angle 
+        	this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
+        	return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;
         },
 
         /**
         * Updating the velocity according to the applied effects altering the coordinates of the Entity
         *
-        * @param {number} angle - rotation toward the target in radian
-        * @param {number} speed - speed factor going from 0 to 1 where 1 means the entity will be going with max speed
         * @return {void} 
         */
-        updateVelocity: function(){
+		updateVelocity: function(){
 
             this.movement.distance = this.game.physics.arcade.distanceToXY(this.sprite, this.movement.targetX, this.movement.targetY),
             this.movement.distanceInverse = this.movement.targetInitialDistance - this.movement.distance,
@@ -264,11 +265,34 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
 
             this.sprite.body.velocity.x = Math.cos(this.movement.targetAngle) * this.movement.velocity;
             this.sprite.body.velocity.y = Math.sin(this.movement.targetAngle) * this.movement.velocity;        
-        },     
+        },  
 
-        setMovementState: function(state){
-            this.movement.state = state;
-        },    
+        /**
+        * Updating the sprite's current frame according to the rotation details
+        *
+        * @return {void} 
+        */
+        updateRotation: function(){
+
+        	if (this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle){
+        		return;
+        	}
+
+        	this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
+
+        	this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
+        	if (this.rotation.angularVelocityHelper > 1){
+        		this.rotation.angularVelocityHelper = 0;
+        		if (this.rotation.currentConsolidatedAngle + this.rotation.angularDirection < 0){
+        			this.rotation.currentConsolidatedAngle = this.rotation.maxAngleCount;
+        		}
+        		this.rotation.currentConsolidatedAngle += this.rotation.angularDirection;
+        		this.rotation.currentConsolidatedAngle %= this.rotation.maxAngleCount;
+        	}
+
+        	// set the frame of the sprite according to the calculated angularRotation
+        	this.sprite.frame = this.rotation.currentConsolidatedAngle;       	
+        }, 
 
         getSprite: function(){
             return this.sprite;
@@ -279,15 +303,13 @@ define('Entity', ['UserKeyboard', 'UserPointer'], function(UserKeyboard, UserPoi
         },
 
         update: function(){
+
+        	// updating all the helper values to alter the entity properties which take part in the movements 
+            this.updateVelocity();
+            this.updateRotation();
+            // this should be the last invoked function here       	
             this.updateEffects();
-            if (this._a === undefined){
-            	this._a = 0;
-            }
-            this._a += 0.1;
-            if (this._a > 1){
-            	this.sprite.frame++;
-            	this._a = 0;
-            }
+
             this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height),'#0fffff', false);
         },
 

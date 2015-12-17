@@ -103,12 +103,19 @@ define('Game', [
             this.UserKeyboard = UserKeyboard.getInstance();
 
 
+            // -----------------------------------------------------------------------
+            //                              Physic engine
+            // -----------------------------------------------------------------------
             // Activating the basic physic engine 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+
+            // -----------------------------------------------------------------------
+            //                          Generating entities
+            // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 10; i >= 0; i--) {
-                this.entityManager.add(1);
+            for (var i = 0; i >= 0; i--) {
+                this.entityManager.add("hurricane");
             }
             this.entityManager.get().forEach(function(entity){
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
