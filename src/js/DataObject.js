@@ -4,7 +4,7 @@ define('DataObject', function(){
 
 		var data = Object.create(json);
 
-		// setting up entity data attributes
+		// setting up custom gameplay related data attributes
 		data.maxhull = data.hull;
 		data.maxshield = data.shield;
 		data.maxpower = data.power;

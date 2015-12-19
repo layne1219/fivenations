@@ -8,7 +8,7 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 		// unique indentifier for maintaning the units in an array
 		id = 0,
 
-		// Array for storing all the entities on the map
+		// Array for storing all the entities generated 
 		entities = [];
 
 

@@ -2,7 +2,8 @@ define('UserKeyboard', ['Util'], function(Util){
 	
 	var singleton,
 		phaser_game,
-		dispatcher;
+		dispatcher,
+		cursors;
 
 	function UserKeyboard(){
 		init.call(this);
@@ -11,11 +12,28 @@ define('UserKeyboard', ['Util'], function(Util){
 
 	function init(){
 		dispatcher = new Util.EventDispatcher;
+		// handling the curser key events
+		cursors = phaser_game.input.keyboard.createCursorKeys();		
 	}
 
 	function registerEventListeners(){
 
 	}
+
+	function scrollWithCursors(){
+	    if (cursors.up.isDown){
+	        phaser_game.camera.y -= 10;
+	    }
+	    else if (cursors.down.isDown){
+	        phaser_game.camera.y += 10;
+	    }
+
+	    if (cursors.left.isDown){
+	        phaser_game.camera.x -= 10;
+	    } else if (cursors.right.isDown){
+	        phaser_game.camera.x += 10;
+	    }        
+	}	
 
 	UserKeyboard.prototype = {
 
@@ -25,6 +43,10 @@ define('UserKeyboard', ['Util'], function(Util){
 
 		isDown: function(keyCode){
 			return phaser_game.input.keyboard.isDown(keyCode);
+		},
+
+		update: function(){
+			scrollWithCursors();
 		}
 	};
 
@@ -42,7 +64,7 @@ define('UserKeyboard', ['Util'], function(Util){
 				singleton = new UserKeyboard();
 			}
 			return singleton;
-		}
+		}		
 
 	};
 

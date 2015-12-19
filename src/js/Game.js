@@ -8,22 +8,7 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations,
-        cursors;
-
-    function scrollWithCursor(){
-        if (cursors.up.isDown){
-            this.game.camera.y -= 4;
-        }
-        else if (cursors.down.isDown){
-            this.game.camera.y += 4;
-        }
-
-        if (cursors.left.isDown){
-            this.game.camera.x -= 4;
-        } else if (cursors.right.isDown){
-            this.game.camera.x += 4;
-        }        
-    }
+        sprite;
 
     function Game() {}    
 
@@ -37,9 +22,6 @@ define('Game', [
 
             // preventing the context menu to appear when the user clicks with the right mouse button
             this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
-
-            // handling the curser key events
-            cursors = this.game.input.keyboard.createCursorKeys();
 
             // -----------------------------------------------------------------------
             //                                  Map
@@ -55,7 +37,7 @@ define('Game', [
             EntityManager.setGame(this.game);
             this.entityManager = EntityManager.getInstance();
 
-
+            sprite = this.game.add.sprite(20, 20, 'gui');
             // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
@@ -81,7 +63,9 @@ define('Game', [
 
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
-                }         
+                }
+
+                sprite.frame++;         
                 
             }).bind(this));
 
@@ -125,9 +109,6 @@ define('Game', [
 
         update: function () {
 
-            // Manual Srolling
-            scrollWithCursor.call(this);
-
             // Rendering the map
             this.map.update();
 
@@ -138,6 +119,11 @@ define('Game', [
 
             // Rendering the Selector
             this.userPointer.update();
+
+            // Scrolling wiht cursors
+            this.UserKeyboard.update();
+
+            this.game.debug.geom(new Phaser.Rectangle(sprite.x, sprite.y, sprite.width, sprite.height),'#0fffff', false);
 
         }
 
