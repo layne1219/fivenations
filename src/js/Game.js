@@ -1,10 +1,11 @@
 define('Game', [
     'Map', 
-    'EntityManager', 
+    'EntityManager',
+    'GUI',
     'UserPointer', 
     'UserKeyboard', 
     'Util'
-], function(Map, EntityManager, UserPointer, UserKeyboard, Util) {
+], function(Map, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,
@@ -37,7 +38,14 @@ define('Game', [
             EntityManager.setGame(this.game);
             this.entityManager = EntityManager.getInstance();
 
-            sprite = this.game.add.sprite(20, 20, 'gui');
+            // -----------------------------------------------------------------------
+            //                              GUI
+            // -----------------------------------------------------------------------
+            // Set up the GUI object 
+            GUI.setGame(this.game);
+            this.GUI = GUI.getInstance();
+            sprite = this.game.add.sprite(20, 20, 'gui');        
+
             // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
@@ -65,7 +73,8 @@ define('Game', [
                     this.entityManager.unselectAll();
                 }
 
-                sprite.frame++;         
+                sprite.frame = 101;
+                console.log(sprite.frame);      
                 
             }).bind(this));
 
@@ -122,8 +131,6 @@ define('Game', [
 
             // Scrolling wiht cursors
             this.UserKeyboard.update();
-
-            this.game.debug.geom(new Phaser.Rectangle(sprite.x, sprite.y, sprite.width, sprite.height),'#0fffff', false);
 
         }
 

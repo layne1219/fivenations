@@ -218,7 +218,7 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
         	// if the entity is already accrelerating than it doesn't have to stop for rotating
         	if (this.movement.velocity > 0){
         		// it also can rotate with a lot higher speed to mimic flying units in Blizzard's Starcraft
-        		this.rotation.angularVelocity = this.rotation.maxAngularVelocity * 5;
+        		this.rotation.angularVelocity = this.rotation.maxAngularVelocity * 1.5;
         		// jumping to the next effect
         		return false;
         	}

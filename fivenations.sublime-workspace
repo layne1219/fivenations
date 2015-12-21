@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"U",
+				"Util"
+			],
+			[
 				"data",
 				"dataUrl"
 			],
@@ -256,7 +260,15 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 5014,
+				"buffer_size": 5027,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/assets/datas/units/fed/hurricane.json",
+			"settings":
+			{
+				"buffer_size": 438,
 				"line_ending": "Unix"
 			}
 		},
@@ -264,23 +276,7 @@
 			"file": "src/js/Preloader.js",
 			"settings":
 			{
-				"buffer_size": 2906,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/main.js",
-			"settings":
-			{
-				"buffer_size": 837,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/data/units/fed/hurricane.json",
-			"settings":
-			{
-				"buffer_size": 437,
+				"buffer_size": 3957,
 				"line_ending": "Unix"
 			}
 		},
@@ -288,20 +284,24 @@
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 13418,
-				"line_ending": "Unix",
-				"name": "define('Object', ['ObjectManager'], function(Objec"
+				"buffer_size": 13420,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "define('DataObject', function(){\n\n	function DataObject(json){\n\n		var data = Object.create(json);\n\n		// setting up custom gameplay related data attributes\n		data.maxhull = data.hull;\n		data.maxshield = data.shield;\n		data.maxpower = data.power;\n\n		// for providing privacy for the data variables we have to create a closure here so as not to\n		// publish any data variable held by the entity\n		return {\n\n			getId: function(){\n				return data.id;\n			},\n\n			getName: function(){\n				return data.name;\n			},		\n\n			getType: function(){\n				return data.type;\n			},\n\n			getMaxHull: function(){\n				return data.hull;\n			},				\n\n			getMaxShield: function(){\n				return data.shield;\n			},	\n\n			getMaxPower: function(){\n				return data.power;\n			},\n\n			getHull: function(){\n				return data.hull;\n			},				\n\n			getShield: function(){\n				return data.shield;\n			},	\n\n			getPower: function(){\n				return data.power;\n			},\n\n			getArmor: function(){\n				return data.armor;\n			},				\n\n			getHangar: function(){\n				return data.hangar;\n			},				\n\n			getSpeed: function(){\n				return data.speed;\n			},\n\n			getManeuverability: function(){\n				return data.maneuverability;\n			},		\n\n			getVision: function(){\n				return data.vision;\n			},\n\n			getWeapons: function(){\n				return data.weapons;\n			},				\n\n			getTitanium: function(){\n				return data.titanium;\n			},\n\n			getSilicium: function(){\n				return data.silicium;\n			},		\n\n			getPower: function(){\n				return data.power;\n			},\n\n			getEnergy: function(){\n				return data.energy;\n			},\n\n			getUranium: function(){\n				return data.uranium;\n			},\n\n			getSpace: function(){\n				return data.space;\n			},		\n\n			getBuildingTime: function(){\n				return data.buildingTime;\n			},\n\n			getDirections: function(){\n				return data.directions;\n			},		\n\n			getAnimFrame: function(){\n				return data.animFrame;\n			},\n\n			getAnimType: function(){\n				return data.animType;\n			},		\n\n			getWidth: function(){\n				return data.dimensions.width;\n			},\n\n			getHeight: function(){\n				return data.dimensions.height;\n			}		\n		};\n	}\n\n	return DataObject;\n\n});",
-			"file": "src/js/DataObject.js",
-			"file_size": 2045,
-			"file_write_time": 130948692243327786,
+			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 2062,
+				"buffer_size": 579,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/assets/images/gui/GUI_element.json",
+			"settings":
+			{
+				"buffer_size": 36725,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -312,10 +312,18 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 369.0,
-		"last_filter": "J",
+		"height": 180.0,
+		"last_filter": "java",
 		"selected_items":
 		[
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
 			[
 				"J",
 				"Set Syntax: JavaScript"
@@ -365,31 +373,37 @@
 		"/home/bence/dev/silversword/fivenations",
 		"/home/bence/dev/silversword/fivenations/src",
 		"/home/bence/dev/silversword/fivenations/src/assets",
-		"/home/bence/dev/silversword/fivenations/src/assets/data",
-		"/home/bence/dev/silversword/fivenations/src/assets/data/units",
-		"/home/bence/dev/silversword/fivenations/src/assets/data/units/fed",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed",
 		"/home/bence/dev/silversword/fivenations/src/assets/images",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/gui",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/units",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed",
+		"/home/bence/dev/silversword/fivenations/src/css",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/UserKeyboard.js",
+		"/home/bence/dev/silversword/fivenations/src/index.html",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
+		"/home/bence/dev/silversword/fivenations/src/css/main.css",
+		"/home/bence/dev/silversword/fivenations/src/js/main.js",
+		"/home/bence/dev/silversword/fivenations/src/css/fonts.css",
 		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/data/units/fed/hurricane.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/mnginvestments.com/themes/mng-zrt/landing_template.php",
 		"/home/bence/dev/mnginvestments.com/themes/mng-zrt/landing.php",
 		"/home/bence/dev/mnginvestments.com/themes/mng-zrt/sub-contents/penzugyi-termekek.php",
-		"/home/bence/dev/silversword/fivenations/src/css/main.css",
 		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
-		"/home/bence/dev/silversword/fivenations/src/js/UserKeyboard.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
-		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
 		"/home/bence/dev/silversword/fivenations/gulpfile.js",
-		"/home/bence/dev/silversword/fivenations/src/index.html",
 		"/home/bence/dev/silversword/fivenations/src/js/Map.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/star-s-2.png",
 		"/home/bence/dev/silversword/fivenations/src/js/Boot.js",
@@ -417,6 +431,20 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"phaser_game",
+			"this.game",
+			"this.sprite",
+			"this.",
+			"this.sprite",
+			"this.",
+			"sprite",
+			"this",
+			"loadResources",
+			"this.game",
+			"assets",
+			"font",
+			"BerlinSansFB-Reg",
+			"Bold",
 			"state",
 			"this.movement.state",
 			"setMovementState",
@@ -530,21 +558,7 @@
 			"entityis",
 			"object",
 			"Object",
-			"sprite",
-			"X",
-			"x",
-			"X",
-			"x",
-			"        {\n",
-			"{",
-			" (",
-			"\n            ",
-			"        {\n",
-			"{",
-			"        {\n",
-			"{",
-			"width",
-			".x"
+			"sprite"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -562,7 +576,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -578,8 +592,8 @@
 						"selection":
 						[
 							[
-								433,
-								433
+								329,
+								329
 							]
 						],
 						"settings":
@@ -591,7 +605,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -600,15 +614,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5014,
+						"buffer_size": 5027,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4395,
-								4395
+								2884,
+								2884
 							]
 						],
 						"settings":
@@ -618,92 +632,33 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1350.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/js/Preloader.js",
+					"file": "src/assets/datas/units/fed/hurricane.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2906,
+						"buffer_size": 438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								263,
-								263
+								144,
+								144
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/js/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 837,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								198,
-								198
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": -0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/assets/data/units/fed/hurricane.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 437,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -713,58 +668,117 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/js/Entity.js",
+					"buffer": 3,
+					"file": "src/js/Preloader.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13418,
+						"buffer_size": 3957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								104,
-								104
+								1514,
+								1514
 							]
 						],
 						"settings":
 						{
-							"auto_name": "define('Object', ['ObjectManager'], function(Objec",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 675.0,
+						"translation.y": 495.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/js/Entity.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13420,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8497,
+								8497
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3105.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "src/js/DataObject.js",
+					"buffer": 5,
+					"file": "src/js/GUI.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2062,
+						"buffer_size": 579,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								243,
-								243
+								237,
+								237
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/assets/images/gui/GUI_element.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 36725,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22958,
+								22958
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7977.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
