@@ -1,5 +1,70 @@
 define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard, UserPointer, Util){
 	
+    var 
+        /**
+         * Initialising the Phaser.Sprite object with all the additional child elements 
+         * such as selector and property bars 
+         * @param {object} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
+         * @param {object} 
+         */
+        extendSprite = function(sprite){
+
+            // actiavting the ARCADE physics on the sprite object
+            this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
+            // Set up the Phaser.Sprite object
+            //sprite.anchor.setTo(0.5, 0.5);        
+
+            // enabling input events applied on the sprite object
+            sprite.inputEnabled = true;
+
+            // helper variable for storing whether the input is over the sprite
+            sprite.hover = false;
+
+            // input events registered on the sprite object
+            sprite.events.onInputDown.add(function(){
+                if (UserPointer.getInstance().isLeftButtonDown()){
+                    // If the user holds SHIFT we will extend the number of selected entities
+                    if (!UserKeyboard.getInstance().isDown( Phaser.KeyCode.SHIFT )){
+                        this.entityManager.unselectAll();
+                    }
+                    this.select();
+                }
+            }, this);
+            sprite.events.onInputOut.add(function(){
+                sprite.hover = false;
+            }, this);
+            sprite.events.onInputOver.add(function(){
+                sprite.hover = true;
+            }, this);         
+
+            // coords
+            sprite.x = 0;
+            sprite.y = 0;
+
+            // attaching the Selector object to the basic Phaser.Sprite object
+            addSelector(this.game, sprite);
+
+            return sprite;
+        },
+
+        /**
+         * Attaching the Selector Sprite to the parent Phaser.Sprite object 
+         * @param {object} parent   
+         * @param {object} selector 
+         */
+        addSelector = function(game, parent){
+
+            var selector = game.add.sprite(0, 0, 'gui');
+            selector.frame = 101;
+            selector.anchor.setTo(0.5, 0.5);
+
+            parent.selector = selector;
+            parent.addChild(parent.selector);
+
+        };
+
+
 	
 	function Entity(entityManager, sprite, dataObject){
 
@@ -41,47 +106,11 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
             maxAngularVelocity: dataObject.getManeuverability(),
         };
 
-        this.setSprite(sprite);
+        // persisting the sprite object and attaching it to the Entity object 
+        this.sprite = extendSprite.call(this, sprite);
     }
 
 	Entity.prototype = {
-
-		setSprite: function(sprite){
-	        // actiavting the ARCADE physics on the sprite object
-	        this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-
-	        // Set up the Phaser.Sprite object
-	        //sprite.anchor.setTo(0.5, 0.5);        
-
-	        // enabling input events applied on the sprite object
-	        sprite.inputEnabled = true;
-
-	        // helper variable for storing whether the input is over the sprite
-	        sprite.hover = false;
-
-	        // input events registered on the sprite object
-			sprite.events.onInputDown.add(function(){
-				if (UserPointer.getInstance().isLeftButtonDown()){
-					// If the user holds SHIFT we will extend the number of selected entities
-					if (!UserKeyboard.getInstance().isDown( Phaser.KeyCode.SHIFT )){
-						this.entityManager.unselectAll();
-					}
-					this.select();
-				}
-			}, this);
-			sprite.events.onInputOut.add(function(){
-				sprite.hover = false;
-			}, this);
-			sprite.events.onInputOver.add(function(){
-				sprite.hover = true;
-			}, this);			
-
-	        // coords
-	        sprite.x = 0;
-	        sprite.y = 0;
-
-	        this.sprite = sprite;  
-		},
 
  		addEffect: function(effect){
             var params = Array.prototype.slice(arguments, 1);

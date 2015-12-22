@@ -44,6 +44,7 @@ define('Game', [
             // Set up the GUI object 
             GUI.setGame(this.game);
             this.GUI = GUI.getInstance();
+            
             sprite = this.game.add.sprite(20, 20, 'gui');        
 
             // -----------------------------------------------------------------------
@@ -57,12 +58,21 @@ define('Game', [
             this.userPointer.on('rightmousedown', (function(){
 
                 var camera = this.game.camera,
-                    mousePointer = this.game.input.mousePointer;
+                    mousePointer = this.game.input.mousePointer,
+                    x = camera.x + mousePointer.x,
+                    y = camera.y + mousePointer.y,
 
-                this.entityManager
-                    .getAllSelected().forEach(function(entity){
-                        entity.moveTo(camera.x + mousePointer.x, camera.y + mousePointer.y); 
+                    entities = this.entityManager.getAllSelected();
+
+                // send the selected units to the specified coordinates
+                if (entities.length > 0){
+                    entities.forEach(function(entity){
+                        entity.moveTo(x, y); 
                     });
+
+                    // put the click animation to the game scene
+                    this.GUI.putClickAnim(x, y);
+                }
                     
             }).bind(this));
 
@@ -74,7 +84,6 @@ define('Game', [
                 }
 
                 sprite.frame = 101;
-                console.log(sprite.frame);      
                 
             }).bind(this));
 
