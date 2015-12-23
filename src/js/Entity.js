@@ -42,19 +42,7 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
             sprite.x = 0;
             sprite.y = 0;
 
-            // attaching the Selector object to the basic Phaser.Sprite object
-            addSelector(this.game, sprite);
-
             return sprite;
-        },
-
-        /**
-         * Attaching the Selector Sprite to the parent Phaser.Sprite object 
-         * @param {object} parent   
-         * @param {object} selector 
-         */
-        addSelector = function(game, parent){
-
         };
 
 
@@ -72,6 +60,9 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
 
         // setting up the dataObject
         this.dataObject = dataObject;
+
+        // setting up the EventDisatcher
+        this.eventDispatcher = new Util.EventDispatcher;
 
         // Container to store the applied effects 
         this.effects = [];
@@ -232,6 +223,8 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
             this.movement.velocity = 0;
             this.rotation.angularVelocity = 0;
 
+            this.eventDispatcher.dispatch('stop', this);
+
             return false;
         },
 
@@ -313,7 +306,7 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
         	}
 
         	// set the frame of the sprite according to the calculated angularRotation
-        	this.sprite.frame = this.rotation.currentConsolidatedAngle;       	
+        	this.sprite.frame = this.rotation.currentConsolidatedAngle;   	
         }, 
 
         getSprite: function(){
@@ -329,7 +322,7 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
         	// updating all the helper values to alter the entity properties which take part in the movements 
             this.updateVelocity();
             this.updateRotation();
-            // this should be the last invoked function here       	
+            // this should be the last invoked function here
             this.updateEffects();
 
             this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height),'#0fffff', false);
@@ -337,10 +330,12 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
 
         select: function(){
         	this.selected = true;
+            this.eventDispatcher.dispatch('select');
         },
 
         unselect: function(){
         	this.selected = false;
+            this.eventDispatcher.dispatch('unselect');
         },
 
         isSelected: function(){

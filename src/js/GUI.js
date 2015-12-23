@@ -29,6 +29,94 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 
 			};
 
+		})(),
+
+		// Selector object to handle the selection animation and the displaying of the 
+		// element with the appropriate size
+		Selector = (function(){
+
+
+			var 
+				// size ranges for different spirtes
+				categories = {
+					'big': [100, 199],
+					'extrabig': [200, 999],
+					'medium': [50, 99],
+					'small': [0, 49]
+				};
+
+			function Selector(){
+
+				var sprite = phaserGame.add.sprite(0, 0, 'gui');
+				sprite.visible = false;
+				sprite.anchor.setTo(0.5, 0.5);
+
+				[
+					'select-enemy-big'
+					'select-enemy-extrabig',
+					'select-enemy-medium',
+					'select-enemy-small',
+					'select-big'
+					'select-extrabig',
+					'select-medium',
+					'select-small'
+
+				].forEach(function(animation){
+					anim = sprite.animations.add(animation, animations[animation]);
+				});
+
+				this.sprite = sprite;
+			}
+
+			Selector.prototype = {
+
+				size: null,
+				parent: null,
+
+				appendTo: function(entity){
+					var sprite;
+
+					if (!entity || 'function' !== typeof entity.getSprite){
+						throw 'First parameter must be an instance of Entity!';
+					}
+
+					this.parent = entity;
+				},
+
+				show: function(){
+					var animationName = 'select-';
+					this.sprite.visible = true;
+					this.sprite.run(animationName + this.size);
+				},
+
+				hide: function(){
+					this.sprite.visible = false;
+				},
+
+				getSize: function(){
+					var sprite;
+
+					if (!this.parent){
+						throw 'There is no Entity attached to this Selector instance!';
+					}
+
+					if (!this.size){
+						sprite = parent.getSprite();
+
+						Object.keys(categories).forEach(function(size){
+							if (Util.between(Math.max(sprite.width, sprite.height), categories[size][0], categories[size][1])){
+								this.size = size;
+							}
+						}, this);
+					}
+
+					return this.size;
+				}
+
+			}
+
+			return Selector;
+
 		})();
 
 
@@ -62,6 +150,10 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 			initClickAnimations();
 		}
 
+		/**
+		 * Initialise the sprite object and link all the animations
+		 * @return {void}
+		 */
 		function initClickAnimations(){
 			var anim;
 			clickAnim = phaserGame.add.sprite(0, 0, 'gui');
@@ -100,27 +192,7 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 			 * Creating a seletor sprite and setting up the corresponding animation sequences
 			 * @return {object} Phaser.Sprite
 			 */
-			createSelectorSprite: function(){
-
-				var selector = phaserGame.add.sprite(0, 0, 'gui');
-				selector.visible = false;
-				selector.anchor.setTo(0.5, 0.5);
-
-				[
-					'select-enemy-big'
-					'select-enemy-extrabig',
-					'select-enemy-medium',
-					'select-enemy-small',
-					'select-big'
-					'select-extrabig',
-					'select-medium',
-					'select-small',					
-				].forEach(function(animation){
-
-					anim = selector.animations.add(animation, animations[animation]);
-					anim.onStart.add(show, selector);
-
-				});				
+			createSelectorSprite: function(){			
 				
 				return selector;
 			}
