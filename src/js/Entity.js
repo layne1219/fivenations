@@ -55,13 +55,6 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
          */
         addSelector = function(game, parent){
 
-            var selector = game.add.sprite(0, 0, 'gui');
-            selector.frame = 101;
-            selector.anchor.setTo(0.5, 0.5);
-
-            parent.selector = selector;
-            parent.addChild(parent.selector);
-
         };
 
 

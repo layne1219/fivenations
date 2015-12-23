@@ -1,6 +1,7 @@
 click move 0,14
 click target-enemy 15,29
 click target-friendly 30,44
+
 cursor normal 45
 cursor neutral 46
 cursor enemy 47
@@ -14,6 +15,7 @@ cursor scroll 54-61
 cursor dock 62
 cursor undock 63
 cursor base 64
+
 button move 65
 button stop 66
 button patrol 67
@@ -27,28 +29,54 @@ button mining 74
 button build 75
 button repairpod 76
 button exploratorybay 77
-button nuclearstrike 78
-button warpengine 79
-button forceshueld 80
-button commandoutpost 81
-button vision 82
-button blackhole 83
-button defensivestasis 84
-button assimilation 85
-button deploy-mine 86
-button tacticalgrapling 87
-button overvoltage 88
-button anitmattercloud 89
-button buildbase 90
-button suicide 91
-button recycling 92
-button remedialintegration 93
-button observativelintegration 94
-button acidicspores 95
-button controlmeteorite 96
-button protectivecloud 97
-button back 98
-button demolish 99
-button contruct 100
-button cancel 101
-button setrallypoint 102
+button shieldbattery 78
+button nuclearstrike 79
+button warpengine 80
+button forceshueld 81
+button commandoutpost 82
+button vision 83
+button blackhole 84
+button defensivestasis 85
+button assimilation 86
+button deploy-mine 87
+button tacticalgrapling 88
+button overvoltage 89
+button anitmattercloud 90
+button buildbase 91
+button suicide 92
+button recycling 93
+button remedialintegration 94
+button observativelintegration 95
+button acidicspores 96
+button controlmeteorite 97
+button protectivecloud 98
+button back 99
+button demolish 100
+button contruct 101
+button cancel 102
+button setrallypoint 103
+button spec 104-114
+
+gui_descriptionpopup 115
+gui_resource_01_titanium 116
+gui_resource_02_silicium 117
+gui_resource_03_uranium 118
+gui_resource_04_energy 119
+gui_resource_05_place 120
+
+gui_select_enemy_big 121-125
+gui_select_enemy_extrabig 126-130
+gui_select_enemy_medium 131-135
+gui_select_enemy_small 136-140
+
+gui_select_unit_big 141-145
+gui_select_unit_extrabig 147-151
+gui_select_unit_medium 152-156
+gui_select_unit_small 157-161
+
+gui_unitrank0 178
+gui_unitrank1 179
+gui_unitrank2 180
+gui_unitrank3 181
+gui_unitrank4 182
+

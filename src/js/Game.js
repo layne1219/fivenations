@@ -73,6 +73,9 @@ define('Game', [
                     // put the click animation to the game scene
                     this.GUI.putClickAnim(x, y);
                 }
+
+                sprite.frame--;
+                console.log(sprite.frame);
                     
             }).bind(this));
 
@@ -83,7 +86,8 @@ define('Game', [
                     this.entityManager.unselectAll();
                 }
 
-                sprite.frame = 101;
+                sprite.frame++;
+                console.log(sprite.frame);
                 
             }).bind(this));
 
