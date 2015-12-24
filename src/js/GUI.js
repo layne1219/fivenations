@@ -2,6 +2,9 @@ define('GUI', ['Util'], function( Util ){
 
 	var 
 
+		// reference to the shared game configuarition object 
+		ns = window.fivenations,
+
 		// reference to the Phaser Game object
 		phaserGame,
 
@@ -49,7 +52,7 @@ define('GUI', ['Util'], function( Util ){
 
 			function Selector(){
 
-				var sprite = phaserGame.add.sprite(0, 0, 'gui');
+				var sprite = phaserGame.add.image(0, 0, 'gui');
 				sprite.visible = false;
 				sprite.anchor.setTo(0.5, 0.5);
 
@@ -119,7 +122,7 @@ define('GUI', ['Util'], function( Util ){
 					return this.size;
 				}
 
-			}
+			};
 
 			return Selector;
 
@@ -148,6 +151,12 @@ define('GUI', ['Util'], function( Util ){
 				this.visible = true;
 			},
 
+			// reference to a Phaser.Group object that incorporate all the GUI elements
+			group,
+
+			// reference to the Phaser.Image represents the basic panel element
+			panel,
+
 			// reference to a Phaser.Sprite object that displays the click animation
 			clickAnim,
 
@@ -156,7 +165,15 @@ define('GUI', ['Util'], function( Util ){
 
 
 		function GUI(){
+			initPhaserGroup();
 			initClickAnimations();
+			// initialise the panel according to which element it should conceal
+			initPanel();
+		}
+
+		function initPhaserGroup(){
+			group = phaserGame.add.group();
+			phaserGame.world.bringToTop(group);
 		}
 
 		/**
@@ -165,7 +182,7 @@ define('GUI', ['Util'], function( Util ){
 		 */
 		function initClickAnimations(){
 			var anim;
-			clickAnim = phaserGame.add.sprite(0, 0, 'gui');
+			clickAnim = phaserGame.add.image(0, 0, 'gui');
 			clickAnim.visible = false;
 			clickAnim.anchor.setTo(0.5, 0.5);
 
@@ -176,7 +193,23 @@ define('GUI', ['Util'], function( Util ){
 				anim.onComplete.add(hide, clickAnim);
 
 			});
+
+			group.add(clickAnim);
 		}
+
+		/**
+		 * Initialise the basic panel for the ingame 
+		 * @return {void} 
+		 */
+		function initPanel(){
+			panel = phaserGame.add.image(0, 0, 'gui');
+			panel.frame = 64; // base element
+			panel.x = 0;
+			panel.y = ns.window.height - 222; // 222 is the height of the panel (look it up in the JSON when changed)
+			panel.fixedToCamera = true;
+			group.add(panel);
+		}
+
 
 		GUI.prototype = {
 

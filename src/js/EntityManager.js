@@ -2,21 +2,24 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 	
 	var ns = window.fivenations,
 
-		phaser_game,
+		phaserGame,
 		singleton,
 
 		// unique indentifier for maintaning the units in an array
 		id = 0,
 
 		// Array for storing all the entities generated 
-		entities = [];
+		entities = [],
+
+		// reference to a Phaser.Group
+		group;
 
 
 	function EntityManager(){
-		if (!phaser_game){
+		if (!phaserGame){
 			throw 'Invoke setGame first to pass the Phaser Game entity!';
-		}		
-		this.game = phaser_game;
+		}
+		group = phaserGame.add.group();
 	}
 
 	EntityManager.prototype = {
@@ -27,11 +30,12 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 				throw "The requrested entity is not registered!";
 			}
 
-			var sprite = this.game.add.sprite(0, 0, entity_id),
-				dataObject = new DataObject(this.game.cache.getJSON(entity_id));
+			var sprite = phaserGame.add.sprite(0, 0, entity_id),
+				dataObject = new DataObject(phaserGame.cache.getJSON(entity_id));
 
 			entities.push( new Entity(this, sprite, dataObject) );
 
+			group.add(sprite);
 		},
 
 		getNextId: function(){
@@ -61,7 +65,7 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 		},
 
 		getGame: function(){
-			return this.game;
+			return phaserGame;
 		},
 
 		get: function(id){
@@ -94,11 +98,11 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 	return {
 
 		setGame: function(game){
-			phaser_game = game;
+			phaserGame = game;
 		},
 
 		getInstance: function(){
-			if (!phaser_game){
+			if (!phaserGame){
 				throw 'Invoke setGame first to pass the Phaser Game entity!';
 			}			
 			if (!singleton){

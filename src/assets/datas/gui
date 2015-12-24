@@ -14,7 +14,8 @@ cursor targetfriend 53
 cursor scroll 54-61
 cursor dock 62
 cursor undock 63
-cursor base 64
+
+panel 64
 
 button move 65
 button stop 66

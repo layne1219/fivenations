@@ -89,7 +89,7 @@ define('Starfield.StarLayer', ['Starfield.Star', 'Util'], function(Star, Util){
 	function createTexture(game){
 		this.texture = game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
 
-		container = game.add.sprite(0, 0, this.texture);
+		container = game.add.image(0, 0, this.texture);
 		container.fixedToCamera = true;
 	}
 

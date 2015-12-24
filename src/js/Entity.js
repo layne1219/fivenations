@@ -13,7 +13,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
             // Set up the Phaser.Sprite object
-            //sprite.anchor.setTo(0.5, 0.5);        
+            sprite.anchor.setTo(0.5, 0.5);        
 
             // enabling input events applied on the sprite object
             sprite.inputEnabled = true;
@@ -315,13 +315,17 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         	}
 
         	// set the frame of the sprite according to the calculated angularRotation
-        	this.sprite.frame = this.rotation.currentConsolidatedAngle;   	
+        	this.sprite.frame = this.rotation.currentConsolidatedAngle;
         },
 
         on: function(event, callback){
             this.eventDispatcher.addEventListener(event, callback);
         },
 
+        /**
+         * Rendering the entity
+         * @return {void} 
+         */
         update: function(){
 
         	// updating all the helper values to alter the entity properties which take part in the movements 

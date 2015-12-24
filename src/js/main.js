@@ -5,8 +5,8 @@ window.addEventListener('load', function () {
 
 	// Game specific constants
 	ns.window = {
-		width: 800,
-		height: 600
+		width: 1024,
+		height: 768
 	};
 
 	// Cache for assets don't required to be loaded more than once
