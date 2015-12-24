@@ -1,4 +1,4 @@
-define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, UserKeyboard, Util){
+define('GUI', ['Util'], function( Util ){
 
 	var 
 
@@ -35,8 +35,10 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 		// element with the appropriate size
 		Selector = (function(){
 
-
 			var 
+				// selection animation frame rate
+				SELECTOR_ANIM_FRAME_RATE = 25,
+
 				// size ranges for different spirtes
 				categories = {
 					'big': [100, 199],
@@ -52,11 +54,11 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 				sprite.anchor.setTo(0.5, 0.5);
 
 				[
-					'select-enemy-big'
+					'select-enemy-big',
 					'select-enemy-extrabig',
 					'select-enemy-medium',
 					'select-enemy-small',
-					'select-big'
+					'select-big',
 					'select-extrabig',
 					'select-medium',
 					'select-small'
@@ -80,13 +82,17 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 						throw 'First parameter must be an instance of Entity!';
 					}
 
+					entity.on('select', this.show.bind(this));
+					entity.on('unselect', this.hide.bind(this));					
+					entity.getSprite().addChild(this.sprite);
+
 					this.parent = entity;
 				},
 
 				show: function(){
-					var animationName = 'select-';
+					var animationName = 'select-' + this.getSize();
 					this.sprite.visible = true;
-					this.sprite.run(animationName + this.size);
+					this.sprite.play( animationName, SELECTOR_ANIM_FRAME_RATE );
 				},
 
 				hide: function(){
@@ -101,7 +107,7 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 					}
 
 					if (!this.size){
-						sprite = parent.getSprite();
+						sprite = this.parent.getSprite();
 
 						Object.keys(categories).forEach(function(size){
 							if (Util.between(Math.max(sprite.width, sprite.height), categories[size][0], categories[size][1])){
@@ -120,6 +126,9 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 		})();
 
 
+	// =============================================================================================
+	// 											GUI object 
+	// =============================================================================================
 	return (function(){
 
 		var 
@@ -143,7 +152,7 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 			clickAnim,
 
 			// Frame rate for the click animations
-			clickAnimFrameRate = 20;
+			CLICK_ANIM_FRAMERATE = 20;
 
 
 		function GUI(){
@@ -185,26 +194,25 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 				clickAnim.x = x;
 				clickAnim.y = y;
 				clickAnim.animations.stop(null, true);
-				clickAnim.play(anim, clickAnimFrameRate);
-			},
-
-			/**
-			 * Creating a seletor sprite and setting up the corresponding animation sequences
-			 * @return {object} Phaser.Sprite
-			 */
-			createSelectorSprite: function(){			
-				
-				return selector;
+				clickAnim.play(anim, CLICK_ANIM_FRAMERATE);
 			}
 
 		};
 
 		return {
 
+			/**
+			 * Passing the ultimate Phaser.Game object in order to access basic Phaser functionality  
+			 * @param {void}
+			 */
 			setGame: function(game){
 				phaserGame = game;
 			},
 
+			/**
+			 * Accessing the singleton instance of the GUI 
+			 * @return {object} GUI
+			 */
 			getInstance: function(){
 				if (!phaserGame){
 					throw 'Invoke setGame first to pass the Phaser Game entity!';
@@ -213,7 +221,10 @@ define('GUI', ['UserPointer', 'UserKeyboard', 'Util'], function(UserPointer, Use
 					singleton = new GUI();
 				}
 				return singleton;
-			}		
+			},
+
+			// publishing the Selector function in order to instantiate it outside this scope
+			Selector: Selector	
 
 		};
 

@@ -8,8 +8,7 @@ define('Game', [
 ], function(Map, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
     'use strict';
 
-    var ns = window.fivenations,
-        sprite;
+    var ns = window.fivenations;
 
     function Game() {}    
 
@@ -43,9 +42,7 @@ define('Game', [
             // -----------------------------------------------------------------------
             // Set up the GUI object 
             GUI.setGame(this.game);
-            this.GUI = GUI.getInstance();
-            
-            sprite = this.game.add.sprite(20, 20, 'gui');        
+            this.GUI = GUI.getInstance();       
 
             // -----------------------------------------------------------------------
             //                              UserPointer
@@ -73,9 +70,6 @@ define('Game', [
                     // put the click animation to the game scene
                     this.GUI.putClickAnim(x, y);
                 }
-
-                sprite.frame--;
-                console.log(sprite.frame);
                     
             }).bind(this));
 
@@ -85,9 +79,6 @@ define('Game', [
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
                 }
-
-                sprite.frame++;
-                console.log(sprite.frame);
                 
             }).bind(this));
 

@@ -1,4 +1,4 @@
-define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard, UserPointer, Util){
+define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, UserKeyboard, UserPointer, Util){
 	
     var 
         /**
@@ -46,7 +46,12 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
         };
 
 
-	
+	/**
+     * Constructor function for Entity 
+     * @param {object} entityManager Instance of the EntityManager
+     * @param {object} sprite        preinitialised Phaser.Sprite
+     * @param {object} dataObject    A instance of DataObject 
+     */
 	function Entity(entityManager, sprite, dataObject){
 
 		// storing entityManager locally to prevent recursive mutual dependency
@@ -92,6 +97,10 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
 
         // persisting the sprite object and attaching it to the Entity object 
         this.sprite = extendSprite.call(this, sprite);
+
+        // adding the Selector object to highligh whether the unit is seleted or not
+        this.selector = new GUI.Selector();
+        this.selector.appendTo(this);
     }
 
 	Entity.prototype = {
@@ -307,14 +316,10 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
 
         	// set the frame of the sprite according to the calculated angularRotation
         	this.sprite.frame = this.rotation.currentConsolidatedAngle;   	
-        }, 
-
-        getSprite: function(){
-            return this.sprite;
         },
 
-        getId: function(){
-        	return this.uid;
+        on: function(event, callback){
+            this.eventDispatcher.addEventListener(event, callback);
         },
 
         update: function(){
@@ -360,8 +365,15 @@ define('Entity', ['UserKeyboard', 'UserPointer', 'Util'], function(UserKeyboard,
         		return false;
         	}
         	return true;        	      	
-        }
+        },
 
+        getSprite: function(){
+            return this.sprite;
+        },
+
+        getId: function(){
+            return this.uid;
+        }        
        
 	}
 
