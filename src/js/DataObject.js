@@ -13,6 +13,10 @@ define('DataObject', function(){
 		// publish any data variable held by the entity
 		return {
 
+			damageHull: function( value ){
+				data.hull = Math.max(data.hull - value, 0);
+			},
+
 			getId: function(){
 				return data.id;
 			},
@@ -26,15 +30,15 @@ define('DataObject', function(){
 			},
 
 			getMaxHull: function(){
-				return data.hull;
+				return data.maxhull;
 			},				
 
 			getMaxShield: function(){
-				return data.shield;
+				return data.maxshield;
 			},	
 
 			getMaxPower: function(){
-				return data.power;
+				return data.maxpower;
 			},
 
 			getHull: function(){

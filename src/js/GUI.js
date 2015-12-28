@@ -34,21 +34,23 @@ define('GUI', ['Util'], function( Util ){
 
 		})(),
 
+		// size ranges for different spirtes
+		categories = {
+			'big': [100, 199],
+			'extrabig': [200, 999],
+			'medium': [50, 99],
+			'small': [0, 49]
+		},		
+
+		// --------------------------------------------------------------------------------------
 		// Selector object to handle the selection animation and the displaying of the 
 		// element with the appropriate size
+		// --------------------------------------------------------------------------------------
 		Selector = (function(){
 
 			var 
 				// selection animation frame rate
-				SELECTOR_ANIM_FRAME_RATE = 25,
-
-				// size ranges for different spirtes
-				categories = {
-					'big': [100, 199],
-					'extrabig': [200, 999],
-					'medium': [50, 99],
-					'small': [0, 49]
-				};
+				SELECTOR_ANIM_FRAME_RATE = 25;
 
 			function Selector(){
 
@@ -79,7 +81,6 @@ define('GUI', ['Util'], function( Util ){
 				parent: null,
 
 				appendTo: function(entity){
-					var sprite;
 
 					if (!entity || 'function' !== typeof entity.getSprite){
 						throw 'First parameter must be an instance of Entity!';
@@ -126,7 +127,188 @@ define('GUI', ['Util'], function( Util ){
 
 			return Selector;
 
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// StatusBar to display the current value of one of the entity's attribute on a 
+		// horizontal bar to indicate the percentage
+		// --------------------------------------------------------------------------------------
+		StatusBar = (function(){
+
+			var backgroundFrames = {
+					'big': 162,
+					'extrabig': 162,
+					'medium': 167,
+					'small': 172				
+				};
+
+			function F( width ){
+
+				if (undefined === width){
+					width = 1;
+				}
+
+				// wrapper for the background sprite and the dynamic graphics object 
+				this.group = phaserGame.add.group();
+
+				// background for the StatusBar
+				this.sprite = phaserGame.add.sprite(0, 0, 'gui');
+				this.sprite.frame = backgroundFrames[this.getSize( width )];				
+
+				// graphics for the dynamic bar 
+				this.graphics = phaserGame.add.graphics(0, 0);
+
+				// adding the individual elements to the container 
+				this.group.add(this.sprite);
+				this.group.add(this.graphics);
+			}
+
+			F.prototype = {			
+				
+				update: function( ratio ){
+
+					var color = '0x00FF00';
+
+					if (ratio < 0.67 && ratio > 0.33){
+						color = '0xFFFF6B';
+					} else if (ratio < 0.34){
+						color = '0xFF0000';
+					}
+
+			        this.graphics.clear();
+			        this.graphics.beginFill(color);
+			        this.graphics.drawRect(1, 1, Math.floor(this.sprite.width * ratio) - 2, 3);
+			        this.graphics.endFill();
+
+				},
+
+				show: function(){
+					this.group.visible = true;
+				},
+
+				hide: function(){
+					this.group.visible = false;
+				},
+
+				getSize: function(width){
+
+					if (!this.size){
+
+						Object.keys(categories).forEach(function(size){
+							if (Util.between(width, categories[size][0], categories[size][1])){
+								this.size = size;
+							}
+						}, this);
+					}
+
+					return this.size;
+				},
+
+				getGroup: function(){
+					return this.group;
+				}				
+			};
+
+			return F;
+
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// Status display for Entities
+		// --------------------------------------------------------------------------------------
+		StatusDisplay = (function(){
+
+			function F( entity ){
+
+				var width;
+
+				if (!entity || 'function' !== typeof entity.getSprite){
+					throw 'First parameter must be an instance of Entity!';
+				}
+
+				width = Math.max(entity.getSprite().width, entity.getSprite().height);
+
+				// creating the group for the individual StatusBar objects
+				this.group = phaserGame.add.group();
+				this.group.visible = false;	
+
+				// Health
+				this.healthBar = new StatusBar( width );
+				this.healthBar.getGroup().x = this.healthBar.getGroup().width / -2;
+				this.healthBar.getGroup().y = entity.getSprite().height / -2;
+				this.group.add(this.healthBar.getGroup());
+
+				// Shield if there is any
+				if (entity.getDataObject().getMaxShield() > 0){
+					this.shieldBar = new StatusBar( width );
+					this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
+					this.shieldBar.getGroup().y = entity.getSprite().height / -2 + (this.group.children.length * 6);
+					this.group.add(this.shieldBar.getGroup());
+				}
+
+				// Power if there is any
+				if (entity.getDataObject().getMaxPower() > 0){
+					this.powerBar = new StatusBar( width );
+					this.powerBar.getGroup().x = this.powerBar.getGroup().width / -2;
+					this.powerBar.getGroup().y = entity.getSprite().height / -2 + (this.group.children.length * 6);
+					this.group.add(this.powerBar.getGroup());
+				}
+
+			}
+
+			F.prototype = {
+				
+				group: null,
+				parent: null,
+
+				appendTo: function( entity ){
+
+					entity.on('select', this.show.bind(this));
+					entity.on('unselect', this.hide.bind(this));
+					entity.on('damage', this.update.bind(this));	
+
+					entity.getSprite().addChild(this.group);
+
+					this.parent = entity;
+				},
+
+				update: function(){
+
+					var dataObject = this.parent.getDataObject(),
+						ratio;
+
+      				if (this.healthBar){
+      					ratio = dataObject.getHull() / dataObject.getMaxHull();
+      					this.healthBar.update( ratio );
+      				}
+
+      				if (this.shieldBar){
+      					ratio = dataObject.getShield() / dataObject.getMaxShield();
+      					this.shieldBar.update( ratio );
+      				}
+
+      				if (this.powerBar){
+      					ratio = dataObject.getPower() / dataObject.getMaxPower();
+      					this.powerBar.update( ratio );
+      				}      				
+				},
+
+				show: function(){
+					this.update();
+					this.group.visible = true;
+				},
+
+				hide: function(){
+					this.group.visible = false;
+				}
+
+			};
+
+			return F;
+
 		})();
+
+
 
 
 	// =============================================================================================
@@ -238,7 +420,7 @@ define('GUI', ['Util'], function( Util ){
 			 * Passing the ultimate Phaser.Game object in order to access basic Phaser functionality  
 			 * @param {void}
 			 */
-			setGame: function(game){
+			setGame: function( game ){
 				phaserGame = game;
 			},
 
@@ -256,8 +438,26 @@ define('GUI', ['Util'], function( Util ){
 				return singleton;
 			},
 
-			// publishing the Selector function in order to instantiate it outside this scope
-			Selector: Selector	
+			/**
+			 * Linking the Selector object to a Entity
+			 * @param {Entity} entity 
+			 */
+			addSelector: function( entity ){
+				var selector = new Selector();
+				selector.appendTo( entity );
+				return selector;
+			},
+
+
+			/**
+			 * Linking the StatusDisplay object to a Entity
+			 * @param {Entity} entity 
+			 */
+			addStatusDisplay: function( entity ){
+				var statusDisplay = new StatusDisplay( entity );
+				statusDisplay.appendTo( entity );
+				return statusDisplay;
+			}			
 
 		};
 

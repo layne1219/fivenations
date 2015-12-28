@@ -8,7 +8,8 @@ define('Game', [
 ], function(Map, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
     'use strict';
 
-    var ns = window.fivenations;
+    var ns = window.fivenations,
+        gui;
 
     function Game() {}    
 
@@ -42,7 +43,10 @@ define('Game', [
             // -----------------------------------------------------------------------
             // Set up the GUI object 
             GUI.setGame(this.game);
-            this.GUI = GUI.getInstance();       
+            this.GUI = GUI.getInstance();
+
+            gui = this.game.add.sprite(10, 10, 'gui');
+            gui.frame = 162;
 
             // -----------------------------------------------------------------------
             //                              UserPointer
@@ -64,12 +68,17 @@ define('Game', [
                 // send the selected units to the specified coordinates
                 if (entities.length > 0){
                     entities.forEach(function(entity){
-                        entity.moveTo(x, y); 
+                        entity.moveTo(x, y);
                     });
 
                     // put the click animation to the game scene
                     this.GUI.putClickAnim(x, y);
                 }
+
+                if (gui.frame > 0){
+                    gui.frame--;
+                }
+                console.log(gui.frame);
                     
             }).bind(this));
 
@@ -79,7 +88,10 @@ define('Game', [
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
                 }
-                
+
+                gui.frame++;
+                console.log(gui.frame);  
+
             }).bind(this));
 
             this.userPointer.on('multiselectorup', (function(multiselector){
@@ -88,7 +100,7 @@ define('Game', [
                     if (entity.isInside(multiselector)){
                         entity.select();
                     }
-                });
+                });              
 
             }).bind(this));
 
@@ -136,6 +148,8 @@ define('Game', [
             // Scrolling wiht cursors
             this.UserKeyboard.update();
 
+            this.game.time.advancedTiming = true;
+            this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");  
         }
 
     };

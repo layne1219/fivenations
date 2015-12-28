@@ -99,8 +99,13 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         this.sprite = extendSprite.call(this, sprite);
 
         // adding the Selector object to highligh whether the unit is seleted or not
-        this.selector = new GUI.Selector();
-        this.selector.appendTo(this);
+        this.selector = GUI.addSelector(this);
+
+        // adding the StatusDisplay object to show the current status 
+        // of the entity's attributes
+        this.statusDisplay = GUI.addStatusDisplay(this);
+        
+
     }
 
 	Entity.prototype = {
@@ -334,7 +339,12 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             // this should be the last invoked function here
             this.updateEffects();
 
-            this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height),'#0fffff', false);
+            //this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height),'#0fffff', false);
+        },
+
+        damage: function( value ){
+            this.getDataObject().damageHull( value );
+            this.eventDispatcher.dispatch('damage');
         },
 
         select: function(){
@@ -373,6 +383,10 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
 
         getSprite: function(){
             return this.sprite;
+        },
+
+        getDataObject: function(){
+            return this.dataObject;
         },
 
         getId: function(){
