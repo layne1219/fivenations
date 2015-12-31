@@ -306,7 +306,40 @@ define('GUI', ['Util'], function( Util ){
 
 			return F;
 
-		})();
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// Status display for Entities
+		// --------------------------------------------------------------------------------------
+		MiniMap = (function(){
+
+			var mapWidth = ,
+				mapHeight = ,
+				minimizedWidth = 100,
+				minimizedHeight = 100;
+
+			function F(entityManager){
+
+				this.graphics = phaserGame.add.graphics(0, 0);
+				this.entityManager = entityManager;
+
+			}
+
+			F.prototype = {
+
+				update: function(){
+					this.entityManager.getAll().forEach(function(entity){
+						var x = entity.getSprite().x,
+							y = entity.getSprite().y;
+
+					});
+				}
+
+			};
+
+			return F;
+
+		})();		
 
 
 
