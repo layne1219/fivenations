@@ -42,8 +42,10 @@ define('Game', [
             //                              GUI
             // -----------------------------------------------------------------------
             // Set up the GUI object 
-            GUI.setGame(this.game);
-            this.GUI = GUI.getInstance();
+            this.GUI = GUI.setGame(this.game)
+                          .setMap(this.map)
+                          .setEntityManager(this.entityManager)
+                          .getInstance();
 
             gui = this.game.add.sprite(10, 10, 'gui');
             gui.frame = 162;
@@ -123,7 +125,7 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 0; i >= 0; i--) {
+            for (var i = 10; i >= 0; i--) {
                 this.entityManager.add("hurricane");
             }
             this.entityManager.get().forEach(function(entity){
@@ -141,6 +143,9 @@ define('Game', [
             this.entityManager.get().forEach(function(entity){
                 entity.update();
             });
+
+            // Rendering GUI elements
+            this.GUI.update();
 
             // Rendering the Selector
             this.userPointer.update();

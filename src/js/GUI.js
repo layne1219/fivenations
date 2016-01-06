@@ -8,6 +8,12 @@ define('GUI', ['Util'], function( Util ){
 		// reference to the Phaser Game object
 		phaserGame,
 
+		// reference to the EntityManager singleton object
+		entityManager,
+
+		// reference to the Map object
+		map,
+
 		// reference to the singleton GUI object 
 		singleton,
 
@@ -261,6 +267,11 @@ define('GUI', ['Util'], function( Util ){
 				group: null,
 				parent: null,
 
+				/**
+				 * attaching the StatusDisplay to an entity
+				 * @param  {[object]} entity [reference to an instance of an Entity]
+				 * @return {[void]}
+				 */
 				appendTo: function( entity ){
 
 					entity.on('select', this.show.bind(this));
@@ -272,6 +283,11 @@ define('GUI', ['Util'], function( Util ){
 					this.parent = entity;
 				},
 
+				/**
+				 * Refresing the graphics objects according to the current values of 
+				 * the exposed abilities of the entity
+				 * @return {[void]}
+				 */
 				update: function(){
 
 					var dataObject = this.parent.getDataObject(),
@@ -293,11 +309,19 @@ define('GUI', ['Util'], function( Util ){
       				}      				
 				},
 
+				/**
+				 * Making the StatusDisplay visible
+				 * @return {[void]}
+				 */
 				show: function(){
 					this.update();
 					this.group.visible = true;
 				},
 
+				/**
+				 * Making the StatusDisplay unvisible
+				 * @return {[void]}
+				 */
 				hide: function(){
 					this.group.visible = false;
 				}
@@ -311,29 +335,138 @@ define('GUI', ['Util'], function( Util ){
 		// --------------------------------------------------------------------------------------
 		// Status display for Entities
 		// --------------------------------------------------------------------------------------
-		MiniMap = (function(){
+		Minimap = (function(){
 
-			var mapWidth = ,
-				mapHeight = ,
-				minimizedWidth = 100,
-				minimizedHeight = 100;
+			var minimizedWidth = 160,
+				minimizedHeight = 160;
 
-			function F(entityManager){
+			/**
+			 * Minimap construct function in order to get the manager instances that needed to draw
+			 * the map with all the elements need to be displayed
+			 * @param {[object]} map           [reference to a Map instance]
+			 * @param {[object]} entityManager [reference to the singleton instance of EntityManager]
+			 */
+			function F(map, entityManager){
 
-				this.graphics = phaserGame.add.graphics(0, 0);
+				// Create a graphics object to display the desired elements
+				this.graphics = phaserGame.add.graphics(0, 0);			
+					
+				// referencies to local variables 
+				this.map = map;
 				this.entityManager = entityManager;
+
+				// calculating the ratio
+				this.ratio = {
+					x: minimizedWidth / this.map.getScreenWidth(),
+					y: minimizedHeight / this.map.getScreenHeight()
+				};
 
 			}
 
 			F.prototype = {
 
-				update: function(){
-					this.entityManager.getAll().forEach(function(entity){
-						var x = entity.getSprite().x,
-							y = entity.getSprite().y;
+				setPanel: function(panel){
 
-					});
-				}
+					var verticalOffset = 61;
+
+					if (!panel){
+						throw 'Invalid Phaser.Sprite object!';
+					}
+
+					panel.addChild(this.getGraphics());	
+
+					// making the minimap area clickable 
+					panel.inputEnabled = true;
+					panel.events.onInputDown.add(function(panel, pointer){
+
+						var mouseX = pointer.x - panel.x,
+							mouseY = pointer.y - panel.y - verticalOffset,
+							ratioX,
+							ratioY,
+							x,
+							y;
+
+						console.log(pointer.x, pointer.y, panel.x, panel.y);
+
+						if (mouseX > minimizedWidth || mouseY > minimizedHeight){
+							return;
+						}
+
+						ratioX = mouseX / minimizedWidth;
+						ratioY = mouseY / minimizedHeight;
+
+						x = this.map.getScreenWidth() * ratioX;
+						y = this.map.getScreenHeight() * ratioY;
+
+						//this.map.scrollTo(x, y);
+
+					}.bind(this));	
+
+					this.graphics.y = verticalOffset; // this is the place for the minimap on the big panel sprite
+				},
+
+				/**
+				 * Resetting the graphics object
+				 * @return {void}
+				 */
+				reset: function(){
+					this.graphics.clear();					
+				},
+
+				/**
+				 * Updating the minimap
+				 * @return {void} 				 
+				 */
+				update: function(){
+					this.reset();
+					this.updateEntities();
+					this.updateCamera();
+				},
+
+				/**
+				 * update all entities on the minimap
+				 * @return {void}
+				 */
+				updateEntities: function(){
+					this.entityManager.get().forEach(function(entity){
+						var x = entity.getSprite().x / this.map.getScreenWidth() * minimizedWidth,
+							y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
+							w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
+							h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * minimizedHeight),
+							color = '0x00FF00';
+
+					this.graphics.beginFill(color);
+					this.graphics.drawRect(x, y, w, h);
+					this.graphics.endFill();
+
+					}.bind(this));
+				},			
+
+				/**
+				 * Redrawing the rectangle showing the viewport of the phaser camera object
+				 * @return {void} 
+				 */
+				updateCamera: function(){
+					var ratioX = ns.window.width / this.map.getScreenWidth(),
+						ratioY = ns.window.height / this.map.getScreenHeight(),
+						w = minimizedWidth * ratioX,
+						h = minimizedHeight * ratioY,
+						x = phaserGame.camera.x / (this.map.getScreenWidth() - ns.window.width) * (minimizedWidth - w),
+						y = phaserGame.camera.y / (this.map.getScreenHeight() - ns.window.height) * (minimizedHeight - h),					
+						color = '0xFFFFFF';
+
+					this.graphics.lineStyle(1, color, 1);
+					this.graphics.drawRect(x, y, w, h);				
+				},
+
+				/**
+				 * Returning the Phaser.Graphics object being used
+				 * @return {Phaser.Graphics} 
+				 */
+				getGraphics: function(){
+					return this.graphics;
+				},
+
 
 			};
 
@@ -372,6 +505,9 @@ define('GUI', ['Util'], function( Util ){
 			// reference to the Phaser.Image represents the basic panel element
 			panel,
 
+			// reference to the Minimap object 
+			minimap,
+
 			// reference to a Phaser.Sprite object that displays the click animation
 			clickAnim,
 
@@ -380,8 +516,10 @@ define('GUI', ['Util'], function( Util ){
 
 
 		function GUI(){
+
 			initPhaserGroup();
 			initClickAnimations();
+
 			// initialise the panel according to which element it should conceal
 			initPanel();
 		}
@@ -422,8 +560,15 @@ define('GUI', ['Util'], function( Util ){
 			panel.x = 0;
 			panel.y = ns.window.height - 222; // 222 is the height of the panel (look it up in the JSON when changed)
 			panel.fixedToCamera = true;
+
+			minimap = new Minimap(map, entityManager);
+			minimap.setPanel(panel);
+
+			// adding to the GUI group to move all these elements to the top of the game scene
 			group.add(panel);
+
 		}
+
 
 
 		GUI.prototype = {
@@ -443,6 +588,16 @@ define('GUI', ['Util'], function( Util ){
 				clickAnim.y = y;
 				clickAnim.animations.stop(null, true);
 				clickAnim.play(anim, CLICK_ANIM_FRAMERATE);
+			},
+
+			/**
+			 * Updating the renderable elements 
+			 * @return {void} 
+			 */
+			update: function(){
+				if (minimap){
+					minimap.update();
+				}
 			}
 
 		};
@@ -455,21 +610,29 @@ define('GUI', ['Util'], function( Util ){
 			 */
 			setGame: function( game ){
 				phaserGame = game;
+				return this;
 			},
 
 			/**
-			 * Accessing the singleton instance of the GUI 
-			 * @return {object} GUI
+			 * Passing the entityManager object to retrive Entity objects in order to display
+			 * entity attributes on the Panel
+			 * @param {objet} [_entityManager] [reference to EntityManager singleton]
+			 * @param {void}
 			 */
-			getInstance: function(){
-				if (!phaserGame){
-					throw 'Invoke setGame first to pass the Phaser Game entity!';
-				}			
-				if (!singleton){
-					singleton = new GUI();
-				}
-				return singleton;
+			setEntityManager: function( _entityManager ){
+				entityManager = _entityManager;
+				return this;				
 			},
+
+			/**
+			 * Passing the Map object to fetch map details mostly for rendering the Minimap 
+			 * @param {objet} [_map] [reference to Map singleton]
+			 * @param {void}
+			 */
+			setMap: function( _map ){
+				map = _map;
+				return this;				
+			},						
 
 			/**
 			 * Linking the Selector object to a Entity
@@ -490,7 +653,22 @@ define('GUI', ['Util'], function( Util ){
 				var statusDisplay = new StatusDisplay( entity );
 				statusDisplay.appendTo( entity );
 				return statusDisplay;
-			}			
+			},
+
+			/**
+			 * Accessing the singleton instance of the GUI 
+			 * @return {object} GUI
+			 */
+			getInstance: function(){
+				if (!phaserGame){
+					throw 'Invoke setGame first to pass the Phaser Game entity!';
+				}			
+				if (!singleton){
+					singleton = new GUI();
+				}
+				return singleton;
+			}
+
 
 		};
 

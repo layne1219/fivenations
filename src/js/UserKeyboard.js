@@ -1,7 +1,7 @@
 define('UserKeyboard', ['Util'], function(Util){
 	
 	var singleton,
-		phaser_game,
+		phaserGame,
 		dispatcher,
 		cursors;
 
@@ -13,7 +13,7 @@ define('UserKeyboard', ['Util'], function(Util){
 	function init(){
 		dispatcher = new Util.EventDispatcher;
 		// handling the curser key events
-		cursors = phaser_game.input.keyboard.createCursorKeys();		
+		cursors = phaserGame.input.keyboard.createCursorKeys();		
 	}
 
 	function registerEventListeners(){
@@ -22,17 +22,17 @@ define('UserKeyboard', ['Util'], function(Util){
 
 	function scrollWithCursors(){
 	    if (cursors.up.isDown){
-	        phaser_game.camera.y -= 10;
+	        phaserGame.camera.y -= 10;
 	    }
 	    else if (cursors.down.isDown){
-	        phaser_game.camera.y += 10;
+	        phaserGame.camera.y += 10;
 	    }
 
 	    if (cursors.left.isDown){
-	        phaser_game.camera.x -= 10;
+	        phaserGame.camera.x -= 10;
 	    } else if (cursors.right.isDown){
-	        phaser_game.camera.x += 10;
-	    }        
+	        phaserGame.camera.x += 10;
+	    }   
 	}	
 
 	UserKeyboard.prototype = {
@@ -42,7 +42,7 @@ define('UserKeyboard', ['Util'], function(Util){
 		},
 
 		isDown: function(keyCode){
-			return phaser_game.input.keyboard.isDown(keyCode);
+			return phaserGame.input.keyboard.isDown(keyCode);
 		},
 
 		update: function(){
@@ -53,11 +53,11 @@ define('UserKeyboard', ['Util'], function(Util){
 	return {
 
 		setGame: function(game){
-			phaser_game = game;
+			phaserGame = game;
 		},
 
 		getInstance: function(){
-			if (!phaser_game){
+			if (!phaserGame){
 				throw 'Invoke setGame first to pass the Phaser Game entity!';
 			}			
 			if (!singleton){

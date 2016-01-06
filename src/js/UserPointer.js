@@ -72,6 +72,16 @@ define('UserPointer', ['Util'], function(Util){
 			phaser_game.debug.geom(multiselector,'#0fffff', false);
 
 			if ( phaser_game.input.mousePointer.leftButton.isDown && multiselector.active){
+				if (phaser_game.camera.x + phaser_game.input.mousePointer.x < multiselector.x){
+					multiselector.width = 0;
+					multiselector.height = 0;
+					return;
+				}
+				if (phaser_game.camera.y + phaser_game.input.mousePointer.y < multiselector.y){
+					multiselector.height = 0;
+					multiselector.width = 0;
+					return;
+				}				
 				multiselector.width = Math.abs(multiselector.x - (phaser_game.camera.x + phaser_game.input.mousePointer.x));
 				multiselector.height = Math.abs(multiselector.y - (phaser_game.camera.y + phaser_game.input.mousePointer.y));				
 			}

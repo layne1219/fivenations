@@ -1,4 +1,4 @@
-define("Map", ["Starfield"], function(Starfield){
+define("Map", ["Starfield", "Util"], function(Starfield){
 
 	// map configration template
 	var defaultConfig = {
@@ -15,6 +15,7 @@ define("Map", ["Starfield"], function(Starfield){
 		}
 
 	Map.prototype = {
+
 		init: function(config){
 			this.config = config || defaultConfig;		
 		},
@@ -33,22 +34,9 @@ define("Map", ["Starfield"], function(Starfield){
 			this.starfield.update();
 		},
 
-		validateMapConfig: function(){
-			if (!this.config || !this.config.tiles){
-				throw "Invalid config data!";
-			}
-			if (!this.config.tiles.tileWidth){
-				throw "Invalid tileWidth property!";
-			}
-			if (!this.config.tiles.tileHeight){
-				throw "Invalid tileHeight property!";
-			}
-			if (!this.config.tiles.width){
-				throw "Invalid width property!";
-			}
-			if (!this.config.tiles.height){
-				throw "Invalid height property!";
-			}
+		scrollTo: function(x, y){
+			this.game.camera.x = x;
+			this.game.camera.y = y;
 		},
 
 		getGame: function(){
@@ -73,7 +61,26 @@ define("Map", ["Starfield"], function(Starfield){
 		getHeight: function(){
 			this.validateMapConfig();
 			return this.config.tiles.width;
+		},
+
+		validateMapConfig: function(){
+			if (!this.config || !this.config.tiles){
+				throw "Invalid config data!";
+			}
+			if (!this.config.tiles.tileWidth){
+				throw "Invalid tileWidth property!";
+			}
+			if (!this.config.tiles.tileHeight){
+				throw "Invalid tileHeight property!";
+			}
+			if (!this.config.tiles.width){
+				throw "Invalid width property!";
+			}
+			if (!this.config.tiles.height){
+				throw "Invalid height property!";
+			}
 		}
+
 	}
 
 	return Map;

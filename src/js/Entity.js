@@ -366,16 +366,16 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         isInside: function(obj){
-        	if (this.sprite.x + this.sprite.body.width / 2 < obj.x){
+        	if (this.sprite.x + this.getDataObject().getWidth() / 2 < obj.x){
         		return false;
         	}
-        	if (this.sprite.x - this.sprite.body.width / 2 > obj.x + obj.width){
+        	if (this.sprite.x - this.getDataObject().getWidth() / 2 > obj.x + obj.width){
         		return false;
         	} 
-        	if (this.sprite.y + this.sprite.body.height / 2 < obj.y){
+        	if (this.sprite.y + this.getDataObject().getHeight() / 2 < obj.y){
         		return false;
         	}
-        	if (this.sprite.y - this.sprite.body.height / 2 > obj.y + obj.height){
+        	if (this.sprite.y - this.getDataObject().getHeight() / 2 > obj.y + obj.height){
         		return false;
         	}
         	return true;        	      	

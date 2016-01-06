@@ -4,16 +4,40 @@
 		"selected_items":
 		[
 			[
+				"up",
+				"updateEntities"
+			],
+			[
+				"mini",
+				"minimizedWidth"
+			],
+			[
+				"phaser",
+				"phaserGame"
+			],
+			[
+				"pha",
+				"phaserGame"
+			],
+			[
+				"init",
+				"initMinimap"
+			],
+			[
+				"entity",
+				"entityManager"
+			],
+			[
+				"update",
+				"updateCamera"
+			],
+			[
 				"shi",
 				"shieldBar"
 			],
 			[
 				"getMax",
 				"getMaxShield"
-			],
-			[
-				"init",
-				"initGroup"
 			],
 			[
 				"Status",
@@ -78,14 +102,6 @@
 			[
 				"an",
 				"angularVelocity"
-			],
-			[
-				"update",
-				"updateRotation"
-			],
-			[
-				"up",
-				"updateVelocity"
 			],
 			[
 				"angul",
@@ -300,7 +316,39 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 5612,
+				"buffer_size": 5801,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/UserKeyboard.js",
+			"settings":
+			{
+				"buffer_size": 1280,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/GUI.js",
+			"settings":
+			{
+				"buffer_size": 16325,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/Preloader.js",
+			"settings":
+			{
+				"buffer_size": 3957,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/Map.js",
+			"settings":
+			{
+				"buffer_size": 1612,
 				"line_ending": "Unix"
 			}
 		},
@@ -308,23 +356,7 @@
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 15341,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/DataObject.js",
-			"settings":
-			{
-				"buffer_size": 2160,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/main.js",
-			"settings":
-			{
-				"buffer_size": 1347,
+				"buffer_size": 15377,
 				"line_ending": "Unix"
 			}
 		}
@@ -409,6 +441,10 @@
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
+		"/home/bence/dev/silversword/fivenations/src/js/main.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/gui/GUI_element.png",
+		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/hurricane.json",
@@ -422,16 +458,13 @@
 		"/home/bence/dev/silversword/fivenations/src/js/UserKeyboard.js",
 		"/home/bence/dev/silversword/fivenations/src/index.html",
 		"/home/bence/dev/silversword/fivenations/src/css/main.css",
-		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/css/fonts.css",
-		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/data/units/fed/hurricane.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/mnginvestments.com/themes/mng-zrt/landing_template.php",
 		"/home/bence/dev/mnginvestments.com/themes/mng-zrt/landing.php",
 		"/home/bence/dev/mnginvestments.com/themes/mng-zrt/sub-contents/penzugyi-termekek.php",
-		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
 		"/home/bence/dev/silversword/fivenations/gulpfile.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Map.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/star-s-2.png",
@@ -459,6 +492,14 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"panel",
+			"Width",
+			"phaser_game",
+			"100",
+			"initMinimap",
+			"game",
+			"type",
+			"group",
 			"{\"w\":300,\"h\":300}",
 			"Shield",
 			"this.parent",
@@ -578,15 +619,7 @@
 			"sprite",
 			"sprite.velocity",
 			"sprite.",
-			"angularVelocity",
-			"velocity",
-			"sprite.velocity",
-			"sprite.",
-			"sprite.velocity",
-			"sprite.",
-			"moveTo",
-			"setMovementState",
-			"moveTo"
+			"angularVelocity"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -604,7 +637,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -620,14 +653,44 @@
 						"selection":
 						[
 							[
-								475,
-								475
+								717,
+								717
 							]
 						],
 						"settings":
 						{
 							"auto_name": "define('ObjectManager', function(){",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 945.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/js/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5801,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5469,
+								5469
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -637,50 +700,78 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/js/Game.js",
+					"buffer": 2,
+					"file": "src/js/UserKeyboard.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5612,
+						"buffer_size": 1280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4786,
-								4786
+								724,
+								724
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 45.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/js/GUI.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16325,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9556,
+								9556
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5197.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/js/Entity.js",
-					"semi_transient": false,
+					"buffer": 4,
+					"file": "src/js/Preloader.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 15341,
+						"buffer_size": 3957,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								14143,
-								14143
+								451,
+								451
 							]
 						],
 						"settings":
@@ -689,28 +780,28 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 4744.0,
+						"translation.x": -0.0,
+						"translation.y": 585.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/js/DataObject.js",
+					"buffer": 5,
+					"file": "src/js/Map.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2160,
+						"buffer_size": 1612,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								564,
-								564
+								176,
+								176
 							]
 						],
 						"settings":
@@ -722,42 +813,37 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"file": "src/assets/images/gui/GUI_element.png",
-					"semi_transient": false,
-					"stack_index": 2,
-					"type": "image"
-				},
-				{
-					"buffer": 4,
-					"file": "src/js/main.js",
+					"buffer": 6,
+					"file": "src/js/Entity.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1347,
+						"buffer_size": 15377,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								194,
-								194
+								808,
+								808
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 90.0,
+						"translation.y": 15.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
