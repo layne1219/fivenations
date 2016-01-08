@@ -379,14 +379,18 @@ define('GUI', ['Util'], function( Util ){
 					panel.inputEnabled = true;
 					panel.events.onInputDown.add(function(panel, pointer){
 
-						var mouseX = pointer.x - panel.x,
-							mouseY = pointer.y - panel.y - verticalOffset,
+						var ratioX = ns.window.width / this.map.getScreenWidth(),
+							ratioY = ns.window.height / this.map.getScreenHeight(),
+							width = minimizedWidth * ratioX,
+							height = minimizedHeight * ratioY,
+							mouseX = pointer.x - panel.x + phaserGame.camera.x - (width / 2),
+							mouseY = pointer.y - panel.y + phaserGame.camera.y - verticalOffset - (height / 2),
 							ratioX,
 							ratioY,
 							x,
 							y;
 
-						console.log(pointer.x, pointer.y, panel.x, panel.y);
+						console.log(mouseX, mouseY);
 
 						if (mouseX > minimizedWidth || mouseY > minimizedHeight){
 							return;
@@ -398,7 +402,7 @@ define('GUI', ['Util'], function( Util ){
 						x = this.map.getScreenWidth() * ratioX;
 						y = this.map.getScreenHeight() * ratioY;
 
-						//this.map.scrollTo(x, y);
+						this.map.scrollTo(x, y);
 
 					}.bind(this));	
 
