@@ -14,6 +14,9 @@ define('GUI', ['Util'], function( Util ){
 		// reference to the Map object
 		map,
 
+		// reference to the UserPointer
+		userPointer,
+
 		// reference to the singleton GUI object 
 		singleton,
 
@@ -338,7 +341,8 @@ define('GUI', ['Util'], function( Util ){
 		Minimap = (function(){
 
 			var minimizedWidth = 160,
-				minimizedHeight = 160;
+				minimizedHeight = 160,
+				verticalOffset = 61;
 
 			/**
 			 * Minimap construct function in order to get the manager instances that needed to draw
@@ -363,50 +367,94 @@ define('GUI', ['Util'], function( Util ){
 
 			}
 
+			function setEventListeners(){
+				setLeftButtonListeners.call(this);
+				setRightButtonListeners.call(this);
+			}
+
+			function setLeftButtonListeners(){
+				// making the minimap area clickable 
+				userPointer.on('leftbutton/move', function(pointer){
+
+					var coords = getMouseCoords(pointer, this.map, this.panel, true);
+
+					// if getMouseCoords returns with false then the coordinates are not legit
+					if (!coords){
+						return;
+					}
+
+					this.map.scrollTo(coords.x, coords.y);
+
+				}.bind(this));					
+			}
+
+			function setRightButtonListeners(){
+				// making the minimap area clickable 
+				userPointer.on('rightbutton/down', function(pointer){
+
+					var coords = getMouseCoords(pointer, this.map, this.panel);
+
+					// if getMouseCoords returns with false then the coordinates are not legit
+					if (!coords){
+						return;
+					}
+
+					this.entityManager.getAllSelected().forEach(function(entity){
+						entity.moveTo(coords.x, coords.y);
+					});
+					
+				}.bind(this));
+			}
+
+			function getMouseCoords(pointer, map, panel, alignToCentre){
+				var mapWidth = map.getScreenWidth(),
+					mapHeight = map.getScreenHeight(),
+					ratioX = ns.window.width / mapWidth,
+					ratioY = ns.window.height / mapHeight,
+					width = minimizedWidth * ratioX,
+					height = minimizedHeight * ratioY,
+					mouseX = pointer.x - panel.x + phaserGame.camera.x,
+					mouseY = pointer.y - panel.y + phaserGame.camera.y - verticalOffset,
+					ratioX,
+					ratioY;
+
+				if (mouseX > minimizedWidth || mouseY > minimizedHeight || mouseY < 0){
+					return false;
+				}
+
+				// cancelling the multiselection 
+				userPointer.stopMultiselection();
+
+				if (alignToCentre){
+					mouseX -= width / 2;
+					mouseY -= height / 2;
+				}
+
+				ratioX = mouseX / minimizedWidth;
+				ratioY = mouseY / minimizedHeight;
+
+				return {
+					x: mapWidth * ratioX,
+					y: mapHeight * ratioY
+				}
+			}
+
 			F.prototype = {
 
 				setPanel: function(panel){
-
-					var verticalOffset = 61;
 
 					if (!panel){
 						throw 'Invalid Phaser.Sprite object!';
 					}
 
-					panel.addChild(this.getGraphics());	
-
-					// making the minimap area clickable 
-					panel.inputEnabled = true;
-					panel.events.onInputDown.add(function(panel, pointer){
-
-						var ratioX = ns.window.width / this.map.getScreenWidth(),
-							ratioY = ns.window.height / this.map.getScreenHeight(),
-							width = minimizedWidth * ratioX,
-							height = minimizedHeight * ratioY,
-							mouseX = pointer.x - panel.x + phaserGame.camera.x - (width / 2),
-							mouseY = pointer.y - panel.y + phaserGame.camera.y - verticalOffset - (height / 2),
-							ratioX,
-							ratioY,
-							x,
-							y;
-
-						console.log(mouseX, mouseY);
-
-						if (mouseX > minimizedWidth || mouseY > minimizedHeight){
-							return;
-						}
-
-						ratioX = mouseX / minimizedWidth;
-						ratioY = mouseY / minimizedHeight;
-
-						x = this.map.getScreenWidth() * ratioX;
-						y = this.map.getScreenHeight() * ratioY;
-
-						this.map.scrollTo(x, y);
-
-					}.bind(this));	
-
+					panel.addChild(this.getGraphics());
 					this.graphics.y = verticalOffset; // this is the place for the minimap on the big panel sprite
+
+					this.panel = panel;
+
+					// registering the callbacks listening for the mouse event in order to execute 
+					// further logic when the user interacts with the Minimap
+					setEventListeners.call(this);
 				},
 
 				/**
@@ -636,7 +684,16 @@ define('GUI', ['Util'], function( Util ){
 			setMap: function( _map ){
 				map = _map;
 				return this;				
-			},						
+			},
+
+			/**
+			 * UserPointer object to register custom listeners for interactions with the mouse
+			 * @param {object} _userPointer UserPointer
+			 */
+			setUserPointer: function( _userPointer ){
+				userPointer = _userPointer;
+				return this;
+			},
 
 			/**
 			 * Linking the Selector object to a Entity

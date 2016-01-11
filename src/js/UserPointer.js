@@ -20,12 +20,12 @@ define('UserPointer', ['Util'], function(Util){
 	function registerEventListeners(){
 		// Releasing either of the mouse buttons
 		phaser_game.input.onUp.add(function(){
-			dispatcher.dispatch("mouseup");
+			dispatcher.dispatch("up");
 
 			if (multiselector.active){
 
 				if (multiselector.width > 0 || multiselector.height > 0){
-					dispatcher.dispatch("multiselectorup", multiselector);
+					dispatcher.dispatch("multiselector/up", multiselector);
 				}
 
 				multiselector.active = false;
@@ -42,7 +42,7 @@ define('UserPointer', ['Util'], function(Util){
 
             // left mouse button
             if (phaser_game.input.mousePointer.leftButton.isDown){
-            	dispatcher.dispatch("leftmousedown");
+            	dispatcher.dispatch("leftbutton/down", phaser_game.input.mousePointer);
 
             	multiselector.active = true;
 				multiselector.x = phaser_game.camera.x + phaser_game.input.mousePointer.x;
@@ -52,11 +52,11 @@ define('UserPointer', ['Util'], function(Util){
             } 
             // right mouse button
             else if (phaser_game.input.mousePointer.rightButton.isDown){
-            	dispatcher.dispatch("rightmousedown");
+            	dispatcher.dispatch("rightbutton/down", phaser_game.input.mousePointer);
             }
 
             // invoking all the registred functions for the the unified event
-			dispatcher.dispatch("mousedown");	
+			dispatcher.dispatch("down");	
 
 		}, this);
 
@@ -68,18 +68,26 @@ define('UserPointer', ['Util'], function(Util){
 			dispatcher.addEventListener(event, callback);
 		},
 
+		stopMultiselection: function(){
+			multiselector.active = 0;
+			multiselector.width = 0;
+			multiselector.height = 0;
+		},
+
 		update: function(){
 			phaser_game.debug.geom(multiselector,'#0fffff', false);
 
+			if ( phaser_game.input.mousePointer.leftButton.isDown ){
+				dispatcher.dispatch('leftbutton/move', phaser_game.input.mousePointer);
+			}
+
 			if ( phaser_game.input.mousePointer.leftButton.isDown && multiselector.active){
 				if (phaser_game.camera.x + phaser_game.input.mousePointer.x < multiselector.x){
-					multiselector.width = 0;
-					multiselector.height = 0;
+					this.stopMultiselection();
 					return;
 				}
 				if (phaser_game.camera.y + phaser_game.input.mousePointer.y < multiselector.y){
-					multiselector.height = 0;
-					multiselector.width = 0;
+					this.stopMultiselection();
 					return;
 				}				
 				multiselector.width = Math.abs(multiselector.x - (phaser_game.camera.x + phaser_game.input.mousePointer.x));

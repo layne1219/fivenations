@@ -22,14 +22,14 @@ define('Game', [
         create: function () {
 
             // preventing the context menu to appear when the user clicks with the right mouse button
-            this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
+            this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); };
 
             // -----------------------------------------------------------------------
             //                                  Map
             // -----------------------------------------------------------------------
             // Generate a Map
             this.map = new Map();
-            this.map.append(this.game);
+            this.map.setGame(this.game);
 
             // -----------------------------------------------------------------------
             //                              EntityManager
@@ -39,18 +39,6 @@ define('Game', [
             this.entityManager = EntityManager.getInstance();
 
             // -----------------------------------------------------------------------
-            //                              GUI
-            // -----------------------------------------------------------------------
-            // Set up the GUI object 
-            this.GUI = GUI.setGame(this.game)
-                          .setMap(this.map)
-                          .setEntityManager(this.entityManager)
-                          .getInstance();
-
-            gui = this.game.add.sprite(10, 10, 'gui');
-            gui.frame = 162;
-
-            // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
             // Set up User pointer
@@ -58,7 +46,7 @@ define('Game', [
             this.userPointer = UserPointer.getInstance();
 
             // Right Mouse Button to send units to a position
-            this.userPointer.on('rightmousedown', (function(){
+            this.userPointer.on('rightbutton/down', (function(){
 
                 var camera = this.game.camera,
                     mousePointer = this.game.input.mousePointer,
@@ -85,7 +73,7 @@ define('Game', [
             }).bind(this));
 
             // Unselecting units when clicking over an area with no entities underneath
-            this.userPointer.on('leftmousedown', (function(){
+            this.userPointer.on('leftbutton/down', (function(){
 
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
@@ -96,7 +84,7 @@ define('Game', [
 
             }).bind(this));
 
-            this.userPointer.on('multiselectorup', (function(multiselector){
+            this.userPointer.on('multiselector/up', (function(multiselector){
                 
                 this.entityManager.get().forEach(function(entity){
                     if (entity.isInside(multiselector)){
@@ -111,8 +99,26 @@ define('Game', [
             // -----------------------------------------------------------------------
             // Set up UserKeyboard
             UserKeyboard.setGame(this.game);
-            this.UserKeyboard = UserKeyboard.getInstance();
+            this.userKeyboard = UserKeyboard.getInstance();
 
+            this.userKeyboard
+                .on('cursor/down', this.map.scrollDown.bind(this.map))
+                .on('cursor/up', this.map.scrollUp.bind(this.map))
+                .on('cursor/left', this.map.scrollLeft.bind(this.map))
+                .on('cursor/right', this.map.scrollRight.bind(this.map));
+
+            // -----------------------------------------------------------------------
+            //                              GUI
+            // -----------------------------------------------------------------------
+            // Set up the GUI object 
+            this.GUI = GUI.setGame(this.game)
+                          .setMap(this.map)
+                          .setEntityManager(this.entityManager)
+                          .setUserPointer(this.userPointer)
+                          .getInstance();
+
+            gui = this.game.add.sprite(10, 10, 'gui');
+            gui.frame = 162;
 
             // -----------------------------------------------------------------------
             //                              Physic engine
@@ -126,7 +132,7 @@ define('Game', [
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
             for (var i = 10; i >= 0; i--) {
-                this.entityManager.add("hurricane");
+                this.entityManager.add('hurricane');
             }
             this.entityManager.get().forEach(function(entity){
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
@@ -150,11 +156,11 @@ define('Game', [
             // Rendering the Selector
             this.userPointer.update();
 
-            // Scrolling wiht cursors
-            this.UserKeyboard.update();
+            // Dispathcing events when holding a key down
+            this.userKeyboard.update();
 
             this.game.time.advancedTiming = true;
-            this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");  
+            this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');  
         }
 
     };

@@ -20,18 +20,18 @@ define('UserKeyboard', ['Util'], function(Util){
 
 	}
 
-	function scrollWithCursors(){
+	function listenToCursor(){
 	    if (cursors.up.isDown){
-	        phaserGame.camera.y -= 10;
+	        dispatcher.dispatch('cursor/up');
 	    }
 	    else if (cursors.down.isDown){
-	        phaserGame.camera.y += 10;
+	        dispatcher.dispatch('cursor/down');
 	    }
 
 	    if (cursors.left.isDown){
-	        phaserGame.camera.x -= 10;
+	        dispatcher.dispatch('cursor/left');
 	    } else if (cursors.right.isDown){
-	        phaserGame.camera.x += 10;
+	        dispatcher.dispatch('cursor/right');
 	    }   
 	}	
 
@@ -39,6 +39,7 @@ define('UserKeyboard', ['Util'], function(Util){
 
 		on: function(event, callback){
 			dispatcher.addEventListener(event, callback);
+			return this;
 		},
 
 		isDown: function(keyCode){
@@ -46,7 +47,7 @@ define('UserKeyboard', ['Util'], function(Util){
 		},
 
 		update: function(){
-			scrollWithCursors();
+			listenToCursor();
 		}
 	};
 
