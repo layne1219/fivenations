@@ -1,0 +1,111 @@
+{"frames": {
+
+"fed_build02_c010000.png":
+{
+	"frame": {"x":1,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010001.png":
+{
+	"frame": {"x":133,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010002.png":
+{
+	"frame": {"x":265,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010003.png":
+{
+	"frame": {"x":397,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010004.png":
+{
+	"frame": {"x":529,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010005.png":
+{
+	"frame": {"x":661,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010006.png":
+{
+	"frame": {"x":793,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010007.png":
+{
+	"frame": {"x":925,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010008.png":
+{
+	"frame": {"x":1057,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010009.png":
+{
+	"frame": {"x":1189,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fed_build02_c010010.png":
+{
+	"frame": {"x":1321,"y":1,"w":130,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":68,"w":130,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "fed_build02_c01.png",
+	"format": "RGBA8888",
+	"size": {"w":1452,"h":121},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1a167d0432ae1259992e32b67184e2fd:9d944e851834d8ed10f8890addd00b81:a0c57c5d82b6c9fcc08aa2f151a1d6ee$"
+}
+}

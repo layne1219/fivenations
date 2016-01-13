@@ -1,0 +1,21 @@
+{"frames": {
+
+"fed_build04_c080000.png":
+{
+	"frame": {"x":1,"y":1,"w":68,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":116,"y":84,"w":68,"h":80},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "fed_build03_c08.png",
+	"format": "RGBA8888",
+	"size": {"w":70,"h":82},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1b4d69d8504d8b797ba6d6fa3bf5299c:0c8fd64c6d66902949b009c61f3d86ef:4c2aeb1fa196b27359be37860dcf2d3c$"
+}
+}
