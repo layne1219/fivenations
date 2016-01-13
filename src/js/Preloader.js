@@ -9,7 +9,7 @@ define("Preloader", function() {
     ns.entities = ns.entities || {
         hurricane: {
             preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit01_c01.png',
+            spriteURL: 'assets/images/units/fed/fed_unit01_c{color}.png',
             atlasURL: 'assets/images/units/fed/fed_unit01_c01.json',
             dataURL: 'assets/datas/units/fed/hurricane.json'
         }
@@ -61,10 +61,20 @@ define("Preloader", function() {
     function loadEntities(preloader){
 
         Object.keys(ns.entities).forEach(function(key){
+            var spriteURL,
+                spriteKey,
+                teamNumber = 8;
+
             if (!ns.entities[key].preloading){
                 return;
             }
-            preloader.load.atlasJSONHash(key, ns.entities[key].spriteURL, ns.entities[key].atlasURL);
+
+            for (var i = teamNumber; i >= 1; i--) {
+                spriteURL = ns.entities[key].spriteURL.replace('{color}', i > 10 ? i : ('0' + i));
+                spriteKey = [key, i].join('-');
+                preloader.load.atlasJSONHash(spriteKey, spriteURL, ns.entities[key].atlasURL);
+            }
+
             preloader.load.json(key, ns.entities[key].dataURL);   
         }, preloader); 
 

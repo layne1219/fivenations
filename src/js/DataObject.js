@@ -8,6 +8,7 @@ define('DataObject', function(){
 		data.maxhull = data.hull;
 		data.maxshield = data.shield;
 		data.maxpower = data.power;
+		data.team = 1;
 
 		// for providing privacy for the data variables we have to create a closure here so as not to
 		// publish any data variable held by the entity
@@ -15,6 +16,14 @@ define('DataObject', function(){
 
 			damageHull: function( value ){
 				data.hull = Math.max(data.hull - value, 0);
+			},
+
+			setTeam: function(team){
+				data.team = team;
+			},
+
+			getTeam: function(){
+				return data.team;
 			},
 
 			getId: function(){

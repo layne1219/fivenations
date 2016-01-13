@@ -24,14 +24,19 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 
 	EntityManager.prototype = {
 
-		add: function(entity_id){
+		add: function(config){
+
+			if (!config){
+				throw 'Invalid configuration object passed as a parameter!';
+			}
 			
-			if (Object.keys(ns.entities).indexOf(entity_id) === -1){
-				throw "The requrested entity is not registered!";
+			if (Object.keys(ns.entities).indexOf(config.id) === -1){
+				throw 'The requrested entity is not registered!';
 			}
 
-			var sprite = phaserGame.add.sprite(0, 0, entity_id),
-				dataObject = new DataObject(phaserGame.cache.getJSON(entity_id));
+			var spriteId = [config.id, config.team].join('-');
+				sprite = phaserGame.add.sprite(0, 0, spriteId),
+				dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
 
 			entities.push( new Entity(this, sprite, dataObject) );
 

@@ -126,13 +126,15 @@ define('Game', [
             // Activating the basic physic engine 
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-
             // -----------------------------------------------------------------------
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
             for (var i = 10; i >= 0; i--) {
-                this.entityManager.add('hurricane');
+                this.entityManager.add({
+                    id: 'hurricane',
+                    team: Util.rnd(1, 8)
+                });
             }
             this.entityManager.get().forEach(function(entity){
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
