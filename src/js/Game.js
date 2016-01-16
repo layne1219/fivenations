@@ -1,11 +1,12 @@
 define('Game', [
-    'Map', 
+    'Map',
+    'PlayerManager', 
     'EntityManager',
     'GUI',
     'UserPointer', 
     'UserKeyboard', 
     'Util'
-], function(Map, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
+], function(Map, PlayerManager, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,
@@ -32,6 +33,16 @@ define('Game', [
             this.map.setGame(this.game);
 
             // -----------------------------------------------------------------------
+            //                                  Players
+            // -----------------------------------------------------------------------
+            // Set up Players
+            this.playerManager = PlayerManager.getInstance();
+            this.playerManager.addPlayer( { team: 1, user: true } );
+            this.playerManager.addPlayer( { team: 2 });
+            this.playerManager.addPlayer( { team: 3 });
+            this.playerManager.addPlayer( { team: 4 });
+
+            // -----------------------------------------------------------------------
             //                              EntityManager
             // -----------------------------------------------------------------------
             // Set up the EntityManager
@@ -53,7 +64,9 @@ define('Game', [
                     x = camera.x + mousePointer.x,
                     y = camera.y + mousePointer.y,
 
-                    entities = this.entityManager.getAllSelected();
+                    entities = this.entityManager.getAllSelected().filter(function(entity){
+                        return EntityManager.getInstance().isEntityControlledByUser(entity);
+                    });
 
                 // send the selected units to the specified coordinates
                 if (entities.length > 0){
@@ -85,8 +98,11 @@ define('Game', [
             }).bind(this));
 
             this.userPointer.on('multiselector/up', (function(multiselector){
-                
+
                 this.entityManager.get().forEach(function(entity){
+                    if (!EntityManager.getInstance().isEntityControlledByUser(entity)){
+                        return;
+                    }
                     if (entity.isInside(multiselector)){
                         entity.select();
                     }
@@ -133,7 +149,7 @@ define('Game', [
             for (var i = 10; i >= 0; i--) {
                 this.entityManager.add({
                     id: 'hurricane',
-                    team: Util.rnd(1, 8)
+                    team: Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
             }
             this.entityManager.get().forEach(function(entity){

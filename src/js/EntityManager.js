@@ -1,4 +1,4 @@
-define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
+define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Entity, DataObject, PlayerManager){
 	
 	var ns = window.fivenations,
 
@@ -34,9 +34,19 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 				throw 'The requrested entity is not registered!';
 			}
 
-			var spriteId = [config.id, config.team].join('-');
+			var team = config.team || 1,
+
+				// sprite Ids are consisted of the sprite name and the colour id
+				spriteId = [config.id, team].join('-'),
+
+				// instanciating a Phaser.Game.Sprite objet for the entity
 				sprite = phaserGame.add.sprite(0, 0, spriteId),
+
+				// fomring the DataObject instance from the preloaded JSON file
 				dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
+
+			// passing the team Id from the config param object
+			dataObject.setTeam( team );
 
 			entities.push( new Entity(this, sprite, dataObject) );
 
@@ -97,7 +107,15 @@ define('EntityManager', ['Entity', 'DataObject'], function(Entity, DataObject){
 			return this.get().filter(function(entity){
 				return entity.isHover();
 			});
-		}		
+		},
+
+		isEntityControlledByUser: function(entity) {
+			if (!entity || 'function' !== typeof entity.getDataObject){
+				throw 'Fitst parameter must be a valid entity object!';
+			}
+			return entity.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
+		}
+
 	};
 
 	return {

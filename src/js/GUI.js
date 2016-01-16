@@ -103,7 +103,15 @@ define('GUI', ['Util'], function( Util ){
 				},
 
 				show: function(){
-					var animationName = 'select-' + this.getSize();
+					var relationship = (function(selector){
+							if (entityManager.isEntityControlledByUser(selector.parent)){
+								return '-';
+							}
+							return '-enemy-'
+						})(this),
+
+						animationName = 'select' + relationship + this.getSize();
+						
 					this.sprite.visible = true;
 					this.sprite.play( animationName, SELECTOR_ANIM_FRAME_RATE );
 				},
@@ -400,8 +408,10 @@ define('GUI', ['Util'], function( Util ){
 					}
 
 					this.entityManager.getAllSelected().forEach(function(entity){
-						entity.moveTo(coords.x, coords.y);
-					});
+						if (this.entityManager.isEntityControlledByUser(entity)){
+							entity.moveTo(coords.x, coords.y);
+						}
+					}.bind(this));
 					
 				}.bind(this));
 			}
@@ -485,7 +495,7 @@ define('GUI', ['Util'], function( Util ){
 							y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
 							w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
 							h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * minimizedHeight),
-							color = '0x00FF00';
+							color = ns.players.colors[entity.getDataObject().getTeam() - 1];
 
 					this.graphics.beginFill(color);
 					this.graphics.drawRect(x, y, w, h);

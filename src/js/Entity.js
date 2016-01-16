@@ -323,6 +323,12 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         	this.sprite.frame = this.rotation.currentConsolidatedAngle;
         },
 
+        /**
+         * registering custom callbacks to the passed events
+         * @param  {string}   event    
+         * @param  {Function} callback 
+         * @return {void}            
+         */
         on: function(event, callback){
             this.eventDispatcher.addEventListener(event, callback);
         },
