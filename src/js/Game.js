@@ -133,8 +133,8 @@ define('Game', [
                           .setUserPointer(this.userPointer)
                           .getInstance();
 
-            gui = this.game.add.sprite(10, 10, 'gui');
-            gui.frame = 162;
+            gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
+            gui.frame = 15;
 
             // -----------------------------------------------------------------------
             //                              Physic engine

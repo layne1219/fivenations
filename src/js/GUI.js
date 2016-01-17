@@ -49,7 +49,16 @@ define('GUI', ['Util'], function( Util ){
 			'extrabig': [200, 999],
 			'medium': [50, 99],
 			'small': [0, 49]
-		},		
+		},
+
+
+		// Rainbow table for entity icons 
+		entityIcons = {
+
+			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 10 }
+
+		},
+
 
 		// --------------------------------------------------------------------------------------
 		// Selector object to handle the selection animation and the displaying of the 
@@ -349,8 +358,7 @@ define('GUI', ['Util'], function( Util ){
 		Minimap = (function(){
 
 			var minimizedWidth = 160,
-				minimizedHeight = 160,
-				verticalOffset = 61;
+				minimizedHeight = 160;
 
 			/**
 			 * Minimap construct function in order to get the manager instances that needed to draw
@@ -384,7 +392,7 @@ define('GUI', ['Util'], function( Util ){
 				// making the minimap area clickable 
 				userPointer.on('leftbutton/move', function(pointer){
 
-					var coords = getMouseCoords(pointer, this.map, this.panel, true);
+					var coords = getMouseCoords(pointer, this.map, this.panel, this.graphics, true);
 
 					// if getMouseCoords returns with false then the coordinates are not legit
 					if (!coords){
@@ -400,7 +408,7 @@ define('GUI', ['Util'], function( Util ){
 				// making the minimap area clickable 
 				userPointer.on('rightbutton/down', function(pointer){
 
-					var coords = getMouseCoords(pointer, this.map, this.panel);
+					var coords = getMouseCoords(pointer, this.map, this.panel, this.graphics);
 
 					// if getMouseCoords returns with false then the coordinates are not legit
 					if (!coords){
@@ -416,15 +424,15 @@ define('GUI', ['Util'], function( Util ){
 				}.bind(this));
 			}
 
-			function getMouseCoords(pointer, map, panel, alignToCentre){
+			function getMouseCoords(pointer, map, panel, graphics, alignToCentre){
 				var mapWidth = map.getScreenWidth(),
 					mapHeight = map.getScreenHeight(),
 					ratioX = ns.window.width / mapWidth,
 					ratioY = ns.window.height / mapHeight,
 					width = minimizedWidth * ratioX,
 					height = minimizedHeight * ratioY,
-					mouseX = pointer.x - panel.x + phaserGame.camera.x,
-					mouseY = pointer.y - panel.y + phaserGame.camera.y - verticalOffset,
+					mouseX = pointer.x - panel.x + phaserGame.camera.x - graphics.x,
+					mouseY = pointer.y - panel.y + phaserGame.camera.y - graphics.y,
 					ratioX,
 					ratioY;
 
@@ -451,14 +459,22 @@ define('GUI', ['Util'], function( Util ){
 
 			F.prototype = {
 
-				setPanel: function(panel){
+				/**
+				 * 	
+				 * Attach the Minimap object to the main GUI Panel
+				 * @param {object} panel Main GUI Panel
+				 * @param {integer} x Horizontal offset from the parent's anchor point 
+				 * @param {integer} y Vertical offset from the parent's anchor point 
+				 */
+				appendTo: function(panel, x, y){
 
 					if (!panel){
 						throw 'Invalid Phaser.Sprite object!';
 					}
 
 					panel.addChild(this.getGraphics());
-					this.graphics.y = verticalOffset; // this is the place for the minimap on the big panel sprite
+					this.graphics.x = x;
+					this.graphics.y = y; // this is the place for the minimap on the big panel sprite
 
 					this.panel = panel;
 
@@ -534,7 +550,86 @@ define('GUI', ['Util'], function( Util ){
 
 			return F;
 
-		})();		
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// EntityDetailsDisplay for Entities
+		// --------------------------------------------------------------------------------------
+		EntityDetailsDisplay = (function(){
+
+			/**
+			 * Constructing an EntityDetailsDisplay instance
+			 * @param {object} entityManager [reference to the singleton instance of EntityManager]
+			 */
+			function F(_entityManager){
+
+				// creating the group for the individual StatusBar objects
+				this.group = phaserGame.add.group();
+				this.group.visible = false;
+
+				// creating a Phaser.Sprite object for the entity icons
+				this.sprite = phaserGame.add.sprite(0, 0, 'gui.icons.fed');		
+				this.sprite.frame = 70;
+
+				// adding the individual elements to the container 
+				this.group.add(this.sprite);
+			}
+
+			F.prototype = {
+				
+				sprite: null,
+				group: null,
+				panel: null,
+
+				/**
+				 * Attach the Minimap object to the main GUI Panel
+				 * @param {object} panel Phaser.Sprite
+				 * @param {integer} x Horizontal offset from the parent's anchor point 
+				 * @param {integer} y Vertical offset from the parent's anchor point 
+				 */
+				appendTo: function(panel, x, y){
+
+					if (!panel){
+						throw 'Invalid Phaser.Sprite object!';
+					}
+
+					this.group.x = x;
+					this.group.y = y;
+					panel.addChild(this.group);					
+
+					this.panel = panel;
+				},
+
+				/**
+				 * Refresing the graphics objects according to the current values of 
+				 * the exposed abilities of the entity
+				 * @return {[void]}
+				 */
+				update: function(){    				
+				},
+
+				/**
+				 * Making the StatusDisplay visible
+				 * @return {[void]}
+				 */
+				show: function(){
+					this.update();
+					this.group.visible = true;
+				},
+
+				/**
+				 * Making the StatusDisplay unvisible
+				 * @return {[void]}
+				 */
+				hide: function(){
+					this.group.visible = false;
+				}
+
+			};
+
+			return F;
+
+		})();				
 
 
 
@@ -569,6 +664,9 @@ define('GUI', ['Util'], function( Util ){
 
 			// reference to the Minimap object 
 			minimap,
+
+			// DataObjectProjector
+			entityDetailsDisplay,
 
 			// reference to a Phaser.Sprite object that displays the click animation
 			clickAnim,
@@ -623,8 +721,14 @@ define('GUI', ['Util'], function( Util ){
 			panel.y = ns.window.height - 222; // 222 is the height of the panel (look it up in the JSON when changed)
 			panel.fixedToCamera = true;
 
+			// Setting up the Minimap and attacing to the Panel
 			minimap = new Minimap(map, entityManager);
-			minimap.setPanel(panel);
+			minimap.appendTo(panel, 0, 61);
+
+			// Setting up the EntityDetailsDisplay and linking it to the Panel
+			entityDetailsDisplay = new EntityDetailsDisplay(entityManager);
+			entityDetailsDisplay.appendTo(panel, 200, 110);
+			entityDetailsDisplay.show();
 
 			// adding to the GUI group to move all these elements to the top of the game scene
 			group.add(panel);
