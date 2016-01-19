@@ -55,7 +55,7 @@ define('GUI', ['Util'], function( Util ){
 		// Rainbow table for entity icons 
 		entityIcons = {
 
-			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 10 }
+			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 14 }
 
 		},
 
@@ -561,23 +561,34 @@ define('GUI', ['Util'], function( Util ){
 			 * Constructing an EntityDetailsDisplay instance
 			 * @param {object} entityManager [reference to the singleton instance of EntityManager]
 			 */
-			function F(_entityManager){
+			function F(entityManager){
 
 				// creating the group for the individual StatusBar objects
 				this.group = phaserGame.add.group();
 				this.group.visible = false;
 
+				// storing the entity manager locally
+				this.entityManager = entityManager;
+
 				// creating a Phaser.Sprite object for the entity icons
-				this.sprite = phaserGame.add.sprite(0, 0, 'gui.icons.fed');		
-				this.sprite.frame = 70;
+				this.iconSprite = phaserGame.add.sprite(0, 0, 'gui.icons.fed');
+
+				// setting up the text group
+				this.textGroup = createTextGroup();
 
 				// adding the individual elements to the container 
-				this.group.add(this.sprite);
+				this.group.add(this.iconSprite);
+				this.group.add(this.textGroup);
+			}
+
+			function createTextGroup(){
+				var group = phaserGame.add.group();
+
 			}
 
 			F.prototype = {
 				
-				sprite: null,
+				iconSprite: null,
 				group: null,
 				panel: null,
 
@@ -605,15 +616,53 @@ define('GUI', ['Util'], function( Util ){
 				 * the exposed abilities of the entity
 				 * @return {[void]}
 				 */
-				update: function(){    				
+				update: function(){
+
+					var entities = this.entityManager.getAllSelected();
+
+					// no entity is selected
+					if (entities.length !== 1){
+						this.hide();
+						return;
+					}
+
+					// show the panel
+					this.show();
+					this.displaySingleEntityScene(entities[0]);
+
 				},
+
+				/**
+				 * Displaying the GUI elements for the single selection screen
+				 * @return {object} entity Entity
+				 */
+				displaySingleEntityScene: function(entity){
+
+					if (!entity){
+						throw 'Invalid Entity object!';
+					}
+
+					this.iconSprite.frame = entityIcons[entity.getDataObject().getId()].faceFrame;
+
+				},
+
+				/**
+				 * Displaying the GUI elements for the multi selection screen
+				 * @return {array} entities Array of Entity instances
+				 */
+				displayMultipleEntityScene: function(entities){
+
+					if (!entities){
+						throw 'Invalid Entity object!';
+					}
+
+				},				
 
 				/**
 				 * Making the StatusDisplay visible
 				 * @return {[void]}
 				 */
 				show: function(){
-					this.update();
 					this.group.visible = true;
 				},
 
@@ -728,7 +777,6 @@ define('GUI', ['Util'], function( Util ){
 			// Setting up the EntityDetailsDisplay and linking it to the Panel
 			entityDetailsDisplay = new EntityDetailsDisplay(entityManager);
 			entityDetailsDisplay.appendTo(panel, 200, 110);
-			entityDetailsDisplay.show();
 
 			// adding to the GUI group to move all these elements to the top of the game scene
 			group.add(panel);
@@ -761,8 +809,13 @@ define('GUI', ['Util'], function( Util ){
 			 * @return {void} 
 			 */
 			update: function(){
+
 				if (minimap){
 					minimap.update();
+				}
+
+				if (entityDetailsDisplay){
+					entityDetailsDisplay.update();
 				}
 			}
 

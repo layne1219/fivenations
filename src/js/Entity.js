@@ -351,6 +351,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         damage: function( value ){
             this.getDataObject().damageHull( value );
             this.eventDispatcher.dispatch('damage');
+            this.eventDispatcher.dispatch('change');
         },
 
         select: function(){
