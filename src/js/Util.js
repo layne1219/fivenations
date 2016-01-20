@@ -44,6 +44,25 @@ define('Util', function(){
 			return stepCount;
 		},
 
+		/**
+		 * getColorFromRatio - Returning green, yellow or red according to 
+		 * the passed ratio
+		 * @param {float} ratio
+		 * @param {string} type if equals to 'hex' the result will be formatted into hexadecimals     
+		 * @return {string} the calculated color
+		 */
+		getColorFromRatio: function(ratio, type){
+			var color = '#00FF00';
+
+			if (ratio < 0.67 && ratio > 0.33){
+				color = '#FFFF6B';
+			} else if (ratio < 0.34){
+				color = '#FF0000';
+			}
+
+			return 'hex' !== type ? color.replace('#', '0x') : color;
+		},
+
 		// Eventlistener object
 		EventDispatcher: (function(){
 

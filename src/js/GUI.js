@@ -193,13 +193,7 @@ define('GUI', ['Util'], function( Util ){
 				
 				update: function( ratio ){
 
-					var color = '0x00FF00';
-
-					if (ratio < 0.67 && ratio > 0.33){
-						color = '0xFFFF6B';
-					} else if (ratio < 0.34){
-						color = '0xFF0000';
-					}
+					var color = Util.getColorFromRatio(ratio);
 
 			        this.graphics.clear();
 			        this.graphics.beginFill(color);
@@ -574,15 +568,72 @@ define('GUI', ['Util'], function( Util ){
 				this.iconSprite = phaserGame.add.sprite(0, 0, 'gui.icons.fed');
 
 				// setting up the text group
-				this.textGroup = createTextGroup();
+				this.attributeGroup = createAttributeGroup(132, 5, phaserGame);
 
 				// adding the individual elements to the container 
 				this.group.add(this.iconSprite);
-				this.group.add(this.textGroup);
+				this.group.add(this.attributeGroup);
 			}
 
-			function createTextGroup(){
-				var group = phaserGame.add.group();
+			function createAttributeGroup(x, y, phaserGame){
+
+				var group;
+
+				function TextGroup(game){
+					var args = [].slice.call(arguments);
+					Phaser.Group.apply(this, args);
+
+					this.nameElm = this.add(phaserGame.add.text(0, 0, "", { font: "12px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.nicknameElm = this.add(phaserGame.add.text(0, 12, "", { font: "12px BerlinSansFB-Reg", fill: "#FFFFFF"}));
+					this.rankElm = null;
+					this.hullElm = this.add(phaserGame.add.text(0, 36, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.shieldElm = this.add(phaserGame.add.text(0, 47, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.powerElm = this.add(phaserGame.add.text(0, 58, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.hangarElm = this.add(phaserGame.add.text(0, 69, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+
+				}
+
+				TextGroup.prototype = Object.create(Phaser.Group.prototype);
+				TextGroup.prototype.constructor = TextGroup;
+
+				/**
+				 * Updating the attributes text group as per the passed dataObject
+				 * @param  {object} dataObject [DataObject]
+				 * @return {void}
+				 */
+				TextGroup.prototype.updateContent = function(dataObject){
+
+					if (!dataObject){
+						throw 'Invalid DataObject has been passed!';
+					}
+
+					// Names
+					this.nameElm.text = dataObject.getName();
+					this.nicknameElm.text = 'Test Nickname';
+
+					// Hull
+					var hullTitle = 'Hull: ',
+						hullValue = dataObject.getHull(),
+						hullMaxValue = '/' + dataObject.getMaxHull(),
+						hullColor = Util.getColorFromRatio(dataObject.getHull() / dataObject.getMaxHull(), 'hex');
+
+					this.hullElm.text = hullTitle + hullValue + hullMaxValue;
+					this.hullElm.addColor(hullColor, hullTitle.length);
+
+					// Shield
+					var shieldTitle = 'Shield: ',
+						shieldValue = dataObject.getShield(),
+						shieldMaxValue = '/' + dataObject.getMaxShield();
+
+					this.shieldElm.text = shieldTitle + shieldValue + shieldMaxValue;
+					this.shieldElm.addColor('#475D86', shieldTitle.length);					
+				}
+
+				group = new TextGroup(phaserGame);
+				group.x = x;
+				group.y = y;
+
+				return group;
 
 			}
 
@@ -638,11 +689,20 @@ define('GUI', ['Util'], function( Util ){
 				 */
 				displaySingleEntityScene: function(entity){
 
+					var data;
+
 					if (!entity){
 						throw 'Invalid Entity object!';
 					}
 
-					this.iconSprite.frame = entityIcons[entity.getDataObject().getId()].faceFrame;
+					data = entity.getDataObject();
+
+					// displaying the Splash Icon of the selected entity
+					this.iconSprite.frame = entityIcons[data.getId()].faceFrame;
+
+					// Name
+					this.attributeGroup.updateContent(data);
+
 
 				},
 
