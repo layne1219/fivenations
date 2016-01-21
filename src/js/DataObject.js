@@ -8,6 +8,7 @@ define('DataObject', function(){
 		data.maxhull = data.hull;
 		data.maxshield = data.shield;
 		data.maxpower = data.power;
+		data.maxhangar = data.hangar;
 		data.team = 1;
 
 		// for providing privacy for the data variables we have to create a closure here so as not to
@@ -49,6 +50,10 @@ define('DataObject', function(){
 			getMaxPower: function(){
 				return data.maxpower;
 			},
+
+			getMaxHangar: function(){
+				return data.maxhangar;
+			},				
 
 			getHull: function(){
 				return data.hull;

@@ -8,7 +8,8 @@ var jf = require('jsonfile'),
 jf.readFile(atlasJSON, function(err, obj) {
 	
 	var minOffsetX = 9999,
-		minOffsetY = 9999;
+		minOffsetY = 9999,
+		frame;
 
 	if (err){
 		console.error(err);
@@ -17,18 +18,20 @@ jf.readFile(atlasJSON, function(err, obj) {
 		console.error('Invalid data structure!');
 	}
 
- 	obj.frames.forEach(function(frame){
+	for (var key in obj.frames){
+		frame = obj.frames[key];
  		minOffsetX = Math.min(minOffsetX, frame.spriteSourceSize.x);
- 		minOffsetY = Math.min(minOffsetY, frame.spriteSourceSize.y);
- 	});
+ 		minOffsetY = Math.min(minOffsetY, frame.spriteSourceSize.y);		
+	}
 
- 	obj.frames.forEach(function(frame, idx){
- 		obj.frames[idx].spriteSourceSize.x -= minOffsetX;
- 		obj.frames[idx].spriteSourceSize.y -= minOffsetY; 
- 		obj.frames[idx].sourceSize.w = width;
- 		obj.frames[idx].sourceSize.h = height;
- 		obj.frames[idx].trimmed = false;		
- 	});
+ 	for (var key in obj.frames){
+ 		frame = obj.frames[key];
+ 		obj.frames[key].spriteSourceSize.x -= minOffsetX;
+ 		obj.frames[key].spriteSourceSize.y -= minOffsetY; 
+ 		obj.frames[key].sourceSize.w = width;
+ 		obj.frames[key].sourceSize.h = height;
+ 		obj.frames[key].trimmed = false;		
+ 	};
 
  	console.log(JSON.stringify(obj));
 

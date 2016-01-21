@@ -12,7 +12,13 @@ define("Preloader", function() {
             spriteURL: 'assets/images/units/fed/fed_unit01_c{color}.png',
             atlasURL: 'assets/images/units/fed/fed_unit01_c01.json',
             dataURL: 'assets/datas/units/fed/hurricane.json'
-        }
+        },
+        orca: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_unit02_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_unit02_c01.json',
+            dataURL: 'assets/datas/units/fed/orca.json'
+        }        
     };
 
     /**

@@ -55,7 +55,8 @@ define('GUI', ['Util'], function( Util ){
 		// Rainbow table for entity icons 
 		entityIcons = {
 
-			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 14 }
+			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 14 },
+			'orca': { spriteId: 'gui.icons.fed', faceFrame: 68, iconFrame: 15 }
 
 		},
 
@@ -97,6 +98,8 @@ define('GUI', ['Util'], function( Util ){
 
 				size: null,
 				parent: null,
+				width: 0,
+				height: 0,
 
 				appendTo: function(entity){
 
@@ -109,6 +112,8 @@ define('GUI', ['Util'], function( Util ){
 					entity.getSprite().addChild(this.sprite);
 
 					this.parent = entity;
+					this.width = this.parent.getDataObject().getWidth();
+					this.height = this.parent.getDataObject().getHeight();
 				},
 
 				show: function(){
@@ -137,10 +142,9 @@ define('GUI', ['Util'], function( Util ){
 					}
 
 					if (!this.size){
-						sprite = this.parent.getSprite();
 
 						Object.keys(categories).forEach(function(size){
-							if (Util.between(Math.max(sprite.width, sprite.height), categories[size][0], categories[size][1])){
+							if (Util.between(Math.max(this.width, this.height), categories[size][0], categories[size][1])){
 								this.size = size;
 							}
 						}, this);
@@ -168,7 +172,7 @@ define('GUI', ['Util'], function( Util ){
 					'small': 172				
 				};
 
-			function F( width ){
+			function F( width, color ){
 
 				if (undefined === width){
 					width = 1;
@@ -180,6 +184,9 @@ define('GUI', ['Util'], function( Util ){
 				// background for the StatusBar
 				this.sprite = phaserGame.add.sprite(0, 0, 'gui');
 				this.sprite.frame = backgroundFrames[this.getSize( width )];				
+
+				// fixed colour if is not omitted
+				this.color = color;
 
 				// graphics for the dynamic bar 
 				this.graphics = phaserGame.add.graphics(0, 0);
@@ -193,10 +200,8 @@ define('GUI', ['Util'], function( Util ){
 				
 				update: function( ratio ){
 
-					var color = Util.getColorFromRatio(ratio);
-
 			        this.graphics.clear();
-			        this.graphics.beginFill(color);
+			        this.graphics.beginFill(this.color || Util.getColorFromRatio(ratio));
 			        this.graphics.drawRect(1, 1, Math.floor(this.sprite.width * ratio) - 2, 3);
 			        this.graphics.endFill();
 
@@ -246,31 +251,30 @@ define('GUI', ['Util'], function( Util ){
 					throw 'First parameter must be an instance of Entity!';
 				}
 
-				width = Math.max(entity.getSprite().width, entity.getSprite().height);
+				width = Math.max(entity.getDataObject().getWidth(), entity.getDataObject().getHeight());
 
 				// creating the group for the individual StatusBar objects
 				this.group = phaserGame.add.group();
 				this.group.visible = false;	
 
+				// Shield if there is any
+				if (entity.getDataObject().getMaxShield() > 0){
+					this.shieldBar = new StatusBar( width, '0x475D86' );
+					this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
+					this.shieldBar.getGroup().y = -entity.getDataObject().getHeight();
+					this.group.add(this.shieldBar.getGroup());
+				}				
 				// Health
 				this.healthBar = new StatusBar( width );
 				this.healthBar.getGroup().x = this.healthBar.getGroup().width / -2;
-				this.healthBar.getGroup().y = entity.getSprite().height / -2;
+				this.healthBar.getGroup().y = -entity.getDataObject().getHeight() + (this.group.children.length * 6);
 				this.group.add(this.healthBar.getGroup());
-
-				// Shield if there is any
-				if (entity.getDataObject().getMaxShield() > 0){
-					this.shieldBar = new StatusBar( width );
-					this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
-					this.shieldBar.getGroup().y = entity.getSprite().height / -2 + (this.group.children.length * 6);
-					this.group.add(this.shieldBar.getGroup());
-				}
 
 				// Power if there is any
 				if (entity.getDataObject().getMaxPower() > 0){
-					this.powerBar = new StatusBar( width );
+					this.powerBar = new StatusBar( width, '0xFF00FF' );
 					this.powerBar.getGroup().x = this.powerBar.getGroup().width / -2;
-					this.powerBar.getGroup().y = entity.getSprite().height / -2 + (this.group.children.length * 6);
+					this.powerBar.getGroup().y = -entity.getDataObject().getHeight() + (this.group.children.length * 6);
 					this.group.add(this.powerBar.getGroup());
 				}
 
@@ -588,8 +592,9 @@ define('GUI', ['Util'], function( Util ){
 					this.rankElm = null;
 					this.hullElm = this.add(phaserGame.add.text(0, 36, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
 					this.shieldElm = this.add(phaserGame.add.text(0, 47, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.powerElm = this.add(phaserGame.add.text(0, 58, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.hangarElm = this.add(phaserGame.add.text(0, 69, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.armorElm = this.add(phaserGame.add.text(0, 58, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.powerElm = this.add(phaserGame.add.text(0, 69, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.hangarElm = this.add(phaserGame.add.text(0, 80, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
 
 				}
 
@@ -609,7 +614,7 @@ define('GUI', ['Util'], function( Util ){
 
 					// Names
 					this.nameElm.text = dataObject.getName();
-					this.nicknameElm.text = 'Test Nickname';
+					this.nicknameElm.text = dataObject.getType();
 
 					// Hull
 					var hullTitle = 'Hull: ',
@@ -626,7 +631,31 @@ define('GUI', ['Util'], function( Util ){
 						shieldMaxValue = '/' + dataObject.getMaxShield();
 
 					this.shieldElm.text = shieldTitle + shieldValue + shieldMaxValue;
-					this.shieldElm.addColor('#475D86', shieldTitle.length);					
+					this.shieldElm.addColor('#475D86', shieldTitle.length);
+
+					// Armor
+					var armorTitle = 'Armor: ',
+						armorValue = dataObject.getArmor();
+
+					this.armorElm.text = armorTitle + armorValue;
+					this.armorElm.addColor('#FFFFFF', armorTitle.length);
+
+					// Power
+					var powerTitle = 'Power: ',
+						powerValue = dataObject.getPower(),
+						powerMaxValue = '/' + dataObject.getMaxPower();
+
+					this.powerElm.text = powerTitle + powerValue + powerMaxValue;
+					this.powerElm.addColor('#FFFFFF', powerTitle.length);
+
+					// Hanger
+					var hangarTitle = 'Hangar: ',
+						hangarValue = dataObject.getHangar(),
+						hangarMaxValue = '/' + dataObject.getMaxHangar();
+
+					this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;
+					this.hangarElm.addColor('#FFFFFF', hangarTitle.length);					
+
 				}
 
 				group = new TextGroup(phaserGame);

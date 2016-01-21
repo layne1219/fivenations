@@ -146,9 +146,9 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 10; i >= 0; i--) {
+            for (var i = 20; i >= 0; i--) {
                 this.entityManager.add({
-                    id: 'hurricane',
+                    id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
                     team: Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
             }
