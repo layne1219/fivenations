@@ -1,4 +1,4 @@
-define("Menu", function() {
+define('Menu', function() {
   'use strict';
 
   function Menu() {}

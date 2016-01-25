@@ -1,7 +1,7 @@
 define('UserPointer', ['Util'], function(Util){
 	
 	var singleton,
-		phaser_game,
+		phaserGame,
 		dispatcher,
 		multiselector;
 
@@ -11,7 +11,7 @@ define('UserPointer', ['Util'], function(Util){
 	}
 
 	function init(){
-		dispatcher = new Util.EventDispatcher;
+		dispatcher = new Util.EventDispatcher();
 		multiselector = new Phaser.Rectangle(0, 0, 0, 0);
 		multiselector.active = false;
 	}
@@ -19,13 +19,13 @@ define('UserPointer', ['Util'], function(Util){
 
 	function registerEventListeners(){
 		// Releasing either of the mouse buttons
-		phaser_game.input.onUp.add(function(){
-			dispatcher.dispatch("up");
+		phaserGame.input.onUp.add(function(){
+			dispatcher.dispatch('up');
 
 			if (multiselector.active){
 
 				if (multiselector.width > 0 || multiselector.height > 0){
-					dispatcher.dispatch("multiselector/up", multiselector);
+					dispatcher.dispatch('multiselector/up', multiselector);
 				}
 
 				multiselector.active = false;
@@ -38,25 +38,25 @@ define('UserPointer', ['Util'], function(Util){
 		}, this);
 
 		// Pressing either of the mouse buttons
-		phaser_game.input.onDown.add(function(){
+		phaserGame.input.onDown.add(function(){
 
             // left mouse button
-            if (phaser_game.input.mousePointer.leftButton.isDown){
-            	dispatcher.dispatch("leftbutton/down", phaser_game.input.mousePointer);
+            if (phaserGame.input.mousePointer.leftButton.isDown){
+            	dispatcher.dispatch('leftbutton/down', phaserGame.input.mousePointer);
 
             	multiselector.active = true;
-				multiselector.x = phaser_game.camera.x + phaser_game.input.mousePointer.x;
-				multiselector.y = phaser_game.camera.y + phaser_game.input.mousePointer.y;
+				multiselector.x = phaserGame.camera.x + phaserGame.input.mousePointer.x;
+				multiselector.y = phaserGame.camera.y + phaserGame.input.mousePointer.y;
 				multiselector.width = 0;
 				multiselector.height = 0;         	
             } 
             // right mouse button
-            else if (phaser_game.input.mousePointer.rightButton.isDown){
-            	dispatcher.dispatch("rightbutton/down", phaser_game.input.mousePointer);
+            else if (phaserGame.input.mousePointer.rightButton.isDown){
+            	dispatcher.dispatch('rightbutton/down', phaserGame.input.mousePointer);
             }
 
             // invoking all the registred functions for the the unified event
-			dispatcher.dispatch("down");	
+			dispatcher.dispatch('down');	
 
 		}, this);
 
@@ -75,32 +75,32 @@ define('UserPointer', ['Util'], function(Util){
 		},
 
 		update: function(){
-			phaser_game.debug.geom(multiselector,'#0fffff', false);
+			phaserGame.debug.geom(multiselector,'#0fffff', false);
 
-			if ( phaser_game.input.mousePointer.leftButton.isDown ){
-				dispatcher.dispatch('leftbutton/move', phaser_game.input.mousePointer);
+			if ( phaserGame.input.mousePointer.leftButton.isDown ){
+				dispatcher.dispatch('leftbutton/move', phaserGame.input.mousePointer);
 			}
 
-			if ( phaser_game.input.mousePointer.leftButton.isDown && multiselector.active){
-				if (phaser_game.camera.x + phaser_game.input.mousePointer.x < multiselector.x){
+			if ( phaserGame.input.mousePointer.leftButton.isDown && multiselector.active){
+				if (phaserGame.camera.x + phaserGame.input.mousePointer.x < multiselector.x){
 					this.stopMultiselection();
 					return;
 				}
-				if (phaser_game.camera.y + phaser_game.input.mousePointer.y < multiselector.y){
+				if (phaserGame.camera.y + phaserGame.input.mousePointer.y < multiselector.y){
 					this.stopMultiselection();
 					return;
 				}				
-				multiselector.width = Math.abs(multiselector.x - (phaser_game.camera.x + phaser_game.input.mousePointer.x));
-				multiselector.height = Math.abs(multiselector.y - (phaser_game.camera.y + phaser_game.input.mousePointer.y));				
+				multiselector.width = Math.abs(multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));
+				multiselector.height = Math.abs(multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));				
 			}
 		},
 
 		isLeftButtonDown: function(){
-			return phaser_game.input.mousePointer.leftButton.isDown;
+			return phaserGame.input.mousePointer.leftButton.isDown;
 		},
 
 		isRightButtonDown: function(){
-			return phaser_game.input.mousePointer.rightButton.isDown;
+			return phaserGame.input.mousePointer.rightButton.isDown;
 		}		
 
 	};
@@ -108,11 +108,11 @@ define('UserPointer', ['Util'], function(Util){
 	return {
 
 		setGame: function(game){
-			phaser_game = game;
+			phaserGame = game;
 		},
 
 		getInstance: function(){
-			if (!phaser_game){
+			if (!phaserGame){
 				throw 'Invoke setGame first to pass the Phaser Game entity!';
 			}			
 			if (!singleton){

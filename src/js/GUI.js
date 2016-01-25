@@ -88,7 +88,7 @@ define('GUI', ['Util'], function( Util ){
 					'select-small'
 
 				].forEach(function(animation){
-					anim = sprite.animations.add(animation, animations[animation]);
+					sprite.animations.add(animation, animations[animation]);
 				});
 
 				this.sprite = sprite;
@@ -121,7 +121,7 @@ define('GUI', ['Util'], function( Util ){
 							if (entityManager.isEntityControlledByUser(selector.parent)){
 								return '-';
 							}
-							return '-enemy-'
+							return '-enemy-';
 						})(this),
 
 						animationName = 'select' + relationship + this.getSize();
@@ -135,7 +135,6 @@ define('GUI', ['Util'], function( Util ){
 				},
 
 				getSize: function(){
-					var sprite;
 
 					if (!this.parent){
 						throw 'There is no Entity attached to this Selector instance!';
@@ -430,9 +429,7 @@ define('GUI', ['Util'], function( Util ){
 					width = minimizedWidth * ratioX,
 					height = minimizedHeight * ratioY,
 					mouseX = pointer.x - panel.x + phaserGame.camera.x - graphics.x,
-					mouseY = pointer.y - panel.y + phaserGame.camera.y - graphics.y,
-					ratioX,
-					ratioY;
+					mouseY = pointer.y - panel.y + phaserGame.camera.y - graphics.y;
 
 				if (mouseX > minimizedWidth || mouseY > minimizedHeight || mouseY < 0){
 					return false;
@@ -452,7 +449,7 @@ define('GUI', ['Util'], function( Util ){
 				return {
 					x: mapWidth * ratioX,
 					y: mapHeight * ratioY
-				}
+				};
 			}
 
 			F.prototype = {
@@ -587,14 +584,14 @@ define('GUI', ['Util'], function( Util ){
 					var args = [].slice.call(arguments);
 					Phaser.Group.apply(this, args);
 
-					this.nameElm = this.add(phaserGame.add.text(0, 0, "", { font: "12px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.nicknameElm = this.add(phaserGame.add.text(0, 12, "", { font: "12px BerlinSansFB-Reg", fill: "#FFFFFF"}));
+					this.nameElm = this.add(game.add.text(0, 0, '', { font: '12px BerlinSansFB-Reg', fill: '#77C7D2'}));
+					this.nicknameElm = this.add(game.add.text(0, 12, '', { font: '12px BerlinSansFB-Reg', fill: '#FFFFFF'}));
 					this.rankElm = null;
-					this.hullElm = this.add(phaserGame.add.text(0, 36, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.shieldElm = this.add(phaserGame.add.text(0, 47, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.armorElm = this.add(phaserGame.add.text(0, 58, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.powerElm = this.add(phaserGame.add.text(0, 69, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
-					this.hangarElm = this.add(phaserGame.add.text(0, 80, "", { font: "11px BerlinSansFB-Reg", fill: "#77C7D2"}));
+					this.hullElm = this.add(game.add.text(0, 36, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
+					this.shieldElm = this.add(game.add.text(0, 47, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
+					this.armorElm = this.add(game.add.text(0, 58, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
+					this.powerElm = this.add(game.add.text(0, 69, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
+					this.hangarElm = this.add(game.add.text(0, 80, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
 
 				}
 
@@ -656,7 +653,7 @@ define('GUI', ['Util'], function( Util ){
 					this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;
 					this.hangarElm.addColor('#FFFFFF', hangarTitle.length);					
 
-				}
+				};
 
 				group = new TextGroup(phaserGame);
 				group.x = x;
@@ -701,14 +698,23 @@ define('GUI', ['Util'], function( Util ){
 					var entities = this.entityManager.getAllSelected();
 
 					// no entity is selected
-					if (entities.length !== 1){
-						this.hide();
-						return;
-					}
+					if (entities.length === 0){
 
-					// show the panel
-					this.show();
-					this.displaySingleEntityScene(entities[0]);
+						this.hide();
+
+					} else if (entities.length === 1) {
+
+						// show the panel for single selection
+						this.show();
+						this.displaySingleEntityScene(entities[0]);
+
+					} else {
+
+						// show the panel for multiple selection
+						this.show();
+						this.displayMultipleEntityScene(entities);
+
+					}
 
 				},
 
@@ -729,9 +735,8 @@ define('GUI', ['Util'], function( Util ){
 					// displaying the Splash Icon of the selected entity
 					this.iconSprite.frame = entityIcons[data.getId()].faceFrame;
 
-					// Name
+					// Updating the texts
 					this.attributeGroup.updateContent(data);
-
 
 				},
 

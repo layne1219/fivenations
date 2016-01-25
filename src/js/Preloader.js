@@ -1,4 +1,4 @@
-define("Preloader", function() {
+define('Preloader', function() {
 'use strict';
 
     var preloader,

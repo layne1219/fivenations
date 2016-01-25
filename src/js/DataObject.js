@@ -97,10 +97,6 @@ define('DataObject', function(){
 
 			getSilicium: function(){
 				return data.silicium;
-			},		
-
-			getPower: function(){
-				return data.power;
 			},
 
 			getEnergy: function(){

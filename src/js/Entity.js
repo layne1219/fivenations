@@ -67,7 +67,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         this.dataObject = dataObject;
 
         // setting up the EventDisatcher
-        this.eventDispatcher = new Util.EventDispatcher;
+        this.eventDispatcher = new Util.EventDispatcher();
 
         // Container to store the applied effects 
         this.effects = [];
@@ -126,7 +126,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         removeEffect: function(effect){
-            if ("function" !== effect){
+            if ('function' !== effect){
                 return false;
             }
             for (var i = this.effects.length - 1; i >= 0; i--) {
@@ -144,7 +144,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
                 }
             }
             // Determining whether or not it's a valid function
-            if ("function" !== typeof effect){
+            if ('function' !== typeof effect){
                 return false;
             }
             return true;
@@ -264,8 +264,8 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         */
 		updateVelocity: function(){
 
-            this.movement.distance = this.game.physics.arcade.distanceToXY(this.sprite, this.movement.targetX, this.movement.targetY),
-            this.movement.distanceInverse = this.movement.targetInitialDistance - this.movement.distance,
+            this.movement.distance = this.game.physics.arcade.distanceToXY(this.sprite, this.movement.targetX, this.movement.targetY);
+            this.movement.distanceInverse = this.movement.targetInitialDistance - this.movement.distance;
             this.movement.distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.movement.originX, this.movement.originY);
             this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);            
             
@@ -400,7 +400,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             return this.uid;
         }        
        
-	}
+	};
 
 	return Entity;
 

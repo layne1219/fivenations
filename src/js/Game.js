@@ -134,6 +134,7 @@ define('Game', [
                           .getInstance();
 
             gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
+            gui.visible = false;
             gui.frame = 15;
 
             // -----------------------------------------------------------------------

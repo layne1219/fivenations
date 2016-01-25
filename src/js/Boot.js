@@ -1,4 +1,4 @@
-define("Boot", function () {
+define('Boot', function () {
   'use strict';
 
   var ns = window.fivenations;

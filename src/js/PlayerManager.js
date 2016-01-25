@@ -33,6 +33,6 @@ define('PlayerManager', ['Player'], function(Player){
 			return singleton;
 		}
 
-	}
+	};
 
 });

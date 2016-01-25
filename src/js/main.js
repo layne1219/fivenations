@@ -40,7 +40,7 @@ window.addEventListener('load', function () {
 			'0xE5C410',
 			'0x65615D'
 		]
-	}
+	};
 
 	// Cache for assets don't required to be loaded more than once
 	ns.cache = {};

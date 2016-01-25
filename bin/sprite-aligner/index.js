@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 var jf = require('jsonfile'),
-	atlasJSON = process.argv[2],
+	atlasJSON = '' + process.argv[2],
 	width = process.argv[3] || 300,
 	height = process.argv[4] || 300;
 

@@ -11,7 +11,7 @@ define('UserKeyboard', ['Util'], function(Util){
 	}
 
 	function init(){
-		dispatcher = new Util.EventDispatcher;
+		dispatcher = new Util.EventDispatcher();
 		// handling the curser key events
 		cursors = phaserGame.input.keyboard.createCursorKeys();		
 	}
