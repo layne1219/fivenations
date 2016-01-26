@@ -134,7 +134,7 @@ define('Game', [
                           .getInstance();
 
             gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
-            gui.visible = false;
+            //gui.visible = false;
             gui.frame = 15;
 
             // -----------------------------------------------------------------------
@@ -147,10 +147,10 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 20; i >= 0; i--) {
+            for (var i = 25; i >= 0; i--) {
                 this.entityManager.add({
                     id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
-                    team: Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 1//Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
             }
             this.entityManager.get().forEach(function(entity){

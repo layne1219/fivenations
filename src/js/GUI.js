@@ -55,8 +55,8 @@ define('GUI', ['Util'], function( Util ){
 		// Rainbow table for entity icons 
 		entityIcons = {
 
-			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 14 },
-			'orca': { spriteId: 'gui.icons.fed', faceFrame: 68, iconFrame: 15 }
+			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 53 },
+			'orca': { spriteId: 'gui.icons.fed', faceFrame: 68, iconFrame: 54 }
 
 		},
 
@@ -565,15 +565,14 @@ define('GUI', ['Util'], function( Util ){
 				// storing the entity manager locally
 				this.entityManager = entityManager;
 
-				// creating a Phaser.Sprite object for the entity icons
-				this.iconSprite = phaserGame.add.sprite(0, 0, 'gui.icons.fed');
-
 				// setting up the text group
-				this.attributeGroup = createAttributeGroup(132, 5, phaserGame);
+				this.attributeGroup = createAttributeGroup(0, 0, phaserGame);
 
-				// adding the individual elements to the container 
-				this.group.add(this.iconSprite);
+				// setting up the group for the icons showing up when it comes to multiselection
+				this.multiselectionGroup = createMultiselectionGroup(0, 5, phaserGame);
+
 				this.group.add(this.attributeGroup);
+				this.group.add(this.multiselectionGroup);
 			}
 
 			function createAttributeGroup(x, y, phaserGame){
@@ -581,17 +580,29 @@ define('GUI', ['Util'], function( Util ){
 				var group;
 
 				function TextGroup(game){
-					var args = [].slice.call(arguments);
+					var args = [].slice.call(arguments)
+						text = {
+							marginLeft: 132,
+							marginRight: 5,
+							titleFont: '12px BerlinSansFB-Reg',
+							defaultFont: '11px BerlinSansFB-Reg',
+							color: '#77C7D2'
+						};
+
 					Phaser.Group.apply(this, args);
 
-					this.nameElm = this.add(game.add.text(0, 0, '', { font: '12px BerlinSansFB-Reg', fill: '#77C7D2'}));
-					this.nicknameElm = this.add(game.add.text(0, 12, '', { font: '12px BerlinSansFB-Reg', fill: '#FFFFFF'}));
+					// creating a Phaser.Sprite object for the entity icons
+					this.iconSprite = this.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed'));
+
+					// Text objects to display entity attributes
+					this.nameElm = this.add(game.add.text(text.marginLeft, text.marginRight, '', { font: text.titleFont, fill: text.color}));
+					this.nicknameElm = this.add(game.add.text(text.marginLeft, text.marginRight + 12, '', { font: text.titleFont, fill: '#FFFFFF'}));
 					this.rankElm = null;
-					this.hullElm = this.add(game.add.text(0, 36, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
-					this.shieldElm = this.add(game.add.text(0, 47, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
-					this.armorElm = this.add(game.add.text(0, 58, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
-					this.powerElm = this.add(game.add.text(0, 69, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
-					this.hangarElm = this.add(game.add.text(0, 80, '', { font: '11px BerlinSansFB-Reg', fill: '#77C7D2'}));
+					this.hullElm = this.add(game.add.text(text.marginLeft, text.marginRight + 36, '', { font: text.defaultFont, fill: text.color}));
+					this.shieldElm = this.add(game.add.text(text.marginLeft, text.marginRight + 47, '', { font: text.defaultFont, fill: text.color}));
+					this.armorElm = this.add(game.add.text(text.marginLeft, text.marginRight + 58, '', { font: text.defaultFont, fill: text.color}));
+					this.powerElm = this.add(game.add.text(text.marginLeft, text.marginRight + 69, '', { font: text.defaultFont, fill: text.color}));
+					this.hangarElm = this.add(game.add.text(text.marginLeft, text.marginRight + 80, '', { font: text.defaultFont, fill: text.color}));
 
 				}
 
@@ -608,6 +619,9 @@ define('GUI', ['Util'], function( Util ){
 					if (!dataObject){
 						throw 'Invalid DataObject has been passed!';
 					}
+
+					// displaying the Splash Icon of the selected entity
+					this.iconSprite.frame = entityIcons[dataObject.getId()].faceFrame;
 
 					// Names
 					this.nameElm.text = dataObject.getName();
@@ -663,6 +677,98 @@ define('GUI', ['Util'], function( Util ){
 
 			}
 
+
+			function createMultiselectionGroup(x, y, phaserGame){
+
+				var group,
+					iconWidth = 51,
+					iconHeight = 51,
+					margin = 1,
+					columns = 11,
+					rows = 2,
+					statusBarHeight = 3,
+					statusBarMargin = 2,
+					ratio;
+
+				function MultiselectionGroup(game){
+					var args = [].slice.call(arguments),
+						i, x, y;
+
+					Phaser.Group.apply(this, args);
+
+					this.icons = [];
+					this.healthBar = [];
+					this.shieldBar = [];
+
+					for (i = columns * rows - 1; i >= 0; i--) {
+
+						x = i % columns * ( iconWidth + margin );
+						y = Math.floor(i / columns) * ( iconHeight + margin );
+
+						this.icons[i] = this.add( phaserGame.add.sprite(x, y, 'gui.icons.fed') );
+						this.healthBar[i] = this.add( phaserGame.add.graphics ( x + statusBarMargin, y + iconHeight - statusBarHeight - statusBarMargin) );
+						this.shieldBar[i] = this.add( phaserGame.add.graphics ( x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1) );
+					}
+
+				}
+
+				MultiselectionGroup.prototype = Object.create(Phaser.Group.prototype);
+				MultiselectionGroup.prototype.constructor = MultiselectionGroup;
+
+				/**
+				 * Updating the list of selected units
+				 * @param  {array} entities [Collection of Entity instances]
+				 * @return {void}
+				 */
+				MultiselectionGroup.prototype.updateContent = function(entities){
+
+					var dataObject;
+
+					if (!entities){
+						throw 'Invalid DataObject has been passed!';
+					}
+
+					for (var i = this.icons.length - 1, dataObject; i >= 0; i--) {
+						// if the slot needs to be shown
+						if (i < entities.length && entities[i]){
+
+							dataObject = entities[i].getDataObject();
+
+							this.icons[i].visible = true;
+							this.icons[i].frame = entityIcons[dataObject.getId()].iconFrame;
+
+							this.renderBar(this.healthBar[i], dataObject.getHull() / dataObject.getMaxHull() );
+							if (dataObject.getMaxShield() > 0){
+								this.renderBar(this.shieldBar[i], dataObject.getShield() / dataObject.getMaxShield(), '0x475D86');
+							}
+
+						} else {
+
+							this.shieldBar[i].visible = false;
+							this.healthBar[i].visible = false;
+							this.icons[i].visible = false;
+							
+						}
+					};
+
+				};
+
+				MultiselectionGroup.prototype.renderBar = function( graphics, ratio, color ){
+					graphics.visible = true;
+					graphics.clear();
+					graphics.beginFill(color || Util.getColorFromRatio(ratio));
+					graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - statusBarMargin * 2, statusBarHeight);
+					graphics.endFill();
+				}
+
+				group = new MultiselectionGroup(phaserGame);
+				group.x = x;
+				group.y = y;
+
+				return group;				
+
+			}
+
 			F.prototype = {
 				
 				iconSprite: null,
@@ -697,23 +803,20 @@ define('GUI', ['Util'], function( Util ){
 
 					var entities = this.entityManager.getAllSelected();
 
-					// no entity is selected
-					if (entities.length === 0){
-
-						this.hide();
-
-					} else if (entities.length === 1) {
+					if (entities.length === 1) {
 
 						// show the panel for single selection
 						this.show();
 						this.displaySingleEntityScene(entities[0]);
 
-					} else {
+					} else if (entities.length > 1) {
 
 						// show the panel for multiple selection
 						this.show();
 						this.displayMultipleEntityScene(entities);
 
+					} else {
+						this.hide();
 					}
 
 				},
@@ -724,20 +827,11 @@ define('GUI', ['Util'], function( Util ){
 				 */
 				displaySingleEntityScene: function(entity){
 
-					var data;
+					this.attributeGroup.visible = true;
+					this.multiselectionGroup.visible = false;
 
-					if (!entity){
-						throw 'Invalid Entity object!';
-					}
-
-					data = entity.getDataObject();
-
-					// displaying the Splash Icon of the selected entity
-					this.iconSprite.frame = entityIcons[data.getId()].faceFrame;
-
-					// Updating the texts
-					this.attributeGroup.updateContent(data);
-
+					// Updating the texts + splash icon
+					this.attributeGroup.updateContent( entity.getDataObject() );
 				},
 
 				/**
@@ -745,10 +839,12 @@ define('GUI', ['Util'], function( Util ){
 				 * @return {array} entities Array of Entity instances
 				 */
 				displayMultipleEntityScene: function(entities){
+					// toggle between the single and multiselection panel
+					this.attributeGroup.visible = false;
+					this.multiselectionGroup.visible = true;
 
-					if (!entities){
-						throw 'Invalid Entity object!';
-					}
+					// updating the list of the selected entities
+					this.multiselectionGroup.updateContent(entities);
 
 				},				
 

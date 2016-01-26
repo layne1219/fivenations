@@ -380,7 +380,7 @@
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 15633,
+				"buffer_size": 15636,
 				"line_ending": "Unix"
 			}
 		},
@@ -396,26 +396,7 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 26037,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Preloader.js",
-			"settings":
-			{
-				"buffer_size": 4647,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "#! /usr/bin/env node\nvar jf = require('jsonfile'),\n	atlasJSON = '' + process.argv[2],\n	width = process.argv[3] || 300,\n	height = process.argv[4] || 300;\n\n// asynchronous version\njf.readFile(atlasJSON, function(err, obj) {\n	\n	var minOffsetX = 9999,\n		minOffsetY = 9999,\n		frame;\n\n	if (err){\n		console.error(err);\n	}\n	if (!obj.frames){\n		console.error('Invalid data structure!');\n	}\n\n	for (var key in obj.frames){\n		frame = obj.frames[key];\n 		minOffsetX = Math.min(minOffsetX, frame.spriteSourceSize.x);\n 		minOffsetY = Math.min(minOffsetY, frame.spriteSourceSize.y);		\n	}\n\n 	for (var key in obj.frames){\n 		frame = obj.frames[key];\n 		obj.frames[key].spriteSourceSize.x -= minOffsetX;\n 		obj.frames[key].spriteSourceSize.y -= minOffsetY; \n 		obj.frames[key].sourceSize.w = width;\n 		obj.frames[key].sourceSize.h = height;\n 		obj.frames[key].trimmed = false;		\n 	};\n\n 	console.log(JSON.stringify(obj));\n\n});",
-			"file": "bin/sprite-aligner/index.js",
-			"file_size": 901,
-			"file_write_time": 130977843299390839,
-			"settings":
-			{
-				"buffer_size": 906,
+				"buffer_size": 26146,
 				"line_ending": "Unix"
 			}
 		},
@@ -423,7 +404,7 @@
 			"file": "src/js/main.js",
 			"settings":
 			{
-				"buffer_size": 1589,
+				"buffer_size": 1590,
 				"line_ending": "Unix"
 			}
 		},
@@ -520,19 +501,23 @@
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
+		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Boot.js",
+		"/home/bence/dev/silversword/fivenations/src/js/UserKeyboard.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Player.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
+		"/home/bence/dev/silversword/fivenations/src/js/PlayerManager.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
+		"/home/bence/dev/silversword/fivenations/bin/sprite-aligner/index.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit02_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/orca.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
-		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
 		"/home/bence/dev/igt/tt-8-scatch",
 		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Player.js",
-		"/home/bence/dev/silversword/fivenations/src/js/PlayerManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
-		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
 		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c08.png",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c07.png",
@@ -552,19 +537,15 @@
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c06.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c07.json",
 		"/home/bence/dev/igt/tweenJS/.bowerrc",
-		"/home/bence/dev/silversword/fivenations/bin/sprite-aligner/index.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01_2.json",
 		"/home/bence/dev/silversword/fivenations/bin/sprite-aligner/package.json",
 		"/home/bence/dev/silversword/fivenations/bin/sprite-aligner/sprite-aligner.js",
 		"/home/bence/dev/silversword/fivenations/bin/sprite-aligner.js",
-		"/home/bence/dev/silversword/fivenations/src/js/UserKeyboard.js",
 		"/home/bence/dev/silversword/fivenations/src/js/InstanceManager.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/gui/GUI_element.png",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/hurricane.json",
 		"/home/bence/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/gui",
-		"/home/bence/dev/silversword/fivenations/src/js/Boot.js",
 		"/home/bence/dev/silversword/fivenations/src/index.html",
 		"/home/bence/dev/silversword/fivenations/src/css/main.css",
 		"/home/bence/dev/silversword/fivenations/src/css/fonts.css",
@@ -599,6 +580,25 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\"",
+			"anim",
+			"phaserGame",
+			"game",
+			"\"\"",
+			"\"\", ",
+			" \"\",",
+			"\"\"",
+			"updateContent",
+			"\"",
+			"up\",",
+			"\"",
+			"phaser_game",
+			"\"function\"",
+			"energy",
+			"getPower",
+			"new",
+			"\"",
+			"phaser_",
 			"fed_unit",
 			"unit",
 			"sm",
@@ -707,26 +707,7 @@
 			"font",
 			"BerlinSansFB-Reg",
 			"Bold",
-			"state",
-			"this.movement.state",
-			"setMovementState",
-			"drag",
-			"maxDrag",
-			"drag",
-			"maxTargetDragTreshold",
-			"angularVelocityHelper",
-			"this.data",
-			"entities",
-			"dataURL",
-			"targetDragTreshold",
-			"maxAcceleration",
-			"140",
-			"141",
-			"138",
-			"134",
-			"\"x\":135",
-			"\"y\":139",
-			"\"x\":137"
+			"state"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -744,7 +725,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -774,7 +755,7 @@
 						"translation.y": 315.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -783,15 +764,19 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15633,
+						"buffer_size": 15636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15463,
-								15463
+								4523,
+								4523
+							],
+							[
+								5203,
+								5203
 							]
 						],
 						"settings":
@@ -800,11 +785,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 5449.0,
+						"translation.x": -0.0,
+						"translation.y": 1609.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -831,10 +816,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2336.0,
+						"translation.y": 2133.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -843,15 +828,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 26037,
+						"buffer_size": 26146,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6577,
-								6577
+								15996,
+								15996
 							]
 						],
 						"settings":
@@ -859,87 +844,28 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 3731.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/js/Preloader.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4647,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								753,
-								753
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "bin/sprite-aligner/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 906,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								65,
-								65
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 12.0,
+						"translation.y": 8479.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 4,
 					"file": "src/js/main.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1589,
+						"buffer_size": 1590,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								179,
-								179
+								895,
+								895
 							]
 						],
 						"settings":
@@ -948,14 +874,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 5,
 					"file": "src/assets/images/gui/fed_icons.json",
 					"semi_transient": false,
 					"settings":
@@ -967,8 +893,8 @@
 						"selection":
 						[
 							[
-								15483,
-								15483
+								15264,
+								15264
 							]
 						],
 						"settings":
@@ -977,7 +903,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8764.0,
+						"translation.y": 9613.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
