@@ -355,8 +355,10 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         select: function(){
-        	this.selected = true;
-            this.eventDispatcher.dispatch('select');
+            if (this.entityManager.getAllSelected().length < this.entityManager.getMaxSelectableUnitNumber()){
+        	   this.selected = true;
+               this.eventDispatcher.dispatch('select');
+            }
         },
 
         unselect: function(){

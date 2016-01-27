@@ -12,7 +12,10 @@ define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Enti
 		entities = [],
 
 		// reference to a Phaser.Group
-		group;
+		group,
+
+		// Limit for number of selectable units by one multiselection
+		MAX_SELECTABLE_UNITS = 22;
 
 
 	function EntityManager(){
@@ -114,6 +117,10 @@ define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Enti
 				throw 'Fitst parameter must be a valid entity object!';
 			}
 			return entity.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
+		},
+
+		getMaxSelectableUnitNumber: function(){
+			return MAX_SELECTABLE_UNITS;
 		}
 
 	};
