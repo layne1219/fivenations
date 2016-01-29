@@ -74,9 +74,14 @@ define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Enti
 			entities = [];
 		},
 
-		unselectAll: function(){
+		/**
+		 * Unselect all entities expect the passed if it is not omitted
+		 * @param {object} [entity] [Entity instance that will be excluded from the selection]
+		 * @return {void} 
+		 */
+		unselectAll: function( excludedEntity ){
 			this.get().forEach(function(entity){
-				if (entity.isSelected()){
+				if (excludedEntity !== entity && entity.isSelected()){
 					entity.unselect();
 				}
 			});

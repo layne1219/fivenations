@@ -569,7 +569,7 @@ define('GUI', ['Util'], function( Util ){
 				this.attributeGroup = createAttributeGroup(0, 0, phaserGame);
 
 				// setting up the group for the icons showing up when it comes to multiselection
-				this.multiselectionGroup = createMultiselectionGroup(0, 5, phaserGame);
+				this.multiselectionGroup = createMultiselectionGroup(0, 5, phaserGame, this.entityManager);
 
 				this.group.add(this.attributeGroup);
 				this.group.add(this.multiselectionGroup);
@@ -580,7 +580,7 @@ define('GUI', ['Util'], function( Util ){
 				var group;
 
 				function TextGroup(game){
-					var args = [].slice.call(arguments)
+					var args = [].slice.call(arguments),
 						text = {
 							marginLeft: 132,
 							marginRight: 5,
@@ -678,7 +678,7 @@ define('GUI', ['Util'], function( Util ){
 			}
 
 
-			function createMultiselectionGroup(x, y, phaserGame){
+			function createMultiselectionGroup(x, y, phaserGame, entityManager){
 
 				var group,
 					iconWidth = 51,
@@ -687,15 +687,15 @@ define('GUI', ['Util'], function( Util ){
 					columns = 11,
 					rows = 2,
 					statusBarHeight = 3,
-					statusBarMargin = 2,
-					ratio;
+					statusBarMargin = 2;
 
-				function MultiselectionGroup(game){
+				function MultiselectionGroup(){
 					var args = [].slice.call(arguments),
 						i, x, y;
 
 					Phaser.Group.apply(this, args);
 
+					this.entities = [];
 					this.icons = [];
 					this.healthBar = [];
 					this.shieldBar = [];
@@ -705,9 +705,19 @@ define('GUI', ['Util'], function( Util ){
 						x = i % columns * ( iconWidth + margin );
 						y = Math.floor(i / columns) * ( iconHeight + margin );
 
-						this.icons[i] = this.add( phaserGame.add.sprite(x, y, 'gui.icons.fed') );
+						// StatusBars
 						this.healthBar[i] = this.add( phaserGame.add.graphics ( x + statusBarMargin, y + iconHeight - statusBarHeight - statusBarMargin) );
 						this.shieldBar[i] = this.add( phaserGame.add.graphics ( x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1) );
+						
+						// Icons
+						this.icons[i] = this.add( phaserGame.add.sprite(x, y, 'gui.icons.fed') );
+						this.icons[i].inputEnabled = true;
+						this.icons[i].events.onInputDown.add((function(idx){
+							return function(){
+								console.log(this.entities[idx]);
+								entityManager.unselectAll(this.entities[idx]);
+							};
+						})(i), this);
 					}
 
 				}
@@ -722,17 +732,20 @@ define('GUI', ['Util'], function( Util ){
 				 */
 				MultiselectionGroup.prototype.updateContent = function(entities){
 
-					var dataObject;
+					var dataObject,
+						i;
 
 					if (!entities){
-						throw 'Invalid DataObject has been passed!';
+						throw 'Invalid Array of Entity instances has been passed!';
 					}
 
-					for (var i = this.icons.length - 1, dataObject; i >= 0; i--) {
+					for (i = this.icons.length - 1; i >= 0; i--) {
 						// if the slot needs to be shown
 						if (i < entities.length && entities[i]){
 
 							dataObject = entities[i].getDataObject();
+
+							this.entities[i] = entities[i];
 
 							this.icons[i].visible = true;
 							this.icons[i].frame = entityIcons[dataObject.getId()].iconFrame;
@@ -744,12 +757,13 @@ define('GUI', ['Util'], function( Util ){
 
 						} else {
 
+							this.entities[i] = null;
 							this.shieldBar[i].visible = false;
 							this.healthBar[i].visible = false;
 							this.icons[i].visible = false;
 							
 						}
-					};
+					}
 
 				};
 
@@ -759,7 +773,7 @@ define('GUI', ['Util'], function( Util ){
 					graphics.beginFill(color || Util.getColorFromRatio(ratio));
 					graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - statusBarMargin * 2, statusBarHeight);
 					graphics.endFill();
-				}
+				};
 
 				group = new MultiselectionGroup(phaserGame);
 				group.x = x;
@@ -954,11 +968,14 @@ define('GUI', ['Util'], function( Util ){
 		 * @return {void} 
 		 */
 		function initPanel(){
+			// basic panel element
 			panel = phaserGame.add.image(0, 0, 'gui');
 			panel.frame = 64; // base element
 			panel.x = 0;
 			panel.y = ns.window.height - 222; // 222 is the height of the panel (look it up in the JSON when changed)
 			panel.fixedToCamera = true;
+			panel.hover = false;
+
 
 			// Setting up the Minimap and attacing to the Panel
 			minimap = new Minimap(map, entityManager);
@@ -1007,6 +1024,14 @@ define('GUI', ['Util'], function( Util ){
 				if (entityDetailsDisplay){
 					entityDetailsDisplay.update();
 				}
+			},
+
+			/**
+			 * Return a boolean value declaring whether the primary input is however the panel
+			 * @return {Boolean} [true if the primary input is over the panel sprite]
+			 */
+			isHover: function(){
+				return panel.hover;
 			}
 
 		};
