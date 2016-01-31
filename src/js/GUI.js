@@ -349,6 +349,43 @@ define('GUI', ['Util'], function( Util ){
 
 		})(),
 
+		Panel = (function(){
+
+			var spriteKey = 'gui',
+				frame = 64;
+
+			function F(){
+				var args = [].slice.call(arguments),
+					panel;
+
+				Phaser.Image.call(this, phaserGame, 0, ns.window.height - 222, spriteKey, frame);				
+				this.fixedToCamera = true;
+		
+			}
+
+			F.prototype = Object.create(Phaser.Image.prototype);
+			F.prototype.constructor = F;
+
+			/**
+			 * 	
+			 * Attach the Panel object to the a random Phaser.Game element
+			 * @param {object} panel Main GUI Group
+			 * @return {void}
+			 */
+			F.prototype.appendTo = function(parent, x, y){
+
+				if (!parent){
+					throw 'Invalid Phaser element object!';
+				}
+
+				parent.add(this);
+
+			};
+
+			return F;			
+
+		})(),
+
 		// --------------------------------------------------------------------------------------
 		// Status display for Entities
 		// --------------------------------------------------------------------------------------
@@ -934,7 +971,7 @@ define('GUI', ['Util'], function( Util ){
 			initClickAnimations();
 
 			// initialise the panel according to which element it should conceal
-			initPanel();
+			initGUIDisplayElements();
 		}
 
 		function initPhaserGroup(){
@@ -963,19 +1000,11 @@ define('GUI', ['Util'], function( Util ){
 			group.add(clickAnim);
 		}
 
-		/**
-		 * Initialise the basic panel for the ingame 
-		 * @return {void} 
-		 */
-		function initPanel(){
-			// basic panel element
-			panel = phaserGame.add.image(0, 0, 'gui');
-			panel.frame = 64; // base element
-			panel.x = 0;
-			panel.y = ns.window.height - 222; // 222 is the height of the panel (look it up in the JSON when changed)
-			panel.fixedToCamera = true;
-			panel.hover = false;
+		function initGUIDisplayElements(){
 
+			// Creating the Panel
+			panel = new Panel();
+			panel.appendTo(group);
 
 			// Setting up the Minimap and attacing to the Panel
 			minimap = new Minimap(map, entityManager);
@@ -983,13 +1012,8 @@ define('GUI', ['Util'], function( Util ){
 
 			// Setting up the EntityDetailsDisplay and linking it to the Panel
 			entityDetailsDisplay = new EntityDetailsDisplay(entityManager);
-			entityDetailsDisplay.appendTo(panel, 200, 110);
-
-			// adding to the GUI group to move all these elements to the top of the game scene
-			group.add(panel);
-
+			entityDetailsDisplay.appendTo(panel, 200, 110);		
 		}
-
 
 
 		GUI.prototype = {
@@ -1031,7 +1055,7 @@ define('GUI', ['Util'], function( Util ){
 			 * @return {Boolean} [true if the primary input is over the panel sprite]
 			 */
 			isHover: function(){
-				return panel.hover;
+				return userPointer.isHover(panel);
 			}
 
 		};

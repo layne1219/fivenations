@@ -88,8 +88,13 @@ define('Game', [
             // Unselecting units when clicking over an area with no entities underneath
             this.userPointer.on('leftbutton/down', (function(){
 
+                // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
+                if (GUI.getInstance().isHover()){
+                    return;
+                }
+
                 // If the user pointer isn't over the GUI area, nor any entities
-                if (!GUI.getInstance().isHover() && this.entityManager.getAllHover().length === 0){
+                if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
                 }
 

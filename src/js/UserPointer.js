@@ -101,16 +101,45 @@ define('UserPointer', ['Util'], function(Util){
 
 		isRightButtonDown: function(){
 			return phaserGame.input.mousePointer.rightButton.isDown;
-		}		
+		},
+
+		/**
+		 * Returning whether the mouse pointer is over the passed Phaser.Game.Sprite object
+		 * @param  {object}  sprite [Phaser.Game.Sprite]
+		 * @return {Boolean} [returns true if the mouse pointer is over the target item]
+		 */
+		isHover: function(sprite){
+			if (phaserGame.camera.x + phaserGame.input.mousePointer.x < sprite.x - sprite.offsetX){
+				return false;
+			}
+			if (phaserGame.camera.x + phaserGame.input.mousePointer.x > sprite.x - sprite.offsetX + sprite.width){
+				return false;
+			}
+			if (phaserGame.camera.y + phaserGame.input.mousePointer.y < sprite.y - sprite.offsetY){
+				return false;
+			}
+			if (phaserGame.camera.y + phaserGame.input.mousePointer.y > sprite.y - sprite.offsetY + sprite.height){
+				return false;
+			}					
+			return true;				
+		}
 
 	};
 
 	return {
 
+		/**
+		 * Passing the ultimate Phaser.Game object in order to access basic Phaser functionality  
+		 * @param {void}
+		 */
 		setGame: function(game){
 			phaserGame = game;
 		},
 
+		/**
+		 * Fetching the singleton instance of the UserPointer protoype
+		 * @return {object} UserPointer
+		 */
 		getInstance: function(){
 			if (!phaserGame){
 				throw 'Invoke setGame first to pass the Phaser Game entity!';
