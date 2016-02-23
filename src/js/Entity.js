@@ -99,13 +99,12 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         this.sprite = extendSprite.call(this, sprite);
 
         // adding the Selector object to highligh whether the unit is seleted or not
-        this.selector = GUI.addSelector(this);
+        this.selector = GUI.getInstance().addSelector(this);
 
         // adding the StatusDisplay object to show the current status 
         // of the entity's attributes
-        this.statusDisplay = GUI.addStatusDisplay(this);
+        this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
         
-
     }
 
 	Entity.prototype = {

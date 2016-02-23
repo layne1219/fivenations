@@ -5,8 +5,8 @@ window.addEventListener('load', function () {
 
 	// Game specific constants
 	ns.window = {
-		width: 800,
-		height: 600,
+		width: 1024,
+		height: 768,
 		canvasElmId: 'fivenations-game'
 	};
 

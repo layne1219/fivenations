@@ -349,6 +349,7 @@ define('GUI', ['Util'], function( Util ){
 
 		})(),
 
+		// Basic panel background element
 		Panel = (function(){
 
 			var spriteKey = 'gui',
@@ -919,7 +920,151 @@ define('GUI', ['Util'], function( Util ){
 
 			return F;
 
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// ControlPanel for Selected entities
+		// --------------------------------------------------------------------------------------
+		ControlPanelPage = (function(){
+
+			var COLUMNS = 5,
+				ROWS = 5,
+				ICON_WIDTH = 40,
+				ICON_HEIGHT = 40,
+				MARGIN = 0;
+
+			/**
+			 * Constructing an a ControlPanelPage that consists the clickable command buttons
+			 * @return {object} [ControlPanelPage]
+			 */
+			function ControlPanelPage(){
+				var args = [].slice.call(arguments);
+
+				// applying the inherited constructor function
+				Phaser.Group.apply(this, args);
+
+				// initialising the buttons
+				this.init();
+			}
+
+			// Making the prototype inherited from Phaser.Group prototype
+			ControlPanelPage.prototype = Object.create(Phaser.Group.prototype);
+			ControlPanelPage.prototype.constructor = ControlPanelPage;
+
+			/**
+			 * Setting up the table of command buttons
+			 * @return {void}
+			 */
+			ControlPanelPage.prototype.init = function(){
+				var i, x, y,
+					buttonNumber = ROWS * COLUMNS,
+					button;
+
+				this.buttons = [];
+
+				for (i = 0; i < buttonNumber ; i++) {
+					x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
+					y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
+
+					button = this.add( phaserGame.add.sprite(x, y, 'gui') );
+					button.frame = 65;
+
+					this.buttons.push( button );
+				}
+			};
+
+			return ControlPanelPage;
+
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// ControlPanel for Selected entities
+		// --------------------------------------------------------------------------------------
+		ControlPanel = (function(){
+
+			/**
+			 * Constructing an ControlPanel instance
+			 * @param {object} entityManager [reference to the singleton instance of EntityManager]
+			 */
+			function ControlPanel(entityManager){
+				var args = [].slice.call(arguments);
+
+				// applying the inherited constructor function
+				Phaser.Group.apply(this, args);				
+				
+				// initialising the pages and buttons
+				this.init();
+			}
+
+			// Making the prototype inherited from Phaser.Group prototype
+			ControlPanel.prototype = Object.create(Phaser.Group.prototype);
+			ControlPanel.prototype.constructor = ControlPanel;
+
+			ControlPanel.prototype.init = function() {
+				// we are creating two pages for all the possible controls
+				this.controlPanelPages = [
+					this.add( new ControlPanelPage(phaserGame) ),
+					this.add( new ControlPanelPage(phaserGame) )
+				];
+
+			};
+
+			/**
+			 * Appending the ControlPanel to the main Panel element
+			 * @param  {object} panel [Panel]
+			 * @param  {integer} x     [horizontal offset of the ControlPanel element on the Panel]
+			 * @param  {integer} y     [vertical offset of the ControlPanel element on the Panel]
+			 * @return {void}
+			 */
+			ControlPanel.prototype.appendTo = function(panel, x, y){
+
+					if (!panel){
+						throw 'Invalid Phaser.Sprite object!';
+					}
+
+					this.x = x;
+					this.y = y;
+					panel.addChild(this);					
+
+					this.panel = panel;
+			};
+
+			/**
+			 * Refresing the graphics objects according to the current values of 
+			 * the exposed abilities of the entity
+			 * @return {[void]}
+			 */
+			ControlPanel.prototype.update = function(){
+
+				var entities = this.entityManager.getAllSelected();
+
+				if (entities.length === 0) {
+					this.hide();
+					return;
+				}
+
+			};
+
+			/**
+			 * Making the ControlPanel visible
+			 * @return {[void]}
+			 */
+			ControlPanel.prototype.show = function(){
+				this.visible = true;
+			};
+
+			/**
+			 * Making the ControlPanel unvisible
+			 * @return {[void]}
+			 */
+			ControlPanel.prototype.hide = function(){
+				this.visible = false;
+			};
+
+			return ControlPanel;
+
 		})();				
+
 
 
 
@@ -930,22 +1075,6 @@ define('GUI', ['Util'], function( Util ){
 	return (function(){
 
 		var 
-			/**
-			 * Hiding sprite element
-			 * @return {void}
-			 */
-			hide = function(){
-				this.visible = false;
-			},
-
-			/**
-			 * Unhiding sprite element
-			 * @return {void}
-			 */
-			show = function(){
-				this.visible = true;
-			},
-
 			// reference to a Phaser.Group object that incorporate all the GUI elements
 			group,
 
@@ -957,6 +1086,9 @@ define('GUI', ['Util'], function( Util ){
 
 			// DataObjectProjector
 			entityDetailsDisplay,
+
+			// reference to the ControlPanel object
+			controlPanel,
 
 			// reference to a Phaser.Sprite object that displays the click animation
 			clickAnim,
@@ -992,8 +1124,8 @@ define('GUI', ['Util'], function( Util ){
 			['click-move', 'click-enemy', 'click-friendly'].forEach(function(animation){
 
 				anim = clickAnim.animations.add(animation, animations[animation]);
-				anim.onStart.add(show, clickAnim);
-				anim.onComplete.add(hide, clickAnim);
+				anim.onStart.add(function(){ this.visible = true; }, clickAnim);
+				anim.onComplete.add(function(){ this.visible = false; }, clickAnim);
 
 			});
 
@@ -1012,7 +1144,11 @@ define('GUI', ['Util'], function( Util ){
 
 			// Setting up the EntityDetailsDisplay and linking it to the Panel
 			entityDetailsDisplay = new EntityDetailsDisplay(entityManager);
-			entityDetailsDisplay.appendTo(panel, 200, 110);		
+			entityDetailsDisplay.appendTo(panel, 200, 110);
+
+			// ControlPanel
+			controlPanel = new ControlPanel(entityManager);
+			controlPanel.appendTo(panel, 815, 15);		
 		}
 
 
@@ -1048,6 +1184,26 @@ define('GUI', ['Util'], function( Util ){
 				if (entityDetailsDisplay){
 					entityDetailsDisplay.update();
 				}
+			},
+
+			/**
+			 * Linking the Selector object to a Entity
+			 * @param {Entity} entity 
+			 */
+			addSelector: function( entity ){
+				var selector = new Selector();
+				selector.appendTo( entity );
+				return selector;
+			},
+
+			/**
+			 * Linking the StatusDisplay object to a Entity
+			 * @param {Entity} entity 
+			 */
+			addStatusDisplay: function( entity ){
+				var statusDisplay = new StatusDisplay( entity );
+				statusDisplay.appendTo( entity );
+				return statusDisplay;
 			},
 
 			/**
@@ -1099,27 +1255,6 @@ define('GUI', ['Util'], function( Util ){
 			setUserPointer: function( _userPointer ){
 				userPointer = _userPointer;
 				return this;
-			},
-
-			/**
-			 * Linking the Selector object to a Entity
-			 * @param {Entity} entity 
-			 */
-			addSelector: function( entity ){
-				var selector = new Selector();
-				selector.appendTo( entity );
-				return selector;
-			},
-
-
-			/**
-			 * Linking the StatusDisplay object to a Entity
-			 * @param {Entity} entity 
-			 */
-			addStatusDisplay: function( entity ){
-				var statusDisplay = new StatusDisplay( entity );
-				statusDisplay.appendTo( entity );
-				return statusDisplay;
 			},
 
 			/**

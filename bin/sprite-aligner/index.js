@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 var jf = require('jsonfile'),
-	atlasJSON = '' + process.argv[2],
+	// default folder is the units folder for grabbing the atlas file
+	atlasJSON = '../../src/assets/images/units/' + process.argv[2],
 	width = process.argv[3] || 300,
 	height = process.argv[4] || 300;
 

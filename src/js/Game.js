@@ -116,6 +116,10 @@ define('Game', [
 
             }).bind(this));
 
+            this.userPointer.on('leftbutton/double', function(){
+                console.log('double clicked');
+            });
+
             // -----------------------------------------------------------------------
             //                              UserKeyboard
             // -----------------------------------------------------------------------
