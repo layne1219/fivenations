@@ -967,7 +967,7 @@ define('GUI', ['Util'], function( Util ){
 					y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
 					button = this.add( phaserGame.add.sprite(x, y, 'gui') );
-					button.frame = 65;
+					button.frame = 65 + Util.rnd(1, 15);
 
 					this.buttons.push( button );
 				}
@@ -1003,10 +1003,10 @@ define('GUI', ['Util'], function( Util ){
 			ControlPanel.prototype.init = function() {
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
-					this.add( new ControlPanelPage(phaserGame) ),
-					this.add( new ControlPanelPage(phaserGame) )
+					this.add( new ControlPanelPage(phaserGame) ), // main page of the controls
+					this.add( new ControlPanelPage(phaserGame) )  // sub page for extended controls like constructions
 				];
-
+				this.selectPage(0);
 			};
 
 			/**
@@ -1042,6 +1042,23 @@ define('GUI', ['Util'], function( Util ){
 					this.hide();
 					return;
 				}
+
+			};
+
+			/**
+			 * Displaying the page registered with the passed page Index 
+			 * @param  {integer} pageIdx Index of the page in the containing Array
+			 * @return {void}
+			 */
+			ControlPanel.prototype.selectPage = function(pageIdx){
+
+				for (var i = 0; i < this.controlPanelPages.length; i++) {
+					if (i === pageIdx){
+						this.controlPanelPages[i].visible = true;
+					} else {
+						this.controlPanelPages[i].visible = false;
+					}
+				};
 
 			};
 
