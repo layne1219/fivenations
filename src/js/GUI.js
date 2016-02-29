@@ -56,7 +56,8 @@ define('GUI', ['Util'], function( Util ){
 		entityIcons = {
 
 			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 53 },
-			'orca': { spriteId: 'gui.icons.fed', faceFrame: 68, iconFrame: 54 }
+			'orca': { spriteId: 'gui.icons.fed', faceFrame: 68, iconFrame: 54 },
+			'hailstorm': { spriteId: 'gui.icons.fed', faceFrame: 69, iconFrame: 55 }
 
 		},
 
@@ -925,6 +926,64 @@ define('GUI', ['Util'], function( Util ){
 		// --------------------------------------------------------------------------------------
 		// ControlPanel for Selected entities
 		// --------------------------------------------------------------------------------------
+		ControlPanelButton = (function(){
+
+			var GUI_FRAME_OFFSET = 65;
+
+			/**
+			 * Constructing an a ControlPanelPage that consists the clickable command buttons
+			 * @return {object} [ControlPanelPage]
+			 */
+			function ControlPanelButton(x, y){
+				var args = [].slice.call(arguments);
+
+				// applying the inherited constructor function
+				Phaser.Sprite.call(this, phaserGame, x, y, 'gui');
+
+				// initialising the buttons
+				this.init();
+			}
+
+			// Making the prototype inherited from Phaser.Group prototype
+			ControlPanelButton.prototype = Object.create(Phaser.Sprite.prototype);
+			ControlPanelButton.prototype.constructor = ControlPanelButton;
+
+			/**
+			 * Adding the Sprite object to the Game stage
+			 * @return {void}
+			 */
+			ControlPanelButton.prototype.init = function(){
+				phaserGame.add.existing(this);
+				this.frame = GUI_FRAME_OFFSET;
+			};
+
+			/**
+			 * Setting the ID of the button which determines what the click callback will do
+			 * @return {void}
+			 */
+			ControlPanelButton.prototype.setId = function(id){
+				this.id = id;
+				this.frame = id + GUI_FRAME_OFFSET;
+			};			
+
+			/**
+			 * Updating the button based on the passed entities
+			 * @param  {object} entities
+			 * @return {void}
+			 */
+			ControlPanelButton.prototype.update = function(entities){
+				if (!entities){
+					return;
+				}
+			};
+
+			return ControlPanelButton;
+
+		})(),
+
+		// --------------------------------------------------------------------------------------
+		// ControlPanel for Selected entities
+		// --------------------------------------------------------------------------------------
 		ControlPanelPage = (function(){
 
 			var COLUMNS = 5,
@@ -966,10 +1025,13 @@ define('GUI', ['Util'], function( Util ){
 					x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
 					y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
-					button = this.add( phaserGame.add.sprite(x, y, 'gui') );
-					button.frame = 65 + Util.rnd(1, 15);
+					this.buttons.push( this.add( new ControlPanelButton( x, y )));
+				}
+			};
 
-					this.buttons.push( button );
+			ControlPanelPage.prototype.update = function(entities){
+				if (!entities){
+					return;
 				}
 			};
 
@@ -1003,9 +1065,10 @@ define('GUI', ['Util'], function( Util ){
 			ControlPanel.prototype.init = function() {
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
-					this.add( new ControlPanelPage(phaserGame) ), // main page of the controls
-					this.add( new ControlPanelPage(phaserGame) )  // sub page for extended controls like constructions
+					this.add( new ControlPanelPage(phaserGame) ), // main page for the major control buttons
+					this.add( new ControlPanelPage(phaserGame) )  // a sub page for extended controls like constructions
 				];
+				// make the first page visible
 				this.selectPage(0);
 			};
 
@@ -1058,7 +1121,9 @@ define('GUI', ['Util'], function( Util ){
 					} else {
 						this.controlPanelPages[i].visible = false;
 					}
-				};
+				}
+
+				this.selectedPageIndex = pageIdx;
 
 			};
 

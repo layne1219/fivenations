@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"control",
+				"controlPanelPages"
+			],
+			[
 				"dis",
 				"dispatch"
 			],
@@ -440,7 +444,7 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 34301,
+				"buffer_size": 34878,
 				"line_ending": "Unix"
 			}
 		},
@@ -640,6 +644,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"visible",
 			"controlPanelPages",
 			"appendTo",
 			"controlPanelPages",
@@ -766,8 +771,7 @@
 			"100",
 			"initMinimap",
 			"game",
-			"type",
-			"group"
+			"type"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -824,15 +828,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 34301,
+						"buffer_size": 34878,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27951,
-								27951
+								28215,
+								28215
 							]
 						],
 						"settings":
@@ -841,7 +845,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 14629.0,
+						"translation.y": 14809.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -929,7 +933,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},

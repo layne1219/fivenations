@@ -1,0 +1,27 @@
+{
+	"id": "hailstorm",
+	"name": "Hailstorm",
+	"type": "Cruiser",
+	"hull": 400,
+	"shield": 150,
+	"armor": 3,
+	"power": 0, 
+	"hangar": 4,
+	"speed": 25,
+	"maneuverability": 25,
+	"vision": 100,
+	"weapons": [ 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 400,
+	"silicium": 250,
+	"energy": 400,
+	"uranium": 0,
+	"space": 10,
+	"buildingTime": 30,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 130,
+		"height": 100
+	} 
+}

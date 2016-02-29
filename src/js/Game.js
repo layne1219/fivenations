@@ -159,7 +159,7 @@ define('Game', [
             // TENTATIVE CODE SNIPPET
             for (var i = 25; i >= 0; i--) {
                 this.entityManager.add({
-                    id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
+                    id: Util.rnd(1, 2) === 1 ? 'hailstorm' : 'orca',
                     team: 1//Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
             }
