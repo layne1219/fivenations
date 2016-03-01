@@ -163,19 +163,19 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         moveTo: function(targetX, targetY){
             var x = this.sprite.x,
                 y = this.sprite.y,
-                distance = Phaser.Math.distance(x, y, targetX, targetY);
+                distance = Phaser.Math.distance(x, y, targetX, targetY),
+                rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
 
             this.movement.targetX = targetX;
             this.movement.targetY = targetY;
             this.movement.targetInitialDistance = distance;
-            this.movement.targetAngle = Math.atan2(targetY - y, targetX - x);
             
-            this.rotation.calculatedAngle = Phaser.Math.radToDeg(this.movement.targetAngle);
+            this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetY - y, targetX - x));
             if (this.rotation.calculatedAngle < 0){
             	this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
             }
             this.rotation.angularVelocityHelper = 0;
-            this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + 12) % this.rotation.maxAngleCount;            
+            this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;            
 
         	this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
         	this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
@@ -185,6 +185,10 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.resetEffects();
+            if (this.movement.velocity > 0){
+                this.addEffect(this.stopping);
+                this.addEffect(this.resetMovement);
+            }
             this.addEffect(this.rotateToTarget);
             this.addEffect(this.accelerateToTarget);
             this.addEffect(this.moveToTarget);
@@ -226,14 +230,13 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         stopping: function(){
 
             this.movement.acceleration = -this.movement.maxAcceleration;
-
             return this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0;            
-        },        
+        }, 
 
         resetMovement: function(){
 
             this.movement.acceleration = 0;
-            this.movement.velocity = 0;
+            this.movement.velocity = 0;           
             this.rotation.angularVelocity = 0;
 
             this.eventDispatcher.dispatch('stop', this);
@@ -266,7 +269,6 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.movement.distance = this.game.physics.arcade.distanceToXY(this.sprite, this.movement.targetX, this.movement.targetY);
             this.movement.distanceInverse = this.movement.targetInitialDistance - this.movement.distance;
             this.movement.distanceFromOrigin = this.game.physics.arcade.distanceToXY(this.sprite, this.movement.originX, this.movement.originY);
-            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);            
             
             if (this.movement.acceleration){
                 this.movement.velocity += this.movement.acceleration * this.game.time.physicsElapsed;
@@ -302,10 +304,15 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         */
         updateRotation: function(){
 
+            if (this.movement.velocity > 0){
+                return;
+            }
+
         	if (this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle){
         		return;
         	}
 
+            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);            
         	this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
 
         	this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;

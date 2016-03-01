@@ -10,7 +10,8 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations,
-        gui;
+        gui,
+        unit, unit2;
 
     function Game() {}    
 
@@ -77,11 +78,6 @@ define('Game', [
                     // put the click animation to the game scene
                     this.GUI.putClickAnim(x, y);
                 }
-
-                if (gui.frame > 0){
-                    gui.frame--;
-                }
-                console.log(gui.frame);
                     
             }).bind(this));
 
@@ -96,10 +92,7 @@ define('Game', [
                 // If the user pointer isn't over the GUI area, nor any entities
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
-                }
-
-                gui.frame++;
-                console.log(gui.frame);  
+                } 
 
             }).bind(this));
 
@@ -143,9 +136,9 @@ define('Game', [
                           .setUserPointer(this.userPointer)
                           .getInstance();
 
-            gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
+            //gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
             //gui.visible = false;
-            gui.frame = 15;
+            //gui.frame = 15;
 
             // -----------------------------------------------------------------------
             //                              Physic engine
@@ -157,12 +150,28 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 25; i >= 0; i--) {
+            /*for (var i = 25; i >= 0; i--) {
                 this.entityManager.add({
                     id: Util.rnd(1, 2) === 1 ? 'hailstorm' : 'orca',
                     team: 1//Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
-            }
+            }*/
+
+            this.entityManager.add({
+                id: "stgeorge",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "avenger",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "avenger2",
+                team: 1
+            });                        
+
             this.entityManager.get().forEach(function(entity){
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
             });

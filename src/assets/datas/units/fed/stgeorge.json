@@ -1,0 +1,27 @@
+{
+	"id": "stgeorge",
+	"name": "St. George",
+	"type": "Carrier",
+	"hull": 1800,
+	"shield": 200,
+	"armor": 6,
+	"power": 0, 
+	"hangar": 30,
+	"speed": 15,
+	"maneuverability": 10,
+	"vision": 70,
+	"weapons": [ 5, 3, 3, 6, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 1200,
+	"silicium": 500,
+	"energy": 1100,
+	"uranium": 75,
+	"space": 30,
+	"buildingTime": 60,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 180,
+		"height": 146
+	} 
+}

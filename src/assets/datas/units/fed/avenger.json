@@ -1,0 +1,27 @@
+{
+	"id": "avenger",
+	"name": "Avenger",
+	"type": "Battleship",
+	"hull": 1400,
+	"shield": 400,
+	"armor": 5,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 20,
+	"maneuverability": 20,
+	"vision": 70,
+	"weapons": [ 5, 2, 2, 2, 2, 7, 7, 3, 3, 0, 0, 0 ],
+	"titanium": 1600,
+	"silicium": 800,
+	"energy": 1000,
+	"uranium": 60,
+	"space": 30,
+	"buildingTime": 60,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 166,
+		"height": 142
+	} 
+}

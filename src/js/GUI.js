@@ -57,7 +57,10 @@ define('GUI', ['Util'], function( Util ){
 
 			'hurricane': { spriteId: 'gui.icons.fed', faceFrame: 67, iconFrame: 53 },
 			'orca': { spriteId: 'gui.icons.fed', faceFrame: 68, iconFrame: 54 },
-			'hailstorm': { spriteId: 'gui.icons.fed', faceFrame: 69, iconFrame: 55 }
+			'hailstorm': { spriteId: 'gui.icons.fed', faceFrame: 69, iconFrame: 55 },
+			'stgeorge': { spriteId: 'gui.icons.fed', faceFrame: 70, iconFrame: 56 },
+			'avenger': { spriteId: 'gui.icons.fed', faceFrame: 71, iconFrame: 57 },
+			'avenger2': { spriteId: 'gui.icons.fed', faceFrame: 72, iconFrame: 58 }			
 
 		},
 

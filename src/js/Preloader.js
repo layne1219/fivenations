@@ -22,9 +22,27 @@ define('Preloader', function() {
         hailstorm: {
             preloading: true,
             spriteURL: 'assets/images/units/fed/fed_unit03_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit03_c01.json',
+            atlasURL: 'assets/images/units/fed/fed_unit04_c01.json',
             dataURL: 'assets/datas/units/fed/hailstorm.json'
-        }      
+        },
+        stgeorge: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_unit04_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_unit04_c01.json',
+            dataURL: 'assets/datas/units/fed/stgeorge.json'
+        },
+        avenger: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_unit05_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_unit05_c01.json',
+            dataURL: 'assets/datas/units/fed/avenger.json'
+        },
+        avenger2: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_unit06_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_unit06_c01.json',
+            dataURL: 'assets/datas/units/fed/avenger2.json'
+        }                             
     };
 
     /**
