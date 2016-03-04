@@ -45,8 +45,8 @@ define('GUI', ['Util'], function( Util ){
 
 		// size ranges for different spirtes
 		categories = {
-			'big': [100, 199],
-			'extrabig': [200, 999],
+			'big': [100, 149],
+			'extrabig': [150, 999],
 			'medium': [50, 99],
 			'small': [0, 49]
 		},

@@ -133,7 +133,8 @@ define('DataObject', function(){
 
 			getHeight: function(){
 				return data.dimensions.height;
-			}		
+			}
+
 		};
 	}
 

@@ -136,12 +136,6 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         isEffectApplicable: function(effect){
-            // cycling through the set of effects being applied at the time of the invokation 
-            for (var i = this.effects.length - 1; i >= 0; i--) {
-                if (effect === this.effects[i][0]){
-                    return false;
-                }
-            }
             // Determining whether or not it's a valid function
             if ('function' !== typeof effect){
                 return false;
@@ -185,7 +179,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.resetEffects();
-            if (this.movement.velocity > 0){
+            if (this.movement.velocity > 0 && this.hasSlowManeuverability()){
                 this.addEffect(this.stopping);
                 this.addEffect(this.resetMovement);
             }
@@ -194,6 +188,8 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.addEffect(this.moveToTarget);
             this.addEffect(this.stopping);
             this.addEffect(this.resetMovement);
+
+            console.log(this.effects);
 
        },
 
@@ -216,14 +212,12 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         moveToTarget: function () {
 
             this.movement.acceleration = 0;
-
             return this.movement.distance > this.movement.targetDragTreshold;
         },     
 
         accelerateToTarget: function(){
             
             this.movement.acceleration = this.movement.maxAcceleration;
-
             return this.movement.distanceInverse < this.movement.targetDragTreshold && this.movement.velocity < this.movement.maxVelocity;
         },
 
@@ -231,6 +225,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
 
             this.movement.acceleration = -this.movement.maxAcceleration;
             return this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0;            
+        
         }, 
 
         resetMovement: function(){
@@ -304,7 +299,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         */
         updateRotation: function(){
 
-            if (this.movement.velocity > 0){
+            if (this.movement.velocity > 0 && this.hasSlowManeuverability()){
                 return;
             }
 
@@ -378,6 +373,10 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
 
         isHover: function(){
         	return this.sprite.hover;
+        },
+
+        hasSlowManeuverability: function(){
+            return this.getDataObject().getManeuverability() < 25;
         },
 
         isInside: function(obj){
