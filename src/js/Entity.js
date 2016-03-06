@@ -4,10 +4,11 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         /**
          * Initialising the Phaser.Sprite object with all the additional child elements 
          * such as selector and property bars 
-         * @param {object} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
-         * @param {object} 
+         * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
+         * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
+         * @return {[object]} 
          */
-        extendSprite = function(sprite){
+        extendSprite = function(sprite, dataObject){
 
             // actiavting the ARCADE physics on the sprite object
             this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -41,6 +42,9 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             // coords
             sprite.x = 0;
             sprite.y = 0;
+
+            // reducing the hitArea according the one specified in the realated DataObject
+            sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
 
             return sprite;
         };
@@ -96,7 +100,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         };
 
         // persisting the sprite object and attaching it to the Entity object 
-        this.sprite = extendSprite.call(this, sprite);
+        this.sprite = extendSprite.call(this, sprite, dataObject);
 
         // adding the Selector object to highligh whether the unit is seleted or not
         this.selector = GUI.getInstance().addSelector(this);
@@ -188,8 +192,6 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.addEffect(this.moveToTarget);
             this.addEffect(this.stopping);
             this.addEffect(this.resetMovement);
-
-            console.log(this.effects);
 
        },
 

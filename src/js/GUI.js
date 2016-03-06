@@ -60,7 +60,15 @@ define('GUI', ['Util'], function( Util ){
 			'hailstorm': { spriteId: 'gui.icons.fed', faceFrame: 69, iconFrame: 55 },
 			'stgeorge': { spriteId: 'gui.icons.fed', faceFrame: 70, iconFrame: 56 },
 			'avenger': { spriteId: 'gui.icons.fed', faceFrame: 71, iconFrame: 57 },
-			'avenger2': { spriteId: 'gui.icons.fed', faceFrame: 72, iconFrame: 58 }			
+			'avenger2': { spriteId: 'gui.icons.fed', faceFrame: 72, iconFrame: 58 },
+			'icarus': { spriteId: 'gui.icons.fed', faceFrame: 73, iconFrame: 59 },
+			'engineershuttle': { spriteId: 'gui.icons.fed', faceFrame: 74, iconFrame: 60 },
+			'kutuzov': {spriteId: 'gui.icons.fed', faceFrame: 75, iconFrame: 61 },
+			'pasteur': {spriteId: 'gui.icons.fed', faceFrame: 76, iconFrame: 62 },	
+			'dresda': {spriteId: 'gui.icons.fed', faceFrame: 77, iconFrame: 63 },
+			'crow': {spriteId: 'gui.icons.fed', faceFrame: 78, iconFrame: 64 },
+			'teller': {spriteId: 'gui.icons.fed', faceFrame: 79, iconFrame: 65 },	
+			'nuclearmissile': {spriteId: 'gui.icons.fed', faceFrame: 80, iconFrame: 66 }			
 
 		},
 

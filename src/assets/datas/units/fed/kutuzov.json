@@ -1,0 +1,27 @@
+{
+	"id": "kutuzov",
+	"name": "Kutuzov",
+	"type": "Expansionist",
+	"hull": 600,
+	"shield": 0,
+	"armor": 4,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 25,
+	"maneuverability": 20,
+	"vision": 50,
+	"weapons": [ 1, 1, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 800,
+	"silicium": 300,
+	"energy": 500,
+	"uranium": 0,
+	"space": 10,
+	"buildingTime": 25,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 126,
+		"height": 112
+	} 
+}

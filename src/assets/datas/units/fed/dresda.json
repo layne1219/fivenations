@@ -1,0 +1,27 @@
+{
+	"id": "dresda",
+	"name": "Dresda",
+	"type": "Carrier",
+	"hull": 900,
+	"shield": 300,
+	"armor": 4,
+	"power": 0, 
+	"hangar": 15,
+	"speed": 20,
+	"maneuverability": 15,
+	"vision": 70,
+	"weapons": [ 7, 7, 5, 16, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 1000,
+	"silicium": 500,
+	"energy": 1000,
+	"uranium": 25,
+	"space": 25,
+	"buildingTime": 50,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 129,
+		"height": 113
+	} 
+}

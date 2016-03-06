@@ -1,0 +1,27 @@
+{
+	"id": "nuclearmissile",
+	"name": "Nuclear Missile",
+	"type": "Special",
+	"hull": 25,
+	"shield": 0,
+	"armor": 0,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 75,
+	"maneuverability": 25,
+	"vision": 10,
+	"weapons": [ 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 10,
+	"silicium": 10,
+	"energy": 250,
+	"uranium": 80,
+	"space": 0,
+	"buildingTime": 15,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 58,
+		"height": 48
+	} 
+}

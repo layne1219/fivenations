@@ -1,0 +1,27 @@
+{
+	"id": "teller",
+	"name": "Teller",
+	"type": "Special Cruiser",
+	"hull": 200,
+	"shield": 50,
+	"armor": 0,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 35,
+	"maneuverability": 15,
+	"vision": 50,
+	"weapons": [ 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 200,
+	"silicium": 200,
+	"energy": 200,
+	"uranium": 0,
+	"space": 8,
+	"buildingTime": 25,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 96,
+		"height": 80
+	} 
+}

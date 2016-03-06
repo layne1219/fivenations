@@ -1,0 +1,27 @@
+{
+	"id": "crow",
+	"name": "Crow",
+	"type": "Fighter",
+	"hull": 40,
+	"shield": 20,
+	"armor": 0,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 50,
+	"maneuverability": 50,
+	"vision": 40,
+	"weapons": [ 17, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 70,
+	"silicium": 10,
+	"energy": 50,
+	"uranium": 0,
+	"space": 1,
+	"buildingTime": 8,
+	"directions": 16,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 36,
+		"height": 34
+	} 
+}

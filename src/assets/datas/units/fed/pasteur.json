@@ -1,0 +1,27 @@
+{
+	"id": "pasteur",
+	"name": "Pasteur",
+	"type": "Cruiser",
+	"hull": 200,
+	"shield": 180,
+	"armor": 1,
+	"power": 250, 
+	"hangar": 0,
+	"speed": 30,
+	"maneuverability": 20,
+	"vision": 50,
+	"weapons": [ 13, 14, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 150,
+	"silicium": 150,
+	"energy": 350,
+	"uranium": 0,
+	"space": 8,
+	"buildingTime": 20,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"dimensions": {
+		"width": 86,
+		"height": 80
+	} 
+}

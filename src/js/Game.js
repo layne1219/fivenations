@@ -65,14 +65,17 @@ define('Game', [
                     x = camera.x + mousePointer.x,
                     y = camera.y + mousePointer.y,
 
+                    rnd,
+
                     entities = this.entityManager.getAllSelected().filter(function(entity){
                         return EntityManager.getInstance().isEntityControlledByUser(entity);
                     });
 
                 // send the selected units to the specified coordinates
                 if (entities.length > 0){
+                    rnd = entities.length === 1 ? 0 : (entities.length * 4);
                     entities.forEach(function(entity){
-                        entity.moveTo(x, y);
+                        entity.moveTo(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
                     });
 
                     // put the click animation to the game scene
@@ -150,12 +153,22 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            /*for (var i = 25; i >= 0; i--) {
+            for (var i = 25; i >= 0; i--) {
                 this.entityManager.add({
-                    id: Util.rnd(1, 2) === 1 ? 'hailstorm' : 'orca',
+                    id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
                     team: 1//Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
-            }*/
+            }
+
+            this.entityManager.add({
+                id: "orca",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "hailstorm",
+                team: 1
+            });            
 
             this.entityManager.add({
                 id: "stgeorge",
@@ -170,7 +183,37 @@ define('Game', [
             this.entityManager.add({
                 id: "avenger2",
                 team: 1
-            });                        
+            });
+
+            this.entityManager.add({
+                id: "icarus",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "kutuzov",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "teller",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "dresda",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "crow",
+                team: 1
+            });
+
+            this.entityManager.add({
+                id: "engineershuttle",
+                team: 1
+            });                                             
 
             this.entityManager.get().forEach(function(entity){
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));

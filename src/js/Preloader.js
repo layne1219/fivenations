@@ -1,49 +1,8 @@
-define('Preloader', function() {
+define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
 'use strict';
 
     var preloader,
         ns = window.fivenations;
-
-    // Entity details
-    // const like object to describe all the entities participating in the gameplay 
-    ns.entities = ns.entities || {
-        hurricane: {
-            preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit01_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit01_c01.json',
-            dataURL: 'assets/datas/units/fed/hurricane.json'
-        },
-        orca: {
-            preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit02_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit02_c01.json',
-            dataURL: 'assets/datas/units/fed/orca.json'
-        },
-        hailstorm: {
-            preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit03_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit04_c01.json',
-            dataURL: 'assets/datas/units/fed/hailstorm.json'
-        },
-        stgeorge: {
-            preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit04_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit04_c01.json',
-            dataURL: 'assets/datas/units/fed/stgeorge.json'
-        },
-        avenger: {
-            preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit05_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit05_c01.json',
-            dataURL: 'assets/datas/units/fed/avenger.json'
-        },
-        avenger2: {
-            preloading: true,
-            spriteURL: 'assets/images/units/fed/fed_unit06_c{color}.png',
-            atlasURL: 'assets/images/units/fed/fed_unit06_c01.json',
-            dataURL: 'assets/datas/units/fed/avenger2.json'
-        }                             
-    };
 
     /**
      * Private function to set up all the assets needs to be loaded before the game starts
@@ -53,7 +12,7 @@ define('Preloader', function() {
     function loadResources(preloader) {
         loadGUI(preloader);
         loadStarfield(preloader);
-        loadEntities(preloader);
+        preloaderEntities.load(preloader);
     }
 
     /**
@@ -83,35 +42,7 @@ define('Preloader', function() {
         preloader.load.image('starfield.star.fast-2', 'assets/images/starfield/star-f-1.png');
         preloader.load.image('starfield.star.fast-3', 'assets/images/starfield/star-f-1.png');        
     }
-
-    /**
-     * Loading all the correspondant resources for the entities listed in the private *entities* object
-     * @param {object} [preloader] Preloader object defined below
-     * @return {void}
-     */
-    function loadEntities(preloader){
-
-        Object.keys(ns.entities).forEach(function(key){
-            var spriteURL,
-                spriteKey,
-                teamNumber = 8;
-
-            if (!ns.entities[key].preloading){
-                return;
-            }
-
-            for (var i = teamNumber; i >= 1; i--) {
-                spriteURL = ns.entities[key].spriteURL.replace('{color}', i > 10 ? i : ('0' + i));
-                spriteKey = [key, i].join('-');
-                preloader.load.atlasJSONHash(spriteKey, spriteURL, ns.entities[key].atlasURL);
-            }
-
-            preloader.load.json(key, ns.entities[key].dataURL);   
-        }, preloader); 
-
-    }    
-
-
+    
     /**
      * Preloader object used for asyncroniously download assets for the game
      */
