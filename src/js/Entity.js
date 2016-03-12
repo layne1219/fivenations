@@ -24,12 +24,25 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
 
             // input events registered on the sprite object
             sprite.events.onInputDown.add(function(){
+                var now;
                 if (UserPointer.getInstance().isLeftButtonDown()){
                     // If the user holds SHIFT we will extend the number of selected entities
                     if (!UserKeyboard.getInstance().isDown( Phaser.KeyCode.SHIFT )){
                         this.entityManager.unselectAll();
                     }
                     this.select();
+
+                    now = new Date().getTime();
+                    if (now - this.lastClickTime < 500){
+                        this.entityManager.get().filter(function(entity){
+                            return entity.getDataObject().getId() === dataObject.getId();
+                        }).forEach(function(entity){
+                            entity.select();
+                        });
+                    }
+
+                    // this needs to be attached to the individual sprite instance
+                    this.lastClickTime = now;
                 }
             }, this);
             sprite.events.onInputOut.add(function(){
