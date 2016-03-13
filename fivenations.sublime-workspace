@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"las",
+				"lastClick"
+			],
+			[
 				"ent",
 				"entities"
 			],
@@ -480,40 +484,8 @@
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 16391,
+				"buffer_size": 16964,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/main.js",
-			"settings":
-			{
-				"buffer_size": 1591,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/images/units/fed/fed_unit03_c01.json",
-			"settings":
-			{
-				"buffer_size": 7885,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/js/Preloader.Entities.js",
-			"settings":
-			{
-				"buffer_size": 4951,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/images/units/fed/fed_unit02_c01.json",
-			"settings":
-			{
-				"buffer_size": 8110,
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -597,17 +569,19 @@
 		"/home/bence/dev/silversword/fivenations/src/assets",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/gui",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/units",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/airchar/seatgrabber/index.js",
+		"/home/bence/dev/airchar/seatgrabber/package.json",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
+		"/home/bence/dev/silversword/fivenations/src/js/main.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit02_c01.json",
+		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/weapons",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/engineershuttle.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/nuclearmissile.json",
 		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/icarus.json",
@@ -615,14 +589,11 @@
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/avenger.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/stgeorge.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/avenger2.json",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c01.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/hailstorm.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/hailstorm.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
-		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/gui/fed_icons.json",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Boot.js",
@@ -630,7 +601,6 @@
 		"/home/bence/dev/silversword/fivenations/src/js/Player.js",
 		"/home/bence/dev/silversword/fivenations/src/js/PlayerManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit02_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/orca.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
@@ -696,6 +666,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"filter",
 			"moveTo",
 			"'",
 			"maxTargetDragTreshold",
@@ -822,8 +793,7 @@
 			"entityProjector",
 			"EntityDetailsDisplay",
 			"EntityProjector",
-			"getMouseCoords",
-			"verticalOffset"
+			"getMouseCoords"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -841,7 +811,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -868,10 +838,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 293.0,
+						"translation.y": 1238.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -887,8 +857,8 @@
 						"selection":
 						[
 							[
-								7620,
-								7620
+								7669,
+								7669
 							]
 						],
 						"settings":
@@ -897,10 +867,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 41.0,
-						"translation.y": 3780.0,
+						"translation.y": 3915.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -930,7 +900,7 @@
 						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -946,8 +916,8 @@
 						"selection":
 						[
 							[
-								2954,
-								2954
+								2839,
+								2839
 							]
 						],
 						"settings":
@@ -957,10 +927,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 656.0,
+						"translation.y": 716.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -969,15 +939,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16391,
+						"buffer_size": 16964,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8905,
-								8905
+								1582,
+								1582
 							]
 						],
 						"settings":
@@ -987,129 +957,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2884.0,
+						"translation.y": 184.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/js/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1591,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1354,
-								1354
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 438.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/assets/images/units/fed/fed_unit03_c01.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7885,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7885,
-								7885
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 3,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/js/Preloader.Entities.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4951,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								916,
-								916
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/assets/images/units/fed/fed_unit02_c01.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8110,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 3,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

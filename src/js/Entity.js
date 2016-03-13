@@ -1,6 +1,8 @@
 define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, UserKeyboard, UserPointer, Util){
 	
     var 
+        ns = window.fivenations,
+
         /**
          * Initialising the Phaser.Sprite object with all the additional child elements 
          * such as selector and property bars 
@@ -24,7 +26,8 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
 
             // input events registered on the sprite object
             sprite.events.onInputDown.add(function(){
-                var now;
+                var now,
+                    game = this.game;
                 if (UserPointer.getInstance().isLeftButtonDown()){
                     // If the user holds SHIFT we will extend the number of selected entities
                     if (!UserKeyboard.getInstance().isDown( Phaser.KeyCode.SHIFT )){
@@ -35,6 +38,14 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
                     now = new Date().getTime();
                     if (now - this.lastClickTime < 500){
                         this.entityManager.get().filter(function(entity){
+                            // If the entity is off screen we need to exclude
+                            if (!Util.between(sprite.x - game.camera.x, 0, ns.window.width){
+                                return false;
+                            }
+                            if (!Util.between(sprite.y - game.camera.y, 0, ns.window.height){
+                                return false;
+                            }
+                            // we need to include only the indentical entities                           
                             return entity.getDataObject().getId() === dataObject.getId();
                         }).forEach(function(entity){
                             entity.select();
