@@ -38,11 +38,12 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
                     now = new Date().getTime();
                     if (now - this.lastClickTime < 500){
                         this.entityManager.get().filter(function(entity){
+                            console.log(entity.getSprite().x - game.camera.x);
                             // If the entity is off screen we need to exclude
-                            if (!Util.between(sprite.x - game.camera.x, 0, ns.window.width){
+                            if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)){
                                 return false;
                             }
-                            if (!Util.between(sprite.y - game.camera.y, 0, ns.window.height){
+                            if (!Util.between(entity.getSprite().y - game.camera.y, 0, ns.window.height)){
                                 return false;
                             }
                             // we need to include only the indentical entities                           
@@ -121,6 +122,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             angularVelocity: 0,
             angularVelocityHelper: 0,
             maxAngularVelocity: dataObject.getManeuverability(),
+            framePadding: (dataObject.getAnimType().length && (dataObject.getAnimType().length + 1)) || 1
         };
 
         // persisting the sprite object and attaching it to the Entity object 
@@ -347,7 +349,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         	}
 
         	// set the frame of the sprite according to the calculated angularRotation
-        	this.sprite.frame = this.rotation.currentConsolidatedAngle;
+        	this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
         },
 
         /**
