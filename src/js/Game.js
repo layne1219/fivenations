@@ -27,6 +27,13 @@ define('Game', [
             this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); };
 
             // -----------------------------------------------------------------------
+            //                                  Graphics
+            // -----------------------------------------------------------------------
+            // Graphics object gathering functonality that assist in rendering
+            this.graphics = Graphics.getInstance();
+            this.graphics.setGame(this.game);
+
+            // -----------------------------------------------------------------------
             //                                  Map
             // -----------------------------------------------------------------------
             // Generate a Map
