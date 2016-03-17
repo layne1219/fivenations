@@ -211,10 +211,10 @@ define('GUI', ['Util'], function( Util ){
 				
 				update: function( ratio ){
 
-			        this.graphics.clear();
-			        this.graphics.beginFill(this.color || Util.getColorFromRatio(ratio));
-			        this.graphics.drawRect(1, 1, Math.floor(this.sprite.width * ratio) - 2, 3);
-			        this.graphics.endFill();
+					this.graphics.clear();
+					this.graphics.beginFill(this.color || Util.getColorFromRatio(ratio));
+					this.graphics.drawRect(1, 1, Math.floor(this.sprite.width * ratio) - 2, 3);
+					this.graphics.endFill();
 
 				},
 
@@ -322,20 +322,20 @@ define('GUI', ['Util'], function( Util ){
 					var dataObject = this.parent.getDataObject(),
 						ratio;
 
-      				if (this.healthBar){
-      					ratio = dataObject.getHull() / dataObject.getMaxHull();
-      					this.healthBar.update( ratio );
-      				}
+					if (this.healthBar){
+						ratio = dataObject.getHull() / dataObject.getMaxHull();
+						this.healthBar.update( ratio );
+					}
 
-      				if (this.shieldBar){
-      					ratio = dataObject.getShield() / dataObject.getMaxShield();
-      					this.shieldBar.update( ratio );
-      				}
+					if (this.shieldBar){
+						ratio = dataObject.getShield() / dataObject.getMaxShield();
+						this.shieldBar.update( ratio );
+					}
 
-      				if (this.powerBar){
-      					ratio = dataObject.getPower() / dataObject.getMaxPower();
-      					this.powerBar.update( ratio );
-      				}      				
+					if (this.powerBar){
+						ratio = dataObject.getPower() / dataObject.getMaxPower();
+						this.powerBar.update( ratio );
+					}      				
 				},
 
 				/**
@@ -380,7 +380,6 @@ define('GUI', ['Util'], function( Util ){
 			F.prototype.constructor = F;
 
 			/**
-			 * 	
 			 * Attach the Panel object to the a random Phaser.Game element
 			 * @param {object} panel Main GUI Group
 			 * @return {void}

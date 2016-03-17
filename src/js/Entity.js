@@ -24,6 +24,26 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             // helper variable for storing whether the input is over the sprite
             sprite.hover = false;
 
+            // applying event listeners on the passed sprite object
+            extendSpriteWithEventListeners(sprite, dataObject);       
+
+            // coords
+            sprite.x = 0;
+            sprite.y = 0;
+
+            // reducing the hitArea according the one specified in the realated DataObject
+            sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
+
+            return sprite;
+        },
+
+        /**
+         * Extending the given sprite with event listeners 
+         * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
+         * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
+         * @return {[object]} 
+         */
+        extendSpriteWithEventListeners = function(sprite, dataObject){
             // input events registered on the sprite object
             sprite.events.onInputDown.add(function(){
                 var now,
@@ -57,21 +77,14 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
                     this.lastClickTime = now;
                 }
             }, this);
+
             sprite.events.onInputOut.add(function(){
                 sprite.hover = false;
             }, this);
+
             sprite.events.onInputOver.add(function(){
                 sprite.hover = true;
-            }, this);         
-
-            // coords
-            sprite.x = 0;
-            sprite.y = 0;
-
-            // reducing the hitArea according the one specified in the realated DataObject
-            sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
-
-            return sprite;
+            }, this); 
         };
 
 
@@ -123,6 +136,33 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             angularVelocityHelper: 0,
             maxAngularVelocity: dataObject.getManeuverability(),
             framePadding: (dataObject.getAnimType().length && (dataObject.getAnimType().length + 1)) || 1
+        };
+
+        // setting up acts an entity can execute
+        this.acts = {
+
+            // Helper variables for patrolling
+            patrol: {
+                active: false,
+                direction: 'outbound',
+                pos: { x: 0, y: 0, targetX: 0, targetY: 0 }
+            },
+
+            // Helper variables for defend position state
+            defend: {
+                active: false,
+                pos: {
+                    x: 0,
+                    y: 0
+                }
+            },
+
+            // Helper variables for following another entity
+            follow: {
+                active: false,
+                followedEntityId: null
+            }
+
         };
 
         // persisting the sprite object and attaching it to the Entity object 
@@ -184,6 +224,13 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             }
         },
 
+        /**
+         * Make the entity fly from its current position to the passed targets. The operation also 
+         * calculates all the required helper variables including the rotoation.
+         * @param  {[integer]} targetX [X coordinate of the target location]
+         * @param  {[integer]} targetY [Y coordinate of the target location]
+         * @return {[void]}
+         */
         moveTo: function(targetX, targetY){
             var x = this.sprite.x,
                 y = this.sprite.y,
@@ -221,10 +268,30 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
 
        },
 
+       /**
+        * Terminate the entity from any further movement by applying a suitable drag on it
+        * @return {[void]}
+        */
        stop: function(){
             this.resetEffects();
             this.addEffect(this.stopping);
             this.addEffect(this.resetMovement);
+       },
+
+        /**
+         * Make the entity patrol between its current position to the passed target.
+         * @param  {[integer]} targetX [X coordinate of the target location]
+         * @param  {[integer]} targetY [Y coordinate of the target location]
+         * @return {[void]}
+         */
+       patrolTo: function(targetX, targetY){
+
+            this.acts.patrol.active = true;
+            this.acts.patrol.pos.x = this.sprite.x;
+            this.acts.patrol.pos.y = this.sprite.y;
+            this.acts.patrol.pos.targetX = targetX;
+            this.acts.patrol.pos.targetY = targetY;
+
        },
 
         /**
@@ -283,7 +350,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         /**
-        * Updating the velocity according to the applied effects altering the coordinates of the Entity
+        * Updating the velocity according to the applied effects that can alter the coordinates of the Entity
         *
         * @return {void} 
         */
