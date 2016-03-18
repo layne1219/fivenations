@@ -14,7 +14,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         extendSprite = function(entity, sprite, dataObject){
 
             // actiavting the ARCADE physics on the sprite object
-            this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+            entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
             // Set up the Phaser.Sprite object
             sprite.anchor.setTo(0.5, 0.5);        

@@ -223,17 +223,12 @@ define('Starfield', ['Starfield.StarLayer', 'Starfield.Background'], function(St
 	}
 
 	function initialise(map, density){
-		this.initGroup();
 		this.initLayers();
 		this.createBackground(map.getGame());
 		this.createStars(map.getGame());	
 	}
 
 	Starfield.prototype = {
-
-		initGroup: function(){
-			this.group = Graphics.getInstance().getGroup("starfield");
-		},
 
 		initLayers: function(){
 			this.layers = [];
