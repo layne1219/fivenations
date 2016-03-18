@@ -6,14 +6,15 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         /**
          * Initialising the Phaser.Sprite object with all the additional child elements 
          * such as selector and property bars 
-         * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
+         * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
+         * @param {[object]} [sprite] Phaser.Sprite object to which the extended properties and child elements will be linked
          * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
          * @return {[object]} 
          */
-        extendSprite = function(sprite, dataObject){
+        extendSprite = function(entity, sprite, dataObject){
 
             // actiavting the ARCADE physics on the sprite object
-            this.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+            entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
             // Set up the Phaser.Sprite object
             sprite.anchor.setTo(0.5, 0.5);        
@@ -25,7 +26,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             sprite.hover = false;
 
             // applying event listeners on the passed sprite object
-            extendSpriteWithEventListeners(sprite, dataObject);       
+            extendSpriteWithEventListeners(entity, sprite, dataObject);       
 
             // coords
             sprite.x = 0;
@@ -38,12 +39,13 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         /**
-         * Extending the given sprite with event listeners 
+         * Extending the given sprite with event listeners
+         * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
          * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
          * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
          * @return {[object]} 
          */
-        extendSpriteWithEventListeners = function(sprite, dataObject){
+        extendSpriteWithEventListeners = function(entity, sprite, dataObject){
             // input events registered on the sprite object
             sprite.events.onInputDown.add(function(){
                 var now,
@@ -58,7 +60,6 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
                     now = new Date().getTime();
                     if (now - this.lastClickTime < 500){
                         this.entityManager.get().filter(function(entity){
-                            console.log(entity.getSprite().x - game.camera.x);
                             // If the entity is off screen we need to exclude
                             if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)){
                                 return false;
@@ -76,7 +77,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
                     // this needs to be attached to the individual sprite instance
                     this.lastClickTime = now;
                 }
-            }, this);
+            }, entity);
 
             sprite.events.onInputOut.add(function(){
                 sprite.hover = false;
@@ -166,7 +167,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         };
 
         // persisting the sprite object and attaching it to the Entity object 
-        this.sprite = extendSprite.call(this, sprite, dataObject);
+        this.sprite = extendSprite(this, sprite, dataObject);
 
         // adding the Selector object to highligh whether the unit is seleted or not
         this.selector = GUI.getInstance().addSelector(this);
