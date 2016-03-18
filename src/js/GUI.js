@@ -1,4 +1,4 @@
-define('GUI', ['Util'], function( Util ){
+define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 	var 
 
@@ -103,6 +103,8 @@ define('GUI', ['Util'], function( Util ){
 					sprite.animations.add(animation, animations[animation]);
 				});
 
+				Graphics.getInstance().getGroup('selectors').add(sprite);
+
 				this.sprite = sprite;
 			}
 
@@ -121,7 +123,7 @@ define('GUI', ['Util'], function( Util ){
 
 					entity.on('select', this.show.bind(this));
 					entity.on('unselect', this.hide.bind(this));					
-					entity.getSprite().addChild(this.sprite);
+					//entity.getSprite().addChild(this.sprite);
 
 					this.parent = entity;
 					this.width = this.parent.getDataObject().getWidth();

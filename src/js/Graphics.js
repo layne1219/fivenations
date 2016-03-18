@@ -1,28 +1,32 @@
 define('Graphics', ['Util'], function(Util){
 
 	var phaserGame,
-		singleton,
-
-		maxGroups = 10;
+		singleton;
 
 	function createGraphicsInstance(){
 
-		var groups = [];
+		var groups = {},
+			// layers ordered as follows
+			groupNames = [
+				'starfield',
+				'selectors',
+				'entities'
+			];
 
-		while (groups.length < maxGroups){
-			groups.push( phaserGame.add.group() );
-		}
+		groupNames.forEach(function(name){
+			groups[name] = phaserGame.add.group();
+		});
 
 		return {
 
-			getGroup: function(zIndex){
-				if (Util.between(zIndex, 0, 9)){
-					zIndex = 0;
+			getGroup: function(id){
+				if (!id){
+					throw 'Invalid Id to retrieve a group!';
 				}
-				return group[parseInt(zIndex)];
+				return groups[id];
 			}
 
-		}
+		};
 
 	}
 
@@ -46,8 +50,6 @@ define('Graphics', ['Util'], function(Util){
 			return singleton;
 		}
 
-	}
-
-
+	};
 
 });

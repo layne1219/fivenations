@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
 				"las",
 				"lastClick"
 			],
@@ -46,10 +50,6 @@
 			[
 				"button",
 				"buttonNumber"
-			],
-			[
-				"for",
-				"for	for (…) {…}"
 			],
 			[
 				"Contro",
@@ -476,15 +476,7 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 8930,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Entity.js",
-			"settings":
-			{
-				"buffer_size": 17799,
+				"buffer_size": 9339,
 				"line_ending": "Unix"
 			}
 		}
@@ -576,10 +568,11 @@
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/Graphics.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/engineershuttle.json",
 		"/home/bence/dev/airchar/seatgrabber/index.js",
 		"/home/bence/dev/airchar/seatgrabber/package.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit02_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
@@ -669,6 +662,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"gui",
+			"Group",
 			"framePadding",
 			"frame",
 			"angle",
@@ -794,9 +789,7 @@
 			"Hull",
 			"hull",
 			"[type]",
-			"12px",
-			"EntityDetailsDisplay",
-			"selected"
+			"12px"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -814,7 +807,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -860,8 +853,8 @@
 						"selection":
 						[
 							[
-								14799,
-								14799
+								16935,
+								16935
 							]
 						],
 						"settings":
@@ -870,10 +863,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 675.0,
+						"translation.y": 8959.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -903,7 +896,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -912,15 +905,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8930,
+						"buffer_size": 9339,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2534,
-								2534
+								1672,
+								1672
 							]
 						],
 						"settings":
@@ -930,37 +923,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1616.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/js/Entity.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17799,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5293,
-								5293
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1549.0,
+						"translation.y": 146.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

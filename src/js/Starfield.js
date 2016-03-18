@@ -64,7 +64,7 @@ define('Starfield.Star', function(){
 // ************************************************************************************************
 // 												Layer 
 // ************************************************************************************************
-define('Starfield.StarLayer', ['Starfield.Star', 'Util'], function(Star, Util){
+define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(Graphics, Star, Util){
 
 	var MAX_STAR_NUMBER = 100,
 
@@ -91,6 +91,8 @@ define('Starfield.StarLayer', ['Starfield.Star', 'Util'], function(Star, Util){
 
 		container = game.add.image(0, 0, this.texture);
 		container.fixedToCamera = true;
+
+		Graphics.getInstance().getGroup('starfield').add(container);
 	}
 
 	function createSprites(game){
@@ -180,18 +182,20 @@ define('Starfield.StarLayer', ['Starfield.Star', 'Util'], function(Star, Util){
 // ************************************************************************************************
 // 												Background 
 // ************************************************************************************************
-define('Starfield.Background', function(){
+define('Starfield.Background', ['Graphics'], function(Graphics){
 
 	var BACKGROUND_SPEED = 0.1;
 
-	function Background(game){
-		initialise.call(this, game);
+	function Background(game, group){
+		initialise.call(this, game, group);
 	}
 
 	function initialise(game){
 		this.game = game;
 		this.background = game.add.tileSprite(0, 0, 1024, 1024, 'starfield');
 		this.background.fixedToCamera = true;
+
+		Graphics.getInstance().getGroup('starfield').add(this.background);
 	}
 
 	Background.prototype = {
@@ -219,12 +223,17 @@ define('Starfield', ['Starfield.StarLayer', 'Starfield.Background'], function(St
 	}
 
 	function initialise(map, density){
+		this.initGroup();
 		this.initLayers();
 		this.createBackground(map.getGame());
 		this.createStars(map.getGame());	
 	}
 
 	Starfield.prototype = {
+
+		initGroup: function(){
+			this.group = Graphics.getInstance().getGroup("starfield");
+		},
 
 		initLayers: function(){
 			this.layers = [];

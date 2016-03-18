@@ -1,4 +1,9 @@
-define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Entity, DataObject, PlayerManager){
+define('EntityManager', [
+	'Graphics', 
+	'Entity', 
+	'DataObject', 
+	'PlayerManager'
+], function(Graphics, Entity, DataObject, PlayerManager){
 	
 	var ns = window.fivenations,
 
@@ -11,9 +16,6 @@ define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Enti
 		// Array for storing all the entities generated 
 		entities = [],
 
-		// reference to a Phaser.Group
-		group,
-
 		// Limit for number of selectable units by one multiselection
 		MAX_SELECTABLE_UNITS = 22;
 
@@ -22,7 +24,6 @@ define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Enti
 		if (!phaserGame){
 			throw 'Invoke setGame first to pass the Phaser Game entity!';
 		}
-		group = phaserGame.add.group();
 	}
 
 	EntityManager.prototype = {
@@ -46,7 +47,11 @@ define('EntityManager', ['Entity', 'DataObject', 'PlayerManager'], function(Enti
 				sprite = phaserGame.add.sprite(0, 0, spriteId),
 
 				// fomring the DataObject instance from the preloaded JSON file
-				dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
+				dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
+
+				// choosing the group for entities so that other elements will be obscured by them
+				// it's kind of applying zIndex on entities
+				group = Graphics.getInstance().getGroup('entities');
 
 			// passing the team Id from the config param object
 			dataObject.setTeam( team );

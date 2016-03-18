@@ -1,4 +1,5 @@
 define('Game', [
+    'Graphics',
     'Map',
     'PlayerManager', 
     'EntityManager',
@@ -6,7 +7,7 @@ define('Game', [
     'UserPointer', 
     'UserKeyboard', 
     'Util'
-], function(Map, PlayerManager, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
+], function(Graphics, Map, PlayerManager, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,
@@ -30,8 +31,8 @@ define('Game', [
             //                                  Graphics
             // -----------------------------------------------------------------------
             // Graphics object gathering functonality that assist in rendering
+            Graphics.setGame(this.game);            
             this.graphics = Graphics.getInstance();
-            this.graphics.setGame(this.game);
 
             // -----------------------------------------------------------------------
             //                                  Map
