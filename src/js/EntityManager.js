@@ -56,7 +56,14 @@ define('EntityManager', [
 			// passing the team Id from the config param object
 			dataObject.setTeam( team );
 
+			// adding the freshly created entity to the main array
 			entities.push( new Entity(this, sprite, dataObject) );
+
+			// setting the coordinates if not ommitted 
+			if (config.x || config.y){
+				sprite.x = config.x || 0;
+				sprite.y = config.y || 0;
+			}
 
 			group.add(sprite);
 		},

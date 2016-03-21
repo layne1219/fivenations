@@ -472,7 +472,15 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 37511,
+				"buffer_size": 37724,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/Entity.Activity.Patrol.js",
+			"settings":
+			{
+				"buffer_size": 2695,
 				"line_ending": "Unix"
 			}
 		},
@@ -497,14 +505,6 @@
 			"settings":
 			{
 				"buffer_size": 846,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Starfield.js",
-			"settings":
-			{
-				"buffer_size": 6226,
 				"line_ending": "Unix"
 			}
 		}
@@ -596,6 +596,8 @@
 	],
 	"file_history":
 	[
+		"/home/bence/.bash_exports",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Graphics.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/engineershuttle.json",
@@ -629,7 +631,6 @@
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/orca.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/igt/tt-8-scatch",
-		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c08.png",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c07.png",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c06.png",
@@ -690,6 +691,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"vim",
 			"add.grou",
 			"this.group",
 			"group",
@@ -816,8 +818,7 @@
 			"categories",
 			"idx",
 			"Power",
-			"power",
-			"Shield"
+			"power"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -835,7 +836,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -881,8 +882,8 @@
 						"selection":
 						[
 							[
-								1327,
-								1327
+								1004,
+								1004
 							]
 						],
 						"settings":
@@ -891,11 +892,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 90.0,
+						"translation.x": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -904,15 +905,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37511,
+						"buffer_size": 37724,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5531,
-								5531
+								9020,
+								9020
 							]
 						],
 						"settings":
@@ -921,14 +922,43 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2599.0,
+						"translation.y": 1159.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "src/js/Entity.Activity.Patrol.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2695,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "src/js/Preloader.js",
 					"semi_transient": false,
 					"settings":
@@ -958,7 +988,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "src/js/Game.js",
 					"semi_transient": false,
 					"settings":
@@ -981,14 +1011,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3240.0,
+						"translation.y": 1833.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "src/js/Graphics.js",
 					"semi_transient": false,
 					"settings":
@@ -1011,35 +1041,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/js/Starfield.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5735,
-								5735
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3060.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

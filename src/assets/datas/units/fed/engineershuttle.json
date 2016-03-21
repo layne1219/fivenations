@@ -19,7 +19,7 @@
 	"buildingTime": 6,
 	"directions": 16,
 	"animFrame": 3,
-	"animType": ["mining", "construction"],
+	"animType": ["mining", "building"],
 	"dimensions": {
 		"width": 48,
 		"height": 40

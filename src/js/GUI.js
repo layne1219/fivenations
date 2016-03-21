@@ -68,7 +68,8 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 			'dresda': {spriteId: 'gui.icons.fed', faceFrame: 77, iconFrame: 63 },
 			'crow': {spriteId: 'gui.icons.fed', faceFrame: 78, iconFrame: 64 },
 			'teller': {spriteId: 'gui.icons.fed', faceFrame: 79, iconFrame: 65 },	
-			'nuclearmissile': {spriteId: 'gui.icons.fed', faceFrame: 80, iconFrame: 66 }			
+			'nuclearmissile': {spriteId: 'gui.icons.fed', faceFrame: 80, iconFrame: 66 },			
+			'commandcenter': {spriteId: 'gui.icons.fed', faceFrame: 27, iconFrame: 40 }
 
 		},
 
@@ -297,6 +298,8 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					this.group.add(this.powerBar.getGroup());
 				}
 
+				Graphics.getInstance().getGroup('prior-gui-elements').add(this.group);
+
 			}
 
 			F.prototype = {
@@ -315,7 +318,12 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					entity.on('unselect', this.hide.bind(this));
 					entity.on('damage', this.update.bind(this));	
 
-					entity.getSprite().addChild(this.group);
+					// the sprite is not a child of the entity for various overlapping issues
+					// therefore it needs to follow it upon every tick 
+					this.group.update = function(){
+						this.x = entity.getSprite().x;
+						this.y = entity.getSprite().y;
+					};					
 
 					this.parent = entity;
 				},
