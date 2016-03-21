@@ -123,7 +123,13 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 					entity.on('select', this.show.bind(this));
 					entity.on('unselect', this.hide.bind(this));					
-					//entity.getSprite().addChild(this.sprite);
+					
+					// the sprite is not a child of the entity for various overlapping issues
+					// therefore it needs to follow it upon every tick 
+					this.sprite.update = function(){
+						this.x = entity.getSprite().x;
+						this.y = entity.getSprite().y;
+					};
 
 					this.parent = entity;
 					this.width = this.parent.getDataObject().getWidth();
