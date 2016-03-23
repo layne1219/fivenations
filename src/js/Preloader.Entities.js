@@ -89,7 +89,13 @@ define('Preloader.Entities', function() {
             spriteURL: 'assets/images/units/fed/fed_unit14_c{color}.png',
             atlasURL: 'assets/images/units/fed/fed_unit14_c01.json',
             dataURL: 'assets/datas/units/fed/nuclearmissile.json'
-        }
+        },
+        commandcenter: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build01_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build01_c01.json',
+            dataURL: 'assets/datas/units/fed/commandcenter.json'
+        }        
                                                       
     };
 

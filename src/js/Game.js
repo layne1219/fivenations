@@ -105,6 +105,9 @@ define('Game', [
                     this.entityManager.unselectAll();
                 } 
 
+                gui.frame++;
+                console.log(gui.frame);
+
             }).bind(this));
 
             this.userPointer.on('multiselector/up', (function(multiselector){
@@ -147,9 +150,10 @@ define('Game', [
                           .setUserPointer(this.userPointer)
                           .getInstance();
 
-            //gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
-            //gui.visible = false;
-            //gui.frame = 15;
+            gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
+            gui.visible = true;
+            gui.frame = 15;
+            Graphics.getInstance().getGroup('entities').add(gui);
 
             // -----------------------------------------------------------------------
             //                              Physic engine
@@ -221,7 +225,14 @@ define('Game', [
             this.entityManager.add({
                 id: "engineershuttle",
                 team: 1
-            });                                             
+            });
+
+            this.entityManager.add({
+                id: "commandcenter",
+                team: 1,
+                x: 250,
+                y: 250
+            });                                                          
 
             this.entityManager.get().forEach(function(entity){
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));

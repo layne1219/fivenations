@@ -10,7 +10,8 @@ define('Graphics', ['Util'], function(Util){
 			groupNames = [
 				'starfield',
 				'selectors',
-				'entities'
+				'entities',
+				'prior-gui-elements'
 			];
 
 		groupNames.forEach(function(name){
@@ -22,6 +23,9 @@ define('Graphics', ['Util'], function(Util){
 			getGroup: function(id){
 				if (!id){
 					throw 'Invalid Id to retrieve a group!';
+				}
+				if (!groups[id]){
+					throw 'The group cannot be identified through the passed id!';
 				}
 				return groups[id];
 			}
