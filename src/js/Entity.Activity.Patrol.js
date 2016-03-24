@@ -6,26 +6,24 @@ define('Entity.Activity.Patrol', ['Entity.Activity', 'Util'], function(Activity,
 		/**
 		 * Calculate the distance between the start and end point of the line through which 
 		 * the entity traverses in patrol mode
-		 * @param  {[object]} entity Instance of an Entity class
 		 * @return {[void]}
 		 */
-		calculateDistance = function(entity){
-			this.start.distance = Phaser.Math.distance(entity.getSprite().x, entity.getSprite().y, this.start.x, this.start.y);
-			this.dest.distance = Phaser.Math.distance(entity.getSprite().x, entity.getSprite().y, this.dest.x, this.dest.y);
+		calculateDistance = function(){
+			this.start.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.start.x, this.start.y);
+			this.dest.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.dest.x, this.dest.y);
 		},
 
 		/**
 		 * Manage the back and forth nature of moving the entity
-		 * @param  {[object]} entity Instance of an Entity class
 		 * @return {[void]}
 		 */
-		moveEntityToPatrolPositions = function(entity){
+		moveEntityToPatrolPositions = function(){
 
 			if (this.dest.distance < 100 && this.currentTarget === 'dest'){
-				entity.moveTo(this.start.x, this.start.y);
+				this.entity.moveTo(this.start.x, this.start.y);
 				this.currentTarget = 'start';
 			} else if (this.start.distance < 100 && this.currentTarget === 'start') {
-				entity.moveTo(this.dest.x, this.dest.y);
+				this.entity.moveTo(this.dest.x, this.dest.y);
 				this.currentTarget = 'dest';
 			}
 
@@ -34,11 +32,15 @@ define('Entity.Activity.Patrol', ['Entity.Activity', 'Util'], function(Activity,
 
 	/**
 	 * Constructor function to PatrolActivity
+	 * @param  {[object]} entity Instance of an Entity class
+	 * @return {[object]} 
 	 */
-	function PatrolActivity(){
+	function PatrolActivity(entity){
 		Activity.call(this);
-		this.pos = {};
+		this.start = {x: 0, y: 0};
+		this.dest = {x: 0, y: 0};
 		this.currentTarget = 'dest';
+		this.entity = entity;
 	}
 
 	PatrolActivity.prototype = new Activity;
@@ -46,26 +48,21 @@ define('Entity.Activity.Patrol', ['Entity.Activity', 'Util'], function(Activity,
 
 	/**
 	 * Updating the activity on every tick
-	 * @param  {[object]} entity Instance of an Entity class
-	 * @return {[void]}        [
+	 * @return {[void]}
 	 */
-	PatrolActivity.prototype.update = function(entity){
-		if (!this.active){
-			return;
-		}
-		calculateDistance.call(this, entity);
-		moveEntityToPatrolPositions.call(this, entity);
+	PatrolActivity.prototype.update = function(){
+		calculateDistance.call(this);
+		moveEntityToPatrolPositions.call(this);
 	};
 
 	/**
 	 * Applying the activity on an entity
-	 * @param  {[object]} entity Instance of an Entity class
 	 * @return {[void]}
 	 */
-	PatrolActivity.prototype.activate = function(entity){
+	PatrolActivity.prototype.activate = function(){
 		Activity.prototype.activate.call(this);
-		if (entity){
-			entity.moveTo(this[this.currentTarget].x, this[this.currentTarget].y);
+		if (this.entity){
+			this.entity.moveTo(this[this.currentTarget].x, this[this.currentTarget].y);
 		}
 	};
 
