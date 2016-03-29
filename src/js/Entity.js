@@ -1,6 +1,15 @@
-define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, UserKeyboard, UserPointer, Util){
+define('Entity', [
+    'Entity.ActivityManager', 
+    'GUI', 
+    'UserKeyboard', 
+    'UserPointer', 
+    'Util'
+], function(ActivityManager, GUI, UserKeyboard, UserPointer, Util){
 	
     var 
+
+        SLOW_MANOUVERABAILITY_TRESHOLD = 25,
+
         ns = window.fivenations,
 
         /**
@@ -139,33 +148,6 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             framePadding: (dataObject.getAnimType().length && (dataObject.getAnimType().length + 1)) || 1
         };
 
-        // setting up acts an entity can execute
-        this.acts = {
-
-            // Helper variables for patrolling
-            patrol: {
-                active: false,
-                direction: 'outbound',
-                pos: { x: 0, y: 0, targetX: 0, targetY: 0 }
-            },
-
-            // Helper variables for defend position state
-            defend: {
-                active: false,
-                pos: {
-                    x: 0,
-                    y: 0
-                }
-            },
-
-            // Helper variables for following another entity
-            follow: {
-                active: false,
-                followedEntityId: null
-            }
-
-        };
-
         // persisting the sprite object and attaching it to the Entity object 
         this.sprite = extendSprite(this, sprite, dataObject);
 
@@ -175,6 +157,9 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         // adding the StatusDisplay object to show the current status 
         // of the entity's attributes
         this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
+
+        // ActivityManager
+        this.activityManager = new ActivityManager();
         
     }
 
@@ -215,7 +200,7 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
         },
 
         updateEffects: function(){
-            // invoking the first effect until it returns false when removing it and going on
+            // invoking the first effect as long as it returns false 
             while(this.effects[0]){
                 if (!this.effects[0][0].apply(this, this.effects[0].slice(1))){
                     this.effects.splice(0, 1);
@@ -277,22 +262,6 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.resetEffects();
             this.addEffect(this.stopping);
             this.addEffect(this.resetMovement);
-       },
-
-        /**
-         * Make the entity patrol between its current position to the passed target.
-         * @param  {[integer]} targetX [X coordinate of the target location]
-         * @param  {[integer]} targetY [Y coordinate of the target location]
-         * @return {[void]}
-         */
-       patrolTo: function(targetX, targetY){
-
-            this.acts.patrol.active = true;
-            this.acts.patrol.pos.x = this.sprite.x;
-            this.acts.patrol.pos.y = this.sprite.y;
-            this.acts.patrol.pos.targetX = targetX;
-            this.acts.patrol.pos.targetY = targetY;
-
        },
 
         /**
@@ -436,13 +405,14 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
          */
         update: function(){
 
+            // Updating the activities handled by the activity manager instance
+            this.activityManager.update();
+
         	// updating all the helper values to alter the entity properties which take part in the movements 
             this.updateVelocity();
             this.updateRotation();
             // this should be the last invoked function here
             this.updateEffects();
-
-            //this.game.debug.geom(new Phaser.Rectangle(this.sprite.x, this.sprite.y, this.sprite.width, this.sprite.height),'#0fffff', false);
         },
 
         damage: function( value ){
@@ -463,16 +433,16 @@ define('Entity', ['GUI', 'UserKeyboard', 'UserPointer', 'Util'], function(GUI, U
             this.eventDispatcher.dispatch('unselect');
         },
 
+        hasSlowManeuverability: function(){
+            return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
+        },
+
         isSelected: function(){
         	return this.selected;
         },
 
         isHover: function(){
         	return this.sprite.hover;
-        },
-
-        hasSlowManeuverability: function(){
-            return this.getDataObject().getManeuverability() < 25;
         },
 
         isInside: function(obj){
