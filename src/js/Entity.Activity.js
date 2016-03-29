@@ -29,7 +29,7 @@ define('Entity.Activity', ['Util'], function(Util){
 		},
 
 		kill: function(){
-			this.manager.remove(this);
+			this.manager.remove( this );
 		},
 
 		isActivated: function(){

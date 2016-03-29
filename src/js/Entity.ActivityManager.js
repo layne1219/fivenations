@@ -11,18 +11,27 @@ define('Entity.ActivityManager', ['Entity.Anctivity'], function(Activity){
 					throw 'You must extend the manager with an object inherits from Activity!';
 				}
 				activity.setManager( this );
+				activity.activate();
 				activities.push( activity );
 			},
 
 			remove: function(activity){
+				var found = false;
 				for (var i = 0; i < activities.length; i++) {
 					if (activities[i] === activity){
-						// it might be overkill as splice clears the element suitable for the GC
-						delete activities[i];
+						activities[i].deactivate();
 						activities.splice(i, 1);
+						activities[activities.length - 1].activate();
 						break;
 					}
 				}
+			},
+
+			activateCurrent: function(){
+				if (!current){
+					return;
+				}
+				current.activate();
 			},
 
 			removeAll: function(){
