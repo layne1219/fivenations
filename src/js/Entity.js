@@ -121,9 +121,6 @@ define('Entity', [
         // setting up the EventDisatcher
         this.eventDispatcher = new Util.EventDispatcher();
 
-        // Whether the Entity is selected or not 
-        this.selected = false;
-
         // persisting the sprite object and attaching it to the Entity object 
         this.sprite = extendSprite(this, sprite, dataObject);
 
@@ -136,6 +133,9 @@ define('Entity', [
 
         // ActivityManager
         this.activityManager = new ActivityManager();
+
+        // MotionManager for altering the coordinates of the entity
+        this.motionManager = new MotionManager(this);
         
     }
 
@@ -160,11 +160,9 @@ define('Entity', [
             // Updating the activities handled by the activity manager instance
             this.activityManager.update();
 
-        	// updating all the helper values to alter the entity properties which take part in the movements 
-            this.updateVelocity();
-            this.updateRotation();
-            // this should be the last invoked function here
-            this.updateEffects();
+            // applying all the effects that influences the movement of the entity
+            this.motionManager.update();
+
         },
 
         damage: function( value ){
@@ -190,7 +188,7 @@ define('Entity', [
         },
 
         isSelected: function(){
-        	return this.selected;
+        	return !!this.selected;
         },
 
         isHover: function(){

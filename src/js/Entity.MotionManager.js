@@ -1,9 +1,14 @@
 define('Entity.MotionManager', function(){
 
-	function MotionManager(game, entity){
+	/**
+	 * Constructor function to initialise the MotionManager
+	 * @param {[object]} game   [Phaser.Game object for accessing basic timing functions and delays between ticks]
+	 * @param {[object]} entity [The target entity whose coordinates will be altered by the applied effects]
+	 */
+	function MotionManager(entity){
 		var dataObject = entity.getDataObject();
 
-		this.game = game;
+		this.game = entity.game;
 
 		this.entity = entity;
 		this.sprite = entity.getSprite();
@@ -34,159 +39,74 @@ define('Entity.MotionManager', function(){
 
 	MotionManager.prototype = {
 
-		addEffect: function(effect){
-            var params = Array.prototype.slice(arguments, 1);
-            if (!this.isEffectApplicable(effect)){
-                return false;
-            }
-            this.effects.push([effect].concat(params));
-        },
+		/**
+		 * Make the entity move from its current position to the target coords. The operation also 
+		 * calculates all the required helper variables including the rotoation.
+		 * @param  {[integer]} targetX [X coordinate of the target location]
+		 * @param  {[integer]} targetY [Y coordinate of the target location]
+		 * @return {[void]}
+		 */
+		moveTo: function(targetX, targetY){
+			var x = this.sprite.x,
+				y = this.sprite.y,
+				distance = Phaser.Math.distance(x, y, targetX, targetY),
+				rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
 
-        resetEffects: function(){
-            for (var i = this.effects.length - 1; i >= 0; i--) {
-                this.effects[i] = null;
-            }
-            this.effects = [];
-        },
+			this.movement.targetX = targetX;
+			this.movement.targetY = targetY;
+			this.movement.targetInitialDistance = distance;
 
-        removeEffect: function(effect){
-            if ('function' !== effect){
-                return false;
-            }
-            for (var i = this.effects.length - 1; i >= 0; i--) {
-                if (effect === this.effects[i][0]){
-                    this.effects.splice(i, 1);
-                }
-            }
-        },
+			this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetY - y, targetX - x));
+			if (this.rotation.calculatedAngle < 0){
+				this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
+			}
+			this.rotation.angularVelocityHelper = 0;
+			this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;            
 
-        isEffectApplicable: function(effect){
-            // Determining whether or not it's a valid function
-            if ('function' !== typeof effect){
-                return false;
-            }
-            return true;
-        },
+			this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
+			this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
 
-        updateEffects: function(){
-            // invoking the first effect as long as it returns false 
-            while(this.effects[0]){
-                if (!this.effects[0][0].apply(this, this.effects[0].slice(1))){
-                    this.effects.splice(0, 1);
-                } else {
-                    return false;
-                }
-            }
-        },
+			this.movement.originX = x;
+			this.movement.originY = y;
+			this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
-        /**
-         * Make the entity fly from its current position to the passed targets. The operation also 
-         * calculates all the required helper variables including the rotoation.
-         * @param  {[integer]} targetX [X coordinate of the target location]
-         * @param  {[integer]} targetY [Y coordinate of the target location]
-         * @return {[void]}
-         */
-        moveTo: function(targetX, targetY){
-            var x = this.sprite.x,
-                y = this.sprite.y,
-                distance = Phaser.Math.distance(x, y, targetX, targetY),
-                rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
+			this.resetEffects();
+			if (this.movement.velocity > 0 && this.hasSlowManeuverability()){
+				this.addEffect(this.stopping);
+				this.addEffect(this.resetMovement);
+			}
+			this.addEffect(this.rotateToTarget);
+			this.addEffect(this.accelerateToTarget);
+			this.addEffect(this.moveToTarget);
+			this.addEffect(this.stopping);
+			this.addEffect(this.resetMovement);
 
-            this.movement.targetX = targetX;
-            this.movement.targetY = targetY;
-            this.movement.targetInitialDistance = distance;
-            
-            this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetY - y, targetX - x));
-            if (this.rotation.calculatedAngle < 0){
-            	this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
-            }
-            this.rotation.angularVelocityHelper = 0;
-            this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;            
+		},
 
-        	this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
-        	this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
+		/**
+		* Terminate the entity from any further movement by applying a suitable drag on it
+		* @return {[void]}
+		*/
+		stop: function(){
+			this.resetEffects();
+			this.addEffect(this.stopping);
+			this.addEffect(this.resetMovement);
+		},		
 
-            this.movement.originX = x;
-            this.movement.originY = y;
-            this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
+		/**
+		 * Tick function for altering the helper variables that determines the effects
+		 * influence the entity object 
+		 * @return {[void]}
+		 */
+		update: function(){
 
-            this.resetEffects();
-            if (this.movement.velocity > 0 && this.hasSlowManeuverability()){
-                this.addEffect(this.stopping);
-                this.addEffect(this.resetMovement);
-            }
-            this.addEffect(this.rotateToTarget);
-            this.addEffect(this.accelerateToTarget);
-            this.addEffect(this.moveToTarget);
-            this.addEffect(this.stopping);
-            this.addEffect(this.resetMovement);
+        	// updating all the helper values to alter the entity properties which take part in the movements 
+            this.updateVelocity();
+            this.updateRotation();
+            // this should be the last invoked function here
+            this.updateEffects();
 
-       },
-
-       /**
-        * Terminate the entity from any further movement by applying a suitable drag on it
-        * @return {[void]}
-        */
-       stop: function(){
-            this.resetEffects();
-            this.addEffect(this.stopping);
-            this.addEffect(this.resetMovement);
-       },
-
-        /**
-        * Move the given display object towards the x/y coordinates at a steady velocity.
-        * If you specify a easeInOutThreshold then it will adjust the speed (over-writing what you set) so it arrives at the destination in that number of seconds.
-        * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
-        * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
-        * Note: The display object doesn't stop moving once it reaches the destination coordinates.
-        * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
-        *
-        * @return {boolean} returning false when the effect is no longer must be applied on the entity
-        */
-        moveToTarget: function () {
-
-            this.movement.acceleration = 0;
-            return this.movement.distance > this.movement.targetDragTreshold;
-        },     
-
-        accelerateToTarget: function(){
-            
-            this.movement.acceleration = this.movement.maxAcceleration;
-            return this.movement.distanceInverse < this.movement.targetDragTreshold && this.movement.velocity < this.movement.maxVelocity;
-        },
-
-        stopping: function(){
-
-            this.movement.acceleration = -this.movement.maxAcceleration;
-            return this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0;            
-        
-        }, 
-
-        resetMovement: function(){
-
-            this.movement.acceleration = 0;
-            this.movement.velocity = 0;           
-            this.rotation.angularVelocity = 0;
-
-            this.eventDispatcher.dispatch('stop', this);
-
-            return false;
-        },
-
-        rotateToTarget: function(){
-
-        	// if the entity is already accrelerating than it doesn't have to stop for rotating
-        	if (this.movement.velocity > 0){
-        		// it also can rotate with a lot higher speed to mimic flying units in Blizzard's Starcraft
-        		this.rotation.angularVelocity = this.rotation.maxAngularVelocity * 1.5;
-        		// jumping to the next effect
-        		return false;
-        	}
-
-        	// rotating with default speed until the entity arrives at the target angle 
-        	this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
-        	return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;
-        },
+		},
 
         /**
         * Updating the velocity according to the applied effects that can alter the coordinates of the Entity
@@ -256,6 +176,127 @@ define('Entity.MotionManager', function(){
 
         	// set the frame of the sprite according to the calculated angularRotation
         	this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
+        },
+
+        /**
+         * Invoking the currently selected effect from the effect queue at every tick
+         * @return {[void]}
+         */
+        updateEffects: function(){
+            // invoking the first effect as long as it returns false 
+            while(this.effects[0]){
+                if (!this.effects[0][0].apply(this, this.effects[0].slice(1))){
+                    this.effects.splice(0, 1);
+                } else {
+                    return false;
+                }
+            }
+        },
+
+        /**
+         * Pushing a new effect to the effect queue
+         * @param {[function]} effect [function that will be triggered at every tick when selected]
+         */
+		addEffect: function(effect){
+            var params = Array.prototype.slice(arguments, 1);
+            if ('function' !== typeof effect){
+                return false;
+            }
+            this.effects.push([effect].concat(params));
+        },
+
+        /**
+         * Reseting the effect queue by removing all the effects from the queue
+         * @return {[void]}
+         */
+        resetEffects: function(){
+            for (var i = this.effects.length - 1; i >= 0; i--) {
+                this.effects[i] = null;
+                this.effects.splice(i, 1);
+            }
+            this.effects = [];
+        },
+
+        /**
+         * Removing the given function from the effect queue 
+         * @param  {[function]} effect []
+         * @return {[void]}}
+         */
+        removeEffect: function(effect){
+            if ('function' !== effect){
+                return false;
+            }
+            for (var i = this.effects.length - 1; i >= 0; i--) {
+                if (effect === this.effects[i][0]){
+                    this.effects.splice(i, 1);
+                }
+            }
+        },
+
+        /**
+        * Move the given entity object towards the x/y coordinates at a steady velocity.
+        * @return {boolean} returning false when the effect is no longer must be applied on the entity
+        */
+        moveToTarget: function () {
+
+            this.movement.acceleration = 0;
+            return this.movement.distance > this.movement.targetDragTreshold;
+        },     
+
+        /**
+         * Move the given entity towards the target coordinates with an increasing velocity
+         * @return {boolean} returning false when the effect is no longer must be applied on the entity
+         */
+        accelerateToTarget: function(){
+            
+            this.movement.acceleration = this.movement.maxAcceleration;
+            return this.movement.distanceInverse < this.movement.targetDragTreshold && this.movement.velocity < this.movement.maxVelocity;
+        },
+
+        /**
+         * Making the given entity stop with a certain amount of drag
+		 * @return {boolean} returning false when the effect is no longer must be applied on the entity
+         */
+        stopping: function(){
+
+            this.movement.acceleration = -this.movement.maxAcceleration;
+            return this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0;            
+        
+        }, 
+
+        /**
+         * Reset all the helper variables influencing the given entity so that further effects 
+         * can be applied on the entitiy
+		 * @return {boolean} returning false when the effect is no longer must be applied on the entity
+         */
+        resetMovement: function(){
+
+            this.movement.acceleration = 0;
+            this.movement.velocity = 0;           
+            this.rotation.angularVelocity = 0;
+
+            this.eventDispatcher.dispatch('stop', this);
+
+            return false;
+        },
+
+        /**
+         * Altering the rotation of the given entity to face towards the target coordinats 
+		 * @return {boolean} returning false when the effect is no longer must be applied on the entity
+         */
+        rotateToTarget: function(){
+
+        	// if the entity is already accrelerating than it doesn't have to stop for rotating
+        	if (this.movement.velocity > 0){
+        		// it also can rotate with a lot higher speed to mimic flying units in Blizzard's Starcraft
+        		this.rotation.angularVelocity = this.rotation.maxAngularVelocity * 1.5;
+        		// jumping to the next effect
+        		return false;
+        	}
+
+        	// rotating with default speed until the entity arrives at the target angle 
+        	this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
+        	return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;
         }
 	};
 
