@@ -1,10 +1,11 @@
 define('Entity', [
-    'Entity.ActivityManager', 
+    'Entity.ActivityManager',
+    'Entity.MotionManager', 
     'GUI', 
     'UserKeyboard', 
     'UserPointer', 
     'Util'
-], function(ActivityManager, GUI, UserKeyboard, UserPointer, Util){
+], function(ActivityManager, MotionManager, GUI, UserKeyboard, UserPointer, Util){
 	
     var 
 
@@ -163,6 +164,21 @@ define('Entity', [
             // applying all the effects that influences the movement of the entity
             this.motionManager.update();
 
+        },
+
+        /**
+         * Altering the entity's position 
+         * @param  {[integer]} targetX [description]
+         * @param  {[integer]} targetY [description]
+         * @return {[void]}
+         */
+        moveTo: function(targetX, targetY){
+            this.motionManager.moveTo(targetX, targetY);
+        },
+
+        stop: function(){
+            this.motionManager.stop();
+            this.eventDispatcher.dispatch('stop', this);
         },
 
         damage: function( value ){

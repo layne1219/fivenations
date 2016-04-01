@@ -1,4 +1,4 @@
-define('Entity.MotionManager', function(){
+define('Entity.MotionManager', ['Util'], function(Util){
 
 	/**
 	 * Constructor function to initialise the MotionManager
@@ -71,7 +71,7 @@ define('Entity.MotionManager', function(){
 			this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
 			this.resetEffects();
-			if (this.movement.velocity > 0 && this.hasSlowManeuverability()){
+			if (this.movement.velocity > 0 && this.entity.hasSlowManeuverability()){
 				this.addEffect(this.stopping);
 				this.addEffect(this.resetMovement);
 			}
@@ -274,8 +274,6 @@ define('Entity.MotionManager', function(){
             this.movement.acceleration = 0;
             this.movement.velocity = 0;           
             this.rotation.angularVelocity = 0;
-
-            this.eventDispatcher.dispatch('stop', this);
 
             return false;
         },
