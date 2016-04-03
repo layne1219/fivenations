@@ -1,4 +1,4 @@
-define('Entity.ActivityManager', ['Entity.Anctivity'], function(Activity){
+define('Entity.ActivityManager', ['Entity.Activity'], function(Activity){
 
 	function ActivityManager(){
 

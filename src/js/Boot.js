@@ -24,7 +24,6 @@ define('Boot', function () {
         this.game.scale.maxHeight = 480;
         this.game.scale.forceOrientation(true);
         this.game.scale.pageAlignHorizontally = true;
-        this.game.scale.setScreenSize(true);
       }
       this.game.state.start('preloader');
     }
