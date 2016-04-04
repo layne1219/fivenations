@@ -122,6 +122,13 @@ define('UserPointer', ['Util'], function(Util){
 				return false;
 			}					
 			return true;				
+		},
+
+		getRealCoords: function(){
+			return {
+				x: phaserGame.camera.x + phaserGame.input.mousePointer.x,
+            	y: phaserGame.camera.y + phaserGame.input.mousePointer.y
+			};		
 		}
 
 	};

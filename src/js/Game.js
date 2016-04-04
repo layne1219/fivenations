@@ -68,26 +68,21 @@ define('Game', [
             // Right Mouse Button to send units to a position
             this.userPointer.on('rightbutton/down', (function(){
 
-                var camera = this.game.camera,
-                    mousePointer = this.game.input.mousePointer,
-                    x = camera.x + mousePointer.x,
-                    y = camera.y + mousePointer.y,
-
-                    rnd,
-
+                var rnd, coords,
                     entities = this.entityManager.getAllSelected().filter(function(entity){
                         return EntityManager.getInstance().isEntityControlledByUser(entity);
                     });
 
                 // send the selected units to the specified coordinates
                 if (entities.length > 0){
+                    coords = this.userPointer.getRealCoords();
                     rnd = entities.length === 1 ? 0 : (entities.length * 4);
                     entities.forEach(function(entity){
-                        entity.moveTo(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
+                        entity.moveTo(coords.x - rnd / 2 + Util.rnd(0, rnd), coords.y - rnd / 2 + Util.rnd(0, rnd));
                     });
 
                     // put the click animation to the game scene
-                    this.GUI.putClickAnim(x, y);
+                    this.GUI.putClickAnim(coords.x, coords.y);
                 }
                     
             }).bind(this));
