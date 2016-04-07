@@ -1,4 +1,7 @@
-define('Entity.ActivityManager', ['Entity.Activity'], function(Activity){
+define('Entity.ActivityManager', [
+	'Entity.Activity', 
+	'Entity.Activity.Patrol'
+], function(Activity, Patrol){
 
 	function ActivityManager(){
 
@@ -48,6 +51,10 @@ define('Entity.ActivityManager', ['Entity.Activity'], function(Activity){
 				if (activities[currentIdx].isActive()){
 					activities[currentIdx].update();
 				}				
+			},
+
+			getActivityPatrol: function(entity){
+				return new Patrol(entity);
 			}
 
 		};

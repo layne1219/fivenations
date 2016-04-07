@@ -212,10 +212,11 @@ define('Game', [
                 team: 1
             });
 
-            this.entityManager.add({
+            var crow = this.entityManager.add({
                 id: "crow",
                 team: 1
             });
+            crow.patrol( 400, 400 );
 
             this.entityManager.add({
                 id: "engineershuttle",

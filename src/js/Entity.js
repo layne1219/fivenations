@@ -187,6 +187,14 @@ define('Entity', [
             this.eventDispatcher.dispatch('change');
         },
 
+        patrol: function(x, y){
+            var patrol = this.activityManager.getActivityPatrol(this);
+            patrol.setStartPoint( this.sprite.x, this.sprite.y );
+            patrol.setDestionation( x, y );
+            
+            this.activityManager.add( patrol );
+        },
+
         select: function(){
             if (this.entityManager.getAllSelected().length < this.entityManager.getMaxSelectableUnitNumber()){
         	   this.selected = true;
@@ -233,6 +241,10 @@ define('Entity', [
 
         getDataObject: function(){
             return this.dataObject;
+        },
+
+        getActivityManager: function(){
+            return this.activityManager;
         },
 
         getId: function(){

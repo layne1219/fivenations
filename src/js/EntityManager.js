@@ -28,6 +28,11 @@ define('EntityManager', [
 
 	EntityManager.prototype = {
 
+		/**
+		 * Creating and adding a new entity to the entity pool based on the given configurations
+		 * @param {[object]} config [JSON literal that is to describe all the data for the creation process]
+		 * @return {[object]} [It returns the newly created Entity object]
+		 */
 		add: function(config){
 
 			if (!config){
@@ -38,7 +43,9 @@ define('EntityManager', [
 				throw 'The requrested entity is not registered!';
 			}
 
-			var team = config.team || 1,
+			var entity,
+
+				team = config.team || 1,
 
 				// sprite Ids are consisted of the sprite name and the colour id
 				spriteId = [config.id, team].join('-'),
@@ -57,7 +64,7 @@ define('EntityManager', [
 			dataObject.setTeam( team );
 
 			// adding the freshly created entity to the main array
-			entities.push( new Entity(this, sprite, dataObject) );
+			entities.push( entity = new Entity(this, sprite, dataObject) );
 
 			// setting the coordinates if not ommitted 
 			if (config.x || config.y){
@@ -66,6 +73,8 @@ define('EntityManager', [
 			}
 
 			group.add(sprite);
+
+			return entity;
 		},
 
 		getNextId: function(){
