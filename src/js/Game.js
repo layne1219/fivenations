@@ -218,10 +218,11 @@ define('Game', [
             });
             crow.patrol( 400, 400 );
 
-            this.entityManager.add({
+            var eshu = this.entityManager.add({
                 id: "engineershuttle",
                 team: 1
             });
+            eshu.follow( crow );
 
             this.entityManager.add({
                 id: "commandcenter",
@@ -231,6 +232,9 @@ define('Game', [
             });                                                          
 
             this.entityManager.get().forEach(function(entity){
+                if (entity === crow){
+                    return;
+                }
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
             });
             

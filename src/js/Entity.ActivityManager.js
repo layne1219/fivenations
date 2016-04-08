@@ -1,7 +1,8 @@
 define('Entity.ActivityManager', [
 	'Entity.Activity', 
-	'Entity.Activity.Patrol'
-], function(Activity, Patrol){
+	'Entity.Activity.Patrol',
+	'Entity.Activity.Follow'
+], function(Activity, Patrol, Follow){
 
 	function ActivityManager(){
 
@@ -48,18 +49,17 @@ define('Entity.ActivityManager', [
 					return;
 				}
 				// we are excecuting the last function in the queue treating it with priority
-				if (activities[currentIdx].isActive()){
+				if (activities[currentIdx].isActivated()){
 					activities[currentIdx].update();
 				}				
 			},
 
-			getActivityPatrol: function(entity){
-				return new Patrol(entity);
-			}
-
 		};
 
 	}
+
+	ActivityManager.Patrol = Patrol;
+	ActivityManager.Follow = Follow;
 
 	return ActivityManager;
 

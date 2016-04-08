@@ -188,11 +188,16 @@ define('Entity', [
         },
 
         patrol: function(x, y){
-            var patrol = this.activityManager.getActivityPatrol(this);
+            var patrol = new ActivityManager.Patrol(this);
             patrol.setStartPoint( this.sprite.x, this.sprite.y );
             patrol.setDestionation( x, y );
-            
             this.activityManager.add( patrol );
+        },
+
+        follow: function(targetEntity){
+            var follow = new ActivityManager.Follow(this);
+            follow.setTarget(targetEntity);
+            this.activityManager.add( follow );
         },
 
         select: function(){
