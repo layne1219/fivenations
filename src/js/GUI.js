@@ -1051,7 +1051,12 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
 					y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
-					this.buttons.push( this.add( new ControlPanelButton( x, y )));
+					button = new ControlPanelButton(x, y);
+					button.events.onInputDown.add(function(idx){
+						console.log(this);
+					}.bind(button));
+
+					this.buttons.push( this.add( button ));
 				}
 			};
 

@@ -60,7 +60,6 @@ define('Entity.MotionManager', ['Util'], function(Util){
 			if (this.rotation.calculatedAngle < 0){
 				this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
 			}
-			this.rotation.angularVelocityHelper = 0;
 			this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;            
 
 			this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
@@ -71,7 +70,7 @@ define('Entity.MotionManager', ['Util'], function(Util){
 			this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
 			this.resetEffects();
-			if (this.movement.velocity > 0 && this.entity.hasSlowManeuverability()){
+			if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()){
 				this.addEffect(this.stopping);
 				this.addEffect(this.resetMovement);
 			}

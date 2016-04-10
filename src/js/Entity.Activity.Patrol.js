@@ -11,7 +11,6 @@ define('Entity.Activity.Patrol', ['Entity.Activity', 'Util'], function(Activity,
 		calculateDistance = function(){
 			this.start.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.start.x, this.start.y);
 			this.dest.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.dest.x, this.dest.y);
-			console.log(this.start.distance, this.dest.distance);
 		},
 
 		/**

@@ -218,11 +218,10 @@ define('Game', [
             });
             crow.patrol( 400, 400 );
 
-            var eshu = this.entityManager.add({
+            this.entityManager.add({
                 id: "engineershuttle",
                 team: 1
             });
-            eshu.follow( crow );
 
             this.entityManager.add({
                 id: "commandcenter",
