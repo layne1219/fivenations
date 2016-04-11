@@ -147,7 +147,7 @@ define('Game', [
 
             gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
             gui.visible = true;
-            gui.frame = 15;
+            gui.frame = 102;
             Graphics.getInstance().getGroup('entities').add(gui);
 
             // -----------------------------------------------------------------------

@@ -74,6 +74,11 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 		},
 
 
+		controlPanelButtonIds = {
+			'cancel': 37,
+		},
+
+
 		// --------------------------------------------------------------------------------------
 		// Selector object to handle the selection animation and the displaying of the 
 		// element with the appropriate size
@@ -779,7 +784,6 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 						this.icons[i].inputEnabled = true;
 						this.icons[i].events.onInputDown.add((function(idx){
 							return function(){
-								console.log(this.entities[idx]);
 								entityManager.unselectAll(this.entities[idx]);
 							};
 						})(i), this);
@@ -980,6 +984,7 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 			 */
 			ControlPanelButton.prototype.init = function(){
 				phaserGame.add.existing(this);
+				this.inputEnabled = true;
 				this.frame = GUI_FRAME_OFFSET;
 			};
 
@@ -1016,7 +1021,8 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 				ROWS = 5,
 				ICON_WIDTH = 40,
 				ICON_HEIGHT = 40,
-				MARGIN = 0;
+				MARGIN = 0,
+				buttonNumber = ROWS * COLUMNS;
 
 			/**
 			 * Constructing an a ControlPanelPage that consists the clickable command buttons
@@ -1042,7 +1048,6 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 			 */
 			ControlPanelPage.prototype.init = function(){
 				var i, x, y,
-					buttonNumber = ROWS * COLUMNS,
 					button;
 
 				this.buttons = [];
@@ -1053,16 +1058,38 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 					button = new ControlPanelButton(x, y);
 					button.events.onInputDown.add(function(idx){
-						console.log(this);
-					}.bind(button));
+						this.commandIsSelected = true;
+					}.bind(this));
 
 					this.buttons.push( this.add( button ));
 				}
 			};
 
+
+			/**
+			 * Updating the page according to the currently selected collection of entities
+			 * @param  {[Array]} entities [Array of Entity instances]
+			 * @return {[void]}
+			 */
 			ControlPanelPage.prototype.update = function(entities){
 				if (!entities){
 					return;
+				}
+
+				if (this.commandIsSelected){
+					this.buttons.forEach(function(button, idx){
+						if (0 === idx){
+							button.visible = true;
+							button.setId(controlPanelButtonIds.cancel);
+						} else {
+							button.visible = false;
+						}
+					});					
+				} else {
+					this.buttons.forEach(function(button){
+						button.visible = true;
+						button.setId(0);
+					});
 				}
 			};
 
@@ -1083,17 +1110,20 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 				var args = [].slice.call(arguments);
 
 				// applying the inherited constructor function
-				Phaser.Group.apply(this, args);				
+				Phaser.Group.apply(this, args);
 				
 				// initialising the pages and buttons
-				this.init();
+				this.init(entityManager);
 			}
 
 			// Making the prototype inherited from Phaser.Group prototype
 			ControlPanel.prototype = Object.create(Phaser.Group.prototype);
 			ControlPanel.prototype.constructor = ControlPanel;
 
-			ControlPanel.prototype.init = function() {
+			ControlPanel.prototype.init = function(entityManager) {
+
+				this.entityManager = entityManager;
+
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
 					this.add( new ControlPanelPage(phaserGame) ), // main page for the major control buttons
@@ -1132,10 +1162,13 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 				var entities = this.entityManager.getAllSelected();
 
-				if (entities.length === 0) {
+				if (!entities || entities.length === 0) {
 					this.hide();
 					return;
 				}
+
+				this.show();
+				this.controlPanelPages[this.selectedPageIndex].update( entities );
 
 			};
 
@@ -1296,6 +1329,10 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 				if (entityDetailsDisplay){
 					entityDetailsDisplay.update();
+				}
+
+				if (controlPanel){
+					controlPanel.update();
 				}
 			},
 
