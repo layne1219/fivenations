@@ -47,7 +47,12 @@ window.addEventListener('load', function () {
 
   	// define the needed configuration for RequireJS
 	require.config({
-	    baseUrl: 'js/'
+	    baseUrl: 'js/',
+	    paths: {
+	    	text: '../bower_components/text/text',
+	    	json: '../bower_components/requirejs-plugins/src/json',
+	    	abilities: '../assets/datas/common/abilities.json'
+	    }
 	});
 
 	// Kick off the main thread 

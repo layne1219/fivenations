@@ -958,7 +958,9 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 		// --------------------------------------------------------------------------------------
 		ControlPanelButton = (function(){
 
-			var GUI_FRAME_OFFSET = 65;
+			var GUI_FRAME_OFFSET = 65,
+				PADDING_ONCLICK = 2,
+				TRANSPARENCY_ONLICK = 0.75;
 
 			/**
 			 * Constructing an a ControlPanelPage that consists the clickable command buttons
@@ -972,6 +974,9 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 				// initialising the buttons
 				this.init();
+
+				// applying default event handlers on the generated instance
+				this.addEventListeners();
 			}
 
 			// Making the prototype inherited from Phaser.Group prototype
@@ -986,6 +991,23 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 				phaserGame.add.existing(this);
 				this.inputEnabled = true;
 				this.frame = GUI_FRAME_OFFSET;
+			};
+
+
+			/**
+			 * Adding all the default event listeners
+			 * @return {[void]}
+			 */
+			ControlPanelButton.prototype.addEventListeners = function(){
+				var origY = this.y;
+				this.events.onInputDown.add(function(){
+					this.y += PADDING_ONCLICK;
+					this.alpha = TRANSPARENCY_ONLICK;
+				}.bind(this));
+				this.events.onInputUp.add(function(){
+					this.y = origY;
+					this.alpha = 1;
+				}.bind(this));				
 			};
 
 			/**
@@ -1057,7 +1079,7 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
 					button = new ControlPanelButton(x, y);
-					button.events.onInputDown.add(function(idx){
+					button.events.onInputUp.add(function(idx){
 						this.commandIsSelected = true;
 					}.bind(this));
 

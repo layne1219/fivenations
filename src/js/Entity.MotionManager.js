@@ -2,7 +2,6 @@ define('Entity.MotionManager', ['Util'], function(Util){
 
 	/**
 	 * Constructor function to initialise the MotionManager
-	 * @param {[object]} game   [Phaser.Game object for accessing basic timing functions and delays between ticks]
 	 * @param {[object]} entity [The target entity whose coordinates will be altered by the applied effects]
 	 */
 	function MotionManager(entity){

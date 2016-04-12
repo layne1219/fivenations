@@ -6,6 +6,8 @@
   ],
   "dependencies": {
     "phaser-official": "latest",
-    "requirejs": "latest"
+    "requirejs": "latest",
+    "requirejs-plugins": "~1.0.3",
+    "text": "requirejs-text#~2.0.14"
   }
 }

@@ -1,11 +1,12 @@
 define('Entity', [
     'Entity.ActivityManager',
-    'Entity.MotionManager', 
+    'Entity.MotionManager',
+    'Entity.AbilityManager', 
     'GUI', 
     'UserKeyboard', 
     'UserPointer', 
     'Util'
-], function(ActivityManager, MotionManager, GUI, UserKeyboard, UserPointer, Util){
+], function(ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, Util){
 	
     var 
 
@@ -137,6 +138,9 @@ define('Entity', [
 
         // MotionManager for altering the coordinates of the entity
         this.motionManager = new MotionManager(this);
+
+        // AbilityManager for determining which abilities are available for this entity
+        this.abilityManager = new AbilityManager(this);
         
     }
 
