@@ -24,6 +24,10 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON){
 			this.dataObject = entity.getDataObject();
 		},
 
+		/**
+		 * Determining which abilities the entity possess according to its datas
+		 * @return {[void]}
+		 */
 		testAbilities: function(){
 
 			if (this.canMove()){
@@ -38,8 +42,21 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON){
 
 		},
 
+		/**
+		 * Returning true if the entity can alter its positions
+		 * @return {[booelan]} true if the entity can alter its positions
+		 */
 		canMove: function(){
 			return this.dataObject.speed > 0;
+		},
+
+		/**
+		 * Returning an array of IDs each of representing an ability 
+		 * the entity is capable of
+		 * @return {[Array]} A collection of abilities the entity is in a possesion of
+		 */
+		getAbilities: function(){
+			return this.abilities;
 		}
 
 	};
