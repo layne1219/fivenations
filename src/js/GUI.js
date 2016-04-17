@@ -1,6 +1,6 @@
-define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
+define('GUI', ['Graphics', 'Util', 'json!abilities'], function( Graphics, Util, abilitiesJSON ){
 
-	var 
+	var NO_COMMAND_SELECTED = -1,
 
 		// reference to the shared game configuarition object 
 		ns = window.fivenations,
@@ -18,7 +18,7 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 		userPointer,
 
 		// reference to the singleton GUI object 
-		singleton,
+		_gui,
 
 		// setting up the frames for the individual GUI animations
 		animations = (function(){
@@ -51,7 +51,6 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 			'small': [0, 49]
 		},
 
-
 		// Rainbow table for entity icons 
 		entityIcons = {
 
@@ -72,12 +71,6 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 			'commandcenter': {spriteId: 'gui.icons.fed', faceFrame: 27, iconFrame: 40 }
 
 		},
-
-
-		controlPanelButtonIds = {
-			'cancel': 37,
-		},
-
 
 		// --------------------------------------------------------------------------------------
 		// Selector object to handle the selection animation and the displaying of the 
@@ -1008,16 +1001,7 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					this.y = origY;
 					this.alpha = 1;
 				}.bind(this));				
-			};
-
-			/**
-			 * Setting the ID of the button which determines what the click callback will do
-			 * @return {void}
-			 */
-			ControlPanelButton.prototype.setId = function(id){
-				this.id = id;
-				this.frame = id + GUI_FRAME_OFFSET;
-			};			
+			};		
 
 			/**
 			 * Updating the button based on the passed entities
@@ -1029,6 +1013,22 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					return;
 				}
 			};
+
+			/**
+			 * Setting the ID of the button which determines what the click callback will do
+			 * @return {void}
+			 */
+			ControlPanelButton.prototype.setId = function(id){
+				this.frame = this.id = id;
+			};
+
+			/**
+			 * Obtaining the Id the button is set up to 
+			 * @return {[Integer]}	Ability Identifier the button represent
+			 */
+			ControlPanelButton.prototype.getId = function(){
+				return this.id;
+			};		
 
 			return ControlPanelButton;
 
@@ -1044,6 +1044,7 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 				ICON_WIDTH = 40,
 				ICON_HEIGHT = 40,
 				MARGIN = 0,
+
 				buttonNumber = ROWS * COLUMNS;
 
 			/**
@@ -1080,8 +1081,12 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 					button = new ControlPanelButton(x, y);
 					button.events.onInputUp.add(function(idx){
-						this.commandIsSelected = true;
-					}.bind(this));
+						if (abilitiesJSON.cancel === this.getId()){
+							_gui.selectedCommandId = NO_COMMAND_SELECTED;
+						} else {
+							_gui.selectedCommandId = this.getId();
+						}
+					}.bind(button));
 
 					this.buttons.push( this.add( button ));
 				}
@@ -1098,19 +1103,19 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 					return;
 				}
 
-				if (this.commandIsSelected){
+				if (_gui.selectedCommandId !== NO_COMMAND_SELECTED){
 					this.buttons.forEach(function(button, idx){
 						if (0 === idx){
 							button.visible = true;
-							button.setId(controlPanelButtonIds.cancel);
+							button.setId(abilitiesJSON.cancel);
 						} else {
 							button.visible = false;
 						}
 					});					
 				} else {
-					this.buttons.forEach(function(button){
+					this.buttons.forEach(function(button, i){
 						button.visible = true;
-						button.setId(0);
+						button.setId(abilitiesJSON.move);
 					});
 				}
 			};
@@ -1322,6 +1327,8 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 
 		GUI.prototype = {
 
+			selectedCommandId: -1,
+
 			/**
 			 * Placing and triggering the click animation onto the game area
 			 * @param  {integer} x
@@ -1437,10 +1444,10 @@ define('GUI', ['Graphics', 'Util'], function( Graphics, Util ){
 				if (!phaserGame){
 					throw 'Invoke setGame first to pass the Phaser Game entity!';
 				}			
-				if (!singleton){
-					singleton = new GUI();
+				if (!_gui){
+					_gui = new GUI();
 				}
-				return singleton;
+				return _gui;
 			}
 
 

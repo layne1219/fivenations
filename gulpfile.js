@@ -92,6 +92,13 @@ gulp.task('connect', function () {
   });
 });
 
+gulp.task('publish', function () {
+  connect.server({
+    root: [__dirname + '/src'],
+    port: 9000
+  });
+});
+
 gulp.task('watch', function () {
   gulp.watch(paths.js, ['lint']);
   gulp.watch(['./src/index.html', paths.css, paths.js], ['html']);
