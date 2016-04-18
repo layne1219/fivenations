@@ -27,6 +27,8 @@ define('Game', [
             // preventing the context menu to appear when the user clicks with the right mouse button
             this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); };
 
+            ns.game = this.game;
+
             // -----------------------------------------------------------------------
             //                                  Graphics
             // -----------------------------------------------------------------------
@@ -117,10 +119,6 @@ define('Game', [
                 });              
 
             }).bind(this));
-
-            this.userPointer.on('leftbutton/double', function(){
-                console.log('double clicked');
-            });
 
             // -----------------------------------------------------------------------
             //                              UserKeyboard
@@ -252,10 +250,10 @@ define('Game', [
             // Rendering GUI elements
             this.GUI.update();
 
-            // Rendering the Selector
+            // User input - mouse/touch
             this.userPointer.update();
 
-            // Dispathcing events when holding a key down
+            // User input - keyboard
             this.userKeyboard.update();
 
             this.game.time.advancedTiming = true;

@@ -1,4 +1,10 @@
-define('GUI', ['Graphics', 'Util', 'json!abilities'], function( Graphics, Util, abilitiesJSON ){
+define('GUI', [
+	'Graphics',
+	'GUI.ControlButton',
+	'GUI.ControlPage',
+	'Util',
+	'json!abilities'
+], function( Graphics, ControlButton, ControlPage, Util, abilitiesJSON ){
 
 	var NO_COMMAND_SELECTED = -1,
 
@@ -214,7 +220,7 @@ define('GUI', ['Graphics', 'Util', 'json!abilities'], function( Graphics, Util, 
 				this.group.add(this.graphics);
 			}
 
-			F.prototype = {			
+			F.prototype = {
 				
 				update: function( ratio ){
 
@@ -949,184 +955,6 @@ define('GUI', ['Graphics', 'Util', 'json!abilities'], function( Graphics, Util, 
 		// --------------------------------------------------------------------------------------
 		// ControlPanel for Selected entities
 		// --------------------------------------------------------------------------------------
-		ControlPanelButton = (function(){
-
-			var GUI_FRAME_OFFSET = 65,
-				PADDING_ONCLICK = 2,
-				TRANSPARENCY_ONLICK = 0.75;
-
-			/**
-			 * Constructing an a ControlPanelPage that consists the clickable command buttons
-			 * @return {object} [ControlPanelPage]
-			 */
-			function ControlPanelButton(x, y){
-				var args = [].slice.call(arguments);
-
-				// applying the inherited constructor function
-				Phaser.Sprite.call(this, phaserGame, x, y, 'gui');
-
-				// initialising the buttons
-				this.init();
-
-				// applying default event handlers on the generated instance
-				this.addEventListeners();
-			}
-
-			// Making the prototype inherited from Phaser.Group prototype
-			ControlPanelButton.prototype = Object.create(Phaser.Sprite.prototype);
-			ControlPanelButton.prototype.constructor = ControlPanelButton;
-
-			/**
-			 * Adding the Sprite object to the Game stage
-			 * @return {void}
-			 */
-			ControlPanelButton.prototype.init = function(){
-				phaserGame.add.existing(this);
-				this.inputEnabled = true;
-				this.frame = GUI_FRAME_OFFSET;
-			};
-
-
-			/**
-			 * Adding all the default event listeners
-			 * @return {[void]}
-			 */
-			ControlPanelButton.prototype.addEventListeners = function(){
-				var origY = this.y;
-				this.events.onInputDown.add(function(){
-					this.y += PADDING_ONCLICK;
-					this.alpha = TRANSPARENCY_ONLICK;
-				}.bind(this));
-				this.events.onInputUp.add(function(){
-					this.y = origY;
-					this.alpha = 1;
-				}.bind(this));				
-			};		
-
-			/**
-			 * Updating the button based on the passed entities
-			 * @param  {object} entities
-			 * @return {void}
-			 */
-			ControlPanelButton.prototype.update = function(entities){
-				if (!entities){
-					return;
-				}
-			};
-
-			/**
-			 * Setting the ID of the button which determines what the click callback will do
-			 * @return {void}
-			 */
-			ControlPanelButton.prototype.setId = function(id){
-				this.frame = this.id = id;
-			};
-
-			/**
-			 * Obtaining the Id the button is set up to 
-			 * @return {[Integer]}	Ability Identifier the button represent
-			 */
-			ControlPanelButton.prototype.getId = function(){
-				return this.id;
-			};		
-
-			return ControlPanelButton;
-
-		})(),
-
-		// --------------------------------------------------------------------------------------
-		// ControlPanel for Selected entities
-		// --------------------------------------------------------------------------------------
-		ControlPanelPage = (function(){
-
-			var COLUMNS = 5,
-				ROWS = 5,
-				ICON_WIDTH = 40,
-				ICON_HEIGHT = 40,
-				MARGIN = 0,
-
-				buttonNumber = ROWS * COLUMNS;
-
-			/**
-			 * Constructing an a ControlPanelPage that consists the clickable command buttons
-			 * @return {object} [ControlPanelPage]
-			 */
-			function ControlPanelPage(){
-				var args = [].slice.call(arguments);
-
-				// applying the inherited constructor function
-				Phaser.Group.apply(this, args);
-
-				// initialising the buttons
-				this.init();
-			}
-
-			// Making the prototype inherited from Phaser.Group prototype
-			ControlPanelPage.prototype = Object.create(Phaser.Group.prototype);
-			ControlPanelPage.prototype.constructor = ControlPanelPage;
-
-			/**
-			 * Setting up the table of command buttons
-			 * @return {void}
-			 */
-			ControlPanelPage.prototype.init = function(){
-				var i, x, y,
-					button;
-
-				this.buttons = [];
-
-				for (i = 0; i < buttonNumber ; i++) {
-					x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
-					y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
-
-					button = new ControlPanelButton(x, y);
-					button.events.onInputUp.add(function(idx){
-						if (abilitiesJSON.cancel === this.getId()){
-							_gui.selectedCommandId = NO_COMMAND_SELECTED;
-						} else {
-							_gui.selectedCommandId = this.getId();
-						}
-					}.bind(button));
-
-					this.buttons.push( this.add( button ));
-				}
-			};
-
-
-			/**
-			 * Updating the page according to the currently selected collection of entities
-			 * @param  {[Array]} entities [Array of Entity instances]
-			 * @return {[void]}
-			 */
-			ControlPanelPage.prototype.update = function(entities){
-				if (!entities){
-					return;
-				}
-
-				if (_gui.selectedCommandId !== NO_COMMAND_SELECTED){
-					this.buttons.forEach(function(button, idx){
-						if (0 === idx){
-							button.visible = true;
-							button.setId(abilitiesJSON.cancel);
-						} else {
-							button.visible = false;
-						}
-					});					
-				} else {
-					this.buttons.forEach(function(button, i){
-						button.visible = true;
-						button.setId(abilitiesJSON.move);
-					});
-				}
-			};
-
-			return ControlPanelPage;
-
-		})(),
-
-		// --------------------------------------------------------------------------------------
-		// ControlPanel for Selected entities
-		// --------------------------------------------------------------------------------------
 		ControlPanel = (function(){
 
 			/**
@@ -1153,8 +981,8 @@ define('GUI', ['Graphics', 'Util', 'json!abilities'], function( Graphics, Util, 
 
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
-					this.add( new ControlPanelPage(phaserGame) ), // main page for the major control buttons
-					this.add( new ControlPanelPage(phaserGame) )  // a sub page for extended controls like constructions
+					this.add( new ControlPage(phaserGame) ), // main page for the major control buttons
+					this.add( new ControlPage(phaserGame) )  // a sub page for extended controls like constructions
 				];
 				// make the first page visible
 				this.selectPage(0);

@@ -42,6 +42,9 @@ window.addEventListener('load', function () {
 		]
 	};
 
+	// Shared 
+	ns.gui = ns.gui || {};
+
 	// Cache for assets don't required to be loaded more than once
 	ns.cache = {};
 
