@@ -981,8 +981,8 @@ define('GUI', [
 
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
-					this.add( new ControlPage(phaserGame) ), // main page for the major control buttons
-					this.add( new ControlPage(phaserGame) )  // a sub page for extended controls like constructions
+					this.add( new ControlPage( this) ), // main page for the major control buttons
+					this.add( new ControlPage( this) )  // a sub page for extended controls like constructions
 				];
 				// make the first page visible
 				this.selectPage(0);

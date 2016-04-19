@@ -13,16 +13,17 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 
 	/**
 	 * Constructing an a ControlPanelPage that consists the clickable command buttons
+	 * @param {[object]} [controlPanel] [instance of the parent object wrapping this instance]
 	 * @return {object} [ControlPanelPage]
 	 */
-	function ControlPanelPage(){
+	function ControlPanelPage(controlPanel){
 		var args = [].slice.call(arguments);
 
 		// applying the inherited constructor function
 		Phaser.Group.apply(this, args);
 
 		// initialising the buttons
-		this.init();
+		this.init(controlPanel);
 	}
 
 	// Making the prototype inherited from Phaser.Group prototype
@@ -31,12 +32,14 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 
 	/**
 	 * Setting up the table of command buttons
+	 * @param {[object]} [controlPanel] [instance of the parent object wrapping this instance]
 	 * @return {void}
 	 */
-	ControlPanelPage.prototype.init = function(){
+	ControlPanelPage.prototype.init = function(controlPanel){
 		var i, x, y,
 			button;
 
+		this.parent = controlPanel;
 		this.buttons = [];
 
 		for (i = 0; i < buttonNumber ; i++) {
@@ -45,17 +48,18 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 
 			button = new ControlButton(x, y);
 			button.events.onInputUp.add(function(idx){
-				if (abilitiesJSON.cancel === this.getId()){
-					ns.gui.selectedControlButton = null;
-				} else {
-					ns.gui.selectedControlButton = this.getId();
+
+				this.activate(this.getParent());
+				if (ns.gui.selectedControlButton){
+					ns.gui.selectedControlButton.deactivate(this.getParent());
 				}
+				ns.gui.selectedControlButton = this;
+
 			}.bind(button));
 
 			this.buttons.push( this.add( button ));
 		}
 	};
-
 
 	/**
 	 * Updating the page according to the currently selected collection of entities
@@ -66,22 +70,14 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 		if (!entities){
 			return;
 		}
+	};
 
-		if (ns.gui.selectedControlButton){
-			this.buttons.forEach(function(button, idx){
-				if (0 === idx){
-					button.visible = true;
-					button.setId(abilitiesJSON.cancel);
-				} else {
-					button.visible = false;
-				}
-			});					
-		} else {
-			this.buttons.forEach(function(button, i){
-				button.visible = true;
-				button.setId(abilitiesJSON.move);
-			});
-		}
+	/**
+	 * Returns with the ControlPanel instance incorporating this very page instance
+	 * @return {[object]} [ControlPanel]
+	 */
+	ControlPanelPage.prototype.getParent = function(){
+		return this.parent;
 	};
 
 	return ControlPanelPage;
