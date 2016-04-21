@@ -13,14 +13,14 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * @param {[integer]} [y] [vertical padding from 0,0]
 	 * @return {object} [ControlPanelPage]
 	 */
-	function ControlPanelButton(x, y){
+	function ControlPanelButton(id){
 		var args = [].slice.call(arguments);
 
 		// applying the inherited constructor function
-		Phaser.Sprite.call(this, ns.game, x, y, 'gui');
+		Phaser.Sprite.call(this, ns.game, 0, 0, 'gui');
 
 		// initialising the buttons
-		this.init();
+		this.init(id);
 
 		// applying default event handlers on the generated instance
 		this.addEventListeners();
@@ -37,10 +37,10 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * Adding the Sprite object to the Game stage
 	 * @return {void}
 	 */
-	ControlPanelButton.prototype.init = function(){
+	ControlPanelButton.prototype.init = function(id){
 		ns.game.add.existing(this);
 		this.inputEnabled = true;
-		this.frame = GUI_FRAME_OFFSET;
+		this.setId(id);
 	};
 
 
@@ -49,13 +49,12 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * @return {[void]}
 	 */
 	ControlPanelButton.prototype.addEventListeners = function(){
-		var origY = this.y;
 		this.events.onInputDown.add(function(){
 			this.y += PADDING_ONCLICK;
 			this.alpha = TRANSPARENCY_ONLICK;
 		}.bind(this));
 		this.events.onInputUp.add(function(){
-			this.y = origY;
+			this.y -= PADDING_ONCLICK;
 			this.alpha = 1;
 		}.bind(this));				
 	};
@@ -64,9 +63,9 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * Add event listeners to the ControlButton
 	 * @param {[type]} button [description]
 	 */
-	ControlPanelPage.prototype.addBehaviour = function(){
+	ControlPanelButton.prototype.addBehaviour = function(){
 		this.events.onInputUp.add(function(idx){
-			var controlPanel = this.getParent().getParent();
+			var controlPanel = this.parent.parent;
 			this.activate(controlPanel);
 				if (ns.gui.selectedControlButton){
 					ns.gui.selectedControlButton.deactivate(controlPanel);
@@ -82,17 +81,26 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * @return {void}
 	 */
 	ControlPanelButton.prototype.update = function(entities){
-		if (!entities){
-			return;
+		if (entities){
+			
 		}
+		return this;
 	};
 
+	/**
+	 * No-op function for inheritance
+	 * @return {[void]}
+	 */
 	ControlPanelButton.prototype.activate = function(){
-
+		return this;
 	};
 
+	/**
+	 * No-op function for inheritance
+	 * @return {[void]}
+	 */
 	ControlPanelButton.prototype.deactivate = function(){
-
+		return this;
 	};	
 
 	/**
@@ -101,6 +109,25 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 */
 	ControlPanelButton.prototype.setId = function(id){
 		this.frame = this.id = id;
+		return this;
+	};
+
+	/**
+	 * Set the coordinates of the sprite instance
+	 * @param {[type]} x [horizontal padding on the control page]
+	 */
+	ControlPanelButton.prototype.setX = function(x){
+		this.x = x;
+		return this;
+	};
+
+	/**
+	 * Set the coordinates of the sprite instance
+	 * @param {[type]} y [vertical padding on the control page]
+	 */
+	ControlPanelButton.prototype.setY = function(y){
+		this.y = y;
+		return this;
 	};
 
 	/**

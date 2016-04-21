@@ -965,7 +965,7 @@ define('GUI', [
 				var args = [].slice.call(arguments);
 
 				// applying the inherited constructor function
-				Phaser.Group.apply(this, args);
+				Phaser.Group.call(this, phaserGame);
 				
 				// initialising the pages and buttons
 				this.init(entityManager);
@@ -981,8 +981,8 @@ define('GUI', [
 
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
-					this.add( new ControlPage( this) ), // main page for the major control buttons
-					this.add( new ControlPage( this) )  // a sub page for extended controls like constructions
+					this.add( new ControlPage() ), // main page for the major control buttons
+					this.add( new ControlPage() )  // a sub page for extended controls like constructions
 				];
 				// make the first page visible
 				this.selectPage(0);
@@ -1023,7 +1023,9 @@ define('GUI', [
 				}
 
 				this.show();
-				this.controlPanelPages[this.selectedPageIndex].update( entities );
+				if (this.controlPanelPages[this.selectedPageIndex]){				
+					this.controlPanelPages[this.selectedPageIndex].update( entities );
+				}
 
 			};
 

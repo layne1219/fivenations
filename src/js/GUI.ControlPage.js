@@ -13,19 +13,15 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 
 	/**
 	 * Constructing an a ControlPanelPage that consists the clickable command buttons
-	 * @param {[object]} [controlPanel] [instance of the parent object wrapping this instance]
 	 * @return {object} [ControlPanelPage]
 	 */
-	function ControlPanelPage(controlPanel){
-		var args = [].slice.call(arguments);
+	function ControlPanelPage(){
 
 		// applying the inherited constructor function
-		Phaser.Group.apply(this, args);
+		Phaser.Group.call(this, ns.game);
 
 		// initialising the buttons
-		this.init(controlPanel);
-
-		this.populate();
+		this.init();
 	}
 
 	// Making the prototype inherited from Phaser.Group prototype
@@ -34,16 +30,15 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 
 	/**
 	 * Setting up the table of command buttons
-	 * @param {[object]} [controlPanel] [instance of the parent object wrapping this instance]
 	 * @return {void}
 	 */
-	ControlPanelPage.prototype.init = function(controlPanel){
+	ControlPanelPage.prototype.init = function(){
 		var i, x, y,
 			button;
 
-		this.parent = controlPanel;
 		this.buttons = [];
 
+		this.populate();
 	};
 
 	/**
@@ -55,7 +50,10 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 			x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
 			y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
-			button = new ControlButton(x, y);
+			button = new ControlButton(abilitiesJSON.move);
+			button.setX(x)
+				  .setY(y);
+
 			this.buttons.push( this.add( button ));
 		}
 	};
@@ -69,14 +67,6 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 		if (!entities){
 			return;
 		}
-	};
-
-	/**
-	 * Returns with the ControlPanel instance incorporating this very page instance
-	 * @return {[object]} [ControlPanel]
-	 */
-	ControlPanelPage.prototype.getParent = function(){
-		return this.parent;
 	};
 
 	return ControlPanelPage;
