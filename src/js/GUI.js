@@ -1047,6 +1047,31 @@ define('GUI', [
 			};
 
 			/**
+			 * Displaying the main page
+			 * @return {[viod]}
+			 */
+			ControlPanel.prototype.selectMainPage = function(){
+				this.selectPage(0);
+			};
+
+			/**
+			 * Displaying the secondary page
+			 * @return {[viod]}
+			 */
+			ControlPanel.prototype.selectSecondaryPage = function(){
+				this.selectPage(1);
+			};
+
+			/**
+			 * Displaying the cancel page
+			 * @return {[viod]}
+			 */
+			ControlPanel.prototype.selectCancelPage = function(){
+				this.selectPage(2);
+			};
+
+
+			/**
 			 * Making the ControlPanel visible
 			 * @return {[void]}
 			 */

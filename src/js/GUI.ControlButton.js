@@ -24,6 +24,9 @@ define('GUI.ControlButton', ['Util'], function(Util){
 
 		// applying default event handlers on the generated instance
 		this.addEventListeners();
+
+		// activating custom behaviour upon click
+		this.addBehaviour();
 	}
 
 	// Making the prototype inherited from Phaser.Group prototype
@@ -55,7 +58,23 @@ define('GUI.ControlButton', ['Util'], function(Util){
 			this.y = origY;
 			this.alpha = 1;
 		}.bind(this));				
-	};		
+	};
+
+	/**
+	 * Add event listeners to the ControlButton
+	 * @param {[type]} button [description]
+	 */
+	ControlPanelPage.prototype.addBehaviour = function(){
+		this.events.onInputUp.add(function(idx){
+			var controlPanel = this.getParent().getParent();
+			this.activate(controlPanel);
+				if (ns.gui.selectedControlButton){
+					ns.gui.selectedControlButton.deactivate(controlPanel);
+				}
+			ns.gui.selectedControlButton = this;	
+		}.bind(this));
+
+	};
 
 	/**
 	 * Updating the button based on the passed entities
@@ -67,6 +86,14 @@ define('GUI.ControlButton', ['Util'], function(Util){
 			return;
 		}
 	};
+
+	ControlPanelButton.prototype.activate = function(){
+
+	};
+
+	ControlPanelButton.prototype.deactivate = function(){
+
+	};	
 
 	/**
 	 * Setting the ID of the button which determines what the click callback will do

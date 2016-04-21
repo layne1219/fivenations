@@ -9,7 +9,7 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 		// reference to the shared game configuarition object 
 		ns = window.fivenations,		
 
-		buttonNumber = ROWS * COLUMNS;
+		BUTTON_NUMBER = ROWS * COLUMNS;
 
 	/**
 	 * Constructing an a ControlPanelPage that consists the clickable command buttons
@@ -24,6 +24,8 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 
 		// initialising the buttons
 		this.init(controlPanel);
+
+		this.populate();
 	}
 
 	// Making the prototype inherited from Phaser.Group prototype
@@ -42,21 +44,18 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 		this.parent = controlPanel;
 		this.buttons = [];
 
-		for (i = 0; i < buttonNumber ; i++) {
+	};
+
+	/**
+	 * Createing the ControlButtons and moving them to their right position
+	 * @return {[void]}
+	 */
+	ControlPanelPage.prototype.populate = function(){
+		for (i = 0; i < BUTTON_NUMBER ; i++) {
 			x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
 			y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
 			button = new ControlButton(x, y);
-			button.events.onInputUp.add(function(idx){
-
-				this.activate(this.getParent());
-				if (ns.gui.selectedControlButton){
-					ns.gui.selectedControlButton.deactivate(this.getParent());
-				}
-				ns.gui.selectedControlButton = this;
-
-			}.bind(button));
-
 			this.buttons.push( this.add( button ));
 		}
 	};
