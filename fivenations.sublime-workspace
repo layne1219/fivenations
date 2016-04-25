@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Control",
+				"ControlPanelButton"
+			],
+			[
 				"selecte",
 				"selectedControlButton"
 			],
@@ -54,10 +58,6 @@
 			[
 				"comm",
 				"commandIsSelected"
-			],
-			[
-				"Control",
-				"ControlPanelPage"
 			],
 			[
 				"proto",
@@ -548,7 +548,7 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 35759,
+				"buffer_size": 35822,
 				"line_ending": "Unix"
 			}
 		},
@@ -556,16 +556,16 @@
 			"file": "src/js/GUI.ControlPage.js",
 			"settings":
 			{
-				"buffer_size": 2433,
+				"buffer_size": 1750,
 				"line_ending": "Unix",
 				"name": "define('GUI.ControlPage', ['GUI.ControlButton', 'U"
 			}
 		},
 		{
-			"file": "src/js/GUI.CancelPage.js",
+			"file": "src/assets/datas/common/abilities.json",
 			"settings":
 			{
-				"buffer_size": 1378,
+				"buffer_size": 855,
 				"line_ending": "Unix"
 			}
 		},
@@ -573,7 +573,7 @@
 			"file": "src/js/GUI.ControlButton.js",
 			"settings":
 			{
-				"buffer_size": 2229,
+				"buffer_size": 3419,
 				"line_ending": "Unix",
 				"name": "define('GUI.ControlButton', ['Util'], function(Uti"
 			}
@@ -670,7 +670,6 @@
 	"expanded_folders":
 	[
 		"/home/bence/dev/silversword/fivenations",
-		"/home/bence/dev/silversword/fivenations/bin",
 		"/home/bence/dev/silversword/fivenations/bin/sprite-aligner",
 		"/home/bence/dev/silversword/fivenations/src",
 		"/home/bence/dev/silversword/fivenations/src/assets",
@@ -680,6 +679,7 @@
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.CancelPage.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/Dockerfile",
 		"/home/bence/dev/silversword/fivenations/gulpfile.js",
@@ -784,6 +784,18 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"inputEnabled",
+			"ControlPanel",
+			"MultiselectionGroup",
+			"Group",
+			"appendTo",
+			"ControlPanel",
+			"entityManager",
+			"ControlPanel",
+			"controlPanel",
+			"parent",
+			"SLOW_MANOUVERABAILITY_TRESHOLD",
+			"addBehaviour",
 			"ControlPage",
 			"phaserGame",
 			"ControlButton",
@@ -899,19 +911,7 @@
 			"width",
 			"healthBar",
 			"StatusBar",
-			"StatusDisplay",
-			"Things",
-			"appendTo",
-			"'#77C7D2'",
-			"'11px BerlinSansFB-Reg'",
-			".y",
-			".x",
-			"text",
-			"x",
-			"textMargin",
-			"0",
-			"attributeGroup",
-			"group"
+			"StatusDisplay"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -929,7 +929,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -959,7 +959,7 @@
 						"translation.y": 543.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -985,10 +985,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1004,8 +1004,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								320,
+								320
 							]
 						],
 						"settings":
@@ -1018,7 +1018,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1027,15 +1027,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 35759,
+						"buffer_size": 35822,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								29077,
-								29077
+								28894,
+								28894
 							]
 						],
 						"settings":
@@ -1044,10 +1044,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 15180.0,
+						"translation.y": 14464.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1056,15 +1056,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2433,
+						"buffer_size": 1750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								308,
-								308
+								560,
+								560
 							]
 						],
 						"settings":
@@ -1073,39 +1073,40 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 363.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "src/js/GUI.CancelPage.js",
-					"semi_transient": false,
+					"file": "src/assets/datas/common/abilities.json",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1378,
+						"buffer_size": 855,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1020,
-								1020
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1114,15 +1115,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2229,
+						"buffer_size": 3419,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								137,
-								137
+								1122,
+								1122
 							]
 						],
 						"settings":
@@ -1134,7 +1135,7 @@
 						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1163,7 +1164,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1192,7 +1193,7 @@
 						"translation.y": 225.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]

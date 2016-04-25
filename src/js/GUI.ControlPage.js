@@ -1,4 +1,7 @@
-define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], function(ControlButton, Util, abilitiesJSON){
+define('GUI.ControlPage', [
+	'GUI.ControlButton', 
+	'json!abilities'
+], function(ControlButton, abilitiesJSON){
 
 	var COLUMNS = 5,
 		ROWS = 5,
@@ -64,9 +67,19 @@ define('GUI.ControlPage', ['GUI.ControlButton', 'Util', 'json!abilities'], funct
 	 * @return {[void]}
 	 */
 	ControlPanelPage.prototype.update = function(entities){
+		var abilities;
 		if (!entities){
 			return;
 		}
+		abilities = this.parent.entityManager.getMergedAbilities(entities);
+		this.buttons.forEach(function(button, idx){
+			if (!abilities[idx]){
+				button.visible = false;
+			} else {
+				button.setId(abilities[idx]);
+				button.visible = true;
+			}
+		});
 	};
 
 	return ControlPanelPage;

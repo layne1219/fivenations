@@ -147,6 +147,25 @@ define('EntityManager', [
 
 		getMaxSelectableUnitNumber: function(){
 			return MAX_SELECTABLE_UNITS;
+		},
+
+		getMergedAbilities: function(entities){
+			var abilities,
+				next, i, tmp, tmp2;
+
+			if (!entities || !entities.length){
+				return [];
+			}
+
+			abilities = entities.shift().getAbilityManager().getAbilities();
+
+			while (next = entities.shift()){
+				abilities = abilities.filter(function(val){
+					return next.getAbilityManager().getAbilities().indexOf(val) !== -1;
+				});
+			}
+
+			return abilities;
 		}
 
 	};

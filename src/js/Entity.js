@@ -256,6 +256,10 @@ define('Entity', [
             return this.activityManager;
         },
 
+        getAbilityManager: function(){
+            return this.abilityManager;
+        },
+
         getId: function(){
             return this.uid;
         }        

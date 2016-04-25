@@ -31,7 +31,7 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON){
 		testAbilities: function(){
 
 			if (this.canMove()){
-				this.abilities.concat([
+				this.abilities = this.abilities.concat([
 					abilitiesJSON.move,
 					abilitiesJSON.stop,
 					abilitiesJSON.patrol,
@@ -47,7 +47,7 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON){
 		 * @return {[booelan]} true if the entity can alter its positions
 		 */
 		canMove: function(){
-			return this.dataObject.speed > 0;
+			return this.dataObject.getSpeed() > 0;
 		},
 
 		/**
