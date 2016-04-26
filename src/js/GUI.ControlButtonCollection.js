@@ -1,3 +1,19 @@
+define('GUI.StopButtonLogic', ['EntityManager'], function(EntityManager){
+
+	return {
+		activate: function(ctrlPanel){
+			var entities = EntityManager.getInstance().getAllSelected();
+			if (!entities.length){
+				return;
+			}
+			entities.forEach(function(entity){
+				entity.stop();
+			});
+		}
+	}
+
+});
+
 define('GUI.ControlButtonCollection', ['ControlButton'], function(ControlButton){
 	
 	function TwoStepControlButton(){

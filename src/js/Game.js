@@ -27,6 +27,7 @@ define('Game', [
             // preventing the context menu to appear when the user clicks with the right mouse button
             this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); };
 
+            // publishing the Game object 
             ns.game = this.game;
 
             // -----------------------------------------------------------------------

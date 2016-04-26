@@ -72,9 +72,6 @@ window.addEventListener('load', function () {
 		game.state.add('menu', Menu);
 		game.state.add('game', Game);
 
-		// publishing the Game object 
-		ns.Game = Game;
-
 		/* yo phaser:state new-state-files-put-here */
 		game.state.start('boot');
 
