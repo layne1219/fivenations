@@ -1,8 +1,7 @@
-define('GUI.StopButtonLogic', ['EntityManager'], function(EntityManager){
+define('GUI.StopButtonLogic', function(){
 
 	return {
-		activate: function(ctrlPanel){
-			var entities = EntityManager.getInstance().getAllSelected();
+		activate: function(controlPanel, entities){
 			if (!entities.length){
 				return;
 			}
@@ -10,32 +9,32 @@ define('GUI.StopButtonLogic', ['EntityManager'], function(EntityManager){
 				entity.stop();
 			});
 		}
-	}
+	};
 
 });
 
-define('GUI.ControlButtonCollection', ['ControlButton'], function(ControlButton){
+define('GUI.ControlButtonCollection', [
+	'GUI.StopButtonLogic', 
+	'json!abilities'
+], function(StopButton , abilitiesJSON){
 	
-	function TwoStepControlButton(){
-		ControlButton.apply(this, [].slice.call(arguments));
+	var buttonLogics = {
+			abilitiesJSON.stop: StopButton
+		};
+
+	return {
+
+		getLogicByControlButton: function(controlButton){
+			if (!controlButton){
+				return;
+			}
+			return this.getLogicById( controlButton.getId() );
+		},
+
+		getLogicById: function(id){
+			return buttonLogics[id];
+		}
+
 	}
-
-	TwoStepControlButton.prototype = Object.create(ControlButton.prototype);
-	TwoStepControlButton.prototype.contructor = TwoStepControlButton;
-
-	TwoStepControlButton.prototype.activate = function(ctrlPanel){
-		ctrlPanel.selectPage(2);
-	};
-
-	function ThreeStepControlButton(){
-		ControlButton.apply(this, [].slice.call(arguments));
-	}
-
-	ThreeStepControlButton.prototype = Object.create(ControlButton.prototype);
-	ThreeStepControlButton.prototype.contructor = ThreeStepControlButton;
-
-	ThreeStepControlButton.prototype.activate = function(ctrlPanel){
-		ctrlPanel.selectPage(1);
-	};
 
 });
