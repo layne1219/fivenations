@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
   	'use strict';
 
-	var ns = window.fivenations || (window.fivenations = {});
+	var ns = window.fivenations = window.fivenations || {};
 
 	// Game specific constants
 	ns.window = {

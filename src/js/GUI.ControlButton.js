@@ -1,4 +1,4 @@
-define('GUI.ControlButton', ['Util'], function(Util){
+define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(ControlButtonCollection, Util){
 
 	var GUI_FRAME_OFFSET = 65,
 		PADDING_ONCLICK = 2,
@@ -9,18 +9,16 @@ define('GUI.ControlButton', ['Util'], function(Util){
 
 	/**
 	 * Constructing an a ControlPanelPage that consists the clickable command buttons
-	 * @param {[integer]} [x] [horizontal padding from 0,0]
-	 * @param {[integer]} [y] [vertical padding from 0,0]
 	 * @return {object} [ControlPanelPage]
 	 */
-	function ControlPanelButton(id){
+	function ControlPanelButton(entityManager){
 		var args = [].slice.call(arguments);
 
 		// applying the inherited constructor function
 		Phaser.Sprite.call(this, ns.game, 0, 0, 'gui');
 
 		// initialising the buttons
-		this.init(id);
+		this.init(entityManager);
 
 		// applying default event handlers on the generated instance
 		this.addEventListeners();
@@ -37,10 +35,10 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * Adding the Sprite object to the Game stage
 	 * @return {void}
 	 */
-	ControlPanelButton.prototype.init = function(id){
+	ControlPanelButton.prototype.init = function(entityManager){
 		ns.game.add.existing(this);
 		this.inputEnabled = true;
-		this.setId(id);
+		this.entityManager = entityManager;
 	};
 
 
@@ -65,10 +63,9 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 */
 	ControlPanelButton.prototype.addBehaviour = function(){
 		this.events.onInputUp.add(function(idx){
-			var controlPanel = this.parent.parent;
-			this.activate(controlPanel);
+			this.activate(this.entityManager, this.controlPanel);
 				if (ns.gui.selectedControlButton){
-					ns.gui.selectedControlButton.deactivate(controlPanel);
+					ns.gui.selectedControlButton.deactivate(this.entityManager, this.controlPanel);
 				}
 			ns.gui.selectedControlButton = this;	
 		}.bind(this));
@@ -88,10 +85,15 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	};
 
 	/**
-	 * No-op function for inheritance
+	 * Execute the logic corresponding to the control button being clicked
+	 * @param {object} [controlPanel] [ref]erence to the Panel that holds the control pages]
 	 * @return {[void]}
 	 */
-	ControlPanelButton.prototype.activate = function(){
+	ControlPanelButton.prototype.activate = function(controlPanel){
+		var buttonLogic = ControlButtonCollection.getLogicByControlButton( this );
+		if (typeof buttonLogic.activate === 'function'){
+			buttonLogic.activate(controlPanel);
+		}
 		return this;
 	};
 
@@ -100,6 +102,10 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	 * @return {[void]}
 	 */
 	ControlPanelButton.prototype.deactivate = function(){
+		var buttonLogic = ControlButtonCollection.getLogicByControlButton( this );
+		if (typeof buttonLogic.deactivate === 'function'){
+			buttonLogic.deactivate(controlPanel);
+		}
 		return this;
 	};	
 
@@ -115,18 +121,11 @@ define('GUI.ControlButton', ['Util'], function(Util){
 	/**
 	 * Set the coordinates of the sprite instance
 	 * @param {[type]} x [horizontal padding on the control page]
-	 */
-	ControlPanelButton.prototype.setX = function(x){
-		this.x = x;
-		return this;
-	};
-
-	/**
-	 * Set the coordinates of the sprite instance
 	 * @param {[type]} y [vertical padding on the control page]
 	 */
-	ControlPanelButton.prototype.setY = function(y){
-		this.y = y;
+	ControlPanelButton.prototype.setCoords = function(x, y){
+		this.x = x;
+		this.y = y;		
 		return this;
 	};
 

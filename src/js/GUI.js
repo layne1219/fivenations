@@ -981,8 +981,8 @@ define('GUI', [
 
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
-					this.add( new ControlPage() ), // main page for the major control buttons
-					this.add( new ControlPage() )  // a sub page for extended controls like constructions
+					this.add( new ControlPage(this.entityManager) ), // main page for the major control buttons
+					this.add( new ControlPage(this.entityManager) )  // a sub page for extended controls like constructions
 				];
 				// make the first page visible
 				this.selectPage(0);
@@ -1088,6 +1088,15 @@ define('GUI', [
 			ControlPanel.prototype.hide = function(){
 				this.visible = false;
 			};
+
+			/**
+			 * Making the ControlPanel unvisible
+			 * @return {[void]}
+			 */
+			ControlPanel.prototype.getEntityManager = function(){
+				return this.entityManager;
+			};
+
 
 			return ControlPanel;
 

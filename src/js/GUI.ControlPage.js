@@ -18,13 +18,13 @@ define('GUI.ControlPage', [
 	 * Constructing an a ControlPanelPage that consists the clickable command buttons
 	 * @return {object} [ControlPanelPage]
 	 */
-	function ControlPanelPage(){
+	function ControlPanelPage(entityManager){
 
 		// applying the inherited constructor function
 		Phaser.Group.call(this, ns.game);
 
 		// initialising the buttons
-		this.init();
+		this.init(entityManager);
 	}
 
 	// Making the prototype inherited from Phaser.Group prototype
@@ -35,11 +35,12 @@ define('GUI.ControlPage', [
 	 * Setting up the table of command buttons
 	 * @return {void}
 	 */
-	ControlPanelPage.prototype.init = function(){
+	ControlPanelPage.prototype.init = function(entityManager){
 		var i, x, y,
 			button;
 
 		this.buttons = [];
+		this.entityManager = entityManager;
 
 		this.populate();
 	};
@@ -53,9 +54,8 @@ define('GUI.ControlPage', [
 			x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
 			y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
-			button = new ControlButton(abilitiesJSON.move);
-			button.setX(x)
-				  .setY(y);
+			button = new ControlButton(this.entityManager);
+			button.setCoords(x, y);
 
 			this.buttons.push( this.add( button ));
 		}

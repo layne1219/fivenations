@@ -1,7 +1,8 @@
 define('GUI.StopButtonLogic', function(){
 
 	return {
-		activate: function(controlPanel, entities){
+		activate: function(entityManager, controlPanel){
+			var entities = entityManager.getAllSelected();
 			if (!entities.length){
 				return;
 			}
@@ -16,11 +17,11 @@ define('GUI.StopButtonLogic', function(){
 define('GUI.ControlButtonCollection', [
 	'GUI.StopButtonLogic', 
 	'json!abilities'
-], function(StopButton , abilitiesJSON){
+], function(StopButtonLogic , abilitiesJSON){
 	
-	var buttonLogics = {
-			abilitiesJSON.stop: StopButton
-		};
+	var buttonLogics = {};
+	
+	buttonLogics[abilitiesJSON.stop] = StopButtonLogic;
 
 	return {
 
@@ -32,6 +33,9 @@ define('GUI.ControlButtonCollection', [
 		},
 
 		getLogicById: function(id){
+			if (!buttonLogics[id]){
+				throw 'There is no ButtonLogic registered to the given Id';
+			}
 			return buttonLogics[id];
 		}
 
