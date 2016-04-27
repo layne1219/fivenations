@@ -1,5 +1,7 @@
 Build
 * webpack + processhtml
+* tagging: [version]:[build_number] 
+* updating the list of tags
 
 Host
 * run: docker run -t -p 9000:9000
