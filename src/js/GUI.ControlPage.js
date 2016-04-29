@@ -16,6 +16,7 @@ define('GUI.ControlPage', [
 
 	/**
 	 * Constructing an a ControlPanelPage that consists the clickable command buttons
+	 * @param {object} [entityManager] [sinleton like object that can be used to quiery all the entities]
 	 * @return {object} [ControlPanelPage]
 	 */
 	function ControlPanelPage(entityManager){

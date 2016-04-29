@@ -14,14 +14,26 @@ define('GUI.StopButtonLogic', function(){
 
 });
 
+define('GUI.MoveButtonLogic', function(){
+
+	return {
+		activate: function(entityManager, controlPanel){
+			controlPanel.selectCancelPage();
+		}
+	};
+
+});
+
 define('GUI.ControlButtonCollection', [
-	'GUI.StopButtonLogic', 
+	'GUI.StopButtonLogic',
+	'GUI.MoveButtonLogic',
 	'json!abilities'
-], function(StopButtonLogic , abilitiesJSON){
+], function(StopButtonLogic, MoveButtonLogic, abilitiesJSON){
 	
 	var buttonLogics = {};
 	
 	buttonLogics[abilitiesJSON.stop] = StopButtonLogic;
+	buttonLogics[abilitiesJSON.move] = MoveButtonLogic;
 
 	return {
 

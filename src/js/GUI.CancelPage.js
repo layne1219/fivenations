@@ -2,26 +2,21 @@ define('GUI.CancelPage', ['GUI.ControlPage', 'Util', 'json!abilities'], function
 
 	var
 		// reference to the shared game configuarition object 
-		ns = window.fivenations,
-		BUTTON_NUMBER = 1;
+		ns = window.fivenations;
 
 	/**
 	 * Constructing an a custom CommandPage that consists solely one cancel button
-	 * @param {[object]} [controlPanel] [instance of the parent object wrapping this instance]
-	 * @return {object} [CancelPage]
+	 * @param {object} [entityManager] [sinleton like object that can be used to quiery all the entities]
+	 * @return {object} [ControlPanelPage]
 	 */
-	function CancelPage(controlPanel){
-		var args = [].slice.call(arguments);
+	function CancelPage(entityManager){
 
 		// applying the inherited constructor function
-		Phaser.Group.apply(this, args);
-
-		// initialising the buttons
-		this.init(controlPanel);
-	}
+		ControlPage.call(this, entityManager);
+	}	
 
 	// Making the prototype inherited from Phaser.Group prototype
-	CancelPage.prototype = Object.create(Phaser.Group.prototype);
+	CancelPage.prototype = Object.create(ControlPage.prototype);
 	CancelPage.prototype.constructor = CancelPage;
 
 	/**
@@ -29,18 +24,11 @@ define('GUI.CancelPage', ['GUI.ControlPage', 'Util', 'json!abilities'], function
 	 * @return {void}
 	 */
 	CancelPage.prototype.populate = function(){
-		var i, x, y,
-			button;
+		var button;
 
-		button = new ControlButton(x, y);
+		button = new ControlButton(this.entityManager);
+		button.setCoords(0, 0);
 		button.setId(abilitiesJSON.cancel);
-		button.events.onInputUp.add(function(idx){
-			this.activate(this.getParent());
-			if (ns.gui.selectedControlButton){
-				ns.gui.selectedControlButton.deactivate(this.getParent());
-			}
-			ns.gui.selectedControlButton = this;
-		}.bind(button));
 
 		this.buttons.push( this.add( button ));
 	};

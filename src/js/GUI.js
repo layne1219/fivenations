@@ -2,9 +2,10 @@ define('GUI', [
 	'Graphics',
 	'GUI.ControlButton',
 	'GUI.ControlPage',
+	'GUI.CancelPage',
 	'Util',
 	'json!abilities'
-], function( Graphics, ControlButton, ControlPage, Util, abilitiesJSON ){
+], function( Graphics, ControlButton, ControlPage, CancelPage, Util, abilitiesJSON ){
 
 	var NO_COMMAND_SELECTED = -1,
 
@@ -982,7 +983,8 @@ define('GUI', [
 				// we are creating two pages for all the possible controls
 				this.controlPanelPages = [
 					this.add( new ControlPage(this.entityManager) ), // main page for the major control buttons
-					this.add( new ControlPage(this.entityManager) )  // a sub page for extended controls like constructions
+					this.add( new ControlPage(this.entityManager) ),  // a sub page for extended controls like constructions
+					this.add( new CancelPage(this.entityManager) )  // a page for cancelling the selected activity
 				];
 				// make the first page visible
 				this.selectPage(0);
