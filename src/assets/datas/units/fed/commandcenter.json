@@ -2,6 +2,7 @@
 	"id": "commandcenter",
 	"name": "Command Center",
 	"type": "mainbase",
+	"building": true,
 	"hull": 2000,
 	"shield": 500,
 	"armor": 5,

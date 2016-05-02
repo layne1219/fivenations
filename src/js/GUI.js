@@ -109,8 +109,6 @@ define('GUI', [
 					sprite.animations.add(animation, animations[animation]);
 				});
 
-				Graphics.getInstance().getGroup('selectors').add(sprite);
-
 				this.sprite = sprite;
 			}
 
@@ -123,6 +121,8 @@ define('GUI', [
 
 				appendTo: function(entity){
 
+					var groupName;
+
 					if (!entity || 'function' !== typeof entity.getSprite){
 						throw 'First parameter must be an instance of Entity!';
 					}
@@ -130,6 +130,10 @@ define('GUI', [
 					entity.on('select', this.show.bind(this));
 					entity.on('unselect', this.hide.bind(this));					
 					
+					// Add the selection to the appropriate graphics group as per its type
+					groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
+					Graphics.getInstance().getGroup(groupName).add(this.sprite);
+
 					// the sprite is not a child of the entity for various overlapping issues
 					// therefore it needs to follow it upon every tick 
 					this.sprite.update = function(){
@@ -987,7 +991,7 @@ define('GUI', [
 					this.add( new CancelPage(this.entityManager) )  // a page for cancelling the selected activity
 				];
 				// make the first page visible
-				this.selectPage(0);
+				this.selectMainPage();
 			};
 
 			/**

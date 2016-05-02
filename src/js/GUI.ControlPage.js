@@ -51,15 +51,41 @@ define('GUI.ControlPage', [
 	 * @return {[void]}
 	 */
 	ControlPanelPage.prototype.populate = function(){
+		var button;
 		for (i = 0; i < BUTTON_NUMBER ; i++) {
 			x = i % COLUMNS * ( ICON_WIDTH + MARGIN );
 			y = Math.floor(i / COLUMNS) * ( ICON_HEIGHT + MARGIN );
 
-			button = new ControlButton(this.entityManager);
+			button = this.createControlButton();
 			button.setCoords(x, y);
 
-			this.buttons.push( this.add( button ));
+			this.addControlButton(button);
 		}
+	};
+
+	/**
+	 * return a fresh instance of ControlButton
+	 * @param  {[integer]} id [Id of the button]
+	 * @return {[object]} [GUI.ControlButton]
+	 */
+	ControlPanelPage.prototype.createControlButton = function(id){
+		button = new ControlButton(this.entityManager);
+		if (id){
+			button.setId(id);
+		}
+		return button;
+	};
+
+	/**
+	 * Add ControlButton to the container
+	 * @param {[object]} GUI.ControlButton [attaching the ControlButton to the Phaser group layer]
+	 * @param {[void]}
+	 */
+	ControlPanelPage.prototype.addControlButton = function(controlButton){
+		if (!controlButton){
+			throw 'Invalid ControlButton instance was passed as the first parameter!';
+		}
+		this.buttons.push( this.add( controlButton ));
 	};
 
 	/**
@@ -81,6 +107,15 @@ define('GUI.ControlPage', [
 				button.visible = true;
 			}
 		});
+	};
+
+	/**
+	 * return the control panel which incorporates all the available control pages
+	 * we need this reference to switch between pages from the button logic's scope
+	 * @return {[object]} [GUI.ControlPanel]
+	 */
+	ControlPanelPage.prototype.getControlPanel = function(){
+		return this.parent;
 	};
 
 	return ControlPanelPage;

@@ -56,9 +56,12 @@ define('EntityManager', [
 				// fomring the DataObject instance from the preloaded JSON file
 				dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
 
+				// rendering group name
+				groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
+
 				// choosing the group for entities so that other elements will be obscured by them
 				// it's kind of applying zIndex on entities
-				group = Graphics.getInstance().getGroup('entities');
+				group = Graphics.getInstance().getGroup(groupName);
 
 			// passing the team Id from the config param object
 			dataObject.setTeam( team );

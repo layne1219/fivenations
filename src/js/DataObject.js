@@ -23,6 +23,10 @@ define('DataObject', function(){
 				data.team = team;
 			},
 
+			isBuilding: function(){
+				return !!data.building;
+			},
+
 			getTeam: function(){
 				return data.team;
 			},

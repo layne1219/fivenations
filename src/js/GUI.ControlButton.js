@@ -63,25 +63,13 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(Co
 	 */
 	ControlPanelButton.prototype.addBehaviour = function(){
 		this.events.onInputUp.add(function(idx){
-			this.activate(this.entityManager, this.controlPanel);
+			this.activate();
 				if (ns.gui.selectedControlButton){
-					ns.gui.selectedControlButton.deactivate(this.entityManager, this.controlPanel);
+					ns.gui.selectedControlButton.deactivate();
 				}
 			ns.gui.selectedControlButton = this;	
 		}.bind(this));
 
-	};
-
-	/**
-	 * Updating the button based on the passed entities
-	 * @param  {object} entities
-	 * @return {void}
-	 */
-	ControlPanelButton.prototype.update = function(entities){
-		if (entities){
-			
-		}
-		return this;
 	};
 
 	/**
@@ -90,9 +78,12 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(Co
 	 * @return {[void]}
 	 */
 	ControlPanelButton.prototype.activate = function(controlPanel){
-		var buttonLogic = ControlButtonCollection.getLogicByControlButton( this );
+		var buttonLogic = ControlButtonCollection.getLogicByControlButton( this ),
+			// reference to ControlPanel needs to be evaluated in run time
+			controlPage = this.getControlPage(),
+			controlPanel = controlPage.getControlPanel();
 		if (typeof buttonLogic.activate === 'function'){
-			buttonLogic.activate(controlPanel);
+			buttonLogic.activate(this.entityManager, controlPanel);
 		}
 		return this;
 	};
@@ -102,9 +93,11 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(Co
 	 * @return {[void]}
 	 */
 	ControlPanelButton.prototype.deactivate = function(){
-		var buttonLogic = ControlButtonCollection.getLogicByControlButton( this );
+		var buttonLogic = ControlButtonCollection.getLogicByControlButton( this ),
+			controlPage = this.getControlPage(),
+			controlPanel = controlPage.getControlPanel();
 		if (typeof buttonLogic.deactivate === 'function'){
-			buttonLogic.deactivate(controlPanel);
+			buttonLogic.deactivate(this.entityManager, controlPanel);
 		}
 		return this;
 	};	
@@ -135,7 +128,16 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(Co
 	 */
 	ControlPanelButton.prototype.getId = function(){
 		return this.id;
-	};		
+	};
+
+	/**
+	 * return the control page which takes in the target control button
+	 * we need this reference to switch between pages from the button logic's scope
+	 * @return {[object]} [GUI.ControlPage]
+	 */
+	ControlPanelButton.prototype.getControlPage = function(){
+		return this.parent;
+	};
 
 	return ControlPanelButton;	
 });

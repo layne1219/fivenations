@@ -26,12 +26,18 @@ define('GUI.CancelPage', ['GUI.ControlPage', 'Util', 'json!abilities'], function
 	CancelPage.prototype.populate = function(){
 		var button;
 
-		button = new ControlButton(this.entityManager);
+		button = this.createControlButton(abilitiesJSON.cancel);
 		button.setCoords(0, 0);
-		button.setId(abilitiesJSON.cancel);
 
-		this.buttons.push( this.add( button ));
+		this.addControlButton(button);
 	};
+
+	/**
+	 * Override the original function with a no-op
+	 * @param  {[Array]} entities [Array of Entity instances]
+	 * @return {[void]}
+	 */
+	CancelPage.prototype.update = function(entities){ /* no-op */ };
 
 	return CancelPage;
 	

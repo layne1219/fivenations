@@ -4,15 +4,15 @@
 		"selected_items":
 		[
 			[
+				"ab",
+				"abilitiesJSON"
+			],
+			[
 				"ControlBu",
 				"ControlButtonCollection"
 			],
 			[
 				"abil",
-				"abilities"
-			],
-			[
-				"ab",
 				"abilities"
 			],
 			[
@@ -537,14 +537,6 @@
 			}
 		},
 		{
-			"file": "src/js/Entity.js",
-			"settings":
-			{
-				"buffer_size": 9557,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "src/js/Game.js",
 			"settings":
 			{
@@ -553,27 +545,10 @@
 			}
 		},
 		{
-			"file": "src/js/main.js",
+			"file": "src/js/GUI.ControlButtonCollection.js",
 			"settings":
 			{
-				"buffer_size": 1760,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/GUI.ControlButton.js",
-			"settings":
-			{
-				"buffer_size": 3792,
-				"line_ending": "Unix",
-				"name": "define('GUI.ControlButton', ['Util'], function(Uti"
-			}
-		},
-		{
-			"file": "src/js/GUI.ControlPage.js",
-			"settings":
-			{
-				"buffer_size": 2081,
+				"buffer_size": 1062,
 				"line_ending": "Unix"
 			}
 		},
@@ -581,17 +556,24 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 36031,
+				"buffer_size": 36163,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/js/GUI.ControlButtonCollection.js",
+			"file": "src/js/GUI.CancelPage.js",
 			"settings":
 			{
-				"buffer_size": 816,
-				"line_ending": "Unix",
-				"name": "define('GUI.ControlButtonCollection', ['ControlBut"
+				"buffer_size": 1067,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/GUI.ControlPage.js",
+			"settings":
+			{
+				"buffer_size": 2184,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -677,15 +659,17 @@
 	],
 	"file_history":
 	[
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButton.js",
 		"/home/bence/dev/silversword/fivenations/src/js/main.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButtonCollection.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js",
 		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.CancelPage.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/Dockerfile",
 		"/home/bence/dev/silversword/fivenations/gulpfile.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/abilities.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.AbilityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.MotionManager.js",
@@ -783,6 +767,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"ControlPage",
 			"getEntityManager",
 			"EntityManager",
 			"entityManager",
@@ -909,8 +894,7 @@
 			"ratio",
 			"entityManager",
 			"EntityDetailsDisplay",
-			"createMultiselectionGroup",
-			"EntityManager"
+			"createMultiselectionGroup"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -928,7 +912,7 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -958,7 +942,7 @@
 						"translation.y": 2145.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -987,41 +971,11 @@
 						"translation.y": 323.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/js/Entity.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9557,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9435,
-								9435
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3375.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "src/js/Game.js",
 					"semi_transient": false,
 					"settings":
@@ -1051,20 +1005,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/js/main.js",
+					"buffer": 3,
+					"file": "src/js/GUI.ControlButtonCollection.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1760,
+						"buffer_size": 1062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1294,
-								1294
+								581,
+								581
 							]
 						],
 						"settings":
@@ -1072,40 +1026,69 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 630.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/js/GUI.ControlButton.js",
+					"buffer": 4,
+					"file": "src/js/GUI.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3792,
+						"buffer_size": 36163,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3563,
-								3563
+								179,
+								179
 							]
 						],
 						"settings":
 						{
-							"auto_name": "define('GUI.ControlButton', ['Util'], function(Uti",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1620.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/js/GUI.CancelPage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1067,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								674,
+								674
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1114,15 +1097,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2081,
+						"buffer_size": 2184,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1461,
-								1461
+								969,
+								969
 							]
 						],
 						"settings":
@@ -1131,65 +1114,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 585.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/js/GUI.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 36031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								28315,
-								28315
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 14329.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/js/GUI.ControlButtonCollection.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 816,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								431,
-								431
-							]
-						],
-						"settings":
-						{
-							"auto_name": "define('GUI.ControlButtonCollection', ['ControlBut",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

@@ -9,6 +9,8 @@ define('Graphics', ['Util'], function(Util){
 			// layers ordered as follows
 			groupNames = [
 				'starfield',
+				'selectors-buildings',				
+				'entities-buildings',				
 				'selectors',
 				'entities',
 				'prior-gui-elements'
