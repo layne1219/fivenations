@@ -4,10 +4,11 @@ define('Game', [
     'PlayerManager', 
     'EntityManager',
     'GUI',
+    'GUI.ActivityManager',
     'UserPointer', 
     'UserKeyboard', 
     'Util'
-], function(Graphics, Map, PlayerManager, EntityManager, GUI, UserPointer, UserKeyboard, Util) {
+], function(Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,
@@ -62,6 +63,12 @@ define('Game', [
             this.entityManager = EntityManager.getInstance();
 
             // -----------------------------------------------------------------------
+            //                              GUI.ActivityManager
+            // -----------------------------------------------------------------------
+            // Set up the GUI.ActivityManager
+            this.guiActivityManager = GUIActivityManager.getInstance();
+
+            // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
             // Set up User pointer
@@ -98,10 +105,14 @@ define('Game', [
                     return;
                 }
 
+                if (this.guiActivityManager.hasActiveSelection()){
+                    console.log('GUI.Activity is active');
+                }
+
                 // If the user pointer isn't over the GUI area, nor any entities
                 if (this.entityManager.getAllHover().length === 0){
                     this.entityManager.unselectAll();
-                } 
+                }
 
                 gui.frame++;
                 console.log(gui.frame);

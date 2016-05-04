@@ -1,13 +1,20 @@
 define('GUI.Activity', function(){
    
-    function Activity(id){
-        this.init(id);
+    function Activity(){
     }
 
     Activity.prototype = {
 
-        init: function(id){
-            this.id = id;
+        activate: function(){
+            this.active = true;
+        },
+
+        deactive: function(){
+            this.active = false;
+        },
+
+        isActive: function(){
+            return this.active;
         }
 
     };

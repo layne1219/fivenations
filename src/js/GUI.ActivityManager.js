@@ -1,17 +1,42 @@
-define('GUI.ActivityManager', function(){
+define('GUI.ActivityManager', ['GUI.Activity'], function(Activity){
    
-   var selectedActivity;
+	var singleton;
 
-   return {
+	function createActivityManager(){
 
-        hasActiveSelection: function(){
-            return selectedActivity !== null;
-        }
+		var selectedActivity;
 
-        getSelectedActivity: function(){
-            return selectedActivity;
-        }
+		return {
 
-   };
+			createActivity: function(){
+				if (this.hasActiveSelection()){
+					selectedActivity.deactivate();
+				}
+				selectedActivity = new Activity();
+				selectedActivity.activate();
+			},
+
+			hasActiveSelection: function(){
+				return selectedActivity !== null;
+			},
+
+			getSelectedActivity: function(){
+				return selectedActivity;
+			}
+
+		};
+
+	}
+
+	return {
+
+		getInstance: function(){		
+			if (!singleton){
+				singleton = createActivityManager();
+			}
+			return singleton;
+		}
+
+	};   
 
 });
