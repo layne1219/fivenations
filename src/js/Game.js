@@ -63,12 +63,6 @@ define('Game', [
             this.entityManager = EntityManager.getInstance();
 
             // -----------------------------------------------------------------------
-            //                              GUI.ActivityManager
-            // -----------------------------------------------------------------------
-            // Set up the GUI.ActivityManager
-            this.guiActivityManager = GUIActivityManager.getInstance();
-
-            // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
             // Set up User pointer
@@ -159,6 +153,12 @@ define('Game', [
             gui.visible = true;
             gui.frame = 102;
             Graphics.getInstance().getGroup('entities').add(gui);
+
+            // -----------------------------------------------------------------------
+            //                              GUI.ActivityManager
+            // -----------------------------------------------------------------------
+            // Set up the GUI.ActivityManager
+            this.guiActivityManager = GUIActivityManager.getInstance();
 
             // -----------------------------------------------------------------------
             //                              Physic engine
