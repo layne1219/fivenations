@@ -9,7 +9,7 @@ define('GUI.Activity', function(){
             this.active = true;
         },
 
-        deactive: function(){
+        deactivate: function(){
             this.active = false;
         },
 
