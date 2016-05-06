@@ -68,6 +68,15 @@ define('UserPointer', ['Util'], function(Util){
 			dispatcher.addEventListener(event, callback);
 		},
 
+		remove: function(event, callback){
+			dispatcher.removeEventListener(event, callback);
+		},
+
+		dispatch: function(){
+			var args = [].slice.call(arguments);
+			dispatcher.dispatch.apply(dispatcher, args);
+		},
+
 		stopMultiselection: function(){
 			multiselector.active = 0;
 			multiselector.width = 0;

@@ -92,28 +92,35 @@ define('Game', [
             }).bind(this));
 
             // Unselecting units when clicking over an area with no entities underneath
-            this.userPointer.on('leftbutton/down', (function(){
+            this.userPointer.on('leftbutton/down', function(mousePointer){
 
                 // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
                 if (GUI.getInstance().isHover()){
+                    this.userPointer.dispatch('leftbutton/down/gui');
                     return;
                 }
 
                 if (this.guiActivityManager.hasActiveSelection()){
-                    console.log('GUI.Activity is active');
+                    this.userPointer.dispatch('leftbutton/down/activity', mousePointer);
+                    return;
                 }
 
-                // If the user pointer isn't over the GUI area, nor any entities
                 if (this.entityManager.getAllHover().length === 0){
-                    this.entityManager.unselectAll();
+                    this.userPointer.dispatch('leftbutton/down/disselect');
+                    return;
                 }
 
                 gui.frame++;
                 console.log(gui.frame);
 
-            }).bind(this));
+            }.bind(this));
 
-            this.userPointer.on('multiselector/up', (function(multiselector){
+            // If the user pointer isn't over the GUI area, nor any entities
+            this.userPointer.on('leftbutton/down/disselect', function(){
+                this.entityManager.unselectAll();
+            }.bind(this));
+
+            this.userPointer.on('multiselector/up', function(multiselector){
 
                 this.entityManager.get().forEach(function(entity){
                     if (!EntityManager.getInstance().isEntityControlledByUser(entity)){
@@ -124,7 +131,7 @@ define('Game', [
                     }
                 });              
 
-            }).bind(this));
+            }.bind(this));
 
             // -----------------------------------------------------------------------
             //                              UserKeyboard

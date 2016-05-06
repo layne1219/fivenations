@@ -18,10 +18,17 @@ define('GUI.StopButtonLogic', function(){
 // ------------------------------------------------------------------------------------
 // Move Button Logc
 // ------------------------------------------------------------------------------------
-define('GUI.MoveButtonLogic', function(){
+define('GUI.MoveButtonLogic', [
+	'GUI.Activity.SelectCoords', 
+	'GUI.ActivityManager'
+], function(ActivitySelectCoords, ActivityManager){
 	return {
 		activate: function(entityManager, controlPanel){
-			controlPanel.selectCancelPage();
+			var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
+			activity.on('select', function(){
+				controlPanel.selectMainPage();
+			});
+			controlPanel.selectCancelPage();			
 		}
 	};
 });
@@ -29,10 +36,13 @@ define('GUI.MoveButtonLogic', function(){
 // ------------------------------------------------------------------------------------
 // Cancel Button Logc
 // ------------------------------------------------------------------------------------
-define('GUI.CancelButtonLogic', function(){
+define('GUI.CancelButtonLogic', [
+	'GUI.ActivityManager'
+], function(ActivityManager){
 	return {
 		activate: function(entityManager, controlPanel){
 			controlPanel.selectMainPage();
+			ActivityManager.getInstance().cancel();
 		}
 	};
 });

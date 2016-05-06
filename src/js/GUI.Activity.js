@@ -1,6 +1,7 @@
 define('GUI.Activity', function(){
    
-    function Activity(){
+    function Activity(activityManager){
+        this.activityManager = activityManager;
     }
 
     Activity.prototype = {
@@ -15,6 +16,10 @@ define('GUI.Activity', function(){
 
         isActive: function(){
             return this.active;
+        },
+
+        getActivityManager: function(){
+            return this.activityManager;
         }
 
     };

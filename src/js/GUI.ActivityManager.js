@@ -1,5 +1,5 @@
 define('GUI.ActivityManager', ['GUI.Activity'], function(Activity){
-   
+
 	var singleton;
 
 	function createActivityManager(){
@@ -8,16 +8,29 @@ define('GUI.ActivityManager', ['GUI.Activity'], function(Activity){
 
 		return {
 
-			createActivity: function(){
+			start: function(activity){
+				// cancel the current event
+				this.cancel();
+				this.setActivity(activity);
+				return selectedActivity;
+			},
+
+			cancel: function(){
 				if (this.hasActiveSelection()){
 					selectedActivity.deactivate();
-				}
-				selectedActivity = new Activity();
+					delete selectedActivity;
+					selectedActivity = null;					
+				}				
+			},
+
+			setActivity: function(activity){
+				selectedActivity = new activity(this);
 				selectedActivity.activate();
+				return selectedActivity;
 			},
 
 			hasActiveSelection: function(){
-				return selectedActivity !== null;
+				return selectedActivity;
 			},
 
 			getSelectedActivity: function(){
