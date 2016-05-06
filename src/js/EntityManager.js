@@ -2,8 +2,9 @@ define('EntityManager', [
 	'Graphics', 
 	'Entity', 
 	'DataObject', 
-	'PlayerManager'
-], function(Graphics, Entity, DataObject, PlayerManager){
+	'PlayerManager',
+	'Util'
+], function(Graphics, Entity, DataObject, PlayerManager, Util){
 	
 	var ns = window.fivenations,
 
@@ -103,12 +104,23 @@ define('EntityManager', [
 		 * @param {object} [entity] [Entity instance that will be excluded from the selection]
 		 * @return {void} 
 		 */
-		unselectAll: function( excludedEntity ){
+		unselectAll: function(excludedEntity){
 			this.get().forEach(function(entity){
 				if (excludedEntity !== entity && entity.isSelected()){
 					entity.unselect();
 				}
 			});
+		},
+
+		moveAllTo: function(x, y){
+			var entities = this.getAllSelected().filter(function(entity){
+            		return this.isEntityControlledByUser(entity);
+            	}.bind(this)),
+				rnd = entities.length === 1 ? 0 : (entities.length * 4);
+
+			entities.forEach(function(entity){
+            	entity.moveTo(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
+            });			
 		},
 
 		getGame: function(){
