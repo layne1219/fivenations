@@ -22,8 +22,7 @@ define('GUI.Activity.SelectCoords', [
         Activity.prototype.activate.call(this);
 
         this.callback = function(mousePointer){
-            console.log('select', mousePointer);
-            this.dispatcher.dispatch('select');
+            this.dispatcher.dispatch('select', mousePointer);
             this.getActivityManager().cancel();
         }.bind(this);
 

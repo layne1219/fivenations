@@ -25,7 +25,9 @@ define('GUI.MoveButtonLogic', [
 	return {
 		activate: function(entityManager, controlPanel){
 			var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
-			activity.on('select', function(){
+			activity.on('select', function(mousePointer){
+				var coords = this.userPointer.getRealCoords();
+				entityManager.moveAllTo(coords.x, coords.y);
 				controlPanel.selectMainPage();
 			});
 			controlPanel.selectCancelPage();			
