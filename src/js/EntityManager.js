@@ -112,7 +112,13 @@ define('EntityManager', [
 			});
 		},
 
-		moveAllTo: function(x, y){
+		/**
+		 * Make all the selected entities to move to the given coordinates 
+		 * @param  {integer} x [horizontal offset of the map to which the entities move]
+		 * @param  {integer} y [vertical offset of the map to which the entities move]
+		 * @return {void}
+		 */
+		moveAllSelectedTo: function(x, y){
 			var entities = this.getAllSelected().filter(function(entity){
             		return this.isEntityControlledByUser(entity);
             	}.bind(this)),
@@ -120,8 +126,25 @@ define('EntityManager', [
 
 			entities.forEach(function(entity){
             	entity.moveTo(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
-            });			
+            });	
 		},
+
+		/**
+		 * Make all the selected entities to patrol between the current and given coordinates 
+		 * @param  {integer} x [horizontal offset of the map between which the entities patrol]
+		 * @param  {integer} y [vertical offset of the map between which the entities patrol]
+		 * @return {void}
+		 */
+		patrolAllSelectedTo: function(x, y){
+			var entities = this.getAllSelected().filter(function(entity){
+            		return this.isEntityControlledByUser(entity);
+            	}.bind(this)),
+				rnd = entities.length === 1 ? 0 : (entities.length * 4);
+
+			entities.forEach(function(entity){
+            	entity.patrol(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
+            });	
+		},		
 
 		getGame: function(){
 			return phaserGame;

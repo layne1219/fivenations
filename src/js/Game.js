@@ -1,4 +1,5 @@
 define('Game', [
+    'UniversalEventDispatcher',
     'Graphics',
     'Map',
     'PlayerManager', 
@@ -8,7 +9,7 @@ define('Game', [
     'UserPointer', 
     'UserKeyboard', 
     'Util'
-], function(Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
+], function(UniversalEventDispatcher, Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,
@@ -29,7 +30,7 @@ define('Game', [
             this.game.canvas.oncontextmenu = function (e) { e.preventDefault(); };
 
             // publishing the Game object 
-            ns.game = this.game;
+            ns.game = this;
 
             // -----------------------------------------------------------------------
             //                                  Graphics
@@ -70,15 +71,15 @@ define('Game', [
             this.userPointer = UserPointer.getInstance();
 
             // Right Mouse Button to send units to a position
-            this.userPointer.on('rightbutton/down', (function(){
+            this.userPointer.on('rightbutton/down', function(userPointer){
 
                 var coords = this.userPointer.getRealCoords();
 
-                this.entityManager.moveAllTo(coords.x, coords.y);
+                this.entityManager.moveAllSelectedTo(coords.x, coords.y);
 
                 this.GUI.putClickAnim(coords.x, coords.y);
                     
-            }).bind(this));
+            }.bind(this));
 
             // Unselecting units when clicking over an area with no entities underneath
             this.userPointer.on('leftbutton/down', function(mousePointer){

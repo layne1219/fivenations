@@ -22,12 +22,42 @@ define('GUI.MoveButtonLogic', [
 	'GUI.Activity.SelectCoords', 
 	'GUI.ActivityManager'
 ], function(ActivitySelectCoords, ActivityManager){
+	var ns = window.fivenations;
 	return {
 		activate: function(entityManager, controlPanel){
 			var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
-			activity.on('select', function(){
+			activity.on('select', function(mousePointer){
+				var coords = mousePointer.getRealCoords();
+
+				entityManager.moveAllSelectedTo(coords.x, coords.y);
+				ns.game.GUI.putClickAnim(coords.x, coords.y);
 				controlPanel.selectMainPage();
 			});
+			// @TODO this should be unified as most of the buttons share this logic
+			controlPanel.selectCancelPage();			
+		}
+	};
+});
+
+// ------------------------------------------------------------------------------------
+// Patrol Button Logic
+// ------------------------------------------------------------------------------------
+define('GUI.PatrolButtonLogic', [
+	'GUI.Activity.SelectCoords', 
+	'GUI.ActivityManager'
+], function(ActivitySelectCoords, ActivityManager){
+	var ns = window.fivenations;
+	return {
+		activate: function(entityManager, controlPanel){
+			var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
+			activity.on('select', function(mousePointer){
+				var coords = mousePointer.getRealCoords();
+
+				entityManager.patrolAllSelectedTo(coords.x, coords.y);
+				ns.game.GUI.putClickAnim(coords.x, coords.y);
+				controlPanel.selectMainPage();
+			});
+			// @TODO this should be unified as most of the buttons share this logic
 			controlPanel.selectCancelPage();			
 		}
 	};
@@ -50,14 +80,16 @@ define('GUI.CancelButtonLogic', [
 define('GUI.ControlButtonCollection', [
 	'GUI.StopButtonLogic',
 	'GUI.MoveButtonLogic',
+	'GUI.PatrolButtonLogic',	
 	'GUI.CancelButtonLogic',
 	'json!abilities'
-], function(StopButtonLogic, MoveButtonLogic, CancelButtonLogic, abilitiesJSON){
+], function(StopButtonLogic, MoveButtonLogic, PatrolButtonLogic, CancelButtonLogic, abilitiesJSON){
 	
 	var buttonLogics = {};
 	
 	buttonLogics[abilitiesJSON.stop] = StopButtonLogic;
 	buttonLogics[abilitiesJSON.move] = MoveButtonLogic;
+	buttonLogics[abilitiesJSON.patrol] = PatrolButtonLogic;
 	buttonLogics[abilitiesJSON.cancel] = CancelButtonLogic;
 
 	return {
