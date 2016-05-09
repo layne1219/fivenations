@@ -461,9 +461,9 @@ define('GUI', [
 
 			function setLeftButtonListeners(){
 				// making the minimap area clickable 
-				userPointer.on('leftbutton/move', function(pointer){
+				userPointer.on('leftbutton/move', function(userPointer){
 
-					var coords = getMouseCoords(pointer, this.map, this.panel, this.graphics, true);
+					var coords = getMouseCoords(userPointer, this.map, this.panel, this.graphics, true);
 
 					// if getMouseCoords returns with false then the coordinates are not legit
 					if (!coords){
@@ -477,33 +477,30 @@ define('GUI', [
 
 			function setRightButtonListeners(){
 				// making the minimap area clickable 
-				userPointer.on('rightbutton/down', function(pointer){
+				userPointer.on('rightbutton/down', function(userPointer){
 
-					var coords = getMouseCoords(pointer, this.map, this.panel, this.graphics);
+					var coords = getMouseCoords(userPointer, this.map, this.panel, this.graphics);
 
 					// if getMouseCoords returns with false then the coordinates are not legit
 					if (!coords){
 						return;
 					}
 
-					this.entityManager.getAllSelected().forEach(function(entity){
-						if (this.entityManager.isEntityControlledByUser(entity)){
-							entity.moveTo(coords.x, coords.y);
-						}
-					}.bind(this));
+					this.entityManager.moveAllSelectedTo(coords.x, coords.y);
 					
 				}.bind(this));
 			}
 
-			function getMouseCoords(pointer, map, panel, graphics, alignToCentre){
+			function getMouseCoords(userPointer, map, panel, graphics, alignToCentre){
 				var mapWidth = map.getScreenWidth(),
 					mapHeight = map.getScreenHeight(),
 					ratioX = ns.window.width / mapWidth,
 					ratioY = ns.window.height / mapHeight,
 					width = minimizedWidth * ratioX,
 					height = minimizedHeight * ratioY,
-					mouseX = pointer.x - panel.x + phaserGame.camera.x - graphics.x,
-					mouseY = pointer.y - panel.y + phaserGame.camera.y - graphics.y;
+					mouseCoords = userPointer.getRealCoords(),
+					mouseX = mouseCoords.x - panel.x - graphics.x,
+					mouseY = mouseCoords.y - panel.y - graphics.y;
 
 				if (mouseX > minimizedWidth || mouseY > minimizedHeight || mouseY < 0){
 					return false;

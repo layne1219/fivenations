@@ -42,7 +42,7 @@ define('UserPointer', ['Util'], function(Util){
 
             // left mouse button
             if (phaserGame.input.mousePointer.leftButton.isDown){
-            	dispatcher.dispatch('leftbutton/down', phaserGame.input.mousePointer);
+            	dispatcher.dispatch('leftbutton/down', this);
 
             	multiselector.active = true;
 				multiselector.x = phaserGame.camera.x + phaserGame.input.mousePointer.x;
@@ -52,7 +52,7 @@ define('UserPointer', ['Util'], function(Util){
             } 
             // right mouse button
             else if (phaserGame.input.mousePointer.rightButton.isDown){
-            	dispatcher.dispatch('rightbutton/down', phaserGame.input.mousePointer);
+            	dispatcher.dispatch('rightbutton/down', this);
             }
 
             // invoking all the registred functions for the the unified event
@@ -87,7 +87,7 @@ define('UserPointer', ['Util'], function(Util){
 			phaserGame.debug.geom(multiselector,'#0fffff', false);
 
 			if ( phaserGame.input.mousePointer.leftButton.isDown ){
-				dispatcher.dispatch('leftbutton/move', phaserGame.input.mousePointer);
+				dispatcher.dispatch('leftbutton/move', this);
 			}
 
 			if ( phaserGame.input.mousePointer.leftButton.isDown && multiselector.active){
