@@ -1,5 +1,4 @@
 define('Game', [
-    'UniversalEventDispatcher',
     'Graphics',
     'Map',
     'PlayerManager', 
@@ -9,7 +8,7 @@ define('Game', [
     'UserPointer', 
     'UserKeyboard', 
     'Util'
-], function(UniversalEventDispatcher, Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
+], function(Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
     'use strict';
 
     var ns = window.fivenations,

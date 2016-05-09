@@ -1,11 +1,12 @@
 define('GUI', [
+	'UniversalEventDispatcher',
 	'Graphics',
 	'GUI.ControlButton',
 	'GUI.ControlPage',
 	'GUI.CancelPage',
 	'Util',
 	'json!abilities'
-], function( Graphics, ControlButton, ControlPage, CancelPage, Util, abilitiesJSON ){
+], function(UED, Graphics, ControlButton, ControlPage, CancelPage, Util, abilitiesJSON ){
 
 	var NO_COMMAND_SELECTED = -1,
 
@@ -989,6 +990,46 @@ define('GUI', [
 				];
 				// make the first page visible
 				this.selectMainPage();
+
+				// set up event listeners
+				this.setEventListeners();
+			};
+
+			/**
+			 * Displaying the main page
+			 * @return {[viod]}
+			 */
+			ControlPanel.prototype.selectMainPage = function(){
+				this.selectPage(0);
+			};
+
+			/**
+			 * Displaying the page registered with the passed page Index 
+			 * @param  {integer} pageIdx Index of the page in the containing Array
+			 * @return {void}
+			 */
+			ControlPanel.prototype.selectPage = function(pageIdx){
+
+				for (var i = 0; i < this.controlPanelPages.length; i++) {
+					if (i === pageIdx){
+						this.controlPanelPages[i].visible = true;
+					} else {
+						this.controlPanelPages[i].visible = false;
+					}
+				}
+
+				this.selectedPageIndex = pageIdx;
+
+			};					
+
+			/**
+			 * register a listener against changes in the current selection.
+			 * There is no further need of re-determining what buttons need to be displayed
+			 * @return {void}
+			 */
+			ControlPanel.prototype.setEventListeners = function(){
+				var ued = UED.getInstance();
+				ued.addEventListener('gui/selection/change', this.update.bind(this));
 			};
 
 			/**
@@ -1030,33 +1071,6 @@ define('GUI', [
 					this.controlPanelPages[this.selectedPageIndex].update( entities );
 				}
 
-			};
-
-			/**
-			 * Displaying the page registered with the passed page Index 
-			 * @param  {integer} pageIdx Index of the page in the containing Array
-			 * @return {void}
-			 */
-			ControlPanel.prototype.selectPage = function(pageIdx){
-
-				for (var i = 0; i < this.controlPanelPages.length; i++) {
-					if (i === pageIdx){
-						this.controlPanelPages[i].visible = true;
-					} else {
-						this.controlPanelPages[i].visible = false;
-					}
-				}
-
-				this.selectedPageIndex = pageIdx;
-
-			};
-
-			/**
-			 * Displaying the main page
-			 * @return {[viod]}
-			 */
-			ControlPanel.prototype.selectMainPage = function(){
-				this.selectPage(0);
 			};
 
 			/**
@@ -1194,8 +1208,6 @@ define('GUI', [
 
 		GUI.prototype = {
 
-			selectedCommandId: -1,
-
 			/**
 			 * Placing and triggering the click animation onto the game area
 			 * @param  {integer} x
@@ -1225,10 +1237,6 @@ define('GUI', [
 
 				if (entityDetailsDisplay){
 					entityDetailsDisplay.update();
-				}
-
-				if (controlPanel){
-					controlPanel.update();
 				}
 			},
 

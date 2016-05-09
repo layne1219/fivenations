@@ -1,4 +1,5 @@
 define('Entity', [
+    'UniversalEventDispatcher',
     'Entity.ActivityManager',
     'Entity.MotionManager',
     'Entity.AbilityManager', 
@@ -6,7 +7,7 @@ define('Entity', [
     'UserKeyboard', 
     'UserPointer', 
     'Util'
-], function(ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, Util){
+], function(UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, Util){
 	
     var 
 
@@ -208,12 +209,14 @@ define('Entity', [
             if (this.entityManager.getAllSelected().length < this.entityManager.getMaxSelectableUnitNumber()){
         	   this.selected = true;
                this.eventDispatcher.dispatch('select');
+               UED.getInstance().dispatch('gui/selection/change');
             }
         },
 
         unselect: function(){
         	this.selected = false;
             this.eventDispatcher.dispatch('unselect');
+            UED.getInstance().dispatch('gui/selection/change');
         },
 
         hasSlowManeuverability: function(){

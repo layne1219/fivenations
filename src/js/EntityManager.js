@@ -138,11 +138,10 @@ define('EntityManager', [
 		patrolAllSelectedTo: function(x, y){
 			var entities = this.getAllSelected().filter(function(entity){
             		return this.isEntityControlledByUser(entity);
-            	}.bind(this)),
-				rnd = entities.length === 1 ? 0 : (entities.length * 4);
+            	}.bind(this));
 
 			entities.forEach(function(entity){
-            	entity.patrol(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
+            	entity.patrol(x, y);
             });	
 		},		
 
