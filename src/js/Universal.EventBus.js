@@ -1,4 +1,4 @@
-define('UniversalEventBus', ['Util'], function(Util){
+define('Universal.EventBus', ['Util'], function(Util){
 	
     var singleton,
         createEventBus = function() {

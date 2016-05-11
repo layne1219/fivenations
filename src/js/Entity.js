@@ -1,5 +1,5 @@
 define('Entity', [
-    'UniversalEventDispatcher',
+    'Universal.EventDispatcher',
     'Entity.ActivityManager',
     'Entity.MotionManager',
     'Entity.AbilityManager', 

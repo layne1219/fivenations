@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"getI",
+				"getInstance"
+			],
+			[
 				"button",
 				"buttonLogics"
 			],
@@ -510,10 +514,6 @@
 			[
 				"acce",
 				"accelerateToTarget"
-			],
-			[
-				"move",
-				"movement"
 			]
 		]
 	},
@@ -523,24 +523,33 @@
 			"file": "src/js/EntityManager.js",
 			"settings":
 			{
-				"buffer_size": 5836,
+				"buffer_size": 5717,
 				"line_ending": "Unix",
 				"name": "define('ObjectManager', function(){"
+			}
+		},
+		{
+			"file": "src/js/EventBus.js",
+			"settings":
+			{
+				"buffer_size": 50,
+				"line_ending": "Unix",
+				"name": "define('EventBus', ['Util'], function(Util){"
+			}
+		},
+		{
+			"file": "src/js/Entity.MotionManager.js",
+			"settings":
+			{
+				"buffer_size": 11967,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 36253,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/GUI.Activity.SelectCoords.js",
-			"settings":
-			{
-				"buffer_size": 1311,
+				"buffer_size": 36625,
 				"line_ending": "Unix"
 			}
 		},
@@ -561,20 +570,18 @@
 			}
 		},
 		{
-			"contents": "Searching 32 files for \"select\" (case sensitive)\n\n/home/bence/dev/silversword/fivenations/src/js/Entity.MotionManager.js:\n  178  \n  179          /**\n  180:          * Invoking the currently selected effect from the effect queue at every tick\n  181           * @return {[void]}\n  182           */\n  ...\n  194          /**\n  195           * Pushing a new effect to the effect queue\n  196:          * @param {[function]} effect [function that will be triggered at every tick when selected]\n  197           */\n  198  		addEffect: function(effect){\n\n/home/bence/dev/silversword/fivenations/src/js/Entity.js:\n   17          /**\n   18           * Initialising the Phaser.Sprite object with all the additional child elements \n   19:          * such as selector and property bars \n   20           * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]\n   21           * @param {[object]} [sprite] Phaser.Sprite object to which the extended properties and child elements will be linked\n   ..\n   63                      game = this.game;\n   64                  if (UserPointer.getInstance().isLeftButtonDown()){\n   65:                     // If the user holds SHIFT we will extend the number of selected entities\n   66                      if (!UserKeyboard.getInstance().isDown( Phaser.KeyCode.SHIFT )){\n   67:                         this.entityManager.unselectAll();\n   68                      }\n   69:                     this.select();\n   70  \n   71                      now = new Date().getTime();\n   ..\n   82                              return entity.getDataObject().getId() === dataObject.getId();\n   83                          }).forEach(function(entity){\n   84:                             entity.select();\n   85                          });\n   86                      }\n   ..\n  128  \n  129          // adding the Selector object to highligh whether the unit is seleted or not\n  130:         this.selector = GUI.getInstance().addSelector(this);\n  131  \n  132          // adding the StatusDisplay object to show the current status \n  ...\n  205          },\n  206  \n  207:         select: function(){\n  208              if (this.entityManager.getAllSelected().length < this.entityManager.getMaxSelectableUnitNumber()){\n  209:         	   this.selected = true;\n  210:                this.eventDispatcher.dispatch('select');\n  211              }\n  212          },\n  213  \n  214:         unselect: function(){\n  215:         	this.selected = false;\n  216:             this.eventDispatcher.dispatch('unselect');\n  217          },\n  218  \n  ...\n  222  \n  223          isSelected: function(){\n  224:         	return !!this.selected;\n  225          },\n  226  \n\n/home/bence/dev/silversword/fivenations/src/js/EntityManager.js:\n   18  		entities = [],\n   19  \n   20: 		// Limit for number of selectable units by one multiselection\n   21  		MAX_SELECTABLE_UNITS = 22;\n   22  \n   ..\n  101  \n  102  		/**\n  103: 		 * Unselect all entities expect the passed if it is not omitted\n  104: 		 * @param {object} [entity] [Entity instance that will be excluded from the selection]\n  105  		 * @return {void} \n  106  		 */\n  107: 		unselectAll: function(excludedEntity){\n  108  			this.get().forEach(function(entity){\n  109  				if (excludedEntity !== entity && entity.isSelected()){\n  110: 					entity.unselect();\n  111  				}\n  112  			});\n  ...\n  114  \n  115  		/**\n  116: 		 * Make all the selected entities to move to the given coordinates \n  117  		 * @param  {integer} x [horizontal offset of the map to which the entities move]\n  118  		 * @param  {integer} y [vertical offset of the map to which the entities move]\n  ...\n  131  \n  132  		/**\n  133: 		 * Make all the selected entities to patrol between the current and given coordinates \n  134  		 * @param  {integer} x [horizontal offset of the map between which the entities patrol]\n  135  		 * @param  {integer} y [vertical offset of the map between which the entities patrol]\n\n/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.SelectCoords.js:\n   23  \n   24          this.callback = function(mousePointer){\n   25:             this.dispatcher.dispatch('select', mousePointer);\n   26              this.getActivityManager().cancel();\n   27          }.bind(this);\n\n/home/bence/dev/silversword/fivenations/src/js/GUI.ActivityManager.js:\n    5  	function createActivityManager(){\n    6  \n    7: 		var selectedActivity;\n    8  \n    9  		return {\n   ..\n   13  				this.cancel();\n   14  				this.setActivity(activity);\n   15: 				return selectedActivity;\n   16  			},\n   17  \n   18  			cancel: function(){\n   19  				if (this.hasActiveSelection()){\n   20: 					selectedActivity.deactivate();\n   21: 					delete selectedActivity;\n   22: 					selectedActivity = null;					\n   23  				}				\n   24  			},\n   25  \n   26  			setActivity: function(activity){\n   27: 				selectedActivity = new activity(this);\n   28: 				selectedActivity.activate();\n   29: 				return selectedActivity;\n   30  			},\n   31  \n   32  			hasActiveSelection: function(){\n   33: 				return selectedActivity;\n   34  			},\n   35  \n   36  			getSelectedActivity: function(){\n   37: 				return selectedActivity;\n   38  			}\n   39  \n\n/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButton.js:\n   65  		this.events.onInputUp.add(function(idx){\n   66  			this.activate();\n   67: 				if (ns.gui.selectedControlButton){\n   68: 					ns.gui.selectedControlButton.deactivate();\n   69  				}\n   70: 			ns.gui.selectedControlButton = this;	\n   71  		}.bind(this));\n   72  \n\n/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButtonCollection.js:\n   27  		activate: function(entityManager, controlPanel){\n   28  			var activity = ActivityManager.getInstance().start(ActivitySelectCoords);\n   29: 			activity.on('select', function(mousePointer){\n   30  				var coords = mousePointer.getRealCoords();\n   31  \n   32  				entityManager.moveAllSelectedTo(coords.x, coords.y);\n   33  				ns.game.GUI.putClickAnim(coords.x, coords.y);\n   34: 				controlPanel.selectMainPage();\n   35  			});\n   36  			// @TODO this should be unified as most of the buttons share this logic\n   37: 			controlPanel.selectCancelPage();			\n   38  		}\n   39  	};\n   ..\n   51  		activate: function(entityManager, controlPanel){\n   52  			var activity = ActivityManager.getInstance().start(ActivitySelectCoords);\n   53: 			activity.on('select', function(mousePointer){\n   54  				var coords = mousePointer.getRealCoords();\n   55  \n   56  				entityManager.patrolAllSelectedTo(coords.x, coords.y);\n   57  				ns.game.GUI.putClickAnim(coords.x, coords.y);\n   58: 				controlPanel.selectMainPage();\n   59  			});\n   60  			// @TODO this should be unified as most of the buttons share this logic\n   61: 			controlPanel.selectCancelPage();			\n   62  		}\n   63  	};\n   ..\n   72  	return {\n   73  		activate: function(entityManager, controlPanel){\n   74: 			controlPanel.selectMainPage();\n   75  			ActivityManager.getInstance().cancel();\n   76  		}\n\n/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js:\n   90  \n   91  	/**\n   92: 	 * Updating the page according to the currently selected collection of entities\n   93  	 * @param  {[Array]} entities [Array of Entity instances]\n   94  	 * @return {[void]}\n\n/home/bence/dev/silversword/fivenations/src/js/GUI.js:\n   37  				'click-friendly': [ 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44],\n   38  \n   39: 				'select-enemy-big': [121, 122, 123, 124, 125],\n   40: 				'select-enemy-extrabig': [126, 127, 128, 129, 130],\n   41: 				'select-enemy-medium': [131, 132, 133, 134, 135],\n   42: 				'select-enemy-small': [136, 137, 138, 139, 140],\n   43  \n   44: 				'select-big': [141, 142, 143, 144, 145],\n   45: 				'select-extrabig': [147, 148, 149, 150, 151],\n   46: 				'select-medium': [152, 153, 154, 155, 156],\n   47: 				'select-small': [157, 158, 159, 160, 161]\n   48  \n   49  			};\n   ..\n   81  \n   82  		// --------------------------------------------------------------------------------------\n   83: 		// Selector object to handle the selection animation and the displaying of the \n   84  		// element with the appropriate size\n   85  		// --------------------------------------------------------------------------------------\n   ..\n   87  \n   88  			var \n   89: 				// selection animation frame rate\n   90  				SELECTOR_ANIM_FRAME_RATE = 25;\n   91  \n   ..\n   97  \n   98  				[\n   99: 					'select-enemy-big',\n  100: 					'select-enemy-extrabig',\n  101: 					'select-enemy-medium',\n  102: 					'select-enemy-small',\n  103: 					'select-big',\n  104: 					'select-extrabig',\n  105: 					'select-medium',\n  106: 					'select-small'\n  107  \n  108  				].forEach(function(animation){\n  ...\n  128  					}\n  129  \n  130: 					entity.on('select', this.show.bind(this));\n  131: 					entity.on('unselect', this.hide.bind(this));					\n  132  					\n  133: 					// Add the selection to the appropriate graphics group as per its type\n  134: 					groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';\n  135  					Graphics.getInstance().getGroup(groupName).add(this.sprite);\n  136  \n  ...\n  148  \n  149  				show: function(){\n  150: 					var relationship = (function(selector){\n  151: 							if (entityManager.isEntityControlledByUser(selector.parent)){\n  152  								return '-';\n  153  							}\n  ...\n  155  						})(this),\n  156  \n  157: 						animationName = 'select' + relationship + this.getSize();\n  158  						\n  159  					this.sprite.visible = true;\n  ...\n  324  				appendTo: function( entity ){\n  325  \n  326: 					entity.on('select', this.show.bind(this));\n  327: 					entity.on('unselect', this.hide.bind(this));\n  328  					entity.on('damage', this.update.bind(this));	\n  329  \n  ...\n  507  				}\n  508  \n  509: 				// cancelling the multiselection \n  510: 				userPointer.stopMultiselection();\n  511  \n  512  				if (alignToCentre){\n  ...\n  640  				this.attributeGroup = createAttributeGroup(0, 0, phaserGame);\n  641  \n  642: 				// setting up the group for the icons showing up when it comes to multiselection\n  643: 				this.multiselectionGroup = createMultiselectionGroup(0, 5, phaserGame, this.entityManager);\n  644  \n  645  				this.group.add(this.attributeGroup);\n  646: 				this.group.add(this.multiselectionGroup);\n  647  			}\n  648  \n  ...\n  692  					}\n  693  \n  694: 					// displaying the Splash Icon of the selected entity\n  695  					this.iconSprite.frame = entityIcons[dataObject.getId()].faceFrame;\n  696  \n  ...\n  750  \n  751  \n  752: 			function createMultiselectionGroup(x, y, phaserGame, entityManager){\n  753  \n  754  				var group,\n  ...\n  761  					statusBarMargin = 2;\n  762  \n  763: 				function MultiselectionGroup(){\n  764  					var args = [].slice.call(arguments),\n  765  						i, x, y;\n  ...\n  786  						this.icons[i].events.onInputDown.add((function(idx){\n  787  							return function(){\n  788: 								entityManager.unselectAll(this.entities[idx]);\n  789  							};\n  790  						})(i), this);\n  ...\n  793  				}\n  794  \n  795: 				MultiselectionGroup.prototype = Object.create(Phaser.Group.prototype);\n  796: 				MultiselectionGroup.prototype.constructor = MultiselectionGroup;\n  797  \n  798  				/**\n  799: 				 * Updating the list of selected units\n  800  				 * @param  {array} entities [Collection of Entity instances]\n  801  				 * @return {void}\n  802  				 */\n  803: 				MultiselectionGroup.prototype.updateContent = function(entities){\n  804  \n  805  					var dataObject,\n  ...\n  838  				};\n  839  \n  840: 				MultiselectionGroup.prototype.renderBar = function( graphics, ratio, color ){\n  841  					graphics.visible = true;\n  842  					graphics.clear();\n  ...\n  846  				};\n  847  \n  848: 				group = new MultiselectionGroup(phaserGame);\n  849  				group.x = x;\n  850  				group.y = y;\n  ...\n  890  					if (entities.length === 1) {\n  891  \n  892: 						// show the panel for single selection\n  893  						this.show();\n  894  						this.displaySingleEntityScene(entities[0]);\n  ...\n  896  					} else if (entities.length > 1) {\n  897  \n  898: 						// show the panel for multiple selection\n  899  						this.show();\n  900  						this.displayMultipleEntityScene(entities);\n  ...\n  907  \n  908  				/**\n  909: 				 * Displaying the GUI elements for the single selection screen\n  910  				 * @return {object} entity Entity\n  911  				 */\n  ...\n  913  \n  914  					this.attributeGroup.visible = true;\n  915: 					this.multiselectionGroup.visible = false;\n  916  \n  917  					// Updating the texts + splash icon\n  ...\n  920  \n  921  				/**\n  922: 				 * Displaying the GUI elements for the multi selection screen\n  923  				 * @return {array} entities Array of Entity instances\n  924  				 */\n  925  				displayMultipleEntityScene: function(entities){\n  926: 					// toggle between the single and multiselection panel\n  927  					this.attributeGroup.visible = false;\n  928: 					this.multiselectionGroup.visible = true;\n  929  \n  930: 					// updating the list of the selected entities\n  931: 					this.multiselectionGroup.updateContent(entities);\n  932  \n  933  				},				\n  ...\n  986  					this.add( new ControlPage(this.entityManager) ), // main page for the major control buttons\n  987  					this.add( new ControlPage(this.entityManager) ),  // a sub page for extended controls like constructions\n  988: 					this.add( new CancelPage(this.entityManager) )  // a page for cancelling the selected activity\n  989  				];\n  990  				// make the first page visible\n  991: 				this.selectMainPage();\n  992  			};\n  993  \n  ...\n 1027  \n 1028  				this.show();\n 1029: 				if (this.controlPanelPages[this.selectedPageIndex]){				\n 1030: 					this.controlPanelPages[this.selectedPageIndex].update( entities );\n 1031  				}\n 1032  \n ....\n 1038  			 * @return {void}\n 1039  			 */\n 1040: 			ControlPanel.prototype.selectPage = function(pageIdx){\n 1041  \n 1042  				for (var i = 0; i < this.controlPanelPages.length; i++) {\n ....\n 1048  				}\n 1049  \n 1050: 				this.selectedPageIndex = pageIdx;\n 1051  \n 1052  			};\n ....\n 1056  			 * @return {[viod]}\n 1057  			 */\n 1058: 			ControlPanel.prototype.selectMainPage = function(){\n 1059: 				this.selectPage(0);\n 1060  			};\n 1061  \n ....\n 1064  			 * @return {[viod]}\n 1065  			 */\n 1066: 			ControlPanel.prototype.selectSecondaryPage = function(){\n 1067: 				this.selectPage(1);\n 1068  			};\n 1069  \n ....\n 1072  			 * @return {[viod]}\n 1073  			 */\n 1074: 			ControlPanel.prototype.selectCancelPage = function(){\n 1075: 				this.selectPage(2);\n 1076  			};\n 1077  \n ....\n 1195  		GUI.prototype = {\n 1196  \n 1197: 			selectedCommandId: -1,\n 1198  \n 1199  			/**\n ....\n 1238  			 */\n 1239  			addSelector: function( entity ){\n 1240: 				var selector = new Selector();\n 1241: 				selector.appendTo( entity );\n 1242: 				return selector;\n 1243  			},\n 1244  \n\n/home/bence/dev/silversword/fivenations/src/js/Game.js:\n   81              }.bind(this));\n   82  \n   83:             // Unselecting units when clicking over an area with no entities underneath\n   84              this.userPointer.on('leftbutton/down', function(mousePointer){\n   85  \n   86:                 // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched\n   87                  if (GUI.getInstance().isHover()){\n   88                      this.userPointer.dispatch('leftbutton/down/gui');\n   ..\n   96  \n   97                  if (this.entityManager.getAllHover().length === 0){\n   98:                     this.userPointer.dispatch('leftbutton/down/disselect');\n   99                      return;\n  100                  }\n  ...\n  106  \n  107              // If the user pointer isn't over the GUI area, nor any entities\n  108:             this.userPointer.on('leftbutton/down/disselect', function(){\n  109:                 this.entityManager.unselectAll();\n  110              }.bind(this));\n  111  \n  112:             this.userPointer.on('multiselector/up', function(multiselector){\n  113  \n  114                  this.entityManager.get().forEach(function(entity){\n  ...\n  116                          return;\n  117                      }\n  118:                     if (entity.isInside(multiselector)){\n  119:                         entity.select();\n  120                      }\n  121                  });              \n\n/home/bence/dev/silversword/fivenations/src/js/Graphics.js:\n   10  			groupNames = [\n   11  				'starfield',\n   12: 				'selectors-buildings',				\n   13  				'entities-buildings',				\n   14: 				'selectors',\n   15  				'entities',\n   16  				'prior-gui-elements'\n\n/home/bence/dev/silversword/fivenations/src/js/UserPointer.js:\n    4  		phaserGame,\n    5  		dispatcher,\n    6: 		multiselector;\n    7  \n    8  	function UserPointer(){\n    .\n   13  	function init(){\n   14  		dispatcher = new Util.EventDispatcher();\n   15: 		multiselector = new Phaser.Rectangle(0, 0, 0, 0);\n   16: 		multiselector.active = false;\n   17  	}\n   18  \n   ..\n   23  			dispatcher.dispatch('up');\n   24  \n   25: 			if (multiselector.active){\n   26  \n   27: 				if (multiselector.width > 0 || multiselector.height > 0){\n   28: 					dispatcher.dispatch('multiselector/up', multiselector);\n   29  				}\n   30  \n   31: 				multiselector.active = false;\n   32: 				multiselector.x = 0;\n   33: 				multiselector.y = 0;\n   34: 				multiselector.width = 0;\n   35: 				multiselector.height = 0;				\n   36  			}\n   37  \n   ..\n   45              	dispatcher.dispatch('leftbutton/down', this);\n   46  \n   47:             	multiselector.active = true;\n   48: 				multiselector.x = phaserGame.camera.x + phaserGame.input.mousePointer.x;\n   49: 				multiselector.y = phaserGame.camera.y + phaserGame.input.mousePointer.y;\n   50: 				multiselector.width = 0;\n   51: 				multiselector.height = 0;         	\n   52              } \n   53              // right mouse button\n   ..\n   78  		},\n   79  \n   80: 		stopMultiselection: function(){\n   81: 			multiselector.active = 0;\n   82: 			multiselector.width = 0;\n   83: 			multiselector.height = 0;\n   84  		},\n   85  \n   86  		update: function(){\n   87: 			phaserGame.debug.geom(multiselector,'#0fffff', false);\n   88  \n   89  			if ( phaserGame.input.mousePointer.leftButton.isDown ){\n   ..\n   91  			}\n   92  \n   93: 			if ( phaserGame.input.mousePointer.leftButton.isDown && multiselector.active){\n   94: 				if (phaserGame.camera.x + phaserGame.input.mousePointer.x < multiselector.x){\n   95: 					this.stopMultiselection();\n   96  					return;\n   97  				}\n   98: 				if (phaserGame.camera.y + phaserGame.input.mousePointer.y < multiselector.y){\n   99: 					this.stopMultiselection();\n  100  					return;\n  101  				}				\n  102: 				multiselector.width = Math.abs(multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));\n  103: 				multiselector.height = Math.abs(multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));				\n  104  			}\n  105  		},\n\n/home/bence/dev/silversword/fivenations/src/js/todos:\n    1: current selection:\n    2: - selecting positions\n    3: - selecting entities\n    4  - placing building placeholders\n    5  \n    .\n    7  Todos:\n    8  - constructing an object that can be shared throughout the modules\n    9: - the object needs to return if any activity is happening (selection)\n   10: - the object needs to perform a custom logic assosiated with the selected activity\n\n163 matches across 13 files\n\n\nSearching 33 files for \"select()\" (case sensitive)\n\n/home/bence/dev/silversword/fivenations/src/js/Entity.js:\n   67                          this.entityManager.unselectAll();\n   68                      }\n   69:                     this.select();\n   70  \n   71                      now = new Date().getTime();\n   ..\n   82                              return entity.getDataObject().getId() === dataObject.getId();\n   83                          }).forEach(function(entity){\n   84:                             entity.select();\n   85                          });\n   86                      }\n\n/home/bence/dev/silversword/fivenations/src/js/EntityManager.js:\n  108  			this.get().forEach(function(entity){\n  109  				if (excludedEntity !== entity && entity.isSelected()){\n  110: 					entity.unselect();\n  111  				}\n  112  			});\n\n/home/bence/dev/silversword/fivenations/src/js/Game.js:\n  117                      }\n  118                      if (entity.isInside(multiselector)){\n  119:                         entity.select();\n  120                      }\n  121                  });              \n\n4 matches across 3 files\n",
+			"file": "src/js/UniversalEventDispatcher.js",
 			"settings":
 			{
-				"buffer_size": 20426,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
+				"buffer_size": 216,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 9557,
+				"buffer_size": 9725,
 				"line_ending": "Unix"
 			}
 		},
@@ -582,7 +589,7 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 9923,
+				"buffer_size": 9865,
 				"line_ending": "Unix"
 			}
 		}
@@ -595,9 +602,13 @@
 	"command_palette":
 	{
 		"height": 180.0,
-		"last_filter": "JAv",
+		"last_filter": "JAva",
 		"selected_items":
 		[
+			[
+				"JAva",
+				"Set Syntax: JavaScript"
+			],
 			[
 				"JAv",
 				"Set Syntax: JavaScript"
@@ -620,10 +631,6 @@
 			],
 			[
 				"J",
-				"Set Syntax: JavaScript"
-			],
-			[
-				"JAva",
 				"Set Syntax: JavaScript"
 			],
 			[
@@ -673,11 +680,11 @@
 		"/home/bence/dev/silversword/fivenations/src/assets",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/common",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.SelectCoords.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UniversalEventDispatcher.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
@@ -794,6 +801,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"selectedCommandId",
+			"appendTo",
+			"UED",
+			"update",
+			"UED",
+			"UniversalEventDispatcher",
 			"select",
 			"select()",
 			"update",
@@ -915,13 +928,7 @@
 			"visible",
 			"controlPanelPages",
 			"appendTo",
-			"controlPanelPages",
-			"gui",
-			"buttons",
-			"F",
-			"this.hide",
-			"hide",
-			"appendTo"
+			"controlPanelPages"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -939,7 +946,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -948,15 +955,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5836,
+						"buffer_size": 5717,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3593,
-								3593
+								4053,
+								4053
 							]
 						],
 						"settings":
@@ -966,56 +973,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1661.0,
+						"translation.y": 1530.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/js/GUI.js",
+					"file": "src/js/EventBus.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 36253,
+						"buffer_size": 50,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27733,
-								27733
+								46,
+								46
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "define('EventBus', ['Util'], function(Util){",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 14869.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/js/GUI.Activity.SelectCoords.js",
-					"semi_transient": false,
+					"file": "src/js/Entity.MotionManager.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1311,
+						"buffer_size": 11967,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								771,
-								771
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1025,14 +1032,43 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2925.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "src/js/GUI.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36625,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								34083,
+								34083
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 17749.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "src/js/Entity.AbilityManager.js",
 					"semi_transient": false,
 					"settings":
@@ -1053,15 +1089,15 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 315.0,
+						"translation.x": 0.0,
+						"translation.y": 288.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "src/js/GUI.ControlButtonCollection.js",
 					"semi_transient": false,
 					"settings":
@@ -1086,764 +1122,52 @@
 						"translation.y": 945.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 20426,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										190,
-										196
-									],
-									[
-										477,
-										483
-									],
-									[
-										744,
-										750
-									],
-									[
-										1220,
-										1226
-									],
-									[
-										1382,
-										1388
-									],
-									[
-										1456,
-										1462
-									],
-									[
-										1734,
-										1740
-									],
-									[
-										1934,
-										1940
-									],
-									[
-										2115,
-										2121
-									],
-									[
-										2277,
-										2283
-									],
-									[
-										2347,
-										2353
-									],
-									[
-										2421,
-										2427
-									],
-									[
-										2462,
-										2468
-									],
-									[
-										2532,
-										2538
-									],
-									[
-										2651,
-										2657
-									],
-									[
-										2817,
-										2823
-									],
-									[
-										2846,
-										2852
-									],
-									[
-										2941,
-										2947
-									],
-									[
-										3085,
-										3091
-									],
-									[
-										3148,
-										3154
-									],
-									[
-										3319,
-										3325
-									],
-									[
-										3408,
-										3414
-									],
-									[
-										3690,
-										3696
-									],
-									[
-										4139,
-										4145
-									],
-									[
-										4382,
-										4388
-									],
-									[
-										4515,
-										4521
-									],
-									[
-										4639,
-										4645
-									],
-									[
-										4689,
-										4695
-									],
-									[
-										4719,
-										4725
-									],
-									[
-										4841,
-										4847
-									],
-									[
-										4891,
-										4897
-									],
-									[
-										4938,
-										4944
-									],
-									[
-										5037,
-										5043
-									],
-									[
-										5137,
-										5143
-									],
-									[
-										5344,
-										5350
-									],
-									[
-										5387,
-										5393
-									],
-									[
-										5453,
-										5459
-									],
-									[
-										5761,
-										5767
-									],
-									[
-										6001,
-										6007
-									],
-									[
-										6138,
-										6144
-									],
-									[
-										6354,
-										6360
-									],
-									[
-										6596,
-										6602
-									],
-									[
-										6733,
-										6739
-									],
-									[
-										6882,
-										6888
-									],
-									[
-										7105,
-										7111
-									],
-									[
-										7399,
-										7405
-									],
-									[
-										7457,
-										7463
-									],
-									[
-										7520,
-										7526
-									],
-									[
-										7581,
-										7587
-									],
-									[
-										7649,
-										7655
-									],
-									[
-										7701,
-										7707
-									],
-									[
-										7758,
-										7764
-									],
-									[
-										7813,
-										7819
-									],
-									[
-										8030,
-										8036
-									],
-									[
-										8265,
-										8271
-									],
-									[
-										8386,
-										8392
-									],
-									[
-										8418,
-										8424
-									],
-									[
-										8455,
-										8461
-									],
-									[
-										8490,
-										8496
-									],
-									[
-										8524,
-										8530
-									],
-									[
-										8550,
-										8556
-									],
-									[
-										8581,
-										8587
-									],
-									[
-										8610,
-										8616
-									],
-									[
-										8725,
-										8731
-									],
-									[
-										8782,
-										8788
-									],
-									[
-										8855,
-										8861
-									],
-									[
-										8978,
-										8984
-									],
-									[
-										9002,
-										9008
-									],
-									[
-										9179,
-										9185
-									],
-									[
-										9247,
-										9253
-									],
-									[
-										9376,
-										9382
-									],
-									[
-										9549,
-										9555
-									],
-									[
-										9606,
-										9612
-									],
-									[
-										9765,
-										9771
-									],
-									[
-										9808,
-										9814
-									],
-									[
-										10029,
-										10035
-									],
-									[
-										10060,
-										10066
-									],
-									[
-										10088,
-										10094
-									],
-									[
-										10234,
-										10240
-									],
-									[
-										10348,
-										10354
-									],
-									[
-										10503,
-										10509
-									],
-									[
-										10654,
-										10660
-									],
-									[
-										10879,
-										10885
-									],
-									[
-										10997,
-										11003
-									],
-									[
-										11079,
-										11085
-									],
-									[
-										11123,
-										11129
-									],
-									[
-										11197,
-										11203
-									],
-									[
-										11344,
-										11350
-									],
-									[
-										11485,
-										11491
-									],
-									[
-										11681,
-										11687
-									],
-									[
-										11854,
-										11860
-									],
-									[
-										12051,
-										12057
-									],
-									[
-										12229,
-										12235
-									],
-									[
-										12390,
-										12396
-									],
-									[
-										12563,
-										12569
-									],
-									[
-										12769,
-										12775
-									],
-									[
-										12856,
-										12862
-									],
-									[
-										12935,
-										12941
-									],
-									[
-										12975,
-										12981
-									],
-									[
-										13357,
-										13363
-									],
-									[
-										13447,
-										13453
-									],
-									[
-										13567,
-										13573
-									],
-									[
-										13632,
-										13638
-									],
-									[
-										13773,
-										13779
-									],
-									[
-										13925,
-										13931
-									],
-									[
-										14058,
-										14064
-									],
-									[
-										14103,
-										14109
-									],
-									[
-										14222,
-										14228
-									],
-									[
-										14272,
-										14278
-									],
-									[
-										14391,
-										14397
-									],
-									[
-										14438,
-										14444
-									],
-									[
-										14525,
-										14531
-									],
-									[
-										14648,
-										14654
-									],
-									[
-										14686,
-										14692
-									],
-									[
-										14733,
-										14739
-									],
-									[
-										14887,
-										14893
-									],
-									[
-										15135,
-										15141
-									],
-									[
-										15463,
-										15469
-									],
-									[
-										15690,
-										15696
-									],
-									[
-										15755,
-										15761
-									],
-									[
-										15855,
-										15861
-									],
-									[
-										15883,
-										15889
-									],
-									[
-										16102,
-										16108
-									],
-									[
-										16152,
-										16158
-									],
-									[
-										16354,
-										16360
-									],
-									[
-										16429,
-										16435
-									],
-									[
-										16616,
-										16622
-									],
-									[
-										16761,
-										16767
-									],
-									[
-										16820,
-										16826
-									],
-									[
-										16933,
-										16939
-									],
-									[
-										16979,
-										16985
-									],
-									[
-										17006,
-										17012
-									],
-									[
-										17066,
-										17072
-									],
-									[
-										17085,
-										17091
-									],
-									[
-										17133,
-										17139
-									],
-									[
-										17174,
-										17180
-									],
-									[
-										17206,
-										17212
-									],
-									[
-										17238,
-										17244
-									],
-									[
-										17274,
-										17280
-									],
-									[
-										17424,
-										17430
-									],
-									[
-										17464,
-										17470
-									],
-									[
-										17548,
-										17554
-									],
-									[
-										17632,
-										17638
-									],
-									[
-										17668,
-										17674
-									],
-									[
-										17806,
-										17812
-									],
-									[
-										17844,
-										17850
-									],
-									[
-										17880,
-										17886
-									],
-									[
-										17915,
-										17921
-									],
-									[
-										18022,
-										18028
-									],
-									[
-										18221,
-										18227
-									],
-									[
-										18315,
-										18321
-									],
-									[
-										18354,
-										18360
-									],
-									[
-										18476,
-										18482
-									],
-									[
-										18515,
-										18521
-									],
-									[
-										18581,
-										18587
-									],
-									[
-										18612,
-										18618
-									],
-									[
-										18699,
-										18705
-									],
-									[
-										18731,
-										18737
-									],
-									[
-										18900,
-										18906
-									],
-									[
-										18920,
-										18926
-									],
-									[
-										18949,
-										18955
-									],
-									[
-										19175,
-										19181
-									],
-									[
-										19258,
-										19264
-									],
-									[
-										19543,
-										19551
-									],
-									[
-										19821,
-										19829
-									],
-									[
-										20095,
-										20103
-									],
-									[
-										20320,
-										20328
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								19827,
-								19827
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 8370.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "src/js/Entity.js",
+					"file": "src/js/UniversalEventDispatcher.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9557,
+						"buffer_size": 216,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2816,
-								2816
+								101,
+								101
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 810.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "src/js/Game.js",
+					"file": "src/js/Entity.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9923,
+						"buffer_size": 9725,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								247,
-								247
+								171,
+								171
 							]
 						],
 						"settings":
@@ -1854,6 +1178,36 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/js/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16,
+								16
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,

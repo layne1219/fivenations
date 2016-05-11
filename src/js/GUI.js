@@ -1,5 +1,5 @@
 define('GUI', [
-	'UniversalEventDispatcher',
+	'Universal.EventDispatcher',
 	'Graphics',
 	'GUI.ControlButton',
 	'GUI.ControlPage',
