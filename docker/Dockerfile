@@ -18,6 +18,8 @@ RUN npm install -g bower
 RUN echo '{"allow_root": true}' > /root/.bowerrc
 # bower expects the NodeJS CLI to be named *node*
 RUN ln -s "$(which nodejs)" /usr/bin/node
+# install gulp globally
+RUN npm install -g gulp
 
 # Install app
 WORKDIR ${DOCUMENT_ROOT}
