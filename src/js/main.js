@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+(function () {
   	'use strict';
 
 	var ns = window.fivenations = window.fivenations || {};
@@ -77,4 +77,4 @@ window.addEventListener('load', function () {
 
 	});
 
-}, false);
+})();
