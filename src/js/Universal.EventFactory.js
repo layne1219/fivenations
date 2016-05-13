@@ -1,22 +1,41 @@
 define('Universal.EventFactory', [
     'Universal.Event.Entity.Move'
 ], function(UniversalEventEntityMove){
-    var events = {
-        'entity/move': UniversalEventEntityMove
-    };
+
+    var singleton,
+        createEventFactory = function(){
+
+            var events = {
+                'entity/move': new UniversalEventEntityMove()
+            };
+
+            return {
+
+                getEventObjectById: function(id){
+                    if (!id){
+                        throw 'ID has not been passed to fetch the Event!';
+                    }
+                    if (!events[id]){
+                        throw 'There is no event registered to the given ID!';
+                    }
+                    return events[id];
+                }
+
+            }
+
+        };
 
     return {
 
-        getById: function(id){
-            if (!id){
-                throw 'ID has not been passed to fetch the Event!';
+        getInstance: function(){
+            if (!singleton){
+                singleton = createEventFactory();
             }
-            if (!events[id]){
-                throw 'There is no event registered to the given ID!';
-            }
-            return events[id];
+            return singleton;
+
         }
 
     }
+
 
 });
