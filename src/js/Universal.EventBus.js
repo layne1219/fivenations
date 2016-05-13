@@ -7,10 +7,8 @@ define('Universal.EventBus', ['Util'], function(Util){
 
             return {
 
-                execute: function() {
-                    while (n = queue.shift()){
-                        n.execute();
-                    }
+                next: function() {
+                    return queue.shift();
                 },
 
                 add: function(evt){
@@ -45,6 +43,6 @@ define('Universal.EventBus', ['Util'], function(Util){
             return singleton;
         }
 
-    }
+    };
 
 });
