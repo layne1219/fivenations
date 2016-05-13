@@ -9,8 +9,9 @@ define('Universal.Event.Entity.Move', ['UniversalEvent', 'Universal.EventBus'], 
 	UniversalEventEntityMove.prototype.constructor = UniversalEventEntityMove;
 
 	/**
-	 * No-op function to be overwritten in the child objects
+	 * Transforming the event into real-time execution
 	 * @param {array} [targets] [array of instances effected by the event]
+	 * @param {object} [object] [event object]
 	 * @return {void}
 	 */	
 	UniversalEventEntityMove.prototype.execute = function(targets, data){

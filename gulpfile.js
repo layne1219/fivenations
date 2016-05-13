@@ -12,6 +12,7 @@ var gulp = require('gulp')
   , paths;
 
 paths = {
+  src: 'src/**/*',
   assets: 'src/assets/**/*',
   css:    'src/css/*.css',
   libs:   [
@@ -22,50 +23,25 @@ paths = {
   dist:   './dist/'
 };
 
-gulp.task('clean', function (cb) {
-  del([paths.dist], cb);
+gulp.task('clean', function () {
+  return del([paths.dist]);
 });
 
-gulp.task('copy-assets', ['clean'], function () {
-  gulp.src(paths.assets)
-    .pipe(gulp.dest(paths.dist + 'assets'))
-    .on('error', gutil.log);
-});
-
-gulp.task('copy-vendor', ['clean'], function () {
-  gulp.src(paths.libs)
+gulp.task('copy-src', ['clean'], function (cb) {
+  return gulp.src(paths.src)
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
 });
 
-gulp.task('uglify', ['clean','lint'], function () {
-  gulp.src(paths.js)
-    .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(paths.dist))
-    .pipe(uglify({outSourceMaps: false}))
-    .pipe(gulp.dest(paths.dist));
-});
-
-gulp.task('minifycss', ['clean'], function () {
- gulp.src(paths.css)
-    .pipe(minifycss({
-      keepSpecialComments: false,
-      removeEmpty: true
-    }))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest(paths.dist))
-    .on('error', gutil.log);
-});
-
-gulp.task('processhtml', ['clean'], function() {
-  gulp.src('src/index.html')
+gulp.task('process-html', ['copy-src'], function() {
+  return gulp.src(paths.dist + 'index.html')
     .pipe(processhtml({}))
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
 });
 
-gulp.task('minifyhtml', ['clean'], function() {
-  gulp.src('dist/index.html')
+gulp.task('finalise-html', ['process-html'], function() {
+  return gulp.src(paths.dist + 'index.html')
     .pipe(minifyhtml())
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
@@ -92,10 +68,11 @@ gulp.task('connect', function () {
   });
 });
 
-gulp.task('publish', function () {
+gulp.task('publish', ['build'], function () {
   connect.server({
-    root: [__dirname + '/src'],
-    port: 9000
+    root: [__dirname + '/dist'],
+    port: 9000,
+    livereload: false
   });
 });
 
@@ -105,4 +82,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connect', 'watch']);
-gulp.task('build', ['copy-assets', 'copy-vendor', 'uglify', 'minifycss', 'processhtml', 'minifyhtml']);
+gulp.task('build', ['finalise-html']);
