@@ -1,4 +1,6 @@
-define('Universal.EventBus', ['Util'], function(Util){
+define('Universal.EventBus', function(){
+
+    'use strict';
 	
     var singleton,
         createEventBus = function() {
@@ -12,7 +14,7 @@ define('Universal.EventBus', ['Util'], function(Util){
                 },
 
                 add: function(evt){
-                    if (!evt || typeof evt.execute !== 'function'){
+                    if (!evt || !evt.id){
                         return;
                     }
                     queue.push(evt);

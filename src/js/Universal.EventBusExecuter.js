@@ -1,7 +1,9 @@
-define('Universal.EventExecuter', [
+define('Universal.EventBusExecuter', [
     'Universal.EventBus', 
     'Universal.EventFactory'
 ], function(EventBus, EventFactory){
+
+    'use strict';
 	
 	var singleton,
 		createEventExecuter = function(){
@@ -21,12 +23,13 @@ define('Universal.EventExecuter', [
                         }
 
                         try {
-                            evtObj = factory.getEventObjectById();
+                            evtObj = factory.getEventObjectById(evt.id);
                             evtObj.execute({
                                 targets: evt.targets,
                                 data: evt.data
                             });
                         } catch (ex){
+                            console.log(ex);
                             continue;
                         }
 

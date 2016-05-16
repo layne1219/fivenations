@@ -5,9 +5,10 @@ define('Entity', [
     'Entity.AbilityManager', 
     'GUI', 
     'UserKeyboard', 
-    'UserPointer', 
+    'UserPointer',
+    'Universal.EventBus',
     'Util'
-], function(UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, Util){
+], function(UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, EventBus, Util){
 	
     var 
 

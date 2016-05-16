@@ -6,9 +6,21 @@ define('Game', [
     'GUI',
     'GUI.ActivityManager',
     'UserPointer', 
-    'UserKeyboard', 
+    'UserKeyboard',
+    'Universal.EventBusExecuter',
     'Util'
-], function(Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
+], function(
+    Graphics, 
+    Map, 
+    PlayerManager, 
+    EntityManager,
+    GUI, 
+    GUIActivityManager, 
+    UserPointer, 
+    UserKeyboard, 
+    EventBusExecuter, 
+    Util) {
+
     'use strict';
 
     var ns = window.fivenations,
@@ -163,6 +175,12 @@ define('Game', [
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
             // -----------------------------------------------------------------------
+            //                                EventBus
+            // -----------------------------------------------------------------------
+            // Kicking off the main event loop
+            this.game.eventBusExecuter = EventBusExecuter.getInstance(); 
+
+            // -----------------------------------------------------------------------
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
@@ -263,6 +281,9 @@ define('Game', [
 
             // User input - keyboard
             this.userKeyboard.update();
+
+            // Execute all the registered events on the EventBus
+            this.game.eventBusExecuter.run();
 
             this.game.time.advancedTiming = true;
             this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');  

@@ -3,8 +3,9 @@ define('EntityManager', [
 	'Entity', 
 	'DataObject', 
 	'PlayerManager',
+	'Universal.EventBus',
 	'Util'
-], function(Graphics, Entity, DataObject, PlayerManager, Util){
+], function(Graphics, Entity, DataObject, PlayerManager, EventBus, Util){
 	
 	var ns = window.fivenations,
 
@@ -122,11 +123,23 @@ define('EntityManager', [
 			var entities = this.getAllSelected().filter(function(entity){
             		return this.isEntityControlledByUser(entity);
             	}.bind(this)),
-				rnd = entities.length === 1 ? 0 : (entities.length * 4);
+				entityNumber = entities.length,
+				rnd = entityNumber === 1 ? 0 : (entityNumber * 4);
 
-			entities.forEach(function(entity){
-            	entity.moveTo(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
-            });	
+			EventBus.getInstance().add({
+				id: 'entity/move',
+				targets: this.getIds(entities),
+				data: (function(){
+					var data = [];
+					for (var i = entityNumber - 1; i >= 0; i -= 1) {
+						data.push({
+							x: x - rnd / 2 + Util.rnd(0, rnd), 
+							y: y - rnd / 2 + Util.rnd(0, rnd)
+						});
+					}
+					return data;
+				})()
+			});
 		},
 
 		/**
@@ -140,9 +153,17 @@ define('EntityManager', [
             		return this.isEntityControlledByUser(entity);
             	}.bind(this));
 
-			entities.forEach(function(entity){
-            	entity.patrol(x, y);
-            });	
+			EventBus.getInstance().add({
+				id: 'entity/move',
+				targets: this.getIds(entities),
+				data: (function(){
+					var data = [];
+					for (var i = entityNumber - 1; i >= 0; i -= 1) {
+						data.push({x: x, y: y});
+					}
+					return data;
+				})()
+			});
 		},		
 
 		getGame: function(){
@@ -172,6 +193,17 @@ define('EntityManager', [
 		getAllHover: function(){
 			return this.get().filter(function(entity){
 				return entity.isHover();
+			});
+		},
+
+		/**
+		 * Return an array of IDs of the given entities
+		 * @param  {[array]} entities [Array of the given entities]
+		 * @return {[array]}          [Array of integers representing the ID of the entities]
+		 */
+		getIds: function(entities){
+			return entities.map(function(entity){
+				return entity.getId();
 			});
 		},
 

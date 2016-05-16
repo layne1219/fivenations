@@ -1,5 +1,7 @@
 define('Universal.Event', function(){
 	
+	'use strict';
+
 	function Event(){
 
 	}

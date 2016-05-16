@@ -2,6 +2,8 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.Move'
 ], function(UniversalEventEntityMove){
 
+    'use strict';    
+
     var singleton,
         createEventFactory = function(){
 
