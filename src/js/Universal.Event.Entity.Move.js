@@ -26,12 +26,15 @@ define('Universal.Event.Entity.Move', ['Universal.Event'], function(Event){
 		 * }
 		 */
 	UniversalEventEntityMove.prototype.execute = function(options){
-		if (!options.targets || !options.data || !options.data.length){
+		if (!options.targets || !options.data){
 			return;
 		}
+		var x, y;
 
 		options.targets.forEach(function(id, idx){
-			ns.game.entityManager.get(id).moveTo(options.data[idx].x, options.data[idx].y);
+			x = options.data.x || options.data[idx].x;
+			y = options.data.y || options.data[idx].y;
+			ns.game.entityManager.get(id).moveTo(x, y);
 		});
 	};
 

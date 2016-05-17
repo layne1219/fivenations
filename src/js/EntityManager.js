@@ -7,7 +7,10 @@ define('EntityManager', [
 	'Util'
 ], function(Graphics, Entity, DataObject, PlayerManager, EventBus, Util){
 	
-	var ns = window.fivenations,
+	var 
+		MAX_SELECTABLE_UNITS = 22,
+
+		ns = window.fivenations,
 
 		phaserGame,
 		singleton,
@@ -18,8 +21,43 @@ define('EntityManager', [
 		// Array for storing all the entities generated 
 		entities = [],
 
-		// Limit for number of selectable units by one multiselection
-		MAX_SELECTABLE_UNITS = 22;
+		// entity activities
+		createTailingObject = function(entities){
+			return {
+				move: function(options){
+
+					var entityNumber = entities.length,
+						rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
+						data = (function(){
+							var data = [];
+							for (var i = entityNumber - 1; i >= 0; i -= 1) {
+								data.push({
+									x: options.x - rnd / 2 + Util.rnd(0, rnd), 
+									y: options.y - rnd / 2 + Util.rnd(0, rnd)
+								});
+							}
+							return data;
+						})();
+
+					EventBus.getInstance().add({
+						id: 'entity/move',
+						targets: entities,
+						data: data
+					});					
+
+					return this;
+				},
+				raw: function(){
+					return entities;
+				}
+			}
+		},
+
+		// selector object
+		selector = function(entities){
+			if (!entities || !entities.length) throw 'Invalid entities array passed!';
+			return createTailingObject(entities);
+		};
 
 
 	function EntityManager(){
@@ -113,6 +151,16 @@ define('EntityManager', [
 			});
 		},
 
+		select: function(filter){
+			var targets;
+			if (typeof filter === 'function'){
+				targets = entities.filter(filter);
+			} else {
+				targets = entities;
+			}
+			return selector(targets);
+		},
+
 		/**
 		 * Make all the selected entities to move to the given coordinates 
 		 * @param  {integer} x [horizontal offset of the map to which the entities move]
@@ -120,26 +168,9 @@ define('EntityManager', [
 		 * @return {void}
 		 */
 		moveAllSelectedTo: function(x, y){
-			var entities = this.getAllSelected().filter(function(entity){
-            		return this.isEntityControlledByUser(entity);
-            	}.bind(this)),
-				entityNumber = entities.length,
-				rnd = entityNumber === 1 ? 0 : (entityNumber * 4);
-
-			EventBus.getInstance().add({
-				id: 'entity/move',
-				targets: this.getIds(entities),
-				data: (function(){
-					var data = [];
-					for (var i = entityNumber - 1; i >= 0; i -= 1) {
-						data.push({
-							x: x - rnd / 2 + Util.rnd(0, rnd), 
-							y: y - rnd / 2 + Util.rnd(0, rnd)
-						});
-					}
-					return data;
-				})()
-			});
+			this.select(function(entity){
+				return entity.isSelected() && this.isEntityControlledByUser(entity);
+			}.bind(this)).move({x: x, y: y});
 		},
 
 		/**
@@ -155,7 +186,7 @@ define('EntityManager', [
 
 			EventBus.getInstance().add({
 				id: 'entity/move',
-				targets: this.getIds(entities),
+				targets: entities,
 				data: (function(){
 					var data = [];
 					for (var i = entityNumber - 1; i >= 0; i -= 1) {

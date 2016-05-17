@@ -17,6 +17,9 @@ define('Universal.EventBus', function(){
                     if (!evt || !evt.id){
                         return;
                     }
+                    evt.targets = evt.targets.map(function(entity){
+                        return entity.getId();
+                    });
                     queue.push(evt);
                 },
 
@@ -44,7 +47,6 @@ define('Universal.EventBus', function(){
             }
             return singleton;
         }
-
     };
 
 });
