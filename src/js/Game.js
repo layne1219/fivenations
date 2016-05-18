@@ -24,12 +24,17 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations,
-        gui,
-        unit, unit2;
+        lastTickTime;
 
-    function Game() {}    
+    function Game() {}
 
     Game.prototype = {
+
+        calculateDelta: function(){
+            var now = new Date().getTime();
+            this.delta = now - (lastTickTime || now);
+            lastTickTime = now;
+        },
 
         preloader: function(){
 
@@ -265,6 +270,12 @@ define('Game', [
 
         update: function () {
 
+            // Calculates delta
+            this.calculateDelta();
+
+            // Execute all the registered events on the EventBus
+            this.game.eventBusExecuter.run();
+
             // Rendering the map
             this.map.update();
 
@@ -281,9 +292,6 @@ define('Game', [
 
             // User input - keyboard
             this.userKeyboard.update();
-
-            // Execute all the registered events on the EventBus
-            this.game.eventBusExecuter.run();
 
             this.game.time.advancedTiming = true;
             this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');  
