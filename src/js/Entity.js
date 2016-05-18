@@ -187,12 +187,6 @@ define('Entity', [
             this.eventDispatcher.dispatch('stop', this);
         },
 
-        damage: function( value ){
-            this.getDataObject().damageHull( value );
-            this.eventDispatcher.dispatch('damage');
-            this.eventDispatcher.dispatch('change');
-        },
-
         patrol: function(x, y){
             var patrol = new ActivityManager.Patrol(this);
             patrol.setStartPoint( this.sprite.x, this.sprite.y );

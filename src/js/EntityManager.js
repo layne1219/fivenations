@@ -15,9 +15,6 @@ define('EntityManager', [
 		phaserGame,
 		singleton,
 
-		// unique indentifier for maintaning the units in an array
-		id = 0,
-
 		// Array for storing all the entities generated 
 		entities = [],
 
@@ -47,6 +44,25 @@ define('EntityManager', [
 
 					return this;
 				},
+				patrol: function(options){
+
+					EventBus.getInstance().add({
+						id: 'entity/patrol',
+						targets: entities,
+						data: options
+					});					
+
+					return this;
+				},
+				stop: function(options){
+
+					EventBus.getInstance().add({
+						id: 'entity/stop',
+						targets: entities
+					});					
+
+					return this;
+				},
 				raw: function(){
 					return entities;
 				}
@@ -55,7 +71,8 @@ define('EntityManager', [
 
 		// selector object
 		selector = function(entities){
-			if (!entities || !entities.length) throw 'Invalid entities array passed!';
+			if (!entities) throw 'Invalid entities array passed!';
+			entities = [].concat.call(entities);
 			return createTailingObject(entities);
 		};
 
@@ -121,7 +138,7 @@ define('EntityManager', [
 		},
 
 		getNextId: function(){
-			return id++;
+			return Util.getGUID();
 		},
 
 		remove: function(entity){
@@ -151,10 +168,17 @@ define('EntityManager', [
 			});
 		},
 
+		/**
+		 * returns array of entities with the exposing the activity API against them
+		 * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
+		 * @return {array} [Array of entities]
+		 */
 		select: function(filter){
 			var targets;
 			if (typeof filter === 'function'){
 				targets = entities.filter(filter);
+			} else if (typeof filter === 'object'){
+				targets = filter;
 			} else {
 				targets = entities;
 			}
@@ -180,21 +204,9 @@ define('EntityManager', [
 		 * @return {void}
 		 */
 		patrolAllSelectedTo: function(x, y){
-			var entities = this.getAllSelected().filter(function(entity){
-            		return this.isEntityControlledByUser(entity);
-            	}.bind(this));
-
-			EventBus.getInstance().add({
-				id: 'entity/move',
-				targets: entities,
-				data: (function(){
-					var data = [];
-					for (var i = entityNumber - 1; i >= 0; i -= 1) {
-						data.push({x: x, y: y});
-					}
-					return data;
-				})()
-			});
+			this.select(function(entity){
+				return entity.isSelected() && this.isEntityControlledByUser(entity);
+			}.bind(this)).patrol({x: x, y: y});
 		},		
 
 		getGame: function(){
