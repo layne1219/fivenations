@@ -11,8 +11,8 @@ define('Universal.EventFactory', [
 
             var events = {
                 'entity/move': new UniversalEventEntityMove(),
-                'entity/patrol': new UniversalEventEntityPatrol()
-                'entity/patrol': new UniversalEventEntityStop()
+                'entity/patrol': new UniversalEventEntityPatrol(),
+                'entity/stop': new UniversalEventEntityStop()
             };
 
             return {
