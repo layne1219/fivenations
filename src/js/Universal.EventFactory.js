@@ -2,7 +2,7 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.Move',
     'Universal.Event.Entity.Patrol',
     'Universal.Event.Entity.Stop'
-], function(UniversalEventEntityMove){
+], function(EntityMove, EntityPatrol, EntityStop){
 
     'use strict';
 
@@ -10,9 +10,9 @@ define('Universal.EventFactory', [
         createEventFactory = function(){
 
             var events = {
-                'entity/move': new UniversalEventEntityMove(),
-                'entity/patrol': new UniversalEventEntityPatrol(),
-                'entity/stop': new UniversalEventEntityStop()
+                'entity/move': new EntityMove(),
+                'entity/patrol': new EntityPatrol(),
+                'entity/stop': new EntityStop()
             };
 
             return {
