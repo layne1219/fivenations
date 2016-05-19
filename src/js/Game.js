@@ -24,6 +24,7 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations,
+        gui,
         lastTickTime;
 
     function Game() {}

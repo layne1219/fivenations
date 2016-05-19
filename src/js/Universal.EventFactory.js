@@ -6,8 +6,6 @@ define('Universal.EventFactory', [
 
     'use strict';
 
-    // some change here
-
     var singleton,
         createEventFactory = function(){
 
