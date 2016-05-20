@@ -19,10 +19,10 @@ define('Entity.Activity.Patrol', ['Entity.Activity', 'Util'], function(Activity,
 		 */
 		moveEntityToPatrolPositions = function(){
 
-			if (this.dest.distance < 100 && this.currentTarget === 'dest'){
+			if (this.dest.distance < 15 && this.currentTarget === 'dest'){
 				this.entity.moveTo(this.start.x, this.start.y);
 				this.currentTarget = 'start';
-			} else if (this.start.distance < 100 && this.currentTarget === 'start') {
+			} else if (this.start.distance < 15 && this.currentTarget === 'start') {
 				this.entity.moveTo(this.dest.x, this.dest.y);
 				this.currentTarget = 'dest';
 			}

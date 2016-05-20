@@ -1,13 +1,14 @@
 define('Entity', [
-    'UniversalEventDispatcher',
+    'Universal.EventDispatcher',
     'Entity.ActivityManager',
     'Entity.MotionManager',
     'Entity.AbilityManager', 
     'GUI', 
     'UserKeyboard', 
-    'UserPointer', 
+    'UserPointer',
+    'Universal.EventBus',
     'Util'
-], function(UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, Util){
+], function(UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, EventBus, Util){
 	
     var 
 
@@ -184,12 +185,6 @@ define('Entity', [
         stop: function(){
             this.motionManager.stop();
             this.eventDispatcher.dispatch('stop', this);
-        },
-
-        damage: function( value ){
-            this.getDataObject().damageHull( value );
-            this.eventDispatcher.dispatch('damage');
-            this.eventDispatcher.dispatch('change');
         },
 
         patrol: function(x, y){

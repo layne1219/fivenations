@@ -3,22 +3,78 @@ define('EntityManager', [
 	'Entity', 
 	'DataObject', 
 	'PlayerManager',
+	'Universal.EventBus',
 	'Util'
-], function(Graphics, Entity, DataObject, PlayerManager, Util){
+], function(Graphics, Entity, DataObject, PlayerManager, EventBus, Util){
 	
-	var ns = window.fivenations,
+	var 
+		MAX_SELECTABLE_UNITS = 22,
+
+		ns = window.fivenations,
 
 		phaserGame,
 		singleton,
 
-		// unique indentifier for maintaning the units in an array
-		id = 0,
-
 		// Array for storing all the entities generated 
 		entities = [],
 
-		// Limit for number of selectable units by one multiselection
-		MAX_SELECTABLE_UNITS = 22;
+		// entity activities
+		createTailingObject = function(entities){
+			return {
+				move: function(options){
+
+					var entityNumber = entities.length,
+						rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
+						data = (function(){
+							var data = [];
+							for (var i = entityNumber - 1; i >= 0; i -= 1) {
+								data.push({
+									x: options.x - rnd / 2 + Util.rnd(0, rnd), 
+									y: options.y - rnd / 2 + Util.rnd(0, rnd)
+								});
+							}
+							return data;
+						})();
+
+					EventBus.getInstance().add({
+						id: 'entity/move',
+						targets: entities,
+						data: data
+					});					
+
+					return this;
+				},
+				patrol: function(options){
+
+					EventBus.getInstance().add({
+						id: 'entity/patrol',
+						targets: entities,
+						data: options
+					});					
+
+					return this;
+				},
+				stop: function(options){
+
+					EventBus.getInstance().add({
+						id: 'entity/stop',
+						targets: entities
+					});					
+
+					return this;
+				},
+				raw: function(){
+					return entities;
+				}
+			}
+		},
+
+		// selector object
+		selector = function(entities){
+			if (!entities) throw 'Invalid entities array passed!';
+			entities = [].concat.call(entities);
+			return createTailingObject(entities);
+		};
 
 
 	function EntityManager(){
@@ -82,7 +138,7 @@ define('EntityManager', [
 		},
 
 		getNextId: function(){
-			return id++;
+			return Util.getGUID();
 		},
 
 		remove: function(entity){
@@ -113,20 +169,32 @@ define('EntityManager', [
 		},
 
 		/**
+		 * returns array of entities with the exposing the activity API against them
+		 * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
+		 * @return {array} [Array of entities]
+		 */
+		select: function(filter){
+			var targets;
+			if (typeof filter === 'function'){
+				targets = entities.filter(filter);
+			} else if (typeof filter === 'object'){
+				targets = filter;
+			} else {
+				targets = entities;
+			}
+			return selector(targets);
+		},
+
+		/**
 		 * Make all the selected entities to move to the given coordinates 
 		 * @param  {integer} x [horizontal offset of the map to which the entities move]
 		 * @param  {integer} y [vertical offset of the map to which the entities move]
 		 * @return {void}
 		 */
 		moveAllSelectedTo: function(x, y){
-			var entities = this.getAllSelected().filter(function(entity){
-            		return this.isEntityControlledByUser(entity);
-            	}.bind(this)),
-				rnd = entities.length === 1 ? 0 : (entities.length * 4);
-
-			entities.forEach(function(entity){
-            	entity.moveTo(x - rnd / 2 + Util.rnd(0, rnd), y - rnd / 2 + Util.rnd(0, rnd));
-            });	
+			this.select(function(entity){
+				return entity.isSelected() && this.isEntityControlledByUser(entity);
+			}.bind(this)).move({x: x, y: y});
 		},
 
 		/**
@@ -136,13 +204,9 @@ define('EntityManager', [
 		 * @return {void}
 		 */
 		patrolAllSelectedTo: function(x, y){
-			var entities = this.getAllSelected().filter(function(entity){
-            		return this.isEntityControlledByUser(entity);
-            	}.bind(this));
-
-			entities.forEach(function(entity){
-            	entity.patrol(x, y);
-            });	
+			this.select(function(entity){
+				return entity.isSelected() && this.isEntityControlledByUser(entity);
+			}.bind(this)).patrol({x: x, y: y});
 		},		
 
 		getGame: function(){
@@ -172,6 +236,17 @@ define('EntityManager', [
 		getAllHover: function(){
 			return this.get().filter(function(entity){
 				return entity.isHover();
+			});
+		},
+
+		/**
+		 * Return an array of IDs of the given entities
+		 * @param  {[array]} entities [Array of the given entities]
+		 * @return {[array]}          [Array of integers representing the ID of the entities]
+		 */
+		getIds: function(entities){
+			return entities.map(function(entity){
+				return entity.getId();
 			});
 		},
 

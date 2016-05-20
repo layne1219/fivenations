@@ -1,28 +1,43 @@
-define('Universal.Event.Entity.Move', ['UniversalEvent', 'Universal.EventBus'], function(Event, EventBus){
+define('Universal.Event.Entity.Move', ['Universal.Event'], function(Event){
 	
+	var ns = window.fivenations;
+
 	function UniversalEventEntityMove(){
 		var args = [].slice.call(arguments);
-		Event.prototype.Event.apply(this, args);
+		Event.apply(this, args);
 	}
 
 	UniversalEventEntityMove.prototype = Object.create(Event.prototype);
 	UniversalEventEntityMove.prototype.constructor = UniversalEventEntityMove;
 
-	/**
-	 * Transforming the event into real-time execution
-	 * @param {array} [targets] [array of instances effected by the event]
-	 * @param {object} [object] [event object]
-	 * @return {void}
-	 */	
-	UniversalEventEntityMove.prototype.execute = function(targets, data){
-		if (!targets){
+		/**
+		 * No-op function to be overwritten in the child objects
+		 * @param {object} [options] [extendable object that presents event details]
+		 * @return {void}
+		 * @example
+		 * Expected Data format:
+		 * {
+		 * 	id: 'entity/move'
+		 * 	targets: [124, 84],
+		 * 	data: [
+		 * 		{x: 156, y:367},
+		 * 		{x: 179, y:380}
+		 * 	]
+		 * }
+		 */
+	UniversalEventEntityMove.prototype.execute = function(options){
+		if (!options.targets || !options.data){
 			return;
 		}
-		targets.forEach(function(entity){
-			entity.move(data.x, data.y)
+		var x, y;
+
+		options.targets.forEach(function(id, idx){
+			x = options.data.x || options.data[idx].x;
+			y = options.data.y || options.data[idx].y;
+			ns.game.entityManager.get(id).moveTo(x, y);
 		});
 	};
 
-	return new UniversalEventEntityMove();
+	return UniversalEventEntityMove;
 
 });

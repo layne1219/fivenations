@@ -1,4 +1,4 @@
-define('UniversalEventDispatcher', ['Util'], function(Util){
+define('Universal.EventDispatcher', ['Util'], function(Util){
 	var singleton;
 
 	return {

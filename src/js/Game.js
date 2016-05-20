@@ -6,18 +6,36 @@ define('Game', [
     'GUI',
     'GUI.ActivityManager',
     'UserPointer', 
-    'UserKeyboard', 
+    'UserKeyboard',
+    'Universal.EventBusExecuter',
     'Util'
-], function(Graphics, Map, PlayerManager, EntityManager, GUI, GUIActivityManager, UserPointer, UserKeyboard, Util) {
+], function(
+    Graphics, 
+    Map, 
+    PlayerManager, 
+    EntityManager,
+    GUI, 
+    GUIActivityManager, 
+    UserPointer, 
+    UserKeyboard, 
+    EventBusExecuter, 
+    Util) {
+
     'use strict';
 
     var ns = window.fivenations,
         gui,
-        unit, unit2;
+        lastTickTime;
 
-    function Game() {}    
+    function Game() {}
 
     Game.prototype = {
+
+        calculateDelta: function(){
+            var now = new Date().getTime();
+            this.delta = now - (lastTickTime || now);
+            lastTickTime = now;
+        },
 
         preloader: function(){
 
@@ -163,6 +181,12 @@ define('Game', [
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
             // -----------------------------------------------------------------------
+            //                                EventBus
+            // -----------------------------------------------------------------------
+            // Kicking off the main event loop
+            this.game.eventBusExecuter = EventBusExecuter.getInstance(); 
+
+            // -----------------------------------------------------------------------
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
@@ -247,6 +271,12 @@ define('Game', [
 
         update: function () {
 
+            // Calculates delta
+            this.calculateDelta();
+
+            // Execute all the registered events on the EventBus
+            this.game.eventBusExecuter.run();
+
             // Rendering the map
             this.map.update();
 
@@ -265,7 +295,7 @@ define('Game', [
             this.userKeyboard.update();
 
             this.game.time.advancedTiming = true;
-            this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');  
+            this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
         }
 
     };
