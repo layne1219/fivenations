@@ -9,10 +9,20 @@ Run the dev environment
 
 
 #### Publish
+Build the public resources
+```
+gulp build
+```
+
 Execute local HTTP server that listens on port 9000
-`gulp publish`
+```
+gulp publish
+```
+
 Open the application in a browser
-`http://127.0.0.1:9000`
+```
+http://127.0.0.1:9000
+```
 
 
 #### Publish with Docker
