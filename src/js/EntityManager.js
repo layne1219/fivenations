@@ -2,15 +2,11 @@ define('EntityManager', [
 	'Graphics', 
 	'Entity', 
 	'DataObject', 
-	'PlayerManager',
 	'Universal.EventBus',
 	'Util'
-], function(Graphics, Entity, DataObject, PlayerManager, EventBus, Util){
+], function(Graphics, Entity, DataObject, EventBus, Util){
 	
-	var 
-		MAX_SELECTABLE_UNITS = 22,
-
-		ns = window.fivenations,
+	var ns = window.fivenations,
 
 		phaserGame,
 		singleton,
@@ -21,6 +17,11 @@ define('EntityManager', [
 		// entity activities
 		createTailingObject = function(entities){
 			return {
+				/**
+				 * Make all the given entities to move to the given coordinates 
+				 * @param  {object} options [configuration object to create the desired event]
+				 * @return {this}
+				 */
 				move: function(options){
 
 					var entityNumber = entities.length,
@@ -44,6 +45,11 @@ define('EntityManager', [
 
 					return this;
 				},
+				/**
+				 * Make all the given entities to patrol between the current and given coordinates 
+				 * @param  {object} options [configuration object to create the desired event]
+				 * @return {void}
+				 */				
 				patrol: function(options){
 
 					EventBus.getInstance().add({
@@ -185,30 +191,6 @@ define('EntityManager', [
 			return selector(targets);
 		},
 
-		/**
-		 * Make all the selected entities to move to the given coordinates 
-		 * @param  {integer} x [horizontal offset of the map to which the entities move]
-		 * @param  {integer} y [vertical offset of the map to which the entities move]
-		 * @return {void}
-		 */
-		moveAllSelectedTo: function(x, y){
-			this.select(function(entity){
-				return entity.isSelected() && this.isEntityControlledByUser(entity);
-			}.bind(this)).move({x: x, y: y});
-		},
-
-		/**
-		 * Make all the selected entities to patrol between the current and given coordinates 
-		 * @param  {integer} x [horizontal offset of the map between which the entities patrol]
-		 * @param  {integer} y [vertical offset of the map between which the entities patrol]
-		 * @return {void}
-		 */
-		patrolAllSelectedTo: function(x, y){
-			this.select(function(entity){
-				return entity.isSelected() && this.isEntityControlledByUser(entity);
-			}.bind(this)).patrol({x: x, y: y});
-		},		
-
 		getGame: function(){
 			return phaserGame;
 		},
@@ -233,12 +215,6 @@ define('EntityManager', [
 			});
 		},
 
-		getAllHover: function(){
-			return this.get().filter(function(entity){
-				return entity.isHover();
-			});
-		},
-
 		/**
 		 * Return an array of IDs of the given entities
 		 * @param  {[array]} entities [Array of the given entities]
@@ -248,17 +224,6 @@ define('EntityManager', [
 			return entities.map(function(entity){
 				return entity.getId();
 			});
-		},
-
-		isEntityControlledByUser: function(entity) {
-			if (!entity || 'function' !== typeof entity.getDataObject){
-				throw 'Fitst parameter must be a valid entity object!';
-			}
-			return entity.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
-		},
-
-		getMaxSelectableUnitNumber: function(){
-			return MAX_SELECTABLE_UNITS;
 		},
 
 		getMergedAbilities: function(entities){
@@ -284,10 +249,18 @@ define('EntityManager', [
 
 	return {
 
+		/**
+		 * sets the global Phaser.Game instance
+		 * @param {void}
+		 */
 		setGame: function(game){
 			phaserGame = game;
 		},
 
+		/**
+		 * returns singleton instance of the manager object
+		 * @return {object} Singleton instance of EntityManager
+		 */
 		getInstance: function(){
 			if (!phaserGame){
 				throw 'Invoke setGame first to pass the Phaser Game entity!';
@@ -296,6 +269,25 @@ define('EntityManager', [
 				singleton = new EntityManager();
 			}
 			return singleton;
+		},
+
+		/**
+		 * Filter function to fetch all user controlled entities that are selected
+		 * @param  {Entity}  entity [Entity instance that will be tested]
+		 * @return {Boolean}
+		 */
+		isUserSelected: function(entity){
+			return entity.isSelected() && entity.isEntityControlledByUser(entity)
+		},
+
+
+		/**
+		 * Filter function to fetch all selected entities
+		 * @param  {Entity}  entity [Entity instance that will be tested]
+		 * @return {Boolean}
+		 */
+		isSelected: function(entity){
+			return entity.isSelected();
 		}
 
 	};

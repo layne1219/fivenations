@@ -1,4 +1,5 @@
 define('Entity', [
+    'PlayerManager',
     'Universal.EventDispatcher',
     'Entity.ActivityManager',
     'Entity.MotionManager',
@@ -8,11 +9,12 @@ define('Entity', [
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, EventBus, Util){
+], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, EventBus, Util){
 	
     var 
 
         SLOW_MANOUVERABAILITY_TRESHOLD = 25,
+        MAX_SELECTABLE_UNITS = 22,
 
         ns = window.fivenations,
 
@@ -201,7 +203,7 @@ define('Entity', [
         },
 
         select: function(){
-            if (this.entityManager.getAllSelected().length < this.entityManager.getMaxSelectableUnitNumber()){
+            if (this.entityManager.getAllSelected().length < MAX_SELECTABLE_UNITS){
         	   this.selected = true;
                this.eventDispatcher.dispatch('select');
                UED.getInstance().dispatch('gui/selection/change');
@@ -241,6 +243,14 @@ define('Entity', [
         	}
         	return true;        	      	
         },
+
+        /**
+         * returns true if the entity is controlled by the current user
+         * @return {Boolean}
+         */
+        isEntityControlledByUser: function() {
+            return this.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
+        }
 
         getSprite: function(){
             return this.sprite;

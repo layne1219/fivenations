@@ -149,7 +149,7 @@ define('GUI', [
 
 				show: function(){
 					var relationship = (function(selector){
-							if (entityManager.isEntityControlledByUser(selector.parent)){
+							if (selector.parent.isEntityControlledByUser()){
 								return '-';
 							}
 							return '-enemy-';
@@ -487,7 +487,8 @@ define('GUI', [
 						return;
 					}
 
-					this.entityManager.moveAllSelectedTo(coords.x, coords.y);
+					this.entityManager.select(EntityManager.isUserSelected)
+									  .move({x: coords.x, y: coords.y});
 					
 				}.bind(this));
 			}

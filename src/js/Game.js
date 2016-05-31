@@ -92,7 +92,8 @@ define('Game', [
 
                 var coords = this.userPointer.getRealCoords();
 
-                this.entityManager.moveAllSelectedTo(coords.x, coords.y);
+                this.entityManager.select(EntityManager.isUserSelected)
+                                  .move({x: coords.x, y: coords.y});
 
                 this.GUI.putClickAnim(coords.x, coords.y);
                     
@@ -112,7 +113,9 @@ define('Game', [
                     return;
                 }
 
-                if (this.entityManager.getAllHover().length === 0){
+                if (this.entityManager.get().filter(function(entity){
+                    return entity.isHover();
+                }).length === 0){
                     this.userPointer.dispatch('leftbutton/down/disselect');
                     return;
                 }
@@ -130,7 +133,7 @@ define('Game', [
             this.userPointer.on('multiselector/up', function(multiselector){
 
                 this.entityManager.get().forEach(function(entity){
-                    if (!EntityManager.getInstance().isEntityControlledByUser(entity)){
+                    if (!entity.isEntityControlledByUser()){
                         return;
                     }
                     if (entity.isInside(multiselector)){

@@ -4,13 +4,9 @@
 define('GUI.StopButtonLogic', function(){
 	return {
 		activate: function(entityManager, controlPanel){
-			var entities = entityManager.getAllSelected();
-			if (!entities.length){
-				return;
-			}
-			entities.forEach(function(entity){
-				entity.stop();
-			});
+			entityManager
+				.select(EntityManager.isUserSelected)
+				.stop();
 		}
 	};
 });
@@ -29,7 +25,10 @@ define('GUI.MoveButtonLogic', [
 			activity.on('select', function(mousePointer){
 				var coords = mousePointer.getRealCoords();
 
-				entityManager.moveAllSelectedTo(coords.x, coords.y);
+				entityManager
+					.select(EntityManager.isUserSelected)
+					.move({x: coords.x, y: coords.y});
+
 				ns.game.GUI.putClickAnim(coords.x, coords.y);
 				controlPanel.selectMainPage();
 			});
@@ -53,7 +52,10 @@ define('GUI.PatrolButtonLogic', [
 			activity.on('select', function(mousePointer){
 				var coords = mousePointer.getRealCoords();
 
-				entityManager.patrolAllSelectedTo(coords.x, coords.y);
+				entityManager
+					.select(EntityManager.isUserSelected)
+					.patrol({x: coords.x, y: coords.y});
+
 				ns.game.GUI.putClickAnim(coords.x, coords.y);
 				controlPanel.selectMainPage();
 			});
