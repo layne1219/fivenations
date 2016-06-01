@@ -31,10 +31,14 @@ define('Game', [
 
     Game.prototype = {
 
-        calculateDelta: function(){
-            var now = new Date().getTime();
-            this.delta = now - (lastTickTime || now);
-            lastTickTime = now;
+        setLastTickTime: function(){
+            lastTickTime = new Date().getTime();
+        },
+
+        getDelta: function(){
+            var now = new Date().getTime(),
+                delta = now - (lastTickTime || now);
+            return delta;
         },
 
         preloader: function(){
@@ -277,8 +281,7 @@ define('Game', [
 
         update: function () {
 
-            // Calculates delta
-            this.calculateDelta();
+            this.setLastTickTime();
 
             // Execute all the registered events on the EventBus
             this.game.eventBusExecuter.run();
