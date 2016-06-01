@@ -92,8 +92,11 @@ define('Game', [
 
                 var coords = this.userPointer.getRealCoords();
 
-                this.entityManager.select(EntityManager.isUserSelected)
-                                  .move({x: coords.x, y: coords.y});
+                this.entityManager
+                    .select(function(entity){
+                        return entity.isSelected() && entity.isEntityControlledByUser(entity)
+                    })
+                    .move({x: coords.x, y: coords.y});
 
                 this.GUI.putClickAnim(coords.x, coords.y);
                     

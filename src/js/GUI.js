@@ -1,4 +1,5 @@
 define('GUI', [
+	'PlayerManager',
 	'Universal.EventDispatcher',
 	'Graphics',
 	'GUI.ControlButton',
@@ -6,7 +7,7 @@ define('GUI', [
 	'GUI.CancelPage',
 	'Util',
 	'json!abilities'
-], function(UED, Graphics, ControlButton, ControlPage, CancelPage, Util, abilitiesJSON ){
+], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util, abilitiesJSON ){
 
 	var NO_COMMAND_SELECTED = -1,
 
@@ -579,7 +580,8 @@ define('GUI', [
 							y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
 							w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
 							h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * minimizedHeight),
-							color = ns.players.colors[entity.getDataObject().getTeam() - 1];
+							colors = PlayerManager.getInstance().getColors(),
+							color = colors[ entity.getDataObject().getTeam() - 1 ];
 
 					this.graphics.beginFill(color);
 					this.graphics.drawRect(x, y, w, h);

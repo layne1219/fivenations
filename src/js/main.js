@@ -28,20 +28,6 @@
 
 	};
 
-	// essential player informations
-	ns.players = {
-		colors: [
-			'0x08A2EA',
-			'0x10B308',
-			'0xF28209',
-			'0xBA10D9',
-			'0xD40F0F',
-			'0xF8F8F9',
-			'0xE5C410',
-			'0x65615D'
-		]
-	};
-
 	// Shared 
 	ns.gui = ns.gui || {};
 

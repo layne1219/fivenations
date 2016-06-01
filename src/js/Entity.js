@@ -250,7 +250,7 @@ define('Entity', [
          */
         isEntityControlledByUser: function() {
             return this.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
-        }
+        },
 
         getSprite: function(){
             return this.sprite;

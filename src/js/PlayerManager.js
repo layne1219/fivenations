@@ -1,6 +1,18 @@
 define('PlayerManager', ['Player'], function(Player){
 	
-	var players = [],
+	var 
+		colors = [
+			'0x08A2EA',
+			'0x10B308',
+			'0xF28209',
+			'0xBA10D9',
+			'0xD40F0F',
+			'0xF8F8F9',
+			'0xE5C410',
+			'0x65615D'
+		],
+
+		players = [],
 
 		singleton = {
 
@@ -23,6 +35,10 @@ define('PlayerManager', ['Player'], function(Player){
 
 			getPlayersNumber: function(){
 				return players.length;
+			},
+
+			getColors: function(){
+				return colors;
 			}
 
 		};

@@ -157,6 +157,10 @@ define('EntityManager', [
 			delete entity;
 		},
 		
+		/**
+		 * destroys all the existing entities
+		 * @return {void}
+		 */
 		reset: function(){
 			entities = [];
 		},
@@ -269,25 +273,6 @@ define('EntityManager', [
 				singleton = new EntityManager();
 			}
 			return singleton;
-		},
-
-		/**
-		 * Filter function to fetch all user controlled entities that are selected
-		 * @param  {Entity}  entity [Entity instance that will be tested]
-		 * @return {Boolean}
-		 */
-		isUserSelected: function(entity){
-			return entity.isSelected() && entity.isEntityControlledByUser(entity)
-		},
-
-
-		/**
-		 * Filter function to fetch all selected entities
-		 * @param  {Entity}  entity [Entity instance that will be tested]
-		 * @return {Boolean}
-		 */
-		isSelected: function(entity){
-			return entity.isSelected();
 		}
 
 	};
