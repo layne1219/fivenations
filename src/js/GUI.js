@@ -488,8 +488,11 @@ define('GUI', [
 						return;
 					}
 
-					this.entityManager.select(EntityManager.isUserSelected)
-									  .move({x: coords.x, y: coords.y});
+					this.entityManager
+	                    .entities(function(entity){
+	                        return entity.isSelected() && entity.isEntityControlledByUser(entity)
+	                    })
+						.move({x: coords.x, y: coords.y});
 					
 				}.bind(this));
 			}

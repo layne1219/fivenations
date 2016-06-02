@@ -14,73 +14,119 @@ define('EntityManager', [
 		// Array for storing all the entities generated 
 		entities = [],
 
-		// entity activities
-		createTailingObject = function(entities){
-			return {
-				/**
-				 * Make all the given entities to move to the given coordinates 
-				 * @param  {object} options [configuration object to create the desired event]
-				 * @return {this}
-				 */
-				move: function(options){
 
-					var entityNumber = entities.length,
-						rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
-						data = (function(){
-							var data = [];
-							for (var i = entityNumber - 1; i >= 0; i -= 1) {
-								data.push({
-									x: options.x - rnd / 2 + Util.rnd(0, rnd), 
-									y: options.y - rnd / 2 + Util.rnd(0, rnd)
-								});
-							}
-							return data;
-						})();
+		// Entities Event API
+		EventAPI = (function(entities){
 
-					EventBus.getInstance().add({
-						id: 'entity/move',
-						targets: entities,
-						data: data
-					});					
+			/**
+			 * creates an immediate object that exposes the event API
+			 * for entiteis 
+			 * @param  {array} entities [Array of Entity instances]
+			 * @return {object} event API calls
+			 */
+			function eventAPI(entities){
 
-					return this;
-				},
-				/**
-				 * Make all the given entities to patrol between the current and given coordinates 
-				 * @param  {object} options [configuration object to create the desired event]
-				 * @return {void}
-				 */				
-				patrol: function(options){
+				return {
+					/**
+					 * Make all the given entities to move to the given coordinates 
+					 * @param  {object} options [configuration object to create the desired event]
+					 * @return {this}
+					 */
+					move: function(options){
 
-					EventBus.getInstance().add({
-						id: 'entity/patrol',
-						targets: entities,
-						data: options
-					});					
+						var entityNumber = entities.length,
+							rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
+							data = (function(){
+								var data = [];
+								for (var i = entityNumber - 1; i >= 0; i -= 1) {
+									data.push({
+										x: options.x - rnd / 2 + Util.rnd(0, rnd), 
+										y: options.y - rnd / 2 + Util.rnd(0, rnd)
+									});
+								}
+								return data;
+							})();
 
-					return this;
-				},
-				stop: function(options){
+						EventBus.getInstance().add({
+							id: 'entity/move',
+							targets: entities,
+							data: data
+						});					
 
-					EventBus.getInstance().add({
-						id: 'entity/stop',
-						targets: entities
-					});					
+						return this;
+					},
+					/**
+					 * Make all the given entities to patrol between the current and given coordinates 
+					 * @param  {object} options [configuration object to create the desired event]
+					 * @return {void}
+					 */				
+					patrol: function(options){
 
-					return this;
-				},
-				raw: function(){
-					return entities;
+						EventBus.getInstance().add({
+							id: 'entity/patrol',
+							targets: entities,
+							data: options
+						});					
+
+						return this;
+					},
+					stop: function(options){
+
+						EventBus.getInstance().add({
+							id: 'entity/stop',
+							targets: entities
+						});					
+
+						return this;
+					},
+					raw: function(){
+						return entities;
+					}
 				}
-			}
-		},
+			};
 
-		// selector object
-		selector = function(entities){
-			if (!entities) throw 'Invalid entities array passed!';
-			entities = [].concat.call(entities);
-			return createTailingObject(entities);
-		};
+			/**
+			 * Creates the eventAPI wrapping the given entities
+			 * @param  {array} entities [Array of Entity instances]
+			 * @return {object} event API calls          
+			 */
+			function selector(entities){
+				if (!entities) throw 'Invalid entities array passed!';
+				entities = [].concat.call(entities);
+				return eventAPI(entities);
+			}
+
+			/**
+			 * returns array of entities with the exposing the activity API against them
+			 * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
+			 * @return {array} [Array of entities]
+			 */
+			function $(filter){
+				var targets;
+				if (typeof filter === 'function'){
+					targets = entities.filter(filter);
+				} else if (typeof filter === 'object'){
+					targets = filter;
+				} else {
+					targets = entities;
+				}
+				return selector(targets);
+			}
+
+			/**
+			 * Emits an entity/create event 
+			 * @param {[type]} config [description]
+			 */
+			$.add = function(config){
+				EventBus.getInstance().add({
+					id: 'entity/create',
+					data: options
+				});	
+			}
+
+			return $;
+
+		})(entities),
 
 
 	function EntityManager(){
@@ -178,26 +224,11 @@ define('EntityManager', [
 			});
 		},
 
-		/**
-		 * returns array of entities with the exposing the activity API against them
-		 * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
-		 * @return {array} [Array of entities]
-		 */
-		select: function(filter){
-			var targets;
-			if (typeof filter === 'function'){
-				targets = entities.filter(filter);
-			} else if (typeof filter === 'object'){
-				targets = filter;
-			} else {
-				targets = entities;
-			}
-			return selector(targets);
-		},
-
 		getGame: function(){
 			return phaserGame;
 		},
+
+		entities: eventAPI,
 
 		get: function(id){
 			if (undefined === id){
