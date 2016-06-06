@@ -194,7 +194,7 @@ define('EntityManager', [
 			return phaserGame;
 		},
 
-		entities: eventAPI,
+		entities: EventAPI,
 
 		get: function(id){
 			if (undefined === id){
