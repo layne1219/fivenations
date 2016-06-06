@@ -106,29 +106,34 @@ define('Entity', [
 
 	/**
      * Constructor function for Entity 
-     * @param {object} entityManager Instance of the EntityManager
-     * @param {object} sprite        preinitialised Phaser.Sprite
-     * @param {object} dataObject    A instance of DataObject 
+     * @param {object} config [configuration object]
+     * @example 
+     * new Entity({
+     *     id:              [unique GUID for the entity]
+     *     entityManager:   [Instance of the EntityManager]
+     *     sprite:          [preinitialised Phaser.Sprite]
+     *     dataObject:      [A instance of DataObject]
+     * });
      */
-	function Entity(entityManager, sprite, dataObject){
+	function Entity(config){
 
 		// storing entityManager locally to prevent recursive mutual dependency
-		this.entityManager = entityManager;
+		this.entityManager = config.entityManager;
 
 		// retrive the Phaser.Game object
         this.game = entityManager.getGame();
 
         // unique identifier in order to obtain the very entity
-        this.uid = entityManager.getNextId();
+        this.uid = config.id;
 
         // setting up the dataObject
-        this.dataObject = dataObject;
+        this.dataObject = config.dataObject;
 
         // setting up the EventDisatcher
         this.eventDispatcher = new Util.EventDispatcher();
 
         // persisting the sprite object and attaching it to the Entity object 
-        this.sprite = extendSprite(this, sprite, dataObject);
+        this.sprite = extendSprite(this, config.sprite, dataObject);
 
         // adding the Selector object to highligh whether the unit is seleted or not
         this.selector = GUI.getInstance().addSelector(this);

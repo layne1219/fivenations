@@ -289,10 +289,8 @@ define('Game', [
             // Rendering the map
             this.map.update();
 
-            // Rendering the units
-            this.entityManager.get().forEach(function(entity){
-                entity.update();
-            });
+            // updating entity attributes according to the time elapsed
+            this.entityManager.update( this.getDelta() );
 
             // Rendering GUI elements
             this.GUI.update();

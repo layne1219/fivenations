@@ -105,6 +105,10 @@ define('EntityManager', [
 				var targets;
 				if (typeof filter === 'function'){
 					targets = entities.filter(filter);
+				} else if (typeof filter === 'string'){
+					targets = entities.filter(function(entity){
+						return entity.getId() === filter;
+					});
 				} else if (typeof filter === 'object'){
 					targets = filter;
 				} else {
@@ -120,7 +124,7 @@ define('EntityManager', [
 			$.add = function(config){
 				EventBus.getInstance().add({
 					id: 'entity/create',
-					data: options
+					data: config
 				});	
 			}
 
@@ -137,60 +141,11 @@ define('EntityManager', [
 
 	EntityManager.prototype = {
 
-		/**
-		 * Creating and adding a new entity to the entity pool based on the given configurations
-		 * @param {[object]} config [JSON literal that is to describe all the data for the creation process]
-		 * @return {[object]} [It returns the newly created Entity object]
-		 */
-		add: function(config){
-
-			if (!config){
-				throw 'Invalid configuration object passed as a parameter!';
+		add: function(entity){
+			if (!entity){
+				return;
 			}
-			
-			if (Object.keys(ns.entities).indexOf(config.id) === -1){
-				throw 'The requrested entity is not registered!';
-			}
-
-			var entity,
-
-				team = config.team || 1,
-
-				// sprite Ids are consisted of the sprite name and the colour id
-				spriteId = [config.id, team].join('-'),
-
-				// instanciating a Phaser.Game.Sprite objet for the entity
-				sprite = phaserGame.add.sprite(0, 0, spriteId),
-
-				// fomring the DataObject instance from the preloaded JSON file
-				dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
-
-				// rendering group name
-				groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
-
-				// choosing the group for entities so that other elements will be obscured by them
-				// it's kind of applying zIndex on entities
-				group = Graphics.getInstance().getGroup(groupName);
-
-			// passing the team Id from the config param object
-			dataObject.setTeam( team );
-
-			// adding the freshly created entity to the main array
-			entities.push( entity = new Entity(this, sprite, dataObject) );
-
-			// setting the coordinates if not ommitted 
-			if (config.x || config.y){
-				sprite.x = config.x || 0;
-				sprite.y = config.y || 0;
-			}
-
-			group.add(sprite);
-
-			return entity;
-		},
-
-		getNextId: function(){
-			return Util.getGUID();
+			entities.push(entity);
 		},
 
 		remove: function(entity){
@@ -201,6 +156,17 @@ define('EntityManager', [
 			}
 			entity = null;
 			delete entity;
+		},
+
+		/**
+		 * Alters entity attributes 
+		 * @param {integer} elapsedTime [elpased time since the last registered tick]
+		 * @return {void}
+		 */
+		update: function(elapsedTime){
+			for (var i = entities.length - 1; i >= 0; i--) {
+				entities[i].update();
+			}
 		},
 		
 		/**
