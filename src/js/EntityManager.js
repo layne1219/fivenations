@@ -189,8 +189,12 @@ define('EntityManager', [
 		 * @return {void}
 		 */
 		update: function(elapsedTime){
-			for (var i = entities.length - 1; i >= 0; i--) {
-				entities[i].update();
+			var steps = elapsedTime / (1000 / 60);
+			while (steps) {
+				for (var i = entities.length - 1; i >= 0; i--) {
+					entities[i].update();
+				}
+				steps -= 1;
 			}
 		},
 		
