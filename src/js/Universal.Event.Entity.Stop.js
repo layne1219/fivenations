@@ -29,7 +29,7 @@ define('Universal.Event.Entity.Stop', ['Universal.Event'], function(Event){
             y = options.data.y;
 
         options.targets.forEach(function(id, idx){
-            ns.game.entityManager.get(id).stop();
+            ns.game.entityManager.entitites(id).stop();
         });
     };
 

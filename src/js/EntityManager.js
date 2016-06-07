@@ -70,6 +70,11 @@ define('EntityManager', [
 
 						return this;
 					},
+					/**
+					 * Make all the given entities to perform a stop action
+					 * @param  {object} options [configuration object to create the desired event]
+					 * @return {void}
+					 */
 					stop: function(options){
 
 						EventBus.getInstance().add({
@@ -79,8 +84,12 @@ define('EntityManager', [
 
 						return this;
 					},
+					/**
+					 * Directly returns the private collection of entities 
+					 * @return {array} Array of entity instances 
+					 */
 					raw: function(){
-						return entities;
+						return entities || [];
 					}
 				}
 			};
@@ -106,9 +115,17 @@ define('EntityManager', [
 				if (typeof filter === 'function'){
 					targets = entities.filter(filter);
 				} else if (typeof filter === 'string'){
-					targets = entities.filter(function(entity){
-						return entity.getId() === filter;
-					});
+
+					if (filter === ':selected'){
+						targets = entities.filter(function(entity){
+							return entity.isSelected();
+						});
+					} else {
+						targets = entities.filter(function(entity){
+							return entity.getId() === filter;
+						});
+					}
+
 				} else if (typeof filter === 'object'){
 					targets = filter;
 				} else {
@@ -141,6 +158,10 @@ define('EntityManager', [
 
 	EntityManager.prototype = {
 
+		/**
+		 * Adds an entity object to the private collection
+		 * @param {object} entity Entity instance
+		 */
 		add: function(entity){
 			if (!entity){
 				return;
@@ -148,6 +169,10 @@ define('EntityManager', [
 			entities.push(entity);
 		},
 
+		/**
+		 * Removes entity from the private collection
+		 * @param {object} entity Entity instance
+		 */
 		remove: function(entity){
 			for (var i = entities.length - 1; i >= 0; i--) {
 				if (entity === entities[i]){
@@ -179,54 +204,31 @@ define('EntityManager', [
 
 		/**
 		 * Unselect all entities expect the passed if it is not omitted
+		 * It can directly employ the private collection of entities since
+		 * it triggers only client related action
 		 * @param {object} [entity] [Entity instance that will be excluded from the selection]
 		 * @return {void} 
 		 */
 		unselectAll: function(excludedEntity){
-			this.get().forEach(function(entity){
+			entities.forEach(function(entity){
 				if (excludedEntity !== entity && entity.isSelected()){
 					entity.unselect();
 				}
 			});
 		},
 
-		getGame: function(){
-			return phaserGame;
-		},
-
+		/**
+		 * Exposes EventAPI to all the active entities 
+		 * @type {object}
+		 * @see EventAPI
+		 */
 		entities: EventAPI,
 
-		get: function(id){
-			if (undefined === id){
-				return entities;
-			}
-
-			for (var i = entities.length - 1; i >= 0; i--) {
-				if (id === entities[i].getId()){
-					return entities[i];
-				} 
-			}
-
-			return [];
-		},
-
-		getAllSelected: function(){
-			return this.get().filter(function(entity){
-				return entity.isSelected();
-			});
-		},
-
 		/**
-		 * Return an array of IDs of the given entities
+		 * returns the subsection of the attributes of the given entities
 		 * @param  {[array]} entities [Array of the given entities]
-		 * @return {[array]}          [Array of integers representing the ID of the entities]
+		 * @return {[array]}          [Array of the merged abilities]
 		 */
-		getIds: function(entities){
-			return entities.map(function(entity){
-				return entity.getId();
-			});
-		},
-
 		getMergedAbilities: function(entities){
 			var abilities,
 				next, i, tmp, tmp2;
@@ -244,6 +246,14 @@ define('EntityManager', [
 			}
 
 			return abilities;
+		},
+
+		/**
+		 * returns the Phaser.Game object for inconvinience 
+		 * @return {[object]} [Phaser.Game instnace]
+		 */
+		getGame: function(){
+			return phaserGame;
 		}
 
 	};

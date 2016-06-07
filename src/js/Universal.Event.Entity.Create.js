@@ -62,7 +62,7 @@ define('Universal.Event.Entity.Create', [
 
         // adding the freshly created entity to the main array
         entity = new Entity({
-            id: config.id,
+            guid: config.guid,
             entityManager: this, 
             sprite: sprite, 
             dataObject: dataObject

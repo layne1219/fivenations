@@ -120,7 +120,7 @@ define('Game', [
                     return;
                 }
 
-                if (this.entityManager.get().filter(function(entity){
+                if (this.entityManager.entities().raw().filter(function(entity){
                     return entity.isHover();
                 }).length === 0){
                     this.userPointer.dispatch('leftbutton/down/disselect');
@@ -139,7 +139,7 @@ define('Game', [
 
             this.userPointer.on('multiselector/up', function(multiselector){
 
-                this.entityManager.get().forEach(function(entity){
+                this.entityManager.entities().raw().forEach(function(entity){
                     if (!entity.isEntityControlledByUser()){
                         return;
                     }
@@ -201,76 +201,14 @@ define('Game', [
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
             for (var i = 25; i >= 0; i--) {
-                this.entityManager.add({
+                this.entityManager.entities.add({
+                    guid: Util.getGUID(),
                     id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
                     team: 1//Util.rnd(1, this.playerManager.getPlayersNumber())
                 });
             }
 
-            this.entityManager.add({
-                id: "orca",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "hailstorm",
-                team: 1
-            });            
-
-            this.entityManager.add({
-                id: "stgeorge",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "avenger",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "avenger2",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "icarus",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "kutuzov",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "teller",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "dresda",
-                team: 1
-            });
-
-            var crow = this.entityManager.add({
-                id: "crow",
-                team: 1
-            });
-            crow.patrol( 400, 400 );
-
-            this.entityManager.add({
-                id: "engineershuttle",
-                team: 1
-            });
-
-            this.entityManager.add({
-                id: "commandcenter",
-                team: 1,
-                x: 250,
-                y: 250
-            });                                                          
-
-            this.entityManager.get().forEach(function(entity){
+            this.entityManager.entities().raw().forEach(function(entity){
                 if (entity === crow){
                     return;
                 }

@@ -74,7 +74,7 @@ define('Entity', [
 
                     now = new Date().getTime();
                     if (now - this.lastClickTime < 500){
-                        this.entityManager.get().filter(function(entity){
+                        this.entityManager.entities().raw().filter(function(entity){
                             // If the entity is off screen we need to exclude
                             if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)){
                                 return false;
@@ -124,7 +124,7 @@ define('Entity', [
         this.game = entityManager.getGame();
 
         // unique identifier in order to obtain the very entity
-        this.uid = config.id;
+        this.guid = config.guid;
 
         // setting up the dataObject
         this.dataObject = config.dataObject;
@@ -208,7 +208,7 @@ define('Entity', [
         },
 
         select: function(){
-            if (this.entityManager.getAllSelected().length < MAX_SELECTABLE_UNITS){
+            if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS){
         	   this.selected = true;
                this.eventDispatcher.dispatch('select');
                UED.getInstance().dispatch('gui/selection/change');
@@ -274,7 +274,7 @@ define('Entity', [
         },
 
         getId: function(){
-            return this.uid;
+            return this.guid;
         }        
        
 	};

@@ -578,7 +578,7 @@ define('GUI', [
 				 * @return {void}
 				 */
 				updateEntities: function(){
-					this.entityManager.get().forEach(function(entity){
+					this.entityManager.entities().raw().forEach(function(entity){
 						var x = entity.getSprite().x / this.map.getScreenWidth() * minimizedWidth,
 							y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
 							w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
@@ -892,7 +892,7 @@ define('GUI', [
 				 */
 				update: function(){
 
-					var entities = this.entityManager.getAllSelected();
+					var entities = this.entityManager.entities(':selected');
 
 					if (entities.length === 1) {
 
@@ -1065,7 +1065,7 @@ define('GUI', [
 			 */
 			ControlPanel.prototype.update = function(){
 
-				var entities = this.entityManager.getAllSelected();
+				var entities = this.entityManager.entities(':selected');
 
 				if (!entities || entities.length === 0) {
 					this.hide();

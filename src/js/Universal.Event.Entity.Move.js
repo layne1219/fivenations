@@ -34,7 +34,7 @@ define('Universal.Event.Entity.Move', ['Universal.Event'], function(Event){
 		options.targets.forEach(function(id, idx){
 			x = options.data.x || options.data[idx].x;
 			y = options.data.y || options.data[idx].y;
-			ns.game.entityManager.get(id).moveTo(x, y);
+			ns.game.entityManager.entities(id).moveTo(x, y);
 		});
 	};
 
