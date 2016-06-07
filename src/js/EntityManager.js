@@ -189,7 +189,7 @@ define('EntityManager', [
 		 * @return {void}
 		 */
 		update: function(elapsedTime){
-			var steps = elapsedTime / (1000 / 60);
+			var steps = Math.ciel( elapsedTime / (1000 / 60) );
 			while (steps) {
 				for (var i = entities.length - 1; i >= 0; i--) {
 					entities[i].update();
