@@ -18,6 +18,8 @@ define('Universal.Event.Entity.Remove', [
      * @return {void}
      */
     UniversalEventEntityRemove.prototype.execute = function(options) {
+        var entity;
+        
         if (!options.data) {
             return;
         }

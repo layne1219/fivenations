@@ -25,10 +25,7 @@ define('Universal.Event.Entity.Stop', ['Universal.Event'], function(Event) {
         if (!options.targets || !options.data) {
             return;
         }
-        var x = options.data.x,
-            y = options.data.y;
-
-        options.targets.forEach(function(id, idx) {
+        options.targets.forEach(function(id) {
             ns.game.entityManager.entitites(id).stop();
         });
     };

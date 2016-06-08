@@ -75,16 +75,18 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
     }
 
     function initialise(game, density) {
-        var number_of_stars = Math.round(MAX_STAR_NUMBER * density);
+        var numberOfStars = Math.round(MAX_STAR_NUMBER * density);
 
         this.game = game;
 
         createTexture.call(this, game);
         createSprites.call(this, game);
-        createStars.call(this, number_of_stars)
+        createStars.call(this, numberOfStars)
     }
 
     function createTexture(game) {
+        var container;
+        
         this.texture = game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
 
         container = game.add.image(0, 0, this.texture);
@@ -100,17 +102,17 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
 
         ns.cache.starfield = {};
         ns.cache.starfield.sprites = {
-            "slow": [
+            'slow': [
                 game.make.sprite(0, 0, 'starfield.star.slow-1'),
                 game.make.sprite(0, 0, 'starfield.star.slow-2'),
                 game.make.sprite(0, 0, 'starfield.star.slow-3')
             ],
-            "mediate": [
+            'mediate': [
                 game.make.sprite(0, 0, 'starfield.star.mediate-1'),
                 game.make.sprite(0, 0, 'starfield.star.mediate-2'),
                 game.make.sprite(0, 0, 'starfield.star.mediate-3')
             ],
-            "fast": [
+            'fast': [
                 game.make.sprite(0, 0, 'starfield.star.fast-1'),
                 game.make.sprite(0, 0, 'starfield.star.fast-2'),
                 game.make.sprite(0, 0, 'starfield.star.fast-3')
@@ -118,11 +120,11 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
         };
     }
 
-    function createStars(number_of_stars) {
+    function createStars(numberofStars) {
 
         this.stars = [];
 
-        for (var i = 0; i < number_of_stars; i++) {
+        for (var i = 0; i < numberofStars; i += 1) {
             addStar.call(this);
         };
 
@@ -164,7 +166,7 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
         update: function() {
             var first = true;
 
-            for (var i = this.stars.length - 1; i >= 0; i--) {
+            for (var i = this.stars.length - 1; i >= 0; i -=1 ) {
                 // the last param indicates whether to clear the texture of the layer or not
                 this.stars[i].update(this.texture, this.game, first);
 
@@ -213,14 +215,13 @@ define('Starfield.Background', ['Graphics'], function(Graphics) {
 // ************************************************************************************************
 define('Starfield', ['Starfield.StarLayer', 'Starfield.Background'], function(StarLayer, Background) {
 
-    var MAX_STAR_NUMBER = 1000,
-        STARLAYER_DENSITY = 0.5;
+    var STARLAYER_DENSITY = 0.5;
 
     function Starfield(map, density) {
         initialise.call(this, map, density);
     }
 
-    function initialise(map, density) {
+    function initialise(map) {
         this.initLayers();
         this.createBackground(map.getGame());
         this.createStars(map.getGame());

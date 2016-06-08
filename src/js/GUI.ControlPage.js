@@ -1,7 +1,7 @@
 define('GUI.ControlPage', [
     'GUI.ControlButton',
     'json!abilities'
-], function(ControlButton, abilitiesJSON) {
+], function(ControlButton) {
 
     var COLUMNS = 5,
         ROWS = 5,
@@ -37,9 +37,6 @@ define('GUI.ControlPage', [
      * @return {void}
      */
     ControlPanelPage.prototype.init = function(entityManager) {
-        var i, x, y,
-            button;
-
         this.buttons = [];
         this.entityManager = entityManager;
 
@@ -51,8 +48,8 @@ define('GUI.ControlPage', [
      * @return {[void]}
      */
     ControlPanelPage.prototype.populate = function() {
-        var button;
-        for (i = 0; i < BUTTON_NUMBER; i++) {
+        var button, i, x, y;
+        for (i = 0; i < BUTTON_NUMBER; i += 1) {
             x = i % COLUMNS * (ICON_WIDTH + MARGIN);
             y = Math.floor(i / COLUMNS) * (ICON_HEIGHT + MARGIN);
 
@@ -69,7 +66,7 @@ define('GUI.ControlPage', [
      * @return {[object]} [GUI.ControlButton]
      */
     ControlPanelPage.prototype.createControlButton = function(id) {
-        button = new ControlButton(this.entityManager);
+        var button = new ControlButton(this.entityManager);
         if (id) {
             button.setId(id);
         }

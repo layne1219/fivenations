@@ -1,4 +1,4 @@
-define('Entity.Activity.Patrol', ['Entity.Activity', 'Util'], function(Activity, Util) {
+define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
 
     // Private functions
     var

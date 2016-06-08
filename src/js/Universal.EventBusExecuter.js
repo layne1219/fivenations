@@ -16,7 +16,7 @@ define('Universal.EventBusExecuter', [
                 run: function() {
                     var evt,
                         evtObj;
-                    while (evt = eventbus.next()) {
+                    while ((evt = eventbus.next())) {
 
                         if (!evt.id) {
                             continue;
@@ -30,7 +30,6 @@ define('Universal.EventBusExecuter', [
                             });
                             console.log(evtObj);
                         } catch (ex) {
-                            console.log(ex);
                             continue;
                         }
 

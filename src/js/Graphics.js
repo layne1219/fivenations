@@ -1,4 +1,4 @@
-define('Graphics', ['Util'], function(Util) {
+define('Graphics', function() {
 
     var phaserGame,
         singleton;

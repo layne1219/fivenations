@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------------
 define('GUI.StopButtonLogic', function() {
     return {
-        activate: function(entityManager, controlPanel) {
+        activate: function(entityManager /*, controlPanel */) {
             entityManager
                 .entities(function(entity) {
                     return entity.isSelected() && entity.isEntityControlledByUser(entity)

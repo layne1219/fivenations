@@ -4,7 +4,7 @@ define('GUI.Activity.SelectCoords', [
     'UserPointer'
 ], function(Util, Activity, UserPointer) {
 
-    function ActivitySelectCoords(activityManager) {
+    function ActivitySelectCoords() {
         var args = [].slice.call(arguments);
         Activity.apply(this, args);
 

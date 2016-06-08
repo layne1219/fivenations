@@ -103,7 +103,7 @@ define('Game', [
             this.userPointer = UserPointer.getInstance();
 
             // Right Mouse Button to send units to a position
-            this.userPointer.on('rightbutton/down', function(userPointer) {
+            this.userPointer.on('rightbutton/down', function() {
 
                 var coords = this.userPointer.getRealCoords();
 
@@ -140,9 +140,6 @@ define('Game', [
                     this.userPointer.dispatch('leftbutton/down/disselect');
                     return;
                 }
-
-                gui.frame++;
-                console.log(gui.frame);
 
             }.bind(this));
 
@@ -214,7 +211,7 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 25; i >= 0; i--) {
+            for (var i = 25; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
@@ -223,9 +220,6 @@ define('Game', [
             }
 
             this.entityManager.entities().raw().forEach(function(entity) {
-                if (entity === crow) {
-                    return;
-                }
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
             });
 

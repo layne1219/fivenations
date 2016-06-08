@@ -1,7 +1,6 @@
-define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(ControlButtonCollection, Util) {
+define('GUI.ControlButton', ['GUI.ControlButtonCollection'], function(ControlButtonCollection) {
 
-    var GUI_FRAME_OFFSET = 65,
-        PADDING_ONCLICK = 2,
+    var PADDING_ONCLICK = 2,
         TRANSPARENCY_ONLICK = 0.75,
 
         // reference to the shared game configuarition object 
@@ -12,7 +11,6 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(Co
      * @return {object} [ControlPanelPage]
      */
     function ControlPanelButton(entityManager) {
-        var args = [].slice.call(arguments);
 
         // applying the inherited constructor function
         Phaser.Sprite.call(this, ns.game, 0, 0, 'gui');
@@ -62,7 +60,7 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection', 'Util'], function(Co
      * @param {[type]} button [description]
      */
     ControlPanelButton.prototype.addBehaviour = function() {
-        this.events.onInputUp.add(function(idx) {
+        this.events.onInputUp.add(function() {
             this.activate();
             if (ns.gui.selectedControlButton) {
                 ns.gui.selectedControlButton.deactivate();

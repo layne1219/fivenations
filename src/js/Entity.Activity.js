@@ -1,4 +1,4 @@
-define('Entity.Activity', ['Util'], function(Util) {
+define('Entity.Activity', function() {
 
     function Activity() {}
 
@@ -8,8 +8,7 @@ define('Entity.Activity', ['Util'], function(Util) {
         initialised: false,
         manager: null,
 
-        update: function(entity) {
-
+        update: function() {
         },
 
         activate: function() {

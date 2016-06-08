@@ -1,3 +1,4 @@
+/*eslint no-bitwise: [0] */
 define('Util', function() {
 
     return {
@@ -39,7 +40,7 @@ define('Util', function() {
                 if (start < 0) {
                     start = max - 1;
                 }
-                ++stepCount;
+                stepCount += 1;
             }
             return stepCount;
         },
@@ -70,7 +71,7 @@ define('Util', function() {
         getGUID: function() {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                 var r = Math.random() * 16 | 0,
-                    v = c == 'x' ? r : (r & 0x3 | 0x8);
+                    v = c === 'x' ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
         },
