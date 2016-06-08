@@ -215,7 +215,9 @@ define('Game', [
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
-                    team: 1 //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    x: 300 + Util.rnd(0, 100),
+                    y: 300 + Util.rnd(0, 100)
                 });
             }
 
