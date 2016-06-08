@@ -1,4 +1,4 @@
-define('Map', ['Starfield', 'Util'], function(Starfield) {
+define('Map', ['Starfield'], function(Starfield) {
 
     // map configration template
     var defaultConfig = {
