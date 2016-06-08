@@ -1,0 +1,15 @@
+{      
+    "env": {
+        "browser" : true
+    },
+    "plugins" : [],
+    "globals": {
+        "jQuery": true,
+        "$": true,
+        "SHARED": true,
+        "PBX": true
+    },
+    "rules" : {
+        "indent":[2, 4],
+    }
+}

@@ -6,9 +6,11 @@ var gulp = require('gulp')
   , minifycss = require('gulp-minify-css')
   , minifyhtml = require('gulp-minify-html')
   , processhtml = require('gulp-processhtml')
-  , jshint = require('gulp-jshint')
+  , eslint = require('gulp-eslint')
   , uglify = require('gulp-uglify')
+  , prettify = require('gulp-jsbeautifier')
   , connect = require('gulp-connect')
+  , debug = require('gulp-debug')
   , paths;
 
 paths = {
@@ -49,8 +51,16 @@ gulp.task('finalise-html', ['process-html'], function() {
 
 gulp.task('lint', function() {
   gulp.src(paths.js)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .on('error', gutil.log);
+});
+
+gulp.task('prettify', function() {
+  gulp.src(paths.js)
+    .pipe(prettify())
+    .pipe(gulp.dest('src/js/'))
     .on('error', gutil.log);
 });
 

@@ -1,11 +1,11 @@
 define('Universal.Event.Entity.Create', [
     'Universal.Event',
     'Graphics'
-], function(Event, Graphics){
-    
+], function(Event, Graphics) {
+
     var ns = window.fivenations;
 
-    function UniversalEventEntityCreate(){
+    function UniversalEventEntityCreate() {
         var args = [].slice.call(arguments);
         Event.apply(this, args);
     }
@@ -13,27 +13,27 @@ define('Universal.Event.Entity.Create', [
     UniversalEventEntityCreate.prototype = Object.create(Event.prototype);
     UniversalEventEntityCreate.prototype.constructor = UniversalEventEntityCreate;
 
-        /**
-         * No-op function to be overwritten in the child objects
-         * @param {object} [options] [extendable object that presents event details]
-         * @return {void}
-         */
-    UniversalEventEntityCreate.prototype.execute = function(options){
+    /**
+     * No-op function to be overwritten in the child objects
+     * @param {object} [options] [extendable object that presents event details]
+     * @return {void}
+     */
+    UniversalEventEntityCreate.prototype.execute = function(options) {
         var config,
             phaserGame;
 
-        if (!options.data){
+        if (!options.data) {
             return;
         }
 
         config = options.data;
         phaserGame = ns.game;
 
-        if (!config){
+        if (!config) {
             throw 'Invalid configuration object passed as a parameter!';
         }
-        
-        if (Object.keys(ns.entities).indexOf(config.id) === -1){
+
+        if (Object.keys(ns.entities).indexOf(config.id) === -1) {
             throw 'The requrested entity is not registered!';
         }
 
@@ -58,18 +58,18 @@ define('Universal.Event.Entity.Create', [
             group = Graphics.getInstance().getGroup(groupName);
 
         // passing the team Id from the config param object
-        dataObject.setTeam( team );
+        dataObject.setTeam(team);
 
         // adding the freshly created entity to the main array
         entity = new Entity({
             guid: config.guid,
-            entityManager: this, 
-            sprite: sprite, 
+            entityManager: this,
+            sprite: sprite,
             dataObject: dataObject
-        }) );
+        });
 
         // setting the coordinates if not ommitted 
-        if (config.x || config.y){
+        if (config.x || config.y) {
             sprite.x = config.x || 0;
             sprite.y = config.y || 0;
         }

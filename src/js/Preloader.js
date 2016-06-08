@@ -1,5 +1,5 @@
 define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
-'use strict';
+    'use strict';
 
     var preloader,
         ns = window.fivenations;
@@ -20,7 +20,7 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
      * @param {object} [preloader] Preloader object defined below
      * @return {void}
      */
-    function loadGUI(preloader){
+    function loadGUI(preloader) {
         preloader.load.atlasJSONHash('gui', 'assets/images/gui/GUI_element.png', 'assets/images/gui/GUI_element.json');
         preloader.load.atlasJSONHash('gui.icons.fed', 'assets/images/gui/fed_icons.png', 'assets/images/gui/fed_icons.json');
     }
@@ -30,7 +30,7 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
      * @param {object} [preloader] Preloader object defined below
      * @return {void}
      */
-    function loadStarfield(preloader){
+    function loadStarfield(preloader) {
         preloader.load.image('starfield', 'assets/images/starfield/starfield.jpg');
         preloader.load.image('starfield.star.slow-1', 'assets/images/starfield/star-s-1.png');
         preloader.load.image('starfield.star.slow-2', 'assets/images/starfield/star-s-2.png');
@@ -40,9 +40,9 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         preloader.load.image('starfield.star.mediate-3', 'assets/images/starfield/star-m-3.png');
         preloader.load.image('starfield.star.fast-1', 'assets/images/starfield/star-f-1.png');
         preloader.load.image('starfield.star.fast-2', 'assets/images/starfield/star-f-1.png');
-        preloader.load.image('starfield.star.fast-3', 'assets/images/starfield/star-f-1.png');        
+        preloader.load.image('starfield.star.fast-3', 'assets/images/starfield/star-f-1.png');
     }
-    
+
     /**
      * Preloader object used for asyncroniously download assets for the game
      */
@@ -54,37 +54,37 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         /**
          * @return {void}
          */
-        preload: function () {
-          preloader = this.add.sprite(this.game.width * 0.5 - 110, this.game.height * 0.5 - 10, 'preloader');
-          this.load.setPreloadSprite(preloader);
+        preload: function() {
+            preloader = this.add.sprite(this.game.width * 0.5 - 110, this.game.height * 0.5 - 10, 'preloader');
+            this.load.setPreloadSprite(preloader);
 
-          // setting up the callback one the preloading is completed
-          this.load.onLoadComplete.addOnce(function(){
-            this.ready = true;
-          }, this);
-          
-          // line up all the reasources waiting for being preloaded
-          loadResources(this);
+            // setting up the callback one the preloading is completed
+            this.load.onLoadComplete.addOnce(function() {
+                this.ready = true;
+            }, this);
 
-        },
-
-        /**
-         * @return {void}
-         */
-        create: function () {
+            // line up all the reasources waiting for being preloaded
+            loadResources(this);
 
         },
 
         /**
          * @return {void}
          */
-        update: function () {
-          if (!!this.ready) {
-            this.game.state.start('menu');
-          }
+        create: function() {
+
+        },
+
+        /**
+         * @return {void}
+         */
+        update: function() {
+            if (!!this.ready) {
+                this.game.state.start('menu');
+            }
         }
 
     };
 
-return Preloader;
+    return Preloader;
 });

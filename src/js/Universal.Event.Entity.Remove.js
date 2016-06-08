@@ -1,10 +1,10 @@
 define('Universal.Event.Entity.Remove', [
     'Universal.Event'
-], function(Event){
-    
+], function(Event) {
+
     var ns = window.fivenations;
 
-    function UniversalEventEntityRemove(){
+    function UniversalEventEntityRemove() {
         var args = [].slice.call(arguments);
         Event.apply(this, args);
     }
@@ -17,8 +17,8 @@ define('Universal.Event.Entity.Remove', [
      * @param {object} [options] [extendable object that presents event details]
      * @return {void}
      */
-    UniversalEventEntityRemove.prototype.execute = function(options){
-        if (!options.data){
+    UniversalEventEntityRemove.prototype.execute = function(options) {
+        if (!options.data) {
             return;
         }
 
