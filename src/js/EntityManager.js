@@ -89,7 +89,13 @@ define('EntityManager', [
                      */
                     raw: function() {
                         return entities || [];
-                    }
+                    },
+
+                    /**
+                     * Number of instances in the private collection
+                     * @type {integer}
+                     */
+                    length: entities.length
                 }
             };
 

@@ -969,7 +969,7 @@ define('GUI', [
                  */
                 update: function() {
 
-                    var entities = this.entityManager.entities(':selected');
+                    var entities = this.entityManager.entities(':selected').raw();
 
                     if (entities.length === 1) {
 
@@ -1140,7 +1140,7 @@ define('GUI', [
              */
             ControlPanel.prototype.update = function() {
 
-                var entities = this.entityManager.entities(':selected');
+                var entities = this.entityManager.entities(':selected').raw();
 
                 if (!entities || entities.length === 0) {
                     this.hide();
