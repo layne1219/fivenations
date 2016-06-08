@@ -1,54 +1,54 @@
-define('PlayerManager', ['Player'], function(Player){
-	
-	var 
-		colors = [
-			'0x08A2EA',
-			'0x10B308',
-			'0xF28209',
-			'0xBA10D9',
-			'0xD40F0F',
-			'0xF8F8F9',
-			'0xE5C410',
-			'0x65615D'
-		],
+define('PlayerManager', ['Player'], function(Player) {
 
-		players = [],
+    var
+        colors = [
+            '0x08A2EA',
+            '0x10B308',
+            '0xF28209',
+            '0xBA10D9',
+            '0xD40F0F',
+            '0xF8F8F9',
+            '0xE5C410',
+            '0x65615D'
+        ],
 
-		singleton = {
+        players = [],
 
-			addPlayer: function(config) {
-	            players.push( new Player(config) );        			
-			},
+        singleton = {
 
-			getPlayers: function(){
-				return players;
-			},
+            addPlayer: function(config) {
+                players.push(new Player(config));
+            },
 
-			getUser: function(){
-				for (var i = players.length - 1; i >= 0; i--) {
-					if (players[i].isControlledByUser()){
-						return players[i];
-					}
-				}
-				return false;
-			},
+            getPlayers: function() {
+                return players;
+            },
 
-			getPlayersNumber: function(){
-				return players.length;
-			},
+            getUser: function() {
+                for (var i = players.length - 1; i >= 0; i--) {
+                    if (players[i].isControlledByUser()) {
+                        return players[i];
+                    }
+                }
+                return false;
+            },
 
-			getColors: function(){
-				return colors;
-			}
+            getPlayersNumber: function() {
+                return players.length;
+            },
 
-		};
+            getColors: function() {
+                return colors;
+            }
 
-	return {
+        };
 
-		getInstance: function(){
-			return singleton;
-		}
+    return {
 
-	};
+        getInstance: function() {
+            return singleton;
+        }
+
+    };
 
 });

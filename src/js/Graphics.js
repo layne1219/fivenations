@@ -1,61 +1,61 @@
-define('Graphics', ['Util'], function(Util){
+define('Graphics', ['Util'], function(Util) {
 
-	var phaserGame,
-		singleton;
+    var phaserGame,
+        singleton;
 
-	function createGraphicsInstance(){
+    function createGraphicsInstance() {
 
-		var groups = {},
-			// layers ordered as follows
-			groupNames = [
-				'starfield',
-				'selectors-buildings',				
-				'entities-buildings',				
-				'selectors',
-				'entities',
-				'prior-gui-elements'
-			];
+        var groups = {},
+            // layers ordered as follows
+            groupNames = [
+                'starfield',
+                'selectors-buildings',
+                'entities-buildings',
+                'selectors',
+                'entities',
+                'prior-gui-elements'
+            ];
 
-		groupNames.forEach(function(name){
-			groups[name] = phaserGame.add.group();
-		});
+        groupNames.forEach(function(name) {
+            groups[name] = phaserGame.add.group();
+        });
 
-		return {
+        return {
 
-			getGroup: function(id){
-				if (!id){
-					throw 'Invalid Id to retrieve a group!';
-				}
-				if (!groups[id]){
-					throw 'The group cannot be identified through the passed id!';
-				}
-				return groups[id];
-			}
+            getGroup: function(id) {
+                if (!id) {
+                    throw 'Invalid Id to retrieve a group!';
+                }
+                if (!groups[id]) {
+                    throw 'The group cannot be identified through the passed id!';
+                }
+                return groups[id];
+            }
 
-		};
+        };
 
-	}
+    }
 
-	return {
+    return {
 
-		setGame: function(game){
-			phaserGame = game;
-		},
+        setGame: function(game) {
+            phaserGame = game;
+        },
 
-		/**
-		 * Accessing the singleton instance of the GUI 
-		 * @return {object} GUI
-		 */
-		getInstance: function(){
-			if (!phaserGame){
-				throw 'Invoke setGame first to pass the Phaser Game entity!';
-			}			
-			if (!singleton){
-				singleton = createGraphicsInstance();
-			}
-			return singleton;
-		}
+        /**
+         * Accessing the singleton instance of the GUI 
+         * @return {object} GUI
+         */
+        getInstance: function() {
+            if (!phaserGame) {
+                throw 'Invoke setGame first to pass the Phaser Game entity!';
+            }
+            if (!singleton) {
+                singleton = createGraphicsInstance();
+            }
+            return singleton;
+        }
 
-	};
+    };
 
 });

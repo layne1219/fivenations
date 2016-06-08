@@ -58,9 +58,9 @@ gulp.task('lint', function() {
 });
 
 gulp.task('prettify', function() {
-gulp.src(paths.js)
+  gulp.src(paths.js)
     .pipe(prettify())
-    .pipe(gulp.dest(paths.js))
+    .pipe(gulp.dest('src/js/'))
     .on('error', gutil.log);
 });
 

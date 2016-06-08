@@ -1,5 +1,5 @@
 define('Preloader.Entities', function() {
-'use strict';
+    'use strict';
 
     var ns = window.fivenations;
 
@@ -95,8 +95,8 @@ define('Preloader.Entities', function() {
             spriteURL: 'assets/images/units/fed/fed_build01_c{color}.png',
             atlasURL: 'assets/images/units/fed/fed_build01_c01.json',
             dataURL: 'assets/datas/units/fed/commandcenter.json'
-        }        
-                                                      
+        }
+
     };
 
     return {
@@ -106,14 +106,14 @@ define('Preloader.Entities', function() {
          * @param {object} [preloader] Preloader object defined below
          * @return {void}
          */
-        load: function(preloader){
+        load: function(preloader) {
 
-            Object.keys(ns.entities).forEach(function(key){
+            Object.keys(ns.entities).forEach(function(key) {
                 var spriteURL,
                     spriteKey,
                     teamNumber = 8;
 
-                if (!ns.entities[key].preloading){
+                if (!ns.entities[key].preloading) {
                     return;
                 }
 
@@ -123,8 +123,8 @@ define('Preloader.Entities', function() {
                     preloader.load.atlasJSONHash(spriteKey, spriteURL, ns.entities[key].atlasURL);
                 }
 
-                preloader.load.json(key, ns.entities[key].dataURL);   
-            }, preloader); 
+                preloader.load.json(key, ns.entities[key].dataURL);
+            }, preloader);
 
         }
     }

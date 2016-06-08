@@ -1,43 +1,43 @@
-define('Universal.Event.Entity.Move', ['Universal.Event'], function(Event){
-	
-	var ns = window.fivenations;
+define('Universal.Event.Entity.Move', ['Universal.Event'], function(Event) {
 
-	function UniversalEventEntityMove(){
-		var args = [].slice.call(arguments);
-		Event.apply(this, args);
-	}
+    var ns = window.fivenations;
 
-	UniversalEventEntityMove.prototype = Object.create(Event.prototype);
-	UniversalEventEntityMove.prototype.constructor = UniversalEventEntityMove;
+    function UniversalEventEntityMove() {
+        var args = [].slice.call(arguments);
+        Event.apply(this, args);
+    }
 
-		/**
-		 * No-op function to be overwritten in the child objects
-		 * @param {object} [options] [extendable object that presents event details]
-		 * @return {void}
-		 * @example
-		 * Expected Data format:
-		 * {
-		 * 	id: 'entity/move'
-		 * 	targets: [124, 84],
-		 * 	data: [
-		 * 		{x: 156, y:367},
-		 * 		{x: 179, y:380}
-		 * 	]
-		 * }
-		 */
-	UniversalEventEntityMove.prototype.execute = function(options){
-		if (!options.targets || !options.data){
-			return;
-		}
-		var x, y;
+    UniversalEventEntityMove.prototype = Object.create(Event.prototype);
+    UniversalEventEntityMove.prototype.constructor = UniversalEventEntityMove;
 
-		options.targets.forEach(function(id, idx){
-			x = options.data.x || options.data[idx].x;
-			y = options.data.y || options.data[idx].y;
-			ns.game.entityManager.entities(id).moveTo(x, y);
-		});
-	};
+    /**
+     * No-op function to be overwritten in the child objects
+     * @param {object} [options] [extendable object that presents event details]
+     * @return {void}
+     * @example
+     * Expected Data format:
+     * {
+     * 	id: 'entity/move'
+     * 	targets: [124, 84],
+     * 	data: [
+     * 		{x: 156, y:367},
+     * 		{x: 179, y:380}
+     * 	]
+     * }
+     */
+    UniversalEventEntityMove.prototype.execute = function(options) {
+        if (!options.targets || !options.data) {
+            return;
+        }
+        var x, y;
 
-	return UniversalEventEntityMove;
+        options.targets.forEach(function(id, idx) {
+            x = options.data.x || options.data[idx].x;
+            y = options.data.y || options.data[idx].y;
+            ns.game.entityManager.entities(id).moveTo(x, y);
+        });
+    };
+
+    return UniversalEventEntityMove;
 
 });

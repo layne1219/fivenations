@@ -1,55 +1,55 @@
-define('GUI.ActivityManager', ['GUI.Activity'], function(Activity){
+define('GUI.ActivityManager', ['GUI.Activity'], function(Activity) {
 
-	var singleton;
+    var singleton;
 
-	function createActivityManager(){
+    function createActivityManager() {
 
-		var selectedActivity;
+        var selectedActivity;
 
-		return {
+        return {
 
-			start: function(activity){
-				// cancel the current event
-				this.cancel();
-				this.setActivity(activity);
-				return selectedActivity;
-			},
+            start: function(activity) {
+                // cancel the current event
+                this.cancel();
+                this.setActivity(activity);
+                return selectedActivity;
+            },
 
-			cancel: function(){
-				if (this.hasActiveSelection()){
-					selectedActivity.deactivate();
-					delete selectedActivity;
-					selectedActivity = null;					
-				}				
-			},
+            cancel: function() {
+                if (this.hasActiveSelection()) {
+                    selectedActivity.deactivate();
+                    delete selectedActivity;
+                    selectedActivity = null;
+                }
+            },
 
-			setActivity: function(activity){
-				selectedActivity = new activity(this);
-				selectedActivity.activate();
-				return selectedActivity;
-			},
+            setActivity: function(activity) {
+                selectedActivity = new activity(this);
+                selectedActivity.activate();
+                return selectedActivity;
+            },
 
-			hasActiveSelection: function(){
-				return selectedActivity;
-			},
+            hasActiveSelection: function() {
+                return selectedActivity;
+            },
 
-			getSelectedActivity: function(){
-				return selectedActivity;
-			}
+            getSelectedActivity: function() {
+                return selectedActivity;
+            }
 
-		};
+        };
 
-	}
+    }
 
-	return {
+    return {
 
-		getInstance: function(){		
-			if (!singleton){
-				singleton = createActivityManager();
-			}
-			return singleton;
-		}
+        getInstance: function() {
+            if (!singleton) {
+                singleton = createActivityManager();
+            }
+            return singleton;
+        }
 
-	};   
+    };
 
 });
