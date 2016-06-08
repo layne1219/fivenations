@@ -3,7 +3,8 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.Patrol',
     'Universal.Event.Entity.Stop',
     'Universal.Event.Entity.Create',
-], function(EntityMove, EntityPatrol, EntityStop, EntityCreate) {
+    'Universal.Event.Entity.Remove',
+], function(EntityMove, EntityPatrol, EntityStop, EntityCreate, EntityRemove) {
 
     'use strict';
 

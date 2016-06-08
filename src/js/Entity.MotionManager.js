@@ -205,7 +205,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          * @return {[void]}
          */
         resetEffects: function() {
-            for (var i = this.effects.length - 1; i >= 0; i--) {
+            for (var i = this.effects.length - 1; i >= 0; i -= 1) {
                 this.effects[i] = null;
                 this.effects.splice(i, 1);
             }
@@ -221,7 +221,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             if ('function' !== effect) {
                 return false;
             }
-            for (var i = this.effects.length - 1; i >= 0; i--) {
+            for (var i = this.effects.length - 1; i >= 0; i -= 1) {
                 if (effect === this.effects[i][0]) {
                     this.effects.splice(i, 1);
                 }

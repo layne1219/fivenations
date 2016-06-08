@@ -1,13 +1,12 @@
 {      
     "env": {
-        "browser" : true
+        "browser" : true,
+        "node": true
     },
     "plugins" : [],
     "globals": {
-        "jQuery": true,
-        "$": true,
-        "SHARED": true,
-        "PBX": true
+        "define": true,
+        "Phaser": true
     },
     "rules" : {
         "indent":[2, 4],
@@ -40,8 +39,6 @@
         "no-unused-vars": 2,
         "no-with": 2,
         "quotes": [2, "single"],
-        "react/jsx-uses-react": 2,
-        "react/jsx-uses-vars": 2,
         "semi": [0, "never"],
         "valid-typeof": 2,
         "wrap-iife": [2,"inside"]        

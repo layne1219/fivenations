@@ -13,7 +13,7 @@ define('Universal.Event', function() {
          * @param {object} [options] [extendable object that presents event details]
          * @return {void}
          */
-        execute: function(options) {}
+        execute: function() {}
 
     };
 

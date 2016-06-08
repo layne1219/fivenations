@@ -1,8 +1,6 @@
 define('Boot', function() {
     'use strict';
 
-    var ns = window.fivenations;
-
     function Boot() {}
 
     Boot.prototype = {

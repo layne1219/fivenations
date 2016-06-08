@@ -1,4 +1,4 @@
-define("Map", ["Starfield", "Util"], function(Starfield) {
+define('Map', ['Starfield', 'Util'], function(Starfield) {
 
     // map configration template
     var defaultConfig = {
@@ -41,8 +41,8 @@ define("Map", ["Starfield", "Util"], function(Starfield) {
         },
 
         scrollToTile: function(x, y) {
-            this.game.camera.x = x * tileWidth;
-            this.game.camera.y = y * tileHeight;
+            this.game.camera.x = x * this.config.tiles.tileWidth;
+            this.game.camera.y = y * this.config.tiles.tileHeight;
         },
 
         scrollLeft: function(extent) {
@@ -87,19 +87,19 @@ define("Map", ["Starfield", "Util"], function(Starfield) {
 
         validateMapConfig: function() {
             if (!this.config || !this.config.tiles) {
-                throw "Invalid config data!";
+                throw 'Invalid config data!';
             }
             if (!this.config.tiles.tileWidth) {
-                throw "Invalid tileWidth property!";
+                throw 'Invalid tileWidth property!';
             }
             if (!this.config.tiles.tileHeight) {
-                throw "Invalid tileHeight property!";
+                throw 'Invalid tileHeight property!';
             }
             if (!this.config.tiles.width) {
-                throw "Invalid width property!";
+                throw 'Invalid width property!';
             }
             if (!this.config.tiles.height) {
-                throw "Invalid height property!";
+                throw 'Invalid height property!';
             }
         }
 

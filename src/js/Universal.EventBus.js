@@ -25,7 +25,7 @@ define('Universal.EventBus', function() {
                     queue.push(evt);
                 },
 
-                remove: function(evt) {
+                remove: function() {
                     for (var i = queue.length - 1; i >= 0; i -= 1) {
                         if (queue[i].uid === event.uid) {
                             queue.slice(i, 1);

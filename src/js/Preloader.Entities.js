@@ -117,7 +117,7 @@ define('Preloader.Entities', function() {
                     return;
                 }
 
-                for (var i = teamNumber; i >= 1; i--) {
+                for (var i = teamNumber; i >= 1; i -= 1) {
                     spriteURL = ns.entities[key].spriteURL.replace('{color}', i > 10 ? i : ('0' + i));
                     spriteKey = [key, i].join('-');
                     preloader.load.atlasJSONHash(spriteKey, spriteURL, ns.entities[key].atlasURL);

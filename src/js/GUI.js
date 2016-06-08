@@ -5,13 +5,10 @@ define('GUI', [
     'GUI.ControlButton',
     'GUI.ControlPage',
     'GUI.CancelPage',
-    'Util',
-    'json!abilities'
-], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util, abilitiesJSON) {
+    'Util'
+], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util) {
 
-    var NO_COMMAND_SELECTED = -1,
-
-        // reference to the shared game configuarition object 
+    var // reference to the shared game configuarition object 
         ns = window.fivenations,
 
         // reference to the Phaser Game object
@@ -455,12 +452,8 @@ define('GUI', [
                 frame = 64;
 
             function F() {
-                var args = [].slice.call(arguments),
-                    panel;
-
                 Phaser.Image.call(this, phaserGame, 0, ns.window.height - 222, spriteKey, frame);
                 this.fixedToCamera = true;
-
             }
 
             F.prototype = Object.create(Phaser.Image.prototype);
@@ -471,7 +464,7 @@ define('GUI', [
              * @param {object} panel Main GUI Group
              * @return {void}
              */
-            F.prototype.appendTo = function(parent, x, y) {
+            F.prototype.appendTo = function(parent) {
 
                 if (!parent) {
                     throw 'Invalid Phaser element object!';
@@ -862,7 +855,7 @@ define('GUI', [
                     this.healthBar = [];
                     this.shieldBar = [];
 
-                    for (i = columns * rows - 1; i >= 0; i--) {
+                    for (i = columns * rows - 1; i >= 0; i -= 1) {
 
                         x = i % columns * (iconWidth + margin);
                         y = Math.floor(i / columns) * (iconHeight + margin);
@@ -900,7 +893,7 @@ define('GUI', [
                         throw 'Invalid Array of Entity instances has been passed!';
                     }
 
-                    for (i = this.icons.length - 1; i >= 0; i--) {
+                    for (i = this.icons.length - 1; i >= 0; i -=1 ) {
                         // if the slot needs to be shown
                         if (i < entities.length && entities[i]) {
 
@@ -1055,8 +1048,6 @@ define('GUI', [
              * @param {object} entityManager [reference to the singleton instance of EntityManager]
              */
             function ControlPanel(entityManager) {
-                var args = [].slice.call(arguments);
-
                 // applying the inherited constructor function
                 Phaser.Group.call(this, phaserGame);
 
@@ -1100,7 +1091,7 @@ define('GUI', [
              */
             ControlPanel.prototype.selectPage = function(pageIdx) {
 
-                for (var i = 0; i < this.controlPanelPages.length; i++) {
+                for (var i = 0; i < this.controlPanelPages.length; i += 1) {
                     if (i === pageIdx) {
                         this.controlPanelPages[i].visible = true;
                     } else {

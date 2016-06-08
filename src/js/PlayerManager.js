@@ -25,7 +25,7 @@ define('PlayerManager', ['Player'], function(Player) {
             },
 
             getUser: function() {
-                for (var i = players.length - 1; i >= 0; i--) {
+                for (var i = players.length - 1; i >= 0; i -= 1) {
                     if (players[i].isControlledByUser()) {
                         return players[i];
                     }

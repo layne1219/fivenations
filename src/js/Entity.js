@@ -121,7 +121,7 @@ define('Entity', [
         this.entityManager = config.entityManager;
 
         // retrive the Phaser.Game object
-        this.game = entityManager.getGame();
+        this.game = config.entityManager.getGame();
 
         // unique identifier in order to obtain the very entity
         this.guid = config.guid;
@@ -133,7 +133,7 @@ define('Entity', [
         this.eventDispatcher = new Util.EventDispatcher();
 
         // persisting the sprite object and attaching it to the Entity object 
-        this.sprite = extendSprite(this, config.sprite, dataObject);
+        this.sprite = extendSprite(this, config.sprite, config.dataObject);
 
         // adding the Selector object to highligh whether the unit is seleted or not
         this.selector = GUI.getInstance().addSelector(this);

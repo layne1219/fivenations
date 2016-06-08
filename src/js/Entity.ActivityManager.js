@@ -20,8 +20,7 @@ define('Entity.ActivityManager', [
             },
 
             remove: function(activity) {
-                var found = false;
-                for (var i = 0; i < activities.length; i++) {
+                for (var i = 0; i < activities.length; i += 1) {
                     if (activities[i] === activity) {
                         activities[i].deactivate();
                         activities.splice(i, 1);
@@ -29,13 +28,6 @@ define('Entity.ActivityManager', [
                         break;
                     }
                 }
-            },
-
-            activateCurrent: function() {
-                if (!current) {
-                    return;
-                }
-                current.activate();
             },
 
             removeAll: function() {

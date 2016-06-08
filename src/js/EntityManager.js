@@ -72,10 +72,9 @@ define('EntityManager', [
                     },
                     /**
                      * Make all the given entities to perform a stop action
-                     * @param  {object} options [configuration object to create the desired event]
                      * @return {void}
                      */
-                    stop: function(options) {
+                    stop: function() {
 
                         EventBus.getInstance().add({
                             id: 'entity/stop',
@@ -160,12 +159,57 @@ define('EntityManager', [
 
         /**
          * Adds an entity object to the private collection
-         * @param {object} entity Entity instance
+         * @param {object} config configuration object
          */
-        add: function(entity) {
-            if (!entity) {
-                return;
+        add: function(config) {
+
+            if (!config) {
+                throw 'Invalid configuration object passed as a parameter!';
             }
+
+            if (Object.keys(ns.entities).indexOf(config.id) === -1) {
+                throw 'The requrested entity is not registered!';
+            }
+
+            var entity,
+
+                team = config.team || 1,
+
+                // sprite Ids are consisted of the sprite name and the colour id
+                spriteId = [config.id, team].join('-'),
+
+                // instanciating a Phaser.Game.Sprite objet for the entity
+                sprite = phaserGame.add.sprite(0, 0, spriteId),
+
+                // fomring the DataObject instance from the preloaded JSON file
+                dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
+
+                // rendering group name
+                groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
+
+                // choosing the group for entities so that other elements will be obscured by them
+                // it's kind of applying zIndex on entities
+                group = Graphics.getInstance().getGroup(groupName);
+
+            // passing the team Id from the config param object
+            dataObject.setTeam(team);
+
+            // adding the freshly created entity to the main array
+            entity = new Entity({
+                guid: config.guid,
+                entityManager: this,
+                sprite: sprite,
+                dataObject: dataObject
+            });
+
+            // setting the coordinates if not ommitted 
+            if (config.x || config.y) {
+                sprite.x = config.x || 0;
+                sprite.y = config.y || 0;
+            }
+
+            group.add(sprite);
+
             entities.push(entity);
         },
 
@@ -174,7 +218,7 @@ define('EntityManager', [
          * @param {object} entity Entity instance
          */
         remove: function(entity) {
-            for (var i = entities.length - 1; i >= 0; i--) {
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
                 if (entity === entities[i]) {
                     entities.splice(i, 1);
                 }
@@ -191,7 +235,7 @@ define('EntityManager', [
         update: function(elapsedTime) {
             var steps = Math.ciel(elapsedTime / (1000 / 60));
             while (steps) {
-                for (var i = entities.length - 1; i >= 0; i--) {
+                for (var i = entities.length - 1; i >= 0; i -= 1) {
                     entities[i].update();
                 }
                 steps -= 1;
@@ -235,7 +279,12 @@ define('EntityManager', [
          */
         getMergedAbilities: function(entities) {
             var abilities,
-                next, i, tmp, tmp2;
+                next,
+                subsection = function(next){
+                    return function(val) {
+                        return next.getAbilityManager().getAbilities().indexOf(val) !== -1;
+                    };
+                }
 
             if (!entities || !entities.length) {
                 return [];
@@ -243,10 +292,8 @@ define('EntityManager', [
 
             abilities = entities.shift().getAbilityManager().getAbilities();
 
-            while (next = entities.shift()) {
-                abilities = abilities.filter(function(val) {
-                    return next.getAbilityManager().getAbilities().indexOf(val) !== -1;
-                });
+            while ((next = entities.shift())) {
+                abilities = abilities.filter(subsection(next));
             }
 
             return abilities;

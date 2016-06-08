@@ -1,4 +1,4 @@
-define('Entity.Activity.Follow', ['Entity.Activity', 'Util'], function(Activity, Util) {
+define('Entity.Activity.Follow', ['Entity.Activity'], function(Activity) {
 
     // private vars
     var

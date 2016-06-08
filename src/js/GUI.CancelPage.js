@@ -1,10 +1,6 @@
 define('GUI.CancelPage', ['GUI.ControlPage', 'Util', 'json!abilities'], function(ControlPage, Util, abilitiesJSON) {
 
-    var
-    // reference to the shared game configuarition object 
-        ns = window.fivenations;
-
-    /**
+   /**
      * Constructing an a custom CommandPage that consists solely one cancel button
      * @param {object} [entityManager] [sinleton like object that can be used to quiery all the entities]
      * @return {object} [ControlPanelPage]
@@ -34,10 +30,9 @@ define('GUI.CancelPage', ['GUI.ControlPage', 'Util', 'json!abilities'], function
 
     /**
      * Override the original function with a no-op
-     * @param  {[Array]} entities [Array of Entity instances]
      * @return {[void]}
      */
-    CancelPage.prototype.update = function(entities) { /* no-op */ };
+    CancelPage.prototype.update = function() { /* no-op */ };
 
     return CancelPage;
 

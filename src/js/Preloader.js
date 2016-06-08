@@ -1,8 +1,7 @@
 define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
     'use strict';
 
-    var preloader,
-        ns = window.fivenations;
+    var preloader;
 
     /**
      * Private function to set up all the assets needs to be loaded before the game starts
