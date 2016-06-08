@@ -66,19 +66,19 @@ define('Universal.Event.Entity.Create', [
             entityManager: this,
             sprite: sprite,
             dataObject: dataObject
-        }));
+        });
 
-    // setting the coordinates if not ommitted 
-    if (config.x || config.y) {
-        sprite.x = config.x || 0;
-        sprite.y = config.y || 0;
-    }
+        // setting the coordinates if not ommitted 
+        if (config.x || config.y) {
+            sprite.x = config.x || 0;
+            sprite.y = config.y || 0;
+        }
 
-    group.add(sprite);
-    ns.game.entityManager.add(entity);
+        group.add(sprite);
+        ns.game.entityManager.add(entity);
 
-};
+    };
 
-return UniversalEventEntityCreate;
+    return UniversalEventEntityCreate;
 
 });

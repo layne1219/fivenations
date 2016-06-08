@@ -147,14 +147,14 @@ define('EntityManager', [
 
             return $;
 
-        })(entities),
+        })(entities);
 
 
-        function EntityManager() {
-            if (!phaserGame) {
-                throw 'Invoke setGame first to pass the Phaser Game entity!';
-            }
+    function EntityManager() {
+        if (!phaserGame) {
+            throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
+    }
 
     EntityManager.prototype = {
 

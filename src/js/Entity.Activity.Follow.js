@@ -8,9 +8,9 @@ define('Entity.Activity.Follow', ['Entity.Activity', 'Util'], function(Activity,
      * @return {[void]}
      */
         saveTargetLastCoords = function() {
-        this.targetLastCoords.x = this.target.getSprite().x;
-        this.targetLastCoords.y = this.target.getSprite().y;
-    };
+            this.targetLastCoords.x = this.target.getSprite().x;
+            this.targetLastCoords.y = this.target.getSprite().y;
+        };
 
     /**
      * Constructor function to FollowActivity

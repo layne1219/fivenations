@@ -135,8 +135,8 @@ define('Game', [
                 }
 
                 if (this.entityManager.entities().raw().filter(function(entity) {
-                        return entity.isHover();
-                    }).length === 0) {
+                    return entity.isHover();
+                }).length === 0) {
                     this.userPointer.dispatch('leftbutton/down/disselect');
                     return;
                 }
