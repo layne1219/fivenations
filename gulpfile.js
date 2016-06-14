@@ -11,6 +11,7 @@ var gulp = require('gulp')
   , prettify = require('gulp-jsbeautifier')
   , connect = require('gulp-connect')
   , debug = require('gulp-debug')
+  , git = require('gulp-git')
   , paths;
 
 paths = {
@@ -29,7 +30,17 @@ gulp.task('clean', function () {
   return del([paths.dist]);
 });
 
-gulp.task('copy-src', ['clean'], function (cb) {
+gulp.task('pull', function () {
+  const branch = 'master';
+  return new Promise((resolve, reject) => {
+      git.pull('origin', branch, err => {
+          if (err) throw err;
+          resolve();
+      });
+  });
+});
+
+gulp.task('copy-src', ['pull', 'clean'], function (cb) {
   return gulp.src(paths.src)
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
