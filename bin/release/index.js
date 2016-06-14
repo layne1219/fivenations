@@ -1,17 +1,17 @@
-const express = require('express');
-const fs = require('fs');
-const exec = require('child_process').exec;
-const app = express();
-const port = 8899;
-const branch = 'master';
+var express = require('express');
+var fs = require('fs');
+var exec = require('child_process').exec;
+var app = express();
+var port = 8899;
+var branch = 'master';
 
 function build(){
-    const command = 'gulp build';
-    const options = {
+    var command = 'gulp build';
+    var options = {
         cwd: '../../'
     };
-    return new Promise( (resolve, reject) => {
-        const build = exec(command, options, err => {
+    return new Promise( function(resolve, reject) {
+        var build = exec(command, options, function(err) {
             if (err) throw err;
             resolve();
         });
@@ -21,17 +21,17 @@ function build(){
     });
 }
 
-app.get('/', (req, res) => {
+app.get('/', function(req, res){
     Promise.resolve()
         .then(build)
-        .then( () => {
-            res.send(`${branch} has been released!`);
+        .then( function() {
+            res.send(branch + ' has been released!');
         })
-        .catch( err => {
-            res.send(`The following error occured during the release: ${err}`);
+        .catch( function(err) {
+            res.send('An error occured during the release');
         });
 });
 
-app.listen(port, () => {
-    console.log(`Release script listening on port ${port}`);
-})
+app.listen(port, function() {
+    console.log('Release script listening on port' + port);
+});
