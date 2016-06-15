@@ -8,6 +8,7 @@
   "devDependencies": {
     "babel-eslint": "^6.0.4",
     "del": "^2.2.0",
+    "forever": "^0.15.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^4.0.0",

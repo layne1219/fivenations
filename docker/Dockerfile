@@ -26,13 +26,14 @@ RUN npm install -g gulp
 WORKDIR ${DOCUMENT_ROOT}
 RUN git clone ${FIVE_NATIONS_REPO} 
 WORKDIR ${FIVE_NATIONS_PATH}
+RUN git checkout feature/0.7
 RUN npm install
 RUN bower install
 
 # run the release watcher 
 WORKDIR ${RELEASE_WATCHER_PATH}
 RUN npm install
-RUN npm start
+CMD npm start
 
 # run a NodeJS server and expose the app
 WORKDIR ${FIVE_NATIONS_PATH}
