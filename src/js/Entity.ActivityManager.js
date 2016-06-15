@@ -1,8 +1,10 @@
 define('Entity.ActivityManager', [
     'Entity.Activity',
+    'Entity.Activity.Move',
     'Entity.Activity.Patrol',
-    'Entity.Activity.Follow'
-], function(Activity, Patrol, Follow) {
+    'Entity.Activity.Follow',
+    'Entity.Activity.Stop',
+], function(Activity, Move, Patrol, Follow, Stop) {
 
     function ActivityManager() {
 
@@ -50,6 +52,8 @@ define('Entity.ActivityManager', [
 
     }
 
+    ActivityManager.Move = Move;
+    ActivityManager.Stop = Stop;
     ActivityManager.Patrol = Patrol;
     ActivityManager.Follow = Follow;
 

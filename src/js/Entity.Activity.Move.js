@@ -21,7 +21,7 @@ define('Entity.Activity.Move', ['Entity.Activity'], function(Activity) {
     Move.prototype.activate = function() {
         Activity.prototype.activate.call(this);
         if (this.entity) {
-            this.entity.moveTo(this.coords.x, this.coords.y);
+            this.entity.getMotionManager().moveTo(this.coords.x, this.coords.y);
         }
         this.kill();
     };

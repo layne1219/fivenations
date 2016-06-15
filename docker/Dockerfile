@@ -33,7 +33,7 @@ RUN bower install
 # run the release watcher 
 WORKDIR ${RELEASE_WATCHER_PATH}
 RUN npm install
-CMD npm start
+RUN npm start 
 
 # run a NodeJS server and expose the app
 WORKDIR ${FIVE_NATIONS_PATH}

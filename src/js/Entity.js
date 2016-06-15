@@ -186,11 +186,18 @@ define('Entity', [
          * @return {[void]}
          */
         moveTo: function(targetX, targetY) {
-            this.motionManager.moveTo(targetX, targetY);
+            var move = new ActivityManager.Move(this);
+            move.setCoords({x: targetX, y: targetY});
+            this.activityManager.add(move);
         },
 
+        /**
+         * adds the Stop activity to the activity buffer 
+         * @return {void}
+         */
         stop: function() {
-            this.motionManager.stop();
+            var stop = new ActivityManager.Stop(this);
+            this.activityManager.add(stop);
             this.eventDispatcher.dispatch('stop', this);
         },
 
@@ -267,6 +274,10 @@ define('Entity', [
 
         getActivityManager: function() {
             return this.activityManager;
+        },
+
+        getMotionManager: function() {
+            return this.motionManager;
         },
 
         getAbilityManager: function() {

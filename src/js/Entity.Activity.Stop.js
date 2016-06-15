@@ -20,7 +20,7 @@ define('Entity.Activity.Stop', ['Entity.Activity'], function(Activity) {
     Stop.prototype.activate = function() {
         Activity.prototype.activate.call(this);
         if (this.entity) {
-            this.entity.stop();
+            this.entity.getMotionManager().stop();
         }
         this.kill();
     };
