@@ -26,7 +26,7 @@ RUN npm install -g gulp
 WORKDIR ${DOCUMENT_ROOT}
 RUN git clone ${FIVE_NATIONS_REPO} 
 WORKDIR ${FIVE_NATIONS_PATH}
-RUN git checkout feature/0.7
+RUN git checkout master
 RUN npm install
 RUN bower install
 
