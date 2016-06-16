@@ -1,34 +1,31 @@
-define('Boot', function () {
-  'use strict';
+define('Boot', function() {
+    'use strict';
 
-  var ns = window.fivenations;
+    function Boot() {}
 
-  function Boot() {}
+    Boot.prototype = {
+        preload: function() {
+            this.load.image('preloader', 'assets/images/preloader.gif');
+        },
 
-  Boot.prototype = {
-    preload: function () {
-      this.load.image('preloader', 'assets/images/preloader.gif');
-    },
+        create: function() {
+            // configure game
+            this.game.input.maxPointers = 1;
 
-    create: function () {
-      // configure game
-      this.game.input.maxPointers = 1;
+            if (this.game.device.desktop) {
+                this.game.scale.pageAlignHorizontally = true;
+            } else {
+                this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                this.game.scale.minWidth = 480;
+                this.game.scale.minHeight = 260;
+                this.game.scale.maxWidth = 640;
+                this.game.scale.maxHeight = 480;
+                this.game.scale.forceOrientation(true);
+                this.game.scale.pageAlignHorizontally = true;
+            }
+            this.game.state.start('preloader');
+        }
+    };
 
-      if (this.game.device.desktop) {
-        this.game.scale.pageAlignHorizontally = true;
-      } else {
-        this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.game.scale.minWidth =  480;
-        this.game.scale.minHeight = 260;
-        this.game.scale.maxWidth = 640;
-        this.game.scale.maxHeight = 480;
-        this.game.scale.forceOrientation(true);
-        this.game.scale.pageAlignHorizontally = true;
-      }
-      this.game.state.start('preloader');
-    }
-  };
-
-  return Boot;
+    return Boot;
 });
-

@@ -1,24 +1,24 @@
 define('Universal.EventBusExecuter', [
-    'Universal.EventBus', 
+    'Universal.EventBus',
     'Universal.EventFactory'
-], function(EventBus, EventFactory){
+], function(EventBus, EventFactory) {
 
     'use strict';
-	
-	var singleton,
-		createEventExecuter = function(){
 
-			var eventbus = EventBus.getInstance(),
+    var singleton,
+        createEventExecuter = function() {
+
+            var eventbus = EventBus.getInstance(),
                 factory = EventFactory.getInstance();
 
-			return {
+            return {
 
-                run: function(){
+                run: function() {
                     var evt,
                         evtObj;
-                    while (evt = eventbus.next()){
+                    while ((evt = eventbus.next())) {
 
-                        if (!evt.id){
+                        if (!evt.id) {
                             continue;
                         }
 
@@ -29,8 +29,7 @@ define('Universal.EventBusExecuter', [
                                 data: evt.data
                             });
                             console.log(evtObj);
-                        } catch (ex){
-                            console.log(ex);
+                        } catch (ex) {
                             continue;
                         }
 
@@ -38,14 +37,14 @@ define('Universal.EventBusExecuter', [
 
                 }
 
-			};
+            };
 
-		};
+        };
 
     return {
 
-        getInstance: function(){
-            if (!singleton){
+        getInstance: function() {
+            if (!singleton) {
                 singleton = createEventExecuter();
             }
             return singleton;

@@ -1,73 +1,72 @@
-define('UserKeyboard', ['Util'], function(Util){
-	
-	var singleton,
-		phaserGame,
-		dispatcher,
-		cursors;
+define('UserKeyboard', ['Util'], function(Util) {
 
-	function UserKeyboard(){
-		init.call(this);
-		registerEventListeners.call(this);
-	}
+    var singleton,
+        phaserGame,
+        dispatcher,
+        cursors;
 
-	function init(){
-		dispatcher = new Util.EventDispatcher();
-		// handling the curser key events
-		cursors = phaserGame.input.keyboard.createCursorKeys();		
-	}
+    function UserKeyboard() {
+        init.call(this);
+        registerEventListeners.call(this);
+    }
 
-	function registerEventListeners(){
+    function init() {
+        dispatcher = new Util.EventDispatcher();
+        // handling the curser key events
+        cursors = phaserGame.input.keyboard.createCursorKeys();
+    }
 
-	}
+    function registerEventListeners() {
 
-	function listenToCursor(){
-	    if (cursors.up.isDown){
-	        dispatcher.dispatch('cursor/up');
-	    }
-	    else if (cursors.down.isDown){
-	        dispatcher.dispatch('cursor/down');
-	    }
+    }
 
-	    if (cursors.left.isDown){
-	        dispatcher.dispatch('cursor/left');
-	    } else if (cursors.right.isDown){
-	        dispatcher.dispatch('cursor/right');
-	    }   
-	}	
+    function listenToCursor() {
+        if (cursors.up.isDown) {
+            dispatcher.dispatch('cursor/up');
+        } else if (cursors.down.isDown) {
+            dispatcher.dispatch('cursor/down');
+        }
 
-	UserKeyboard.prototype = {
+        if (cursors.left.isDown) {
+            dispatcher.dispatch('cursor/left');
+        } else if (cursors.right.isDown) {
+            dispatcher.dispatch('cursor/right');
+        }
+    }
 
-		on: function(event, callback){
-			dispatcher.addEventListener(event, callback);
-			return this;
-		},
+    UserKeyboard.prototype = {
 
-		isDown: function(keyCode){
-			return phaserGame.input.keyboard.isDown(keyCode);
-		},
+        on: function(event, callback) {
+            dispatcher.addEventListener(event, callback);
+            return this;
+        },
 
-		update: function(){
-			listenToCursor();
-		}
-	};
+        isDown: function(keyCode) {
+            return phaserGame.input.keyboard.isDown(keyCode);
+        },
 
-	return {
+        update: function() {
+            listenToCursor();
+        }
+    };
 
-		setGame: function(game){
-			phaserGame = game;
-		},
+    return {
 
-		getInstance: function(){
-			if (!phaserGame){
-				throw 'Invoke setGame first to pass the Phaser Game entity!';
-			}			
-			if (!singleton){
-				singleton = new UserKeyboard();
-			}
-			return singleton;
-		}		
+        setGame: function(game) {
+            phaserGame = game;
+        },
 
-	};
+        getInstance: function() {
+            if (!phaserGame) {
+                throw 'Invoke setGame first to pass the Phaser Game entity!';
+            }
+            if (!singleton) {
+                singleton = new UserKeyboard();
+            }
+            return singleton;
+        }
+
+    };
 
 
 

@@ -4,6 +4,7 @@ MAINTAINER Bence Varga <vbence86@gmail.com>
 # Environment variables
 ENV DOCUMENT_ROOT=/var/www
 ENV FIVE_NATIONS_PATH=${DOCUMENT_ROOT}/fivenations
+ENV RELEASE_WATCHER_PATH=${FIVE_NATIONS_PATH}/bin/release
 ENV FIVE_NATIONS_REPO=https://github.com/vbence86/fivenations
 
 # Install Node.js and npm
@@ -25,12 +26,18 @@ RUN npm install -g gulp
 WORKDIR ${DOCUMENT_ROOT}
 RUN git clone ${FIVE_NATIONS_REPO} 
 WORKDIR ${FIVE_NATIONS_PATH}
+RUN git checkout master
 RUN npm install
 RUN bower install
+
+# run the release watcher 
+WORKDIR ${RELEASE_WATCHER_PATH}
+RUN npm install
+RUN npm start 
 
 # run a NodeJS server and expose the app
 WORKDIR ${FIVE_NATIONS_PATH}
 CMD gulp publish
 
 # Run app
-EXPOSE 9000
+EXPOSE 9000 8899

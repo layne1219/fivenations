@@ -1,27 +1,31 @@
 define('Universal.EventFactory', [
     'Universal.Event.Entity.Move',
     'Universal.Event.Entity.Patrol',
-    'Universal.Event.Entity.Stop'
-], function(EntityMove, EntityPatrol, EntityStop){
+    'Universal.Event.Entity.Stop',
+    'Universal.Event.Entity.Create',
+    'Universal.Event.Entity.Remove',
+], function(EntityMove, EntityPatrol, EntityStop, EntityCreate, EntityRemove) {
 
     'use strict';
 
     var singleton,
-        createEventFactory = function(){
+        createEventFactory = function() {
 
             var events = {
                 'entity/move': new EntityMove(),
                 'entity/patrol': new EntityPatrol(),
-                'entity/stop': new EntityStop()
+                'entity/stop': new EntityStop(),
+                'entity/create': new EntityCreate(),
+                'entity/remove': new EntityRemove(),
             };
 
             return {
 
-                getEventObjectById: function(id){
-                    if (!id){
+                getEventObjectById: function(id) {
+                    if (!id) {
                         throw 'ID has not been passed to fetch the Event!';
                     }
-                    if (!events[id]){
+                    if (!events[id]) {
                         throw 'There is no event registered to the given ID!';
                     }
                     return events[id];
@@ -33,8 +37,8 @@ define('Universal.EventFactory', [
 
     return {
 
-        getInstance: function(){
-            if (!singleton){
+        getInstance: function() {
+            if (!singleton) {
                 singleton = createEventFactory();
             }
             return singleton;

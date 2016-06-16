@@ -1,303 +1,344 @@
 define('EntityManager', [
-	'Graphics', 
-	'Entity', 
-	'DataObject', 
-	'PlayerManager',
-	'Universal.EventBus',
-	'Util'
-], function(Graphics, Entity, DataObject, PlayerManager, EventBus, Util){
-	
-	var 
-		MAX_SELECTABLE_UNITS = 22,
+    'Graphics',
+    'Entity',
+    'DataObject',
+    'Universal.EventBus',
+    'Util'
+], function(Graphics, Entity, DataObject, EventBus, Util) {
 
-		ns = window.fivenations,
+    var ns = window.fivenations,
 
-		phaserGame,
-		singleton,
+        phaserGame,
+        singleton,
 
-		// Array for storing all the entities generated 
-		entities = [],
-
-		// entity activities
-		createTailingObject = function(entities){
-			return {
-				move: function(options){
-
-					var entityNumber = entities.length,
-						rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
-						data = (function(){
-							var data = [];
-							for (var i = entityNumber - 1; i >= 0; i -= 1) {
-								data.push({
-									x: options.x - rnd / 2 + Util.rnd(0, rnd), 
-									y: options.y - rnd / 2 + Util.rnd(0, rnd)
-								});
-							}
-							return data;
-						})();
-
-					EventBus.getInstance().add({
-						id: 'entity/move',
-						targets: entities,
-						data: data
-					});					
-
-					return this;
-				},
-				patrol: function(options){
-
-					EventBus.getInstance().add({
-						id: 'entity/patrol',
-						targets: entities,
-						data: options
-					});					
-
-					return this;
-				},
-				stop: function(options){
-
-					EventBus.getInstance().add({
-						id: 'entity/stop',
-						targets: entities
-					});					
-
-					return this;
-				},
-				raw: function(){
-					return entities;
-				}
-			}
-		},
-
-		// selector object
-		selector = function(entities){
-			if (!entities) throw 'Invalid entities array passed!';
-			entities = [].concat.call(entities);
-			return createTailingObject(entities);
-		};
+        // Array for storing all the entities generated 
+        entities = [],
 
 
-	function EntityManager(){
-		if (!phaserGame){
-			throw 'Invoke setGame first to pass the Phaser Game entity!';
-		}
-	}
+        // Entities Event API
+        EventAPI = (function(entities) {
 
-	EntityManager.prototype = {
+            /**
+             * creates an immediate object that exposes the event API
+             * for entiteis 
+             * @param  {array} entities [Array of Entity instances]
+             * @return {object} event API calls
+             */
+            function eventAPI(entities) {
 
-		/**
-		 * Creating and adding a new entity to the entity pool based on the given configurations
-		 * @param {[object]} config [JSON literal that is to describe all the data for the creation process]
-		 * @return {[object]} [It returns the newly created Entity object]
-		 */
-		add: function(config){
+                return {
+                    /**
+                     * Make all the given entities to move to the given coordinates 
+                     * @param  {object} options [configuration object to create the desired event]
+                     * @return {this}
+                     */
+                    move: function(options) {
 
-			if (!config){
-				throw 'Invalid configuration object passed as a parameter!';
-			}
-			
-			if (Object.keys(ns.entities).indexOf(config.id) === -1){
-				throw 'The requrested entity is not registered!';
-			}
+                        var entityNumber = entities.length,
+                            rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
+                            data = (function() {
+                                var data = [];
+                                for (var i = entityNumber - 1; i >= 0; i -= 1) {
+                                    data.push({
+                                        x: options.x - rnd / 2 + Util.rnd(0, rnd),
+                                        y: options.y - rnd / 2 + Util.rnd(0, rnd)
+                                    });
+                                }
+                                return data;
+                            })();
 
-			var entity,
+                        EventBus.getInstance().add({
+                            id: 'entity/move',
+                            targets: entities,
+                            data: data
+                        });
 
-				team = config.team || 1,
+                        return this;
+                    },
+                    /**
+                     * Make all the given entities to patrol between the current and given coordinates 
+                     * @param  {object} options [configuration object to create the desired event]
+                     * @return {void}
+                     */
+                    patrol: function(options) {
 
-				// sprite Ids are consisted of the sprite name and the colour id
-				spriteId = [config.id, team].join('-'),
+                        EventBus.getInstance().add({
+                            id: 'entity/patrol',
+                            targets: entities,
+                            data: options
+                        });
 
-				// instanciating a Phaser.Game.Sprite objet for the entity
-				sprite = phaserGame.add.sprite(0, 0, spriteId),
+                        return this;
+                    },
+                    /**
+                     * Make all the given entities to perform a stop action
+                     * @return {void}
+                     */
+                    stop: function() {
 
-				// fomring the DataObject instance from the preloaded JSON file
-				dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
+                        EventBus.getInstance().add({
+                            id: 'entity/stop',
+                            targets: entities
+                        });
 
-				// rendering group name
-				groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
+                        return this;
+                    },
+                    /**
+                     * Directly returns the private collection of entities 
+                     * @return {array} Array of entity instances 
+                     */
+                    raw: function() {
+                        return entities || [];
+                    },
 
-				// choosing the group for entities so that other elements will be obscured by them
-				// it's kind of applying zIndex on entities
-				group = Graphics.getInstance().getGroup(groupName);
+                    /**
+                     * Number of instances in the private collection
+                     * @type {integer}
+                     */
+                    length: entities.length
+                }
+            };
 
-			// passing the team Id from the config param object
-			dataObject.setTeam( team );
+            /**
+             * Creates the eventAPI wrapping the given entities
+             * @param  {array} entities [Array of Entity instances]
+             * @return {object} event API calls          
+             */
+            function selector(entities) {
+                if (!entities) throw 'Invalid entities array passed!';
+                entities = [].concat.call(entities);
+                return eventAPI(entities);
+            }
 
-			// adding the freshly created entity to the main array
-			entities.push( entity = new Entity(this, sprite, dataObject) );
+            /**
+             * returns array of entities with the exposing the activity API against them
+             * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
+             * @return {array} [Array of entities]
+             */
+            function $(filter) {
+                var targets;
+                if (typeof filter === 'function') {
+                    targets = entities.filter(filter);
+                } else if (typeof filter === 'string') {
 
-			// setting the coordinates if not ommitted 
-			if (config.x || config.y){
-				sprite.x = config.x || 0;
-				sprite.y = config.y || 0;
-			}
+                    if (filter === ':selected') {
+                        targets = entities.filter(function(entity) {
+                            return entity.isSelected();
+                        });
+                    } else {
+                        targets = entities.filter(function(entity) {
+                            return entity.getId() === filter;
+                        });
+                    }
 
-			group.add(sprite);
+                } else if (typeof filter === 'object') {
+                    targets = filter;
+                } else {
+                    targets = entities;
+                }
+                return selector(targets);
+            }
 
-			return entity;
-		},
+            /**
+             * Emits an entity/create event 
+             * @param {[type]} config [description]
+             */
+            $.add = function(config) {
+                EventBus.getInstance().add({
+                    id: 'entity/create',
+                    data: config
+                });
+            }
 
-		getNextId: function(){
-			return Util.getGUID();
-		},
+            return $;
 
-		remove: function(entity){
-			for (var i = entities.length - 1; i >= 0; i--) {
-				if (entity === entities[i]){
-					entities.splice(i, 1);
-				}
-			}
-			entity = null;
-			delete entity;
-		},
-		
-		reset: function(){
-			entities = [];
-		},
+        })(entities);
 
-		/**
-		 * Unselect all entities expect the passed if it is not omitted
-		 * @param {object} [entity] [Entity instance that will be excluded from the selection]
-		 * @return {void} 
-		 */
-		unselectAll: function(excludedEntity){
-			this.get().forEach(function(entity){
-				if (excludedEntity !== entity && entity.isSelected()){
-					entity.unselect();
-				}
-			});
-		},
 
-		/**
-		 * returns array of entities with the exposing the activity API against them
-		 * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
-		 * @return {array} [Array of entities]
-		 */
-		select: function(filter){
-			var targets;
-			if (typeof filter === 'function'){
-				targets = entities.filter(filter);
-			} else if (typeof filter === 'object'){
-				targets = filter;
-			} else {
-				targets = entities;
-			}
-			return selector(targets);
-		},
+    function EntityManager() {
+        if (!phaserGame) {
+            throw 'Invoke setGame first to pass the Phaser Game entity!';
+        }
+    }
 
-		/**
-		 * Make all the selected entities to move to the given coordinates 
-		 * @param  {integer} x [horizontal offset of the map to which the entities move]
-		 * @param  {integer} y [vertical offset of the map to which the entities move]
-		 * @return {void}
-		 */
-		moveAllSelectedTo: function(x, y){
-			this.select(function(entity){
-				return entity.isSelected() && this.isEntityControlledByUser(entity);
-			}.bind(this)).move({x: x, y: y});
-		},
+    EntityManager.prototype = {
 
-		/**
-		 * Make all the selected entities to patrol between the current and given coordinates 
-		 * @param  {integer} x [horizontal offset of the map between which the entities patrol]
-		 * @param  {integer} y [vertical offset of the map between which the entities patrol]
-		 * @return {void}
-		 */
-		patrolAllSelectedTo: function(x, y){
-			this.select(function(entity){
-				return entity.isSelected() && this.isEntityControlledByUser(entity);
-			}.bind(this)).patrol({x: x, y: y});
-		},		
+        /**
+         * Adds an entity object to the private collection
+         * @param {object} config configuration object
+         */
+        add: function(config) {
 
-		getGame: function(){
-			return phaserGame;
-		},
+            if (!config) {
+                throw 'Invalid configuration object passed as a parameter!';
+            }
 
-		get: function(id){
-			if (undefined === id){
-				return entities;
-			}
+            if (Object.keys(ns.entities).indexOf(config.id) === -1) {
+                throw 'The requrested entity is not registered!';
+            }
 
-			for (var i = entities.length - 1; i >= 0; i--) {
-				if (id === entities[i].getId()){
-					return entities[i];
-				} 
-			}
+            var entity,
 
-			return [];
-		},
+                team = config.team || 1,
 
-		getAllSelected: function(){
-			return this.get().filter(function(entity){
-				return entity.isSelected();
-			});
-		},
+                // sprite Ids are consisted of the sprite name and the colour id
+                spriteId = [config.id, team].join('-'),
 
-		getAllHover: function(){
-			return this.get().filter(function(entity){
-				return entity.isHover();
-			});
-		},
+                // instanciating a Phaser.Game.Sprite objet for the entity
+                sprite = phaserGame.add.sprite(0, 0, spriteId),
 
-		/**
-		 * Return an array of IDs of the given entities
-		 * @param  {[array]} entities [Array of the given entities]
-		 * @return {[array]}          [Array of integers representing the ID of the entities]
-		 */
-		getIds: function(entities){
-			return entities.map(function(entity){
-				return entity.getId();
-			});
-		},
+                // fomring the DataObject instance from the preloaded JSON file
+                dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
 
-		isEntityControlledByUser: function(entity) {
-			if (!entity || 'function' !== typeof entity.getDataObject){
-				throw 'Fitst parameter must be a valid entity object!';
-			}
-			return entity.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
-		},
+                // rendering group name
+                groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
 
-		getMaxSelectableUnitNumber: function(){
-			return MAX_SELECTABLE_UNITS;
-		},
+                // choosing the group for entities so that other elements will be obscured by them
+                // it's kind of applying zIndex on entities
+                group = Graphics.getInstance().getGroup(groupName);
 
-		getMergedAbilities: function(entities){
-			var abilities,
-				next, i, tmp, tmp2;
+            // passing the team Id from the config param object
+            dataObject.setTeam(team);
 
-			if (!entities || !entities.length){
-				return [];
-			}
+            // adding the freshly created entity to the main array
+            entity = new Entity({
+                guid: config.guid,
+                entityManager: this,
+                sprite: sprite,
+                dataObject: dataObject
+            });
 
-			abilities = entities.shift().getAbilityManager().getAbilities();
+            // setting the coordinates if not ommitted 
+            if (config.x || config.y) {
+                sprite.x = config.x || 0;
+                sprite.y = config.y || 0;
+            }
 
-			while (next = entities.shift()){
-				abilities = abilities.filter(function(val){
-					return next.getAbilityManager().getAbilities().indexOf(val) !== -1;
-				});
-			}
+            group.add(sprite);
 
-			return abilities;
-		}
+            entities.push(entity);
+        },
 
-	};
+        /**
+         * Removes entity from the private collection
+         * @param {object} entity Entity instance
+         */
+        remove: function(entity) {
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                if (entity === entities[i]) {
+                    entities.splice(i, 1);
+                }
+            }
+            entity = null;
+            delete entity;
+        },
 
-	return {
+        /**
+         * Alters entity attributes 
+         * @param {integer} elapsedTime [elpased time since the last registered tick]
+         * @return {void}
+         */
+        update: function(elapsedTime) {
+            var steps = Math.ceil(elapsedTime / (1000 / 60));
+            while (steps) {
+                for (var i = entities.length - 1; i >= 0; i -= 1) {
+                    entities[i].update();
+                }
+                steps -= 1;
+            }
+        },
 
-		setGame: function(game){
-			phaserGame = game;
-		},
+        /**
+         * destroys all the existing entities
+         * @return {void}
+         */
+        reset: function() {
+            entities = [];
+        },
 
-		getInstance: function(){
-			if (!phaserGame){
-				throw 'Invoke setGame first to pass the Phaser Game entity!';
-			}			
-			if (!singleton){
-				singleton = new EntityManager();
-			}
-			return singleton;
-		}
+        /**
+         * Unselect all entities expect the passed if it is not omitted
+         * It can directly employ the private collection of entities since
+         * it triggers only client related action
+         * @param {object} [entity] [Entity instance that will be excluded from the selection]
+         * @return {void} 
+         */
+        unselectAll: function(excludedEntity) {
+            entities.forEach(function(entity) {
+                if (excludedEntity !== entity && entity.isSelected()) {
+                    entity.unselect();
+                }
+            });
+        },
 
-	};
+        /**
+         * Exposes EventAPI to all the active entities 
+         * @type {object}
+         * @see EventAPI
+         */
+        entities: EventAPI,
+
+        /**
+         * returns the subsection of the attributes of the given entities
+         * @param  {[array]} entities [Array of the given entities]
+         * @return {[array]}          [Array of the merged abilities]
+         */
+        getMergedAbilities: function(entities) {
+            var abilities,
+                next,
+                subsection = function(next){
+                    return function(val) {
+                        return next.getAbilityManager().getAbilities().indexOf(val) !== -1;
+                    };
+                }
+
+            if (!entities || !entities.length) {
+                return [];
+            }
+
+            abilities = entities.shift().getAbilityManager().getAbilities();
+
+            while ((next = entities.shift())) {
+                abilities = abilities.filter(subsection(next));
+            }
+
+            return abilities;
+        },
+
+        /**
+         * returns the Phaser.Game object for inconvinience 
+         * @return {[object]} [Phaser.Game instnace]
+         */
+        getGame: function() {
+            return phaserGame;
+        }
+
+    };
+
+    return {
+
+        /**
+         * sets the global Phaser.Game instance
+         * @param {void}
+         */
+        setGame: function(game) {
+            phaserGame = game;
+        },
+
+        /**
+         * returns singleton instance of the manager object
+         * @return {object} Singleton instance of EntityManager
+         */
+        getInstance: function() {
+            if (!phaserGame) {
+                throw 'Invoke setGame first to pass the Phaser Game entity!';
+            }
+            if (!singleton) {
+                singleton = new EntityManager();
+            }
+            return singleton;
+        }
+
+    };
 
 });

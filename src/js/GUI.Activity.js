@@ -1,24 +1,24 @@
-define('GUI.Activity', function(){
-   
-    function Activity(activityManager){
+define('GUI.Activity', function() {
+
+    function Activity(activityManager) {
         this.activityManager = activityManager;
     }
 
     Activity.prototype = {
 
-        activate: function(){
+        activate: function() {
             this.active = true;
         },
 
-        deactivate: function(){
+        deactivate: function() {
             this.active = false;
         },
 
-        isActive: function(){
+        isActive: function() {
             return this.active;
         },
 
-        getActivityManager: function(){
+        getActivityManager: function() {
             return this.activityManager;
         }
 

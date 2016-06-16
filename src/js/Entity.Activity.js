@@ -1,43 +1,41 @@
-define('Entity.Activity', ['Util'], function(Util){
+define('Entity.Activity', function() {
 
-	function Activity(){
-	}
+    function Activity() {}
 
-	Activity.prototype = {
+    Activity.prototype = {
 
-		active: false,
-		initialised: false,
-		manager: null, 
+        active: false,
+        initialised: false,
+        manager: null,
 
-		update: function(entity){
-		
-		},
+        update: function() {
+        },
 
-		activate: function(){
-			this.active = true;
-		},
+        activate: function() {
+            this.active = true;
+        },
 
-		deactivate: function(){
-			this.active = false;
-		},
-		
-		setManager: function(manager){
-			if (!manager){
-				throw 'The passed Activity Manager object is invalid!';
-			}
-			this.manager = manager;
-		},
+        deactivate: function() {
+            this.active = false;
+        },
 
-		kill: function(){
-			this.manager.remove( this );
-		},
+        setManager: function(manager) {
+            if (!manager) {
+                throw 'The passed Activity Manager object is invalid!';
+            }
+            this.manager = manager;
+        },
 
-		isActivated: function(){
-			return this.active;
-		}
+        kill: function() {
+            this.manager.remove(this);
+        },
 
-	};
+        isActivated: function() {
+            return this.active;
+        }
 
-	return Activity;
+    };
+
+    return Activity;
 
 });

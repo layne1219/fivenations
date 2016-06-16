@@ -1,0 +1,19 @@
+{
+  "name": "fivenations-release",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever start index.js",
+    "stop": "forever stopall",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bence Varga <vbence86@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "forever": "^0.15.2"
+  }
+}

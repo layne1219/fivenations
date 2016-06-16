@@ -6,9 +6,12 @@ var gulp = require('gulp')
   , minifycss = require('gulp-minify-css')
   , minifyhtml = require('gulp-minify-html')
   , processhtml = require('gulp-processhtml')
-  , jshint = require('gulp-jshint')
+  , eslint = require('gulp-eslint')
   , uglify = require('gulp-uglify')
+  , prettify = require('gulp-jsbeautifier')
   , connect = require('gulp-connect')
+  , debug = require('gulp-debug')
+  , git = require('gulp-git')
   , paths;
 
 paths = {
@@ -27,7 +30,17 @@ gulp.task('clean', function () {
   return del([paths.dist]);
 });
 
-gulp.task('copy-src', ['clean'], function (cb) {
+gulp.task('pull', function () {
+  const branch = 'master';
+  return new Promise((resolve, reject) => {
+      git.pull('origin', branch, err => {
+          if (err) throw err;
+          resolve();
+      });
+  });
+});
+
+gulp.task('copy-src', ['pull', 'clean'], function (cb) {
   return gulp.src(paths.src)
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
@@ -49,8 +62,16 @@ gulp.task('finalise-html', ['process-html'], function() {
 
 gulp.task('lint', function() {
   gulp.src(paths.js)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .on('error', gutil.log);
+});
+
+gulp.task('prettify', function() {
+  gulp.src(paths.js)
+    .pipe(prettify())
+    .pipe(gulp.dest('src/js/'))
     .on('error', gutil.log);
 });
 
