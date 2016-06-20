@@ -23,8 +23,8 @@ define('GUI.ActivityManager', ['GUI.Activity'], function(Activity) {
                 }
             },
 
-            setActivity: function() {
-                selectedActivity = new Activity(this);
+            setActivity: function(activity) {
+                selectedActivity = new activity(this);
                 selectedActivity.activate();
                 return selectedActivity;
             },
