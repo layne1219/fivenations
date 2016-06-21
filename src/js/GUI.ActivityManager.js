@@ -18,7 +18,6 @@ define('GUI.ActivityManager', function() {
             cancel: function() {
                 if (this.hasActiveSelection()) {
                     selectedActivity.deactivate();
-                    delete selectedActivity;
                     selectedActivity = null;
                 }
             },

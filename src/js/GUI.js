@@ -846,6 +846,11 @@ define('GUI', [
 
                 function MultiselectionGroup() {
                     var args = [].slice.call(arguments),
+                        createClickListener = function(idx) {
+                            return function() {
+                                entityManager.unselectAll(this.entities[idx]);
+                            };
+                        },
                         i, x, y;
 
                     Phaser.Group.apply(this, args);
@@ -867,11 +872,7 @@ define('GUI', [
                         // Icons
                         this.icons[i] = this.add(phaserGame.add.sprite(x, y, 'gui.icons.fed'));
                         this.icons[i].inputEnabled = true;
-                        this.icons[i].events.onInputDown.add((function(idx) {
-                            return function() {
-                                entityManager.unselectAll(this.entities[idx]);
-                            };
-                        })(i), this);
+                        this.icons[i].events.onInputDown.add(createClickListener(i), this);
                     }
 
                 }
