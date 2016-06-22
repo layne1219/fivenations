@@ -92,6 +92,16 @@ define('EntityManager', [
                     },
 
                     /**
+                     * Directly returns the first element of the private collection
+                     * it is particularly handy when the targets have been filtered
+                     * to only one entity already 
+                     * @return {object} Entity instance
+                     */
+                    single: function(){
+                        return entities[0];
+                    },
+
+                    /**
                      * Number of instances in the private collection
                      * @type {integer}
                      */
