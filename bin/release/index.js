@@ -5,6 +5,11 @@ var app = express();
 var port = 8899;
 var branch = 'master';
 
+// Polyfill for Fetch API
+// https://github.com/matthew-andrews/isomorphic-fetch
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 function build(){
     var command = 'gulp build';
     var options = {
