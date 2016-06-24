@@ -32,7 +32,7 @@ gulp.task('clean', function () {
 
 gulp.task('pull', function () {
   const branch = 'master';
-  return new Promise((resolve, reject) => {
+  return new Promise(function(resolve, reject){
       git.pull('origin', branch, err => {
           if (err) throw err;
           resolve();
