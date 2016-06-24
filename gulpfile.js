@@ -30,13 +30,11 @@ gulp.task('clean', function () {
   return del([paths.dist]);
 });
 
-gulp.task('pull', function () {
-  const branch = 'master';
-  return new Promise(function(resolve, reject){
-      git.pull('origin', branch, function(err) {
-          if (err) throw err;
-          resolve();
-      });
+gulp.task('pull', function (cb) {
+  var branch = 'master';
+  git.pull('origin', branch, function(err) {
+      if (err) throw err;
+      cb();
   });
 });
 
