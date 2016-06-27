@@ -56,7 +56,7 @@ define('EntityManager', [
                         return this;
                     },
                     /**
-                     * Make all the given entities to patrol between the current and given coordinates 
+                     * Makes all the given entities to patrol between the current and given coordinates 
                      * @param  {object} options [configuration object to create the desired event]
                      * @return {void}
                      */
@@ -71,7 +71,7 @@ define('EntityManager', [
                         return this;
                     },
                     /**
-                     * Make all the given entities to perform a stop action
+                     * Makes all the given entities to perform a stop action
                      * @return {void}
                      */
                     stop: function() {
@@ -82,6 +82,20 @@ define('EntityManager', [
                         });
 
                         return this;
+                    },
+                    /**
+                     * Removes entities from the game
+                     * @return {void}
+                     */
+                    remove: function(){
+
+                        EventBus.getInstance().add({
+                            id: 'entity/remove',
+                            targets: entities
+                        });
+
+                        return this;
+
                     },
                     /**
                      * Directly returns the private collection of entities 
@@ -239,6 +253,7 @@ define('EntityManager', [
                     entities.splice(i, 1);
                 }
             }
+            entity.remove();
             entity = null;
             delete entity;
         },

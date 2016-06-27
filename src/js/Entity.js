@@ -214,6 +214,10 @@ define('Entity', [
             this.activityManager.add(follow);
         },
 
+        remove: function(){
+            this.sprite.destroy();
+        },
+
         select: function() {
             if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
                 this.selected = true;

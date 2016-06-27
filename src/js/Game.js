@@ -225,6 +225,10 @@ define('Game', [
                 entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
             });
 
+            setTimeout(function(){
+                this.entityManager.entities(':selected').remove()
+            }.bind(this), 5000);
+
         },
 
         update: function() {
