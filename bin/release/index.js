@@ -26,7 +26,7 @@ function build(){
     });
 }
 
-app.get('/', function(req, res){
+app.all('/', function(req, res){
     Promise.resolve()
         .then(build)
         .then( function() {
