@@ -18,9 +18,13 @@ define('UserKeyboard', ['Util'], function(Util) {
 
     function registerEventListeners() {
 
+        // Delete
+        var keyDelete = phaserGame.input.keyboard.addKey(Phaser.Keyboard.DELETE);
+        keyDelete.onDown.add(function(){ dispatcher.dispatch('key/delete'); });
+
     }
 
-    function listenToCursor() {
+    function listenToCursorKeys() {
         if (cursors.up.isDown) {
             dispatcher.dispatch('cursor/up');
         } else if (cursors.down.isDown) {
@@ -46,7 +50,7 @@ define('UserKeyboard', ['Util'], function(Util) {
         },
 
         update: function() {
-            listenToCursor();
+            listenToCursorKeys();
         }
     };
 

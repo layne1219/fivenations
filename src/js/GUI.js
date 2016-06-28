@@ -188,6 +188,7 @@ define('GUI', [
 
                     entity.on('select', this.show.bind(this));
                     entity.on('unselect', this.hide.bind(this));
+                    entity.on('remove', this.remove.bind(this));
 
                     // Add the selection to the appropriate graphics group as per its type
                     groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
@@ -221,6 +222,10 @@ define('GUI', [
 
                 hide: function() {
                     this.sprite.visible = false;
+                },
+
+                remove: function() {
+                    this.sprite.destroy(true);
                 },
 
                 getSize: function() {
@@ -385,6 +390,7 @@ define('GUI', [
                     entity.on('select', this.show.bind(this));
                     entity.on('unselect', this.hide.bind(this));
                     entity.on('damage', this.update.bind(this));
+                    entity.on('remove', this.remove.bind(this));
 
                     // the sprite is not a child of the entity for various overlapping issues
                     // therefore it needs to follow it upon every tick 
@@ -437,6 +443,14 @@ define('GUI', [
                  */
                 hide: function() {
                     this.group.visible = false;
+                },
+
+                /**
+                 * remove the group from the Phaser render layer
+                 * @return {[void]}
+                 */
+                remove: function() {
+                    this.group.destroy(true); // true for destroying all the children
                 }
 
             };
