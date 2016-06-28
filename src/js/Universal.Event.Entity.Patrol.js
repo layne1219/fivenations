@@ -32,7 +32,7 @@ define('Universal.Event.Entity.Patrol', ['Universal.Event'], function(Event) {
             y = options.data.y;
 
         options.targets.forEach(function(id) {
-            ns.game.entityManager.entitities(id).patrol(x, y);
+            ns.game.entityManager.entitities(id).single().patrol(x, y);
         });
     };
 

@@ -1,4 +1,4 @@
-define('GUI.ActivityManager', ['GUI.Activity'], function(Activity) {
+define('GUI.ActivityManager', function() {
 
     var singleton;
 
@@ -18,13 +18,12 @@ define('GUI.ActivityManager', ['GUI.Activity'], function(Activity) {
             cancel: function() {
                 if (this.hasActiveSelection()) {
                     selectedActivity.deactivate();
-                    delete selectedActivity;
                     selectedActivity = null;
                 }
             },
 
-            setActivity: function() {
-                selectedActivity = new Activity(this);
+            setActivity: function(ActivityClass) {
+                selectedActivity = new ActivityClass(this);
                 selectedActivity.activate();
                 return selectedActivity;
             },

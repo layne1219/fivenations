@@ -188,6 +188,7 @@ define('GUI', [
 
                     entity.on('select', this.show.bind(this));
                     entity.on('unselect', this.hide.bind(this));
+                    entity.on('remove', this.remove.bind(this));
 
                     // Add the selection to the appropriate graphics group as per its type
                     groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
@@ -221,6 +222,10 @@ define('GUI', [
 
                 hide: function() {
                     this.sprite.visible = false;
+                },
+
+                remove: function() {
+                    this.sprite.destroy(true);
                 },
 
                 getSize: function() {
@@ -385,6 +390,7 @@ define('GUI', [
                     entity.on('select', this.show.bind(this));
                     entity.on('unselect', this.hide.bind(this));
                     entity.on('damage', this.update.bind(this));
+                    entity.on('remove', this.remove.bind(this));
 
                     // the sprite is not a child of the entity for various overlapping issues
                     // therefore it needs to follow it upon every tick 
@@ -437,6 +443,14 @@ define('GUI', [
                  */
                 hide: function() {
                     this.group.visible = false;
+                },
+
+                /**
+                 * remove the group from the Phaser render layer
+                 * @return {[void]}
+                 */
+                remove: function() {
+                    this.group.destroy(true); // true for destroying all the children
                 }
 
             };
@@ -846,6 +860,11 @@ define('GUI', [
 
                 function MultiselectionGroup() {
                     var args = [].slice.call(arguments),
+                        createClickListener = function(idx) {
+                            return function() {
+                                entityManager.unselectAll(this.entities[idx]);
+                            };
+                        },
                         i, x, y;
 
                     Phaser.Group.apply(this, args);
@@ -867,11 +886,7 @@ define('GUI', [
                         // Icons
                         this.icons[i] = this.add(phaserGame.add.sprite(x, y, 'gui.icons.fed'));
                         this.icons[i].inputEnabled = true;
-                        this.icons[i].events.onInputDown.add((function(idx) {
-                            return function() {
-                                entityManager.unselectAll(this.entities[idx]);
-                            };
-                        })(i), this);
+                        this.icons[i].events.onInputDown.add(createClickListener(i), this);
                     }
 
                 }

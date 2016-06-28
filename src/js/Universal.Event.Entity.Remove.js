@@ -18,14 +18,14 @@ define('Universal.Event.Entity.Remove', [
      * @return {void}
      */
     UniversalEventEntityRemove.prototype.execute = function(options) {
-        var entity;
-        
-        if (!options.data) {
+        if (!options.targets) {
             return;
         }
-
-        entity = ns.game.entityManager.entities(options.data.id);
-        ns.game.entityManager.remove(entity);
+        options.targets.forEach(function(id) {
+            console.log(id);
+            var entity = ns.game.entityManager.entities(id).single();
+            ns.game.entityManager.remove(entity);
+        });        
 
     };
 

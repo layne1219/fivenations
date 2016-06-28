@@ -40,7 +40,8 @@
         paths: {
             text: '../bower_components/text/text',
             json: '../bower_components/requirejs-plugins/src/json',
-            abilities: '../assets/datas/common/abilities.json'
+            abilities: '../assets/datas/common/abilities.json',
+            weapons: '../assets/datas/common/weapons.json'
         }
     });
 

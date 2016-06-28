@@ -174,6 +174,11 @@ define('Game', [
                 .on('cursor/left', this.map.scrollLeft.bind(this.map))
                 .on('cursor/right', this.map.scrollRight.bind(this.map));
 
+            this.userKeyboard
+                .on('key/delete', function(){
+                    this.entityManager.entities(':selected').remove();
+                }.bind(this));
+
             // -----------------------------------------------------------------------
             //                              GUI
             // -----------------------------------------------------------------------
@@ -221,8 +226,9 @@ define('Game', [
                 });
             }
 
-            this.entityManager.entities().raw().forEach(function(entity) {
-                entity.moveTo(Util.rnd(0, 500), Util.rnd(0, 500));
+            this.entityManager.entities().move({ 
+                x: Util.rnd(0, 500),
+                y: Util.rnd(0, 500)
             });
 
         },

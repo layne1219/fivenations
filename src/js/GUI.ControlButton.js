@@ -72,10 +72,9 @@ define('GUI.ControlButton', ['GUI.ControlButtonCollection'], function(ControlBut
 
     /**
      * Execute the logic corresponding to the control button being clicked
-     * @param {object} [controlPanel] [ref]erence to the Panel that holds the control pages]
      * @return {[void]}
      */
-    ControlPanelButton.prototype.activate = function(controlPanel) {
+    ControlPanelButton.prototype.activate = function() {
         var buttonLogic = ControlButtonCollection.getLogicByControlButton(this),
             // reference to ControlPanel needs to be evaluated in run time
             controlPage = this.getControlPage(),

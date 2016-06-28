@@ -30,6 +30,7 @@ define('Universal.EventBusExecuter', [
                             });
                             console.log(evtObj);
                         } catch (ex) {
+                            console.log(ex);
                             continue;
                         }
 

@@ -4,12 +4,13 @@ define('Entity', [
     'Entity.ActivityManager',
     'Entity.MotionManager',
     'Entity.AbilityManager',
+    'Entity.WeaponManager',
     'GUI',
     'UserKeyboard',
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
+], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, WeaponManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
 
     var
 
@@ -151,6 +152,9 @@ define('Entity', [
         // AbilityManager for determining which abilities are available for this entity
         this.abilityManager = new AbilityManager(this);
 
+        // WeaponManager for handling wepon objects an entity is in a possesion of 
+        this.weaponManager = new WeaponManager(this);
+
     }
 
     Entity.prototype = {
@@ -201,6 +205,13 @@ define('Entity', [
             this.eventDispatcher.dispatch('stop', this);
         },
 
+        /**
+         * Register the Patrol activity in the entity's ActivityManager instance
+         * with the given parameters 
+         * @param  {integer} x [horizontal constituent of the coordinate between which the entity patrols]
+         * @param  {integer} y [vertical constituent of the coordinate between which the entity patrols]
+         * @return {void}
+         */
         patrol: function(x, y) {
             var patrol = new ActivityManager.Patrol(this);
             patrol.setStartPoint(this.sprite.x, this.sprite.y);
@@ -208,10 +219,20 @@ define('Entity', [
             this.activityManager.add(patrol);
         },
 
+        /**
+         * Register the Follow activity inthe entity's ActivityManager instance
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
         follow: function(targetEntity) {
             var follow = new ActivityManager.Follow(this);
             follow.setTarget(targetEntity);
             this.activityManager.add(follow);
+        },
+
+        remove: function(){
+            this.sprite.destroy();
+            this.eventDispatcher.dispatch('remove');
         },
 
         select: function() {
@@ -282,6 +303,10 @@ define('Entity', [
 
         getAbilityManager: function() {
             return this.abilityManager;
+        },
+
+        getWeaponManager: function() {
+            return this.weaponManager;
         },
 
         getId: function() {
