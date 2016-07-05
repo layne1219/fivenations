@@ -1,0 +1,28 @@
+{
+    "id": "researchcenter",
+    "name": "Research Center",
+    "type": "building",
+    "building": true,
+    "hull": 350,
+    "shield": 0,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 250,
+    "silicium": 250,
+    "energy": 250,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 20,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["contruction"],
+    "dimensions": {
+        "width": 112,
+        "height": 95
+    } 
+}
