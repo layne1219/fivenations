@@ -723,19 +723,27 @@ define('GUI', [
                 this.group.add(this.multiselectionGroup);
             }
 
+            // @TODO Refactor this ASAP since it's unarguably a code smell
             function createAttributeGroup(x, y, phaserGame) {
 
-                var group;
+                var container,
+                    mainAttributeGroup,
+                    weaponGroup,
+                    text = {
+                        marginLeft: 132,
+                        marginTop: 5,
+                        titleFont: '12px BerlinSansFB-Reg',
+                        defaultFont: '11px BerlinSansFB-Reg',
+                        color: '#77C7D2'
+                    },
+                    WEAPON_NUMBER = 10;
 
-                function TextGroup(game) {
-                    var args = [].slice.call(arguments),
-                        text = {
-                            marginLeft: 132,
-                            marginRight: 5,
-                            titleFont: '12px BerlinSansFB-Reg',
-                            defaultFont: '11px BerlinSansFB-Reg',
-                            color: '#77C7D2'
-                        };
+                /**
+                 * Main attribute component
+                 * @param {object} game [Phaser.Game instance]
+                 */
+                function MainAttributeGroup(game) {
+                    var args = [].slice.call(arguments);
 
                     Phaser.Group.apply(this, args);
 
@@ -743,47 +751,49 @@ define('GUI', [
                     this.iconSprite = this.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed'));
 
                     // Text objects to display entity attributes
-                    this.nameElm = this.add(game.add.text(text.marginLeft, text.marginRight, '', {
+                    this.nameElm = this.add(game.add.text(text.marginLeft, text.marginTop, '', {
                         font: text.titleFont,
                         fill: text.color
                     }));
-                    this.nicknameElm = this.add(game.add.text(text.marginLeft, text.marginRight + 12, '', {
+                    this.nicknameElm = this.add(game.add.text(text.marginLeft, text.marginTop + 12, '', {
                         font: text.titleFont,
                         fill: '#FFFFFF'
                     }));
                     this.rankElm = null;
-                    this.hullElm = this.add(game.add.text(text.marginLeft, text.marginRight + 36, '', {
+                    this.hullElm = this.add(game.add.text(text.marginLeft, text.marginTop + 36, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.shieldElm = this.add(game.add.text(text.marginLeft, text.marginRight + 47, '', {
+                    this.shieldElm = this.add(game.add.text(text.marginLeft, text.marginTop + 47, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.armorElm = this.add(game.add.text(text.marginLeft, text.marginRight + 58, '', {
+                    this.armorElm = this.add(game.add.text(text.marginLeft, text.marginTop + 58, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.powerElm = this.add(game.add.text(text.marginLeft, text.marginRight + 69, '', {
+                    this.powerElm = this.add(game.add.text(text.marginLeft, text.marginTop + 69, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.hangarElm = this.add(game.add.text(text.marginLeft, text.marginRight + 80, '', {
+                    this.hangarElm = this.add(game.add.text(text.marginLeft, text.marginTop + 80, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
 
                 }
 
-                TextGroup.prototype = Object.create(Phaser.Group.prototype);
-                TextGroup.prototype.constructor = TextGroup;
+                MainAttributeGroup.prototype = Object.create(Phaser.Group.prototype);
+                MainAttributeGroup.prototype.constructor = MainAttributeGroup;
 
                 /**
                  * Updating the attributes text group as per the passed dataObject
-                 * @param  {object} dataObject [DataObject]
+                 * @param  {object} entity [Entity instance]
                  * @return {void}
                  */
-                TextGroup.prototype.updateContent = function(dataObject) {
+                MainAttributeGroup.prototype.updateContent = function(entity) {
+
+                    var dataObject = entity.getDataObject();
 
                     if (!dataObject) {
                         throw 'Invalid DataObject has been passed!';
@@ -828,7 +838,7 @@ define('GUI', [
                     this.powerElm.text = powerTitle + powerValue + powerMaxValue;
                     this.powerElm.addColor('#FFFFFF', powerTitle.length);
 
-                    // Hanger
+                    // Hangar
                     var hangarTitle = 'Hangar: ',
                         hangarValue = dataObject.getHangar(),
                         hangarMaxValue = '/' + dataObject.getMaxHangar();
@@ -838,11 +848,56 @@ define('GUI', [
 
                 };
 
-                group = new TextGroup(phaserGame);
-                group.x = x;
-                group.y = y;
+                function WeaponGroup(game) {
+                    var args = [].slice.call(arguments);
 
-                return group;
+                    Phaser.Group.apply(this, args);
+
+                    this.weaponTexts = [];
+
+                    for (var i = WEAPON_NUMBER - 1; i >= 0; i -= 1) {
+                        this.weaponTexts.push(this.add(game.add.text(text.marginLeft, text.marginTop + (WEAPON_NUMBER - i) * 11, '', {
+                            font: text.defaultFont,
+                            fill: text.color
+                        })));
+                    }
+                }
+
+                WeaponGroup.prototype = Object.create(Phaser.Group.prototype);
+                WeaponGroup.prototype.constructor = WeaponGroup;
+
+                /**
+                 * Updating the attributes text group as per the passed dataObject
+                 * @param  {object} entity [Entity]
+                 * @return {void}
+                 */
+                WeaponGroup.prototype.updateContent = function(entity) {
+
+                    if (!entity) {
+                        throw 'Invalid Entity instance has been passed!';
+                    }
+
+                    var weaponManager = entity.getWeaponManager();
+                    weaponManager.getWeapons().forEach(function(weapon, idx){
+                        this.weaponTexts[idx].text = weapon.name;
+                    }.bind(this));
+
+                };                
+
+                container = phaserGame.add.group();
+
+                mainAttributeGroup = new MainAttributeGroup(phaserGame);
+                mainAttributeGroup.x = x;
+                mainAttributeGroup.y = y;
+
+                weaponGroup = new WeaponGroup(phaserGame);
+                weaponGroup.x = x + 150;
+                weaponGroup.y = y;
+
+                container.add(mainAttributeGroup);
+                container.add(weaponGroup);
+
+                return container;
 
             }
 
@@ -1014,7 +1069,10 @@ define('GUI', [
                     this.multiselectionGroup.visible = false;
 
                     // Updating the texts + splash icon
-                    this.attributeGroup.updateContent(entity.getDataObject());
+                    for (var i = this.attributeGroup.children.length - 1; i >= 0; i -= 1) {
+                        //@TODO Phaser.Group.prototype.update.call(this);
+                        this.attributeGroup.children[i].updateContent(entity);
+                    }
                 },
 
                 /**
