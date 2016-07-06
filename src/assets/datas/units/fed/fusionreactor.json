@@ -1,0 +1,28 @@
+{
+    "id": "fusionreactor",
+    "name": "Fusion Reactor",
+    "type": "building",
+    "building": true,
+    "hull": 300,
+    "shield": 100,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 400,
+    "silicium": 500,
+    "energy": 250,
+    "uranium": 50,
+    "space": 0,
+    "buildingTime": 25,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 120,
+        "height": 101
+    } 
+}
