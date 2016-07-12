@@ -95,6 +95,78 @@ define('Preloader.Entities', function() {
             spriteURL: 'assets/images/units/fed/fed_build01_c{color}.png',
             atlasURL: 'assets/images/units/fed/fed_build01_c01.json',
             dataURL: 'assets/datas/units/fed/commandcenter.json'
+        },
+        miningstation: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build02_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build02_c01.json',
+            dataURL: 'assets/datas/units/fed/miningstation.json'
+        },
+        civilianbase: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build03_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build03_c01.json',
+            dataURL: 'assets/datas/units/fed/civilianbase.json'
+        },
+        solarstation: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build04_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build04_c01.json',
+            dataURL: 'assets/datas/units/fed/solarstation.json'
+        },
+        shipfactory: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build05_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build05_c01.json',
+            dataURL: 'assets/datas/units/fed/shipfactory.json'
+        },
+        dockyard: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build06_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build06_c01.json',
+            dataURL: 'assets/datas/units/fed/dockyard.json'
+        },
+        merchantport: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build07_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build07_c01.json',
+            dataURL: 'assets/datas/units/fed/merchantport.json'
+        },
+        researchcenter: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build08_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build08_c01.json',
+            dataURL: 'assets/datas/units/fed/researchcenter.json'
+        },
+        astrometricstation: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build09_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build09_c01.json',
+            dataURL: 'assets/datas/units/fed/astrometricstation.json'
+        },
+        fleetheadquarters: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build10_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build10_c01.json',
+            dataURL: 'assets/datas/units/fed/fleetheadquarters.json'
+        },
+        defensesatellite: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build11_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build11_c01.json',
+            dataURL: 'assets/datas/units/fed/defensesatellite.json'
+        },
+        defenseplatform: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build12_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build12_c01.json',
+            dataURL: 'assets/datas/units/fed/defenseplatform.json'
+        },
+        fusionreactor: {
+            preloading: true,
+            spriteURL: 'assets/images/units/fed/fed_build13_c{color}.png',
+            atlasURL: 'assets/images/units/fed/fed_build13_c01.json',
+            dataURL: 'assets/datas/units/fed/fusionreactor.json'
         }
 
     };

@@ -134,6 +134,66 @@ define('GUI', [
                 spriteId: 'gui.icons.fed',
                 faceFrame: 27,
                 iconFrame: 40
+            },
+            miningstation: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 28,
+                iconFrame: 41
+            },
+            civilianbase: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 29,
+                iconFrame: 42
+            },
+            solarstation: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 30,
+                iconFrame: 43
+            },
+            shipfactory: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 31,
+                iconFrame: 44
+            },
+            dockyard: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 32,
+                iconFrame: 45
+            },
+            merchantport: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 33,
+                iconFrame: 46
+            },
+            researchcenter: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 34,
+                iconFrame: 47
+            },
+            astrometricstation: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 35,
+                iconFrame: 48
+            },
+            fleetheadquarters: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 36,
+                iconFrame: 49
+            },
+            defensesatellite: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 37,
+                iconFrame: 50
+            },
+            defenseplatform: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 38,
+                iconFrame: 51
+            },
+            fusionreactor: {
+                spriteId: 'gui.icons.fed',
+                faceFrame: 39,
+                iconFrame: 52
             }
 
         },
