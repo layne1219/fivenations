@@ -772,18 +772,32 @@ define('GUI', [
                 };
 
                 function WeaponGroup(game) {
-                    var args = [].slice.call(arguments);
+                    var args = [].slice.call(arguments),
+                        weaponText;
 
                     Phaser.Group.apply(this, args);
 
                     this.weaponTexts = [];
 
                     for (var i = WEAPON_NUMBER - 1; i >= 0; i -= 1) {
-                        this.weaponTexts.push(this.add(game.add.text(text.marginLeft, text.marginTop + (WEAPON_NUMBER - i) * 11, '', {
+                        weaponText = this.add(game.add.text(text.marginLeft, text.marginTop + (WEAPON_NUMBER - i) * 11, '', {
                             font: text.defaultFont,
                             fill: text.color
-                        })));
+                        }));
+                        this.weaponTexts.push(weaponText);
+                        weaponText.inputEnabled = true;
+                        weaponText.events.onInputOver.add(over, this);
+                        weaponText.events.onInputOut.add(out, this);
                     }
+
+                    function over(item) {
+                        console.log('Bence');
+                        item.alpha=.5;
+                    }
+                    function out(item) {
+                        console.log('Bence');
+                        item.alpha=1;
+                    }                    
                 }
 
                 WeaponGroup.prototype = Object.create(Phaser.Group.prototype);
@@ -800,9 +814,14 @@ define('GUI', [
                         throw 'Invalid Entity instance has been passed!';
                     }
 
+                    for (var i = WEAPON_NUMBER - 1; i >= 0; i -= 1) {
+                        this.weaponTexts[i].visible = false;
+                    }
+
                     var weaponManager = entity.getWeaponManager();
                     weaponManager.getWeapons().forEach(function(weapon, idx){
                         this.weaponTexts[idx].text = weapon.name;
+                        this.weaponTexts[idx].visible = true;
                     }.bind(this));
 
                 };                
@@ -814,8 +833,8 @@ define('GUI', [
                 mainAttributeGroup.y = y;
 
                 weaponGroup = new WeaponGroup(phaserGame);
-                weaponGroup.x = x + 150;
-                weaponGroup.y = y;
+                weaponGroup.x = x + 100;
+                weaponGroup.y = y - 10;
 
                 container.add(mainAttributeGroup);
                 container.add(weaponGroup);
