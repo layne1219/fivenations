@@ -1,0 +1,142 @@
+{
+    "icons": {
+
+        "hurricane": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 67,
+            "iconFrame": 53
+        },
+        "orca": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 68,
+            "iconFrame": 54
+        },
+        "hailstorm": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 69,
+            "iconFrame": 55
+        },
+        "stgeorge": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 70,
+            "iconFrame": 56
+        },
+        "avenger": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 71,
+            "iconFrame": 57
+        },
+        "avenger2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 72,
+            "iconFrame": 58
+        },
+        "icarus": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 73,
+            "iconFrame": 59
+        },
+        "engineershuttle": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 74,
+            "iconFrame": 60
+        },
+        "kutuzov": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 75,
+            "iconFrame": 61
+        },
+        "pasteur": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 76,
+            "iconFrame": 62
+        },
+        "dresda": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 77,
+            "iconFrame": 63
+        },
+        "crow": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 78,
+            "iconFrame": 64
+        },
+        "teller": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 79,
+            "iconFrame": 65
+        },
+        "nuclearmissile": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 80,
+            "iconFrame": 66
+        },
+        "commandcenter": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 27,
+            "iconFrame": 40
+        },
+        "miningstation": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 28,
+            "iconFrame": 41
+        },
+        "civilianbase": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 29,
+            "iconFrame": 42
+        },
+        "solarstation": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 30,
+            "iconFrame": 43
+        },
+        "shipfactory": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 31,
+            "iconFrame": 44
+        },
+        "dockyard": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "merchantport": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 33,
+            "iconFrame": 46
+        },
+        "researchcenter": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 34,
+            "iconFrame": 47
+        },
+        "astrometricstation": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 35,
+            "iconFrame": 48
+        },
+        "fleetheadquarters": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 36,
+            "iconFrame": 49
+        },
+        "defensesatellite": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 37,
+            "iconFrame": 50
+        },
+        "defenseplatform": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 38,
+            "iconFrame": 51
+        },
+        "fusionreactor": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 39,
+            "iconFrame": 52
+        }
+
+    }
+
+}
