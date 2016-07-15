@@ -790,12 +790,19 @@ define('GUI', [
                         weaponText.events.onInputOut.add(out, this);
                     }
 
+                    this.weaponPopup = this.add(phaserGame.add.sprite(x, y, 'gui'));
+                    this.weaponPopup.frame = 55;
+                    this.weaponPopup.visible = false;
+
                     function over(item) {
-                        console.log('Bence');
+                        this.weaponPopup.x = item.x;
+                        this.weaponPopup.y = item.y;
+                        this.weaponPopup.visible = true;
                         item.alpha=.5;
                     }
                     function out(item) {
-                        console.log('Bence');
+                        console.log(item.weapon);
+                        this.weaponPopup.visible = false;
                         item.alpha=1;
                     }                    
                 }
@@ -820,6 +827,7 @@ define('GUI', [
 
                     var weaponManager = entity.getWeaponManager();
                     weaponManager.getWeapons().forEach(function(weapon, idx){
+                        this.weaponTexts[idx].weapon = weapon;
                         this.weaponTexts[idx].text = weapon.name;
                         this.weaponTexts[idx].visible = true;
                     }.bind(this));
