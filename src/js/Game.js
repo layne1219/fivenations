@@ -118,10 +118,16 @@ define('Game', [
 
                 this.GUI.putClickAnim(coords.x, coords.y);
 
+                gui.frame--;
+                console.log(gui.frame);                
+
             }.bind(this));
 
             // Unselecting units when clicking over an area with no entities underneath
             this.userPointer.on('leftbutton/down', function(mousePointer) {
+
+                gui.frame++;
+                console.log(gui.frame);
 
                 // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
                 if (GUI.getInstance().isHover()) {
@@ -189,9 +195,9 @@ define('Game', [
                 .setUserPointer(this.userPointer)
                 .getInstance();
 
-            gui = this.game.add.sprite(10, 10, 'gui.icons.fed');
+            gui = this.game.add.sprite(10, 10, 'gui');
             gui.visible = true;
-            gui.frame = 102;
+            gui.frame = 1;
             Graphics.getInstance().getGroup('entities').add(gui);
 
             // -----------------------------------------------------------------------
