@@ -660,7 +660,7 @@ define('GUI', [
                         defaultFont: '11px BerlinSansFB-Reg',
                         color: '#77C7D2'
                     },
-                    WEAPON_NUMBER = 10,
+                    WEAPON_NUMBER = 12,
                     POPUP_PADDING_X = 20,
                     POPUP_PADDING_Y = 0;
 
@@ -773,14 +773,16 @@ define('GUI', [
                 };
 
                 function WeaponGroup() {
-                    var weaponText;
+                    var weaponText, i, x, y;
 
                     Phaser.Group.call(this, phaserGame);
 
                     this.weaponTexts = [];
 
-                    for (var i = WEAPON_NUMBER - 1; i >= 0; i -= 1) {
-                        weaponText = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + (WEAPON_NUMBER - i) * 11, '', {
+                    for (i = 0; i < WEAPON_NUMBER; i += 1) {
+                        x = text.marginLeft + Math.floor(i / 8) * 100;
+                        y = text.marginTop + (i % 8 + 1) * 11;
+                        weaponText = this.add(phaserGame.add.text(x, y, '', {
                             font: text.defaultFont,
                             fill: text.color
                         }));
@@ -833,6 +835,9 @@ define('GUI', [
 
                     var weaponManager = entity.getWeaponManager();
                     weaponManager.getWeapons().forEach(function(weapon, idx){
+                        if (!this.weaponTexts[idx]){
+                            return;
+                        }
                         this.weaponTexts[idx].weapon = weapon;
                         this.weaponTexts[idx].text = weapon.name;
                         this.weaponTexts[idx].visible = true;
@@ -844,6 +849,7 @@ define('GUI', [
 
                     Phaser.Group.call(this, phaserGame);
 
+                    this.setDefaultVisiblity();
                     this.initBackgroundSprite();
                     this.initTextComponents();
                 }
@@ -851,41 +857,81 @@ define('GUI', [
                 WeaponGroupPopup.prototype = Object.create(Phaser.Group.prototype);
                 WeaponGroupPopup.prototype.constructor = WeaponGroupPopup;               
 
+                WeaponGroupPopup.prototype.setDefaultVisiblity = function(){
+                    this.visible = false;
+                }
+
                 WeaponGroupPopup.prototype.initBackgroundSprite = function(){
                     this.background = phaserGame.add.sprite(0, 0, 'gui');
                     this.background.frame = 115;
+                    this.add(this.background);
                 }
 
                 WeaponGroupPopup.prototype.initTextComponents = function(){
-                    // Text objects to display weapon attributes
-                    this.nameElm = this.add(phaserGame.add.text(0, text.marginTop, '', {
+                    var marginLeft = 20,
+                        marginTop = 15;
+
+                    this.nameElm = this.add(phaserGame.add.text(marginLeft, marginTop, '', {
                         font: text.titleFont,
                         fill: text.color
                     }));
-                    this.levelElm = this.add(phaserGame.add.text(0, text.marginTop + 11, '', {
+                    this.levelElm = this.add(phaserGame.add.text(marginLeft, marginTop + 11, '', {
                         font: text.titleFont,
                         fill: text.color
                     }));
-                    this.hullElm = this.add(phaserGame.add.text(0, text.marginTop + 22, '', {
+                    this.hullElm = this.add(phaserGame.add.text(marginLeft, marginTop + 24, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.shieldElm = this.add(phaserGame.add.text(0, text.marginTop + 33, '', {
+                    this.shieldElm = this.add(phaserGame.add.text(marginLeft, marginTop + 35, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.rangeElm = this.add(phaserGame.add.text(0, text.marginTop + 44, '', {
+                    this.rangeElm = this.add(phaserGame.add.text(marginLeft, marginTop + 46, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.descriptionElm = this.add(phaserGame.add.text(0, text.marginTop + 55, '', {
+                    this.descriptionElm = this.add(phaserGame.add.text(marginLeft, marginTop + 57, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
                 };
 
                 WeaponGroupPopup.prototype.updateContent = function(weapon){
+
+                    var title, value, upgradedValue;
+
+                    // Name
                     this.nameElm.text = weapon.name;
+
+                    // Level
+                    this.levelElm.text = 'Level 0';
+                    this.levelElm.addColor('#FFFFFF', 0);
+
+                    // Damage to Hull
+                    title = 'DMG to Hull: ';
+                    value = weapon.damage;
+                    upgradedValue = value && (' + ' + 0) || '';
+
+                    this.hullElm.text = title + value + upgradedValue;
+                    this.hullElm.addColor('#00FF00', title.length);
+                    this.hullElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
+
+                    // Damage to Shield
+                    title = 'DMG to Shield: ';
+                    value = weapon.damage_shield;
+                    upgradedValue = value && (' + ' + 0) || '';
+
+                    this.shieldElm.text = title + value + upgradedValue;
+                    this.shieldElm.addColor('#475D86', title.length);
+                    this.shieldElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
+
+                    // Range
+                    title = 'Range: ';
+                    value = weapon.range;
+
+                    this.rangeElm.text = title + value;
+                    this.rangeElm.addColor('#FFFFFF', title.length);                                   
                 };
 
                 container = phaserGame.add.group();
@@ -907,7 +953,7 @@ define('GUI', [
                     weaponGroupPopup.visible = true;
                     weaponGroupPopup.updateContent(item.weapon);
                 });
-                weaponGroup.on('out', function(item){
+                weaponGroup.on('out', function(){
                     weaponGroupPopup.visible = false;
                 });
 

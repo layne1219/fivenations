@@ -118,16 +118,10 @@ define('Game', [
 
                 this.GUI.putClickAnim(coords.x, coords.y);
 
-                gui.frame--;
-                console.log(gui.frame);                
-
             }.bind(this));
 
             // Unselecting units when clicking over an area with no entities underneath
             this.userPointer.on('leftbutton/down', function(mousePointer) {
-
-                gui.frame++;
-                console.log(gui.frame);
 
                 // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
                 if (GUI.getInstance().isHover()) {
@@ -231,6 +225,14 @@ define('Game', [
                     y: 300 + Util.rnd(0, 100)
                 });
             }
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'defenseplatform',
+                team: 1,
+                x: 450, 
+                y: 200
+            })
 
             this.entityManager.entities().move({ 
                 x: Util.rnd(0, 500),
