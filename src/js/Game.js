@@ -221,8 +221,8 @@ define('Game', [
                     guid: Util.getGUID(),
                     id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
-                    x: 300 + Util.rnd(0, 100),
-                    y: 300 + Util.rnd(0, 100)
+                    x: 500 + Util.rnd(0, 100),
+                    y: 450 + Util.rnd(0, 100)
                 });
             }
 
@@ -232,7 +232,95 @@ define('Game', [
                 team: 1,
                 x: 450, 
                 y: 200
-            })
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'astrometricstation',
+                team: 1,
+                x: 650, 
+                y: 210
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'civilianbase',
+                team: 1,
+                x: 66, 
+                y: 650
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'defensesatellite',
+                team: 1,
+                x: 600, 
+                y: 777
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'dockyard',
+                team: 1,
+                x: 200, 
+                y: 120
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'fleetheadquarters',
+                team: 1,
+                x: 250, 
+                y: 400
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'fusionreactor',
+                team: 1,
+                x: 580, 
+                y: 400
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'merchantport',
+                team: 1,
+                x: 100, 
+                y: 520
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'miningstation',
+                team: 1,
+                x: 589, 
+                y: 677
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'researchcenter',
+                team: 1,
+                x: 700, 
+                y: 135
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'shipfactory',
+                team: 1,
+                x: 400, 
+                y: 400
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID,
+                id: 'solarstation',
+                team: 1,
+                x: 322, 
+                y: 499
+            });                               
 
             this.entityManager.entities().move({ 
                 x: Util.rnd(0, 500),

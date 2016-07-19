@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"getD",
+				"getGUID"
+			],
+			[
+				"en",
+				"entityManager"
+			],
+			[
+				"pto",
+				"prototype"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
 				"Weapon",
 				"WeaponGroupPopup"
 			],
@@ -42,10 +58,6 @@
 			[
 				"enti",
 				"entities"
-			],
-			[
-				"en",
-				"entity"
 			],
 			[
 				"Event",
@@ -502,18 +514,6 @@
 			[
 				"reg",
 				"registerEventListeners"
-			],
-			[
-				"mouse",
-				"mousePointer"
-			],
-			[
-				"EVen",
-				"EventDispatcher"
-			],
-			[
-				"Eve",
-				"EventDispatcher"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 9904,
+				"buffer_size": 9958,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/assets/datas/units/fed/defenseplatform.json",
+			"settings":
+			{
+				"buffer_size": 573,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,16 +539,8 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 55431,
+				"buffer_size": 57266,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/images/gui/GUI_element.json",
-			"settings":
-			{
-				"buffer_size": 41581,
-				"line_ending": "Windows"
 			}
 		},
 		{
@@ -657,12 +657,17 @@
 		"/home/bence/dev/silversword/fivenations/src",
 		"/home/bence/dev/silversword/fivenations/src/assets",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/common",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed",
 		"/home/bence/dev/silversword/fivenations/src/assets/images",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/gui",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/weapons.json",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButton.js",
 		"/home/bence/dev/silversword/fivenations/src/js/EntityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.js",
@@ -733,7 +738,6 @@
 		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/orca.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/igt/tt-8-scatch",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c08.png",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c07.png",
@@ -796,6 +800,21 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"item",
+			"marginTop",
+			"POPUP_PADDING_X",
+			"WEAPON_NUMBER",
+			"text.marginTop",
+			"0",
+			"var",
+			"shieldUpgValue",
+			"shieldValue",
+			"shieldTitle",
+			"hullUpgValue",
+			"hullValue",
+			"hullTitle",
+			"hullValue",
+			"hull",
 			"text.marginLeft",
 			"POPUP_PADDING_X",
 			"phaserGame",
@@ -908,22 +927,7 @@
 			"ControlPanel",
 			"setId",
 			"phaserGame",
-			"EntityDetailsDisplay",
-			"createMultiselectionGroup",
-			"EntityDetailsDisplay",
-			"entityDetailsDisplay",
-			"event",
-			"ControlPanelButton",
-			"angularVelocityHelper",
-			"angularDirection",
-			"targetAngle",
-			"stepNumberToRight",
-			"currentConsolidatedAngle",
-			"            };",
-			"this.game",
-			"physicsElapsed",
-			"getWidth",
-			"3,"
+			"EntityDetailsDisplay"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -941,7 +945,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -950,15 +954,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9904,
+						"buffer_size": 9958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7166,
-								7166
+								3892,
+								3892
 							]
 						],
 						"settings":
@@ -968,69 +972,70 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2688.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/js/GUI.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 55431,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								32765,
-								32765
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12534.0,
+						"translation.y": 1518.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/assets/images/gui/GUI_element.json",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "src/assets/datas/units/fed/defenseplatform.json",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 41581,
+						"buffer_size": 573,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								25773,
-								25773
+								308,
+								308
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 15244.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/js/GUI.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 57266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37028,
+								37028
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13924.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
