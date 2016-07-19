@@ -4,12 +4,60 @@
 		"selected_items":
 		[
 			[
-				"enti",
-				"entities"
+				"getD",
+				"getGUID"
 			],
 			[
 				"en",
-				"entity"
+				"entityManager"
+			],
+			[
+				"pto",
+				"prototype"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"Weapon",
+				"WeaponGroupPopup"
+			],
+			[
+				"init",
+				"initTextComponents"
+			],
+			[
+				"weaponGroup",
+				"weaponGroupPopup"
+			],
+			[
+				"weapo",
+				"weaponGroupPopup"
+			],
+			[
+				"cont",
+				"container"
+			],
+			[
+				"WEapo",
+				"WeaponGroupPopup"
+			],
+			[
+				"POPU",
+				"POPUP_PADDING_Y"
+			],
+			[
+				"Wea",
+				"WeaponGroup"
+			],
+			[
+				"wea",
+				"weaponTexts"
+			],
+			[
+				"enti",
+				"entities"
 			],
 			[
 				"Event",
@@ -352,10 +400,6 @@
 				"phaserGame"
 			],
 			[
-				"init",
-				"initMinimap"
-			],
-			[
 				"shi",
 				"shieldBar"
 			],
@@ -470,50 +514,6 @@
 			[
 				"reg",
 				"registerEventListeners"
-			],
-			[
-				"mouse",
-				"mousePointer"
-			],
-			[
-				"EVen",
-				"EventDispatcher"
-			],
-			[
-				"Eve",
-				"EventDispatcher"
-			],
-			[
-				"Ent",
-				"EntityManager"
-			],
-			[
-				"distance",
-				"distanceInverse"
-			],
-			[
-				"target",
-				"targetAngle"
-			],
-			[
-				"MOVEMENT_",
-				"MOVEMENT_MOVING"
-			],
-			[
-				"MOV",
-				"MOVEMENT_MOVING"
-			],
-			[
-				"MOVE",
-				"MOVEMENT_STOPPED"
-			],
-			[
-				"MOVEMEN",
-				"MOVEMENT_WAITING"
-			],
-			[
-				"MOVEMENT",
-				"MOVEMENT_DECCELERATING"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 9600,
+				"buffer_size": 9958,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/assets/datas/units/fed/defenseplatform.json",
+			"settings":
+			{
+				"buffer_size": 573,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +539,7 @@
 			"file": "src/js/GUI.js",
 			"settings":
 			{
-				"buffer_size": 50384,
+				"buffer_size": 57266,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,33 +547,23 @@
 			"file": "src/js/Entity.js",
 			"settings":
 			{
-				"buffer_size": 10095,
+				"buffer_size": 11411,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/js/EntityManager.js",
+			"file": "src/js/GUI.ControlButtonCollection.js",
 			"settings":
 			{
-				"buffer_size": 11233,
+				"buffer_size": 4497,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 42 files for \"getMergedAbilities\" (case sensitive)\n\n/home/bence/dev/silversword/fivenations/src/js/EntityManager.js:\n  284           * @return {[array]}          [Array of the merged abilities]\n  285           */\n  286:         getMergedAbilities: function(entities) {\n  287              var abilities,\n  288                  next,\n\n/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js:\n   96              return;\n   97          }\n   98:         abilities = this.parent.entityManager.getMergedAbilities(entities);\n   99          this.buttons.forEach(function(button, idx) {\n  100              if (!abilities[idx]) {\n\n2 matches across 2 files\n",
+			"file": "src/js/GUI.ActivityManager.js",
 			"settings":
 			{
-				"buffer_size": 665,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "src/js/GUI.ControlPage.js",
-			"settings":
-			{
-				"buffer_size": 3646,
+				"buffer_size": 1214,
 				"line_ending": "Unix"
 			}
 		}
@@ -657,10 +655,26 @@
 	[
 		"/home/bence/dev/silversword/fivenations",
 		"/home/bence/dev/silversword/fivenations/src",
+		"/home/bence/dev/silversword/fivenations/src/assets",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/common",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed",
+		"/home/bence/dev/silversword/fivenations/src/assets/images",
+		"/home/bence/dev/silversword/fivenations/src/assets/images/gui",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/weapons.json",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButton.js",
+		"/home/bence/dev/silversword/fivenations/src/js/EntityManager.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.SelectCoords.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
 		"/home/bence/dev/gify/gulpfile.js",
 		"/home/bence/dev/gify/dist/index.html",
 		"/home/bence/dev/gify/src/js/main.entry.js",
@@ -668,7 +682,6 @@
 		"/home/bence/dev/gify/src/js/gify.js",
 		"/home/bence/dev/gify/dist/js/main.js",
 		"/home/bence/dev/gify/src/css/main.css",
-		"/home/bence/dev/silversword/fivenations/src/js/EntityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/main.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Player.js",
@@ -676,24 +689,19 @@
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButtonCollection.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBusExecuter.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBus.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Entity.Move.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.ActivityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventFactory.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.AbilityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventExecuter.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Patrol.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventDispatcher.js",
 		"/home/bence/dev/silversword/fivenations/src/js/EventBus.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.SelectCoords.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UniversalEventDispatcher.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButton.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ActivityManager.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.js",
 		"/home/bence/dev/p.js",
 		"/home/bence/dev/silversword/fivenations/src/js/todos",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlManager.js",
@@ -708,7 +716,6 @@
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Follow.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/engineershuttle.json",
 		"/home/bence/.bash_exports",
 		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
@@ -731,7 +738,6 @@
 		"/home/bence/dev/silversword/fivenations/src/js/Menu.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit01_c01.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/orca.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/igt/tt-8-scatch",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c08.png",
 		"/home/bence/dev/silversword/fivenations/src/assets/images/units/fed/fed_unit03_c07.png",
@@ -794,6 +800,32 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"item",
+			"marginTop",
+			"POPUP_PADDING_X",
+			"WEAPON_NUMBER",
+			"text.marginTop",
+			"0",
+			"var",
+			"shieldUpgValue",
+			"shieldValue",
+			"shieldTitle",
+			"hullUpgValue",
+			"hullValue",
+			"hullTitle",
+			"hullValue",
+			"hull",
+			"text.marginLeft",
+			"POPUP_PADDING_X",
+			"phaserGame",
+			"world",
+			"weaponGroup",
+			"Sprite",
+			"game",
+			"phaserGame",
+			"setLastTickTime",
+			"lastTickTime",
+			"getDelta",
 			":selected",
 			"update",
 			"getMergedAbilities",
@@ -895,33 +927,7 @@
 			"ControlPanel",
 			"setId",
 			"phaserGame",
-			"EntityDetailsDisplay",
-			"createMultiselectionGroup",
-			"EntityDetailsDisplay",
-			"entityDetailsDisplay",
-			"event",
-			"ControlPanelButton",
-			"angularVelocityHelper",
-			"angularDirection",
-			"targetAngle",
-			"stepNumberToRight",
-			"currentConsolidatedAngle",
-			"            };",
-			"this.game",
-			"physicsElapsed",
-			"getWidth",
-			"3,",
-			"7,",
-			"2,",
-			"vim",
-			"add.grou",
-			"this.group",
-			"group",
-			"Selector",
-			"addSelector",
-			"gui",
-			"Group",
-			"framePadding"
+			"EntityDetailsDisplay"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -939,7 +945,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -948,15 +954,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9600,
+						"buffer_size": 9958,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4085,
-								4085
+								3892,
+								3892
 							]
 						],
 						"settings":
@@ -966,49 +972,79 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1620.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/js/GUI.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 50384,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								42281,
-								42281
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 16819.0,
+						"translation.y": 1518.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
+					"buffer": 1,
+					"file": "src/assets/datas/units/fed/defenseplatform.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 573,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								308,
+								308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
 					"buffer": 2,
+					"file": "src/js/GUI.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 57266,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37028,
+								37028
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13924.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "src/js/Entity.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10095,
+						"buffer_size": 11411,
 						"regions":
 						{
 						},
@@ -1029,104 +1065,54 @@
 						"translation.y": 2970.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/js/EntityManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11233,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9745,
-								9745
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4095.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
+					"file": "src/js/GUI.ControlButtonCollection.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 665,
+						"buffer_size": 4497,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										238,
-										256
-									],
-									[
-										507,
-										525
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								511,
-								511
+								862,
+								862
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": -0.0,
+						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "src/js/GUI.ControlPage.js",
+					"file": "src/js/GUI.ActivityManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3646,
+						"buffer_size": 1214,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2841,
-								2841
+								745,
+								745
 							]
 						],
 						"settings":
@@ -1136,10 +1122,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1029.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

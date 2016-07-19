@@ -1,0 +1,28 @@
+{
+    "id": "miningstation",
+    "name": "Mining Station",
+    "type": "building",
+    "building": true,
+    "hull": 700,
+    "shield": 0,
+    "armor": 4,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 35,
+    "weapons": [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 300,
+    "silicium": 100,
+    "energy": 150,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 20,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 135,
+        "height": 123
+    } 
+}

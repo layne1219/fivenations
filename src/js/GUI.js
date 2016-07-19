@@ -5,8 +5,9 @@ define('GUI', [
     'GUI.ControlButton',
     'GUI.ControlPage',
     'GUI.CancelPage',
-    'Util'
-], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util) {
+    'Util',
+    'json!gui'
+], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util, guiJSON) {
 
     var // reference to the shared game configuarition object 
         ns = window.fivenations,
@@ -58,85 +59,7 @@ define('GUI', [
         },
 
         // Rainbow table for entity icons 
-        entityIcons = {
-
-            'hurricane': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 67,
-                iconFrame: 53
-            },
-            'orca': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 68,
-                iconFrame: 54
-            },
-            'hailstorm': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 69,
-                iconFrame: 55
-            },
-            'stgeorge': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 70,
-                iconFrame: 56
-            },
-            'avenger': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 71,
-                iconFrame: 57
-            },
-            'avenger2': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 72,
-                iconFrame: 58
-            },
-            'icarus': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 73,
-                iconFrame: 59
-            },
-            'engineershuttle': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 74,
-                iconFrame: 60
-            },
-            'kutuzov': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 75,
-                iconFrame: 61
-            },
-            'pasteur': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 76,
-                iconFrame: 62
-            },
-            'dresda': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 77,
-                iconFrame: 63
-            },
-            'crow': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 78,
-                iconFrame: 64
-            },
-            'teller': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 79,
-                iconFrame: 65
-            },
-            'nuclearmissile': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 80,
-                iconFrame: 66
-            },
-            'commandcenter': {
-                spriteId: 'gui.icons.fed',
-                faceFrame: 27,
-                iconFrame: 40
-            }
-
-        },
+        entityIcons = guiJSON.icons,
 
         // --------------------------------------------------------------------------------------
         // Selector object to handle the selection animation and the displaying of the 
@@ -723,67 +646,78 @@ define('GUI', [
                 this.group.add(this.multiselectionGroup);
             }
 
+            // @TODO Refactor this ASAP since it's unarguably a code smell
             function createAttributeGroup(x, y, phaserGame) {
 
-                var group;
+                var container,
+                    mainAttributeGroup,
+                    weaponGroup,
+                    weaponGroupPopup,
+                    text = {
+                        marginLeft: 132,
+                        marginTop: 5,
+                        titleFont: '12px BerlinSansFB-Reg',
+                        defaultFont: '11px BerlinSansFB-Reg',
+                        color: '#77C7D2'
+                    },
+                    WEAPON_NUMBER = 12,
+                    POPUP_PADDING_X = 20,
+                    POPUP_PADDING_Y = 0;
 
-                function TextGroup(game) {
-                    var args = [].slice.call(arguments),
-                        text = {
-                            marginLeft: 132,
-                            marginRight: 5,
-                            titleFont: '12px BerlinSansFB-Reg',
-                            defaultFont: '11px BerlinSansFB-Reg',
-                            color: '#77C7D2'
-                        };
+                /**
+                 * Main attribute component
+                 */
+                function MainAttributeGroup() {
 
-                    Phaser.Group.apply(this, args);
+                    Phaser.Group.call(this, phaserGame);
 
                     // creating a Phaser.Sprite object for the entity icons
                     this.iconSprite = this.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed'));
 
                     // Text objects to display entity attributes
-                    this.nameElm = this.add(game.add.text(text.marginLeft, text.marginRight, '', {
+                    this.nameElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop, '', {
                         font: text.titleFont,
                         fill: text.color
                     }));
-                    this.nicknameElm = this.add(game.add.text(text.marginLeft, text.marginRight + 12, '', {
+                    this.nicknameElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 12, '', {
                         font: text.titleFont,
                         fill: '#FFFFFF'
                     }));
                     this.rankElm = null;
-                    this.hullElm = this.add(game.add.text(text.marginLeft, text.marginRight + 36, '', {
+                    this.hullElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 36, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.shieldElm = this.add(game.add.text(text.marginLeft, text.marginRight + 47, '', {
+                    this.shieldElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 47, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.armorElm = this.add(game.add.text(text.marginLeft, text.marginRight + 58, '', {
+                    this.armorElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 58, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.powerElm = this.add(game.add.text(text.marginLeft, text.marginRight + 69, '', {
+                    this.powerElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 69, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
-                    this.hangarElm = this.add(game.add.text(text.marginLeft, text.marginRight + 80, '', {
+                    this.hangarElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 80, '', {
                         font: text.defaultFont,
                         fill: text.color
                     }));
 
                 }
 
-                TextGroup.prototype = Object.create(Phaser.Group.prototype);
-                TextGroup.prototype.constructor = TextGroup;
+                MainAttributeGroup.prototype = Object.create(Phaser.Group.prototype);
+                MainAttributeGroup.prototype.constructor = MainAttributeGroup;
 
                 /**
                  * Updating the attributes text group as per the passed dataObject
-                 * @param  {object} dataObject [DataObject]
+                 * @param  {object} entity [Entity instance]
                  * @return {void}
                  */
-                TextGroup.prototype.updateContent = function(dataObject) {
+                MainAttributeGroup.prototype.updateContent = function(entity) {
+
+                    var dataObject = entity.getDataObject();
 
                     if (!dataObject) {
                         throw 'Invalid DataObject has been passed!';
@@ -828,7 +762,7 @@ define('GUI', [
                     this.powerElm.text = powerTitle + powerValue + powerMaxValue;
                     this.powerElm.addColor('#FFFFFF', powerTitle.length);
 
-                    // Hanger
+                    // Hangar
                     var hangarTitle = 'Hangar: ',
                         hangarValue = dataObject.getHangar(),
                         hangarMaxValue = '/' + dataObject.getMaxHangar();
@@ -838,11 +772,196 @@ define('GUI', [
 
                 };
 
-                group = new TextGroup(phaserGame);
-                group.x = x;
-                group.y = y;
+                function WeaponGroup() {
+                    var weaponText, i, x, y;
 
-                return group;
+                    Phaser.Group.call(this, phaserGame);
+
+                    this.weaponTexts = [];
+
+                    for (i = 0; i < WEAPON_NUMBER; i += 1) {
+                        x = text.marginLeft + Math.floor(i / 8) * 100;
+                        y = text.marginTop + (i % 8 + 1) * 11;
+                        weaponText = this.add(phaserGame.add.text(x, y, '', {
+                            font: text.defaultFont,
+                            fill: text.color
+                        }));
+                        this.weaponTexts.push(weaponText);
+                        weaponText.inputEnabled = true;
+                        weaponText.events.onInputOver.add(over, this);
+                        weaponText.events.onInputOut.add(out, this);
+                    }
+
+                    function over(item) {
+                        this.dispatcher.dispatch('over', item);
+                        item.alpha=.5;
+                    }
+                    function out(item) {
+                        /*console.log(item.weapon);
+                        this.weaponPopup.visible = false;*/
+                        this.dispatcher.dispatch('out', item);
+                        item.alpha=1;
+                    }                    
+                }
+
+                WeaponGroup.prototype = Object.create(Phaser.Group.prototype);
+                WeaponGroup.prototype.constructor = WeaponGroup;
+                WeaponGroup.prototype.dispatcher = new Util.EventDispatcher();
+
+                /**
+                 * Registers event listener to the given event
+                 * @param  {string}   event    [the given event]
+                 * @param  {Function} callback [the callback to be registered]
+                 * @return {void}
+                 */
+                WeaponGroup.prototype.on = function(event, callback){
+                    this.dispatcher.addEventListener(event, callback);
+                }
+
+                /**
+                 * Updating the attributes text group as per the passed dataObject
+                 * @param  {object} entity [Entity]
+                 * @return {void}
+                 */
+                WeaponGroup.prototype.updateContent = function(entity) {
+
+                    if (!entity) {
+                        throw 'Invalid Entity instance has been passed!';
+                    }
+
+                    for (var i = WEAPON_NUMBER - 1; i >= 0; i -= 1) {
+                        this.weaponTexts[i].visible = false;
+                    }
+
+                    var weaponManager = entity.getWeaponManager();
+                    weaponManager.getWeapons().forEach(function(weapon, idx){
+                        if (!this.weaponTexts[idx]){
+                            return;
+                        }
+                        this.weaponTexts[idx].weapon = weapon;
+                        this.weaponTexts[idx].text = weapon.name;
+                        this.weaponTexts[idx].visible = true;
+                    }.bind(this));
+
+                };
+
+                function WeaponGroupPopup(){
+
+                    Phaser.Group.call(this, phaserGame);
+
+                    this.setDefaultVisiblity();
+                    this.initBackgroundSprite();
+                    this.initTextComponents();
+                }
+
+                WeaponGroupPopup.prototype = Object.create(Phaser.Group.prototype);
+                WeaponGroupPopup.prototype.constructor = WeaponGroupPopup;               
+
+                WeaponGroupPopup.prototype.setDefaultVisiblity = function(){
+                    this.visible = false;
+                }
+
+                WeaponGroupPopup.prototype.initBackgroundSprite = function(){
+                    this.background = phaserGame.add.sprite(0, 0, 'gui');
+                    this.background.frame = 115;
+                    this.add(this.background);
+                }
+
+                WeaponGroupPopup.prototype.initTextComponents = function(){
+                    var marginLeft = 20,
+                        marginTop = 15;
+
+                    this.nameElm = this.add(phaserGame.add.text(marginLeft, marginTop, '', {
+                        font: text.titleFont,
+                        fill: text.color
+                    }));
+                    this.levelElm = this.add(phaserGame.add.text(marginLeft, marginTop + 11, '', {
+                        font: text.titleFont,
+                        fill: text.color
+                    }));
+                    this.hullElm = this.add(phaserGame.add.text(marginLeft, marginTop + 24, '', {
+                        font: text.defaultFont,
+                        fill: text.color
+                    }));
+                    this.shieldElm = this.add(phaserGame.add.text(marginLeft, marginTop + 35, '', {
+                        font: text.defaultFont,
+                        fill: text.color
+                    }));
+                    this.rangeElm = this.add(phaserGame.add.text(marginLeft, marginTop + 46, '', {
+                        font: text.defaultFont,
+                        fill: text.color
+                    }));
+                    this.descriptionElm = this.add(phaserGame.add.text(marginLeft, marginTop + 57, '', {
+                        font: text.defaultFont,
+                        fill: text.color
+                    }));
+                };
+
+                WeaponGroupPopup.prototype.updateContent = function(weapon){
+
+                    var title, value, upgradedValue;
+
+                    // Name
+                    this.nameElm.text = weapon.name;
+
+                    // Level
+                    this.levelElm.text = 'Level 0';
+                    this.levelElm.addColor('#FFFFFF', 0);
+
+                    // Damage to Hull
+                    title = 'DMG to Hull: ';
+                    value = weapon.damage;
+                    upgradedValue = value && (' + ' + 0) || '';
+
+                    this.hullElm.text = title + value + upgradedValue;
+                    this.hullElm.addColor('#00FF00', title.length);
+                    this.hullElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
+
+                    // Damage to Shield
+                    title = 'DMG to Shield: ';
+                    value = weapon.damage_shield;
+                    upgradedValue = value && (' + ' + 0) || '';
+
+                    this.shieldElm.text = title + value + upgradedValue;
+                    this.shieldElm.addColor('#475D86', title.length);
+                    this.shieldElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
+
+                    // Range
+                    title = 'Range: ';
+                    value = weapon.range;
+
+                    this.rangeElm.text = title + value;
+                    this.rangeElm.addColor('#FFFFFF', title.length);                                   
+                };
+
+                container = phaserGame.add.group();
+
+                mainAttributeGroup = new MainAttributeGroup();
+                mainAttributeGroup.x = x;
+                mainAttributeGroup.y = y;
+
+                weaponGroup = new WeaponGroup();
+                weaponGroup.x = x + 100;
+                weaponGroup.y = y - 10;
+
+                weaponGroupPopup = new WeaponGroupPopup();
+
+                weaponGroup.add(weaponGroupPopup);
+                weaponGroup.on('over', function(item){
+                    weaponGroupPopup.x = item.x + POPUP_PADDING_X;
+                    weaponGroupPopup.y = item.y - weaponGroupPopup.height + POPUP_PADDING_Y;
+                    weaponGroupPopup.visible = true;
+                    weaponGroupPopup.updateContent(item.weapon);
+                });
+                weaponGroup.on('out', function(){
+                    weaponGroupPopup.visible = false;
+                });
+
+                container.add(mainAttributeGroup);
+                container.add(weaponGroup);
+
+
+                return container;
 
             }
 
@@ -1014,7 +1133,10 @@ define('GUI', [
                     this.multiselectionGroup.visible = false;
 
                     // Updating the texts + splash icon
-                    this.attributeGroup.updateContent(entity.getDataObject());
+                    for (var i = this.attributeGroup.children.length - 1; i >= 0; i -= 1) {
+                        //@TODO Phaser.Group.prototype.update.call(this);
+                        this.attributeGroup.children[i].updateContent(entity);
+                    }
                 },
 
                 /**
