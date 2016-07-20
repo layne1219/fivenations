@@ -137,6 +137,18 @@ define('DataObject', function() {
 
             getHeight: function() {
                 return data.dimensions.height;
+            },
+
+            getAnimations: function() {
+                return data.animations;
+            },
+
+            getAnimationByKey: function(key) {
+                return data.animations[key];
+            },
+
+            hasAnimation: function(key) {
+                return !!data.animations[key];
             }
 
         };
