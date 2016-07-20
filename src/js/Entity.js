@@ -41,6 +41,9 @@ define('Entity', [
             // helper variable for storing whether the input is over the sprite
             sprite.hover = false;
 
+            // sets the animations defined in the DO
+            extendSpriteWithAnimations(sprite, dataObject);
+
             // applying event listeners on the passed sprite object
             extendSpriteWithEventListeners(entity, sprite, dataObject);
 
@@ -52,6 +55,20 @@ define('Entity', [
             sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
 
             return sprite;
+        },
+
+        /**
+         * Registers animations sequences against the given sprite object if there is any specified in the DO 
+         * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
+         * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
+         * @return {void}
+         */
+        extendSpriteWithAnimations = function(sprite, dataObject){
+            var animations = dataObject.getAnimations();
+            if (!animations || typeof animations !== 'object') return;
+            Object.keys(animations).forEach(function(key){
+                sprite.animations.add(key, animations[key]);
+            });
         },
 
         /**
