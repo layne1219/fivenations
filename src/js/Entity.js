@@ -329,6 +329,10 @@ define('Entity', [
 
         getId: function() {
             return this.guid;
+        },
+
+        getAnimations: function() {
+            return this.sprite.animations;
         }
 
     };
