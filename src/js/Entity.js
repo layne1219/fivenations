@@ -67,7 +67,8 @@ define('Entity', [
             var animations = dataObject.getAnimations();
             if (!animations || typeof animations !== 'object') return;
             Object.keys(animations).forEach(function(key){
-                sprite.animations.add(key, animations[key]);
+                var data = animations[key];
+                sprite.animations.add(key, data.frames, data.rate);
             });
         },
 
