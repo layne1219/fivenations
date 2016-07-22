@@ -68,7 +68,7 @@ define('Entity', [
             if (!animations || typeof animations !== 'object') return;
             Object.keys(animations).forEach(function(key){
                 var data = animations[key];
-                sprite.animations.add(key, data.frames, data.rate);
+                sprite.animations.add(key, data.frames, data.rate, data.loopable);
             });
         },
 
@@ -162,7 +162,7 @@ define('Entity', [
         this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
 
         // ActivityManager
-        this.activityManager = new ActivityManager();
+        this.activityManager = new ActivityManager(this);
 
         // MotionManager for altering the coordinates of the entity
         this.motionManager = new MotionManager(this);
@@ -331,8 +331,16 @@ define('Entity', [
             return this.guid;
         },
 
-        getAnimations: function() {
+        getAnimationManager: function() {
             return this.sprite.animations;
+        },
+
+        getAnimationByKey: function(key) {
+            var animations = this.getAnimations();
+            if (!animations){
+                return null;
+            }
+            return animations.getAnimation(key);
         }
 
     };
