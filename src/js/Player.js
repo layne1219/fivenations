@@ -11,7 +11,7 @@ define('Player', ['Util'], function(Util) {
     }
 
     function initDispatcher(){
-        this.dispatcher = new Util.Dispatcher();        
+        this.dispatcher = new Util.EventDispatcher();        
     }
 
     function setTeamInformation(config){

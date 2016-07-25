@@ -1345,7 +1345,6 @@ define('GUI', [
             function ResourceGroup(config){
                 Phaser.Group.call(this, phaserGame);
                 this.initTextComponents(config);
-                this.updateContent();
             }
 
             ResourceGroup.prototype = Object.create(Phaser.Group.prototype);
@@ -1354,18 +1353,26 @@ define('GUI', [
             ResourceGroup.prototype.initTextComponents = function(config){
                 var style = {
                     font: '11px BerlinSansFB-Reg',
-                    fill: '#77C7D2',
+                    fill: '#FFFFFF',
                     boundsAlignH: 'center'
                 };
                 if (!config) config = {};
                 this.textGroup = this.add(phaserGame.add.text(config.x || 0, config.y || 0, '', style));
+                this.textGroup.setTextBounds(0, 0, 60, 15);
             };
 
-            ResourceGroup.prototype.updateContent = function(){
-                var current = 0,
-                    max = 1000;
+            ResourceGroup.prototype.updateContent = function(values){
+                var current, max;
+                if (!values) values = {};
+
+                current = values.current || 0;
+                max = values.max;
+
                 this.textGroup.text = current;
-                if (max) this.textGroup.text += ' / ' + max;
+                if (max) { 
+                    this.textGroup.text += '/' + max;
+                }
+                this.textGroup.addColor('#FFFFFF', 0);
                 this.textGroup.addColor('#475D86', current.toString().length + 1);
             };
 
@@ -1389,17 +1396,30 @@ define('GUI', [
 
             ResourceDisplay.prototype.initTextElements = function(){
                 this.titanium = new ResourceGroup({x: 0, y: 0});
-                this.silicium = new ResourceGroup({x: 50, y: 0});
-                this.energy = new ResourceGroup({x: 100, y: 0});
-                this.uranium = new ResourceGroup({x: 150, y: 0});
-                this.food = new ResourceGroup({x: 200, y: 0});
-            }
+                this.add(this.titanium);
+
+                this.silicium = new ResourceGroup({x: 76, y: 0});
+                this.add(this.silicium);
+
+                this.energy = new ResourceGroup({x: 152, y: 0});
+                this.add(this.energy);
+
+                this.uranium = new ResourceGroup({x: 228, y: 0});
+                this.add(this.uranium);
+
+                this.food = new ResourceGroup({x: 304, y: 0});
+                this.add(this.food);
+            };
+
+            ResourceDisplay.prototype.setInitialContent = function(){
+                
+            };
 
             /**
              * Appends the ResourceDisplay to the main Panel element
              * @param  {object} panel [Panel]
-             * @param  {integer} x     [horizontal offset of the ControlPanel element on the Panel]
-             * @param  {integer} y     [vertical offset of the ControlPanel element on the Panel]
+             * @param  {integer} x [horizontal offset of the ControlPanel element on the Panel]
+             * @param  {integer} y [vertical offset of the ControlPanel element on the Panel]
              * @return {void}
              */
             ResourceDisplay.prototype.appendTo = function(panel, x, y) {
@@ -1515,7 +1535,7 @@ define('GUI', [
 
             // Resource display
             resourceDisplay = new ResourceDisplay(playerManager);
-            resourceDisplay.appendTo(panel, 500, 0);
+            resourceDisplay.appendTo(panel, 425, 88);
         }
 
 
