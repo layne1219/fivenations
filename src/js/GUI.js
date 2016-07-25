@@ -1342,28 +1342,31 @@ define('GUI', [
         // --------------------------------------------------------------------------------------
         ResourceDisplay = (function() {
 
-            function ResourceGroup(){
+            function ResourceGroup(config){
                 Phaser.Group.call(this, phaserGame);
-                this.initTextComponents();
+                this.initTextComponents(config);
+                this.updateContent();
             }
 
             ResourceGroup.prototype = Object.create(Phaser.Group.prototype);
             ResourceGroup.prototype.constructor = ResourceGroup;
 
-            ResourceGroup.prototype.initTextComponents = function(){
+            ResourceGroup.prototype.initTextComponents = function(config){
                 var style = {
                     font: '11px BerlinSansFB-Reg',
                     fill: '#77C7D2',
                     boundsAlignH: 'center'
                 };
-                this.textGroup = this.add(phaserGame.add.text(0, 0, '', style));
+                if (!config) config = {};
+                this.textGroup = this.add(phaserGame.add.text(config.x || 0, config.y || 0, '', style));
             };
 
             ResourceGroup.prototype.updateContent = function(){
                 var current = 0,
                     max = 1000;
-                this.textGroup.text = current + '/' + max;
-                this.textGroup.addColor('#475D86', current.toString().length + 1);                                   
+                this.textGroup.text = current;
+                if (max) this.textGroup.text += ' / ' + max;
+                this.textGroup.addColor('#475D86', current.toString().length + 1);
             };
 
             /**
@@ -1371,20 +1374,26 @@ define('GUI', [
              * @param {object} playerManager [reference to the singleton instance of PlayerManager]
              */
             function ResourceDisplay(playerManager) {
-                // applying the inherited constructor function
                 Phaser.Group.call(this, phaserGame);
-
-                // initialising the pages and buttons
-                this.init(playerManager);
+                this.setPlayerManager(playerManager);
+                this.initTextElements();
             }
 
             // Making the prototype inherited from Phaser.Group prototype
             ResourceDisplay.prototype = Object.create(Phaser.Group.prototype);
             ResourceDisplay.prototype.constructor = ResourceDisplay;
 
-            ResourceDisplay.prototype.init = function(playerManager) {
+            ResourceDisplay.prototype.setPlayerManager = function(playerManager) {
                 this.playerManager = playerManager;
             };
+
+            ResourceDisplay.prototype.initTextElements = function(){
+                this.titanium = new ResourceGroup({x: 0, y: 0});
+                this.silicium = new ResourceGroup({x: 50, y: 0});
+                this.energy = new ResourceGroup({x: 100, y: 0});
+                this.uranium = new ResourceGroup({x: 150, y: 0});
+                this.food = new ResourceGroup({x: 200, y: 0});
+            }
 
             /**
              * Appends the ResourceDisplay to the main Panel element
