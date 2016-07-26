@@ -1,6 +1,7 @@
 define('Universal.Event.Player.Create', [
-    'Universal.Event'
-], function(Event) {
+    'Universal.Event',
+    'PlayerManager'
+], function(Event, PlayerManager) {
 
     var ns = window.fivenations;
 
@@ -14,12 +15,12 @@ define('Universal.Event.Player.Create', [
 
     /**
      * No-op function to be overwritten in the child objects
-     * @param {object} [options] [extendable object that presents event details]
+     * @param {object} [options] [extendable object that incorporates event details]
      * @return {void}
      */
     UniversalEventPlayerCreate.prototype.execute = function(options) {
-        if (!options.data) return;
-        
+        if (!options.data || !options.data.guid) throw 'Invalid data attribute to create a Player instance!';
+        PlayerManager.getInstance().addPlayer(options.data);
     };
 
     return UniversalEventPlayerCreate;

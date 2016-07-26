@@ -68,26 +68,7 @@ define('Game', [
             // Generate a Map
             this.map = new Map();
             this.map.setGame(this.game);
-
-            // -----------------------------------------------------------------------
-            //                                  Players
-            // -----------------------------------------------------------------------
-            // Set up Players
-            this.playerManager = PlayerManager.getInstance();
-            this.playerManager.addPlayer({
-                team: 1,
-                user: true
-            });
-            this.playerManager.addPlayer({
-                team: 2
-            });
-            this.playerManager.addPlayer({
-                team: 3
-            });
-            this.playerManager.addPlayer({
-                team: 4
-            });
-
+            
             // -----------------------------------------------------------------------
             //                              EntityManager
             // -----------------------------------------------------------------------
@@ -211,6 +192,19 @@ define('Game', [
             // -----------------------------------------------------------------------
             // Kicking off the main event loop
             this.game.eventBusExecuter = EventBusExecuter.getInstance();
+
+            // -----------------------------------------------------------------------
+            //                                  Players
+            // -----------------------------------------------------------------------
+            // Set up Players
+            EventBus.getInstance().add({
+                id: 'player/create',
+                data: {
+                    guid: Util.getGUID(),
+                    name: 'Test Player',
+                    team: 1
+                }
+            });
 
             // -----------------------------------------------------------------------
             //                          Generating entities

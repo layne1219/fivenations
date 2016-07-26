@@ -1,6 +1,7 @@
 define('Universal.Event.Player.Resource.Alter', [
-    'Universal.Event'
-], function(Event) {
+    'Universal.Event',
+    'PlayerManager'
+], function(Event, PlayerManager) {
 
     var ns = window.fivenations;
 
@@ -18,7 +19,14 @@ define('Universal.Event.Player.Resource.Alter', [
      * @return {void}
      */
     PlayerResourceAlter.prototype.execute = function(options) {
-        if (!options.data) return;
+        if (!options.data || !options.data.guid) throw 'Invalid data attribute!';
+
+        var player = PlayerManager.getInstane().getPlayerByGUID(optiosn.data.guid);
+
+        if (options.data.titanium) player.setTitanium(options.data.titanium);
+        if (options.data.silicium) player.setSilicium(options.data.silicium);
+        if (options.data.energy) player.setEnergy(options.data.energy);
+        if (options.data.uranium) player.setUranium(options.data.uranium);
     };
 
     return PlayerResourceAlter;
