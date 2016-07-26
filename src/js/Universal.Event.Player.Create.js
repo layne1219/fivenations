@@ -19,6 +19,7 @@ define('Universal.Event.Player.Create', [
      */
     UniversalEventPlayerCreate.prototype.execute = function(options) {
         if (!options.data) return;
+        
     };
 
     return UniversalEventPlayerCreate;

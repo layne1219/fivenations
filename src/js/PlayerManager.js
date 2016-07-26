@@ -17,6 +17,7 @@ define('PlayerManager', ['Player'], function(Player) {
         singleton = {
 
             addPlayer: function(config) {
+                if (!config) throw 'Invalid configuration for constructing a Player instance!';
                 players.push(new Player(config));
             },
 

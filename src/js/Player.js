@@ -6,12 +6,17 @@ define('Player', ['EntityManager', 'Util'], function(EntityManager, Util) {
 
     function init(config) {
         initDispatcher.call(this);
+        setName.call(this, config);
         setTeamInformation.call(this, config);
         setResources.call(this, config);
     }
 
     function initDispatcher(){
         this.dispatcher = new Util.EventDispatcher();        
+    }
+
+    function setName(config){
+        this.name = config.name;
     }
 
     function setTeamInformation(config){
