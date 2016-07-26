@@ -1,4 +1,4 @@
-define('Player', ['Util'], function(Util) {
+define('Player', ['EntityManager', 'Util'], function(EntityManager, Util) {
 
     function Player(config) {
         init.call(this, config);
@@ -27,6 +27,18 @@ define('Player', ['Util'], function(Util) {
     }
 
     Player.prototype = {
+
+        on: function(evt, func){
+            if (!evt) return;
+            this.dispatcher.addEventListener(evt, func);
+        },
+
+        flush: function(){
+            this.setTitanium(this.getTitanium());
+            this.setSilicium(this.getTitanium());
+            this.setEnergy(this.getTitanium());
+            this.setUranium(this.getTitanium());
+        },
 
         setTitanium: function(value) {
             if (!value) return;
@@ -84,13 +96,15 @@ define('Player', ['Util'], function(Util) {
             return this.team;
         },
 
-        isControlledByUser: function() {
-            return this.user;
+        getCurrentEntityNumber: function() {
+            var entityManager = EntityManager.getInstance();
+            return entityManager.entities(function(entity){
+                return entity.isEntityControlledByUser(this);
+            }.bind(this)).length;
         },
 
-        on: function(evt, func){
-            if (!evt) return;
-            this.dispatcher.addEventListener(evt, func);
+        isControlledByUser: function() {
+            return this.user;
         }
 
     };

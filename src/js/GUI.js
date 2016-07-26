@@ -1412,7 +1412,12 @@ define('GUI', [
             };
 
             ResourceDisplay.prototype.setInitialContent = function(){
-                
+                var user = this.playerManager.getUser();
+                this.titanium.updateContent({ current: user.getTitanium() });
+                this.silicium.updateContent({ current: user.getSilicium() });
+                this.energy.updateContent({ current: user.getEnergy() });
+                this.uranium.updateContent({ current: user.getUranium() });
+                this.food.updateContent({ current: user.getCurrentEntityNumber() });
             };
 
             /**

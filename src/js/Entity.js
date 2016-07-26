@@ -299,8 +299,9 @@ define('Entity', [
          * returns true if the entity is controlled by the current user
          * @return {Boolean}
          */
-        isEntityControlledByUser: function() {
-            return this.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
+        isEntityControlledByUser: function(player) {
+            var p = player || PlayerManager.getInstance().getUser();
+            return this.getDataObject().getTeam() === p.getTeam();
         },
 
         getSprite: function() {
