@@ -18,6 +18,9 @@ define('GUI', [
         // reference to the EntityManager singleton object
         entityManager,
 
+        // reference to the Manager singleton object
+        playerManager,
+
         // reference to the Map object
         map,
 
@@ -480,7 +483,7 @@ define('GUI', [
 
                     this.entityManager
                         .entities(function(entity) {
-                            return entity.isSelected() && entity.isEntityControlledByUser(entity)
+                            return entity.isSelected() && entity.isEntityControlledByUser()
                         })
                         .move({
                             x: coords.x,
@@ -576,7 +579,7 @@ define('GUI', [
                             y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
                             w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
                             h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * minimizedHeight),
-                            colors = PlayerManager.getInstance().getColors(),
+                            colors = playerManager.getColors(),
                             color = colors[entity.getDataObject().getTeam() - 1];
 
                         this.graphics.beginFill(color);
@@ -1519,9 +1522,6 @@ define('GUI', [
         }
 
         function initGUIDisplayElements() {
-
-            var playerManager = PlayerManager.getInstance();
-
             // Creating the Panel
             panel = new Panel();
             panel.appendTo(group);
@@ -1646,6 +1646,15 @@ define('GUI', [
              */
             setUserPointer: function(_userPointer) {
                 userPointer = _userPointer;
+                return this;
+            },
+
+            /**
+             * Registers the playerManager instance into the execution context
+             * @param {object} _playerManager [PlayerManager]
+             */
+            setPlayerManager: function(_playerManager) {
+                playerManager = _playerManager;
                 return this;
             },
 

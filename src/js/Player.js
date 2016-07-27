@@ -1,4 +1,4 @@
-define('Player', ['EntityManager', 'Util'], function(EntityManager, Util) {
+define('Player', ['Util'], function(Util) {
 
     function Player(config) {
         init.call(this, config);
@@ -101,8 +101,7 @@ define('Player', ['EntityManager', 'Util'], function(EntityManager, Util) {
             return this.team;
         },
 
-        getCurrentEntityNumber: function() {
-            var entityManager = EntityManager.getInstance();
+        getCurrentEntityNumber: function(entityManager) {
             return entityManager.entities(function(entity){
                 return entity.isEntityControlledByUser(this);
             }.bind(this)).length;

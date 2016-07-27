@@ -7,6 +7,7 @@ define('Game', [
     'GUI.ActivityManager',
     'UserPointer',
     'UserKeyboard',
+    'Universal.EventBus',
     'Universal.EventBusExecuter',
     'Util'
 ], function(
@@ -18,6 +19,7 @@ define('Game', [
     GUIActivityManager,
     UserPointer,
     UserKeyboard,
+    EventBus,
     EventBusExecuter,
     Util) {
 
@@ -68,7 +70,13 @@ define('Game', [
             // Generate a Map
             this.map = new Map();
             this.map.setGame(this.game);
-            
+
+            // -----------------------------------------------------------------------
+            //                                  Map
+            // -----------------------------------------------------------------------
+            // Generate a Map
+            this.playerManager = PlayerManager.getInstance();
+
             // -----------------------------------------------------------------------
             //                              EntityManager
             // -----------------------------------------------------------------------
@@ -90,7 +98,7 @@ define('Game', [
 
                 this.entityManager
                     .entities(function(entity) {
-                        return entity.isSelected() && entity.isEntityControlledByUser(entity)
+                        return entity.isSelected() && entity.isEntityControlledByUser()
                     })
                     .move({
                         x: coords.x,
@@ -168,6 +176,7 @@ define('Game', [
                 .setMap(this.map)
                 .setEntityManager(this.entityManager)
                 .setUserPointer(this.userPointer)
+                .setPlayerManager(this.playerManager)
                 .getInstance();
 
             gui = this.game.add.sprite(10, 10, 'gui');

@@ -3,8 +3,6 @@ define('Universal.Event.Player.Create', [
     'PlayerManager'
 ], function(Event, PlayerManager) {
 
-    var ns = window.fivenations;
-
     function UniversalEventPlayerCreate() {
         var args = [].slice.call(arguments);
         Event.apply(this, args);
