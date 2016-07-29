@@ -4,7 +4,9 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.Stop',
     'Universal.Event.Entity.Create',
     'Universal.Event.Entity.Remove',
-], function(EntityMove, EntityPatrol, EntityStop, EntityCreate, EntityRemove) {
+    'Universal.Event.Player.Create',
+    'Universal.Event.Player.Resource.Alter'
+], function(EntityMove, EntityPatrol, EntityStop, EntityCreate, EntityRemove, PlayerCreate, PlayerResoureAlter) {
 
     'use strict';
 
@@ -17,6 +19,8 @@ define('Universal.EventFactory', [
                 'entity/stop': new EntityStop(),
                 'entity/create': new EntityCreate(),
                 'entity/remove': new EntityRemove(),
+                'player/create': new PlayerCreate(),
+                'player/resource/alter': new PlayerResoureAlter(),
             };
 
             return {

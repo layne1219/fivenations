@@ -24,5 +24,12 @@
     "dimensions": {
         "width": 157,
         "height": 160
-    } 
+    },
+    "animations": {
+        "construction": {
+            "rate": 20,
+            "loopable": false,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    }
 }

@@ -29,7 +29,6 @@ define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
 
         };
 
-
     /**
      * Constructor function to PatrolActivity
      * @param  {[object]} entity Instance of an Entity class

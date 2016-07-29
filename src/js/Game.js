@@ -7,6 +7,7 @@ define('Game', [
     'GUI.ActivityManager',
     'UserPointer',
     'UserKeyboard',
+    'Universal.EventBus',
     'Universal.EventBusExecuter',
     'Util'
 ], function(
@@ -18,6 +19,7 @@ define('Game', [
     GUIActivityManager,
     UserPointer,
     UserKeyboard,
+    EventBus,
     EventBusExecuter,
     Util) {
 
@@ -70,23 +72,10 @@ define('Game', [
             this.map.setGame(this.game);
 
             // -----------------------------------------------------------------------
-            //                                  Players
+            //                                  Map
             // -----------------------------------------------------------------------
-            // Set up Players
+            // Generate a Map
             this.playerManager = PlayerManager.getInstance();
-            this.playerManager.addPlayer({
-                team: 1,
-                user: true
-            });
-            this.playerManager.addPlayer({
-                team: 2
-            });
-            this.playerManager.addPlayer({
-                team: 3
-            });
-            this.playerManager.addPlayer({
-                team: 4
-            });
 
             // -----------------------------------------------------------------------
             //                              EntityManager
@@ -109,7 +98,7 @@ define('Game', [
 
                 this.entityManager
                     .entities(function(entity) {
-                        return entity.isSelected() && entity.isEntityControlledByUser(entity)
+                        return entity.isSelected() && entity.isEntityControlledByUser()
                     })
                     .move({
                         x: coords.x,
@@ -187,6 +176,7 @@ define('Game', [
                 .setMap(this.map)
                 .setEntityManager(this.entityManager)
                 .setUserPointer(this.userPointer)
+                .setPlayerManager(this.playerManager)
                 .getInstance();
 
             gui = this.game.add.sprite(10, 10, 'gui');
@@ -211,6 +201,20 @@ define('Game', [
             // -----------------------------------------------------------------------
             // Kicking off the main event loop
             this.game.eventBusExecuter = EventBusExecuter.getInstance();
+
+            // -----------------------------------------------------------------------
+            //                                  Players
+            // -----------------------------------------------------------------------
+            // Set up Players
+            EventBus.getInstance().add({
+                id: 'player/create',
+                data: {
+                    guid: Util.getGUID(),
+                    name: 'Test Player',
+                    team: 1,
+                    user: true
+                }
+            });
 
             // -----------------------------------------------------------------------
             //                          Generating entities

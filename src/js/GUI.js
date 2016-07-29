@@ -18,6 +18,9 @@ define('GUI', [
         // reference to the EntityManager singleton object
         entityManager,
 
+        // reference to the Manager singleton object
+        playerManager,
+
         // reference to the Map object
         map,
 
@@ -480,7 +483,7 @@ define('GUI', [
 
                     this.entityManager
                         .entities(function(entity) {
-                            return entity.isSelected() && entity.isEntityControlledByUser(entity)
+                            return entity.isSelected() && entity.isEntityControlledByUser()
                         })
                         .move({
                             x: coords.x,
@@ -576,7 +579,7 @@ define('GUI', [
                             y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
                             w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
                             h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * minimizedHeight),
-                            colors = PlayerManager.getInstance().getColors(),
+                            colors = playerManager.getColors(),
                             color = colors[entity.getDataObject().getTeam() - 1];
 
                         this.graphics.beginFill(color);
@@ -1335,6 +1338,113 @@ define('GUI', [
 
             return ControlPanel;
 
+        })(),
+
+        // --------------------------------------------------------------------------------------
+        // ControlPanel for Selected entities
+        // --------------------------------------------------------------------------------------
+        ResourceDisplay = (function() {
+
+            function ResourceGroup(config){
+                Phaser.Group.call(this, phaserGame);
+                this.initTextComponents(config);
+            }
+
+            ResourceGroup.prototype = Object.create(Phaser.Group.prototype);
+            ResourceGroup.prototype.constructor = ResourceGroup;
+
+            ResourceGroup.prototype.initTextComponents = function(config){
+                var style = {
+                    font: '11px BerlinSansFB-Reg',
+                    fill: '#FFFFFF',
+                    boundsAlignH: 'center'
+                };
+                if (!config) config = {};
+                this.textGroup = this.add(phaserGame.add.text(config.x || 0, config.y || 0, '', style));
+                this.textGroup.setTextBounds(0, 0, 60, 15);
+            };
+
+            ResourceGroup.prototype.updateContent = function(values){
+                var current, max;
+                if (!values) values = {};
+
+                current = values.current || 0;
+                max = values.max;
+
+                this.textGroup.text = current;
+                if (max) { 
+                    this.textGroup.text += '/' + max;
+                }
+                this.textGroup.addColor('#FFFFFF', 0);
+                this.textGroup.addColor('#475D86', current.toString().length + 1);
+            };
+
+            /**
+             * Constructor
+             * @param {object} playerManager [reference to the singleton instance of PlayerManager]
+             */
+            function ResourceDisplay(playerManager) {
+                Phaser.Group.call(this, phaserGame);
+                this.setPlayerManager(playerManager);
+                this.initTextElements();
+            }
+
+            // Making the prototype inherited from Phaser.Group prototype
+            ResourceDisplay.prototype = Object.create(Phaser.Group.prototype);
+            ResourceDisplay.prototype.constructor = ResourceDisplay;
+
+            ResourceDisplay.prototype.setPlayerManager = function(playerManager) {
+                this.playerManager = playerManager;
+            };
+
+            ResourceDisplay.prototype.initTextElements = function(){
+                this.titanium = new ResourceGroup({x: 0, y: 0});
+                this.add(this.titanium);
+
+                this.silicium = new ResourceGroup({x: 76, y: 0});
+                this.add(this.silicium);
+
+                this.energy = new ResourceGroup({x: 152, y: 0});
+                this.add(this.energy);
+
+                this.uranium = new ResourceGroup({x: 228, y: 0});
+                this.add(this.uranium);
+
+                this.food = new ResourceGroup({x: 304, y: 0});
+                this.add(this.food);
+            };
+
+            ResourceDisplay.prototype.setInitialContent = function(){
+                var user = this.playerManager.getUser();
+                this.titanium.updateContent({ current: user.getTitanium() });
+                this.silicium.updateContent({ current: user.getSilicium() });
+                this.energy.updateContent({ current: user.getEnergy() });
+                this.uranium.updateContent({ current: user.getUranium() });
+                this.food.updateContent({ current: user.getCurrentEntityNumber() });
+            };
+
+            /**
+             * Appends the ResourceDisplay to the main Panel element
+             * @param  {object} panel [Panel]
+             * @param  {integer} x [horizontal offset of the ControlPanel element on the Panel]
+             * @param  {integer} y [vertical offset of the ControlPanel element on the Panel]
+             * @return {void}
+             */
+            ResourceDisplay.prototype.appendTo = function(panel, x, y) {
+
+                if (!panel) {
+                    throw 'Invalid Phaser.Sprite object!';
+                }
+
+                this.x = x;
+                this.y = y;
+                panel.addChild(this);
+
+                this.panel = panel;
+            };
+
+            return ResourceDisplay;
+
         })();
 
 
@@ -1361,6 +1471,9 @@ define('GUI', [
 
             // reference to the ControlPanel object
             controlPanel,
+
+            // reference to the ResourceDisplay object
+            resourceDisplay,
 
             // reference to a Phaser.Sprite object that displays the click animation
             clickAnim,
@@ -1409,7 +1522,6 @@ define('GUI', [
         }
 
         function initGUIDisplayElements() {
-
             // Creating the Panel
             panel = new Panel();
             panel.appendTo(group);
@@ -1425,6 +1537,10 @@ define('GUI', [
             // ControlPanel
             controlPanel = new ControlPanel(entityManager);
             controlPanel.appendTo(panel, 815, 15);
+
+            // Resource display
+            resourceDisplay = new ResourceDisplay(playerManager);
+            resourceDisplay.appendTo(panel, 425, 88);
         }
 
 
@@ -1530,6 +1646,15 @@ define('GUI', [
              */
             setUserPointer: function(_userPointer) {
                 userPointer = _userPointer;
+                return this;
+            },
+
+            /**
+             * Registers the playerManager instance into the execution context
+             * @param {object} _playerManager [PlayerManager]
+             */
+            setPlayerManager: function(_playerManager) {
+                playerManager = _playerManager;
                 return this;
             },
 

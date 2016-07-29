@@ -168,6 +168,8 @@ define('EntityManager', [
              * @param {[type]} config [description]
              */
             $.add = function(config) {
+                if (!config) return;
+                if (!config.guid) config.guid = Util.getGUID();
                 EventBus.getInstance().add({
                     id: 'entity/create',
                     data: config

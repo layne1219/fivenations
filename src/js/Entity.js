@@ -41,6 +41,9 @@ define('Entity', [
             // helper variable for storing whether the input is over the sprite
             sprite.hover = false;
 
+            // sets the animations defined in the DO
+            extendSpriteWithAnimations(sprite, dataObject);
+
             // applying event listeners on the passed sprite object
             extendSpriteWithEventListeners(entity, sprite, dataObject);
 
@@ -52,6 +55,21 @@ define('Entity', [
             sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
 
             return sprite;
+        },
+
+        /**
+         * Registers animations sequences against the given sprite object if there is any specified in the DO 
+         * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
+         * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
+         * @return {void}
+         */
+        extendSpriteWithAnimations = function(sprite, dataObject){
+            var animations = dataObject.getAnimations();
+            if (!animations || typeof animations !== 'object') return;
+            Object.keys(animations).forEach(function(key){
+                var data = animations[key];
+                sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            });
         },
 
         /**
@@ -144,7 +162,7 @@ define('Entity', [
         this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
 
         // ActivityManager
-        this.activityManager = new ActivityManager();
+        this.activityManager = new ActivityManager(this);
 
         // MotionManager for altering the coordinates of the entity
         this.motionManager = new MotionManager(this);
@@ -281,8 +299,10 @@ define('Entity', [
          * returns true if the entity is controlled by the current user
          * @return {Boolean}
          */
-        isEntityControlledByUser: function() {
-            return this.getDataObject().getTeam() === PlayerManager.getInstance().getUser().getTeam();
+        isEntityControlledByUser: function(player) {
+            var p = player || PlayerManager.getInstance().getUser();
+            if (!p) return false;
+            return this.getDataObject().getTeam() === p.getTeam();
         },
 
         getSprite: function() {
@@ -311,6 +331,18 @@ define('Entity', [
 
         getId: function() {
             return this.guid;
+        },
+
+        getAnimationManager: function() {
+            return this.sprite.animations;
+        },
+
+        getAnimationByKey: function(key) {
+            var animations = this.getAnimations();
+            if (!animations){
+                return null;
+            }
+            return animations.getAnimation(key);
         }
 
     };

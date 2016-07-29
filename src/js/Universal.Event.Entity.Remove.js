@@ -22,7 +22,6 @@ define('Universal.Event.Entity.Remove', [
             return;
         }
         options.targets.forEach(function(id) {
-            console.log(id);
             var entity = ns.game.entityManager.entities(id).single();
             ns.game.entityManager.remove(entity);
         });        
