@@ -301,6 +301,7 @@ define('Entity', [
          */
         isEntityControlledByUser: function(player) {
             var p = player || PlayerManager.getInstance().getUser();
+            if (!p) return false;
             return this.getDataObject().getTeam() === p.getTeam();
         },
 

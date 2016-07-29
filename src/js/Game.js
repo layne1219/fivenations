@@ -211,7 +211,8 @@ define('Game', [
                 data: {
                     guid: Util.getGUID(),
                     name: 'Test Player',
-                    team: 1
+                    team: 1,
+                    user: true
                 }
             });
 
