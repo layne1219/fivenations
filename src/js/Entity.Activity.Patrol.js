@@ -1,7 +1,6 @@
 define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
 
-    // Private functions
-    var
+    var MIN_DISTANCE_TO_TARGET = 50,
 
     /**
      * Calculate the distance between the start and end point of the line through which 
@@ -19,10 +18,10 @@ define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
          */
         moveEntityToPatrolPositions = function() {
 
-            if (this.dest.distance < 15 && this.currentTarget === 'dest') {
+            if (this.dest.distance < MIN_DISTANCE_TO_TARGET && this.currentTarget === 'dest') {
                 this.entity.moveTo(this.start.x, this.start.y);
                 this.currentTarget = 'start';
-            } else if (this.start.distance < 15 && this.currentTarget === 'start') {
+            } else if (this.start.distance < MIN_DISTANCE_TO_TARGET && this.currentTarget === 'start') {
                 this.entity.moveTo(this.dest.x, this.dest.y);
                 this.currentTarget = 'dest';
             }

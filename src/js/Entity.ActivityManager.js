@@ -32,9 +32,11 @@ define('Entity.ActivityManager', [
                 activity.setManager(this);
                 activity.activate();
                 activities.push(activity);
+                console.log(activity);
             },
 
             remove: function(activity) {
+                console.log(activity);
                 for (var i = 0; i < activities.length; i += 1) {
                     if (activities[i] === activity) {
                         this.removeByIndex(i);
