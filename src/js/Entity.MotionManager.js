@@ -9,6 +9,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
 
         this.game = entity.game;
 
+        this.dispatcher = new Util.EventDispatcher();
+
         this.entity = entity;
         this.sprite = entity.getSprite();
         this.effects = [];
@@ -270,6 +272,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.movement.velocity = 0;
             this.rotation.angularVelocity = 0;
 
+            this.dispatcher.dispatch('end');
+
             return false;
         },
 
@@ -290,6 +294,34 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             // rotating with default speed until the entity arrives at the target angle 
             this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
             return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;
+        },
+
+        /**
+         * Registers a callback to the given event
+         * @param  {string} event
+         * @param  {Function} callback 
+         * @return {void}            
+         */
+        on: function(event, callback) {
+            this.dispatcher.addEventListener(event, callback);
+        },
+
+        /**
+         * Registers a callback to the given event that will be called only once
+         * @param  {string} event
+         * @param  {Function} callback 
+         * @return {void}            
+         */
+        once: function(event, callback) {
+            var once;
+            if (typeof callback !== 'function') {
+                return;
+            }
+            once = function(){
+                callback();
+                this.dispatcher.removeEventListener(event, once);
+            }.bind(this);
+            this.dispatcher.addEventListener(event, once);
         }
     };
 

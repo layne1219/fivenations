@@ -228,12 +228,7 @@ define('Game', [
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
-            }                            
-
-            this.entityManager.entities().move({ 
-                x: Util.rnd(0, 500),
-                y: Util.rnd(0, 500)
-            });
+            }
 
         },
 
