@@ -19,13 +19,15 @@ define('Entity.Activity.Move', ['Entity.Activity'], function(Activity) {
      * @return {[void]}
      */
     Move.prototype.activate = function() {
-        Activity.prototype.activate.call(this);
         if (this.entity) {
             this.entity.getMotionManager().moveTo(this.coords.x, this.coords.y);
-            this.entity.getMotionManager().once('end', function(){
-                this.kill();
-            }.bind(this));
+            if (!this.isActivated()) {
+                this.entity.getMotionManager().once('end', function() {
+                    this.kill();
+                }.bind(this));
+            }
         }
+        Activity.prototype.activate.call(this);
     };
 
     /**

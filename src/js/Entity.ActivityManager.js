@@ -9,7 +9,8 @@ define('Entity.ActivityManager', [
 
     function ActivityManager(entity) {
 
-        var activities = [];
+        var activities = [],
+            lastId = 0;
 
         return {
 
@@ -31,6 +32,8 @@ define('Entity.ActivityManager', [
                 }              
                 activities.push(activity);
                 activity.setManager(this);
+                lastId += 1;
+                activity.setId(lastId);
                 // @TODO review this dependency 
                 // activities.push needs to go first here since the "activate" function might have 
                 // dependency on the activity queue
@@ -40,12 +43,11 @@ define('Entity.ActivityManager', [
 
             remove: function(activity) {
                 for (var i = 0; i < activities.length; i += 1) {
-                    if (activities[i] === activity) {
+                    if (activities[i].getId() === activity.getId()) {
                         this.removeByIndex(i);
                         break;
                     }
                 }
-                console.log(activities);                                
             },
 
             removeByIndex: function(idx) {
@@ -57,9 +59,7 @@ define('Entity.ActivityManager', [
                 activities.splice(idx, 1);
                 if (activities.length > 0) {
                     lastItem = activities[activities.length - 1];
-                    if (!lastItem.isActivated()){
-                        lastItem.activate();
-                    }
+                    lastItem.activate();
                 }
             },
 

@@ -19,6 +19,14 @@ define('Entity.Activity', function() {
             this.active = false;
         },
 
+        kill: function() {
+            this.manager.remove(this);
+        },
+
+        setId: function(id) {
+            this.id = id;
+        },
+
         setManager: function(manager) {
             if (!manager) {
                 throw 'The passed Activity Manager object is invalid!';
@@ -26,12 +34,12 @@ define('Entity.Activity', function() {
             this.manager = manager;
         },
 
-        kill: function() {
-            this.manager.remove(this);
-        },
-
         isActivated: function() {
             return this.active;
+        },
+
+        getId: function(id) {
+            return id;
         }
 
     };
