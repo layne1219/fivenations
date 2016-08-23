@@ -22,7 +22,7 @@ define('Entity.Activity.Move', ['Entity.Activity'], function(Activity) {
         if (this.entity) {
             this.entity.getMotionManager().moveTo(this.coords.x, this.coords.y);
             if (!this.isActivated()) {
-                this.entity.getMotionManager().once('end', function() {
+                this.entity.getMotionManager().once('arrive', function() {
                     this.kill();
                 }.bind(this));
             }

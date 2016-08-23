@@ -36,6 +36,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             framePadding: (dataObject.getAnimType().length && (dataObject.getAnimType().length + 1)) || 1
         };
 
+        this.isEntityArrivedAtDestination = false;
+
     }
 
     MotionManager.prototype = {
@@ -69,6 +71,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.movement.originX = x;
             this.movement.originY = y;
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
+
+            this.isEntityArrivedAtDestination = false;
 
             this.resetEffects();
             if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
@@ -180,7 +184,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          * @return {[void]}
          */
         updateEffects: function() {
-            // invoking the first effect as long as it returns false 
+            // invoking the first effect as long as it returns true
+            // then remove ti  
             while (this.effects[0]) {
                 if (!this.effects[0][0].apply(this, this.effects[0].slice(1))) {
                     this.effects.splice(0, 1);
@@ -237,7 +242,13 @@ define('Entity.MotionManager', ['Util'], function(Util) {
         moveToTarget: function() {
 
             this.movement.acceleration = 0;
-            return this.movement.distance > this.movement.targetDragTreshold;
+            if (this.movement.distance > this.movement.targetDragTreshold){
+                return true;
+            } else {
+                this.isEntityArrivedAtDestination = true;
+                return false;
+            }
+            
         },
 
         /**
@@ -257,7 +268,14 @@ define('Entity.MotionManager', ['Util'], function(Util) {
         stopping: function() {
 
             this.movement.acceleration = -this.movement.maxAcceleration;
-            return this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0;
+            if (this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0){
+                return true;
+            } else {
+                if (this.isEntityArrivedAtDestination){
+                    this.dispatcher.dispatch('arrive');
+                }
+                return false;
+            }
 
         },
 
@@ -271,8 +289,6 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.movement.acceleration = 0;
             this.movement.velocity = 0;
             this.rotation.angularVelocity = 0;
-
-            this.dispatcher.dispatch('end');
 
             return false;
         },
