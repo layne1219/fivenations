@@ -45,21 +45,27 @@ define('Entity.MotionManager', ['Util'], function(Util) {
         /**
          * Make the entity move from its current position to the target coords. The operation also 
          * calculates all the required helper variables including the rotoation.
-         * @param  {[integer]} targetX [X coordinate of the target location]
-         * @param  {[integer]} targetY [Y coordinate of the target location]
-         * @return {[void]}
+         * @param  {object} activity Reference to the given Activity instance
+         * @return {void}
          */
-        moveTo: function(targetX, targetY) {
-            var x = this.sprite.x,
-                y = this.sprite.y,
-                distance = Phaser.Math.distance(x, y, targetX, targetY),
-                rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
+        moveTo: function(activity) {
+            var targetCoords, distance, rotationOffset;
 
-            this.movement.targetX = targetX;
-            this.movement.targetY = targetY;
+            if (!activity) {
+                throw 'Invalid Activity instance has been passed!';
+            }
+
+            this.activity = activity;
+
+            targetCoords = activity.getCoords();
+            distance = Phaser.Math.distance(this.sprite.x, this.sprite.y, targetCoords.x, targetCoords.y);
+            rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
+
+            this.movement.targetX = targetCoords.x;
+            this.movement.targetY = targetCoords.y;
             this.movement.targetInitialDistance = distance;
 
-            this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetY - y, targetX - x));
+            this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetCoords.y - this.sprite.y, targetCoords.x - this.sprite.x));
             if (this.rotation.calculatedAngle < 0) {
                 this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
             }
@@ -68,8 +74,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
             this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
 
-            this.movement.originX = x;
-            this.movement.originY = y;
+            this.movement.originX = this.sprite.x;
+            this.movement.originY = this.sprite.y;
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.isEntityArrivedAtDestination = false;
@@ -272,6 +278,9 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 return true;
             } else {
                 if (this.isEntityArrivedAtDestination){
+                    if (this.activity) {
+                        this.activity.kill();
+                    }
                     this.dispatcher.dispatch('arrive');
                 }
                 return false;
@@ -329,15 +338,13 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          * @return {void}            
          */
         once: function(event, callback) {
-            var once;
             if (typeof callback !== 'function') {
                 return;
             }
-            once = function(){
+            this.dispatcher.addEventListener(event, function once() {
                 callback();
                 this.dispatcher.removeEventListener(event, once);
-            }.bind(this);
-            this.dispatcher.addEventListener(event, once);
+            }.bind(this));
         }
     };
 
