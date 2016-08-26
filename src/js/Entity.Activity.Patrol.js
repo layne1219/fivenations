@@ -2,26 +2,39 @@ define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
 
     var MIN_DISTANCE_TO_TARGET = 50,
 
-    /**
-     * Calculate the distance between the start and end point of the line through which 
-     * the entity traverses in patrol mode
-     * @return {[void]}
-     */
-        calculateDistance = function() {
-            this.start.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.start.x, this.start.y);
-            this.dest.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.dest.x, this.dest.y);
-        },
-
         /**
          * Manage the back and forth nature of moving the entity
          * @return {[void]}
          */
         moveEntityToPatrolPositions = function() {
 
+            if (!this.entity) return;
+
+            calculateDistance.call(this);
+            createMoveActivity.call(this);
+
+        },
+
+        /**
+         * Calculate the distance between the start and end point of the line through which 
+         * the entity traverses in patrol mode
+         * @return {[void]}
+         */
+        calculateDistance = function() {
+            this.start.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.start.x, this.start.y);
+            this.dest.distance = Phaser.Math.distance(this.entity.getSprite().x, this.entity.getSprite().y, this.dest.x, this.dest.y);
+        },
+
+        /**
+         * Creates Activity.Move instance according to the state of the patrol activity
+         * @return {void}
+         */
+        createMoveActivity = function() {
+
             if (this.dest.distance < MIN_DISTANCE_TO_TARGET && this.currentTarget === 'dest') {
                 this.entity.moveTo(this.start.x, this.start.y);
                 this.currentTarget = 'start';
-            } else if (this.start.distance < MIN_DISTANCE_TO_TARGET && this.currentTarget === 'start') {
+            } else {
                 this.entity.moveTo(this.dest.x, this.dest.y);
                 this.currentTarget = 'dest';
             }
@@ -55,7 +68,6 @@ define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
      * @return {[void]}
      */
     PatrolActivity.prototype.update = function() {
-        calculateDistance.call(this);
         moveEntityToPatrolPositions.call(this);
     };
 
@@ -65,9 +77,7 @@ define('Entity.Activity.Patrol', ['Entity.Activity'], function(Activity) {
      */
     PatrolActivity.prototype.activate = function() {
         Activity.prototype.activate.call(this);
-        if (this.entity) {
-            this.entity.moveTo(this[this.currentTarget].x, this[this.currentTarget].y);
-        }
+        moveEntityToPatrolPositions.call(this);
     };
 
     /**

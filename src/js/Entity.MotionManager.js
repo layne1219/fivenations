@@ -37,6 +37,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
         };
 
         this.isEntityArrivedAtDestination = false;
+        this.isEntityStoppedAtDestination = false;
 
     }
 
@@ -79,6 +80,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.isEntityArrivedAtDestination = false;
+            this.isEntityStoppedAtDestination = false;
 
             this.resetEffects();
             if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
@@ -110,11 +112,10 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          */
         update: function() {
 
-            // updating all the helper values to alter the entity properties which take part in the movements 
             this.updateVelocity();
             this.updateRotation();
-            // this should be the last invoked function here
             this.updateEffects();
+            this.executeChecks();
 
         },
 
@@ -191,7 +192,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          */
         updateEffects: function() {
             // invoking the first effect as long as it returns true
-            // then remove ti  
+            // then remove it  
             while (this.effects[0]) {
                 if (!this.effects[0][0].apply(this, this.effects[0].slice(1))) {
                     this.effects.splice(0, 1);
@@ -278,10 +279,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 return true;
             } else {
                 if (this.isEntityArrivedAtDestination){
-                    if (this.activity) {
-                        this.activity.kill();
-                    }
-                    this.dispatcher.dispatch('arrive');
+                    this.isEntityStoppedAtDestination = true;
                 }
                 return false;
             }
@@ -319,6 +317,21 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             // rotating with default speed until the entity arrives at the target angle 
             this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
             return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;
+        },
+
+        /**
+         * Executes checks after altering the position of the given entity has been ran
+         * @return {void}
+         */
+        executeChecks: function() {
+            if (this.isEntityStoppedAtDestination){
+                if (this.activity) {
+                    this.activity.kill();
+                }
+                this.dispatcher.dispatch('arrive');
+                this.isEntityStoppedAtDestination = false;
+                this.isEntityArrivedAtDestination = false;
+            }
         },
 
         /**

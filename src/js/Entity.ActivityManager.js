@@ -35,16 +35,17 @@ define('Entity.ActivityManager', [
                 // activities.push needs to go first here since the "activate" function might have 
                 // dependency on the activity queue
                 activity.activate();
-                console.log(activities);                  
+                console.log(activities);
             },
 
             remove: function(activity) {
                 for (var i = 0; i < activities.length; i += 1) {
-                    if (activities[i] === activity) {
+                    if (activities[i] === activity)  {
                         this.removeByIndex(i);
                         break;
                     }
                 }
+                console.log(activities);
             },
 
             removeByIndex: function(idx) {
