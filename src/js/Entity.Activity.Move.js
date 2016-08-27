@@ -19,11 +19,10 @@ define('Entity.Activity.Move', ['Entity.Activity'], function(Activity) {
      * @return {[void]}
      */
     Move.prototype.activate = function() {
-        Activity.prototype.activate.call(this);
         if (this.entity) {
-            this.entity.getMotionManager().moveTo(this.coords.x, this.coords.y);
+            this.entity.getMotionManager().moveTo(this);
         }
-        this.kill();
+        Activity.prototype.activate.call(this);
     };
 
     /**
@@ -35,6 +34,14 @@ define('Entity.Activity.Move', ['Entity.Activity'], function(Activity) {
             throw 'The given paramater is invalid to set up the coordinates!';
         }
         this.coords = coords;
+    };
+
+    /**
+     * Returns the coordinates to which the entity moves 
+     * @return {object} object literal that contains the coordinates
+     */
+    Move.prototype.getCoords = function() {
+        return this.coords;
     };
 
     return Move;

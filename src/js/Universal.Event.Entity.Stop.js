@@ -22,11 +22,11 @@ define('Universal.Event.Entity.Stop', ['Universal.Event'], function(Event) {
      * }
      */
     UniversalEventEntityStop.prototype.execute = function(options) {
-        if (!options.targets || !options.data) {
+        if (!options.targets) {
             return;
         }
         options.targets.forEach(function(id) {
-            ns.game.entityManager.entitites(id).single().stop();
+            ns.game.entityManager.entities(id).single().stop();
         });
     };
 

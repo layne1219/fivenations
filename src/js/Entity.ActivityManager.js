@@ -24,32 +24,41 @@ define('Entity.ActivityManager', [
                     throw 'You must extend the manager with an object inherits from Activity!';
                 }
                 // removes the current activiy if it's Idle
-                if (!activity instanceof Idle && l > 0){
+                if (!(activity instanceof Idle) && l > 0){
                     if (activities[currentIdx] instanceof Idle){
                         this.removeByIndex(currentIdx);
                     }
-                }
-                activity.setManager(this);
-                activity.activate();
+                }              
                 activities.push(activity);
+                activity.setManager(this);
+                // @TODO review this dependency 
+                // activities.push needs to go first here since the "activate" function might have 
+                // dependency on the activity queue
+                activity.activate();
+                console.log(activities);
             },
 
             remove: function(activity) {
                 for (var i = 0; i < activities.length; i += 1) {
-                    if (activities[i] === activity) {
+                    if (activities[i] === activity)  {
                         this.removeByIndex(i);
                         break;
                     }
                 }
+                console.log(activities);
             },
 
             removeByIndex: function(idx) {
+                var lastItem;
                 if (!activities[idx]){
                     return;
                 }
                 activities[idx].deactivate();
                 activities.splice(idx, 1);
-                activities[activities.length - 1].activate();
+                if (activities.length > 0) {
+                    lastItem = activities[activities.length - 1];
+                    lastItem.activate();
+                }
             },
 
             removeAll: function() {

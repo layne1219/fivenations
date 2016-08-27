@@ -19,15 +19,15 @@ define('Entity.Activity', function() {
             this.active = false;
         },
 
+        kill: function() {
+            this.manager.remove(this);
+        },
+
         setManager: function(manager) {
             if (!manager) {
                 throw 'The passed Activity Manager object is invalid!';
             }
             this.manager = manager;
-        },
-
-        kill: function() {
-            this.manager.remove(this);
         },
 
         isActivated: function() {
