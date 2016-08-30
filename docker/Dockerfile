@@ -37,6 +37,7 @@ RUN npm start
 
 # run a NodeJS server and expose the app
 WORKDIR ${FIVE_NATIONS_PATH}
+RUN npm run build
 CMD npm run start-server
 
 # Run app
