@@ -4,7 +4,10 @@
   "readme": "",
   "repository": "",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.14.0",
+    "forever": "^0.15.2"
+  },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
     "del": "^2.2.0",
@@ -30,6 +33,7 @@
     "start": "node ./node_modules/gulp/bin/gulp.js",
     "build": "node ./node_modules/gulp/bin/gulp.js build",
     "lint": "node ./node_modules/gulp/bin/gulp.js lint",
-    "start-server": "node ./node_modules/gulp/bin/gulp.js publish"
+    "start-server": "forever start app.js",
+    "stop-server": "forever stopall"
   }
 }

@@ -87,14 +87,6 @@ gulp.task('connect', function () {
   });
 });
 
-gulp.task('publish', ['build'], function () {
-  connect.server({
-    root: [__dirname + '/dist'],
-    port: 9000,
-    livereload: false
-  });
-});
-
 gulp.task('watch', function () {
   gulp.watch(paths.js, ['lint']);
   gulp.watch(['./src/index.html', paths.css, paths.js], ['html']);

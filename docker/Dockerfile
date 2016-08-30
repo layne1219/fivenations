@@ -37,7 +37,7 @@ RUN npm start
 
 # run a NodeJS server and expose the app
 WORKDIR ${FIVE_NATIONS_PATH}
-CMD gulp publish
+CMD npm run start-server
 
 # Run app
 EXPOSE 9000 8899
