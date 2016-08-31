@@ -16,7 +16,7 @@ gulp build
 
 Execute local HTTP server that listens on port 9000
 ```
-gulp publish
+npm run start-server
 ```
 
 Open the application in a browser
@@ -29,9 +29,9 @@ http://127.0.0.1:9000
 Clone the project and build a docker image by runnning 
 ```
 cd docker
-docker build -n fivenations ./
+docker build -n silversword/fivenations ./
 ```
 Run the docker image in a new container 
 ```
-docker run -t -d -p 9000:9000 fivenations
+docker run -t -d -p 9000:9000 -p 8899:8899 silversword/fivenations
 ```
