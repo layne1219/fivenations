@@ -99,6 +99,15 @@ define('Map', ['Starfield'], function(Starfield) {
             return this.config.tiles.height;
         },
 
+        getTileWidth: function() {
+            return this.config.tiles.tileWidth;
+        },
+
+        getTileHeight: function() {
+            return this.config.tiles.tileHeight;
+        },
+
+
         getTileByEntity: function(entity) {
             if (!entity) throw 'Invalid entity was given!';
             var sprite = entity.getSprite(),
