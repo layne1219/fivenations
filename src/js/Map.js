@@ -1,4 +1,4 @@
-define('Map', ['Starfield'], function(Starfield) {
+define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
 
     // map configration template
     var defaultConfig = {
@@ -47,9 +47,11 @@ define('Map', ['Starfield'], function(Starfield) {
             game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
 
             this.starfield = new Starfield(this, 0.75);
+
+            this.fogofwar = Fogofwar.create(this);
         },
 
-        update: function() {
+        update: function(entityManager) {
             this.starfield.update();
         },
 
@@ -107,6 +109,9 @@ define('Map', ['Starfield'], function(Starfield) {
             return this.config.tiles.tileHeight;
         },
 
+        getFogofwar: function() {
+            return this.fogofwar;
+        },
 
         getTileByEntity: function(entity) {
             if (!entity) throw 'Invalid entity was given!';

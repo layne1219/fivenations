@@ -240,7 +240,7 @@ define('Game', [
             this.game.eventBusExecuter.run();
 
             // Rendering the map
-            this.map.update();
+            this.map.update(this.entityManager);
 
             // updating entity attributes according to the time elapsed
             this.entityManager.update(this.getDelta());
