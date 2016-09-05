@@ -27,6 +27,13 @@ define('Map.Fogofwar', function() {
 
             isVisible: function(x, y) {
                 return tiles[y][x];
+            },
+
+            update: function(entityManager){
+                entityManager.entities(':user').raw().forEach(function(entity){
+                    var tile = entity.getTile(map);
+                    this.visit(tile[0], tile[1]);
+                }.bind(this));
             }
 
         };

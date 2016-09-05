@@ -1,5 +1,8 @@
 define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
 
+    var FOG_OF_WAR_REFRESH_RATE = 50,
+        fogofwar_refresh_counter = 0;
+
     // map configration template
     var defaultConfig = {
         tiles: {
@@ -53,6 +56,11 @@ define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
 
         update: function(entityManager) {
             this.starfield.update();
+
+            fogofwar_refresh_counter += 1;
+            if (fogofwar_refresh_counter > FOG_OF_WAR_REFRESH_RATE) {
+                this.getFogofwar().update(entityManager);
+            }
         },
 
         scrollTo: function(x, y) {
@@ -111,14 +119,6 @@ define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
 
         getFogofwar: function() {
             return this.fogofwar;
-        },
-
-        getTileByEntity: function(entity) {
-            if (!entity) throw 'Invalid entity was given!';
-            var sprite = entity.getSprite(),
-                x = Math.floor(sprite.x / this.config.tiles.tileWidth),
-                y = Math.floor(sprite.y / this.config.tiles.tileHeight);
-            return [x, y];
         }
 
     }
