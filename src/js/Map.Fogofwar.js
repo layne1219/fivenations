@@ -1,22 +1,10 @@
-define('Map.Fogofwar', function() {
+define('Map.Fogofwar', ['Util'], function(Util) {
 
-    var matrix = function(cols, rows){
-        var arr = [];
-        for (var i = 0; i < rows; i += 1){
-            var columns = [];
-            for (var j = 0; j < cols; j += 1){
-                columns[j] = 0;
-            }
-            arr[i] = columns;
-        }
-        return arr;
-    };
-    
-    var create = function (map){
+    var create = function (map) {
 
         if (!map) throw 'Invalid Map instance!';
 
-        var tiles = matrix(map.getWidth(), map.getHeight());
+        var tiles = Util.matrix(map.getWidth(), map.getHeight());
 
         return {
 
@@ -27,6 +15,10 @@ define('Map.Fogofwar', function() {
 
             isVisible: function(x, y) {
                 return tiles[y][x];
+            },
+
+            getMatrix: function() {
+                return tiles;
             }
 
         };

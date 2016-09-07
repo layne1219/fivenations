@@ -1,20 +1,7 @@
-define('Map.Fogofwar.Renderer', function(){
+define('Map.Fogofwar.Renderer', ['Util'], function(Util){
 
     var ns = window.fivenations,
 
-        matrix = function(cols, rows){
-            var arr = [];
-            for (var i = 0; i < rows; i += 1){
-                var columns = [];
-                for (var j = 0; j < cols; j += 1){
-                    columns[j] = 0;
-                }
-                arr[i] = columns;
-            }
-            return arr;
-        },
-
-    
         create = function (map){
 
             if (!map) throw 'Invalid Map instance!';

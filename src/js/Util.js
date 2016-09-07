@@ -76,6 +76,24 @@ define('Util', function() {
             });
         },
 
+        /**
+         * generates a matrix by the given dimension
+         * @param  {integer} cols 
+         * @param  {integer} rows 
+         * @return {object} Array
+         */
+        matrix: function(cols, rows){
+            var arr = [];
+            for (var i = 0; i < rows; i += 1){
+                var columns = [];
+                for (var j = 0; j < cols; j += 1){
+                    columns[j] = 0;
+                }
+                arr[i] = columns;
+            }
+            return arr;
+        },
+
         // Eventlistener object
         EventDispatcher: (function() {
 
