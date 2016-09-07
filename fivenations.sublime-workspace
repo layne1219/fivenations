@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"actit",
+				"activities"
+			],
+			[
+				"Patrol",
+				"PatrolActivity"
+			],
+			[
 				"p",
 				"players"
 			],
@@ -506,14 +514,6 @@
 			[
 				"cu",
 				"currentConsolidatedAngle"
-			],
-			[
-				"step",
-				"stepNumberToRight"
-			],
-			[
-				"ta",
-				"targetConsolidatedAngle"
 			]
 		]
 	},
@@ -523,31 +523,15 @@
 			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 12555,
+				"buffer_size": 9871,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/js/Universal.EventBusExecuter.js",
+			"file": "src/js/Map.Fogofwar.js",
 			"settings":
 			{
-				"buffer_size": 1342,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Universal.EventFactory.js",
-			"settings":
-			{
-				"buffer_size": 1535,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Entity.Activity.Stop.js",
-			"settings":
-			{
-				"buffer_size": 694,
+				"buffer_size": 775,
 				"line_ending": "Unix"
 			}
 		},
@@ -555,7 +539,7 @@
 			"file": "src/js/Entity.ActivityManager.js",
 			"settings":
 			{
-				"buffer_size": 2660,
+				"buffer_size": 3098,
 				"line_ending": "Unix"
 			}
 		},
@@ -563,15 +547,33 @@
 			"file": "src/js/Entity.MotionManager.js",
 			"settings":
 			{
-				"buffer_size": 12500,
+				"buffer_size": 14630,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/js/Entity.Activity.Patrol.js",
+			"contents": "Searching 48 files for \"arrive\" (case sensitive)\n\n/home/bence/dev/silversword/fivenations/src/js/Entity.MotionManager.js:\n  282                          this.activity.kill();\n  283                      }\n  284:                     this.dispatcher.dispatch('arrive');\n  285                  }\n  286                  return false;\n  ...\n  317              }\n  318  \n  319:             // rotating with default speed until the entity arrives at the target angle \n  320              this.rotation.angularVelocity = this.rotation.maxAngularVelocity;\n  321              return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;\n\n/home/bence/dev/silversword/fivenations/src/js/Util.js:\n   26  \n   27          /**\n   28:          * calculateStepTo - Mesasuring how many steps it takes to arrive at the target number by increasing\n   29           * the current index with step \n   30           * @param  {integer} start  \n\n3 matches across 2 files\n",
 			"settings":
 			{
-				"buffer_size": 2986,
+				"buffer_size": 970,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "src/js/Entity.Activity.Move.js",
+			"settings":
+			{
+				"buffer_size": 1227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/js/Entity.Activity.js",
+			"settings":
+			{
+				"buffer_size": 755,
 				"line_ending": "Unix"
 			}
 		},
@@ -580,102 +582,6 @@
 			"settings":
 			{
 				"buffer_size": 12215,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Universal.Event.Entity.Stop.js",
-			"settings":
-			{
-				"buffer_size": 992,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Universal.Event.Entity.Patrol.js",
-			"settings":
-			{
-				"buffer_size": 1150,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Entity.js",
-			"settings":
-			{
-				"buffer_size": 12693,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 994,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/fed/defenseplatform.json",
-			"settings":
-			{
-				"buffer_size": 741,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/GUI.js",
-			"settings":
-			{
-				"buffer_size": 62122,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Universal.Event.Player.Create.js",
-			"settings":
-			{
-				"buffer_size": 887,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Universal.Event.Player.Resource.Alter.js",
-			"settings":
-			{
-				"buffer_size": 1149,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Universal.Event.Entity.Create.js",
-			"settings":
-			{
-				"buffer_size": 865,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/PlayerManager.js",
-			"settings":
-			{
-				"buffer_size": 1557,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/Player.js",
-			"settings":
-			{
-				"buffer_size": 2998,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/js/GUI.ActivityManager.js",
-			"settings":
-			{
-				"buffer_size": 1214,
 				"line_ending": "Unix"
 			}
 		}
@@ -768,23 +674,40 @@
 		"/home/bence/dev/silversword/fivenations",
 		"/home/bence/dev/silversword/fivenations/bin",
 		"/home/bence/dev/silversword/fivenations/bin/release",
-		"/home/bence/dev/silversword/fivenations/src"
+		"/home/bence/dev/silversword/fivenations/src",
+		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/.gitignore",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventFactory.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBusExecuter.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Patrol.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Stop.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Player.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Entity.MotionManager.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.ActivityManager.js",
+		"/home/bence/dev/silversword/fivenations/src/js/PlayerManager.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Entity.Create.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Player.Resource.Alter.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Player.Create.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
+		"/home/bence/dev/silversword/fivenations/package.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/defenseplatform.json",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Entity.Stop.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Entity.Patrol.js",
 		"/home/bence/gergolegenybucsu",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButtonCollection.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/astrometricstation.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/weapons.json",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlButton.js",
 		"/home/bence/dev/silversword/fivenations/src/js/EntityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.Activity.SelectCoords.js",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlPage.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
 		"/home/bence/dev/gify/gulpfile.js",
 		"/home/bence/dev/gify/dist/index.html",
 		"/home/bence/dev/gify/src/js/main.entry.js",
@@ -793,23 +716,17 @@
 		"/home/bence/dev/gify/dist/js/main.js",
 		"/home/bence/dev/gify/src/css/main.css",
 		"/home/bence/dev/silversword/fivenations/src/js/main.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Player.js",
-		"/home/bence/dev/silversword/fivenations/src/js/PlayerManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBusExecuter.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBus.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Entity.Move.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.ActivityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventFactory.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.AbilityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventExecuter.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Patrol.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventDispatcher.js",
 		"/home/bence/dev/silversword/fivenations/src/js/EventBus.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UniversalEventDispatcher.js",
 		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.ActivityManager.js",
 		"/home/bence/dev/p.js",
 		"/home/bence/dev/silversword/fivenations/src/js/todos",
 		"/home/bence/dev/silversword/fivenations/src/js/GUI.ControlManager.js",
@@ -820,7 +737,6 @@
 		"/home/bence/dev/silversword/fivenations/Dockerfile",
 		"/home/bence/dev/silversword/fivenations/gulpfile.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/abilities.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.MotionManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Follow.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
@@ -908,6 +824,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"arrive",
+			"removeEventListener",
+			"moveTo",
 			"data",
 			"PlayerManager.getInstance()",
 			".add",
@@ -1032,10 +951,7 @@
 			"ControlButton",
 			"singleton",
 			"GUI_FRAME_OFFSET",
-			"controlPanelButtonIds",
-			"text",
-			":",
-			"66"
+			"controlPanelButtonIds"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1053,7 +969,7 @@
 	"groups":
 	[
 		{
-			"selected": 16,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1062,15 +978,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12555,
+						"buffer_size": 9871,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3344,
+								3344
 							]
 						],
 						"settings":
@@ -1080,27 +996,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2598.0,
+						"translation.y": 1248.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/js/Universal.EventBusExecuter.js",
+					"file": "src/js/Map.Fogofwar.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1342,
+						"buffer_size": 775,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								612,
+								612
 							]
 						],
 						"settings":
@@ -1109,88 +1025,28 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 45.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/js/Universal.EventFactory.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1535,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								893,
-								893
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/js/Entity.Activity.Stop.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 694,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "src/js/Entity.ActivityManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2660,
+						"buffer_size": 3098,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1663,
+								1663
 							]
 						],
 						"settings":
@@ -1199,28 +1055,28 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 765.0,
+						"translation.x": 0.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 3,
 					"file": "src/js/Entity.MotionManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12500,
+						"buffer_size": 14630,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								11771,
+								11771
 							]
 						],
 						"settings":
@@ -1230,27 +1086,111 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1080.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 970,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										257,
+										263
+									],
+									[
+										431,
+										437
+									],
+									[
+										811,
+										817
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/js/Entity.Activity.Move.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								785,
+								785
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "src/js/Entity.Activity.Patrol.js",
+					"file": "src/js/Entity.Activity.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2986,
+						"buffer_size": 755,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								720,
+								720
 							]
 						],
 						"settings":
@@ -1260,10 +1200,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 585.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1289,371 +1229,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 810.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/js/Universal.Event.Entity.Stop.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 992,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								907,
-								907
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/js/Universal.Event.Entity.Patrol.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1150,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1056,
-								1056
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "src/js/Entity.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12693,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8657,
-								8657
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2925.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 994,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "src/assets/datas/units/fed/defenseplatform.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 741,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								308,
-								308
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "src/js/GUI.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 62122,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 20704.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "src/js/Universal.Event.Player.Create.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 887,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "src/js/Universal.Event.Player.Resource.Alter.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1149,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "src/js/Universal.Event.Entity.Create.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 865,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								364,
-								365
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "src/js/PlayerManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1557,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1196,
-								1196
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "src/js/Player.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2998,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1350.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "src/js/GUI.ActivityManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								745,
-								745
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]

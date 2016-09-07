@@ -1,5 +1,7 @@
 define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
 
+    var FOG_OF_WAR_REFRESH_RATE = 50;
+
     // map configration template
     var defaultConfig = {
         tiles: {
@@ -43,16 +45,19 @@ define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
         setGame: function(game) {
             this.game = game;
             this.game.stage.backgroundColor = '#000';
-
             game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
+            this.initLayers();
+        },
 
+        initLayers: function() {
             this.starfield = new Starfield(this, 0.75);
-
             this.fogofwar = Fogofwar.create(this);
+            this.fogofwar.update = Util.interval(this.fogofwar.update, FOG_OF_WAR_REFRESH_RATE);
         },
 
         update: function(entityManager) {
             this.starfield.update();
+            this.fogofwar.update(entityManager);
         },
 
         scrollTo: function(x, y) {
@@ -111,14 +116,6 @@ define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
 
         getFogofwar: function() {
             return this.fogofwar;
-        },
-
-        getTileByEntity: function(entity) {
-            if (!entity) throw 'Invalid entity was given!';
-            var sprite = entity.getSprite(),
-                x = Math.floor(sprite.x / this.config.tiles.tileWidth),
-                y = Math.floor(sprite.y / this.config.tiles.tileHeight);
-            return [x, y];
         }
 
     }
