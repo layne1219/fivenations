@@ -1,4 +1,8 @@
-define('Map', ['Starfield', 'Map.Fogofwar'], function(Starfield, Fogofwar) {
+define('Map', [
+    'Starfield', 
+    'Map.Fogofwar', 
+    'Util'
+], function(Starfield, Fogofwar, Util) {
 
     var FOG_OF_WAR_REFRESH_RATE = 50;
 
