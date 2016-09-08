@@ -56,7 +56,7 @@ define('Map', [
         initLayers: function() {
             this.starfield = new Starfield(this, 0.75);
             this.fogofwar = Fogofwar.create(this);
-            this.fogofwar.update = Util.interval(this.fogofwar.update, FOG_OF_WAR_REFRESH_RATE);
+            this.fogofwar.update = Util.interval(this.fogofwar.update, FOG_OF_WAR_REFRESH_RATE, this.fogofwar);
         },
 
         update: function(entityManager) {

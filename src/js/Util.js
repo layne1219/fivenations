@@ -98,15 +98,16 @@ define('Util', function() {
          * Calls the given callback at intervals acoording to the given rate
          * @param  {Function} callback 
          * @param  {integer}    rate - every n(th) tick at which the callback will be called
+         * @param  {object}     ctx - context in which the function is executed
          * @return {Function} Function that checks if the given callback is due to be triggered
          */
-        interval: function(callback, rate) {
+        interval: function(callback, rate, ctx) {
             var counter = 0;
             return function(){
                 counter +=1;
                 if (counter > rate){
                     counter = 0;
-                    callback.apply(null, Array.prototype.slice(arguments));
+                    callback.apply(ctx || null, Array.prototype.slice.call(arguments));
                 }
             };
         },
@@ -115,15 +116,16 @@ define('Util', function() {
          * Calls the given callback at intervals acoording to the given delay
          * @param  {Function} callback 
          * @param  {integer}    rate - every n(th) tick at which the callback will be called
+         * @param  {object}     ctx - context in which the function is executed
          * @return {Function} Function that checks if the given callback is due to be triggered
          */
-        intervalMilliseconds: function(callback, milliseconds) {
+        intervalMilliseconds: function(callback, milliseconds, ctx) {
             var last = new Date().getTime(),
                 now;
             return function(){
                 now = new Date().getTime();
                 if (now - last > milliseconds){
-                    callback.apply(null, Array.prototype.slice.call(arguments));
+                    callback.apply(ctx || null, Array.prototype.slice.call(arguments));
                 }
                 last = now;
             };
