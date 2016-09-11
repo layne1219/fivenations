@@ -211,11 +211,8 @@ define('EntityManager', [
 
                 team = config.team || 1,
 
-                // sprite Ids are consisted of the sprite name and the colour id
-                spriteId = [config.id, team].join('-'),
-
                 // instanciating a Phaser.Game.Sprite objet for the entity
-                sprite = phaserGame.add.sprite(0, 0, spriteId),
+                sprite = phaserGame.add.sprite(0, 0, config.id),
 
                 // fomring the DataObject instance from the preloaded JSON file
                 dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
