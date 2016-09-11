@@ -76,6 +76,61 @@ define('Util', function() {
             });
         },
 
+        /**
+         * generates a matrix by the given dimension
+         * @param  {integer} cols 
+         * @param  {integer} rows 
+         * @return {object} Array
+         */
+        matrix: function(cols, rows){
+            var arr = [];
+            for (var i = 0; i < rows; i += 1){
+                var columns = [];
+                for (var j = 0; j < cols; j += 1){
+                    columns[j] = 0;
+                }
+                arr[i] = columns;
+            }
+            return arr;
+        },
+
+        /**
+         * Calls the given callback at intervals acoording to the given rate
+         * @param  {Function} callback 
+         * @param  {integer}    rate - every n(th) tick at which the callback will be called
+         * @param  {object}     ctx - context in which the function is executed
+         * @return {Function} Function that checks if the given callback is due to be triggered
+         */
+        interval: function(callback, rate, ctx) {
+            var counter = 0;
+            return function(){
+                counter +=1;
+                if (counter > rate){
+                    counter = 0;
+                    callback.apply(ctx || null, Array.prototype.slice.call(arguments));
+                }
+            };
+        },
+
+        /**
+         * Calls the given callback at intervals acoording to the given delay
+         * @param  {Function} callback 
+         * @param  {integer}    rate - every n(th) tick at which the callback will be called
+         * @param  {object}     ctx - context in which the function is executed
+         * @return {Function} Function that checks if the given callback is due to be triggered
+         */
+        intervalMilliseconds: function(callback, milliseconds, ctx) {
+            var last = new Date().getTime(),
+                now;
+            return function(){
+                now = new Date().getTime();
+                if (now - last > milliseconds){
+                    callback.apply(ctx || null, Array.prototype.slice.call(arguments));
+                }
+                last = now;
+            };
+        },
+
         // Eventlistener object
         EventDispatcher: (function() {
 

@@ -149,6 +149,10 @@ define('EntityManager', [
                         targets = entities.filter(function(entity) {
                             return entity.isSelected();
                         });
+                    } else if (filter === ':user'){
+                        targets = entities.filter(function(entity) {
+                            return entity.isEntityControlledByUser();
+                        });
                     } else {
                         targets = entities.filter(function(entity) {
                             return entity.getId() === filter;

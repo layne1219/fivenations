@@ -1,19 +1,26 @@
-define('Map', ['Starfield'], function(Starfield) {
+define('Map', [
+    'Starfield', 
+    'Map.Fogofwar', 
+    'Util'
+], function(Starfield, Fogofwar, Util) {
+
+    var FOG_OF_WAR_REFRESH_RATE = 50;
 
     // map configration template
     var defaultConfig = {
-            tiles: {
-                tileWidth: 40,
-                tileHeight: 40,
-                width: 32,
-                height: 32
-            },
-            scrollSpeed: 10
+        tiles: {
+            tileWidth: 40,
+            tileHeight: 40,
+            width: 32,
+            height: 32
         },
+        scrollSpeed: 10
+    };
 
-        Map = function(config) {
-            this.init(config);
-        }
+    function Map(config) {
+        this.init(config);
+        this.validateMapConfig();
+    }
 
     Map.prototype = {
 
@@ -21,18 +28,40 @@ define('Map', ['Starfield'], function(Starfield) {
             this.config = config || defaultConfig;
         },
 
+        validateMapConfig: function() {
+            if (!this.config || !this.config.tiles) {
+                throw 'Invalid config data!';
+            }
+            if (!this.config.tiles.tileWidth) {
+                throw 'Invalid tileWidth property!';
+            }
+            if (!this.config.tiles.tileHeight) {
+                throw 'Invalid tileHeight property!';
+            }
+            if (!this.config.tiles.width) {
+                throw 'Invalid width property!';
+            }
+            if (!this.config.tiles.height) {
+                throw 'Invalid height property!';
+            }
+        },        
+
         setGame: function(game) {
             this.game = game;
             this.game.stage.backgroundColor = '#000';
-
             game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
-
-            this.starfield = new Starfield(this, 0.75);
-
+            this.initLayers();
         },
 
-        update: function() {
+        initLayers: function() {
+            this.starfield = new Starfield(this, 0.75);
+            this.fogofwar = Fogofwar.create(this);
+            this.fogofwar.update = Util.interval(this.fogofwar.update, FOG_OF_WAR_REFRESH_RATE, this.fogofwar);
+        },
+
+        update: function(entityManager) {
             this.starfield.update();
+            this.fogofwar.update(entityManager);
         },
 
         scrollTo: function(x, y) {
@@ -66,41 +95,31 @@ define('Map', ['Starfield'], function(Starfield) {
         },
 
         getScreenWidth: function() {
-            this.validateMapConfig();
             return this.config.tiles.tileWidth * this.config.tiles.width;
         },
 
         getScreenHeight: function() {
-            this.validateMapConfig();
-            return this.config.tiles.tileWidth * this.config.tiles.width;
+            return this.config.tiles.tileHeight * this.config.tiles.height;
         },
 
         getWidth: function() {
-            this.validateMapConfig();
             return this.config.tiles.width;
         },
 
         getHeight: function() {
-            this.validateMapConfig();
-            return this.config.tiles.width;
+            return this.config.tiles.height;
         },
 
-        validateMapConfig: function() {
-            if (!this.config || !this.config.tiles) {
-                throw 'Invalid config data!';
-            }
-            if (!this.config.tiles.tileWidth) {
-                throw 'Invalid tileWidth property!';
-            }
-            if (!this.config.tiles.tileHeight) {
-                throw 'Invalid tileHeight property!';
-            }
-            if (!this.config.tiles.width) {
-                throw 'Invalid width property!';
-            }
-            if (!this.config.tiles.height) {
-                throw 'Invalid height property!';
-            }
+        getTileWidth: function() {
+            return this.config.tiles.tileWidth;
+        },
+
+        getTileHeight: function() {
+            return this.config.tiles.tileHeight;
+        },
+
+        getFogofwar: function() {
+            return this.fogofwar;
         }
 
     }

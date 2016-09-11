@@ -11,11 +11,11 @@
   "author": "Bence Varga <vbence86@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "forever": "^0.15.2",
     "express": "^4.13.4"
   },
   "devDependencies": {
     "es6-promise": "^3.2.1",
-    "forever": "^0.15.2",
     "isomorphic-fetch": "^2.2.1"
   }
 }

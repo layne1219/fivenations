@@ -343,6 +343,14 @@ define('Entity', [
                 return null;
             }
             return animations.getAnimation(key);
+        },
+
+        getTile: function(map) {
+            if (!map) throw 'Invalid Map obect was given!';
+            var sprite = this.getSprite(),
+                x = Math.floor(sprite.x / map.getTileWidth()),
+                y = Math.floor(sprite.y / map.getTileHeight());
+            return [x, y];
         }
 
     };
