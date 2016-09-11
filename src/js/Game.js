@@ -220,7 +220,7 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 0; i >= 0; i -= 1) {
+            for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
