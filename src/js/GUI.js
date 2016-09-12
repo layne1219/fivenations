@@ -675,7 +675,14 @@ define('GUI', [
                     Phaser.Group.call(this, phaserGame);
 
                     // creating a Phaser.Sprite object for the entity icons
-                    this.iconSprite = this.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed'));
+                    this.iconSprites = {
+                        'gui.icons.fed': this.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
+                        'gui.icons.ath': this.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath'))
+                    };
+
+                    Object.keys(this.iconSprites).forEach(function(key) {
+                        this.iconSprites[key].visible = false;
+                    }.bind(this));
 
                     // Text objects to display entity attributes
                     this.nameElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop, '', {
@@ -726,8 +733,13 @@ define('GUI', [
                         throw 'Invalid DataObject has been passed!';
                     }
 
-                    // displaying the Splash Icon of the selected entity
+                    this.iconSprite = this.iconSprites[entityIcons[dataObject.getId()].spriteId];
                     this.iconSprite.frame = entityIcons[dataObject.getId()].faceFrame;
+                    this.iconSprite.visible = true;
+                    if (this.lastIconSprite && this.lastIconSprite !== this.iconSprite) {
+                        this.lastIconsSprite.visible = false;
+                        this.lastIconSprite = this.iconSprite;
+                    }
 
                     // Names
                     this.nameElm.text = dataObject.getName();
@@ -1077,6 +1089,8 @@ define('GUI', [
             F.prototype = {
 
                 iconSprite: null,
+                lastIconSprite: null,
+                iconSprites: {},
                 group: null,
                 panel: null,
 

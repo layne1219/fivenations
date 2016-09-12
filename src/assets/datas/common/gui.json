@@ -135,8 +135,12 @@
             "spriteId": "gui.icons.fed",
             "faceFrame": 39,
             "iconFrame": 52
+        },
+        "intruder": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 65,
+            "iconFrame": 52
         }
-
     }
 
 }

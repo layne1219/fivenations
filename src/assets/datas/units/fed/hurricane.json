@@ -7,7 +7,7 @@
 	"armor": 0,
 	"power": 0, 
 	"hangar": 0,
-	"speed": 100,
+	"speed": 50,
 	"maneuverability": 50,
 	"vision": 35,
 	"weapons": [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],

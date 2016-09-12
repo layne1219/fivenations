@@ -26,7 +26,6 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations,
-        gui,
         lastTickTime;
 
     function Game() {}
@@ -179,9 +178,9 @@ define('Game', [
                 .setPlayerManager(this.playerManager)
                 .getInstance();
 
-            gui = this.game.add.sprite(10, 10, 'gui');
-            gui.visible = true;
-            gui.frame = 1;
+            window.gui = this.game.add.sprite(10, 10, 'gui.icons.ath');
+            window.gui.visible = true;
+            window.gui.frame = 1;
             Graphics.getInstance().getGroup('entities').add(gui);
 
             // -----------------------------------------------------------------------
@@ -223,7 +222,7 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
+                    id: 'intruder',//Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)

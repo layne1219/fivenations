@@ -167,7 +167,13 @@ define('Preloader.Entities', function() {
             spriteURL: 'assets/images/units/fed/fed_build13.png',
             atlasURL: 'assets/images/units/fed/fed_build13.json',
             dataURL: 'assets/datas/units/fed/fusionreactor.json'
-        }
+        },
+        intruder: {
+            preloading: true,
+            spriteURL: 'assets/images/units/ath/ath_unit01.png',
+            atlasURL: 'assets/images/units/ath/ath_unit01.json',
+            dataURL: 'assets/datas/units/ath/intruder.json'
+        }        
 
     };
 
