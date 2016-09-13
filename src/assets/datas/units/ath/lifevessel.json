@@ -1,0 +1,27 @@
+{
+	"id": "lifevessel",
+	"name": "Life Vessel",
+	"type": "Fighter",
+	"hull": 50,
+	"shield": 50,
+	"armor": 0,
+	"power": 450, 
+	"hangar": 0,
+	"speed": 40,
+	"maneuverability": 50,
+	"vision": 50,
+	"weapons": [ 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 0,
+	"silicium": 0,
+	"energy": 0,
+	"uranium": 0,
+	"space": 0,
+	"buildingTime": 1,
+	"directions": 16,
+	"animFrame": 1,
+	"animType": ["magiceffect"],
+	"dimensions": {
+		"width": 50,
+		"height": 50
+	}
+}

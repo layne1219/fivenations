@@ -140,6 +140,66 @@
             "spriteId": "gui.icons.ath",
             "faceFrame": 65,
             "iconFrame": 52
+        },
+        "warpglider": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 66,
+            "iconFrame": 53
+        },
+        "flanker": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 67,
+            "iconFrame": 54
+        },
+        "mothership": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 68,
+            "iconFrame": 55
+        },
+        "invader": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 69,
+            "iconFrame": 56
+        },
+        "explorer": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 70,
+            "iconFrame": 57
+        },
+        "drone": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 71,
+            "iconFrame": 58
+        },
+        "gathering": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 72,
+            "iconFrame": 59
+        },
+        "clairvoyant": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 73,
+            "iconFrame": 60
+        },
+        "lancet": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 74,
+            "iconFrame": 61
+        },
+        "theocrat": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 75,
+            "iconFrame": 62
+        },
+        "lifevessel": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 76,
+            "iconFrame": 63
+        },
+        "rector": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 77,
+            "iconFrame": 64
         }
     }
 

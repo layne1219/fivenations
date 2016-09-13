@@ -1,0 +1,27 @@
+{
+	"id": "clairvoyant",
+	"name": "Clairvoyant",
+	"type": "Special Cruiser",
+	"hull": 200,
+	"shield": 200,
+	"armor": 2,
+	"power": 300, 
+	"hangar": 0,
+	"speed": 30,
+	"maneuverability": 30,
+	"vision": 100,
+	"weapons": [ 22, 26, 28, 23, 15, 14, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 200,
+	"silicium": 175,
+	"energy": 300,
+	"uranium": 0,
+	"space": 10,
+	"buildingTime": 20,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": [],
+	"dimensions": {
+		"width": 120,
+		"height": 120
+	} 
+}

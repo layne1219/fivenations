@@ -1,0 +1,27 @@
+{
+	"id": "flanker",
+	"name": "Flanker",
+	"type": "Cruiser",
+	"hull": 250,
+	"shield": 250,
+	"armor": 2,
+	"power": 150, 
+	"hangar": 2,
+	"speed": 35,
+	"maneuverability": 30,
+	"vision": 70,
+	"weapons": [ 20, 20, 22, 22, 24, 23, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 300,
+	"silicium": 240,
+	"energy": 380,
+	"uranium": 0,
+	"space": 10,
+	"buildingTime": 28,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": [],
+	"dimensions": {
+		"width": 120,
+		"height": 100
+	} 
+}

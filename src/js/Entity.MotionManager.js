@@ -161,6 +161,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          */
         updateRotation: function() {
 
+            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
+
             if (this.movement.velocity > 0 && this.entity.hasSlowManeuverability()) {
                 return;
             }
@@ -168,8 +170,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             if (this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle) {
                 return;
             }
-
-            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
+            
             this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
 
             this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;

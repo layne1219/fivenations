@@ -1,0 +1,27 @@
+{
+	"id": "explorer",
+	"name": "Explorer",
+	"type": "Fighter",
+	"hull": 35,
+	"shield": 35,
+	"armor": 0,
+	"power": 200, 
+	"hangar": 0,
+	"speed": 50,
+	"maneuverability": 80,
+	"vision": 100,
+	"weapons": [ 4, 37, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 30,
+	"silicium": 50,
+	"energy": 120,
+	"uranium": 0,
+	"space": 1,
+	"buildingTime": 12,
+	"directions": 16,
+	"animFrame": 1,
+	"animType": [],
+	"dimensions": {
+		"width": 50,
+		"height": 50
+	} 
+}

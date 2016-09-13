@@ -2,7 +2,7 @@ define('Preloader.Entities', function() {
     'use strict';
 
     var ns = window.fivenations,
-        PATH_ASSETS_DATA_UNITS = 'assets/datas/units';
+        PATH_ASSETS_DATA_UNITS = 'assets/datas/units',
         PATH_ASSETS_IMG_UNITS = 'assets/images/units';
 
     // const like object to describe all the entities participating in the gameplay 
@@ -170,12 +170,86 @@ define('Preloader.Entities', function() {
             atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build13.json',
             dataURL: PATH_ASSETS_DATA_UNITS + '/fed/fusionreactor.json'
         },
+
+
         intruder: {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit01.png',
             atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit01.json',
             dataURL: PATH_ASSETS_DATA_UNITS + '/ath/intruder.json'
-        }        
+        },
+        warpglider: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/warpglider.json'
+        },
+        flanker: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/flanker.json'
+        },
+        mothership: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/mothership.json'
+        },
+        invader: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit05.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit05.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/invader.json'
+        },
+        explorer: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit06.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit06.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/explorer.json'
+        },
+        drone: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit07.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit07.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/drone.json'
+        },
+        gathering: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit08.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit08.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/gathering.json'
+        },
+        clairvoyant: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit09.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit09.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/clairvoyant.json'
+        },
+        lancet: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit10.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit10.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/lancet.json'
+        },
+        theocrat: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit11.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit11.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/theocrat.json'
+        },
+        lifevessel: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit12.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit12.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/lifevessel.json'
+        },
+        rector: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit13.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit13.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/rector.json'
+        },
 
     };
 
