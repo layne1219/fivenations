@@ -1,0 +1,29 @@
+{
+    "id": "polaronsphere",
+    "name": "Polaronsphere",
+    "type": "Building",
+    "building": true,
+    "hull": 200,
+    "shield": 200,
+    "armor": 2,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 50,
+    "weapons": [ 22, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 150,
+    "silicium": 50,
+    "energy": 100,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 10,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": [],
+    "dimensions": {
+        "width": 128,
+        "height": 128
+    }
+
+}

@@ -1,0 +1,36 @@
+{
+    "id": "masstransmitter",
+    "name": "Mass Transmitter",
+    "type": "Building",
+    "building": true,
+    "hull": 350,
+    "shield": 350,
+    "armor": 2,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 300,
+    "silicium": 100,
+    "energy": 150,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 20,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["mass-teleport"],
+    "dimensions": {
+        "width": 128,
+        "height": 128
+    },
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
+        }
+    }
+
+}

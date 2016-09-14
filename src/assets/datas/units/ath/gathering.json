@@ -19,7 +19,7 @@
 	"buildingTime": 25,
 	"directions": 1,
 	"animFrame": 1,
-	"animType": ["idle"],
+	"animType": ["idle-forever"],
 	"dimensions": {
 		"width": 100,
 		"height": 80

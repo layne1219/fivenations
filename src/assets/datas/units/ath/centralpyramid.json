@@ -1,0 +1,36 @@
+{
+    "id": "centralpyramid",
+    "name": "Central Pyramid",
+    "type": "Building",
+    "building": true,
+    "hull": 900,
+    "shield": 900,
+    "armor": 5,
+    "power": 200, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 50,
+    "weapons": [ 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 0,
+    "silicium": 0,
+    "energy": 0,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 30,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 160,
+        "height": 160
+    },
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }
+    }
+
+}
