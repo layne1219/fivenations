@@ -20,7 +20,7 @@
     "buildingTime": 30,
     "directions": 0,
     "animFrame": 1,
-    "animType": ["contruction"],
+    "animType": ["construction"],
     "dimensions": {
         "width": 117,
         "height": 132

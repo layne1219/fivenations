@@ -90,18 +90,25 @@ define('GUI', [
                     });
                 },
                 show: function(key, frame) {
-                    if (!last) {
-                        if (last !== key) {
-                            sprites[last].visible = false;
-                            sprites[key].visible = true;
+                    if (last) {
+                        if (last !== sprites[key]) {
+                            last.visible = false;
                         }
-                    } else {
-                        sprites[key].visible = true;
                     }
+                    sprites[key].visible = true;
                     if (frame) {
                         sprites[key].frame = frame;
                     }
-                    last = key;
+                    last = sprites[key];
+                },
+                hide: function() {
+                    if (last) {
+                        last.visible = false;
+                    } else {
+                        each(function(sprite) {
+                            sprite.visible = false;
+                        });
+                    }
                 },
                 click: function(callback, ctx) {
                     each(function(sprite) {
@@ -1056,8 +1063,9 @@ define('GUI', [
                         this.shieldBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1));
 
                         // Icons
-                        this.icon[i] = createIconSprites(this);
-                        this.icon[i].click(createClickListener(i), this);
+                        this.icons[i] = createIconSprites(this);
+                        this.icons[i].move(x, y);
+                        this.icons[i].click(createClickListener(i), this);
                     }
 
                 }
@@ -1099,7 +1107,7 @@ define('GUI', [
                             this.entities[i] = null;
                             this.shieldBar[i].visible = false;
                             this.healthBar[i].visible = false;
-                            this.icons[i].visible = false;
+                            this.icons[i].hide();
 
                         }
                     }
