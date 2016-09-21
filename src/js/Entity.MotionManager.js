@@ -114,6 +114,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
 
             this.updateVelocity();
             this.updateRotation();
+            this.updateAngularDirection();
             this.updateEffects();
             this.executeChecks();
 
@@ -165,11 +166,19 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 return;
             }
 
-            if (this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle) {
+            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
+
+        },
+
+        /**
+         * calculates the current frame of the sprite according to consolidated angle
+         * @return {void}
+         */
+        updateAngularDirection: function() {
+            if (this.rotation.maxAngleCount <= 1 || this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle) {
                 return;
             }
 
-            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
             this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
 
             this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
@@ -182,7 +191,6 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 this.rotation.currentConsolidatedAngle %= this.rotation.maxAngleCount;
             }
 
-            // set the frame of the sprite according to the calculated angularRotation
             this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
         },
 
