@@ -65,6 +65,10 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.movement.targetX = targetCoords.x;
             this.movement.targetY = targetCoords.y;
             this.movement.targetInitialDistance = distance;
+            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
+            this.movement.originX = this.sprite.x;
+            this.movement.originY = this.sprite.y;
+            this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetCoords.y - this.sprite.y, targetCoords.x - this.sprite.x));
             if (this.rotation.calculatedAngle < 0) {
@@ -74,10 +78,6 @@ define('Entity.MotionManager', ['Util'], function(Util) {
 
             this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
             this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
-
-            this.movement.originX = this.sprite.x;
-            this.movement.originY = this.sprite.y;
-            this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
 
             this.isEntityArrivedAtDestination = false;
             this.isEntityStoppedAtDestination = false;
@@ -114,7 +114,6 @@ define('Entity.MotionManager', ['Util'], function(Util) {
 
             this.updateVelocity();
             this.updateRotation();
-            this.updateAngularDirection();
             this.updateEffects();
             this.executeChecks();
 
@@ -150,9 +149,8 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 this.movement.velocity = -this.movement.maxVelocity;
             }
 
-
-            this.sprite.body.velocity.x = Math.cos(this.movement.targetAngle) * this.movement.velocity;
-            this.sprite.body.velocity.y = Math.sin(this.movement.targetAngle) * this.movement.velocity;
+            this.sprite.body.velocity.x = Math.cos(this.movement.currentAngle) * this.movement.velocity;
+            this.sprite.body.velocity.y = Math.sin(this.movement.currentAngle) * this.movement.velocity;
         },
 
         /**
@@ -166,19 +164,11 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 return;
             }
 
-            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
-
-        },
-
-        /**
-         * calculates the current frame of the sprite according to consolidated angle
-         * @return {void}
-         */
-        updateAngularDirection: function() {
-            if (this.rotation.maxAngleCount <= 1 || this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle) {
+            if (this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle) {
                 return;
             }
 
+            this.movement.currentAngle = this.movement.targetAngle;
             this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
 
             this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
@@ -191,6 +181,15 @@ define('Entity.MotionManager', ['Util'], function(Util) {
                 this.rotation.currentConsolidatedAngle %= this.rotation.maxAngleCount;
             }
 
+            this.updateSpriteFrame();
+
+        },
+
+        /**
+         * 
+         * @return {[type]} [description]
+         */
+        updateSpriteFrame: function() {
             this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
         },
 
