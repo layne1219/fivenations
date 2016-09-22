@@ -250,7 +250,84 @@ define('Preloader.Entities', function() {
             atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit13.json',
             dataURL: PATH_ASSETS_DATA_UNITS + '/ath/rector.json'
         },
-
+        centralpyramid: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/centralpyramid.json'
+        },        
+        masstransmitter: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/masstransmitter.json'
+        },        
+        biosphere: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/biosphere.json'
+        },        
+        powercore: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/powercore.json'
+        },        
+        polaronsphere: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build05.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build05.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/polaronsphere.json'
+        },        
+        obelisk: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build06.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build06.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/obelisk.json'
+        },        
+        sanctuary: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build07.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build07.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/sanctuary.json'
+        },        
+        synodum: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build08.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build08.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/synodum.json'
+        },        
+        conservatory: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build09.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build09.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/conservatory.json'
+        },        
+        monumentofwill: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build10.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build10.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/monumentofwill.json'
+        },        
+        basilica: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build11.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build11.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/basilica.json'
+        },        
+        theocratsseat: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build12.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build12.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/theocratsseat.json'
+        },        
+        shieldgenerator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/shieldgenerator.json'
+        }
     };
 
     return {
