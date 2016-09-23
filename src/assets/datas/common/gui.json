@@ -200,6 +200,71 @@
             "spriteId": "gui.icons.ath",
             "faceFrame": 77,
             "iconFrame": 64
+        },
+        "centralpyramid": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 26,
+            "iconFrame": 39
+        },
+        "masstransmitter": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 27,
+            "iconFrame": 40
+        },
+        "biosphere": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 28,
+            "iconFrame": 41
+        },
+        "powercore": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 29,
+            "iconFrame": 42
+        },
+        "polaronsphere": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 30,
+            "iconFrame": 43
+        },
+        "obelisk": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 31,
+            "iconFrame": 44
+        },
+        "sanctuary": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "synodum": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 33,
+            "iconFrame": 46
+        },
+        "conservatory": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 34,
+            "iconFrame": 47
+        },
+        "monumentofwill": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 35,
+            "iconFrame": 48
+        },
+        "basilica": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 36,
+            "iconFrame": 49
+        },
+        "theocratsseat": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 37,
+            "iconFrame": 50
+        },
+        "shieldgenerator": {
+            "spriteId": "gui.icons.ath",
+            "faceFrame": 38,
+            "iconFrame": 51
         }
     }
 
