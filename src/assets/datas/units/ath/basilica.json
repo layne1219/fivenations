@@ -22,8 +22,8 @@
     "animFrame": 1,
     "animType": ["idle"],
     "dimensions": {
-        "width": 128,
-        "height": 128
+        "width": 150,
+        "height": 150
     },
     "animations": {
         "idle": {

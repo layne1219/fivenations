@@ -317,6 +317,33 @@ define('Game', [
                 y: 50 + Util.rnd(0, 700)
             });
 
+            [
+                'centralpyramid',
+                'masstransmitter',
+                'biosphere',
+                'powercore',
+                'polaronsphere',
+                'obelisk',
+                'sanctuary',
+                'synodum',
+                'conservatory',
+                'monumentofwill',
+                'basilica',
+                'theocratsseat',
+                'shieldgenerator'                
+            ].forEach(function(id){
+
+                this.entityManager.entities.add({
+                    guid: Util.getGUID(),
+                    id: id,
+                    team: 1, 
+                    x: 50 + Util.rnd(0, 900),
+                    y: 50 + Util.rnd(0, 700)
+                }); 
+
+            }.bind(this));        
+
+
         },
 
         update: function() {

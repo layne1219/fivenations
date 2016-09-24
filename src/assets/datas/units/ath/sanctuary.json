@@ -22,8 +22,8 @@
     "animFrame": 1,
     "animType": ["contruction"],
     "dimensions": {
-        "width": 135,
-        "height": 135
+        "width": 160,
+        "height": 160
     },
     "animations": {
         "contruction": {
