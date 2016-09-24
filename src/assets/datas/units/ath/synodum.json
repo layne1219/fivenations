@@ -1,0 +1,35 @@
+{
+    "id": "synodum",
+    "name": "Synodum",
+    "type": "Building",
+    "building": true,
+    "hull": 400,
+    "shield": 400,
+    "armor": 4,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 400,
+    "silicium": 300,
+    "energy": 600,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 30,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["contruction"],
+    "dimensions": {
+        "width": 135,
+        "height": 135
+    },
+    "animations": {
+        "contruction": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
+    }
+}

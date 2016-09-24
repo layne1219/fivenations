@@ -33,6 +33,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.activate = function() {
         Activity.prototype.activate.call(this);
+        if (!this.animationManager.getAnimation(KEY_IDLE)) return;
         this.animationManager.play(KEY_IDLE);
     };
 
@@ -42,6 +43,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.deactivate = function() {
         Activity.prototype.deactivate.call(this);
+        if (!this.animationManager.getAnimation(KEY_IDLE)) return;
         this.animationManager.stop(KEY_IDLE);
     };
 
@@ -51,6 +53,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.kill = function() {
         Activity.prototype.kill.call(this);
+        if (!this.animationManager.getAnimation(KEY_IDLE)) return;
         this.animationManager.stop(KEY_IDLE);
     };
 

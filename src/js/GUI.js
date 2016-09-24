@@ -61,6 +61,64 @@ define('GUI', [
             'small': [0, 49]
         },
 
+        /**
+         * Returns a map of icons with keys set as the sprite key of the icons
+         * @param {object} container Container into which the sprites will be added
+         * @return {object} map of sprites
+         */
+        createIconSprites = function(container, x, y) {
+            var sprites = {
+                    'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
+                    'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath'))
+                },
+                each = function(callback) {
+                    Object.keys(sprites).forEach(function(key) {
+                        callback.call(container, sprites[key]);
+                    });
+                },
+                last;
+
+            each(function(sprite) {
+                sprite.visible = false;
+            });
+
+            return {
+                move: function(x, y) {
+                    each(function(sprite) {
+                        sprite.x = x;
+                        sprite.y = y;
+                    });
+                },
+                show: function(key, frame) {
+                    if (last) {
+                        if (last !== sprites[key]) {
+                            last.visible = false;
+                        }
+                    }
+                    sprites[key].visible = true;
+                    if (frame) {
+                        sprites[key].frame = frame;
+                    }
+                    last = sprites[key];
+                },
+                hide: function() {
+                    if (last) {
+                        last.visible = false;
+                    } else {
+                        each(function(sprite) {
+                            sprite.visible = false;
+                        });
+                    }
+                },
+                click: function(callback, ctx) {
+                    each(function(sprite) {
+                        sprite.inputEnabled = true;
+                        sprite.events.onInputDown.add(callback, ctx);
+                    });
+                }
+            }
+        }
+
         // Rainbow table for entity icons 
         entityIcons = guiJSON.icons,
 
@@ -675,7 +733,7 @@ define('GUI', [
                     Phaser.Group.call(this, phaserGame);
 
                     // creating a Phaser.Sprite object for the entity icons
-                    this.iconSprite = this.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed'));
+                    this.iconSprites = createIconSprites(this);
 
                     // Text objects to display entity attributes
                     this.nameElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop, '', {
@@ -726,8 +784,7 @@ define('GUI', [
                         throw 'Invalid DataObject has been passed!';
                     }
 
-                    // displaying the Splash Icon of the selected entity
-                    this.iconSprite.frame = entityIcons[dataObject.getId()].faceFrame;
+                    this.iconSprites.show(entityIcons[dataObject.getId()].spriteId, entityIcons[dataObject.getId()].faceFrame);
 
                     // Names
                     this.nameElm.text = dataObject.getName();
@@ -1006,9 +1063,9 @@ define('GUI', [
                         this.shieldBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1));
 
                         // Icons
-                        this.icons[i] = this.add(phaserGame.add.sprite(x, y, 'gui.icons.fed'));
-                        this.icons[i].inputEnabled = true;
-                        this.icons[i].events.onInputDown.add(createClickListener(i), this);
+                        this.icons[i] = createIconSprites(this);
+                        this.icons[i].move(x, y);
+                        this.icons[i].click(createClickListener(i), this);
                     }
 
                 }
@@ -1038,8 +1095,7 @@ define('GUI', [
 
                             this.entities[i] = entities[i];
 
-                            this.icons[i].visible = true;
-                            this.icons[i].frame = entityIcons[dataObject.getId()].iconFrame;
+                            this.icons[i].show(entityIcons[dataObject.getId()].spriteId, entityIcons[dataObject.getId()].iconFrame);
 
                             this.renderBar(this.healthBar[i], dataObject.getHull() / dataObject.getMaxHull());
                             if (dataObject.getMaxShield() > 0) {
@@ -1051,7 +1107,7 @@ define('GUI', [
                             this.entities[i] = null;
                             this.shieldBar[i].visible = false;
                             this.healthBar[i].visible = false;
-                            this.icons[i].visible = false;
+                            this.icons[i].hide();
 
                         }
                     }
@@ -1076,7 +1132,7 @@ define('GUI', [
 
             F.prototype = {
 
-                iconSprite: null,
+                iconSprites: null,
                 group: null,
                 panel: null,
 

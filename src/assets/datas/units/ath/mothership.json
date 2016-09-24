@@ -1,0 +1,27 @@
+{
+	"id": "mothership",
+	"name": "Mothership",
+	"type": "Carrier",
+	"hull": 1200,
+	"shield": 1200,
+	"armor": 4,
+	"power": 250, 
+	"hangar": 15,
+	"speed": 25,
+	"maneuverability": 25,
+	"vision": 70,
+	"weapons": [ 24, 6, 22, 22, 20, 13, 14, 23, 33, 0, 0, 0 ],
+	"titanium": 1400,
+	"silicium": 700,
+	"energy": 900,
+	"uranium": 60,
+	"space": 30,
+	"buildingTime": 28,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": [],
+	"dimensions": {
+		"width": 170,
+		"height": 140
+	} 
+}

@@ -22,6 +22,7 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
     function loadGUI(preloader) {
         preloader.load.atlasJSONHash('gui', 'assets/images/gui/GUI_element.png', 'assets/images/gui/GUI_element.json');
         preloader.load.atlasJSONHash('gui.icons.fed', 'assets/images/gui/fed_icons.png', 'assets/images/gui/fed_icons.json');
+        preloader.load.atlasJSONHash('gui.icons.ath', 'assets/images/gui/ath_icons.png', 'assets/images/gui/ath_icons.json');
     }
 
     /**

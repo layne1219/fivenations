@@ -16,6 +16,7 @@ define('Entity', [
 
         SLOW_MANOUVERABAILITY_TRESHOLD = 25,
         MAX_SELECTABLE_UNITS = 22,
+        ANIMATION_IDLE_FOREVER = 'idle-forever',
 
         ns = window.fivenations,
 
@@ -69,6 +70,10 @@ define('Entity', [
             Object.keys(animations).forEach(function(key){
                 var data = animations[key];
                 sprite.animations.add(key, data.frames, data.rate, data.loopable);
+                // if there is an animation called `idle-forever` it is played straight away
+                if (key === ANIMATION_IDLE_FOREVER) {
+                    sprite.animations.play(key);
+                }
             });
         },
 

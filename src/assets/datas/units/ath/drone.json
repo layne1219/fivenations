@@ -1,0 +1,27 @@
+{
+	"id": "drone",
+	"name": "Drone",
+	"type": "Fighter",
+	"hull": 30,
+	"shield": 30,
+	"armor": 0,
+	"power": 200, 
+	"hangar": 0,
+	"speed": 40,
+	"maneuverability": 40,
+	"vision": 35,
+	"weapons": [ 10, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 50,
+	"silicium": 0,
+	"energy": 50,
+	"uranium": 0,
+	"space": 2,
+	"buildingTime": 6,
+	"directions": 16,
+	"animFrame": 6,
+	"animType": ["mining", "building"],
+	"dimensions": {
+		"width": 50,
+		"height": 50
+	} 
+}

@@ -1,0 +1,35 @@
+{
+    "id": "obelisk",
+    "name": "Obelisk",
+    "type": "Building",
+    "building": true,
+    "hull": 180,
+    "shield": 180,
+    "armor": 1,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 100,
+    "weapons": [ 21, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 100,
+    "silicium": 150,
+    "energy": 150,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 15,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 85,
+        "height": 85
+    },
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    }
+}

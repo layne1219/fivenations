@@ -1,0 +1,27 @@
+{
+	"id": "theocrat",
+	"name": "Theocrat",
+	"type": "Special Cruiser",
+	"hull": 120,
+	"shield": 120,
+	"armor": 2,
+	"power": 450, 
+	"hangar": 0,
+	"speed": 35,
+	"maneuverability": 20,
+	"vision": 70,
+	"weapons": [ 30, 31, 32, 23, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 250,
+	"silicium": 250,
+	"energy": 450,
+	"uranium": 100,
+	"space": 8,
+	"buildingTime": 40,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": [],
+	"dimensions": {
+		"width": 120,
+		"height": 120
+	}
+}

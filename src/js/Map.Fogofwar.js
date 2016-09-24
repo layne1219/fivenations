@@ -10,7 +10,9 @@ define('Map.Fogofwar', ['Util'], function(Util) {
         return {
 
             visit: function(x, y) {
-                tiles[y][x] = 1;
+                if (x > 0 && y > 0 && y < tiles.length && x < tiles[0].length) {
+                    tiles[y][x] = 1;
+                }
                 return this;
             },
 
@@ -31,7 +33,11 @@ define('Map.Fogofwar', ['Util'], function(Util) {
             },
 
             isVisible: function(x, y) {
-                return tiles[y][x];
+                if (x > 0 && y > 0 && y < tiles.length && x < tiles[0].length) {
+                    return tiles[y][x];
+                } else {
+                    return false;
+                }
             },
 
             getMatrix: function() {

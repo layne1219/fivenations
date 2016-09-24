@@ -26,7 +26,6 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations,
-        gui,
         lastTickTime;
 
     function Game() {}
@@ -179,9 +178,9 @@ define('Game', [
                 .setPlayerManager(this.playerManager)
                 .getInstance();
 
-            gui = this.game.add.sprite(10, 10, 'gui');
-            gui.visible = true;
-            gui.frame = 1;
+            window.gui = this.game.add.sprite(10, 10, 'gui.icons.ath');
+            window.gui.visible = true;
+            window.gui.frame = 1;
             Graphics.getInstance().getGroup('entities').add(gui);
 
             // -----------------------------------------------------------------------
@@ -223,12 +222,127 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: Util.rnd(1, 2) === 1 ? 'hurricane' : 'orca',
+                    id: Util.rnd(1, 2) === 1 ? 'intruder' : 'warpglider',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'flanker',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'mothership',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'invader',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'explorer',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'drone',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'gathering',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'clairvoyant',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'lancet',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'theocrat',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'lifevessel',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'reactor',
+                team: 1, 
+                x: 50 + Util.rnd(0, 900),
+                y: 50 + Util.rnd(0, 700)
+            });
+
+            [
+                'centralpyramid',
+                'masstransmitter',
+                'biosphere',
+                'powercore',
+                'polaronsphere',
+                'obelisk',
+                'sanctuary',
+                'synodum',
+                'conservatory',
+                'monumentofwill',
+                'basilica',
+                'theocratsseat',
+                'shieldgenerator'                
+            ].forEach(function(id){
+
+                this.entityManager.entities.add({
+                    guid: Util.getGUID(),
+                    id: id,
+                    team: 1, 
+                    x: 50 + Util.rnd(0, 900),
+                    y: 50 + Util.rnd(0, 700)
+                }); 
+
+            }.bind(this));        
+
 
         },
 

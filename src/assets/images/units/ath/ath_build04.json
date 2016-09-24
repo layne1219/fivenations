@@ -1,0 +1,21 @@
+{"frames": {
+
+"ath_build04_c010000.png":
+{
+	"frame": {"x":1,"y":1,"w":74,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":113,"w":74,"h":74},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ath_build04.png",
+	"format": "RGBA8888",
+	"size": {"w":76,"h":76},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d3334a3b0964deaa86cf1d9b27adbd21:9268a1210171672676e4a33c92236062:1022433736f69645c3ee7c37d18ccce5$"
+}
+}

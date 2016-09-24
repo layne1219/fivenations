@@ -1,0 +1,27 @@
+{
+	"id": "invader",
+	"name": "Invader",
+	"type": "Battleship",
+	"hull": 800,
+	"shield": 800,
+	"armor": 4,
+	"power": 250, 
+	"hangar": 4,
+	"speed": 25,
+	"maneuverability": 25,
+	"vision": 70,
+	"weapons": [ 25, 25, 22, 22, 22, 20, 20, 20, 13, 23, 0, 0 ],
+	"titanium": 1400,
+	"silicium": 700,
+	"energy": 900,
+	"uranium": 60,
+	"space": 30,
+	"buildingTime": 28,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": [],
+	"dimensions": {
+		"width": 170,
+		"height": 140
+	} 
+}

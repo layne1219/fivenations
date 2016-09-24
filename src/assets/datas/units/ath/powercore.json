@@ -1,0 +1,29 @@
+{
+    "id": "powercore",
+    "name": "Power Core",
+    "type": "Building",
+    "building": true,
+    "hull": 180,
+    "shield": 180,
+    "armor": 1,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 200,
+    "silicium": 50,
+    "energy": 50,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 15,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": [],
+    "dimensions": {
+        "width": 85,
+        "height": 85
+    }
+
+}
