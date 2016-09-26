@@ -265,7 +265,7 @@
             "spriteId": "gui.icons.ath",
             "faceFrame": 38,
             "iconFrame": 51
-        }
+        },
         "asteroid1": {
             "spriteId": "gui.icons.fed",
             "faceFrame": 32,
