@@ -1,0 +1,156 @@
+{"frames": {
+
+"icemeteor_sm020000.png":
+{
+	"frame": {"x":1,"y":89,"w":34,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":131,"w":34,"h":38},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020002.png":
+{
+	"frame": {"x":107,"y":88,"w":32,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":131,"w":32,"h":39},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020004.png":
+{
+	"frame": {"x":175,"y":44,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":131,"w":32,"h":40},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020006.png":
+{
+	"frame": {"x":177,"y":1,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":131,"w":32,"h":40},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020008.png":
+{
+	"frame": {"x":107,"y":44,"w":31,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":134,"y":129,"w":31,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020010.png":
+{
+	"frame": {"x":73,"y":1,"w":32,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":129,"w":32,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020012.png":
+{
+	"frame": {"x":140,"y":44,"w":33,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":129,"w":33,"h":41},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020014.png":
+{
+	"frame": {"x":1,"y":1,"w":34,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":131,"y":128,"w":34,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020016.png":
+{
+	"frame": {"x":1,"y":45,"w":34,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":131,"y":128,"w":34,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020018.png":
+{
+	"frame": {"x":107,"y":1,"w":35,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":131,"y":129,"w":35,"h":41},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020020.png":
+{
+	"frame": {"x":37,"y":1,"w":34,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":129,"w":34,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020022.png":
+{
+	"frame": {"x":37,"y":45,"w":33,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":129,"w":33,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020024.png":
+{
+	"frame": {"x":72,"y":45,"w":33,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":134,"y":129,"w":33,"h":42},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020026.png":
+{
+	"frame": {"x":144,"y":1,"w":31,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":130,"w":31,"h":41},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020028.png":
+{
+	"frame": {"x":177,"y":86,"w":32,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":130,"w":32,"h":40},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icemeteor_sm020030.png":
+{
+	"frame": {"x":141,"y":87,"w":34,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":130,"w":34,"h":40},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "asteroid_ice_sm02.png",
+	"format": "RGBA8888",
+	"size": {"w":220,"h":128},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b350c00ee3f45fd5529636affcb3848a:c465666caa87a8fe3b5317eeabf6fbc4:871abc485e10cd43d87577457777cf0f$"
+}
+}

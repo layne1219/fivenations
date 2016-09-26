@@ -8,6 +8,9 @@ define('Preloader.Entities', function() {
     // const like object to describe all the entities participating in the gameplay 
     ns.entities = ns.entities || {
 
+        // ----------------------------------------------------------------------------
+        // FEDERATION
+        // ----------------------------------------------------------------------------
         hurricane: {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit01.png',
@@ -171,7 +174,9 @@ define('Preloader.Entities', function() {
             dataURL: PATH_ASSETS_DATA_UNITS + '/fed/fusionreactor.json'
         },
 
-
+        // ----------------------------------------------------------------------------
+        // ATHRAELS
+        // ----------------------------------------------------------------------------
         intruder: {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit01.png',
@@ -327,6 +332,166 @@ define('Preloader.Entities', function() {
             spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.png',
             atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.json',
             dataURL: PATH_ASSETS_DATA_UNITS + '/ath/shieldgenerator.json'
+        },
+
+        // ----------------------------------------------------------------------------
+        // ASTEROIDS
+        // ----------------------------------------------------------------------------
+        asteroid1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid1.json'            
+        },
+        asteroid2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid2.json'            
+        },
+        asteroid3: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid3.json'            
+        },
+        asteroid4: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid4.json'            
+        },
+        asteroidbig1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidbig1.json'            
+        },
+        asteroidbig2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidbig2.json'            
+        },        
+        asteroidsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall1.json'            
+        },
+        asteroidsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall2.json'            
+        },
+        asteroidsmall3: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall3.json'            
+        },
+        asteroidsmall4: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall4.json'            
+        },
+        asteroidice1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice1.json'            
+        },
+        asteroidice2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice2.json'            
+        },
+        asteroidicesmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice1.json'            
+        },
+        asteroidicesmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice2.json'            
+        },
+        asteroidsilicon1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsilicon1.json'            
+        },
+        asteroidsilicon2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsilicon2.json'            
+        },
+        asteroidsiliconsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsiliconsmall1.json'            
+        },
+        asteroidsiliconsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsiliconsmall2.json'            
+        },                
+        asteroidtitanium1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitanium1.json'            
+        },
+        asteroidtitanium2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitanium2.json'            
+        },
+        asteroidtitaniumsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitaniumsmall1.json'            
+        },
+        asteroidtitaniumsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitaniumsmall2.json'            
+        },
+        asteroiduranium1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduranium1.json'            
+        },
+        asteroiduranium2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduranium2.json'            
+        },
+        asteroiduraniumsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduraniumsmall1.json'            
+        },
+        asteroiduraniumsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduraniumsmall2.json'            
         }
     };
 

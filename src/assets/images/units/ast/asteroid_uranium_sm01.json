@@ -1,0 +1,156 @@
+{"frames": {
+
+"uraniummeteor_sm010000.png":
+{
+	"frame": {"x":220,"y":1,"w":34,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":137,"w":34,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010002.png":
+{
+	"frame": {"x":37,"y":1,"w":34,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":133,"w":34,"h":34},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010004.png":
+{
+	"frame": {"x":1,"y":1,"w":34,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":131,"w":34,"h":35},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010006.png":
+{
+	"frame": {"x":147,"y":1,"w":34,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":132,"w":34,"h":31},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010008.png":
+{
+	"frame": {"x":219,"y":32,"w":35,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":135,"w":35,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010010.png":
+{
+	"frame": {"x":146,"y":35,"w":35,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":138,"w":35,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010012.png":
+{
+	"frame": {"x":1,"y":38,"w":35,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":139,"w":35,"h":20},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010014.png":
+{
+	"frame": {"x":38,"y":37,"w":34,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":139,"w":34,"h":20},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010016.png":
+{
+	"frame": {"x":256,"y":1,"w":35,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":135,"w":35,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010018.png":
+{
+	"frame": {"x":73,"y":1,"w":35,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":133,"w":35,"h":32},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010020.png":
+{
+	"frame": {"x":110,"y":1,"w":35,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":134,"w":35,"h":32},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010022.png":
+{
+	"frame": {"x":183,"y":1,"w":35,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":137,"w":35,"h":29},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010024.png":
+{
+	"frame": {"x":183,"y":32,"w":34,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":138,"w":34,"h":26},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010026.png":
+{
+	"frame": {"x":74,"y":35,"w":34,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":138,"w":34,"h":23},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010028.png":
+{
+	"frame": {"x":110,"y":35,"w":34,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":138,"w":34,"h":23},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"uraniummeteor_sm010030.png":
+{
+	"frame": {"x":256,"y":31,"w":34,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":139,"w":34,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "asteroid_uranium_sm01.png",
+	"format": "RGBA8888",
+	"size": {"w":292,"h":59},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6bc9c401e14b9a23a4ff019989dbc5a0:215106b31c5abb69f1db5449e10be9ee:dc8af46ff2b892e138e2a7ca4b4cebae$"
+}
+}

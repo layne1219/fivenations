@@ -1,0 +1,156 @@
+{"frames": {
+
+"siliconmeteor_sm020000.png":
+{
+	"frame": {"x":237,"y":1,"w":26,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":137,"w":26,"h":24},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020002.png":
+{
+	"frame": {"x":208,"y":1,"w":27,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":135,"w":27,"h":24},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020004.png":
+{
+	"frame": {"x":265,"y":1,"w":26,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":135,"w":26,"h":24},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020006.png":
+{
+	"frame": {"x":80,"y":1,"w":25,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":135,"w":25,"h":26},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020008.png":
+{
+	"frame": {"x":107,"y":1,"w":24,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":139,"y":136,"w":24,"h":26},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020010.png":
+{
+	"frame": {"x":159,"y":1,"w":23,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":137,"w":23,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020012.png":
+{
+	"frame": {"x":133,"y":1,"w":24,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":136,"w":24,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020014.png":
+{
+	"frame": {"x":403,"y":1,"w":25,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":137,"w":25,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020016.png":
+{
+	"frame": {"x":347,"y":1,"w":26,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":139,"w":26,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020018.png":
+{
+	"frame": {"x":319,"y":1,"w":26,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":140,"w":26,"h":23},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020020.png":
+{
+	"frame": {"x":52,"y":1,"w":26,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":139,"w":26,"h":26},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020022.png":
+{
+	"frame": {"x":1,"y":1,"w":24,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":138,"w":24,"h":27},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020024.png":
+{
+	"frame": {"x":27,"y":1,"w":23,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":138,"w":23,"h":27},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020026.png":
+{
+	"frame": {"x":184,"y":1,"w":22,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":139,"y":138,"w":22,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020028.png":
+{
+	"frame": {"x":293,"y":1,"w":24,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":139,"w":24,"h":24},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"siliconmeteor_sm020030.png":
+{
+	"frame": {"x":375,"y":1,"w":26,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":141,"w":26,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "asteroid_silicon_sm02.png",
+	"format": "RGBA8888",
+	"size": {"w":429,"h":29},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b7c2a9bfb4c8e4798ba97c79f46be7a4:2f8739ee7a44b5cfddc4cea6de3c1ea7:85319da995b77a38456cdc65ccfe76cc$"
+}
+}
