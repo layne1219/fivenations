@@ -8,6 +8,9 @@ define('Preloader.Entities', function() {
     // const like object to describe all the entities participating in the gameplay 
     ns.entities = ns.entities || {
 
+        // ----------------------------------------------------------------------------
+        // FEDERATION
+        // ----------------------------------------------------------------------------
         hurricane: {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit01.png',
@@ -171,7 +174,9 @@ define('Preloader.Entities', function() {
             dataURL: PATH_ASSETS_DATA_UNITS + '/fed/fusionreactor.json'
         },
 
-
+        // ----------------------------------------------------------------------------
+        // ATHRAELS
+        // ----------------------------------------------------------------------------
         intruder: {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit01.png',
@@ -327,6 +332,166 @@ define('Preloader.Entities', function() {
             spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.png',
             atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.json',
             dataURL: PATH_ASSETS_DATA_UNITS + '/ath/shieldgenerator.json'
+        },
+
+        // ----------------------------------------------------------------------------
+        // ASTEROIDS
+        // ----------------------------------------------------------------------------
+        asteriod1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriod1.json'            
+        },
+        asteriod2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriod2.json'            
+        },
+        asteriod3: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriod3.json'            
+        },
+        asteriod4: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriod4.json'            
+        },
+        asteriodbig1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_big01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_big01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidbig1.json'            
+        },
+        asteriodbig2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_big02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_big02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidbig2.json'            
+        },        
+        asteriodsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodsmall1.json'            
+        },
+        asteriodsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodsmall2.json'            
+        },
+        asteriodsmall3: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodsmall3.json'            
+        },
+        asteriodsmall4: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteroid_sm04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodsmall4.json'            
+        },
+        asteriodice1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodice1.json'            
+        },
+        asteriodice2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodice2.json'            
+        },
+        asteriodicesmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodice1.json'            
+        },
+        asteriodicesmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_ice_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteriodice2.json'            
+        },
+        asteriodsilicon1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidsilicon1.json'            
+        },
+        asteriodsilicon2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidsilicon2.json'            
+        },
+        asteriodsiliconsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidsiliconsmall1.json'            
+        },
+        asteriodsiliconsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_silicon_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidsiliconsmall2.json'            
+        },                
+        asteriodtitanium1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidtitanium1.json'            
+        },
+        asteriodtitanium2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidtitanium2.json'            
+        },
+        asteriodtitaniumsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidtitaniumsmall1.json'            
+        },
+        asteriodtitaniumsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_titanium_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroidtitaniumsmall2.json'            
+        },
+        asterioduranium1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroiduranium1.json'            
+        },
+        asterioduranium2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroiduranium2.json'            
+        },
+        asterioduraniumsmall1: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium_sm01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium_sm01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroiduraniumsmall1.json'            
+        },
+        asterioduraniumsmall2: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium_sm02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/asteriod_uranium_sm02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/ath/asteroiduraniumsmall2.json'            
         }
     };
 
