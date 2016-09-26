@@ -266,6 +266,136 @@
             "faceFrame": 38,
             "iconFrame": 51
         }
+        "asteroid1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroid2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroid3": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroid4": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsmall1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsmall2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsmall3": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsmall4": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidbig1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidbig2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidice1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidice2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidicesmall1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidicesmall2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsilicon1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsilicon2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsiliconsmall1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidsiliconsmall2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidtitanium1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidtitanium2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidtitaniumsmall1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroidtitaniumsmall2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroiduranium1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroiduranium2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroiduraniumsmall1": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "asteroiduraniumsmall2": {
+            "spriteId": "gui.icons.fed",
+            "faceFrame": 32,
+            "iconFrame": 45
+        }        
     }
 
 }

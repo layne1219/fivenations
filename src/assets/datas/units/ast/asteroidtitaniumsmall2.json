@@ -1,0 +1,34 @@
+{
+	"id": "asteroidtitaniumsmall1",
+	"name": "Smaller Titanium Asteroid",
+	"type": "Space Object",
+	"hull": 250,
+	"shield": 0,
+	"armor": 10,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 0,
+	"maneuverability": 0,
+	"vision": 10,
+	"weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 0,
+	"silicium": 0,
+	"energy": 0,
+	"uranium": 0,
+	"space": 0,
+	"buildingTime": 0,
+	"directions": 1,
+	"animFrame": 1,
+	"animType": ["idle-forever"],
+	"dimensions": {
+		"width": 30,
+		"height": 30
+	},
+    "animations": {
+        "idle-forever": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    }	
+}
