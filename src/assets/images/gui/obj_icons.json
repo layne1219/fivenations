@@ -1,0 +1,102 @@
+{"frames": {
+
+"gui_ico_obj_asteroid.png":
+{
+	"frame": {"x":244,"y":1,"w":105,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":5,"w":105,"h":100},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_iceasteroid.png":
+{
+	"frame": {"x":351,"y":1,"w":107,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":5,"w":107,"h":99},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_siliciumasteroid.png":
+{
+	"frame": {"x":460,"y":1,"w":118,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":2,"w":118,"h":98},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_sm_asteroid.png":
+{
+	"frame": {"x":580,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_sm_iceasteroid.png":
+{
+	"frame": {"x":580,"y":54,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_sm_siliciumasteroid.png":
+{
+	"frame": {"x":633,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_sm_titaniumasteroid.png":
+{
+	"frame": {"x":686,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_sm_uraniumasteroid.png":
+{
+	"frame": {"x":633,"y":54,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_titaniumasteroid.png":
+{
+	"frame": {"x":122,"y":1,"w":120,"h":106},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":2,"w":120,"h":106},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"gui_ico_obj_uraniumasteroid.png":
+{
+	"frame": {"x":1,"y":1,"w":119,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":119,"h":108},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "obj_icons.png",
+	"format": "RGBA8888",
+	"size": {"w":738,"h":110},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:85e9461ab87c7bcaa4863f55412b4ba9:ad4d737139398b17548fec9617af6e29:329695ffb6788759aca3f78361f12fc5$"
+}
+}
