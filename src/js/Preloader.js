@@ -23,6 +23,7 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         preloader.load.atlasJSONHash('gui', 'assets/images/gui/GUI_element.png', 'assets/images/gui/GUI_element.json');
         preloader.load.atlasJSONHash('gui.icons.fed', 'assets/images/gui/fed_icons.png', 'assets/images/gui/fed_icons.json');
         preloader.load.atlasJSONHash('gui.icons.ath', 'assets/images/gui/ath_icons.png', 'assets/images/gui/ath_icons.json');
+        preloader.load.atlasJSONHash('gui.icons.obj', 'assets/images/gui/obj_icons.png', 'assets/images/gui/obj_icons.json');
     }
 
     /**
@@ -38,9 +39,6 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         preloader.load.image('starfield.star.mediate-1', 'assets/images/starfield/star-m-1.png');
         preloader.load.image('starfield.star.mediate-2', 'assets/images/starfield/star-m-2.png');
         preloader.load.image('starfield.star.mediate-3', 'assets/images/starfield/star-m-3.png');
-        preloader.load.image('starfield.star.fast-1', 'assets/images/starfield/star-f-1.png');
-        preloader.load.image('starfield.star.fast-2', 'assets/images/starfield/star-f-1.png');
-        preloader.load.image('starfield.star.fast-3', 'assets/images/starfield/star-f-1.png');
     }
 
     /**

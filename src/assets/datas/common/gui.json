@@ -267,134 +267,134 @@
             "iconFrame": 51
         },
         "asteroid1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroid2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroid3": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroid4": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall3": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall4": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidbig1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidbig2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidice1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidice2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidicesmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidicesmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidsilicon1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidsilicon2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidsiliconsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidsiliconsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidtitanium1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroidtitanium2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroidtitaniumsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroidtitaniumsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroiduranium1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         },
         "asteroiduranium2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         },
         "asteroiduraniumsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         },
         "asteroiduraniumsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         }        
     }
 
