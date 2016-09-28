@@ -178,10 +178,10 @@ define('Game', [
                 .setPlayerManager(this.playerManager)
                 .getInstance();
 
-            window.gui = this.game.add.sprite(10, 10, 'gui.icons.ath');
+            /*window.gui = this.game.add.sprite(10, 10, 'gui.icons.obj');
             window.gui.visible = true;
             window.gui.frame = 1;
-            Graphics.getInstance().getGroup('entities').add(gui);
+            Graphics.getInstance().getGroup('entities').add(gui);*/
 
             // -----------------------------------------------------------------------
             //                              GUI.ActivityManager
@@ -311,10 +311,10 @@ define('Game', [
 
             this.entityManager.entities.add({
                 guid: Util.getGUID(),
-                id: 'reactor',
+                id: 'rector',
                 team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
+                x: 100,
+                y: 100
             });
 
             [

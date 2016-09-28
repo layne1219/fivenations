@@ -102,20 +102,15 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
 
         ns.cache.starfield = {};
         ns.cache.starfield.sprites = {
-            'slow': [
+            'mediate': [
                 game.make.sprite(0, 0, 'starfield.star.slow-1'),
                 game.make.sprite(0, 0, 'starfield.star.slow-2'),
                 game.make.sprite(0, 0, 'starfield.star.slow-3')
             ],
-            'mediate': [
+            'slow': [
                 game.make.sprite(0, 0, 'starfield.star.mediate-1'),
                 game.make.sprite(0, 0, 'starfield.star.mediate-2'),
                 game.make.sprite(0, 0, 'starfield.star.mediate-3')
-            ],
-            'fast': [
-                game.make.sprite(0, 0, 'starfield.star.fast-1'),
-                game.make.sprite(0, 0, 'starfield.star.fast-2'),
-                game.make.sprite(0, 0, 'starfield.star.fast-3')
             ]
         };
     }
@@ -134,7 +129,7 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
     }
 
     function addStar() {
-        var z = Math.min(Math.random() + 0.15 + (0.75 * (Util.rnd(0, 10) >= 5 ? 1 : 0)), 0.9),
+        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6),
             sprite = getSpriteFromZ(z),
 
             star = new Star().setX(Util.rnd(0, width))
@@ -215,7 +210,7 @@ define('Starfield.Background', ['Graphics'], function(Graphics) {
 // ************************************************************************************************
 define('Starfield', ['Starfield.StarLayer', 'Starfield.Background'], function(StarLayer, Background) {
 
-    var STARLAYER_DENSITY = 0.5;
+    var STARLAYER_DENSITY = 0.1;
 
     function Starfield(map, density) {
         initialise.call(this, map, density);
