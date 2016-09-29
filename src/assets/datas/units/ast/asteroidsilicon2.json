@@ -2,6 +2,7 @@
 	"id": "asteroidsilicon2",
 	"name": "Silicon asteroid",
 	"type": "Space Object",
+	"building": true,
 	"hull": 5000,
 	"shield": 0,
 	"armor": 20,

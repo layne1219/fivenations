@@ -2,6 +2,7 @@
 	"id": "asteroidicesmall1",
 	"name": "Smaller Icy asteroid",
 	"type": "Space Object",
+	"building": true,
 	"hull": 200,
 	"shield": 0,
 	"armor": 5,

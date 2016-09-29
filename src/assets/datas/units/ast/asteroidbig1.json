@@ -2,6 +2,7 @@
 	"id": "asteroidbig1",
 	"name": "Greater asteroid",
 	"type": "Space Object",
+	"building": true,
 	"hull": 10000,
 	"shield": 0,
 	"armor": 20,

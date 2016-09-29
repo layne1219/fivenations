@@ -2,6 +2,7 @@
 	"id": "asteroidice2",
 	"name": "Icy asteroid",
 	"type": "Space Object",
+	"building": true,
 	"hull": 4000,
 	"shield": 0,
 	"armor": 10,

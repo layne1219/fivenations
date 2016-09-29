@@ -1,15 +1,15 @@
 // ************************************************************************************************
-// 												Star 
+// 												SpaceObject 
 // ************************************************************************************************
-define('Starfield.Star', function() {
+define('Starfield.SpaceObject', function() {
 
     var ns = window.fivenations,
         width = ns.window.width,
         height = ns.window.height;
 
-    function Star() {}
+    function SpaceObject() {}
 
-    Star.prototype = {
+    SpaceObject.prototype = {
 
         setX: function(x) {
             this.x = x;
@@ -56,13 +56,13 @@ define('Starfield.Star', function() {
 
     };
 
-    return Star;
+    return SpaceObject;
 });
 
 // ************************************************************************************************
 // 												Layer 
 // ************************************************************************************************
-define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(Graphics, Star, Util) {
+define('Starfield.StarLayer', ['Graphics', 'Starfield.SpaceObject', 'Util'], function(Graphics, SpaceObject, Util) {
 
     var MAX_STAR_NUMBER = 100,
 
@@ -132,7 +132,7 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(G
         var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6),
             sprite = getSpriteFromZ(z),
 
-            star = new Star().setX(Util.rnd(0, width))
+            star = new SpaceObject().setX(Util.rnd(0, width))
             .setY(Util.rnd(0, height))
             .setZ(z)
             .setSprite(sprite);
