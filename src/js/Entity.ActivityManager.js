@@ -35,7 +35,6 @@ define('Entity.ActivityManager', [
                 // activities.push needs to go first here since the "activate" function might have 
                 // dependency on the activity queue
                 activity.activate();
-                console.log(activities);
             },
 
             remove: function(activity) {
@@ -45,7 +44,6 @@ define('Entity.ActivityManager', [
                         break;
                     }
                 }
-                console.log(activities);
             },
 
             removeByIndex: function(idx) {

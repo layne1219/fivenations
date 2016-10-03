@@ -3,10 +3,6 @@
 // ************************************************************************************************
 define('Starfield.SpaceObject', function() {
 
-    var ns = window.fivenations,
-        width = ns.window.width,
-        height = ns.window.height;
-
     function SpaceObject() {}
 
     SpaceObject.prototype = {
@@ -40,18 +36,6 @@ define('Starfield.SpaceObject', function() {
                 this.x - game.camera.x * this.z,
                 this.y - game.camera.y * this.z, !!clearLayer
             );
-
-            // assessing whether the star is drifted off screen
-            if (this.x + this.sprite.width - game.camera.x * this.z < 0) {
-                this.setX(this.x + this.sprite.width + width);
-            } else if (this.x - game.camera.x * this.z > width) {
-                this.setX(this.x - this.sprite.width - width);
-            } else if (this.y + this.sprite.height - game.camera.y * this.z < 0) {
-                this.setY(this.y + this.sprite.height + height);
-            } else if (this.y - game.camera.y * this.z > height) {
-                this.setY(this.y - this.sprite.height - height);
-            }
-
         }
 
     };
@@ -60,39 +44,66 @@ define('Starfield.SpaceObject', function() {
 });
 
 // ************************************************************************************************
-// 												Layer 
+//                                              Star 
 // ************************************************************************************************
-define('Starfield.StarLayer', ['Graphics', 'Starfield.SpaceObject', 'Util'], function(Graphics, SpaceObject, Util) {
+define('Starfield.Star', ['Starfield.SpaceObject'], function(SpaceObject) {
+    
+    var ns = window.fivenations,
+        width = ns.window.width,
+        height = ns.window.height;
 
-    var MAX_STAR_NUMBER = 100,
+    function Star() {
+        SpaceObject.call(this);
+    }
+
+    Star.prototype = new SpaceObject();
+    Star.prototype.constructor = Star;
+
+    Star.prototype.update = function(texture, game, clear) {
+        SpaceObject.prototype.update.call(this, texture, game, clear);
+      
+        // assessing whether the star is drifted off screen
+        if (this.x + this.sprite.width - game.camera.x * this.z < 0) {
+            this.setX(this.x + this.sprite.width + width);
+        } else if (this.x - game.camera.x * this.z > width) {
+            this.setX(this.x - this.sprite.width - width);
+        } else if (this.y + this.sprite.height - game.camera.y * this.z < 0) {
+            this.setY(this.y + this.sprite.height + height);
+        } else if (this.y - game.camera.y * this.z > height) {
+            this.setY(this.y - this.sprite.height - height);
+        }
+
+    }
+
+    return Star;
+
+});
+
+// ************************************************************************************************
+// 												StarLayer 
+// ************************************************************************************************
+define('Starfield.StarLayer', [
+    'Graphics', 
+    'Starfield.Star', 
+    'Util'
+], function(Graphics, Star, Util) {
+
+    var NUMBER_OF_STARS_PER_SCREEN = 10, 
 
         ns = window.fivenations,
-        width = ns.window.width || 640,
-        height = ns.window.height || 480;
+        width = ns.window.width,
+        height = ns.window.height;
 
-    function StarLayer(game, density) {
-        initialise.call(this, game, density || 1);
+    function StarLayer(game) {
+        initialise.call(this, game);
     }
 
     function initialise(game, density) {
-        var numberOfStars = Math.round(MAX_STAR_NUMBER * density);
 
         this.game = game;
 
-        createTexture.call(this, game);
         createSprites.call(this, game);
-        createStars.call(this, numberOfStars)
-    }
-
-    function createTexture(game) {
-        var container;
-        
-        this.texture = game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
-
-        container = game.add.image(0, 0, this.texture);
-        container.fixedToCamera = true;
-
-        Graphics.getInstance().getGroup('starfield').add(container);
+        createStars.call(this, NUMBER_OF_STARS_PER_SCREEN)
     }
 
     function createSprites(game) {
@@ -132,7 +143,7 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.SpaceObject', 'Util'], fun
         var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6),
             sprite = getSpriteFromZ(z),
 
-            star = new SpaceObject().setX(Util.rnd(0, width))
+            star = new Star().setX(Util.rnd(0, width))
             .setY(Util.rnd(0, height))
             .setZ(z)
             .setSprite(sprite);
@@ -175,6 +186,45 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.SpaceObject', 'Util'], fun
 });
 
 // ************************************************************************************************
+//                                              DeepSpaceLayer 
+// ************************************************************************************************
+define('Starfield.DeepSpaceLayer', ['Graphics', 'Starfield.StarLayer'], function(Graphics, StarLayer) {
+
+    var ns = window.fivenations,
+        width = ns.window.width,
+        height = ns.window.height;    
+
+    function DeepSpaceLayer(game) {
+        this.createTexture(game);
+    }
+
+
+    DeepSpaceLayer.prototype = {
+
+        layers: [],
+
+        createTexture: function(game) {
+            var container;
+            
+            this.texture = game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
+
+            container = game.add.image(0, 0, this.texture);
+            container.fixedToCamera = true;
+
+            Graphics.getInstance().getGroup('starfield').add(container);
+        },
+
+        update: function() {
+            for (var i = 0, l = this.layers.length; i < l; i += 1) {
+                this.layers[i].update(this.texture);
+            }
+        }
+
+    }
+
+    return DeepSpaceLayer;
+});
+// ************************************************************************************************
 // 												Background 
 // ************************************************************************************************
 define('Starfield.Background', ['Graphics'], function(Graphics) {
@@ -208,18 +258,16 @@ define('Starfield.Background', ['Graphics'], function(Graphics) {
 // ************************************************************************************************
 // 												Starfield 
 // ************************************************************************************************
-define('Starfield', ['Starfield.StarLayer', 'Starfield.Background'], function(StarLayer, Background) {
+define('Starfield', ['Starfield.DeepSpaceLayer', 'Starfield.Background'], function(DeepSpaceLayer, Background) {
 
-    var STARLAYER_DENSITY = 0.1;
-
-    function Starfield(map, density) {
-        initialise.call(this, map, density);
+    function Starfield(map) {
+        initialise.call(this, map);
     }
 
     function initialise(map) {
         this.initLayers();
         this.createBackground(map.getGame());
-        this.createStars(map.getGame());
+        this.createDeepSpaceObjects(map.getGame());
     }
 
     Starfield.prototype = {
@@ -230,10 +278,10 @@ define('Starfield', ['Starfield.StarLayer', 'Starfield.Background'], function(St
 
         createBackground: function(game) {
             this.layers.push(new Background(game));
-        },
+        },        
 
-        createStars: function(game) {
-            this.layers.push(new StarLayer(game, STARLAYER_DENSITY));
+        createDeepSpaceObjects: function(game) {
+            this.layers.push(new DeepSpaceLayer(game));
         },
 
         update: function() {
