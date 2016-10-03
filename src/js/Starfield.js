@@ -1,11 +1,7 @@
 // ************************************************************************************************
 // 												SpaceObject 
 // ************************************************************************************************
-define('Starfield.SpaceObject', function() {
-
-    var ns = window.fivenations,
-        width = ns.window.width,
-        height = ns.window.height;
+define('Starfield.SpaceObject', function() {;
 
     function SpaceObject() {}
 
@@ -41,17 +37,6 @@ define('Starfield.SpaceObject', function() {
                 this.y - game.camera.y * this.z, !!clearLayer
             );
 
-            // assessing whether the star is drifted off screen
-            if (this.x + this.sprite.width - game.camera.x * this.z < 0) {
-                this.setX(this.x + this.sprite.width + width);
-            } else if (this.x - game.camera.x * this.z > width) {
-                this.setX(this.x - this.sprite.width - width);
-            } else if (this.y + this.sprite.height - game.camera.y * this.z < 0) {
-                this.setY(this.y + this.sprite.height + height);
-            } else if (this.y - game.camera.y * this.z > height) {
-                this.setY(this.y - this.sprite.height - height);
-            }
-
         }
 
     };
@@ -60,9 +45,44 @@ define('Starfield.SpaceObject', function() {
 });
 
 // ************************************************************************************************
+//                                              Star 
+// ************************************************************************************************
+define('Starfield.Star', ['Starfield.SpaceObject'], function(SpaceObject) {
+
+    var ns = window.fivenations,
+        width = ns.window.width,
+        height = ns.window.height;
+
+    function Star() {
+        SpaceObject.call(this);
+    }
+
+    Star.prototype = new SpaceObject();
+    Star.prototype.constructor = Star;
+    Star.prototype.update = function(texture, game, clearLayer) {
+        var args = [].slice.call(arguments);
+        SpaceObject.prototype.update.apply(this, args);
+
+        // assessing whether the star is drifted off screen
+        if (this.x + this.sprite.width - game.camera.x * this.z < 0) {
+            this.setX(this.x + this.sprite.width + width);
+        } else if (this.x - game.camera.x * this.z > width) {
+            this.setX(this.x - this.sprite.width - width);
+        } else if (this.y + this.sprite.height - game.camera.y * this.z < 0) {
+            this.setY(this.y + this.sprite.height + height);
+        } else if (this.y - game.camera.y * this.z > height) {
+            this.setY(this.y - this.sprite.height - height);
+        }
+    }
+
+    return Star;
+
+});
+
+// ************************************************************************************************
 // 												Layer 
 // ************************************************************************************************
-define('Starfield.StarLayer', ['Graphics', 'Starfield.SpaceObject', 'Util'], function(Graphics, SpaceObject, Util) {
+define('Starfield.StarLayer', ['Graphics', 'Starfield.Star', 'Util'], function(Graphics, Star, Util) {
 
     var MAX_STAR_NUMBER = 100,
 
@@ -132,7 +152,7 @@ define('Starfield.StarLayer', ['Graphics', 'Starfield.SpaceObject', 'Util'], fun
         var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6),
             sprite = getSpriteFromZ(z),
 
-            star = new SpaceObject().setX(Util.rnd(0, width))
+            star = new Star().setX(Util.rnd(0, width))
             .setY(Util.rnd(0, height))
             .setZ(z)
             .setSprite(sprite);
