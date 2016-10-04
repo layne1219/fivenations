@@ -82,11 +82,10 @@ define('Starfield.Star', ['Starfield.SpaceObject'], function(SpaceObject) {
 // ************************************************************************************************
 // 												StarLayer 
 // ************************************************************************************************
-define('Starfield.StarLayer', [
-    'Graphics', 
+define('Starfield.StarGenerator', [
     'Starfield.Star', 
     'Util'
-], function(Graphics, Star, Util) {
+], function(Star, Util) {
 
     var NUMBER_OF_STARS_PER_SCREEN = 10, 
 
@@ -94,17 +93,12 @@ define('Starfield.StarLayer', [
         width = ns.window.width,
         height = ns.window.height;
 
-    function StarLayer(game) {
-        initialise.call(this, game);
-    }
 
-    function initialise(game, density) {
-
-        this.game = game;
-
+    function StarGenerator(game) {
         createSprites.call(this, game);
         createStars.call(this, NUMBER_OF_STARS_PER_SCREEN)
     }
+
 
     function createSprites(game) {
         if (ns.cache.starfield) {
@@ -114,23 +108,23 @@ define('Starfield.StarLayer', [
         ns.cache.starfield = {};
         ns.cache.starfield.sprites = {
             'mediate': [
-                game.make.sprite(0, 0, 'starfield.star.slow-1'),
-                game.make.sprite(0, 0, 'starfield.star.slow-2'),
-                game.make.sprite(0, 0, 'starfield.star.slow-3')
+                game.make.sprite(0, 0, 'starfield.star.small-1'),
+                game.make.sprite(0, 0, 'starfield.star.small-2'),
+                game.make.sprite(0, 0, 'starfield.star.small-3')
             ],
             'slow': [
-                game.make.sprite(0, 0, 'starfield.star.mediate-1'),
-                game.make.sprite(0, 0, 'starfield.star.mediate-2'),
-                game.make.sprite(0, 0, 'starfield.star.mediate-3')
+                game.make.sprite(0, 0, 'starfield.star.big-1'),
+                game.make.sprite(0, 0, 'starfield.star.big-2'),
+                game.make.sprite(0, 0, 'starfield.star.big-3')
             ]
         };
     }
 
-    function createStars(numberofStars) {
+    function createStars(numberOfStars) {
 
         this.stars = [];
 
-        for (var i = 0; i < numberofStars; i += 1) {
+        for (var i = 0; i < numberOfStars; i += 1) {
             addStar.call(this);
         };
 
@@ -169,16 +163,9 @@ define('Starfield.StarLayer', [
 
     StarLayer.prototype = {
 
-        update: function() {
-            var first = true;
-
-            for (var i = this.stars.length - 1; i >= 0; i -=1 ) {
-                // the last param indicates whether to clear the texture of the layer or not
-                this.stars[i].update(this.texture, this.game, first);
-
-                first = false;
-            };
-        },
+        getSpaceOjbects: function() {
+            return this.stars;
+        }
 
     };
 
@@ -188,20 +175,22 @@ define('Starfield.StarLayer', [
 // ************************************************************************************************
 //                                              DeepSpaceLayer 
 // ************************************************************************************************
-define('Starfield.DeepSpaceLayer', ['Graphics', 'Starfield.StarLayer'], function(Graphics, StarLayer) {
+define('Starfield.DeepSpaceLayer', ['Graphics', 'Starfield.StarGenerator'], function(Graphics, StarGenerator) {
 
     var ns = window.fivenations,
         width = ns.window.width,
-        height = ns.window.height;    
+        height = ns.window.height,
+        i, l, clearLayer;
 
     function DeepSpaceLayer(game) {
         this.createTexture(game);
+        this.generateSpaceObjects(new StarGenerator(game));
     }
 
 
     DeepSpaceLayer.prototype = {
 
-        layers: [],
+        spaceObjects: [],
 
         createTexture: function(game) {
             var container;
@@ -211,12 +200,29 @@ define('Starfield.DeepSpaceLayer', ['Graphics', 'Starfield.StarLayer'], function
             container = game.add.image(0, 0, this.texture);
             container.fixedToCamera = true;
 
-            Graphics.getInstance().getGroup('starfield').add(container);
+            Graphics
+                .getInstance()
+                .getGroup('starfield')
+                .add(container);
+        },
+
+        generateSpaceObjects: function(generator) {
+            if (!generator) throw 'Invalid generator is passed!';
+            var spaceObjects = generator.getSpaceOjbects();
+            spaceObjects.forEach(function(so) {
+                this.addSpaceObject(so);
+            }.bind(this));
+        },
+
+        addSpaceObject: function(spaceObject) {
+            if (!spaceObject) return;
+            this.spaceObject.push(spaceObject);
         },
 
         update: function() {
-            for (var i = 0, l = this.layers.length; i < l; i += 1) {
-                this.layers[i].update(this.texture);
+            for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
+                clearLayer = i === 0;
+                this.spaceObjects[i].update(this.texture, game, clearLayer);
             }
         }
 

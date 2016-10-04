@@ -33,12 +33,12 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
      */
     function loadStarfield(preloader) {
         preloader.load.image('starfield', 'assets/images/starfield/starfield.jpg');
-        preloader.load.image('starfield.star.slow-1', 'assets/images/starfield/star-s-1.png');
-        preloader.load.image('starfield.star.slow-2', 'assets/images/starfield/star-s-2.png');
-        preloader.load.image('starfield.star.slow-3', 'assets/images/starfield/star-s-3.png');
-        preloader.load.image('starfield.star.mediate-1', 'assets/images/starfield/star-m-1.png');
-        preloader.load.image('starfield.star.mediate-2', 'assets/images/starfield/star-m-2.png');
-        preloader.load.image('starfield.star.mediate-3', 'assets/images/starfield/star-m-3.png');
+        preloader.load.image('starfield.star.big-1', 'assets/images/starfield/star-s-1.png');
+        preloader.load.image('starfield.star.big-2', 'assets/images/starfield/star-s-2.png');
+        preloader.load.image('starfield.star.big-3', 'assets/images/starfield/star-s-3.png');
+        preloader.load.image('starfield.star.small-1', 'assets/images/starfield/star-m-1.png');
+        preloader.load.image('starfield.star.small-2', 'assets/images/starfield/star-m-2.png');
+        preloader.load.image('starfield.star.small-3', 'assets/images/starfield/star-m-3.png');
         preloader.load.atlasJSONHash('starfield.background.clouds.type-1', 'assets/images/starfield/background_clouds_type01.png', 'assets/images/starfield/background_clouds_type01.json');
         preloader.load.atlasJSONHash('starfield.background.clouds.type-2', 'assets/images/starfield/background_clouds_type02.png', 'assets/images/starfield/background_clouds_type02.json');
     }

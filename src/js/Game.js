@@ -231,7 +231,7 @@ define('Game', [
                 });
             }
 
-            this.entityManager.entities.add({
+            /*this.entityManager.entities.add({
                 guid: Util.getGUID(),
                 id: 'flanker',
                 team: 1, 
@@ -385,7 +385,7 @@ define('Game', [
 
                 }
 
-            }.bind(this));
+            }.bind(this));*/
 
 
         },
