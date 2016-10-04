@@ -28,9 +28,7 @@ define('Universal.EventBusExecuter', [
                                 targets: evt.targets,
                                 data: evt.data
                             });
-                            console.log(evtObj);
                         } catch (ex) {
-                            console.log(ex);
                             continue;
                         }
 
