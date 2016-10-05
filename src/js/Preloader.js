@@ -39,8 +39,8 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         preloader.load.image('starfield.star.small-1', 'assets/images/starfield/star-m-1.png');
         preloader.load.image('starfield.star.small-2', 'assets/images/starfield/star-m-2.png');
         preloader.load.image('starfield.star.small-3', 'assets/images/starfield/star-m-3.png');
-        preloader.load.atlasJSONHash('starfield.background.clouds.type-1', 'assets/images/starfield/background_clouds_type01.png', 'assets/images/starfield/background_clouds_type01.json');
-        preloader.load.atlasJSONHash('starfield.background.clouds.type-2', 'assets/images/starfield/background_clouds_type02.png', 'assets/images/starfield/background_clouds_type02.json');
+        preloader.load.atlasJSONHash('starfield.clouds.bg.type-1', 'assets/images/starfield/background_clouds_type01.png', 'assets/images/starfield/background_clouds_type01.json');
+        preloader.load.atlasJSONHash('starfield.clouds.bg.type-2', 'assets/images/starfield/background_clouds_type02.png', 'assets/images/starfield/background_clouds_type02.json');
     }
 
     /**
