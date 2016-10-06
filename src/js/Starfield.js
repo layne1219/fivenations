@@ -179,9 +179,9 @@ define('Starfield.StarGenerator', [
     }
 
     function getSpriteFromZ(z) {
-        var index = Util.rnd(0, 3),
-            key = 'slow',
-            sprites = ns.cache.starfield.stars;
+        var index = Util.rnd(0, 3);
+        var key = 'slow';
+        var sprites = ns.cache.starfield.stars;
 
         if (z >= 0.34 && z <= 0.65) {
             key = 'mediate';
@@ -199,7 +199,7 @@ define('Starfield.StarGenerator', [
 // ************************************************************************************************
 //                                   DeepCloudGenerator 
 // ************************************************************************************************
-define('Starfield.DeepCloudGenerator', [
+define('Starfield.BackgroundCloudGenerator', [
     'Starfield.SpaceObject',
     'Starfield.SpaceObjectGenerator'
     'Util'
@@ -211,14 +211,14 @@ define('Starfield.DeepCloudGenerator', [
     var height = ns.window.height;
     var sprites;
 
-    function DeepCloudGenerator(game) {
+    function BackgroundCloudGenerator(game) {
         SpaceObjectGenerator.call(this, game);
         createSprites.call(this);
         createClouds.call(this)
     }
 
-    DeepCloudGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
-    DeepCloudGenerator.prototype.constructor = DeepCloudGenerator;
+    BackgroundCloudGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
+    BackgroundCloudGenerator.prototype.constructor = BackgroundCloudGenerator;
 
     function createSprites() {
 
@@ -236,7 +236,7 @@ define('Starfield.DeepCloudGenerator', [
             for (var i = 0; i < numberOfStars; i += 1) {
                 cloud = this.createRandomizedCloud();
                 this.addSpaceObject(cloud);
-            };
+            }
         }
     }
 
@@ -278,21 +278,26 @@ define('Starfield.DeepCloudGenerator', [
         return sprites['type' + type];   
     }
 
-    return DeepCloudGenerator;
+    return BackgroundCloudGenerator;
 });
 // ************************************************************************************************
 //                                              DeepSpaceLayer 
 // ************************************************************************************************
-define('Starfield.DeepSpaceLayer', ['Graphics', 'Starfield.StarGenerator'], function(Graphics, StarGenerator) {
+define('Starfield.DeepSpaceLayer', [
+    'Graphics', 
+    'Starfield.StarGenerator',
+    'Starfield.BackgroundCloudGenerator'
+], function(Graphics, StarGenerator, ) {
 
-    var ns = window.fivenations,
-        width = ns.window.width,
-        height = ns.window.height,
-        i, l, clearLayer;
+    var ns = window.fivenations;
+    var width = ns.window.width;
+    var height = ns.window.height;
+    var i, l, clearLayer;
 
     function DeepSpaceLayer(game) {
         this.createTexture(game);
         this.generateSpaceObjects(new StarGenerator(game));
+        this.generateSpaceObjects(new BackgroundCloudGenerator(game));
     }
 
 
