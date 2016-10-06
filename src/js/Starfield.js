@@ -101,7 +101,7 @@ define('Starfield.SpaceObjectGenerator', function() {
             return this.objects;
         },
 
-        addObject: function(obj) {
+        addSpaceObject: function(obj) {
             if (!obj) throw 'Invalid SpaceObject was given!';
             this.objects.push(obj);
         }
@@ -116,7 +116,7 @@ define('Starfield.SpaceObjectGenerator', function() {
 // ************************************************************************************************
 define('Starfield.StarGenerator', [
     'Starfield.Star',
-    'Starfield.SpaceObjectGenerator'
+    'Starfield.SpaceObjectGenerator',
     'Util'
 ], function(Star, SpaceObjectGenerator, Util) {
 
@@ -155,7 +155,7 @@ define('Starfield.StarGenerator', [
     function createStars(numberOfStars) {
         var star, i; 
         for (i = 0; i < numberOfStars; i += 1) {
-            star = this.craeteStar();
+            star = createStar();
             this.addSpaceObject(star);
         };
 
@@ -181,7 +181,6 @@ define('Starfield.StarGenerator', [
     function getSpriteFromZ(z) {
         var index = Util.rnd(0, 3);
         var key = 'slow';
-        var sprites = ns.cache.starfield.stars;
 
         if (z >= 0.34 && z <= 0.65) {
             key = 'mediate';
@@ -201,7 +200,7 @@ define('Starfield.StarGenerator', [
 // ************************************************************************************************
 define('Starfield.BackgroundCloudGenerator', [
     'Starfield.SpaceObject',
-    'Starfield.SpaceObjectGenerator'
+    'Starfield.SpaceObjectGenerator',
     'Util'
 ], function(Star, SpaceObjectGenerator, Util) {
 
@@ -287,7 +286,7 @@ define('Starfield.DeepSpaceLayer', [
     'Graphics', 
     'Starfield.StarGenerator',
     'Starfield.BackgroundCloudGenerator'
-], function(Graphics, StarGenerator, ) {
+], function(Graphics, StarGenerator, BackgroundCloudGenerator) {
 
     var ns = window.fivenations;
     var width = ns.window.width;
