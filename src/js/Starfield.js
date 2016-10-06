@@ -120,11 +120,11 @@ define('Starfield.StarGenerator', [
     'Util'
 ], function(Star, SpaceObjectGenerator, Util) {
 
-    var NUMBER_OF_STARS_PER_SCREEN = 10, 
-
-        ns = window.fivenations,
-        width = ns.window.width,
-        height = ns.window.height;
+    var NUMBER_OF_STARS_PER_SCREEN = 10; 
+    var ns = window.fivenations;
+    var width = ns.window.width;
+    var height = ns.window.height;
+    var sprites;
 
     function StarGenerator(game) {
         SpaceObjectGenerator.call(this, game);
@@ -136,13 +136,9 @@ define('Starfield.StarGenerator', [
     StarGenerator.prototype.constructor = StarGenerator;
 
     function createSprites() {
-        ns.cache.starfield = ns.cache.starfield || {};
+        if (sprites) return;
 
-        if (ns.cache.starfield.stars) {
-            return;
-        }
-
-        ns.cache.starfield.stars = {
+        sprites = {
             mediate: [
                 this.game.make.sprite(0, 0, 'starfield.star.small-1'),
                 this.game.make.sprite(0, 0, 'starfield.star.small-2'),
@@ -166,16 +162,20 @@ define('Starfield.StarGenerator', [
     }
 
     function createStar() {
-        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6),
-            sprite = getSpriteFromZ(z),
-
-            star = new Star()
+        var z = getRandomizedZ();
+        var sprite = getSpriteFromZ(z);
+        var star = new Star()
             .setX(Util.rnd(0, width))
             .setY(Util.rnd(0, height))
             .setZ(z)
             .setSprite(sprite);
 
         return star;
+    }
+
+    function getRandomizedZ() {
+        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
+        return z;
     }
 
     function getSpriteFromZ(z) {
@@ -205,11 +205,11 @@ define('Starfield.DeepCloudGenerator', [
     'Util'
 ], function(Star, SpaceObjectGenerator, Util) {
 
-    var DENSITY = 5, 
-
-        ns = window.fivenations,
-        width = ns.window.width,
-        height = ns.window.height;
+    var DENSITY = 5;
+    var ns = window.fivenations;
+    var width = ns.window.width;
+    var height = ns.window.height;
+    var sprites;
 
     function DeepCloudGenerator(game) {
         SpaceObjectGenerator.call(this, game);
@@ -222,41 +222,60 @@ define('Starfield.DeepCloudGenerator', [
 
     function createSprites() {
 
-        ns.cache.starfield = ns.cache.starfield || {};
+        if (sprites) return;
 
-        if (ns.cache.starfield.clouds) {
-            return;
-        }
-
-        ns.cache.starfield.clouds = {
-            background: {
-                type1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
-                type2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2')
-            }
+        sprites = {
+            type1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
+            type2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2')
         };
     }
 
     function createClouds(savedData) {
-        var i, numberOfClouds = DENSITY;
+        var numberOfClouds = DENSITY;
         if (!savedData){
-            for (i = 0; i < numberOfStars; i += 1) {
-                cloud = this.createCloud();
+            for (var i = 0; i < numberOfStars; i += 1) {
+                cloud = this.createRandomizedCloud();
                 this.addSpaceObject(cloud);
             };
         }
     }
 
-    function createCloud() {
-        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6),
-            cloud;
+    function createRandomizedCloud() {
+        var z = getRandomizedZ();
+        var cloud;
 
         cloud = new SpaceObject()
             .setX(Util.rnd(0, width))
             .setY(Util.rnd(0, height))
             .setZ(z)
-            .setSprite(ns.cache.starfield.clouds.background.type1);
+            .setSprite(getRandomizedSprite());
 
         return cloud;
+    }
+
+    function getRandomizedZ() {
+        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
+        return z;
+    }
+
+    function getRandomizedSprite() {
+        var type = Util.rnd(1, 2);
+        return getSpriteByType(type);
+    }
+
+    function createCloud(x, y, type) {
+        var cloud = new SpaceObject()
+            .setX(x)
+            .setY(y)
+            .setZ(z)
+            .setSprite(getSpriteByType(type));
+
+        return cloud;
+    }
+
+    function getSpriteByType(type) {
+        if (!type) throw 'Invalid type was given to fetch sprite!';
+        return sprites['type' + type];   
     }
 
     return DeepCloudGenerator;
