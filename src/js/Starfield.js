@@ -84,7 +84,7 @@ define('Starfield.Star', ['Starfield.SpaceObject'], function(SpaceObject) {
 // ************************************************************************************************
 define('Starfield.SpaceObjectGenerator', function() {
 
-    return function SpaceObjectGenerator(game) {
+    function SpaceObjectGenerator(game) {
         this.game = game;
     }
 
@@ -129,7 +129,7 @@ define('Starfield.StarGenerator', [
     function StarGenerator(game) {
         SpaceObjectGenerator.call(this, game);
         createSprites.call(this);
-        createStars.call(this, NUMBER_OF_STARS_PER_SCREEN)
+        createStars.call(this)
     }
 
     StarGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
@@ -152,9 +152,9 @@ define('Starfield.StarGenerator', [
         };
     }
 
-    function createStars(numberOfStars) {
+    function createStars() {
         var star, i; 
-        for (i = 0; i < numberOfStars; i += 1) {
+        for (i = 0; i < NUMBER_OF_STARS_PER_SCREEN; i += 1) {
             star = createStar();
             this.addSpaceObject(star);
         };
@@ -202,7 +202,7 @@ define('Starfield.BackgroundCloudGenerator', [
     'Starfield.SpaceObject',
     'Starfield.SpaceObjectGenerator',
     'Util'
-], function(Star, SpaceObjectGenerator, Util) {
+], function(SpaceObject, SpaceObjectGenerator, Util) {
 
     var DENSITY = 5;
     var ns = window.fivenations;
@@ -232,8 +232,8 @@ define('Starfield.BackgroundCloudGenerator', [
     function createClouds(savedData) {
         var numberOfClouds = DENSITY;
         if (!savedData){
-            for (var i = 0; i < numberOfStars; i += 1) {
-                cloud = this.createRandomizedCloud();
+            for (var i = 0; i < numberOfClouds; i += 1) {
+                cloud = createRandomizedCloud();
                 this.addSpaceObject(cloud);
             }
         }
@@ -294,22 +294,27 @@ define('Starfield.DeepSpaceLayer', [
     var i, l, clearLayer;
 
     function DeepSpaceLayer(game) {
-        this.createTexture(game);
-        this.generateSpaceObjects(new StarGenerator(game));
-        this.generateSpaceObjects(new BackgroundCloudGenerator(game));
+        this.setGame(game);
+        this.createTexture();
+        this.generateSpaceObjects(new StarGenerator(this.game));
+        this.generateSpaceObjects(new BackgroundCloudGenerator(this.game));
     }
-
 
     DeepSpaceLayer.prototype = {
 
         spaceObjects: [],
 
-        createTexture: function(game) {
+        setGame: function(game){
+            if (!game) throw 'Phaser.Game instance must be passed as first parameter!';
+            this.game = game;
+        },
+
+        createTexture: function() {
             var container;
             
-            this.texture = game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
+            this.texture = this.game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
 
-            container = game.add.image(0, 0, this.texture);
+            container = this.game.add.image(0, 0, this.texture);
             container.fixedToCamera = true;
 
             Graphics
@@ -320,7 +325,7 @@ define('Starfield.DeepSpaceLayer', [
 
         generateSpaceObjects: function(generator) {
             if (!generator) throw 'Invalid generator is passed!';
-            var spaceObjects = generator.getSpaceOjbects();
+            var spaceObjects = generator.getSpaceObjects();
             spaceObjects.forEach(function(so) {
                 this.addSpaceObject(so);
             }.bind(this));
@@ -328,13 +333,13 @@ define('Starfield.DeepSpaceLayer', [
 
         addSpaceObject: function(spaceObject) {
             if (!spaceObject) return;
-            this.spaceObject.push(spaceObject);
+            this.spaceObjects.push(spaceObject);
         },
 
         update: function() {
             for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
                 clearLayer = i === 0;
-                this.spaceObjects[i].update(this.texture, game, clearLayer);
+                this.spaceObjects[i].update(this.texture, this.game, clearLayer);
             }
         }
 
