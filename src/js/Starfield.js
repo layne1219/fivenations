@@ -341,7 +341,7 @@ define('Starfield.PlanetGenerator', [
             .setZ(z)
             .setSprite(getRandomizedSprite());
 
-        return cloud;
+        return planet;
     }
 
     function getRandomizedZ() {
