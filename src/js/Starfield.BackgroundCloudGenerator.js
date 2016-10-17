@@ -31,7 +31,7 @@ define('Starfield.BackgroundCloudGenerator', [
 
     function createClouds(savedData) {
         var numberOfClouds = DENSITY;
-        if (!savedData){
+        if (!savedData) {
             for (var i = 0; i < numberOfClouds; i += 1) {
                 cloud = createRandomizedCloud();
                 this.addSpaceObject(cloud);
