@@ -73,12 +73,19 @@ define('Starfield.BackgroundCloudGenerator', [
         return sprites['type' + type];   
     }    
 
-    function createCloud(x, y, type) {
-        var cloud = new SpaceObject()
-            .setX(x)
-            .setY(y)
-            .setZ(z)
-            .setSprite(getSpriteByType(type));
+    function createCloud(data) {
+        if (!data) throw 'Invalid data passed to generate BackgroundCould object!';
+        var cloud;
+        var sprite = getSpriteByType(data.type);
+
+        sprite.frame = data.frame;
+        sprite.scale = data.scale;
+            
+        cloud = new SpaceObject()
+            .setX(data.x)
+            .setY(data.y)
+            .setZ(data.z)
+            .setSprite(sprite);
 
         return cloud;
     }

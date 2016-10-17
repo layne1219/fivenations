@@ -2,8 +2,9 @@ define('Starfield.DeepSpaceLayer', [
     'Graphics', 
     'Starfield.StarGenerator',
     'Starfield.BackgroundCloudGenerator',
-    'Starfield.PlanetGenerator'
-], function(Graphics, StarGenerator, BackgroundCloudGenerator, PlanetGenerator) {
+    'Starfield.PlanetGenerator',
+    'Starfield.MeteoritesGenerator'
+], function(Graphics, StarGenerator, BackgroundCloudGenerator, PlanetGenerator, MeteoritesGenerator) {
 
     var ns = window.fivenations;
     var width = ns.window.width;
@@ -16,6 +17,7 @@ define('Starfield.DeepSpaceLayer', [
         this.generateSpaceObjects(new StarGenerator(this.game));
         this.generateSpaceObjects(new BackgroundCloudGenerator(this.game));
         this.generateSpaceObjects(new PlanetGenerator(this.game));
+        this.generateSpaceObjects(new MeteoritesGenerator(this.game));
     }
 
     DeepSpaceLayer.prototype = {
