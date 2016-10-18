@@ -335,6 +335,16 @@ define('Preloader.Entities', function() {
         },
 
         // ----------------------------------------------------------------------------
+        // SYN
+        // ----------------------------------------------------------------------------
+        intruder: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/intruder.json'
+        },
+
+        // ----------------------------------------------------------------------------
         // ASTEROIDS
         // ----------------------------------------------------------------------------
         asteroid1: {
