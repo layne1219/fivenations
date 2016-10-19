@@ -337,11 +337,102 @@ define('Preloader.Entities', function() {
         // ----------------------------------------------------------------------------
         // SYN
         // ----------------------------------------------------------------------------
-        intruder: {
+        spear: {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.png',
             atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.json',
-            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/intruder.json'
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/spear.json'
+        },
+
+        twinblade: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/twinblade.json'
+        },
+
+        gloom: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/gloom.json'
+        },
+
+        eclipse: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/eclipse.json'
+        },
+
+        shade: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit05.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit05.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/shade.json'
+        },
+
+        plasmaraid: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit06.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit06.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/plasmaraid.json'
+        },
+
+        hauler: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit07.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit07.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/hauler.json'
+        },
+
+        labor: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit08.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit08.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/labor.json'
+        },
+
+        installator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit09.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit09.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/installator.json'
+        },
+
+        absorber: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit10.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit10.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/absorber.json'
+        },
+
+        assimilator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit11.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit11.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/assimilator.json'
+        },
+
+        mask: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit12.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit12.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/mask.json'
+        },
+
+        caldron: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit13.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit13.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/caldron.json'
+        },
+
+        leechmine: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit14.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit14.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/leechmine.json'
         },
 
         // ----------------------------------------------------------------------------
