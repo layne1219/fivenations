@@ -1,0 +1,27 @@
+{
+    "id": "absorber",
+    "name": "Absorber",
+    "type": "Special Cruiser",
+    "hull": 50,
+    "shield": 70,
+    "armor": 1,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 30,
+    "maneuverability": 30,
+    "vision": 35,
+    "weapons": [ 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 80,
+    "silicium": 100,
+    "energy": 250,
+    "uranium": 0,
+    "space": 5,
+    "buildingTime": 14,
+    "directions": 16,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 105,
+        "height": 105
+    } 
+}
