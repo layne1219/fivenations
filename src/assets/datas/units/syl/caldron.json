@@ -1,0 +1,28 @@
+{
+    "id": "caldron",
+    "name": "Caldron",
+    "type": "Cruiser",
+    "hull": 250,
+    "shield": 150,
+    "armor": 2,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 25,
+    "maneuverability": 25,
+    "vision": 45,
+    "weapons": [ 34, 34, 47, 37, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 300,
+    "silicium": 150,
+    "energy": 150,
+    "uranium": 0,
+    "space": 8,
+    "buildingTime": 25,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 100,
+        "height": 100
+    } 
+}
+   

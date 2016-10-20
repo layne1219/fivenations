@@ -18,7 +18,7 @@
     "space": 5,
     "buildingTime": 14,
     "directions": 16,
-    "animFrame": 1,
+    "animFrame": 9,
     "animType": 0,
     "dimensions": {
         "width": 105,

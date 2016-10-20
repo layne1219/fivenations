@@ -1,0 +1,27 @@
+{
+    "id": "mask",
+    "name": "Mask",
+    "type": "Special Cruiser",
+    "hull": 120,
+    "shield": 80,
+    "armor": 2,
+    "power": 200, 
+    "hangar": 0,
+    "speed": 35,
+    "maneuverability": 30,
+    "vision": 100,
+    "weapons": [ 4, 44, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 150,
+    "silicium": 125,
+    "energy": 175,
+    "uranium": 0,
+    "space": 5,
+    "buildingTime": 20,
+    "directions": 32,
+    "animFrame": 5,
+    "animType": 0,
+    "dimensions": {
+        "width": 90,
+        "height": 90
+    } 
+}
