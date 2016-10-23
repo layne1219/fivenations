@@ -1,0 +1,37 @@
+{
+    "id": "quantumcore",
+    "name": "Quantom Core",
+    "type": "Building",
+    "building": true,
+    "hull": 1000
+    ,
+    "shield": 200,
+    "armor": 5,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 1000,
+    "silicium": 600,
+    "energy": 1000,
+    "uranium": 50,
+    "space": 0,
+    "buildingTime": 50,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 128,
+        "height": 128
+    },
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
+    }
+
+}
