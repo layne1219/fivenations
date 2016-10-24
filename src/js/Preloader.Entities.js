@@ -435,6 +435,98 @@ define('Preloader.Entities', function() {
             dataURL: PATH_ASSETS_DATA_UNITS + '/syl/leechmine.json'
         },
 
+        installationprime: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/installationprime.json'
+        },
+
+        refinery: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/refinery.json'
+        },
+
+        supportcenter: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcenter.json'
+        },
+
+        manufacture: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/manufacture.json'
+        },
+
+        advancedmanufacture: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build05.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build05.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/advancedmanufacture.json'
+        },
+
+        manufactureprime: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build06.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build06.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/manufactureprime.json'
+        },
+
+        defensiveserver: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build07.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build07.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/defensiveserver.json'
+        },
+
+        offensiveserver: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build08.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build08.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/offensiveserver.json'
+        },
+
+        quantumcore: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build09.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build09.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/quantumcore.json'
+        },
+
+        aegis: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build10.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build10.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/aegis.json'
+        },
+
+        wormholegenerator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build11.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build11.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/wormholegenerator.json'
+        },
+
+        repairstation: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build12.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build12.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/repairstation.json'
+        },
+
+        supportcomplex: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build13.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build13.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcomplex.json'
+        },
+
+
         // ----------------------------------------------------------------------------
         // ASTEROIDS
         // ----------------------------------------------------------------------------
