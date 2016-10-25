@@ -24,7 +24,6 @@ define('Starfield.MeteoritesGenerator', [
     }
 
     function createMeteorites(savedData) {
-        var numberOfMeteorites = DENSITY;
         if (savedData) {
             savedData.forEach(function(data) {
                 var meteorite = createMeteorite(data);

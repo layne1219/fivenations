@@ -44,7 +44,7 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         preloader.load.atlasJSONHash('starfield.clouds.bg.type-2', 'assets/images/starfield/background_clouds_type02.png', 'assets/images/starfield/background_clouds_type02.json');
         preloader.load.atlasJSONHash('starfield.planets.type-1', 'assets/images/starfield/background_planets01.png', 'assets/images/starfield/background_planets01.json');
         preloader.load.atlasJSONHash('starfield.planets.type-2', 'assets/images/starfield/background_planets02.png', 'assets/images/starfield/background_planets02.json');
-        preloader.load.atlasJSONHash('starfield.meteorites', 'assets/images/starfield/background_planets02_meteorites.png', 'assets/images/starfield/background_meteorites.json');
+        preloader.load.atlasJSONHash('starfield.meteorites', 'assets/images/starfield/background_meteorites.png', 'assets/images/starfield/background_meteorites.json');
     }
 
     /**

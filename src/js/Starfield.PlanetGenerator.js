@@ -4,7 +4,7 @@ define('Starfield.PlanetGenerator', [
     'Util'
 ], function(SpaceObject, SpaceObjectGenerator, Util) {
 
-    var DENSITY = 5;
+    var DENSITY = 1;
     var ns = window.fivenations;
     var width = ns.window.width;
     var height = ns.window.height;

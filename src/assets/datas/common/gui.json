@@ -303,7 +303,7 @@
         },
         "labor": {
             "spriteId": "gui.icons.syl",
-            "faceFrame": 74
+            "faceFrame": 74,
             "iconFrame": 60
         },
         "installator": {
