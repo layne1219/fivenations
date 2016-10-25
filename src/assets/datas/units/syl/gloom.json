@@ -1,0 +1,27 @@
+{
+    "id": "gloom",
+    "name": "Gloom",
+    "type": "Cruiser",
+    "hull": 300,
+    "shield": 200,
+    "armor": 2,
+    "power": 0, 
+    "hangar": 5,
+    "speed": 25,
+    "maneuverability": 25,
+    "vision": 60,
+    "weapons": [ 34, 34, 35, 35, 36, 36, 37, 0, 0, 0, 0, 0 ],
+    "titanium": 350,
+    "silicium": 250,
+    "energy": 350,
+    "uranium": 0,
+    "space": 10,
+    "buildingTime": 30,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 75,
+        "height": 75
+    } 
+}

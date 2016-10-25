@@ -1,0 +1,27 @@
+{
+    "id": "eclipse",
+    "name": "Eclipse",
+    "type": "Carrier",
+    "hull": 1400,
+    "shield": 700,
+    "armor": 5,
+    "power": 250, 
+    "hangar": 25,
+    "speed": 20,
+    "maneuverability": 10,
+    "vision": 100,
+    "weapons": [ 13, 35, 35, 35, 36, 36, 6, 4, 37, 15, 0, 0 ],
+    "titanium": 1200,
+    "silicium": 600,
+    "energy": 1200,
+    "uranium": 80,
+    "space": 30,
+    "buildingTime": 60,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 105,
+        "height": 105
+    } 
+}

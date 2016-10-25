@@ -1,0 +1,29 @@
+{
+    "id": "refinery",
+    "name": "Refinery",
+    "type": "Building",
+    "building": true,
+    "hull": 600,
+    "shield": 200,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 300,
+    "silicium": 100,
+    "energy": 150,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 20,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 128,
+        "height": 128
+    }
+
+}

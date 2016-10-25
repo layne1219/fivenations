@@ -2,6 +2,7 @@
 	"id": "asteroidicesmall1",
 	"name": "Smaller Icy asteroid",
 	"type": "Space Object",
+	"building": true,
 	"hull": 200,
 	"shield": 0,
 	"armor": 5,
@@ -26,7 +27,7 @@
 	},
     "animations": {
         "idle-forever": {
-            "rate": 20,
+            "rate": 25,
             "loopable": true,
             "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         }

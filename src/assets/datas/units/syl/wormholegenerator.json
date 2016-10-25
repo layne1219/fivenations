@@ -1,0 +1,37 @@
+{
+    "id": "wormholegenerator",
+    "name": "Wormhole Generator",
+    "type": "Building",
+    "building": true,
+    "hull": 300
+    ,
+    "shield": 200,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 0,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 200,
+    "silicium": 300,
+    "energy": 600,
+    "uranium": 50,
+    "space": 0,
+    "buildingTime": 50,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 128,
+        "height": 128
+    },
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+        }
+    }
+
+}

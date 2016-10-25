@@ -1,0 +1,36 @@
+{
+    "id": "installationprime",
+    "name": "Installation Prime",
+    "type": "Building",
+    "building": true,
+    "hull": 1000,
+    "shield": 500,
+    "armor": 5,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 50,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 0,
+    "silicium": 0,
+    "energy": 0,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 30,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "dimensions": {
+        "width": 160,
+        "height": 160
+    },
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    }
+
+}

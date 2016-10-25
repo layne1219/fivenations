@@ -335,6 +335,199 @@ define('Preloader.Entities', function() {
         },
 
         // ----------------------------------------------------------------------------
+        // SYN
+        // ----------------------------------------------------------------------------
+        spear: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/spear.json'
+        },
+
+        twinblade: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/twinblade.json'
+        },
+
+        gloom: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/gloom.json'
+        },
+
+        eclipse: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/eclipse.json'
+        },
+
+        shade: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit05.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit05.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/shade.json'
+        },
+
+        plasmaraid: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit06.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit06.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/plasmaraid.json'
+        },
+
+        hauler: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit07.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit07.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/hauler.json'
+        },
+
+        labor: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit08.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit08.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/labor.json'
+        },
+
+        installator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit09.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit09.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/installator.json'
+        },
+
+        absorber: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit10.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit10.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/absorber.json'
+        },
+
+        assimilator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit11.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit11.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/assimilator.json'
+        },
+
+        mask: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit12.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit12.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/mask.json'
+        },
+
+        caldron: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit13.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit13.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/caldron.json'
+        },
+
+        leechmine: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit14.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit14.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/leechmine.json'
+        },
+
+        installationprime: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build01.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build01.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/installationprime.json'
+        },
+
+        refinery: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build02.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build02.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/refinery.json'
+        },
+
+        supportcenter: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build03.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build03.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcenter.json'
+        },
+
+        manufacture: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build04.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build04.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/manufacture.json'
+        },
+
+        advancedmanufacture: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build05.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build05.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/advancedmanufacture.json'
+        },
+
+        manufactureprime: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build06.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build06.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/manufactureprime.json'
+        },
+
+        defensiveserver: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build07.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build07.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/defensiveserver.json'
+        },
+
+        offensiveserver: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build08.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build08.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/offensiveserver.json'
+        },
+
+        quantumcore: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build09.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build09.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/quantumcore.json'
+        },
+
+        aegis: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build10.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build10.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/aegis.json'
+        },
+
+        wormholegenerator: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build11.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build11.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/wormholegenerator.json'
+        },
+
+        repairstation: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build12.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build12.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/repairstation.json'
+        },
+
+        supportcomplex: {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build13.png',
+            atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build13.json',
+            dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcomplex.json'
+        },
+
+
+        // ----------------------------------------------------------------------------
         // ASTEROIDS
         // ----------------------------------------------------------------------------
         asteroid1: {

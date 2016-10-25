@@ -1,0 +1,93 @@
+{"frames": {
+
+"meteorites_01.png":
+{
+	"frame": {"x":1468,"y":97,"w":150,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":247},
+	"sourceSize": {"w":153,"h":250},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_02.png":
+{
+	"frame": {"x":1241,"y":173,"w":171,"h":145},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":18,"w":171,"h":145},
+	"sourceSize": {"w":171,"h":163},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_03.png":
+{
+	"frame": {"x":1352,"y":97,"w":114,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":64},
+	"sourceSize": {"w":117,"h":67},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_04.png":
+{
+	"frame": {"x":1000,"y":235,"w":239,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":239,"h":114},
+	"sourceSize": {"w":242,"h":117},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_05.png":
+{
+	"frame": {"x":1352,"y":1,"w":212,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":212,"h":94},
+	"sourceSize": {"w":215,"h":97},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_06.png":
+{
+	"frame": {"x":1000,"y":1,"w":178,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":232},
+	"sourceSize": {"w":181,"h":235},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_07.png":
+{
+	"frame": {"x":1180,"y":1,"w":170,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":170},
+	"sourceSize": {"w":173,"h":173},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_08.png":
+{
+	"frame": {"x":598,"y":1,"w":400,"h":342},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":400,"h":342},
+	"sourceSize": {"w":404,"h":346},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"meteorites_09.png":
+{
+	"frame": {"x":1,"y":1,"w":595,"h":378},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":595,"h":378},
+	"sourceSize": {"w":598,"h":378},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "background_meteorites.png",
+	"format": "RGBA8888",
+	"size": {"w":1619,"h":380},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:11c0caa5bd3ffbfdc82dc871eb5d0e70:3701ddfd8bd06fc4d7b34f7fb12d11e0:7b183f7249922023e12161a6a9e641c2$"
+}
+}

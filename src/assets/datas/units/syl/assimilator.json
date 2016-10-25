@@ -1,0 +1,27 @@
+{
+    "id": "assimilator",
+    "name": "Assimilator",
+    "type": "Special Cruiser",
+    "hull": 200,
+    "shield": 100,
+    "armor": 2,
+    "power": 350, 
+    "hangar": 0,
+    "speed": 35,
+    "maneuverability": 25,
+    "vision": 50,
+    "weapons": [ 43, 46, 45, 37, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 200,
+    "silicium": 350,
+    "energy": 500,
+    "uranium": 30,
+    "space": 5,
+    "buildingTime": 30,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 105,
+        "height": 105
+    } 
+}

@@ -1,0 +1,28 @@
+{
+    "id": "plasmaraid",
+    "name": "Plasma raid",
+    "type": "Battleship",
+    "hull": 1000,
+    "shield": 400,
+    "armor": 4,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 20,
+    "maneuverability": 10,
+    "vision": 50,
+    "weapons": [ 40, 40, 40, 40, 40, 40, 40, 37, 0, 0, 0, 0 ],
+    "titanium": 1200,
+    "silicium": 600,
+    "energy": 900,
+    "uranium": 100,
+    "space": 25,
+    "buildingTime": 60,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 115,
+        "height": 115
+    } 
+}
+ 

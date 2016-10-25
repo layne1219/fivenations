@@ -1,0 +1,30 @@
+{
+    "id": "aegis",
+    "name": "Aegis",
+    "type": "Building",
+    "building": true,
+    "hull": 400
+    ,
+    "shield": 200,
+    "armor": 4,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 100,
+    "weapons": [ 35, 35, 35, 36, 36, 4, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 1000,
+    "silicium": 600,
+    "energy": 1000,
+    "uranium": 50,
+    "space": 0,
+    "buildingTime": 50,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 100,
+        "height": 100
+    }
+
+}

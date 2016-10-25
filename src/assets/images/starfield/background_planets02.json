@@ -1,0 +1,102 @@
+{"frames": {
+
+"planet11.png":
+{
+	"frame": {"x":1,"y":433,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet12.png":
+{
+	"frame": {"x":431,"y":433,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet13.png":
+{
+	"frame": {"x":433,"y":1,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet14.png":
+{
+	"frame": {"x":861,"y":431,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet15.png":
+{
+	"frame": {"x":863,"y":1,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet16.png":
+{
+	"frame": {"x":861,"y":861,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet17.png":
+{
+	"frame": {"x":1293,"y":1,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet18.png":
+{
+	"frame": {"x":1291,"y":431,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet19.png":
+{
+	"frame": {"x":1291,"y":861,"w":428,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"planet20.png":
+{
+	"frame": {"x":1,"y":1,"w":430,"h":430},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":430,"h":430},
+	"sourceSize": {"w":436,"h":436},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "background_planets02.png",
+	"format": "RGBA8888",
+	"size": {"w":1722,"h":1290},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:bb747e80fcf94ba088f04071f7d44bf1:2e09339c7e5860edd3feda062f0018ef:7f91969cbef997e944a3243f25d4b1f2$"
+}
+}

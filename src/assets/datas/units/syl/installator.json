@@ -1,0 +1,28 @@
+{
+    "id": "installator",
+    "name": "Installator",
+    "type": "Expansionist",
+    "hull": 600,
+    "shield": 200,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 25,
+    "maneuverability": 20,
+    "vision": 35,
+    "weapons": [ 12, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 800,
+    "silicium": 300,
+    "energy": 500,
+    "uranium": 0,
+    "space": 10,
+    "buildingTime": 25,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 75,
+        "height": 75
+    } 
+}
+             

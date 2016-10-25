@@ -67,13 +67,15 @@ define('Game', [
             //                                  Map
             // -----------------------------------------------------------------------
             // Generate a Map
-            this.map = new Map();
+            this.map = new Map({
+                width: 128,
+                height: 128
+            });
             this.map.setGame(this.game);
 
             // -----------------------------------------------------------------------
-            //                                  Map
+            //                               Player manager
             // -----------------------------------------------------------------------
-            // Generate a Map
             this.playerManager = PlayerManager.getInstance();
 
             // -----------------------------------------------------------------------
@@ -178,10 +180,10 @@ define('Game', [
                 .setPlayerManager(this.playerManager)
                 .getInstance();
 
-            window.gui = this.game.add.sprite(10, 10, 'gui.icons.ath');
+            /*window.gui = this.game.add.sprite(10, 10, 'gui.icons.obj');
             window.gui.visible = true;
             window.gui.frame = 1;
-            Graphics.getInstance().getGroup('entities').add(gui);
+            Graphics.getInstance().getGroup('entities').add(gui);*/
 
             // -----------------------------------------------------------------------
             //                              GUI.ActivityManager
@@ -222,115 +224,39 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: Util.rnd(1, 2) === 1 ? 'intruder' : 'warpglider',
+                    id: Util.rnd(1, 2) === 1 ? 'spear' : 'twinblade',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
 
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'flanker',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'mothership',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'invader',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'explorer',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'drone',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'gathering',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'clairvoyant',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'lancet',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'theocrat',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'lifevessel',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'reactor',
-                team: 1, 
-                x: 50 + Util.rnd(0, 900),
-                y: 50 + Util.rnd(0, 700)
-            });
-
             [
-                'centralpyramid',
-                'masstransmitter',
-                'biosphere',
-                'powercore',
-                'polaronsphere',
-                'obelisk',
-                'sanctuary',
-                'synodum',
-                'conservatory',
-                'monumentofwill',
-                'basilica',
-                'theocratsseat',
-                'shieldgenerator'                
+                'absorber',
+                'advancedmanufacture',
+                'aegis',
+                'assimilator',
+                'caldron',
+                'defensiveserver',
+                'eclipse',
+                'gloom',
+                'hauler',
+                'installationprime',
+                'installator',
+                'labor',
+                'leechmine',
+                'manufacture',
+                'manufactureprime',
+                'mask',
+                'offensiveserver',
+                'plasmaraid',
+                'quantumcore',
+                'refinery',
+                'repairstation',
+                'shade',
+                'supportcenter',
+                'supportcomplex',
+                'wormholegenerator'
             ].forEach(function(id){
 
                 this.entityManager.entities.add({

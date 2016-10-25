@@ -1,0 +1,27 @@
+{
+    "id": "twinblade",
+    "name": "Twinblade",
+    "type": "Destroyer",
+    "hull": 100,
+    "shield": 60,
+    "armor": 1,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 35,
+    "maneuverability": 30,
+    "vision": 45,
+    "weapons": [ 34, 34, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 120,
+    "silicium": 35,
+    "energy": 90,
+    "uranium": 0,
+    "space": 3,
+    "buildingTime": 14,
+    "directions": 16,
+    "animFrame": 1,
+    "animType": 0,
+    "dimensions": {
+        "width": 50,
+        "height": 50
+    } 
+}

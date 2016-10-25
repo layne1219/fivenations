@@ -266,135 +266,270 @@
             "faceFrame": 38,
             "iconFrame": 51
         },
-        "asteroid1": {
-            "spriteId": "gui.icons.fed",
+        "spear": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 67,
+            "iconFrame": 53
+        },
+        "twinblade": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 68,
+            "iconFrame": 54
+        },
+        "gloom": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 69,
+            "iconFrame": 55
+        },
+        "eclipse": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 70,
+            "iconFrame": 56
+        },
+        "shade": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 71,
+            "iconFrame": 57
+        },
+        "plasmaraid": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 72,
+            "iconFrame": 58
+        },
+        "hauler": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 73,
+            "iconFrame": 59
+        },
+        "labor": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 74,
+            "iconFrame": 60
+        },
+        "installator": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 75,
+            "iconFrame": 61
+        },
+        "absorber": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 76,
+            "iconFrame": 62
+        },
+        "assimilator": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 77,
+            "iconFrame": 63
+        },
+        "mask": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 78,
+            "iconFrame": 64
+        },
+        "caldron": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 79,
+            "iconFrame": 65
+        },
+        "leechmine": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 80,
+            "iconFrame": 66
+        },
+        "installationprime": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 27,
+            "iconFrame": 40
+        },
+        "refinery": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 28,
+            "iconFrame": 41
+        },
+        "supportcenter": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 29,
+            "iconFrame": 42
+        },
+        "manufacture": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 30,
+            "iconFrame": 43
+        },
+        "advancedmanufacture": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 31,
+            "iconFrame": 44
+        },
+        "manufactureprime": {
+            "spriteId": "gui.icons.syl",
             "faceFrame": 32,
             "iconFrame": 45
+        },
+        "defensiveserver": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 33,
+            "iconFrame": 46
+        },
+        "offensiveserver": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 34,
+            "iconFrame": 47
+        },
+        "quantumcore": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 35,
+            "iconFrame": 48
+        },
+        "aegis": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 36,
+            "iconFrame": 49
+        },
+        "wormholegenerator": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 37,
+            "iconFrame": 50
+        },
+        "repairstation": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 38,
+            "iconFrame": 51
+        },
+        "supportcomplex": {
+            "spriteId": "gui.icons.syl",
+            "faceFrame": 39,
+            "iconFrame": 52
+        },
+        "asteroid1": {
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroid2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroid3": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroid4": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall3": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidsmall4": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidbig1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidbig2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 1,
+            "iconFrame": 4
         },
         "asteroidice1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidice2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidicesmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidicesmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 10,
+            "iconFrame": 3
         },
         "asteroidsilicon1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidsilicon2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidsiliconsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidsiliconsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 2,
+            "iconFrame": 5
         },
         "asteroidtitanium1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroidtitanium2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroidtitaniumsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroidtitaniumsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 8,
+            "iconFrame": 6
         },
         "asteroiduranium1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         },
         "asteroiduranium2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         },
         "asteroiduraniumsmall1": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         },
         "asteroiduraniumsmall2": {
-            "spriteId": "gui.icons.fed",
-            "faceFrame": 32,
-            "iconFrame": 45
+            "spriteId": "gui.icons.obj",
+            "faceFrame": 9,
+            "iconFrame": 7
         }        
     }
 
