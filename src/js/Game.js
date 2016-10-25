@@ -231,20 +231,32 @@ define('Game', [
                 });
             }
 
-            /*[
-                'centralpyramid',
-                'masstransmitter',
-                'biosphere',
-                'powercore',
-                'polaronsphere',
-                'obelisk',
-                'sanctuary',
-                'synodum',
-                'conservatory',
-                'monumentofwill',
-                'basilica',
-                'theocratsseat',
-                'shieldgenerator'                
+            [
+                'absorber',
+                'advancedmanufacture',
+                'aegis',
+                'assimilator',
+                'caldron',
+                'defensiveserver',
+                'eclipse',
+                'gloom',
+                'hauler',
+                'installationprime',
+                'installator',
+                'labor',
+                'leechmine',
+                'manufacture',
+                'manufactureprime',
+                'mask',
+                'offensiveserver',
+                'plasmaraid',
+                'quantumcore',
+                'refinery',
+                'repairstation',
+                'shade',
+                'supportcenter',
+                'supportcomplex',
+                'wormholegenerator'
             ].forEach(function(id){
 
                 this.entityManager.entities.add({
@@ -297,7 +309,7 @@ define('Game', [
 
                 }
 
-            }.bind(this));*/
+            }.bind(this));
 
 
         },
