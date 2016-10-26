@@ -18,6 +18,7 @@ define('Starfield.DeepSpaceLayer', [
         this.generateSpaceObjects(new BackgroundCloudGenerator(this.game));
         this.generateSpaceObjects(new PlanetGenerator(this.game));
         this.generateSpaceObjects(new MeteoritesGenerator(this.game));
+        this.sortSpaceObjects();
     }
 
     DeepSpaceLayer.prototype = {
@@ -50,6 +51,12 @@ define('Starfield.DeepSpaceLayer', [
                 this.addSpaceObject(so);
             }.bind(this));
         },
+
+        sortSpaceObjects: function() {
+            this.spaceObject.sort(function(a, b){
+                return return b.z - a.z;
+            });
+        }
 
         addSpaceObject: function(spaceObject) {
             if (!spaceObject) return;
