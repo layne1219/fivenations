@@ -53,8 +53,8 @@ define('Starfield.DeepSpaceLayer', [
         },
 
         sortSpaceObjects: function() {
-            this.spaceObject.sort(function(a, b){
-                return b.z - a.z;
+            this.spaceObjects.sort(function(a, b){
+                return a.z - b.z;
             });
         },
 
