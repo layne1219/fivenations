@@ -1,7 +1,7 @@
 define('Starfield.SpaceObjectGenerator', function() {
 
-    function SpaceObjectGenerator(game) {
-        this.game = game;
+    function SpaceObjectGenerator(deepSpaceLayer) {
+        this.deepSpaceLayer = deepSpaceLayer;
     }
 
     SpaceObjectGenerator.prototype = {

@@ -54,7 +54,7 @@ define('Starfield.DeepSpaceLayer', [
 
         createSpaceObjects: function(savedData) {
             if (savedData) {
-                this.loadSpaceObjects();
+                this.loadSpaceObjects(new SpaceObjectLoader(this, savedData));
             } else {
                 this.generateSpaceObjects(new PlanetAreaGenerator(this));
             }
@@ -63,31 +63,18 @@ define('Starfield.DeepSpaceLayer', [
 
         generateSpaceObjects: function(generator) {
             if (!generator) throw 'Invalid generator instance!';
-            var spaceObjects = generator.getSpaceObjects();
-
-            spaceObjects.forEach(function(so) {
-                this.addSpaceObject(so);
-            }.bind(this));
+            this.spaceObjects = generator.getSpaceObjects(););
         },
 
         loadSpaceObjects: function(loader) {
             if (!loader) throw 'Invalid loader instance!';
-            var spaceObjects = loader.getSpaceObjects();
-
-            spaceObjects.forEach(function(so) {
-                this.addSpaceObject(so);
-            }.bind(this));
-        }
+            this.spaceObjects = loader.getSpaceObjects();
+        },
 
         sortSpaceObjects: function() {
             this.spaceObjects.sort(function(a, b){
                 return a.z - b.z;
             });
-        },
-
-        addSpaceObject: function(spaceObject) {
-            if (!spaceObject) return;
-            this.spaceObjects.push(spaceObject);
         },
 
         update: function() {
