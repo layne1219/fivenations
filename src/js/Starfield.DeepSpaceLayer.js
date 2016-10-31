@@ -9,16 +9,13 @@ define('Starfield.DeepSpaceLayer', [
     var ns = window.fivenations;
     var width = ns.window.width;
     var height = ns.window.height;
-    var i, l, clearLayer;
+    var sprites = {};
 
     function DeepSpaceLayer(game) {
         this.setGame(game);
         this.createTexture();
-        this.generateSpaceObjects(new StarGenerator(this.game));
-        this.generateSpaceObjects(new BackgroundCloudGenerator(this.game));
-        this.generateSpaceObjects(new PlanetGenerator(this.game));
-        this.generateSpaceObjects(new MeteoritesGenerator(this.game));
-        this.sortSpaceObjects();
+        this.createSprites();
+        this.createSpaceObjects();
     }
 
     DeepSpaceLayer.prototype = {
@@ -44,13 +41,43 @@ define('Starfield.DeepSpaceLayer', [
                 .add(container);
         },
 
+        createSprites: function() {
+            if (sprites) return;
+            sprites = {
+                cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
+                cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
+                meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
+                planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
+                planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2')
+            };
+        },
+
+        createSpaceObjects: function(savedData) {
+            if (savedData) {
+                this.loadSpaceObjects();
+            } else {
+                this.generateSpaceObjects(new PlanetAreaGenerator(this));
+            }
+            this.sortSpaceObjects();
+        },
+
         generateSpaceObjects: function(generator) {
-            if (!generator) throw 'Invalid generator is passed!';
+            if (!generator) throw 'Invalid generator instance!';
             var spaceObjects = generator.getSpaceObjects();
+
             spaceObjects.forEach(function(so) {
                 this.addSpaceObject(so);
             }.bind(this));
         },
+
+        loadSpaceObjects: function(loader) {
+            if (!loader) throw 'Invalid loader instance!';
+            var spaceObjects = loader.getSpaceObjects();
+
+            spaceObjects.forEach(function(so) {
+                this.addSpaceObject(so);
+            }.bind(this));
+        }
 
         sortSpaceObjects: function() {
             this.spaceObjects.sort(function(a, b){
@@ -64,10 +91,18 @@ define('Starfield.DeepSpaceLayer', [
         },
 
         update: function() {
+            var i, l;
             for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
-                clearLayer = i === 0;
-                this.spaceObjects[i].update(this.texture, this.game, clearLayer);
+                this.spaceObjects[i].update(this.texture, this.game, i === 0);
             }
+        },
+
+        getGame: function() {
+            return this.game;
+        },
+
+        getSprites: function() {
+            return this.sprites;
         }
 
     }
