@@ -11,8 +11,9 @@ define('Starfield.DeepSpaceLayer', [
     var height = ns.window.height;
     var sprites = {};
 
-    function DeepSpaceLayer(game) {
-        this.setGame(game);
+    function DeepSpaceLayer(map) {
+        this.setMap(map);
+        this.setGame(map.getGame());
         this.createTexture();
         this.createSprites();
         this.createSpaceObjects();
@@ -21,6 +22,11 @@ define('Starfield.DeepSpaceLayer', [
     DeepSpaceLayer.prototype = {
 
         spaceObjects: [],
+
+        setMap: function(map) {
+            if (!map) throw 'Map instance must be passed as first parameter!';
+            this.map = map;
+        },
 
         setGame: function(game) {
             if (!game) throw 'Phaser.Game instance must be passed as first parameter!';
@@ -86,6 +92,10 @@ define('Starfield.DeepSpaceLayer', [
 
         getGame: function() {
             return this.game;
+        },
+
+        getMap: function() {
+            return this.map;
         },
 
         getSprites: function() {

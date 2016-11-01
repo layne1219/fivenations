@@ -3,7 +3,8 @@ define('Starfield.PlanetAreaGenerator', [
     'Starfield.SpaceObjectGenerator',
     'Util'
 ], function(SpaceObject, SpaceObjectGenerator, Util) {
-    
+
+    var ns = window.fivenations;
     var NUMBER_OF_CLOUDS = 10;
 
     function PlanetAreaGenerator(deepSpaceLayer) {
@@ -25,15 +26,15 @@ define('Starfield.PlanetAreaGenerator', [
     }
 
     function createRandomizedCloud() {
-        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
         var cloud;
-
+        var map = this.deepSpaceLayer.getMap();
 		var NUMBER_OF_TYPES = 2;
         var NUMBER_OF_FRAMES = 4;
         var type = Util.rnd(1, NUMBER_OF_TYPES);
         var sprite = this.sprites['cloud' + type];
-        var x = Util.rnd(0, width);
-        var y = Util.rnd(0, height);
+        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
+        var x = Math.floor(Util.rnd(0, map.getScreenWidth()) / z);
+        var y = Math.floor(Util.rnd(0, map.getScreenHeight()) / z);
         var frame = Util.rnd(0, NUMBER_OF_FRAMES - 1);
         var scale = Util.rnd(75, 125) / 100;
 

@@ -2,13 +2,13 @@ define('Starfield.Background', ['Graphics'], function(Graphics) {
 
     var BACKGROUND_SPEED = 0.1;
 
-    function Background(game) {
-        initialise.call(this, game);
+    function Background(map) {
+        initialise.call(this, map);
     }
 
-    function initialise(game) {
-        this.game = game;
-        this.background = game.add.tileSprite(0, 0, 1024, 1024, 'starfield');
+    function initialise(map) {
+        this.game = map.getGame();
+        this.background = this.game.add.tileSprite(0, 0, 1024, 1024, 'starfield');
         this.background.fixedToCamera = true;
 
         Graphics.getInstance().getGroup('starfield').add(this.background);
