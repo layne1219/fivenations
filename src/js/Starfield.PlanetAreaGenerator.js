@@ -1,52 +1,42 @@
 define('Starfield.PlanetAreaGenerator', [
+    'Starfield.CloudGenerator',
+    'Starfield.PlanetGenerator',
     'Starfield.SpaceObject',
     'Starfield.SpaceObjectGenerator',
     'Util'
-], function(SpaceObject, SpaceObjectGenerator, Util) {
+], function(CloudGenerator, PlanetGenerator, SpaceObjectGenerator, Util) {
 
-    var ns = window.fivenations;
-    var NUMBER_OF_CLOUDS = 10;
+    var NUMBER_OF_PLANETS = 1;
 
     function PlanetAreaGenerator(deepSpaceLayer) {
         SpaceObjectGenerator.call(this, deepSpaceLayer);
-        this.sprites = this.deepSpaceLayer.getSprites();
     }
 
     PlanetAreaGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
     PlanetAreaGenerator.prototype.constructor = PlanetAreaGenerator;
 
-	function createClouds(savedData) {
-        var numberOfClouds = NUMBER_OF_CLOUDS;
-        if (!savedData) {
-            for (var i = 0; i < numberOfClouds; i += 1) {
-                cloud = createRandomizedCloud();
-                this.addSpaceObject(cloud);
-            }
-        }
+    PlanetAreaGenerator.prototype.generate = function() {
+        SpaceObjectGenerator.prototype.generate.call(this);
+        this.createPlanet();
+        this.createClouds();
     }
 
-    function createRandomizedCloud() {
-        var cloud;
-        var map = this.deepSpaceLayer.getMap();
-		var NUMBER_OF_TYPES = 2;
-        var NUMBER_OF_FRAMES = 4;
-        var type = Util.rnd(1, NUMBER_OF_TYPES);
-        var sprite = this.sprites['cloud' + type];
-        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
-        var x = Math.floor(Util.rnd(0, map.getScreenWidth()) / z);
-        var y = Math.floor(Util.rnd(0, map.getScreenHeight()) / z);
-        var frame = Util.rnd(0, NUMBER_OF_FRAMES - 1);
-        var scale = Util.rnd(75, 125) / 100;
+	PlanetAreaGenerator.prototype.createPlanet = function() {
+        var generator = new PlanetGenerator(this.deepSpaceLayer);
+        generator.generate();
+        generator.getSpaceObjects().forEach(function(obj){
+            this.addSpaceObject(obj);
+        }).bind(this);
+    };
 
-        cloud = new SpaceObject(sprite)
-            .setX(x)
-            .setY(y)
-            .setZ(z)
-            .setScale(scale)
-            .setFrame(frame);
-
-        return cloud;
+    PlanetAreaGenerator.prototype.createClouds = function() {
+        var generator = new CloudGenerator(this.deepSpaceLayer);
+        generator.generate();
+        generator.getSpaceObjects().forEach(function(obj){
+            this.addSpaceObject(obj);
+        }).bind(this);
     }
 
+    return PlanetAreaGenerator;
 
 });

@@ -5,18 +5,24 @@ define('Starfield.CloudGenerator', [
 ], function(SpaceObject, SpaceObjectGenerator, Util) {
 
     var ns = window.fivenations;
-    var NUMBER_OF_CLOUDS = 10;
+    var MAX_NUMBER_OF_CLOUDS = 100;
 
     function CloudGenerator(deepSpaceLayer) {
         SpaceObjectGenerator.call(this, deepSpaceLayer);
-        this.createClouds();
     }
 
     CloudGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
     CloudGenerator.prototype.constructor = CloudGenerator;
 
-    CloudGenerator.prototype.createClouds = function() {
-        for (var i = 0; i < NUMBER_OF_CLOUDS; i += 1) {
+    CloudGenerator.prototype.generate = function(density) {
+        SpaceObjectGenerator.prototype.generate.call(this);
+        this.createClouds(density);
+    }
+
+    CloudGenerator.prototype.createClouds = function(density) {
+        if (!density) density = 1;
+        var max = Math.floor(NUMBER_OF_CLOUDS * density);
+        for (var i = 0; i < max; i += 1) {
             this.createRandomizedCloud();
         }
     };

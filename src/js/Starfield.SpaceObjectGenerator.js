@@ -8,6 +8,15 @@ define('Starfield.SpaceObjectGenerator', function() {
         
         objects: [],
         
+        generate: function() {
+            // no-op, merely defined to be overwritten 
+        },
+
+        addSpaceObject: function(obj) {
+            if (!obj) throw 'Invalid SpaceObject was given!';
+            this.objects.push(obj);
+        },
+
         getSpaceObjects: function() {
 
             this.objects.sort(function(a, b) {
@@ -15,11 +24,6 @@ define('Starfield.SpaceObjectGenerator', function() {
             });
 
             return this.objects;
-        },
-
-        addSpaceObject: function(obj) {
-            if (!obj) throw 'Invalid SpaceObject was given!';
-            this.objects.push(obj);
         }
 
     };
