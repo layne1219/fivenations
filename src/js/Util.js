@@ -28,7 +28,7 @@ define('Util', function() {
          * returns whether the given value is numeric or not
          * @param {mixed} val 
          */
-        function IsNumeric(val) {
+        isNumeric: function(val) {
             return Number(parseFloat(val)) === val;
         },
 
