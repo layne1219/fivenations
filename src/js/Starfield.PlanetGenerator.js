@@ -38,14 +38,14 @@ define('Starfield.PlanetGenerator', [
         var frame = Util.rnd(0, NUMBER_OF_FRAMES - 1);
         var scale = Util.rnd(100, 200) / 100;
 
-        var cloud = new SpaceObject(sprite)
+        var planet = new SpaceObject(sprite)
             .setX(x)
             .setY(y)
             .setZ(z)
             .setScale(scale)
             .setFrame(frame);
 
-        this.addSpaceObject(cloud);
+        this.addSpaceObject(planet);
     };
 
     return PlanetGenerator;

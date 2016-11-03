@@ -2,11 +2,10 @@ define('Starfield.SpaceObjectGenerator', function() {
 
     function SpaceObjectGenerator(deepSpaceLayer) {
         this.deepSpaceLayer = deepSpaceLayer;
+        this.objects = [];
     }
 
     SpaceObjectGenerator.prototype = {
-        
-        objects: [],
         
         generate: function() {
             // no-op, merely defined to be overwritten 

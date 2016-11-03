@@ -1,12 +1,9 @@
 define('Starfield.PlanetAreaGenerator', [
     'Starfield.CloudGenerator',
     'Starfield.PlanetGenerator',
-    'Starfield.SpaceObject',
     'Starfield.SpaceObjectGenerator',
     'Util'
 ], function(CloudGenerator, PlanetGenerator, SpaceObjectGenerator, Util) {
-
-    var NUMBER_OF_PLANETS = 1;
 
     function PlanetAreaGenerator(deepSpaceLayer) {
         SpaceObjectGenerator.call(this, deepSpaceLayer);
@@ -26,7 +23,7 @@ define('Starfield.PlanetAreaGenerator', [
         generator.generate();
         generator.getSpaceObjects().forEach(function(obj){
             this.addSpaceObject(obj);
-        }).bind(this);
+        }.bind(this));
     };
 
     PlanetAreaGenerator.prototype.createClouds = function() {
@@ -34,7 +31,7 @@ define('Starfield.PlanetAreaGenerator', [
         generator.generate();
         generator.getSpaceObjects().forEach(function(obj){
             this.addSpaceObject(obj);
-        }).bind(this);
+        }.bind(this));
     }
 
     return PlanetAreaGenerator;

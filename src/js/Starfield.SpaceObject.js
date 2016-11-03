@@ -24,13 +24,13 @@ define('Starfield.SpaceObject', function() {
         },
 
         setScale: function(scale) {
-            if (!scale) return;
-            this.sprite.scale.setTo(scale, scale)
+            this.sprite.scale.setTo(scale, scale);
+            return this;
         },
 
         setFrame: function(frame) {
-            if (!isNumber(frame)) return;
             this.sprite.frame = frame;
+            return this;
         },
 
         update: function(texture, game, clearLayer) {

@@ -21,7 +21,7 @@ define('Starfield.CloudGenerator', [
 
     CloudGenerator.prototype.createClouds = function(density) {
         if (!density) density = 1;
-        var max = Math.floor(NUMBER_OF_CLOUDS * density);
+        var max = Math.floor(MAX_NUMBER_OF_CLOUDS * density);
         for (var i = 0; i < max; i += 1) {
             this.createRandomizedCloud();
         }

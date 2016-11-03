@@ -6,7 +6,7 @@ define('Starfield.DeepSpaceLayer', [
     var ns = window.fivenations;
     var width = ns.window.width;
     var height = ns.window.height;
-    var sprites = {};
+    var sprites;
 
     function DeepSpaceLayer(map) {
         this.setMap(map);
@@ -66,11 +66,13 @@ define('Starfield.DeepSpaceLayer', [
 
         generateSpaceObjects: function(generator) {
             if (!generator) throw 'Invalid generator instance!';
+            generator.generate();
             this.spaceObjects = generator.getSpaceObjects();
         },
 
         loadSpaceObjects: function(loader) {
             if (!loader) throw 'Invalid loader instance!';
+            loader.load();
             this.spaceObjects = loader.getSpaceObjects();
         },
 
@@ -96,7 +98,7 @@ define('Starfield.DeepSpaceLayer', [
         },
 
         getSprites: function() {
-            return this.sprites;
+            return sprites;
         }
 
     }
