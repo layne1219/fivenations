@@ -42,7 +42,8 @@
             json: '../bower_components/requirejs-plugins/src/json',
             abilities: '../assets/datas/common/abilities.json',
             weapons: '../assets/datas/common/weapons.json',
-            gui: '../assets/datas/common/gui.json'
+            gui: '../assets/datas/common/gui.json',
+            sizes: '../assets/datas/common/sizes.json'
         }
     });
 
