@@ -4,6 +4,10 @@ define('Starfield.PlanetGenerator', [
     'Util'
 ], function(SpaceObject, SpaceObjectGenerator, Util) {
 
+    var ns = window.fivenations;
+    var screenWidth = ns.window.width;
+    var screenHeight = ns.window.height;
+
     function PlanetGenerator(deepSpaceLayer) {
         SpaceObjectGenerator.call(this, deepSpaceLayer);
     }
@@ -33,8 +37,8 @@ define('Starfield.PlanetGenerator', [
         var type = Util.rnd(1, NUMBER_OF_TYPES);
         var sprite = sprites['planet' + type];
         var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
-        var x = Math.floor(Util.rnd(0, map.getScreenWidth()) / z);
-        var y = Math.floor(Util.rnd(0, map.getScreenHeight()) / z);
+        var x = Math.floor(Util.rnd(0, map.getScreenWidth() - screenWidth) * z);
+        var y = Math.floor(Util.rnd(0, map.getScreenHeight() - screenHeight) * z);
         var frame = Util.rnd(0, NUMBER_OF_FRAMES - 1);
         var scale = Util.rnd(100, 200) / 100;
 
