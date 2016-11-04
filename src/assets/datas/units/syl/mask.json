@@ -20,8 +20,5 @@
     "directions": 32,
     "animFrame": 5,
     "animType": 0,
-    "dimensions": {
-        "width": 90,
-        "height": 90
-    } 
+    "size": "sm" 
 }

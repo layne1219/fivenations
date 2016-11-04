@@ -21,9 +21,6 @@
     "directions": 32,
     "animFrame": 1,
     "animType": [],
-    "dimensions": {
-        "width": 128,
-        "height": 128
-    }
+    "size": "m"
 
 }

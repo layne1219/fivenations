@@ -21,10 +21,7 @@
     "directions": 0,
     "animFrame": 1,
     "animType": ["contruction"],
-    "dimensions": {
-        "width": 135,
-        "height": 135
-    },
+    "size": "l",
     "animations": {
         "contruction": {
             "rate": 20,

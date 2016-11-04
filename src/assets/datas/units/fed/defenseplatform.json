@@ -21,10 +21,7 @@
     "directions": 0,
     "animFrame": 1,
     "animType": ["idle"],
-    "dimensions": {
-        "width": 179,
-        "height": 145
-    },
+    "size": "xl",
     "animations": {
         "idle": {
             "rate": 20,

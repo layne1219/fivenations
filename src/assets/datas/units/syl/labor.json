@@ -20,8 +20,5 @@
     "directions": 16,
     "animFrame": 10,
     "animType": 0,
-    "dimensions": {
-        "width": 75,
-        "height": 75
-    } 
+    "size": "xsm" 
 }
