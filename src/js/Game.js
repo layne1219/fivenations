@@ -98,9 +98,7 @@ define('Game', [
                 var coords = this.userPointer.getRealCoords();
 
                 this.entityManager
-                    .entities(function(entity) {
-                        return entity.isSelected() && entity.isEntityControlledByUser()
-                    })
+                    .entities(':user:selected')
                     .move({
                         x: coords.x,
                         y: coords.y

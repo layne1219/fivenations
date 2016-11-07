@@ -542,9 +542,7 @@ define('GUI', [
                     }
 
                     this.entityManager
-                        .entities(function(entity) {
-                            return entity.isSelected() && entity.isEntityControlledByUser()
-                        })
+                        .entities(':user:selected')
                         .move({
                             x: coords.x,
                             y: coords.y

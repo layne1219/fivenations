@@ -5,9 +5,7 @@ define('GUI.StopButtonLogic', function() {
     return {
         activate: function(entityManager /*, controlPanel */) {
             entityManager
-                .entities(function(entity) {
-                    return entity.isSelected() && entity.isEntityControlledByUser()
-                })
+                .entities(':user:selected')
                 .stop();
         }
     };
@@ -28,9 +26,7 @@ define('GUI.MoveButtonLogic', [
                 var coords = mousePointer.getRealCoords();
 
                 entityManager
-                    .entities(function(entity) {
-                        return entity.isSelected() && entity.isEntityControlledByUser()
-                    })
+                    .entities(':user:selected')
                     .move({
                         x: coords.x,
                         y: coords.y
@@ -60,9 +56,7 @@ define('GUI.PatrolButtonLogic', [
                 var coords = mousePointer.getRealCoords();
 
                 entityManager
-                    .entities(function(entity) {
-                        return entity.isSelected() && entity.isEntityControlledByUser()
-                    })
+                    .entities(':user:selected')
                     .patrol({
                         x: coords.x,
                         y: coords.y

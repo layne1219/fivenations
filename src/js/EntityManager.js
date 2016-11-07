@@ -169,9 +169,13 @@ define('EntityManager', [
                         targets = entities.filter(function(entity) {
                             return entity.isSelected();
                         });
-                    } else if (filter === ':user'){
+                    } else if (filter === ':user') {
                         targets = entities.filter(function(entity) {
                             return entity.isEntityControlledByUser();
+                        });
+                    } else if (filter === ':user:selected') {
+                        targets = entities.filter(function(entity) {
+                            return entity.isEntityControlledByUser() && entity.isSelected();
                         });
                     } else {
                         targets = entities.filter(function(entity) {
