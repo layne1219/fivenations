@@ -253,11 +253,27 @@ define('Entity', [
             this.activityManager.add(follow);
         },
 
+        /**
+         * Removes all activity from the ActivityManager instance
+         * @return {void}
+         */
+        reset: function() {
+            this.activityManager.removeAll();
+        },
+
+        /**
+         * Removes entity from gameplay
+         * @return {void}
+         */
         remove: function(){
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
         },
 
+        /**
+         * Selects entity
+         * @return {void}
+         */
         select: function() {
             if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
                 this.selected = true;

@@ -31,6 +31,7 @@ define('EntityManager', [
                      * Make all the given entities to move to the given coordinates 
                      * @param  {object} options [configuration object to create the desired event]
                      * @return {this}
+                     * @chainable
                      */
                     move: function(options) {
 
@@ -59,6 +60,7 @@ define('EntityManager', [
                      * Makes all the given entities to patrol between the current and given coordinates 
                      * @param  {object} options [configuration object to create the desired event]
                      * @return {void}
+                     * @chainable
                      */
                     patrol: function(options) {
 
@@ -71,8 +73,9 @@ define('EntityManager', [
                         return this;
                     },
                     /**
-                     * Makes all the given entities to perform a stop action
+                     * Makes all given entities to perform a stop action
                      * @return {void}
+                     * @chainable
                      */
                     stop: function() {
 
@@ -86,8 +89,9 @@ define('EntityManager', [
                     /**
                      * Removes entities from the game
                      * @return {void}
+                     * @chainable
                      */
-                    remove: function(){
+                    remove: function() {
 
                         EventBus.getInstance().add({
                             id: 'entity/remove',
@@ -98,8 +102,24 @@ define('EntityManager', [
 
                     },
                     /**
+                     * Removes all registered activities from the entity's
+                     * entity manager instance
+                     * @return {void}
+                     * @chainable
+                     */
+                    reset: function() {
+
+                        EventBus.getInstance().add({
+                            id: 'entity/reset',
+                            targets: entities
+                        });
+
+                        return this;
+                    },
+                    /**
                      * Directly returns the private collection of entities 
                      * @return {array} Array of entity instances 
+                     * @chainable
                      */
                     raw: function() {
                         return entities || [];
@@ -111,7 +131,7 @@ define('EntityManager', [
                      * to only one entity already 
                      * @return {object} Entity instance
                      */
-                    single: function(){
+                    single: function() {
                         return entities[0];
                     },
 
