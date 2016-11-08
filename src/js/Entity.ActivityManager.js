@@ -85,7 +85,6 @@ define('Entity.ActivityManager', [
     ActivityManager.Stop = Stop;
     ActivityManager.Patrol = Patrol;
     ActivityManager.Follow = Follow;
-    ActivityManager.Reset = Reset;
 
     return ActivityManager;
 
