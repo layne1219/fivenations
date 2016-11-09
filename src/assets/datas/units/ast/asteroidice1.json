@@ -1,11 +1,11 @@
 {
 	"id": "asteroidice1",
-	"name": "Asteroid",
+	"name": "Icy asteroid",
 	"type": "Space Object",
 	"building": true,
 	"hull": 4000,
 	"shield": 0,
-	"armor": 10,
+	"armor": 5,
 	"power": 0, 
 	"hangar": 0,
 	"speed": 0,
