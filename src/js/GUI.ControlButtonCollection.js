@@ -6,8 +6,8 @@ define('GUI.StopButtonLogic', function() {
         activate: function(entityManager /*, controlPanel */) {
             entityManager
                 .entities(':user:selected')
-                .stop()
-                .reset();
+                .reset()
+                .stop();
         }
     };
 });
