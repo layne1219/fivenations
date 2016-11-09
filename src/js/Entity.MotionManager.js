@@ -290,7 +290,7 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             if (this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0){
                 return true;
             } else {
-                if (this.isEntityArrivedAtDestination){
+                if (this.isEntityArrivedAtDestination) {
                     this.isEntityStoppedAtDestination = true;
                 }
                 return false;
