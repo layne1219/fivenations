@@ -1,6 +1,7 @@
 define('Entity.MotionManager.EffectManager', function() {
 
-	function EffectManager() {
+	function EffectManager(motionManager) {
+        this.motionManager = motionManager;
 		this.effects = [];
 	}
 
@@ -14,7 +15,7 @@ define('Entity.MotionManager.EffectManager', function() {
             // invoking the first effect as long as it returns true
             // then remove it  
             while (this.effects[0]) {
-                if (!this.effects[0][0].apply(this, this.effects[0].slice(1))) {
+                if (!this.effects[0][0].call(null, this.motionManager)) {
                     this.effects.splice(0, 1);
                 } else {
                     return false;

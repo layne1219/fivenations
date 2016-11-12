@@ -1,4 +1,8 @@
-define('Entity.MotionManager', ['Entity.MotionManager.EffectManager', 'Util'], function(EffectManager, Util) {
+define('Entity.MotionManager', [
+    'Entity.MotionManager.EffectManager',
+    'Entity.MotionManager.Effects',
+    'Util'
+], function(EffectManager, Effects, Util) {
 
     /**
      * Constructor function to initialise the MotionManager
@@ -10,7 +14,7 @@ define('Entity.MotionManager', ['Entity.MotionManager.EffectManager', 'Util'], f
         this.game = entity.game;
 
         this.dispatcher = new Util.EventDispatcher();
-        this.effectManager = new EffectManager();
+        this.effectManager = new EffectManager(this);
 
         this.entity = entity;
         this.sprite = entity.getSprite();
@@ -89,14 +93,14 @@ define('Entity.MotionManager', ['Entity.MotionManager.EffectManager', 'Util'], f
 
             this.effectManager.resetEffects();
             if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
-                this.effectManager.addEffect(this.stopping);
-                this.effectManager.addEffect(this.resetMovement);
+                this.effectManager.addEffect(Effects.stopping);
+                this.effectManager.addEffect(Effects.resetMovement);
             }
-            this.effectManager.addEffect(this.rotateToTarget);
-            this.effectManager.addEffect(this.accelerateToTarget);
-            this.effectManager.addEffect(this.moveToTarget);
-            this.effectManager.addEffect(this.stopping);
-            this.effectManager.addEffect(this.resetMovement);
+            this.effectManager.addEffect(Effects.rotateToTarget);
+            this.effectManager.addEffect(Effects.accelerateToTarget);
+            this.effectManager.addEffect(Effects.moveToTarget);
+            this.effectManager.addEffect(Effects.stopping);
+            this.effectManager.addEffect(Effects.resetMovement);
 
         },
 
@@ -106,8 +110,8 @@ define('Entity.MotionManager', ['Entity.MotionManager.EffectManager', 'Util'], f
          */
         stop: function() {
             this.effectManager.resetEffects();
-            this.effectManager.addEffect(this.stopping);
-            this.effectManager.addEffect(this.resetMovement);
+            this.effectManager.addEffect(Effects.stopping);
+            this.effectManager.addEffect(Effects.resetMovement);
         },
 
         /**
@@ -200,83 +204,6 @@ define('Entity.MotionManager', ['Entity.MotionManager.EffectManager', 'Util'], f
          */
         updateSpriteFrame: function() {
             this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
-        },
-
-        /**
-         * Move the given entity object towards the x/y coordinates at a steady velocity.
-         * @return {boolean} returning false when the effect is no longer must be applied on the entity
-         */
-        moveToTarget: function() {
-
-            this.movement.acceleration = 0;
-            if (this.movement.distance > this.movement.targetDragTreshold){
-                return true;
-            } else {
-                this.isEntityArrivedAtDestination = true;
-                return false;
-            }
-            
-        },
-
-        /**
-         * Move the given entity towards the target coordinates with an increasing velocity
-         * @return {boolean} returning false when the effect is no longer must be applied on the entity
-         */
-        accelerateToTarget: function() {
-
-            this.movement.acceleration = this.movement.maxAcceleration;
-            return this.movement.distanceInverse < this.movement.targetDragTreshold && this.movement.velocity < this.movement.maxVelocity;
-        },
-
-        /**
-         * Making the given entity stop with a certain amount of drag
-         * @return {boolean} returning false when the effect is no longer must be applied on the entity
-         */
-        stopping: function() {
-
-            this.movement.acceleration = -this.movement.maxAcceleration;
-            if (this.movement.distance > 0 && this.movement.distanceFromOrigin < this.movement.targetInitialDistance && this.movement.velocity > 0){
-                return true;
-            } else {
-                if (this.isEntityArrivedAtDestination) {
-                    this.isEntityStoppedAtDestination = true;
-                }
-                return false;
-            }
-
-        },
-
-        /**
-         * Reset all the helper variables influencing the given entity so that further effects 
-         * can be applied on the entitiy
-         * @return {boolean} returning false when the effect is no longer must be applied on the entity
-         */
-        resetMovement: function() {
-
-            this.movement.acceleration = 0;
-            this.movement.velocity = 0;
-            this.rotation.angularVelocity = 0;
-
-            return false;
-        },
-
-        /**
-         * Altering the rotation of the given entity to face towards the target coordinats 
-         * @return {boolean} returning false when the effect is no longer must be applied on the entity
-         */
-        rotateToTarget: function() {
-
-            // if the entity is already accrelerating than it doesn't have to stop for rotating
-            if (this.movement.velocity > 0) {
-                // it also can rotate with a lot higher speed to mimic flying units in Blizzard's Starcraft
-                this.rotation.angularVelocity = this.rotation.maxAngularVelocity * 1.5;
-                // jumping to the next effect
-                return false;
-            }
-
-            // rotating with default speed until the entity arrives at the target angle 
-            this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
-            return this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle;
         },
 
         /**

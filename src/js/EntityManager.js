@@ -282,7 +282,6 @@ define('EntityManager', [
             }
             entity.remove();
             entity = null;
-            delete entity;
         },
 
         /**
