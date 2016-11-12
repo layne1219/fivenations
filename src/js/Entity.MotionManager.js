@@ -1,4 +1,4 @@
-define('Entity.MotionManager', ['Util'], function(Util) {
+define('Entity.MotionManager', ['Entity.MotionManager.EffectManager', 'Util'], function(EffectManager, Util) {
 
     /**
      * Constructor function to initialise the MotionManager
@@ -10,10 +10,10 @@ define('Entity.MotionManager', ['Util'], function(Util) {
         this.game = entity.game;
 
         this.dispatcher = new Util.EventDispatcher();
+        this.effectManager = new EffectManager();
 
         this.entity = entity;
         this.sprite = entity.getSprite();
-        this.effects = [];
 
         // Not equal to the properties can be found in Sprite.body since 
         // using custom logic for providing RTS like unit movements (drifting)
@@ -87,16 +87,16 @@ define('Entity.MotionManager', ['Util'], function(Util) {
             this.isEntityArrivedAtDestination = false;
             this.isEntityStoppedAtDestination = false;
 
-            this.resetEffects();
+            this.effectManager.resetEffects();
             if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
-                this.addEffect(this.stopping);
-                this.addEffect(this.resetMovement);
+                this.effectManager.addEffect(this.stopping);
+                this.effectManager.addEffect(this.resetMovement);
             }
-            this.addEffect(this.rotateToTarget);
-            this.addEffect(this.accelerateToTarget);
-            this.addEffect(this.moveToTarget);
-            this.addEffect(this.stopping);
-            this.addEffect(this.resetMovement);
+            this.effectManager.addEffect(this.rotateToTarget);
+            this.effectManager.addEffect(this.accelerateToTarget);
+            this.effectManager.addEffect(this.moveToTarget);
+            this.effectManager.addEffect(this.stopping);
+            this.effectManager.addEffect(this.resetMovement);
 
         },
 
@@ -105,9 +105,9 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          * @return {[void]}
          */
         stop: function() {
-            this.resetEffects();
-            this.addEffect(this.stopping);
-            this.addEffect(this.resetMovement);
+            this.effectManager.resetEffects();
+            this.effectManager.addEffect(this.stopping);
+            this.effectManager.addEffect(this.resetMovement);
         },
 
         /**
@@ -119,10 +119,14 @@ define('Entity.MotionManager', ['Util'], function(Util) {
 
             this.updateVelocity();
             this.updateRotation();
-            this.updateEffects();
+            this.effectManager.updateEffects();
             this.executeChecks();
 
         },
+
+
+        /** functions needs to be exposed through the API until this point */
+
 
         /**
          * Updating the velocity according to the applied effects that can alter the coordinates of the Entity
@@ -196,62 +200,6 @@ define('Entity.MotionManager', ['Util'], function(Util) {
          */
         updateSpriteFrame: function() {
             this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
-        },
-
-        /**
-         * Invoking the currently selected effect from the effect queue at every tick
-         * @return {[void]}
-         */
-        updateEffects: function() {
-            // invoking the first effect as long as it returns true
-            // then remove it  
-            while (this.effects[0]) {
-                if (!this.effects[0][0].apply(this, this.effects[0].slice(1))) {
-                    this.effects.splice(0, 1);
-                } else {
-                    return false;
-                }
-            }
-        },
-
-        /**
-         * Pushing a new effect to the effect queue
-         * @param {[function]} effect [function that will be triggered at every tick when selected]
-         */
-        addEffect: function(effect) {
-            var params = Array.prototype.slice(arguments, 1);
-            if ('function' !== typeof effect) {
-                return false;
-            }
-            this.effects.push([effect].concat(params));
-        },
-
-        /**
-         * Reseting the effect queue by removing all the effects from the queue
-         * @return {[void]}
-         */
-        resetEffects: function() {
-            for (var i = this.effects.length - 1; i >= 0; i -= 1) {
-                this.effects[i] = null;
-                this.effects.splice(i, 1);
-            }
-            this.effects = [];
-        },
-
-        /**
-         * Removing the given function from the effect queue 
-         * @param  {[function]} effect []
-         * @return {[void]}}
-         */
-        removeEffect: function(effect) {
-            if ('function' !== effect) {
-                return false;
-            }
-            for (var i = this.effects.length - 1; i >= 0; i -= 1) {
-                if (effect === this.effects[i][0]) {
-                    this.effects.splice(i, 1);
-                }
-            }
         },
 
         /**
