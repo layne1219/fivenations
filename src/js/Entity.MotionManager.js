@@ -93,14 +93,14 @@ define('Entity.MotionManager', [
 
             this.effectManager.resetEffects();
             if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
-                this.effectManager.addEffect(Effects.stopping);
-                this.effectManager.addEffect(Effects.resetMovement);
+                this.effectManager.addEffect(Effects.get('stopping'));
+                this.effectManager.addEffect(Effects.get('resetMovement'));
             }
-            this.effectManager.addEffect(Effects.rotateToTarget);
-            this.effectManager.addEffect(Effects.accelerateToTarget);
-            this.effectManager.addEffect(Effects.moveToTarget);
-            this.effectManager.addEffect(Effects.stopping);
-            this.effectManager.addEffect(Effects.resetMovement);
+            this.effectManager.addEffect(Effects.get('rotateToTarget'));
+            this.effectManager.addEffect(Effects.get('accelerateToTarget'));
+            this.effectManager.addEffect(Effects.get('moveToTarget'));
+            this.effectManager.addEffect(Effects.get('stopping'));
+            this.effectManager.addEffect(Effects.get('resetMovement'));
 
         },
 
@@ -110,8 +110,8 @@ define('Entity.MotionManager', [
          */
         stop: function() {
             this.effectManager.resetEffects();
-            this.effectManager.addEffect(Effects.stopping);
-            this.effectManager.addEffect(Effects.resetMovement);
+            this.effectManager.addEffect(Effects.get('stopping'));
+            this.effectManager.addEffect(Effects.get('resetMovement'));
         },
 
         /**

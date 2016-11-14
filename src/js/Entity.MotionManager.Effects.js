@@ -1,6 +1,12 @@
+/**
+ * Registers an object to fetch functions representing effects
+ * The function needs to return a bool value. If the value is true
+ * the effect will be regarded as finished and removed from the 
+ * effect queue supervised by the EffectManager instance
+ */
 define('Entity.MotionManager.Effects', function() {
 
-	return {
+	var effects = {
 
 		/**
          * Move the given entity object towards the x/y coordinates at a steady velocity.
@@ -80,5 +86,21 @@ define('Entity.MotionManager.Effects', function() {
         }
 
     };
+
+
+    return {
+
+        /**
+         * Returns a function that is registered as an effect 
+         * with the given name
+         * @param  {string} name [id of the effect]
+         * @return {function} function that represents the requested effect 
+         */
+        get: function(name) {
+            if (!name || !effects[name]) throw 'No effect is registered with the given name!';
+            return effects[name];
+        }
+
+    }
 
 });
