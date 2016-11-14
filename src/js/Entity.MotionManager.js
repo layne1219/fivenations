@@ -19,18 +19,26 @@ define('Entity.MotionManager', [
         this.entity = entity;
         this.sprite = entity.getSprite();
 
-        // Not equal to the properties can be found in Sprite.body since 
-        // using custom logic for providing RTS like unit movements (drifting)
-        this.movement = {
+        this.movement = createMovementObject(dataObject);
+        this.rotation = createRotationObject(dataObject);
+
+        this.isEntityArrivedAtDestination = false;
+        this.isEntityStoppedAtDestination = false;
+
+    }
+
+    function createMovementObject(dataObject) {
+        return {
             velocity: 0,
             acceleration: 0,
             maxVelocity: dataObject.getSpeed(),
             maxAcceleration: dataObject.getSpeed(),
             maxTargetDragTreshold: dataObject.getSpeed()
-        };
+        };        
+    }
 
-        // Properties to store angular rotation and spinning informations
-        this.rotation = {
+    function createRotationObject(dataObject) {
+        return {
             targetConsolidatedAngle: 0,
             currentConsolidatedAngle: 0,
             maxAngleCount: dataObject.getDirections(),
@@ -38,11 +46,7 @@ define('Entity.MotionManager', [
             angularVelocityHelper: 0,
             maxAngularVelocity: dataObject.getManeuverability(),
             framePadding: (dataObject.getAnimType().length && (dataObject.getAnimType().length + 1)) || 1
-        };
-
-        this.isEntityArrivedAtDestination = false;
-        this.isEntityStoppedAtDestination = false;
-
+        };        
     }
 
     MotionManager.prototype = {
@@ -120,17 +124,11 @@ define('Entity.MotionManager', [
          * @return {[void]}
          */
         update: function() {
-
             this.updateVelocity();
             this.updateRotation();
             this.effectManager.updateEffects();
             this.executeChecks();
-
         },
-
-
-        /** functions needs to be exposed through the API until this point */
-
 
         /**
          * Updating the velocity according to the applied effects that can alter the coordinates of the Entity
