@@ -1,6 +1,6 @@
 /**
  * Registers an object to fetch functions representing effects
- * The function needs to return a bool value. If the value is true
+ * The function needs to return a bool value. If the value is false
  * the effect will be regarded as finished and removed from the 
  * effect queue supervised by the EffectManager instance
  */
