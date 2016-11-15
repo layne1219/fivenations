@@ -192,16 +192,8 @@ define('Entity.MotionManager', [
                 this.rotation.currentConsolidatedAngle %= this.rotation.maxAngleCount;
             }
 
-            this.updateSpriteFrame();
-
-        },
-
-        /**
-         * 
-         * @return {[type]} [description]
-         */
-        updateSpriteFrame: function() {
             this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
+
         },
 
         /**
