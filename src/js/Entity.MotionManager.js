@@ -9,7 +9,6 @@ define('Entity.MotionManager', [
      * @param {[object]} entity [The target entity whose coordinates will be altered by the applied effects]
      */
     function MotionManager(entity) {
-        var dataObject = entity.getDataObject();
 
         this.game = entity.game;
 
@@ -19,15 +18,22 @@ define('Entity.MotionManager', [
         this.entity = entity;
         this.sprite = entity.getSprite();
 
-        this.movement = createMovementObject(dataObject);
-        this.rotation = createRotationObject(dataObject);
+        this.movement = createMovementObject(entity);
+        this.rotation = createRotationObject(entity);
 
         this.isEntityArrivedAtDestination = false;
         this.isEntityStoppedAtDestination = false;
 
     }
 
-    function createMovementObject(dataObject) {
+    /**
+     * creates a structure for the helper variables placed into a 
+     * namespace
+     * @param  {object} entity given Entity needs to be moved
+     * @return {object} prototype of movement related helper variables
+     */
+    function createMovementObject(entity) {
+        var dataObject = entity.getDataObject();
         return {
             velocity: 0,
             acceleration: 0,
@@ -37,7 +43,14 @@ define('Entity.MotionManager', [
         };        
     }
 
-    function createRotationObject(dataObject) {
+    /**
+     * creates a structure for the helper variables placed into a 
+     * namespace
+     * @param  {object} entity given Entity needs to be moved
+     * @return {object} prototype of movement related helper variables
+     */
+    function createRotationObject(entity) {
+        var dataObject = entity.getDataObject();
         return {
             targetConsolidatedAngle: 0,
             currentConsolidatedAngle: 0,
@@ -58,48 +71,19 @@ define('Entity.MotionManager', [
          * @return {void}
          */
         moveTo: function(activity) {
-            var targetCoords, distance, rotationOffset;
 
-            if (!activity) {
-                throw 'Invalid Activity instance has been passed!';
-            }
+            if (!activity) throw 'Invalid Activity instance has been passed!';
 
             this.activity = activity;
 
-            targetCoords = activity.getCoords();
-            distance = Phaser.Math.distance(this.sprite.x, this.sprite.y, targetCoords.x, targetCoords.y);
-            rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
-
-            this.movement.originX = this.sprite.x;
-            this.movement.originY = this.sprite.y;
-            this.movement.targetX = targetCoords.x;
-            this.movement.targetY = targetCoords.y;
-            this.movement.targetInitialDistance = distance;
-            this.movement.targetDragTreshold = Math.min(this.movement.maxTargetDragTreshold, distance / 2);
-            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
-
-            if (this.rotation.maxAngleCount === 1) {
-                this.movement.currentAngle = this.movement.targetAngle;
-                this.rotation.targetConsolidatedAngle = this.rotation.currentConsolidatedAngle = 0;
-            } else {
-                this.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetCoords.y - this.sprite.y, targetCoords.x - this.sprite.x));
-                if (this.rotation.calculatedAngle < 0) {
-                    this.rotation.calculatedAngle = 360 - Math.abs(this.rotation.calculatedAngle);
-                }
-                this.rotation.targetConsolidatedAngle = (Math.floor(this.rotation.calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;
-
-                this.rotation.stepNumberToRight = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, 1);
-                this.rotation.stepNumberToLeft = Util.calculateStepTo(this.rotation.currentConsolidatedAngle, this.rotation.targetConsolidatedAngle, this.rotation.maxAngleCount, -1);
-            }
-
-            this.isEntityArrivedAtDestination = false;
-            this.isEntityStoppedAtDestination = false;
-
             this.effectManager.resetEffects();
+            this.effectManager.addEffect(Effects.get('initMovement'));
+
             if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
                 this.effectManager.addEffect(Effects.get('stopping'));
                 this.effectManager.addEffect(Effects.get('resetMovement'));
             }
+
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
             this.effectManager.addEffect(Effects.get('accelerateToTarget'));
             this.effectManager.addEffect(Effects.get('moveToTarget'));
