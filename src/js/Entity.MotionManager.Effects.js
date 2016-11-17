@@ -4,7 +4,7 @@
  * the effect will be regarded as finished and removed from the 
  * effect queue supervised by the EffectManager instance
  */
-define('Entity.MotionManager.Effects', function() {
+define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
 	var effects = {
 
@@ -19,7 +19,7 @@ define('Entity.MotionManager.Effects', function() {
 
             targetCoords = motionManager.activity.getCoords();
             distance = Phaser.Math.distance(motionManager.sprite.x, motionManager.sprite.y, targetCoords.x, targetCoords.y);
-            rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
+            rotationOffset = Math.floor(motionManager.rotation.maxAngleCount * 0.75);
 
             motionManager.movement.originX = motionManager.sprite.x;
             motionManager.movement.originY = motionManager.sprite.y;
