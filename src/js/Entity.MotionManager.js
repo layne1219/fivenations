@@ -18,6 +18,7 @@ define('Entity.MotionManager', [
 
         this.entity = entity;
         this.sprite = entity.getSprite();
+        this.animationManager = entity.getAnimationManager();
 
         this.movement = createMovementObject(dataObject);
         this.rotation = createRotationObject(dataObject);
@@ -192,7 +193,7 @@ define('Entity.MotionManager', [
                 this.rotation.currentConsolidatedAngle %= this.rotation.maxAngleCount;
             }
 
-            this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
+            //this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
 
         },
 

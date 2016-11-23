@@ -222,7 +222,7 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: Util.rnd(1, 2) === 1 ? 'spear' : 'twinblade',
+                    id: 'labor',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
