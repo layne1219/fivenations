@@ -4,9 +4,50 @@
  * the effect will be regarded as finished and removed from the 
  * effect queue supervised by the EffectManager instance
  */
-define('Entity.MotionManager.Effects', function() {
+define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
 	var effects = {
+
+        /**
+         * Initialise the helper variable for the movement
+         * @return {boolean} always returns false
+         */
+        initMovement: function(motionManager) {
+            var targetCoords; 
+            var distance;
+            var rotationOffset; 
+
+            targetCoords = motionManager.activity.getCoords();
+            distance = Phaser.Math.distance(motionManager.sprite.x, motionManager.sprite.y, targetCoords.x, targetCoords.y);
+            rotationOffset = Math.floor(motionManager.rotation.maxAngleCount * 0.75);
+
+            motionManager.movement.originX = motionManager.sprite.x;
+            motionManager.movement.originY = motionManager.sprite.y;
+            motionManager.movement.targetX = targetCoords.x;
+            motionManager.movement.targetY = targetCoords.y;
+            motionManager.movement.targetInitialDistance = distance;
+            motionManager.movement.targetDragTreshold = Math.min(motionManager.movement.maxTargetDragTreshold, distance / 2);
+            motionManager.movement.targetAngle = Math.atan2(motionManager.movement.targetY - motionManager.sprite.y, motionManager.movement.targetX - motionManager.sprite.x);
+
+            if (motionManager.rotation.maxAngleCount === 1) {
+                motionManager.movement.currentAngle = motionManager.movement.targetAngle;
+                motionManager.rotation.targetConsolidatedAngle = motionManager.rotation.currentConsolidatedAngle = 0;
+            } else {
+                motionManager.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetCoords.y - motionManager.sprite.y, targetCoords.x - motionManager.sprite.x));
+                if (motionManager.rotation.calculatedAngle < 0) {
+                    motionManager.rotation.calculatedAngle = 360 - Math.abs(motionManager.rotation.calculatedAngle);
+                }
+                motionManager.rotation.targetConsolidatedAngle = (Math.floor(motionManager.rotation.calculatedAngle / (360 / motionManager.rotation.maxAngleCount)) + rotationOffset) % motionManager.rotation.maxAngleCount;
+
+                motionManager.rotation.stepNumberToRight = Util.calculateStepTo(motionManager.rotation.currentConsolidatedAngle, motionManager.rotation.targetConsolidatedAngle, motionManager.rotation.maxAngleCount, 1);
+                motionManager.rotation.stepNumberToLeft = Util.calculateStepTo(motionManager.rotation.currentConsolidatedAngle, motionManager.rotation.targetConsolidatedAngle, motionManager.rotation.maxAngleCount, -1);
+            }
+
+            motionManager.isEntityArrivedAtDestination = false;
+            motionManager.isEntityStoppedAtDestination = false;
+
+            return false;
+        },
 
 		/**
          * Move the given entity object towards the x/y coordinates at a steady velocity.
