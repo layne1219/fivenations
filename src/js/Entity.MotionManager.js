@@ -117,7 +117,6 @@ define('Entity.MotionManager', [
 
         /**
          * Updating the velocity according to the applied effects that can alter the coordinates of the Entity
-         *
          * @return {void} 
          */
         updateVelocity: function() {
@@ -151,7 +150,6 @@ define('Entity.MotionManager', [
 
         /**
          * Updating the sprite's current frame according to the rotation details
-         *
          * @return {void} 
          */
         updateRotation: function() {

@@ -69,7 +69,13 @@ define('Entity', [
             if (!animations || typeof animations !== 'object') return;
             Object.keys(animations).forEach(function(key){
                 var data = animations[key];
-                sprite.animations.add(key, data.frames, data.rate, data.loopable);
+                if (data.length) {
+                    data.forEach(function(animationData, idx){
+                        sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
+                    });
+                } else {
+                    sprite.animations.add(key, data.frames, data.rate, data.loopable);
+                }
                 // if there is an animation called `idle-forever` it is played straight away
                 if (key === ANIMATION_IDLE_FOREVER) {
                     sprite.animations.play(key);

@@ -4,37 +4,35 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
 
     /**
      * Constructor function to Idle
-     * @param  {[object]} entity Instance of an Entity class
-     * @return {[object]} 
+     * @param  {object} entity Instance of an Entity class
+     * @return {object} 
      */
     function Idle(entity) {
         Activity.call(this);
-        this.initAnimation(entity);
+        this.setEntity(entity);
     }
 
     Idle.prototype = new Activity;
     Idle.prototype.constructor = Idle;
 
     /**
-     * Fetches and saves the Phaser.Animation object to an instance variable
-     * @param  {object} entity [Phaser.Entity instance]
-     * @return {void}
+     * Links the given entity to this Activity.Idle instance
+     * @param {object} entity - Entity instance
      */
-    Idle.prototype.initAnimation = function(entity){
-        if (!entity) {
-            return;
-        }
-        this.animationManager = entity.getAnimationManager();
-    };
+    Idle.prototype.setEntity = function(entity) {
+        this.entity = entity;
+    }
 
     /**
      * Applies the activity against the linked entity
-     * @return {[void]}
+     * @return {void}
      */
     Idle.prototype.activate = function() {
+        
         Activity.prototype.activate.call(this);
-        if (!this.animationManager.getAnimation(KEY_IDLE)) return;
-        this.animationManager.play(KEY_IDLE);
+
+        if (!this.entity.getAnimationManager().getAnimation(KEY_IDLE)) return;
+        this.entity.getAnimationManager().play(KEY_IDLE);
     };
 
     /**
@@ -43,8 +41,8 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.deactivate = function() {
         Activity.prototype.deactivate.call(this);
-        if (!this.animationManager.getAnimation(KEY_IDLE)) return;
-        this.animationManager.stop(KEY_IDLE);
+        if (!this.entity.getAnimationManager().getAnimation(KEY_IDLE)) return;
+        this.entity.getAnimationManager().stop(KEY_IDLE);
     };
 
     /**
@@ -53,8 +51,8 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.kill = function() {
         Activity.prototype.kill.call(this);
-        if (!this.animationManager.getAnimation(KEY_IDLE)) return;
-        this.animationManager.stop(KEY_IDLE);
+        if (!this.entity.getAnimationManager().getAnimation(KEY_IDLE)) return;
+        this.entity.getAnimationManager().stop(KEY_IDLE);
     };
 
     return Idle;
