@@ -53,8 +53,8 @@ define('Entity.MotionManager', [
     function createRotationObject(entity) {
         var dataObject = entity.getDataObject();
         return {
-            targetConsolidatedAngle: 0,
-            currentConsolidatedAngle: 0,
+            targetAngleCode: 0,
+            currentAngleCode: 0,
             maxAngleCount: dataObject.getDirections(),
             angularVelocity: 0,
             angularVelocityHelper: 0,
@@ -80,7 +80,7 @@ define('Entity.MotionManager', [
             this.effectManager.resetEffects();
             this.effectManager.addEffect(Effects.get('initMovement'));
 
-            if (this.movement.velocity > 0 && this.rotation.currentConsolidatedAngle !== this.rotation.targetConsolidatedAngle && this.entity.hasSlowManeuverability()) {
+            if (this.movement.velocity > 0 && this.rotation.currentAngleCode !== this.rotation.targetAngleCode && this.entity.hasSlowManeuverability()) {
                 this.effectManager.addEffect(Effects.get('stopping'));
                 this.effectManager.addEffect(Effects.get('resetMovement'));
             }
@@ -160,7 +160,7 @@ define('Entity.MotionManager', [
                 return;
             }
 
-            if (this.rotation.currentConsolidatedAngle === this.rotation.targetConsolidatedAngle) {
+            if (this.rotation.currentAngleCode === this.rotation.targetAngleCode) {
                 return;
             }
 
@@ -170,14 +170,14 @@ define('Entity.MotionManager', [
             this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
             if (this.rotation.angularVelocityHelper > 1) {
                 this.rotation.angularVelocityHelper = 0;
-                if (this.rotation.currentConsolidatedAngle + this.rotation.angularDirection < 0) {
-                    this.rotation.currentConsolidatedAngle = this.rotation.maxAngleCount;
+                if (this.rotation.currentAngleCode + this.rotation.angularDirection < 0) {
+                    this.rotation.currentAngleCode = this.rotation.maxAngleCount;
                 }
-                this.rotation.currentConsolidatedAngle += this.rotation.angularDirection;
-                this.rotation.currentConsolidatedAngle %= this.rotation.maxAngleCount;
+                this.rotation.currentAngleCode += this.rotation.angularDirection;
+                this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
             }
 
-            this.sprite.frame = this.rotation.currentConsolidatedAngle * this.rotation.framePadding;
+            this.sprite.frame = this.rotation.currentAngleCode * this.rotation.framePadding;
 
         },
 
