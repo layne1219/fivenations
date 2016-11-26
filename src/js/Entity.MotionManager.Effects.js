@@ -31,16 +31,16 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
             if (motionManager.rotation.maxAngleCount === 1) {
                 motionManager.movement.currentAngle = motionManager.movement.targetAngle;
-                motionManager.rotation.targetConsolidatedAngle = motionManager.rotation.currentConsolidatedAngle = 0;
+                motionManager.rotation.targetAngleCode = motionManager.rotation.currentAngleCode = 0;
             } else {
                 motionManager.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetCoords.y - motionManager.sprite.y, targetCoords.x - motionManager.sprite.x));
                 if (motionManager.rotation.calculatedAngle < 0) {
                     motionManager.rotation.calculatedAngle = 360 - Math.abs(motionManager.rotation.calculatedAngle);
                 }
-                motionManager.rotation.targetConsolidatedAngle = (Math.floor(motionManager.rotation.calculatedAngle / (360 / motionManager.rotation.maxAngleCount)) + rotationOffset) % motionManager.rotation.maxAngleCount;
+                motionManager.rotation.targetAngleCode = (Math.floor(motionManager.rotation.calculatedAngle / (360 / motionManager.rotation.maxAngleCount)) + rotationOffset) % motionManager.rotation.maxAngleCount;
 
-                motionManager.rotation.stepNumberToRight = Util.calculateStepTo(motionManager.rotation.currentConsolidatedAngle, motionManager.rotation.targetConsolidatedAngle, motionManager.rotation.maxAngleCount, 1);
-                motionManager.rotation.stepNumberToLeft = Util.calculateStepTo(motionManager.rotation.currentConsolidatedAngle, motionManager.rotation.targetConsolidatedAngle, motionManager.rotation.maxAngleCount, -1);
+                motionManager.rotation.stepNumberToRight = Util.calculateStepTo(motionManager.rotation.currentAngleCode, motionManager.rotation.targetAngleCode, motionManager.rotation.maxAngleCount, 1);
+                motionManager.rotation.stepNumberToLeft = Util.calculateStepTo(motionManager.rotation.currentAngleCode, motionManager.rotation.targetAngleCode, motionManager.rotation.maxAngleCount, -1);
             }
 
             motionManager.isEntityArrivedAtDestination = false;
@@ -123,7 +123,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
             // rotating with default speed until the entity arrives at the target angle 
             motionManager.rotation.angularVelocity = motionManager.rotation.maxAngularVelocity;
-            return motionManager.rotation.currentConsolidatedAngle !== motionManager.rotation.targetConsolidatedAngle;
+            return motionManager.rotation.currentAngleCode !== motionManager.rotation.targetAngleCode;
         }
 
     };
