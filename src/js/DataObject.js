@@ -157,6 +157,13 @@ define('DataObject', ['json!sizes'], function(sizes) {
 
             hasAnimation: function(key) {
                 return !!data.animations[key];
+            },
+
+            hasMultipleAnimationFor: function(key) {
+                if (!this.hasAnimation(key)) return false;
+                var animation = this.getAnimationByKey(key);
+                // whether the animation definition is an array
+                return animation.length;
             }
 
         };

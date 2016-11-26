@@ -271,9 +271,37 @@ define('Entity', [
          * Removes entity from gameplay
          * @return {void}
          */
-        remove: function(){
+        remove: function() {
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
+        },
+
+        /**
+         * Sets the given animation to be played through the 
+         * animation manager Phaser exposes
+         * @param {string} key identifier of the animation to be played
+         * @return {void}
+         */
+        animate: function(key) {
+            var angleCode = this.motionManager.getCurrentAngleCode();
+            var keyWithAngleCode = key + angleCode;
+            var animationKey;
+            if (this.sprite.animations.getAnimation(keyWithAngleCode)) {
+                animationKey = keyWithAngleCode;
+            } else if (this.sprite.animations.getAnimation(key)) {
+                animationKey = key;
+            }
+            if (animationKey) {
+                this.sprite.animations.play(animationKey);
+            }
+        },
+
+        /**
+         * Stops current animations from being played and reset the frame counter
+         * @return {void}
+         */
+        stopAnimation: function() {
+            this.sprite.animations.stop(null, true);
         },
 
         /**
@@ -288,6 +316,10 @@ define('Entity', [
             }
         },
 
+        /**
+         * Unselects entity
+         * @return {void}
+         */
         unselect: function() {
             this.selected = false;
             this.eventDispatcher.dispatch('unselect');

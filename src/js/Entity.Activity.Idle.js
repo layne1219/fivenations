@@ -1,6 +1,6 @@
 define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
 
-    var KEY_IDLE = 'idle';
+    var ANIMATION_KEY = 'idle';
 
     /**
      * Constructor function to Idle
@@ -28,11 +28,8 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      * @return {void}
      */
     Idle.prototype.activate = function() {
-        
         Activity.prototype.activate.call(this);
-
-        if (!this.entity.getAnimationManager().getAnimation(KEY_IDLE)) return;
-        this.entity.getAnimationManager().play(KEY_IDLE);
+        this.entity.animate(ANIMATION_KEY);
     };
 
     /**
@@ -41,8 +38,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.deactivate = function() {
         Activity.prototype.deactivate.call(this);
-        if (!this.entity.getAnimationManager().getAnimation(KEY_IDLE)) return;
-        this.entity.getAnimationManager().stop(KEY_IDLE);
+        this.entity.stopAnimation();
     };
 
     /**
@@ -51,8 +47,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
      */
     Idle.prototype.kill = function() {
         Activity.prototype.kill.call(this);
-        if (!this.entity.getAnimationManager().getAnimation(KEY_IDLE)) return;
-        this.entity.getAnimationManager().stop(KEY_IDLE);
+        this.entity.stopAnimation();
     };
 
     return Idle;

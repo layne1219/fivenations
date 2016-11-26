@@ -218,6 +218,14 @@ define('Entity.MotionManager', [
                 callback();
                 this.dispatcher.removeEventListener(event, once);
             }.bind(this));
+        },
+
+        /**
+         * Returns the current angle code determined by the updateRotation method
+         * @returns {integer} current angle code that usually goes from 0 to 15
+         */
+        getCurrentAngleCode: function() {
+            return this.rotation.currentAngleCode;
         }
     };
 
