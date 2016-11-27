@@ -124,10 +124,27 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
             // rotating with default speed until the entity arrives at the target angle 
             motionManager.rotation.angularVelocity = motionManager.rotation.maxAngularVelocity;
             return motionManager.rotation.currentAngleCode !== motionManager.rotation.targetAngleCode;
+        },
+
+        /**
+         * Trigger 'move' animation
+         * @return {boolean} returning false when the effect is no longer must be applied on the entity
+         */
+        startMoveAnimation: function(motionManager) {
+            motionManager.getEntity().animate('move');
+            return false;
+        },
+
+        /**
+         * Stops any animation applied against the entity
+         * @return {boolean} returning false when the effect is no longer must be applied on the entity
+         */
+        stopAnimation: function(motionManager) {
+            motionManager.getEntity().stopAnimation();
+            return false;
         }
 
     };
-
 
     return {
 

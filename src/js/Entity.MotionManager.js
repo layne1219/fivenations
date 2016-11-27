@@ -59,7 +59,7 @@ define('Entity.MotionManager', [
             angularVelocity: 0,
             angularVelocityHelper: 0,
             maxAngularVelocity: dataObject.getManeuverability(),
-            framePadding: (dataObject.getAnimType().length && (dataObject.getAnimType().length + 1)) || 1
+            framePadding: dataObject.getAnimFrame() || 1
         };        
     }
 
@@ -85,11 +85,14 @@ define('Entity.MotionManager', [
                 this.effectManager.addEffect(Effects.get('resetMovement'));
             }
 
+            this.effectManager.addEffect(Effects.get('stopAnimation'));
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
+            this.effectManager.addEffect(Effects.get('startMoveAnimation'));
             this.effectManager.addEffect(Effects.get('accelerateToTarget'));
             this.effectManager.addEffect(Effects.get('moveToTarget'));
             this.effectManager.addEffect(Effects.get('stopping'));
             this.effectManager.addEffect(Effects.get('resetMovement'));
+            this.effectManager.addEffect(Effects.get('stopAnimation'));
 
         },
 
@@ -101,6 +104,7 @@ define('Entity.MotionManager', [
             this.effectManager.resetEffects();
             this.effectManager.addEffect(Effects.get('stopping'));
             this.effectManager.addEffect(Effects.get('resetMovement'));
+            this.effectManager.addEffect(Effects.get('stopAnimation'));
         },
 
         /**
@@ -226,6 +230,14 @@ define('Entity.MotionManager', [
          */
         getCurrentAngleCode: function() {
             return this.rotation.currentAngleCode;
+        },
+
+        /**
+         * Returns the entity instance linked to the motion manager
+         * @return {object} Entity
+         */
+        getEntity: function() {
+            return this.entity;
         }
     };
 
