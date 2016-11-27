@@ -45,6 +45,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
             motionManager.isEntityArrivedAtDestination = false;
             motionManager.isEntityStoppedAtDestination = false;
+            motionManager.isEntityHeadedToDestination = false;
 
             return false;
         },

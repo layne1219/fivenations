@@ -24,6 +24,7 @@ define('Entity.MotionManager', [
 
         this.isEntityArrivedAtDestination = false;
         this.isEntityStoppedAtDestination = false;
+        this.isEntityHeadedToDestination = false;
 
     }
 
@@ -87,7 +88,6 @@ define('Entity.MotionManager', [
 
             this.effectManager.addEffect(Effects.get('stopAnimation'));
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
-            this.effectManager.addEffect(Effects.get('startMoveAnimation'));
             this.effectManager.addEffect(Effects.get('accelerateToTarget'));
             this.effectManager.addEffect(Effects.get('moveToTarget'));
             this.effectManager.addEffect(Effects.get('stopping'));
@@ -163,6 +163,10 @@ define('Entity.MotionManager', [
             }
 
             if (this.rotation.currentAngleCode === this.rotation.targetAngleCode) {
+                if (!this.isEntityHeadedToDestination) {
+                    this.isEntityHeadedToDestination = true;
+                    this.effectManager.addEffectToTop(Effects.get('startMoveAnimation'));
+                }
                 return;
             }
 

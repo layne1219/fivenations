@@ -229,6 +229,14 @@ define('Game', [
                 });
             }
 
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'orca',
+                team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                x: 200 + Util.rnd(0, 200),
+                y: 450 + Util.rnd(0, 100)
+            });
+
         },
 
         update: function() {

@@ -15,7 +15,7 @@ define('Entity.MotionManager.EffectManager', function() {
             // invoking the first effect as long as it returns true
             // then remove it  
             while (this.effects[0]) {
-                if (!this.effects[0][0].call(null, this.motionManager)) {
+                if (!this.effects[0].call(null, this.motionManager)) {
                     this.effects.splice(0, 1);
                 } else {
                     return false;
@@ -28,12 +28,22 @@ define('Entity.MotionManager.EffectManager', function() {
          * @param {[function]} effect [function that will be triggered at every tick when selected]
          */
         addEffect: function(effect) {
-            var params = Array.prototype.slice(arguments, 1);
             if ('function' !== typeof effect) {
                 return false;
             }
-            this.effects.push([effect].concat(params));
+            this.effects.push(effect);
         },
+
+        /**
+         * Unshifring a new effect to the top of the effect queue as the next effect to be execited
+         * @param {[function]} effect [function that will be triggered at every tick when selected]
+         */
+        addEffectToTop: function(effect) {
+            if ('function' !== typeof effect) {
+                return false;
+            }
+            this.effects.unshift(effect);
+        },        
 
         /**
          * Reseting the effect queue by removing all the effects from the queue
@@ -57,7 +67,7 @@ define('Entity.MotionManager.EffectManager', function() {
                 return false;
             }
             for (var i = this.effects.length - 1; i >= 0; i -= 1) {
-                if (effect === this.effects[i][0]) {
+                if (effect === this.effects[i]) {
                     this.effects.splice(i, 1);
                 }
             }
