@@ -14,6 +14,7 @@ define('Universal.EventBus', function() {
                 },
 
                 add: function(evt) {
+                    var ids = [];
                     if (!evt || !evt.id) {
                         return;
                     }
@@ -22,7 +23,16 @@ define('Universal.EventBus', function() {
                             return entity.getId();
                         });
                     }
-                    queue.push(evt);
+                    ids = [].concat(evt.id);
+                    if (ids.length > 1) {
+                        ids.forEach(function(id) {
+                            var event = Object.create(evt);
+                            event.id = id;
+                            queue.push(event);
+                        });
+                    } else {
+                        queue.push(evt);
+                    }
                 },
 
                 remove: function() {

@@ -1,4 +1,9 @@
-define('DataObject', function() {
+define('DataObject', ['json!sizes'], function(sizes) {
+
+    function getDimensionsBySize(size) {
+        if (!size || !sizes[size]) throw 'The given sizes is unrecognisable!';
+        return sizes[size];
+    }
 
     function DataObject(json) {
 
@@ -10,6 +15,9 @@ define('DataObject', function() {
         data.maxpower = data.power;
         data.maxhangar = data.hangar;
         data.team = 1;
+
+        // entity dimensions
+        data.dimensions = getDimensionsBySize(data.size);
 
         // for providing privacy for the data variables we have to create a closure here so as not to
         // publish any data variable held by the entity
@@ -149,6 +157,13 @@ define('DataObject', function() {
 
             hasAnimation: function(key) {
                 return !!data.animations[key];
+            },
+
+            hasMultipleAnimationFor: function(key) {
+                if (!this.hasAnimation(key)) return false;
+                var animation = this.getAnimationByKey(key);
+                // whether the animation definition is an array
+                return animation.length;
             }
 
         };

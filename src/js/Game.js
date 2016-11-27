@@ -98,9 +98,7 @@ define('Game', [
                 var coords = this.userPointer.getRealCoords();
 
                 this.entityManager
-                    .entities(function(entity) {
-                        return entity.isSelected() && entity.isEntityControlledByUser()
-                    })
+                    .entities(':user:selected')
                     .move({
                         x: coords.x,
                         y: coords.y
@@ -224,93 +222,20 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: Util.rnd(1, 2) === 1 ? 'spear' : 'twinblade',
+                    id: 'labor',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
 
-            [
-                'absorber',
-                'advancedmanufacture',
-                'aegis',
-                'assimilator',
-                'caldron',
-                'defensiveserver',
-                'eclipse',
-                'gloom',
-                'hauler',
-                'installationprime',
-                'installator',
-                'labor',
-                'leechmine',
-                'manufacture',
-                'manufactureprime',
-                'mask',
-                'offensiveserver',
-                'plasmaraid',
-                'quantumcore',
-                'refinery',
-                'repairstation',
-                'shade',
-                'supportcenter',
-                'supportcomplex',
-                'wormholegenerator'
-            ].forEach(function(id){
-
-                this.entityManager.entities.add({
-                    guid: Util.getGUID(),
-                    id: id,
-                    team: 1, 
-                    x: 50 + Util.rnd(0, 900),
-                    y: 50 + Util.rnd(0, 700)
-                }); 
-
-            }.bind(this));        
-
-
-            [
-                'asteroid1',
-                'asteroid2',
-                'asteroid3',
-                'asteroid4',                
-                'asteroidbig1',
-                'asteroidbig2',
-                'asteroidsmall1',
-                'asteroidsmall2',
-                'asteroidice1',
-                'asteroidice2',
-                'asteroidicesmall1',
-                'asteroidicesmall2',                
-                'asteroidsilicon1',
-                'asteroidsilicon2',
-                'asteroidsiliconsmall1',
-                'asteroidsiliconsmall2',
-                'asteroidtitanium1',
-                'asteroidtitanium2',
-                'asteroidtitaniumsmall1',
-                'asteroidtitaniumsmall2',
-                'asteroiduranium1',
-                'asteroiduranium2',
-                'asteroiduraniumsmall1',
-                'asteroiduraniumsmall2',                                                
-            ].forEach(function(id){
-
-                for (var i = 0, l = Util.rnd(0, 5); i < l; i++){
-
-                    this.entityManager.entities.add({
-                        guid: Util.getGUID(),
-                        id: id,
-                        team: 1, 
-                        x: 50 + Util.rnd(0, 1100),
-                        y: 50 + Util.rnd(0, 1100)
-                    });
-
-                }
-
-            }.bind(this));
-
+            this.entityManager.entities.add({
+                guid: Util.getGUID(),
+                id: 'orca',
+                team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                x: 200 + Util.rnd(0, 200),
+                y: 450 + Util.rnd(0, 100)
+            });
 
         },
 

@@ -1,29 +1,29 @@
 define('Starfield.DeepSpaceLayer', [
     'Graphics', 
-    'Starfield.StarGenerator',
-    'Starfield.BackgroundCloudGenerator',
-    'Starfield.PlanetGenerator',
-    'Starfield.MeteoritesGenerator'
-], function(Graphics, StarGenerator, BackgroundCloudGenerator, PlanetGenerator, MeteoritesGenerator) {
+    'Starfield.PlanetAreaGenerator'
+], function(Graphics, PlanetAreaGenerator) {
 
     var ns = window.fivenations;
     var width = ns.window.width;
     var height = ns.window.height;
-    var i, l, clearLayer;
+    var sprites;
 
-    function DeepSpaceLayer(game) {
-        this.setGame(game);
+    function DeepSpaceLayer(map) {
+        this.setMap(map);
+        this.setGame(map.getGame());
         this.createTexture();
-        this.generateSpaceObjects(new StarGenerator(this.game));
-        this.generateSpaceObjects(new BackgroundCloudGenerator(this.game));
-        this.generateSpaceObjects(new PlanetGenerator(this.game));
-        this.generateSpaceObjects(new MeteoritesGenerator(this.game));
-        this.sortSpaceObjects();
+        this.createSprites();
+        this.createSpaceObjects();
     }
 
     DeepSpaceLayer.prototype = {
 
         spaceObjects: [],
+
+        setMap: function(map) {
+            if (!map) throw 'Map instance must be passed as first parameter!';
+            this.map = map;
+        },
 
         setGame: function(game) {
             if (!game) throw 'Phaser.Game instance must be passed as first parameter!';
@@ -44,12 +44,36 @@ define('Starfield.DeepSpaceLayer', [
                 .add(container);
         },
 
+        createSprites: function() {
+            if (sprites) return;
+            sprites = {
+                cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
+                cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
+                meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
+                planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
+                planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2')
+            };
+        },
+
+        createSpaceObjects: function(savedData) {
+            if (savedData) {
+                this.loadSpaceObjects(new SpaceObjectLoader(this, savedData));
+            } else {
+                this.generateSpaceObjects(new PlanetAreaGenerator(this));
+            }
+            this.sortSpaceObjects();
+        },
+
         generateSpaceObjects: function(generator) {
-            if (!generator) throw 'Invalid generator is passed!';
-            var spaceObjects = generator.getSpaceObjects();
-            spaceObjects.forEach(function(so) {
-                this.addSpaceObject(so);
-            }.bind(this));
+            if (!generator) throw 'Invalid generator instance!';
+            generator.generate();
+            this.spaceObjects = generator.getSpaceObjects();
+        },
+
+        loadSpaceObjects: function(loader) {
+            if (!loader) throw 'Invalid loader instance!';
+            loader.load();
+            this.spaceObjects = loader.getSpaceObjects();
         },
 
         sortSpaceObjects: function() {
@@ -58,16 +82,23 @@ define('Starfield.DeepSpaceLayer', [
             });
         },
 
-        addSpaceObject: function(spaceObject) {
-            if (!spaceObject) return;
-            this.spaceObjects.push(spaceObject);
+        update: function() {
+            var i, l;
+            for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
+                this.spaceObjects[i].update(this.texture, this.game, i === 0);
+            }
         },
 
-        update: function() {
-            for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
-                clearLayer = i === 0;
-                this.spaceObjects[i].update(this.texture, this.game, clearLayer);
-            }
+        getGame: function() {
+            return this.game;
+        },
+
+        getMap: function() {
+            return this.map;
+        },
+
+        getSprites: function() {
+            return sprites;
         }
 
     }

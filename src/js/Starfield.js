@@ -12,8 +12,8 @@ define('Starfield', [
 
     function initialise(map) {
         this.initLayers();
-        this.createBackground(map.getGame());
-        this.createDeepSpaceObjects(map.getGame());
+        this.createBackground(map);
+        this.createDeepSpaceObjects(map);
     }
 
     Starfield.prototype = {
@@ -22,12 +22,12 @@ define('Starfield', [
             this.layers = [];
         },
 
-        createBackground: function(game) {
-            this.layers.push(new Background(game));
+        createBackground: function(map) {
+            this.layers.push(new Background(map));
         },        
 
-        createDeepSpaceObjects: function(game) {
-            this.layers.push(new DeepSpaceLayer(game));
+        createDeepSpaceObjects: function(map) {
+            this.layers.push(new DeepSpaceLayer(map));
         },
 
         update: function() {

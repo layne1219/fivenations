@@ -32,6 +32,10 @@ define('Entity.Activity', function() {
 
         isActivated: function() {
             return this.active;
+        },
+
+        getManager: function() {
+            return this.manager;
         }
 
     };

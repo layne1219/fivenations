@@ -69,7 +69,13 @@ define('Entity', [
             if (!animations || typeof animations !== 'object') return;
             Object.keys(animations).forEach(function(key){
                 var data = animations[key];
-                sprite.animations.add(key, data.frames, data.rate, data.loopable);
+                if (data.length) {
+                    data.forEach(function(animationData, idx){
+                        sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
+                    });
+                } else {
+                    sprite.animations.add(key, data.frames, data.rate, data.loopable);
+                }
                 // if there is an animation called `idle-forever` it is played straight away
                 if (key === ANIMATION_IDLE_FOREVER) {
                     sprite.animations.play(key);
@@ -253,11 +259,55 @@ define('Entity', [
             this.activityManager.add(follow);
         },
 
-        remove: function(){
+        /**
+         * Removes all activity from the ActivityManager instance
+         * @return {void}
+         */
+        reset: function() {
+            this.activityManager.removeAll();
+        },
+
+        /**
+         * Removes entity from gameplay
+         * @return {void}
+         */
+        remove: function() {
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
         },
 
+        /**
+         * Sets the given animation to be played through the 
+         * animation manager Phaser exposes
+         * @param {string} key identifier of the animation to be played
+         * @return {void}
+         */
+        animate: function(key) {
+            var angleCode = this.motionManager.getCurrentAngleCode();
+            var keyWithAngleCode = key + angleCode;
+            var animationKey;
+            if (this.sprite.animations.getAnimation(keyWithAngleCode)) {
+                animationKey = keyWithAngleCode;
+            } else if (this.sprite.animations.getAnimation(key)) {
+                animationKey = key;
+            }
+            if (animationKey) {
+                this.sprite.animations.play(animationKey);
+            }
+        },
+
+        /**
+         * Stops current animations from being played and reset the frame counter
+         * @return {void}
+         */
+        stopAnimation: function() {
+            this.sprite.animations.stop(null, true);
+        },
+
+        /**
+         * Selects entity
+         * @return {void}
+         */
         select: function() {
             if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
                 this.selected = true;
@@ -266,6 +316,10 @@ define('Entity', [
             }
         },
 
+        /**
+         * Unselects entity
+         * @return {void}
+         */
         unselect: function() {
             this.selected = false;
             this.eventDispatcher.dispatch('unselect');

@@ -21,10 +21,7 @@
 	"directions": 1,
 	"animFrame": 1,
 	"animType": ["idle-forever"],
-	"dimensions": {
-		"width": 72,
-		"height": 64
-	},
+	"size": "m",
     "animations": {
         "idle-forever": {
             "rate": 18,

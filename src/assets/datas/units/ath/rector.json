@@ -20,10 +20,7 @@
 	"directions": 1,
 	"animFrame": 1,
 	"animType": ["idle-forever"],
-	"dimensions": {
-		"width": 100,
-		"height": 100
-	},
+	"size": "l",
     "animations": {
         "idle-forever": {
             "rate": 20,

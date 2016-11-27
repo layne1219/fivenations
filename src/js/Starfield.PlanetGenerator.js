@@ -4,86 +4,54 @@ define('Starfield.PlanetGenerator', [
     'Util'
 ], function(SpaceObject, SpaceObjectGenerator, Util) {
 
-    var DENSITY = 1;
     var ns = window.fivenations;
-    var width = ns.window.width;
-    var height = ns.window.height;
-    var sprites;
+    var screenWidth = ns.window.width;
+    var screenHeight = ns.window.height;
 
-    function PlanetGenerator(game) {
-        SpaceObjectGenerator.call(this, game);
-        createSprites.call(this);
-        createPlanets.call(this)
+    function PlanetGenerator(deepSpaceLayer) {
+        SpaceObjectGenerator.call(this, deepSpaceLayer);
     }
 
     PlanetGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
     PlanetGenerator.prototype.constructor = PlanetGenerator;
 
-    function createSprites() {
+    PlanetGenerator.prototype.generate = function(numberOfPlanets) {
+        SpaceObjectGenerator.prototype.generate.call(this);
 
-        if (sprites) return;
-
-        sprites = {
-            type1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
-            type2: this.game.make.sprite(0, 0, 'starfield.planets.type-2')
-        };
+        this.createPlanet(numberOfPlanets);
     }
 
-    function createPlanets(savedData) {
-        var numberOfPlanets;
-        var planet;
-        if (!savedData) {
-            numberOfPlanets = DENSITY;
-            for (var i = 0; i < numberOfPlanets; i += 1) {
-                planet = createRandomizedPlanet();
-                this.addSpaceObject(planet);
-            }
+    PlanetGenerator.prototype.createPlanet = function(numberOfPlanets) {
+        if (!numberOfPlanets) numberOfPlanets = 1;
+        for (var i = 0; i < numberOfPlanets; i += 1) {
+            this.createRandomizedPlanet();
         }
-    }
+    };
 
-    function createRandomizedPlanet() {
-        var z = getRandomizedZ();
-        var planet;
-
-        planet = new SpaceObject()
-            .setX(Util.rnd(0, width))
-            .setY(Util.rnd(0, height))
-            .setZ(z)
-            .setSprite(getRandomizedSprite());
-
-        return planet;
-    }
-
-    function getRandomizedZ() {
-        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
-        return z;
-    }
-
-    function getRandomizedSprite() {
+    PlanetGenerator.prototype.createRandomizedPlanet = function() {
         var NUMBER_OF_TYPES = 2;
         var NUMBER_OF_FRAMES = 10;
+
+        var map = this.deepSpaceLayer.getMap();
+        var sprites = this.deepSpaceLayer.getSprites();
         var type = Util.rnd(1, NUMBER_OF_TYPES);
-        var sprite = getSpriteByType(type);
-        var scale = Util.rnd(100, 150) / 100;
-        sprite.frame = Util.rnd(1, NUMBER_OF_FRAMES);
-        sprite.scale.setTo(scale, scale);
-        return sprite;
-    }
+        var sprite = sprites['planet' + type];
+        var z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
+        var x = Math.floor(Util.rnd(0, map.getScreenWidth() - screenWidth) * z);
+        var y = Math.floor(Util.rnd(0, map.getScreenHeight() - screenHeight) * z);
+        var frame = Util.rnd(0, NUMBER_OF_FRAMES - 1);
+        var scale = Util.rnd(100, 200) / 100;
 
-    function getSpriteByType(type) {
-        if (!type) throw 'Invalid type was given to fetch sprite!';
-        return sprites['type' + type];   
-    }    
-
-    function createPlanet(x, y, type) {
-        var cloud = new SpaceObject()
+        var planet = new SpaceObject(sprite)
             .setX(x)
             .setY(y)
             .setZ(z)
-            .setSprite(getSpriteByType(type));
+            .setScale(scale)
+            .setFrame(frame);
 
-        return cloud;
-    }
+        this.addSpaceObject(planet);
+    };
 
     return PlanetGenerator;
+
 });

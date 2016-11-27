@@ -1,8 +1,12 @@
 define('Starfield.SpaceObject', function() {
 
-    function SpaceObject() {}
+    function SpaceObject(sprite) {
+        this.sprite = sprite;
+    }
 
     SpaceObject.prototype = {
+
+        sprite: null,
 
         setX: function(x) {
             this.x = x;
@@ -19,8 +23,13 @@ define('Starfield.SpaceObject', function() {
             return this;
         },
 
-        setSprite: function(sprite) {
-            this.sprite = sprite;
+        setScale: function(scale) {
+            this.sprite.scale.setTo(scale, scale);
+            return this;
+        },
+
+        setFrame: function(frame) {
+            this.sprite.frame = frame;
             return this;
         },
 

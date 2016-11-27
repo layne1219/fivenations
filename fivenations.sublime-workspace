@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Nu",
+				"NUMBER_OF_FRAMES"
+			],
+			[
 				"c",
 				"Caldron"
 			],
@@ -510,84 +514,24 @@
 			[
 				"Enti",
 				"entities"
-			],
-			[
-				"maxA",
-				"maxAngularVelocity"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "src/js/Preloader.js",
+			"file": "gulpfile.js",
 			"settings":
 			{
-				"buffer_size": 3951,
+				"buffer_size": 2332,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/js/Preloader.Entities.js",
+			"file": "src/js/Game.js",
 			"settings":
 			{
-				"buffer_size": 28112,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/common/weapons.json",
-			"settings":
-			{
-				"buffer_size": 41053,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/syl/leechmine.json",
-			"settings":
-			{
-				"buffer_size": 705,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/syl/installationprime.json",
-			"settings":
-			{
-				"buffer_size": 753,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/syl/defensiveserver.json",
-			"settings":
-			{
-				"buffer_size": 759,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/syl/quantomcore.json",
-			"settings":
-			{
-				"buffer_size": 731,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/syl/repairstation.json",
-			"settings":
-			{
-				"buffer_size": 731,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/assets/datas/units/syl/supportcomplex.json",
-			"settings":
-			{
-				"buffer_size": 733,
+				"buffer_size": 12463,
 				"line_ending": "Unix"
 			}
 		}
@@ -679,19 +623,31 @@
 	[
 		"/home/bence/dev/silversword/fivenations",
 		"/home/bence/dev/silversword/fivenations/src",
-		"/home/bence/dev/silversword/fivenations/src/assets",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/common",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl",
-		"/home/bence/dev/silversword/fivenations/src/assets/images",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/units",
-		"/home/bence/dev/silversword/fivenations/src/assets/images/units/syl",
 		"/home/bence/dev/silversword/fivenations/src/js"
 	],
 	"file_history":
 	[
+		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.DeepSpaceLayer.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.PlanetGenerator.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/gui.json",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.PlanetAreaGenerator.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.BackgroundCloudGenerator.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.SpaceObjectGenerator.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/quantumcore.json",
+		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.MeteoritesGenerator.js",
+		"/home/bence/dev/silversword/fivenations/src/js/Starfield.Background.js",
+		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/absorber.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/supportcomplex.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/repairstation.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/quantomcore.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/defensiveserver.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/installationprime.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/weapons.json",
+		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/leechmine.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/wormholegenerator.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/aegis.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/offensiveserver.json",
@@ -699,19 +655,14 @@
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/advancedmanufacture.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/refinery.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/manufactureprime.json",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/leechmine.json",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/absorber.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/twinblade.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/syl/mask.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Game.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Starfield.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.ActivityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBusExecuter.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Util.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Map.js",
-		"/home/bence/dev/silversword/fivenations/src/js/GUI.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Preloader.Entities.js",
 		"/home/bence/dev/silversword/fivenations/src/js/EntityManager.js",
 		"/home/bence/dev/silversword/fivenations/src/js/DataObject.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ast/asteroiduraniumsmall2.json",
@@ -740,9 +691,7 @@
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ast/asteroid2.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ast/asteroid1.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/gathering.json",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/gui.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/rector.json",
-		"/home/bence/dev/silversword/fivenations/src/assets/datas/common/weapons.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/sanctuary.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/obelisk.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/masstransmitter.json",
@@ -777,7 +726,6 @@
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/flanker.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/warpglider.json",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/ath/intruder.json",
-		"/home/bence/dev/silversword/fivenations/src/js/Preloader.js",
 		"/home/bence/dev/silversword/fivenations/src/assets/datas/units/fed/hurricane.json",
 		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.Entity.Move.js",
 		"/home/bence/dev/silversword/fivenations/src/js/Entity.Activity.Move.js",
@@ -806,20 +754,7 @@
 		"/home/bence/dev/gify/gulpfile.js",
 		"/home/bence/dev/gify/dist/index.html",
 		"/home/bence/dev/gify/src/js/main.entry.js",
-		"/home/bence/dev/gify/webpack.config.js",
-		"/home/bence/dev/gify/src/js/gify.js",
-		"/home/bence/dev/gify/dist/js/main.js",
-		"/home/bence/dev/gify/src/css/main.css",
-		"/home/bence/dev/silversword/fivenations/src/js/main.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventBus.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Universal.Event.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Entity.AbilityManager.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventExecuter.js",
-		"/home/bence/dev/silversword/fivenations/src/js/Universal.EventDispatcher.js",
-		"/home/bence/dev/silversword/fivenations/src/js/EventBus.js",
-		"/home/bence/dev/silversword/fivenations/src/js/UniversalEventDispatcher.js",
-		"/home/bence/dev/silversword/fivenations/src/js/UserPointer.js",
-		"/home/bence/dev/p.js"
+		"/home/bence/dev/gify/webpack.config.js"
 	],
 	"find":
 	{
@@ -839,6 +774,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"gui.icons.ath",
+			"DENSITY",
 			"idle",
 			"createPlanets",
 			"PlanetGenerator",
@@ -964,9 +901,7 @@
 			"phaserGame",
 			"setLastTickTime",
 			"lastTickTime",
-			"getDelta",
-			":selected",
-			"update"
+			"getDelta"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -984,240 +919,30 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/js/Preloader.js",
+					"file": "gulpfile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3951,
+						"buffer_size": 2332,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1823,
-								1823
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 16.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/js/Preloader.Entities.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 28112,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								17907,
-								17907
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6100.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/assets/datas/common/weapons.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 41053,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1207,
-								1207
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 21.0,
-						"translation.y": 633.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/assets/datas/units/syl/leechmine.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 705,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								169,
-								169
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/assets/datas/units/syl/installationprime.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 753,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								753,
-								753
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/assets/datas/units/syl/defensiveserver.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 759,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								759,
-								759
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/assets/datas/units/syl/quantomcore.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 731,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								731,
-								731
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 35.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/assets/datas/units/syl/repairstation.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 731,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								731,
-								731
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -1228,25 +953,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "src/assets/datas/units/syl/supportcomplex.json",
+					"buffer": 1,
+					"file": "src/js/Game.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 733,
+						"buffer_size": 12463,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								562,
-								562
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},

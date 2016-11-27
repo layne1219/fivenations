@@ -25,6 +25,14 @@ define('Util', function() {
         },
 
         /**
+         * returns whether the given value is numeric or not
+         * @param {mixed} val 
+         */
+        isNumeric: function(val) {
+            return Number(parseFloat(val)) === val;
+        },
+
+        /**
          * calculateStepTo - Mesasuring how many steps it takes to arrive at the target number by increasing
          * the current index with step 
          * @param  {integer} start  
