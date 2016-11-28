@@ -30,6 +30,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
     Idle.prototype.activate = function() {
         Activity.prototype.activate.call(this);
         this.entity.animate(ANIMATION_KEY);
+        this.entity.float();
     };
 
     /**

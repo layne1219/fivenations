@@ -98,7 +98,7 @@ define('Entity.MotionManager', [
 
         /**
          * Terminate the entity from any further movement by applying a suitable drag on it
-         * @return {[void]}
+         * @return {void}
          */
         stop: function() {
             this.effectManager.resetEffects();
@@ -108,9 +108,17 @@ define('Entity.MotionManager', [
         },
 
         /**
+         * Makes the entity slowly floating up and down
+         * @return {void}
+         */
+        float: function() {
+            this.effectManager.addEffect(EFfects.get('floating'));
+        }
+
+        /**
          * Tick function for altering the helper variables that determines the effects
          * influence the entity object 
-         * @return {[void]}
+         * @return {void}
          */
         update: function() {
             this.updateVelocity();

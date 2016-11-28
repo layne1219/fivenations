@@ -143,6 +143,15 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
         stopAnimation: function(motionManager) {
             motionManager.getEntity().stopAnimation();
             return false;
+        },
+
+        /**
+         * Introduces a constant altenation in the vertical padding of the entity's sprite
+         * @return {boolean} returns true all the time
+         */
+        floating: function(motionManager) {
+            motionManager.sprite.y += Math.rand() * 25;
+            return true;
         }
 
     };

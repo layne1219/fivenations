@@ -326,6 +326,14 @@ define('Entity', [
             UED.getInstance().dispatch('gui/selection/change');
         },
 
+        /**
+         * Start a constant floating animation
+         * @return {void}
+         */
+        float: function() {
+            this.motionManager.float();
+        },
+
         hasSlowManeuverability: function() {
             return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
         },
