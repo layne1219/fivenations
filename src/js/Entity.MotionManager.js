@@ -112,8 +112,8 @@ define('Entity.MotionManager', [
          * @return {void}
          */
         float: function() {
-            this.effectManager.addEffect(EFfects.get('floating'));
-        }
+            this.effectManager.addEffect(Effects.get('floating'));
+        },
 
         /**
          * Tick function for altering the helper variables that determines the effects

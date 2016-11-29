@@ -6,6 +6,8 @@
  */
 define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
+    var ns = window.fivenations;
+
 	var effects = {
 
         /**
@@ -150,7 +152,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
          * @return {boolean} returns true all the time
          */
         floating: function(motionManager) {
-            motionManager.sprite.y += Math.rand() * 25;
+            //motionManager.sprite.y += Math.sin();
             return true;
         }
 
