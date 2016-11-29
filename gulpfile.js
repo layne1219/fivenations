@@ -51,7 +51,7 @@ gulp.task('process-html', ['copy-src'], function() {
     .on('error', gutil.log);
 });
 
-gulp.task('finalise-html', ['process-html'], function() {
+gulp.task('build-html', ['process-html'], function() {
   return gulp.src(paths.dist + 'index.html')
     .pipe(minifyhtml())
     .pipe(gulp.dest(paths.dist))
@@ -93,4 +93,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connect', 'watch']);
-gulp.task('build', ['finalise-html']);
+gulp.task('build', ['build-html']);
