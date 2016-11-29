@@ -25,22 +25,11 @@ define('Game', [
 
     'use strict';
 
-    var ns = window.fivenations,
-        lastTickTime;
+    var ns = window.fivenations;
 
     function Game() {}
 
     Game.prototype = {
-
-        setLastTickTime: function() {
-            lastTickTime = new Date().getTime();
-        },
-
-        getDelta: function() {
-            var now = new Date().getTime(),
-                delta = now - (lastTickTime || now);
-            return delta;
-        },
 
         preloader: function() {
 
@@ -237,11 +226,14 @@ define('Game', [
                 y: 450 + Util.rnd(0, 100)
             });
 
+            // -----------------------------------------------------------------------
+            //                                  GPC
+            // -----------------------------------------------------------------------
+            this.gpc = 0;
+
         },
 
         update: function() {
-
-            this.setLastTickTime();
 
             // Execute all the registered events on the EventBus
             this.game.eventBusExecuter.run();
@@ -250,7 +242,7 @@ define('Game', [
             this.map.update(this.entityManager);
 
             // updating entity attributes according to the time elapsed
-            this.entityManager.update(this.getDelta());
+            this.entityManager.update();
 
             // Rendering GUI elements
             this.GUI.update();
@@ -261,10 +253,13 @@ define('Game', [
             // User input - keyboard
             this.userKeyboard.update();
 
+            // General Purpose Counter for client animations
+            // don not have to be synced
+            this.gpc += 1;
+
             this.game.time.advancedTiming = true;
             this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
         }
-
     };
 
     return Game;
