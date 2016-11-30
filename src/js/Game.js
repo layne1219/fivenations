@@ -253,10 +253,6 @@ define('Game', [
             // User input - keyboard
             this.userKeyboard.update();
 
-            // General Purpose Counter for client animations
-            // don not have to be synced
-            this.gpc += 1;
-
             this.game.time.advancedTiming = true;
             this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
         }
