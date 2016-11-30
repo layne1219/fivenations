@@ -59,22 +59,21 @@ gulp.task('build-html', ['process-html'], function() {
 });
 
 gulp.task('lint', function() {
-  gulp.src(paths.js)
+  return gulp.src(paths.js)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
-    .on('error', gutil.log);
 });
 
 gulp.task('prettify', function() {
-  gulp.src(paths.js)
+  return gulp.src(paths.js)
     .pipe(prettify())
     .pipe(gulp.dest('src/js/'))
     .on('error', gutil.log);
 });
 
 gulp.task('html', function(){
-  gulp.src('src/*.html')
+  return gulp.src('src/*.html')
     .pipe(connect.reload())
     .on('error', gutil.log);
 });
