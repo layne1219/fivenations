@@ -242,7 +242,7 @@ define('Game', [
             this.map.update(this.entityManager);
 
             // updating entity attributes according to the time elapsed
-            this.entityManager.update();
+            this.entityManager.update(this.game.time.elapsedMS);
 
             // Rendering GUI elements
             this.GUI.update();

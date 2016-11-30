@@ -116,6 +116,14 @@ define('Entity.MotionManager', [
         },
 
         /**
+         * Stops the floating animation
+         */
+        stopFloating: function() {
+            this.effectManager.resetEffects();
+            this.entity.sprite.anchor.setTo(0.5, 0.5);
+        },
+
+        /**
          * Tick function for altering the helper variables that determines the effects
          * influence the entity object 
          * @return {void}

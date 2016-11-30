@@ -334,6 +334,13 @@ define('Entity', [
             this.motionManager.float();
         },
 
+        /**
+         * Stops the floating animation
+         */
+        stopFloating: function() {
+            this.motionManager.stopFloating();
+        },
+
         hasSlowManeuverability: function() {
             return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
         },

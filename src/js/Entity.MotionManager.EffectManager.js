@@ -54,7 +54,6 @@ define('Entity.MotionManager.EffectManager', function() {
                 this.effects[i] = null;
                 this.effects.splice(i, 1);
             }
-            this.effects = [];
         },
 
         /**

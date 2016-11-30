@@ -40,6 +40,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
     Idle.prototype.deactivate = function() {
         Activity.prototype.deactivate.call(this);
         this.entity.stopAnimation();
+        this.entity.stopFloating();
     };
 
     /**

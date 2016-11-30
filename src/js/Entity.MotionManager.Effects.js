@@ -152,7 +152,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
          * @return {boolean} returns true all the time
          */
         floating: function(motionManager) {
-            //motionManager.sprite.y += Math.sin();
+            motionManager.sprite.anchor.y = 0.5 + Math.sin(ns.game.gpc / 25) / 70;
             return true;
         }
 
