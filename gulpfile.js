@@ -93,4 +93,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['connect', 'watch']);
-gulp.task('build', ['build-html']);
+gulp.task('build', ['lint', 'build-html']);
