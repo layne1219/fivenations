@@ -30,7 +30,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
     Idle.prototype.activate = function() {
         Activity.prototype.activate.call(this);
         this.entity.animate(ANIMATION_KEY);
-        this.entity.float();
+        this.entity.levitate();
     };
 
     /**
@@ -40,7 +40,7 @@ define('Entity.Activity.Idle', ['Entity.Activity'], function(Activity) {
     Idle.prototype.deactivate = function() {
         Activity.prototype.deactivate.call(this);
         this.entity.stopAnimation();
-        this.entity.stopFloating();
+        this.entity.stopLevitating();
     };
 
     /**

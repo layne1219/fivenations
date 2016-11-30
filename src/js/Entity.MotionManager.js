@@ -21,6 +21,7 @@ define('Entity.MotionManager', [
 
         this.movement = createMovementObject(entity);
         this.rotation = createRotationObject(entity);
+        this.levitation = createLevitationObject(entity);
 
         this.isEntityArrivedAtDestination = false;
         this.isEntityStoppedAtDestination = false;
@@ -49,7 +50,7 @@ define('Entity.MotionManager', [
      * creates a structure for the helper variables placed into a 
      * namespace
      * @param  {object} entity given Entity needs to be moved
-     * @return {object} prototype of movement related helper variables
+     * @return {object} prototype of rotation related helper variables
      */
     function createRotationObject(entity) {
         var dataObject = entity.getDataObject();
@@ -62,6 +63,18 @@ define('Entity.MotionManager', [
             maxAngularVelocity: dataObject.getManeuverability(),
             framePadding: dataObject.getAnimFrame() || 1
         };        
+    }
+
+    /**
+     * Creates helper attributes for the idle-like float animation
+     * @param  {object} entity given Entity needs to be moved
+     * @return {object} prototype of rotation related helper variables
+     */
+    function createLevitationObject(entity) {
+        return {
+            time: 0,
+            defaultAnchorY: entity.getSprite().anchor.y 
+        }
     }
 
     MotionManager.prototype = {
@@ -111,14 +124,14 @@ define('Entity.MotionManager', [
          * Makes the entity slowly floating up and down
          * @return {void}
          */
-        float: function() {
-            this.effectManager.addEffect(Effects.get('floating'));
+        levitate: function() {
+            this.effectManager.addEffect(Effects.get('levitating'));
         },
 
         /**
          * Stops the floating animation
          */
-        stopFloating: function() {
+        stopLevitating: function() {
             this.effectManager.resetEffects();
             this.entity.sprite.anchor.setTo(0.5, 0.5);
         },

@@ -45,6 +45,8 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
                 motionManager.rotation.stepNumberToLeft = Util.calculateStepTo(motionManager.rotation.currentAngleCode, motionManager.rotation.targetAngleCode, motionManager.rotation.maxAngleCount, -1);
             }
 
+            motionManager.levitation.time = 0;
+
             motionManager.isEntityArrivedAtDestination = false;
             motionManager.isEntityStoppedAtDestination = false;
             motionManager.isEntityHeadedToDestination = false;
@@ -151,8 +153,9 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
          * Introduces a constant altenation in the vertical padding of the entity's sprite
          * @return {boolean} returns true all the time
          */
-        floating: function(motionManager) {
-            motionManager.sprite.anchor.y = 0.5 + Math.sin(ns.game.gpc / 25) / 70;
+        levitating: function(motionManager) {
+            motionManager.sprite.anchor.y = motionManager.levitation.defaultAnchorY + Math.sin(motionManager.levitation.time / 25) / 70;
+            motionManager.levitation.time += 1;
             return true;
         }
 

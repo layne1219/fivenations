@@ -330,15 +330,15 @@ define('Entity', [
          * Start a constant floating animation
          * @return {void}
          */
-        float: function() {
-            this.motionManager.float();
+        levitate: function() {
+            this.motionManager.levitate();
         },
 
         /**
          * Stops the floating animation
          */
-        stopFloating: function() {
-            this.motionManager.stopFloating();
+        stopLevitating: function() {
+            this.motionManager.stopLevitating();
         },
 
         hasSlowManeuverability: function() {
