@@ -6,9 +6,7 @@
  */
 define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
-    var ns = window.fivenations;
-
-	var effects = {
+    var effects = {
 
         /**
          * Initialise the helper variable for the movement
@@ -54,7 +52,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
             return false;
         },
 
-		/**
+        /**
          * Move the given entity object towards the x/y coordinates at a steady velocity.
          * @return {boolean} returning false when the effect is no longer must be applied on the entity
          */

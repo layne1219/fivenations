@@ -1,13 +1,13 @@
 define('Entity.MotionManager.EffectManager', function() {
 
-	function EffectManager(motionManager) {
+    function EffectManager(motionManager) {
         this.motionManager = motionManager;
-		this.effects = [];
-	}
+        this.effects = [];
+    }
 
-	EffectManager.prototype = {
+    EffectManager.prototype = {
 
-		/**
+        /**
          * Invoking the currently selected effect from the effect queue at every tick
          * @return {[void]}
          */
@@ -72,9 +72,9 @@ define('Entity.MotionManager.EffectManager', function() {
             }
         }
 
-	};
+    };
 
-	
-	return EffectManager;
+    
+    return EffectManager;
 
 });

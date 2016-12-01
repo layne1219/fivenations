@@ -8,9 +8,8 @@ define('GUI', [
     'Util',
     'json!gui'
 ], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util, guiJSON) {
-
-    var // reference to the shared game configuarition object 
-        ns = window.fivenations,
+ 
+    var ns = window.fivenations,
 
         // reference to the Phaser Game object
         phaserGame,
@@ -66,7 +65,7 @@ define('GUI', [
          * @param {object} container Container into which the sprites will be added
          * @return {object} map of sprites
          */
-        createIconSprites = function(container, x, y) {
+        createIconSprites = function(container) {
             var sprites = {
                     'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
                     'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath')),
@@ -119,7 +118,7 @@ define('GUI', [
                     });
                 }
             }
-        }
+        },
 
         // Rainbow table for entity icons 
         entityIcons = guiJSON.icons,

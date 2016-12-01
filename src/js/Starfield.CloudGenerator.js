@@ -3,8 +3,7 @@ define('Starfield.CloudGenerator', [
     'Starfield.SpaceObjectGenerator',
     'Util'
 ], function(SpaceObject, SpaceObjectGenerator, Util) {
-
-    var ns = window.fivenations;    
+   
     var MAX_NUMBER_OF_CLOUDS = 100;
 
     function CloudGenerator(deepSpaceLayer) {
