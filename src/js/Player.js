@@ -1,11 +1,14 @@
 define('Player', ['Util'], function(Util) {
 
+    var ns = window.fivenations;
+
     function Player(config) {
         init.call(this, config);
     }
 
     function init(config) {
         initDispatcher.call(this);
+        setGUID.call(this, config);
         setName.call(this, config);
         setTeamInformation.call(this, config);
         setResources.call(this, config);
@@ -13,6 +16,10 @@ define('Player', ['Util'], function(Util) {
 
     function initDispatcher(){
         this.dispatcher = new Util.EventDispatcher();        
+    }
+
+    function setGUID(config) {
+        this.guid = config.guid;
     }
 
     function setName(config){
@@ -101,10 +108,15 @@ define('Player', ['Util'], function(Util) {
             return this.team;
         },
 
-        getCurrentEntityNumber: function(entityManager) {
-            return entityManager.entities(function(entity){
+        getCurrentEntityNumber: function() {
+            var entityManager = ns.game.entityManager;
+            return entityManager.entities(function(entity) {
                 return entity.isEntityControlledByUser(this);
             }.bind(this)).length;
+        },
+
+        getGUID: function() {
+            return this.guid;
         },
 
         isControlledByUser: function() {

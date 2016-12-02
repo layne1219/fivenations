@@ -1,4 +1,5 @@
 define('Game', [
+    'Game.Signals',
     'Graphics',
     'Map',
     'PlayerManager',
@@ -11,6 +12,7 @@ define('Game', [
     'Universal.EventBusExecuter',
     'Util'
 ], function(
+    Signals,
     Graphics,
     Map,
     PlayerManager,
@@ -44,6 +46,8 @@ define('Game', [
 
             // publishing the Game object 
             ns.game = this;
+
+            this.signals = Signals.create();
 
             // -----------------------------------------------------------------------
             //                                  Graphics
@@ -193,16 +197,26 @@ define('Game', [
             // -----------------------------------------------------------------------
             //                                  Players
             // -----------------------------------------------------------------------
+            
+            var myGUID = Util.getGUID();
             // Set up Players
             EventBus.getInstance().add({
                 id: 'player/create',
                 data: {
-                    guid: Util.getGUID(),
+                    guid: myGUID,
                     name: 'Test Player',
                     team: 1,
                     user: true
                 }
             });
+
+            EventBus.getInstance().add({
+                id: 'player/resource/alter',
+                data: {
+                    guid: myGUID,
+                    titanium: 50
+                }
+            });            
 
             // -----------------------------------------------------------------------
             //                          Generating entities

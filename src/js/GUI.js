@@ -1442,6 +1442,7 @@ define('GUI', [
                 Phaser.Group.call(this, phaserGame);
                 this.setPlayerManager(playerManager);
                 this.initTextElements();
+                this.registerEventListeners();
             }
 
             // Making the prototype inherited from Phaser.Group prototype
@@ -1469,7 +1470,11 @@ define('GUI', [
                 this.add(this.food);
             };
 
-            ResourceDisplay.prototype.setInitialContent = function(){
+            ResourceDisplay.prototype.registerEventListeners = function() {
+                ns.game.signals.onPlayerResourcesUpdate.add(this.updateContent, this);
+            };
+
+            ResourceDisplay.prototype.updateContent = function() {
                 var user = this.playerManager.getUser();
                 this.titanium.updateContent({ current: user.getTitanium() });
                 this.silicium.updateContent({ current: user.getSilicium() });
