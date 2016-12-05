@@ -1,9 +1,8 @@
 define('Starfield.PlanetAreaGenerator', [
     'Starfield.CloudGenerator',
     'Starfield.PlanetGenerator',
-    'Starfield.SpaceObjectGenerator',
-    'Util'
-], function(CloudGenerator, PlanetGenerator, SpaceObjectGenerator, Util) {
+    'Starfield.SpaceObjectGenerator'
+], function(CloudGenerator, PlanetGenerator, SpaceObjectGenerator) {
 
     function PlanetAreaGenerator(deepSpaceLayer) {
         SpaceObjectGenerator.call(this, deepSpaceLayer);
@@ -18,7 +17,7 @@ define('Starfield.PlanetAreaGenerator', [
         this.createClouds();
     }
 
-	PlanetAreaGenerator.prototype.createPlanet = function() {
+    PlanetAreaGenerator.prototype.createPlanet = function() {
         var generator = new PlanetGenerator(this.deepSpaceLayer);
         generator.generate();
         generator.getSpaceObjects().forEach(function(obj){

@@ -1,4 +1,5 @@
 define('Game', [
+    'Game.Signals',
     'Graphics',
     'Map',
     'PlayerManager',
@@ -11,6 +12,7 @@ define('Game', [
     'Universal.EventBusExecuter',
     'Util'
 ], function(
+    Signals,
     Graphics,
     Map,
     PlayerManager,
@@ -25,22 +27,11 @@ define('Game', [
 
     'use strict';
 
-    var ns = window.fivenations,
-        lastTickTime;
+    var ns = window.fivenations;
 
     function Game() {}
 
     Game.prototype = {
-
-        setLastTickTime: function() {
-            lastTickTime = new Date().getTime();
-        },
-
-        getDelta: function() {
-            var now = new Date().getTime(),
-                delta = now - (lastTickTime || now);
-            return delta;
-        },
 
         preloader: function() {
 
@@ -55,6 +46,8 @@ define('Game', [
 
             // publishing the Game object 
             ns.game = this;
+
+            this.signals = Signals.create();
 
             // -----------------------------------------------------------------------
             //                                  Graphics
@@ -204,16 +197,26 @@ define('Game', [
             // -----------------------------------------------------------------------
             //                                  Players
             // -----------------------------------------------------------------------
+            
+            var myGUID = Util.getGUID();
             // Set up Players
             EventBus.getInstance().add({
                 id: 'player/create',
                 data: {
-                    guid: Util.getGUID(),
+                    guid: myGUID,
                     name: 'Test Player',
                     team: 1,
                     user: true
                 }
             });
+
+            EventBus.getInstance().add({
+                id: 'player/resource/alter',
+                data: {
+                    guid: myGUID,
+                    titanium: 50
+                }
+            });            
 
             // -----------------------------------------------------------------------
             //                          Generating entities
@@ -237,11 +240,14 @@ define('Game', [
                 y: 450 + Util.rnd(0, 100)
             });
 
+            // -----------------------------------------------------------------------
+            //                                  GPC
+            // -----------------------------------------------------------------------
+            this.gpc = 0;
+
         },
 
         update: function() {
-
-            this.setLastTickTime();
 
             // Execute all the registered events on the EventBus
             this.game.eventBusExecuter.run();
@@ -250,7 +256,7 @@ define('Game', [
             this.map.update(this.entityManager);
 
             // updating entity attributes according to the time elapsed
-            this.entityManager.update(this.getDelta());
+            this.entityManager.update(this.game.time.elapsedMS);
 
             // Rendering GUI elements
             this.GUI.update();
@@ -264,7 +270,6 @@ define('Game', [
             this.game.time.advancedTiming = true;
             this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
         }
-
     };
 
     return Game;

@@ -57,6 +57,7 @@ define('Starfield.DeepSpaceLayer', [
 
         createSpaceObjects: function(savedData) {
             if (savedData) {
+                var SpaceObjectLoader = function() {};
                 this.loadSpaceObjects(new SpaceObjectLoader(this, savedData));
             } else {
                 this.generateSpaceObjects(new PlanetAreaGenerator(this));

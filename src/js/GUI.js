@@ -8,9 +8,8 @@ define('GUI', [
     'Util',
     'json!gui'
 ], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util, guiJSON) {
-
-    var // reference to the shared game configuarition object 
-        ns = window.fivenations,
+ 
+    var ns = window.fivenations,
 
         // reference to the Phaser Game object
         phaserGame,
@@ -66,7 +65,7 @@ define('GUI', [
          * @param {object} container Container into which the sprites will be added
          * @return {object} map of sprites
          */
-        createIconSprites = function(container, x, y) {
+        createIconSprites = function(container) {
             var sprites = {
                     'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
                     'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath')),
@@ -119,7 +118,7 @@ define('GUI', [
                     });
                 }
             }
-        }
+        },
 
         // Rainbow table for entity icons 
         entityIcons = guiJSON.icons,
@@ -1443,6 +1442,7 @@ define('GUI', [
                 Phaser.Group.call(this, phaserGame);
                 this.setPlayerManager(playerManager);
                 this.initTextElements();
+                this.registerEventListeners();
             }
 
             // Making the prototype inherited from Phaser.Group prototype
@@ -1470,7 +1470,11 @@ define('GUI', [
                 this.add(this.food);
             };
 
-            ResourceDisplay.prototype.setInitialContent = function(){
+            ResourceDisplay.prototype.registerEventListeners = function() {
+                ns.game.signals.onPlayerResourcesUpdate.add(this.updateContent, this);
+            };
+
+            ResourceDisplay.prototype.updateContent = function() {
                 var user = this.playerManager.getUser();
                 this.titanium.updateContent({ current: user.getTitanium() });
                 this.silicium.updateContent({ current: user.getSilicium() });

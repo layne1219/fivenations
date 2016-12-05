@@ -6,7 +6,7 @@
  */
 define('Entity.MotionManager.Effects', ['Util'], function(Util) {
 
-	var effects = {
+    var effects = {
 
         /**
          * Initialise the helper variable for the movement
@@ -43,6 +43,8 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
                 motionManager.rotation.stepNumberToLeft = Util.calculateStepTo(motionManager.rotation.currentAngleCode, motionManager.rotation.targetAngleCode, motionManager.rotation.maxAngleCount, -1);
             }
 
+            motionManager.levitation.time = 0;
+
             motionManager.isEntityArrivedAtDestination = false;
             motionManager.isEntityStoppedAtDestination = false;
             motionManager.isEntityHeadedToDestination = false;
@@ -50,7 +52,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
             return false;
         },
 
-		/**
+        /**
          * Move the given entity object towards the x/y coordinates at a steady velocity.
          * @return {boolean} returning false when the effect is no longer must be applied on the entity
          */
@@ -143,6 +145,16 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
         stopAnimation: function(motionManager) {
             motionManager.getEntity().stopAnimation();
             return false;
+        },
+
+        /**
+         * Introduces a constant altenation in the vertical padding of the entity's sprite
+         * @return {boolean} returns true all the time
+         */
+        levitating: function(motionManager) {
+            motionManager.sprite.anchor.y = motionManager.levitation.defaultAnchorY + Math.sin(motionManager.levitation.time / 25) / 70;
+            motionManager.levitation.time += 1;
+            return true;
         }
 
     };
