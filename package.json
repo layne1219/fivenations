@@ -27,14 +27,16 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "phantom": "^3.2.0",
+    "phantomjs": "^2.1.7"
   },
   "scripts": {
     "post-install": "node ./node_modules/bower/bin/bower install",
     "start": "node ./node_modules/gulp/bin/gulp.js",
     "build": "node ./node_modules/gulp/bin/gulp.js build",
     "lint": "node ./node_modules/gulp/bin/gulp.js lint",
-    "start-server": "forever app.js",
+    "start-server": "forever server-runner.js",
     "stop-server": "forever stopall"
   }
 }
