@@ -1,43 +1,27 @@
 'use strict';
-const phantom = require('phantom');
-const rootDir = '../../';
-const server = require(rootDir + 'server.js');
-const port = 9001;
-const addr = 'http://localhost:' + port;
-let phInstance = null;
+const assert = require('chai').assert;
+const server = require('./lib/test-server.js');
+const connector = require('./lib/phantomjs-connector.js');
 
-function beforePhantomJS() {
-    server.start(port, rootDir + 'dist');
-}
+server.start();
+connector.on('exit', server.stop.bind(server));
 
-function exit(exitCode) {
-    server.stop();
-    phInstance.exit(exitCode);
-}
-
-beforePhantomJS();
-
-phantom
-    .create()
-    .then(instance => {
-        console.log('Phantom JS instance is spawned');
-        phInstance = instance;
-        return instance.createPage();
-    })
-    .then(page => {
-        console.log(`Opening ${addr}...`);
-        return page.open(addr);
-    })
+connector
+    .connect(server.getURL())
     .then(status => {
-        if (status !== 'success') {
-            throw 'Invalid status code!';
-        } else {
-            console.log('Server is heathly!');
-            console.log('Tearing down...');
-            exit();
-        }
+
+        describe('Server application', function() {
+
+            it('Application should return 200', function() {
+                assert.equal(status, 'success');
+            });
+
+        });
+
+        run();
+
     })
-    .catch(error => {
-        console.log(error);
-        exit(1);
+    .then(connector.exit.bind(connector))
+    .catch(ex => {
+        console.error(ex);
     });

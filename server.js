@@ -1,3 +1,4 @@
+var Promise = require('es6-promise').Promise;
 var express = require('express');
 var app;
 var server;
@@ -13,13 +14,17 @@ module.exports = {
 
         app = express();
         app.use(express.static(dir));
-        server = app.listen(port, function() {
-            console.log('Express application is listening on port ' + port);
+        return new Promise(function(resolve) {
+            server = app.listen(port, function() {
+                console.log('Express application is listening on port ' + port);
+                resolve();
+            });
         });
     },
 
     stop: function() {
         if (!server) return;
-        server.close();
+        return Promise.resolve()
+            .then(server.close.bind(server));
     }
 };
