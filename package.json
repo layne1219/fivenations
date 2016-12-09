@@ -39,7 +39,7 @@
   "scripts": {
     "post-install": "node ./node_modules/bower/bin/bower install",
     "start": "node ./node_modules/gulp/bin/gulp.js",
-    "build": "node ./node_modules/gulp/bin/gulp.js build",
+    "build": "npm run test && node ./node_modules/gulp/bin/gulp.js build",
     "lint": "node ./node_modules/gulp/bin/gulp.js lint",
     "start-server": "forever server-runner.js",
     "stop-server": "forever stopall",
