@@ -3,6 +3,7 @@ const phantom = require('phantom');
 const events = require('events');
 
 let page;
+let status;
 let phInstance = null;
 let emitter = new events.EventEmitter();
 
@@ -26,9 +27,10 @@ module.exports = {
                 page = page_;
                 return page.open(address);
             })
-            .then( status => {
-                emitter.emit('connect', status);
-                return status;
+            .then( status_ => {
+                status = status_;
+                emitter.emit('connect', status_);
+                return Promise.resolve(page);
             });
     },
 
@@ -55,8 +57,11 @@ module.exports = {
     },
 
     /**
-     * Page instance to execute further PhantomJS commands
+     * Returns status code after attempting to connect to the remote server
+     * @return {string} 'success' if the connection is established 
      */
-    page
+    getStatus() {
+        return status;
+    }
   
 };

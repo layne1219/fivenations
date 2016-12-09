@@ -8,12 +8,12 @@ connector.on('exit', server.stop.bind(server));
 
 connector
     .connect(server.getURL())
-    .then(status => {
+    .then(page => {
 
         describe('Server application', function() {
 
             it('Application should return 200', function() {
-                assert.equal(status, 'success');
+                assert.equal(connector.getStatus(), 'success');
             });
 
         });
