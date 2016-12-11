@@ -1,6 +1,6 @@
 define('Preloader', [
     'Preloader.Entities', 
-    'Prelaoder.Wreckages'
+    'Preloader.Wreckages'
 ], function(preloaderEntities, preloaderWreckages) {
     'use strict';
 
