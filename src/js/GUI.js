@@ -1582,6 +1582,7 @@ define('GUI', [
         }
 
         function initGUIDisplayElements() {
+
             // Creating the Panel
             panel = new Panel();
             panel.appendTo(group);

@@ -1,4 +1,7 @@
-define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
+define('Preloader', [
+    'Preloader.Entities', 
+    'Prelaoder.Wreckages'
+], function(preloaderEntities, preloaderWreckages) {
     'use strict';
 
     var preloader;
@@ -12,6 +15,7 @@ define('Preloader', ['Preloader.Entities'], function(preloaderEntities) {
         loadGUI(preloader);
         loadStarfield(preloader);
         preloaderEntities.load(preloader);
+        preloaderWreckages.load(preloader);
     }
 
     /**
