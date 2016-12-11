@@ -11,8 +11,8 @@ define('Preloader.Wreckages', function() {
 
     ['fed', 'ath', 'syl'].forEach(function(nation) {
         
-        for (var i = 1; i < NO_WRECKAGES_PER_NATION; i += 1) {
-            ns.wreckages[nation + '-wreck-1'] = {
+        for (var i = 1; i <= NO_WRECKAGES_PER_NATION; i += 1) {
+            ns.wreckages[nation + '-wreck-' + i] = {
                 preloading: true,
                 spriteURL: PATH_ASSETS_IMG_UNITS + '/' + nation + '/' + nation + '_wreck0' + i + '.png',
                 atlasURL: PATH_ASSETS_IMG_UNITS + '/' + nation + '/' + nation + '_wreck0' + i + '.json',
