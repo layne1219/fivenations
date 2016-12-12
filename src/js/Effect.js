@@ -1,4 +1,4 @@
-define('Wreckage', function() {
+define('Effect', function() {
 
     /**
      * Prepares to sprite to further use
@@ -48,15 +48,15 @@ define('Wreckage', function() {
     }
 
     /**
-     * initialises a Wreckage instance
-     * @param {object} config Configuration object to initialise the wreckage object
+     * initialises a Effect instance
+     * @param {object} config Configuration object to initialise the effect object
      * @return {object}
      */
-    function Wreckage(config) {       
+    function Effect(config) {       
         setSprite.call(this, config);        
     }
 
-    Wreckage.prototype = {
+    Effect.prototype = {
 
         getId: function() {
             return this.id;
@@ -68,6 +68,6 @@ define('Wreckage', function() {
 
     }
 
-    return Wreckage;
+    return Effect;
 
 });

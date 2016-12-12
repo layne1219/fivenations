@@ -4,7 +4,7 @@ define('Game', [
     'Map',
     'PlayerManager',
     'EntityManager',
-    'WreckageManager',
+    'EffectManager',
     'GUI',
     'GUI.ActivityManager',
     'UserPointer',
@@ -18,7 +18,7 @@ define('Game', [
     Map,
     PlayerManager,
     EntityManager,
-    WreckageManager,
+    EffectManager,
     GUI,
     GUIActivityManager,
     UserPointer,
@@ -80,10 +80,10 @@ define('Game', [
             this.entityManager = EntityManager.getInstance();
 
             // -----------------------------------------------------------------------
-            //                              WreckageManager
+            //                              EffectManager
             // -----------------------------------------------------------------------
-            WreckageManager.setGame(this.game);
-            this.wreckageManager = WreckageManager.getInstance();            
+            EffectManager.setGame(this.game);
+            this.wreckageManager = EffectManager.getInstance();            
 
             // -----------------------------------------------------------------------
             //                              UserPointer

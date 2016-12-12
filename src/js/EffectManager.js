@@ -1,26 +1,26 @@
-define('WreckageManager', [
+define('EffectManager', [
     'Graphics',
-    'Wreckage',
+    'Effect',
     'DataObject'
-], function(Graphics, Wreckage, DataObject) {
+], function(Graphics, Effect, DataObject) {
 
     var ns = window.fivenations;
 
     var phaserGame;
     var singleton;
 
-    var wreckages = [];
+    var effects = [];
 
-    function WreckageManager() {
+    function EffectManager() {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
     }
 
-    WreckageManager.prototype = {
+    EffectManager.prototype = {
 
         /**
-         * Adds an wreckage object to the private collection
+         * Adds an effect object to the private collection
          * @param {object} config configuration object
          */
         add: function(config) {
@@ -29,16 +29,16 @@ define('WreckageManager', [
                 throw 'Invalid configuration object passed as a parameter!';
             }
 
-            if (Object.keys(ns.wreckages).indexOf(config.id) === -1) {
-                throw 'The requrested wreckage is not registered!';
+            if (Object.keys(ns.effects).indexOf(config.id) === -1) {
+                throw 'The requrested effect is not registered!';
             }
 
-            var wreckage;
+            var effect;
             var sprite = phaserGame.add.sprite(0, 0, config.id);
             var dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
 
-            // adding the freshly created wreckage to the main array
-            var wreckage = new Wreckage({
+            // adding the freshly created effect to the main array
+            var effect = new Effect({
                 manager: this,
                 sprite: sprite,
                 dataObject: dataObject
@@ -50,31 +50,31 @@ define('WreckageManager', [
                 sprite.y = config.y || 0;
             }
 
-            var group = Graphics.getInstance().getGroup('wreckages');
+            var group = Graphics.getInstance().getGroup('effects');
             group.add(sprite);
 
-            wreckages.push(wreckage);
+            effects.push(effect);
         },
 
         /**
-         * Removes wreckage from the private collection
-         * @param {object} wreckage Wreckage instance
+         * Removes effect from the private collection
+         * @param {object} effect Effect instance
          */
-        remove: function(wreckage) {
-            for (var i = wreckages.length - 1; i >= 0; i -= 1) {
-                if (wreckage === wreckages[i]) {
-                    wreckages.splice(i, 1);
+        remove: function(effect) {
+            for (var i = effects.length - 1; i >= 0; i -= 1) {
+                if (effect === effects[i]) {
+                    effects.splice(i, 1);
                 }
             }
-            wreckage = null;
+            effect = null;
         },
 
         /**
-         * destroys all the existing wreckages
+         * destroys all the existing effects
          * @return {void}
          */
         reset: function() {
-            wreckages = [];
+            effects = [];
         },
 
         /**
@@ -99,14 +99,14 @@ define('WreckageManager', [
 
         /**
          * returns singleton instance of the manager object
-         * @return {object} Singleton instance of WreckageManager
+         * @return {object} Singleton instance of EffectManager
          */
         getInstance: function() {
             if (!phaserGame) {
                 throw 'Invoke setGame first to pass the Phaser Game entity!';
             }
             if (!singleton) {
-                singleton = new WreckageManager();
+                singleton = new EffectManager();
             }
             return singleton;
         }
