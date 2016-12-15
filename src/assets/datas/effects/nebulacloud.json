@@ -1,5 +1,5 @@
 {
     "id": "nebulacloud",
     "size": "xl",
-    "frames": [0, 1, 2, 3]
+    "variances": [0, 1, 2, 3]
 }

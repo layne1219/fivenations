@@ -147,6 +147,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
                 return data.dimensions.height;
             },
 
+            getVariances: function() {
+                return data.variances || [];
+            },
+
             getAnimations: function() {
                 return data.animations;
             },

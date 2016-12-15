@@ -1,4 +1,14 @@
-define('Effect', function() {
+define('Effect', ['Util'], function(Util) {
+
+    var DEFAULT_ANIM_NAME = 'idle';
+
+    /**
+     * Registers the EffectManager instance
+     * @param {config} config Configuration object that contains the reference to the manager instance
+     */
+    function setManager(config) {
+        this.manager = config.manager;
+    }
 
     /**
      * Prepares to sprite to further use
@@ -17,9 +27,6 @@ define('Effect', function() {
         // Set up the Phaser.Sprite object
         this.sprite.anchor.setTo(0.5, 0.5);
 
-        // sets the animations defined in the DO
-        extendSpriteWithAnimations(this.sprite, dataObject);
-
         // coords
         this.sprite.x = 0;
         this.sprite.y = 0;
@@ -27,23 +34,43 @@ define('Effect', function() {
         // reducing the hitArea according the one specified in the realated DataObject
         this.sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
 
+        // set frame if the effect has multiple variances
+        var variances = dataObject.getVariances();
+        if (variances.length) {
+            this.sprite.frame = variances[Util.rnd(0, variances.length - 1)];
+        } 
+
+        // sets the animations defined in the DO
+        extendSpriteWithAnimations(this, dataObject);
     }
 
     /**
      * Registers animations sequences against the given sprite object if there is any specified in the DO 
-     * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
+     * @param  {object} effect [Effect instance]
      * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
      * @return {void}
      */
-    function extendSpriteWithAnimations(sprite, dataObject){
+    function extendSpriteWithAnimations(config) {
+        var dataObject = config.dataObject;
         var animations = dataObject.getAnimations();
         if (!animations || typeof animations !== 'object') return;
         Object.keys(animations).forEach(function(key){
             var data = animations[key];
-            sprite.animations.add(key, data.frames, data.rate, data.loopable);
-            if (key === 'idle') {
-                sprite.animations.play(key);
+            var animation;
+            animation = this.sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            if (data.oncomplete === 'remove') {
+                registerRemoveEventToAnimation(this, animation);
             }
+        });
+    }
+
+    /**
+     * Registers a listener to the remove Event
+     */
+    function registerRemoveEventToAnimation(effect, animation) {
+        animation.killOnComplete = true;
+        animation.onComplete.add(function() {
+            effect.remove();
         });
     }
 
@@ -52,8 +79,10 @@ define('Effect', function() {
      * @param {object} config Configuration object to initialise the effect object
      * @return {object}
      */
-    function Effect(config) {       
-        setSprite.call(this, config);        
+    function Effect(config) {   
+        setManager.call(this, config);    
+        setSprite.call(this, config); 
+        setAnimations.call(this, config);       
     }
 
     Effect.prototype = {
@@ -64,6 +93,10 @@ define('Effect', function() {
 
         getSprite: function() {
             return this.sprite;
+        },
+
+        remove: function() {
+            this.manager.remove(this);
         }
 
     }
