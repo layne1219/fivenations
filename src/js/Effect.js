@@ -40,17 +40,14 @@ define('Effect', ['Util'], function(Util) {
             this.sprite.frame = variances[Util.rnd(0, variances.length - 1)];
         } 
 
-        // sets the animations defined in the DO
-        extendSpriteWithAnimations(this, dataObject);
     }
 
     /**
      * Registers animations sequences against the given sprite object if there is any specified in the DO 
-     * @param  {object} effect [Effect instance]
-     * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
+     * @param  {object} config [configuration object to initialise animations]
      * @return {void}
      */
-    function extendSpriteWithAnimations(config) {
+    function setAnimations(config) {
         var dataObject = config.dataObject;
         var animations = dataObject.getAnimations();
         if (!animations || typeof animations !== 'object') return;
@@ -60,6 +57,9 @@ define('Effect', ['Util'], function(Util) {
             animation = this.sprite.animations.add(key, data.frames, data.rate, data.loopable);
             if (data.oncomplete === 'remove') {
                 registerRemoveEventToAnimation(this, animation);
+            }
+            if (key === DEFAULT_ANIM_NAME) {
+                this.sprite.animations.play(key);
             }
         });
     }
