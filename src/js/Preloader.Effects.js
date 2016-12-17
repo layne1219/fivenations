@@ -136,15 +136,15 @@ define('Preloader.Effects', function() {
 
         'destruction-bio-big': {
             preloading: true,
-            spriteURL: PATH_ASSETS_IMG + '/effect_destruction_bio-big.png',
-            atlasURL: PATH_ASSETS_IMG + '/effect_destruction_bio-big.json',
+            spriteURL: PATH_ASSETS_IMG + '/effect_destruction_bio_big.png',
+            atlasURL: PATH_ASSETS_IMG + '/effect_destruction_bio_big.json',
             dataURL: PATH_ASSETS_DATA + '/destruction-bio-big.json'
         },
 
         'destruction-bio-medium': {
             preloading: true,
-            spriteURL: PATH_ASSETS_IMG + '/effect_destruction_bio-medium.png',
-            atlasURL: PATH_ASSETS_IMG + '/effect_destruction_bio-medium.json',
+            spriteURL: PATH_ASSETS_IMG + '/effect_destruction_bio_medium.png',
+            atlasURL: PATH_ASSETS_IMG + '/effect_destruction_bio_medium.json',
             dataURL: PATH_ASSETS_DATA + '/destruction-bio-medium.json'
         },
 
