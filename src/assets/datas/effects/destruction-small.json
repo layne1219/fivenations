@@ -1,7 +1,7 @@
 {
     "id": "destruction-small",
     "animType": ["idle"],
-    "size": "s",
+    "size": "sm",
     "animations": {
         "idle": {
             "oncomplete": "remove",

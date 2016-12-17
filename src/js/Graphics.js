@@ -12,7 +12,7 @@ define('Graphics', function() {
                 'selectors-buildings',
                 'entities-buildings',
                 'selectors',
-                'wreckages',
+                'effects',
                 'entities',
                 'prior-gui-elements'
             ];

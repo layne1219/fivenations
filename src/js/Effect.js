@@ -61,7 +61,7 @@ define('Effect', ['Util'], function(Util) {
             if (key === DEFAULT_ANIM_NAME) {
                 this.sprite.animations.play(key);
             }
-        });
+        }.bind(this));
     }
 
     /**

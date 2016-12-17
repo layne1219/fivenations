@@ -1,7 +1,7 @@
 {
     "id": "blow-8",
     "animType": ["idle"],
-    "size": "xs",
+    "size": "m",
     "animations": {
         "idle": {
             "oncomplete": "remove",
