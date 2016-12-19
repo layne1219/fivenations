@@ -76,6 +76,14 @@ define('EffectManager', [
         reset: function() {
             effects = [];
         },
+        
+        /**
+         * Update function called on every tick
+         * @return {void}
+         */
+        update: function() {
+            // no-op
+        },
 
         /**
          * returns the Phaser.Game object for inconvinience 

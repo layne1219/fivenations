@@ -12,8 +12,8 @@ define('Graphics', function() {
                 'selectors-buildings',
                 'entities-buildings',
                 'selectors',
-                'effects',
                 'entities',
+                'effects',                
                 'prior-gui-elements'
             ];
 

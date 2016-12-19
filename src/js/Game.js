@@ -287,8 +287,6 @@ define('Game', [
 
                 var id = blasts[Util.rnd(0, blasts.length - 1)];
 
-                console.log(id);
-
                 this.effectManager.add({
                     id: id,
                     x: Util.rnd(0, 800),
@@ -311,6 +309,9 @@ define('Game', [
 
             // updating entity attributes according to the time elapsed
             this.entityManager.update(this.game.time.elapsedMS);
+
+            // updates effects
+            this.effectManager.update();
 
             // Rendering GUI elements
             this.GUI.update();
