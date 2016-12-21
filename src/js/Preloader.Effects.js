@@ -6,7 +6,7 @@ define('Preloader.Effects', function() {
     var PATH_ASSETS_IMG = 'assets/images/effects';
 
     // const like object to describe all the effects participating in the gameplay 
-    ns.effects = ns.effects || {
+    ns.effects = Object.assign(ns.effects || {}, {
 
         'blow-1': {
             preloading: true,
@@ -176,7 +176,7 @@ define('Preloader.Effects', function() {
             dataURL: PATH_ASSETS_DATA + '/sporecloud.json'
         }
 
-    };
+    });
 
     return {
 

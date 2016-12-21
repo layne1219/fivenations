@@ -74,6 +74,10 @@ define('Effect', ['Util'], function(Util) {
         });
     }
 
+    function setTTL(config) {
+        this.ttl = config.dataObject.getTTL();
+    }
+
     /**
      * initialises a Effect instance
      * @param {object} config Configuration object to initialise the effect object
@@ -82,7 +86,8 @@ define('Effect', ['Util'], function(Util) {
     function Effect(config) {   
         setManager.call(this, config);    
         setSprite.call(this, config); 
-        setAnimations.call(this, config);       
+        setAnimations.call(this, config);
+        setTTL.call(this, config);       
     }
 
     Effect.prototype = {

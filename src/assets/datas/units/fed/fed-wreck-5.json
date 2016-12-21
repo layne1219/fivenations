@@ -2,6 +2,7 @@
     "id": "fed-wreck-5",
     "animType": ["idle"],
     "size": "l",
+    "ttl": 50,
     "animations": {
         "idle": {
             "rate": 20,

@@ -177,6 +177,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
             getEvent: function(evt) {
                 if (!evt || !data.events) return;
                 return data.events[evt];
+            },
+
+            getTTL: function() {
+                return data.ttl;
             }
 
         };

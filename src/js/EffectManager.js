@@ -51,6 +51,13 @@ define('EffectManager', [
                 sprite.y = config.y || 0;
             }
 
+            // setting up velocity 
+            if (config.velocity) {
+                // actiavting the ARCADE physics on the sprite object
+                phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);                
+                sprite.body.velocity.set(config.velocity.x, config.velocity.y);
+            }
+
             var group = Graphics.getInstance().getGroup('effects');
             group.add(sprite);
 
@@ -60,7 +67,6 @@ define('EffectManager', [
         explode: function(entity) {
             if (!entity) return;
 
-            var effectManager = EffectManager.getInstance();
             var eventData = entity.dataObject.getEvent('remove');
             var effectId;
             var sprite;
@@ -71,16 +77,15 @@ define('EffectManager', [
             if (eventData) {
 
                 sprite = entity.getSprite();
-                effectManager = EffectManager.getInstance();
 
                 if (eventData.effects && eventData.effects.length) {
                     eventData.effects.forEach(function(effectId) {
-                        effectManager.add({
+                        this.add({
                             id: effectId,
                             x: sprite.x,
                             y: sprite.y
                         });
-                    });
+                    }.bind(this));
                 }
 
                 if (eventData.wrecks && eventData.wrecks.length) {
@@ -88,10 +93,14 @@ define('EffectManager', [
                     maxWrecks = eventData.maxWrecks || 0;
                     for (i = minWrecks; i <= maxWrecks; i += 1) {
                         effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
-                        effectManager.add({
+                        this.add({
                             id: effectId,
                             x: sprite.x + Util.rnd(0, 30) - 15,
-                            y: sprite.y + Util.rnd(0, 30) - 15
+                            y: sprite.y + Util.rnd(0, 30) - 15,
+                            velocity: {
+                                x: (Math.random() - 0.5) * Util.rnd(75, 100),
+                                y: (Math.random() - 0.5) * Util.rnd(75, 100)
+                            }
                         });                        
                     }
                 }
@@ -114,6 +123,14 @@ define('EffectManager', [
         },
 
         /**
+         * Removes effect with the given index from the private collection
+         * @param {integer} idx index of the effect in the effect queue
+         */        
+        removeByIndex: function(idx) {
+            effects.splice(idx, 1);
+        },
+
+        /**
          * destroys all the existing effects
          * @return {void}
          */
@@ -126,7 +143,13 @@ define('EffectManager', [
          * @return {void}
          */
         update: function() {
-            // no-op
+            for (var i = effects.length - 1; i >= 0; i -= 1) {
+                if (!effects[i].ttl) continue;
+                effects[i].ttl -= 1;
+                if (effects[i].ttl === 0) {
+                    this.removeByIndex(i);
+                }
+            }
         },
 
         /**
