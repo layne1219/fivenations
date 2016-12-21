@@ -20,5 +20,13 @@
 	"directions": 16,
 	"animFrame": 1,
 	"animType": 0,
-	"size": "sm"
+	"size": "sm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 2,
+			"maxWrecks": 3,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}	
 }

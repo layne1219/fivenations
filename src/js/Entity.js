@@ -5,12 +5,13 @@ define('Entity', [
     'Entity.MotionManager',
     'Entity.AbilityManager',
     'Entity.WeaponManager',
+    'EffectManager',
     'GUI',
     'UserKeyboard',
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, WeaponManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
+], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, WeaponManager, EffectManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
 
     var
 
@@ -274,6 +275,36 @@ define('Entity', [
         remove: function() {
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
+
+            var effectId;
+            var eventData = this.dataObject.getEvent('remove');
+            var minWrecks = eventData.minWrecks || 0;
+            var maxWrecks = eventData.maxWrecks || 0;
+            var effectManager = EffectManager.getInstance();
+
+            if (eventData) {
+                if (eventData.effects && eventData.effects.length) {
+                    eventData.effects.forEach(function(effectId) {
+                        effectManager.add({
+                            id: effectId,
+                            x: this.sprite.x,
+                            y: this.sprite.y
+                        });
+                    }.bind(this));
+                }
+
+                if (eventData.wrecks && eventData.wrecks.length) {
+                    for (var i = minWrecks; i <= maxWrecks; i += 1) {
+                        effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
+                        effectManager.add({
+                            id: effectId,
+                            x: this.sprite.x + Util.rnd(0, 30) - 15,
+                            y: this.sprite.y + Util.rnd(0, 30) - 15
+                        });                        
+                    }
+                }
+
+            }
         },
 
         /**

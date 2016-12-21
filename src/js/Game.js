@@ -231,20 +231,22 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: 'labor',
+                    id: 'hurricane',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
 
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'orca',
-                team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
-                x: 200 + Util.rnd(0, 200),
-                y: 450 + Util.rnd(0, 100)
-            });
+            for (var i = 20; i >= 0; i -= 1) {
+                this.entityManager.entities.add({
+                    guid: Util.getGUID(),
+                    id: 'orca',
+                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    x: 200 + Util.rnd(0, 100),
+                    y: 450 + Util.rnd(0, 100)
+                });
+            }
 
             [
                 'blackhole',
@@ -261,7 +263,7 @@ define('Game', [
 
             }.bind(this));
 
-            setTimeout(function blast() {
+            /*setTimeout(function blast() {
                 var blasts = [
                     'blow-1',
                     'blow-2',
@@ -295,7 +297,7 @@ define('Game', [
 
                 setTimeout(blast.bind(this), 16);
                 
-            }.bind(this), 5000);
+            }.bind(this), 5000);*/
 
         },
 

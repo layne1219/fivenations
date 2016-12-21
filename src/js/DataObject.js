@@ -168,6 +168,15 @@ define('DataObject', ['json!sizes'], function(sizes) {
                 var animation = this.getAnimationByKey(key);
                 // whether the animation definition is an array
                 return animation.length;
+            },
+
+            getEvents: function() {
+                return data.events;
+            },
+
+            getEvent: function(evt) {
+                if (!evt || !data.events) return;
+                return data.events[evt];
             }
 
         };
