@@ -1,8 +1,9 @@
 define('EffectManager', [
     'Graphics',
     'Effect',
-    'DataObject'
-], function(Graphics, Effect, DataObject) {
+    'DataObject',
+    'Util'
+], function(Graphics, Effect, DataObject, Util) {
 
     var ns = window.fivenations;
 
@@ -54,6 +55,49 @@ define('EffectManager', [
             group.add(sprite);
 
             effects.push(effect);
+        },
+
+        explode: function(entity) {
+            if (!entity) return;
+
+            var effectManager = EffectManager.getInstance();
+            var eventData = entity.dataObject.getEvent('remove');
+            var effectId;
+            var sprite;
+            var minWrecks;
+            var maxWrecks;
+            var i;
+
+            if (eventData) {
+
+                sprite = entity.getSprite();
+                effectManager = EffectManager.getInstance();
+
+                if (eventData.effects && eventData.effects.length) {
+                    eventData.effects.forEach(function(effectId) {
+                        effectManager.add({
+                            id: effectId,
+                            x: sprite.x,
+                            y: sprite.y
+                        });
+                    });
+                }
+
+                if (eventData.wrecks && eventData.wrecks.length) {
+                    minWrecks = eventData.minWrecks || 0;
+                    maxWrecks = eventData.maxWrecks || 0;
+                    for (i = minWrecks; i <= maxWrecks; i += 1) {
+                        effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
+                        effectManager.add({
+                            id: effectId,
+                            x: sprite.x + Util.rnd(0, 30) - 15,
+                            y: sprite.y + Util.rnd(0, 30) - 15
+                        });                        
+                    }
+                }
+
+            }            
+
         },
 
         /**

@@ -238,7 +238,7 @@ define('Game', [
                 });
             }
 
-            for (var i = 20; i >= 0; i -= 1) {
+            for (var j = 20; j >= 0; j -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: 'orca',
