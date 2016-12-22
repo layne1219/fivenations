@@ -20,5 +20,13 @@
 	"directions": 32,
 	"animFrame": 1,
 	"animType": 0,
-	"size": "xsm" 
+	"size": "xsm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-bio-big"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	} 
 }

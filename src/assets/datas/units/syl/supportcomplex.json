@@ -29,6 +29,14 @@
             "loopable": true,
             "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         }
-    }
+    },
+    "events": {
+		"remove": {
+			"effects": ["destruction-big"],
+			"minWrecks": 10,
+			"maxWrecks": 15,
+			"wrecks": ["syl-wreck-1", "syl-wreck-2", "syl-wreck-3", "syl-wreck-4", "syl-wreck-5"]
+		}
+	}
 
 }

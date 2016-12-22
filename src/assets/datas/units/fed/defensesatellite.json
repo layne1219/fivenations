@@ -32,9 +32,9 @@
     "events": {
         "remove": {
             "effects": ["destruction-small"],
-            "minWrecks": 0,
-            "maxWrecks": 0,
-            "wrecks": []
+            "minWrecks": 3,
+            "maxWrecks": 5,
+            "wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
         }
     }    
 }
