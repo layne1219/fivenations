@@ -248,7 +248,7 @@ define('Game', [
                 });
             }
 
-            [
+            /*[
                 'blackhole',
                 'nebulacloud',
                 'sporecloud',
@@ -261,43 +261,7 @@ define('Game', [
                     y: Util.rnd(0, 600)
                 });
 
-            }.bind(this));
-
-            /*setTimeout(function blast() {
-                var blasts = [
-                    'blow-1',
-                    'blow-2',
-                    'blow-3',
-                    'blow-4',
-                    'blow-5a',
-                    'blow-5b',
-                    'blow-6',
-                    'blow-7',
-                    'blow-8',
-                    'blow-9',
-                    'blow-10',
-                    'blow-11',
-                    'blow-12',
-                    'blow-13',
-                    'destruction-big',
-                    'destruction-bio-big',
-                    'destruction-medium',
-                    'destruction-bio-medium',
-                    'destruction-small',
-                    'destruction-bio-small',
-                ];
-
-                var id = blasts[Util.rnd(0, blasts.length - 1)];
-
-                this.effectManager.add({
-                    id: id,
-                    x: Util.rnd(0, 800),
-                    y: Util.rnd(0, 600)
-                });
-
-                setTimeout(blast.bind(this), 16);
-                
-            }.bind(this), 5000);*/
+            }.bind(this));*/
 
         },
 

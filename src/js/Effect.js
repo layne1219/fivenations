@@ -11,6 +11,14 @@ define('Effect', ['Util'], function(Util) {
     }
 
     /**
+     * Saves the DataObject instance to the object scope
+     * @param {config} config Configuration object that contains the reference to the manager instance
+     */
+    function setDataObject(config) {
+        this.dataObject = config.dataObject;
+    }
+
+    /**
      * Prepares to sprite to further use
      * @param {object} config Configuration object
      * @return {void} 
@@ -68,7 +76,6 @@ define('Effect', ['Util'], function(Util) {
      * Registers a listener to the remove Event
      */
     function registerRemoveEventToAnimation(effect, animation) {
-        animation.killOnComplete = true;
         animation.onComplete.add(function() {
             effect.remove();
         });
@@ -84,7 +91,8 @@ define('Effect', ['Util'], function(Util) {
      * @return {object}
      */
     function Effect(config) {   
-        setManager.call(this, config);    
+        setManager.call(this, config);
+        setDataObject.call(this, config);
         setSprite.call(this, config); 
         setAnimations.call(this, config);
         setTTL.call(this, config);       
@@ -100,8 +108,12 @@ define('Effect', ['Util'], function(Util) {
             return this.sprite;
         },
 
+        getDataObject: function() {
+            return this.dataObject;
+        },
+
         remove: function() {
-            this.manager.remove(this);
+            this.sprite.destroy();
         }
 
     }

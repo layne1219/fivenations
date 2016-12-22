@@ -65,9 +65,9 @@ define('EffectManager', [
         },
 
         explode: function(entity) {
-            if (!entity) return;
+            if (!entity || !entity.getDataObject) return;
 
-            var eventData = entity.dataObject.getEvent('remove');
+            var eventData = entity.getDataObject().getEvent('remove');
             var effectId;
             var sprite;
             var minWrecks;
@@ -116,7 +116,7 @@ define('EffectManager', [
         remove: function(effect) {
             for (var i = effects.length - 1; i >= 0; i -= 1) {
                 if (effect === effects[i]) {
-                    effects.splice(i, 1);
+                    this.removeByIndex(i);
                 }
             }
             effect = null;
@@ -127,6 +127,8 @@ define('EffectManager', [
          * @param {integer} idx index of the effect in the effect queue
          */        
         removeByIndex: function(idx) {
+            if (!effects[idx]) return;
+            effects[idx].remove();
             effects.splice(idx, 1);
         },
 
