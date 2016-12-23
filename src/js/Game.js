@@ -4,6 +4,7 @@ define('Game', [
     'Map',
     'PlayerManager',
     'EntityManager',
+    'EffectManager',
     'GUI',
     'GUI.ActivityManager',
     'UserPointer',
@@ -17,6 +18,7 @@ define('Game', [
     Map,
     PlayerManager,
     EntityManager,
+    EffectManager,
     GUI,
     GUIActivityManager,
     UserPointer,
@@ -74,14 +76,18 @@ define('Game', [
             // -----------------------------------------------------------------------
             //                              EntityManager
             // -----------------------------------------------------------------------
-            // Set up the EntityManager
             EntityManager.setGame(this.game);
             this.entityManager = EntityManager.getInstance();
 
             // -----------------------------------------------------------------------
+            //                              EffectManager
+            // -----------------------------------------------------------------------
+            EffectManager.setGame(this.game);
+            this.effectManager = EffectManager.getInstance();            
+
+            // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
-            // Set up User pointer
             UserPointer.setGame(this.game);
             this.userPointer = UserPointer.getInstance();
 
@@ -225,25 +231,40 @@ define('Game', [
             for (var i = 20; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
-                    id: 'labor',
+                    id: 'hurricane',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
 
-            this.entityManager.entities.add({
-                guid: Util.getGUID(),
-                id: 'orca',
-                team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
-                x: 200 + Util.rnd(0, 200),
-                y: 450 + Util.rnd(0, 100)
-            });
+            for (var j = 20; j >= 0; j -= 1) {
+                this.entityManager.entities.add({
+                    guid: Util.getGUID(),
+                    id: 'orca',
+                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    x: 200 + Util.rnd(0, 100),
+                    y: 450 + Util.rnd(0, 100)
+                });
+            }
 
-            // -----------------------------------------------------------------------
-            //                                  GPC
-            // -----------------------------------------------------------------------
-            this.gpc = 0;
+            [
+                'blackhole',
+                'nebulacloud',
+                'sporecloud',
+                'destructivefield'
+            ].forEach(function(id) {
+
+                EventBus.getInstance().add({
+                    id: 'effect/create',
+                    data: {
+                        id: id,
+                        x: Util.rnd(0, 800),
+                        y: Util.rnd(0, 600)
+                    }
+                });
+
+            });
 
         },
 
@@ -257,6 +278,9 @@ define('Game', [
 
             // updating entity attributes according to the time elapsed
             this.entityManager.update(this.game.time.elapsedMS);
+
+            // updates effects
+            this.effectManager.update();
 
             // Rendering GUI elements
             this.GUI.update();

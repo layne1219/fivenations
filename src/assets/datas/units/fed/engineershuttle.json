@@ -20,5 +20,13 @@
 	"directions": 16,
 	"animFrame": 3,
 	"animType": ["mining", "building"],
-	"size": "xsm" 
+	"size": "xsm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-small"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	}	
 }

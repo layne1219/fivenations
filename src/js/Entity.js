@@ -5,12 +5,13 @@ define('Entity', [
     'Entity.MotionManager',
     'Entity.AbilityManager',
     'Entity.WeaponManager',
+    'EffectManager',
     'GUI',
     'UserKeyboard',
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, WeaponManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
+], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, WeaponManager, EffectManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
 
     var
 
@@ -274,6 +275,7 @@ define('Entity', [
         remove: function() {
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
+            EffectManager.getInstance().explode(this);
         },
 
         /**

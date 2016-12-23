@@ -20,5 +20,13 @@
     "directions": 16,
     "animFrame": 1,
     "animType": 0,
-    "size": "sm" 
+    "size": "sm",
+    "events": {
+		"remove": {
+			"effects": ["destruction-small"],
+			"minWrecks": 2,
+			"maxWrecks": 3,
+			"wrecks": ["syl-wreck-1", "syl-wreck-2", "syl-wreck-3", "syl-wreck-4", "syl-wreck-5"]
+		}
+	} 
 }

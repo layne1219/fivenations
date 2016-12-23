@@ -20,5 +20,13 @@
 	"directions": 32,
 	"animFrame": 1,
 	"animType": [],
-	"size": "l" 
+	"size": "l",
+	"events": {
+		"remove": {
+			"effects": ["destruction-big"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["ath-wreck-1", "ath-wreck-2", "ath-wreck-3", "ath-wreck-4", "ath-wreck-5"]
+		}
+	} 
 }

@@ -147,6 +147,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
                 return data.dimensions.height;
             },
 
+            getVariances: function() {
+                return data.variances || [];
+            },
+
             getAnimations: function() {
                 return data.animations;
             },
@@ -164,6 +168,19 @@ define('DataObject', ['json!sizes'], function(sizes) {
                 var animation = this.getAnimationByKey(key);
                 // whether the animation definition is an array
                 return animation.length;
+            },
+
+            getEvents: function() {
+                return data.events;
+            },
+
+            getEvent: function(evt) {
+                if (!evt || !data.events) return;
+                return data.events[evt];
+            },
+
+            getTTL: function() {
+                return data.ttl;
             }
 
         };
