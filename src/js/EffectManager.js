@@ -64,21 +64,33 @@ define('EffectManager', [
             effects.push(effect);
         },
 
+        /**
+         * Triggers an explosion animation configured in the DataObject
+         * @param {object} entity Any object possesses DataObject instance
+         */
         explode: function(entity) {
             if (!entity || !entity.getDataObject) return;
 
-            var eventData = entity.getDataObject().getEvent('remove');
             var effectId;
             var sprite;
             var minWrecks;
             var maxWrecks;
             var i;
+            var eventData = entity.getDataObject().getEvent('remove');
 
-            if (eventData) {
+            if (!eventData) return;
 
-                sprite = entity.getSprite();
+            sprite = entity.getSprite();
 
-                if (eventData.effects && eventData.effects.length) {
+            if (eventData.effects && eventData.effects.length) {
+                if (eventData.randomize) {
+                    effectId = eventData.effects[Util.rnd(0, eventData.effects.length - 1)];
+                    this.add({
+                        id: effectId,
+                        x: sprite.x,
+                        y: sprite.y
+                    });
+                } else {
                     eventData.effects.forEach(function(effectId) {
                         this.add({
                             id: effectId,
@@ -87,25 +99,24 @@ define('EffectManager', [
                         });
                     }.bind(this));
                 }
+            }
 
-                if (eventData.wrecks && eventData.wrecks.length) {
-                    minWrecks = eventData.minWrecks || 0;
-                    maxWrecks = eventData.maxWrecks || 0;
-                    for (i = minWrecks; i <= maxWrecks; i += 1) {
-                        effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
-                        this.add({
-                            id: effectId,
-                            x: sprite.x + Util.rnd(0, 30) - 15,
-                            y: sprite.y + Util.rnd(0, 30) - 15,
-                            velocity: {
-                                x: (Math.random() - 0.5) * Util.rnd(75, 100),
-                                y: (Math.random() - 0.5) * Util.rnd(75, 100)
-                            }
-                        });                        
-                    }
+            if (eventData.wrecks && eventData.wrecks.length) {
+                minWrecks = eventData.minWrecks || 0;
+                maxWrecks = eventData.maxWrecks || 0;
+                for (i = minWrecks; i <= maxWrecks; i += 1) {
+                    effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
+                    this.add({
+                        id: effectId,
+                        x: sprite.x + Util.rnd(0, 30) - 15,
+                        y: sprite.y + Util.rnd(0, 30) - 15,
+                        velocity: {
+                            x: (Math.random() - 0.5) * Util.rnd(75, 100),
+                            y: (Math.random() - 0.5) * Util.rnd(75, 100)
+                        }
+                    });                        
                 }
-
-            }            
+            }
 
         },
 

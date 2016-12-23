@@ -113,6 +113,7 @@ define('Effect', ['Util'], function(Util) {
         },
 
         remove: function() {
+            this.manager.explode(this);
             this.sprite.destroy();
         }
 
