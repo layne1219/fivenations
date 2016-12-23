@@ -248,20 +248,23 @@ define('Game', [
                 });
             }
 
-            /*[
+            [
                 'blackhole',
                 'nebulacloud',
                 'sporecloud',
                 'destructivefield'
             ].forEach(function(id) {
 
-                this.effectManager.add({
-                    id: id,
-                    x: Util.rnd(0, 800),
-                    y: Util.rnd(0, 600)
+                EventBus.getInstance().add({
+                    id: 'effect/create',
+                    data: {
+                        id: id,
+                        x: Util.rnd(0, 800),
+                        y: Util.rnd(0, 600)
+                    }
                 });
 
-            }.bind(this));*/
+            });
 
         },
 
