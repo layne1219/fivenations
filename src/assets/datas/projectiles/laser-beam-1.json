@@ -1,0 +1,9 @@
+{
+    "id": "laser-beam-1",
+    "size": "xs",
+    "events": {
+		"remove": {
+			"effects": ["blow-1"]
+		}
+	}
+}

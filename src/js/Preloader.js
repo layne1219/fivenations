@@ -2,7 +2,8 @@ define('Preloader', [
     'Preloader.Entities', 
     'Preloader.Wreckages',
     'Preloader.Effects',
-], function(preloaderEntities, preloaderWreckages, preloaderEffects) {
+    'Preloader.Projectiles'
+], function(preloaderEntities, preloaderWreckages, preloaderEffects, preloaderProjectiles) {
     'use strict';
 
     var preloader;
@@ -18,6 +19,7 @@ define('Preloader', [
         preloaderEntities.load(preloader);
         preloaderWreckages.load(preloader);
         preloaderEffects.load(preloader);
+        preloaderProjectiles.load(preloader);
     }
 
     /**
