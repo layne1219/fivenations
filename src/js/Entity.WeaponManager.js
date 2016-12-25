@@ -1,4 +1,4 @@
-define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
+define('Entity.WeaponManager', ['Entity.Weapon', 'json!weapons'], function(Weapon, weaponsJSON) {
 
     var cache = {};
 
@@ -7,10 +7,10 @@ define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
      * @param  {integer} id 
      * @return {object} object with attributes of the weapon
      */
-    function getWeaponById(id){
+    function createWeaponById(id){
         for (var i = weaponsJSON.length - 1; i >= 0; i -= 1) {
             if (weaponsJSON[i].id !== id) continue;
-            cache[id] = weaponsJSON[i];
+            cache[id] = new Weapon(weaponsJSON[i]);
         }
         return cache[id];
     }
@@ -46,7 +46,7 @@ define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
             this.dataObject.getWeapons().forEach(function(id){
 
                 if (!id) return;
-                this.weapons.push( getWeaponById(id) );
+                this.weapons.push( createWeaponById(id) );
 
             }.bind(this));
 

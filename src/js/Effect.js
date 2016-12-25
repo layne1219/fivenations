@@ -46,7 +46,13 @@ define('Effect', ['Util'], function(Util) {
         var variances = dataObject.getVariances();
         if (variances.length) {
             this.sprite.frame = variances[Util.rnd(0, variances.length - 1)];
-        } 
+        }
+
+        // set custom frame if it's configured in the DO
+        var customFrame = dataObject.getCustomFrame();
+        if (customFrame !== undefined) {
+            this.sprite.frame = customFrame;
+        }         
 
     }
 

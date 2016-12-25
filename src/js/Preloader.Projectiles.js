@@ -6,7 +6,7 @@ define('Preloader.Projectiles', function() {
     var PATH_ASSETS_IMG = 'assets/images/projectiles';
 
     // const like object to describe all the effects participating in the gameplay 
-    ns.projectiles = Object.assign(ns.projectiles || {}, {
+    ns.effects = Object.assign(ns.effects || {}, {
 
         'laser-beam-1': {
             preloading: true,
@@ -28,22 +28,22 @@ define('Preloader.Projectiles', function() {
 
             var loaded = {};
 
-            Object.keys(ns.projectiles).forEach(function(key) {
+            Object.keys(ns.effects).forEach(function(key) {
 
-                if (!ns.projectiles[key].preloading) {
+                if (!ns.effects[key].preloading) {
                     return;
                 }
 
-                if (!loaded[ns.projectiles[key].spriteURL]) {
-                    preloader.load.atlasJSONHash(key, ns.projectiles[key].spriteURL, ns.projectiles[key].atlasURL);
+                if (!loaded[ns.effects[key].spriteURL]) {
+                    preloader.load.atlasJSONHash(key, ns.effects[key].spriteURL, ns.effects[key].atlasURL);
                 }
 
-                if (!loaded[ns.projectiles[key].dataURL]) {
-                    preloader.load.json(key, ns.projectiles[key].dataURL);
+                if (!loaded[ns.effects[key].dataURL]) {
+                    preloader.load.json(key, ns.effects[key].dataURL);
                 }
 
-                loaded[ns.projectiles[key].spriteURL] = true;
-                loaded[ns.projectiles[key].dataURL] = true;
+                loaded[ns.effects[key].spriteURL] = true;
+                loaded[ns.effects[key].dataURL] = true;
                 
             }, preloader);
 

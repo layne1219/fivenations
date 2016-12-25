@@ -266,6 +266,15 @@ define('Game', [
 
             });
 
+            for (var d = 20; d >= 0; d -= 1) {
+                this.effectManager.add({
+                    id: 'laser-beam-1',
+                    x: Util.rnd(0, 600),
+                    y: Util.rnd(0, 500),
+                    angle: 0,
+                    velocity: 10
+                });         
+            }
         },
 
         update: function() {

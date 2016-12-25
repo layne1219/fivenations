@@ -1,6 +1,7 @@
 {
     "id": "laser-beam-1",
-    "size": "xs",
+    "size": "xsm",
+    "customFrame": 0,
     "events": {
 		"remove": {
 			"effects": ["blow-1"]

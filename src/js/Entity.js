@@ -261,6 +261,17 @@ define('Entity', [
         },
 
         /**
+         * Registers a Fire activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        fire: function(targetEntity) {
+            var fire = new ActivityManager.Fire(this);
+            fire.setTarget(targetEntity);
+            this.activityManager.add(fire);
+        },
+
+        /**
          * Removes all activity from the ActivityManager instance
          * @return {void}
          */

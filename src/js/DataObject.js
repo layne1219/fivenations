@@ -131,6 +131,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
                 return data.directions;
             },
 
+            getAngleOffset: function() {
+                return data.angleOffset;
+            },
+
             getAnimFrame: function() {
                 return data.animFrame;
             },
@@ -149,6 +153,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
 
             getVariances: function() {
                 return data.variances || [];
+            },
+
+            getCustomFrame: function() {
+                return data.customFrame;
             },
 
             getAnimations: function() {

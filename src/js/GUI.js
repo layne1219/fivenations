@@ -898,7 +898,7 @@ define('GUI', [
                             return;
                         }
                         this.weaponTexts[idx].weapon = weapon;
-                        this.weaponTexts[idx].text = weapon.name;
+                        this.weaponTexts[idx].text = weapon.getName();
                         this.weaponTexts[idx].visible = true;
                     }.bind(this));
 
@@ -961,7 +961,7 @@ define('GUI', [
                     var title, value, upgradedValue;
 
                     // Name
-                    this.nameElm.text = weapon.name;
+                    this.nameElm.text = weapon.getName();
 
                     // Level
                     this.levelElm.text = 'Level 0';
@@ -969,8 +969,8 @@ define('GUI', [
 
                     // Damage to Hull
                     title = 'DMG to Hull: ';
-                    value = weapon.damage;
-                    upgradedValue = value && (' + ' + 0) || '';
+                    value = weapon.getDamage();
+                    upgradedValue = value && (' + ' + weapon.getUpgradeLevel()) || '';
 
                     this.hullElm.text = title + value + upgradedValue;
                     this.hullElm.addColor('#00FF00', title.length);
@@ -978,8 +978,8 @@ define('GUI', [
 
                     // Damage to Shield
                     title = 'DMG to Shield: ';
-                    value = weapon.damage_shield;
-                    upgradedValue = value && (' + ' + 0) || '';
+                    value = weapon.getDamageShield();
+                    upgradedValue = value && (' + ' + weapon.getUpgradeLevel()) || '';
 
                     this.shieldElm.text = title + value + upgradedValue;
                     this.shieldElm.addColor('#475D86', title.length);
@@ -987,7 +987,7 @@ define('GUI', [
 
                     // Range
                     title = 'Range: ';
-                    value = weapon.range;
+                    value = weapon.getRange();
 
                     this.rangeElm.text = title + value;
                     this.rangeElm.addColor('#FFFFFF', title.length);                                   
