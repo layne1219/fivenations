@@ -4,8 +4,9 @@ define('Entity.ActivityManager', [
     'Entity.Activity.Patrol',
     'Entity.Activity.Follow',
     'Entity.Activity.Stop',
-    'Entity.Activity.Idle'
-], function(Activity, Move, Patrol, Follow, Stop, Idle) {
+    'Entity.Activity.Idle',
+    'Entity.Activity.Fire'
+], function(Activity, Move, Patrol, Follow, Stop, Idle, Fire) {
 
     function ActivityManager(entity) {
 
@@ -85,6 +86,7 @@ define('Entity.ActivityManager', [
     ActivityManager.Stop = Stop;
     ActivityManager.Patrol = Patrol;
     ActivityManager.Follow = Follow;
+    ActivityManager.Fire = Fire;
 
     return ActivityManager;
 

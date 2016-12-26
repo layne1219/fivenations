@@ -265,9 +265,10 @@ define('Entity', [
          * @param  {object} targetEntity [Entity] 
          * @return {void}
          */
-        fire: function(targetEntity) {
+        fire: function(targetEntity, weapons) {
             var fire = new ActivityManager.Fire(this);
             fire.setTarget(targetEntity);
+            fire.setWeapons(weapons);
             this.activityManager.add(fire);
         },
 

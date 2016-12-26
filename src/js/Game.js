@@ -228,7 +228,7 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 20; i >= 0; i -= 1) {
+            for (var i = 0; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: 'hurricane',
@@ -238,7 +238,7 @@ define('Game', [
                 });
             }
 
-            for (var j = 20; j >= 0; j -= 1) {
+            for (var j = 0; j >= 0; j -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: 'orca',
@@ -248,33 +248,19 @@ define('Game', [
                 });
             }
 
-            [
-                'blackhole',
-                'nebulacloud',
-                'sporecloud',
-                'destructivefield'
-            ].forEach(function(id) {
+            setTimeout(function fire() {
 
-                EventBus.getInstance().add({
-                    id: 'effect/create',
-                    data: {
-                        id: id,
-                        x: Util.rnd(0, 800),
-                        y: Util.rnd(0, 600)
-                    }
-                });
+                var entities = EntityManager
+                    .getInstance()
+                    .entities()
+                    .raw();
 
-            });
+                entities[0].fire(entities[1], entities[0].getWeaponManager().getWeapons());
 
-            for (var d = 20; d >= 0; d -= 1) {
-                this.effectManager.add({
-                    id: 'laser-beam-1',
-                    x: Util.rnd(0, 600),
-                    y: Util.rnd(0, 500),
-                    angle: 0,
-                    velocity: 10
-                });         
-            }
+                setTimeout(fire, 3000);
+
+            }, 3000);
+
         },
 
         update: function() {
