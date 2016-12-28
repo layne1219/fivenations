@@ -1,0 +1,246 @@
+{"frames": {
+
+"weapon01_01.png":
+{
+	"frame": {"x":142,"y":22,"w":13,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":13,"h":7},
+	"sourceSize": {"w":31,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon01_02.png":
+{
+	"frame": {"x":30,"y":22,"w":20,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":20,"h":9},
+	"sourceSize": {"w":31,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon01_03.png":
+{
+	"frame": {"x":107,"y":1,"w":27,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":27,"h":13},
+	"sourceSize": {"w":31,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon01_04.png":
+{
+	"frame": {"x":93,"y":16,"w":30,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":30,"h":13},
+	"sourceSize": {"w":31,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon02_01.png":
+{
+	"frame": {"x":167,"y":10,"w":7,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":7,"h":7},
+	"sourceSize": {"w":10,"h":7},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon02_02.png":
+{
+	"frame": {"x":167,"y":1,"w":8,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":8,"h":7},
+	"sourceSize": {"w":10,"h":7},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon02_03.png":
+{
+	"frame": {"x":157,"y":19,"w":9,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":9,"h":7},
+	"sourceSize": {"w":10,"h":7},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon02_04.png":
+{
+	"frame": {"x":155,"y":10,"w":10,"h":7},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":7},
+	"sourceSize": {"w":10,"h":7},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon03_01.png":
+{
+	"frame": {"x":168,"y":19,"w":15,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":4},
+	"sourceSize": {"w":15,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon03_02.png":
+{
+	"frame": {"x":185,"y":1,"w":15,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":4},
+	"sourceSize": {"w":15,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon03_03.png":
+{
+	"frame": {"x":185,"y":7,"w":15,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":4},
+	"sourceSize": {"w":15,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon03_04.png":
+{
+	"frame": {"x":176,"y":13,"w":15,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":4},
+	"sourceSize": {"w":15,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon03_05.png":
+{
+	"frame": {"x":185,"y":19,"w":15,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":4},
+	"sourceSize": {"w":15,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon03_06.png":
+{
+	"frame": {"x":168,"y":25,"w":15,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":4},
+	"sourceSize": {"w":15,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon05_01.png":
+{
+	"frame": {"x":157,"y":28,"w":7,"h":3},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":7,"h":3},
+	"sourceSize": {"w":7,"h":3},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon07_01.png":
+{
+	"frame": {"x":136,"y":1,"w":10,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":5,"w":10,"h":9},
+	"sourceSize": {"w":23,"h":19},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon07_02.png":
+{
+	"frame": {"x":125,"y":16,"w":15,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":4,"w":15,"h":11},
+	"sourceSize": {"w":23,"h":19},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon07_03.png":
+{
+	"frame": {"x":50,"y":1,"w":18,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":18,"h":15},
+	"sourceSize": {"w":23,"h":19},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon07_04.png":
+{
+	"frame": {"x":26,"y":1,"w":22,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":22,"h":19},
+	"sourceSize": {"w":23,"h":19},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon07_05.png":
+{
+	"frame": {"x":1,"y":1,"w":23,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":19},
+	"sourceSize": {"w":23,"h":19},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon08_01.png":
+{
+	"frame": {"x":142,"y":12,"w":11,"h":8},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":11,"h":8},
+	"sourceSize": {"w":13,"h":10},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon18_01.png":
+{
+	"frame": {"x":185,"y":25,"w":10,"h":4},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":4},
+	"sourceSize": {"w":10,"h":4},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon20_01.png":
+{
+	"frame": {"x":148,"y":1,"w":17,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":3,"w":17,"h":7},
+	"sourceSize": {"w":40,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon20_02.png":
+{
+	"frame": {"x":1,"y":22,"w":27,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":27,"h":9},
+	"sourceSize": {"w":40,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon20_03.png":
+{
+	"frame": {"x":70,"y":1,"w":35,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":35,"h":13},
+	"sourceSize": {"w":40,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"weapon20_04.png":
+{
+	"frame": {"x":52,"y":18,"w":39,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":39,"h":13},
+	"sourceSize": {"w":40,"h":13},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "weapons.png",
+	"format": "RGBA8888",
+	"size": {"w":201,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c040b20c1bc6fb1eb9a6471b8bc61833:2678bbe85c227951ef506f4f1cd3207f:ba48453f8b2235fdb166a51105f49255$"
+}
+}

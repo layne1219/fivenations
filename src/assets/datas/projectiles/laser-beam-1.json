@@ -1,10 +1,17 @@
 {
     "id": "laser-beam-1",
     "size": "xsm",
-    "customFrame": 0,
+    "animations": {
+        "idle": {
+            "oncomplete": "keepLastFrame",
+            "rate": 20,
+            "loopable": false,
+            "frames": [0, 1, 2, 3]
+        }
+    },    
     "events": {
-		"remove": {
-			"effects": ["blow-1"]
-		}
-	}
+        "remove": {
+            "effects": ["blow-1"]
+        }
+    }
 }

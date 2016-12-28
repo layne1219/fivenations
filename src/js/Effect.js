@@ -69,9 +69,17 @@ define('Effect', ['Util'], function(Util) {
             var data = animations[key];
             var animation;
             animation = this.sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            
             if (data.oncomplete === 'remove') {
                 registerRemoveEventToAnimation(this, animation);
             }
+            
+            if (data.oncomplete === 'keepLastFrame') {
+                animation.onComplete.add(function() {
+                    this.sprite.frame = data.frames[data.frames.length - 1];
+                }.bind(this));
+            }
+
             if (key === DEFAULT_ANIM_NAME) {
                 this.sprite.animations.play(key);
             }

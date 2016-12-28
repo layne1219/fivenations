@@ -10,8 +10,8 @@ define('Preloader.Projectiles', function() {
 
         'laser-beam-1': {
             preloading: true,
-            spriteURL: PATH_ASSETS_IMG + '/weapon_beams.png',
-            atlasURL: PATH_ASSETS_IMG + '/weapon_beams.json',
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
             dataURL: PATH_ASSETS_DATA + '/laser-beam-1.json'
         }
 
