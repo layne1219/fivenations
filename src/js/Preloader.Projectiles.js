@@ -13,6 +13,13 @@ define('Preloader.Projectiles', function() {
             spriteURL: PATH_ASSETS_IMG + '/weapons.png',
             atlasURL: PATH_ASSETS_IMG + '/weapons.json',
             dataURL: PATH_ASSETS_DATA + '/laser-beam-1.json'
+        },
+
+        'cannonball': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+            dataURL: PATH_ASSETS_DATA + '/cannonball.json'
         }
 
     });

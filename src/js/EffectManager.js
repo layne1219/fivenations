@@ -29,7 +29,7 @@ define('EffectManager', [
             var effect;
             var sprite;
             var dataObject;
-            var velocityPoint;
+            var point;
 
             if (!config) {
                 throw 'Invalid configuration object passed as a parameter!';
@@ -55,30 +55,50 @@ define('EffectManager', [
                 sprite.y = config.y || 0;
             }
 
-            // rotation
             if (config.rotation !== undefined) {
                 sprite.rotation = config.rotation;
             } else if (config.angle !== undefined) {
                 sprite.angle = config.angle;
             }
 
-            // setting up velocity 
+            if (config.velocity || config.acceleration) {
+                phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);
+            }
+
             if (config.velocity) {
 
-                phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);
+                if (config.rotation !== undefined) {
+                    point = phaserGame.physics.arcade.velocityFromRotation(config.rotation, config.velocity);
+                } else if (config.angle !== undefined) {
+                    point = phaserGame.physics.arcade.velocityFromAngle(config.angle, config.velocity);
+                } else if (config.velocity.x || config.velocity.y) {
+                    point = new Phaser.Point(config.velocity.x || 0, config.velocity.y || 0);
+                }
+
+                if (point) {
+                    sprite.body.velocity = point;
+                }
+
+            }
+
+            if (config.acceleration) {
 
                 if (config.rotation !== undefined) {
-                    velocityPoint = phaserGame.physics.arcade.velocityFromRotation(config.rotation, config.velocity);
+                    point = phaserGame.physics.arcade.accelerationFromRotation(config.rotation, config.acceleration);
                 } else if (config.angle !== undefined) {
-                    velocityPoint = phaserGame.physics.arcade.velocityFromAngle(config.angle, config.velocity);
-                } else if (config.velocity.x || config.velocity.y) {
-                    velocityPoint = new Phaser.Point(config.velocity.x || 0, config.velocity.y || 0);
+                    point = phaserGame.physics.arcade.accelerationFromAngle(config.angle, config.acceleration);
+                } else if (config.acceleration.x || config.acceleration.y) {
+                    point = new Phaser.Point(config.acceleration.x || 0, config.acceleration.y || 0);
                 }
 
-                if (velocityPoint) {
-                    sprite.body.velocity = velocityPoint;
+                if (point) {
+                    sprite.body.acceleration = point;
                 }
 
+            }
+
+            if (config.maxVelocity) {
+                sprite.body.maxVelocity.set(config.maxVelocity);
             }
 
             Graphics

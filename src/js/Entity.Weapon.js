@@ -25,11 +25,13 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
             this.ready = false;
 
             EffectManager.getInstance().add({
-                id: 'laser-beam-1',
+                id: this.data.effect,
                 x: sprite.x,
                 y: sprite.y,
                 rotation: rotation,
-                velocity: 200
+                velocity: !this.data.acceleration && this.data.maxVelocity,
+                maxVelocity: this.data.maxVelocity,
+                acceleration: this.data.acceleration
             });         
         },
 

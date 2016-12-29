@@ -256,8 +256,9 @@ define('Game', [
                     .raw();
 
                 entities[0].fire(entities[1], entities[0].getWeaponManager().getWeapons());
+                entities[1].fire(entities[0], entities[1].getWeaponManager().getWeapons());
 
-                setTimeout(fire, 3000);
+                setTimeout(fire, 2000);
 
             }, 3000);
 
