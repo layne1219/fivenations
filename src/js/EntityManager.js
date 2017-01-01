@@ -6,6 +6,10 @@ define('EntityManager', [
     'Util'
 ], function(Graphics, Entity, DataObject, EventBus, Util) {
 
+    var GROUP_EFFECTS = 'effects';
+    var GROUP_ENTITIES = 'entities';
+    var GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
+
     var ns = window.fivenations,
 
         phaserGame,
@@ -249,6 +253,10 @@ define('EntityManager', [
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
+
+        this.entityGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES);
+        this.entityBuildingGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES_BUILDINGS);       
+        this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
     }
 
     EntityManager.prototype = {
@@ -278,7 +286,7 @@ define('EntityManager', [
                 dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
 
                 // rendering group name
-                groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
+                groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES,
 
                 // choosing the group for entities so that other elements will be obscured by them
                 // it's kind of applying zIndex on entities
@@ -333,6 +341,9 @@ define('EntityManager', [
                 }
                 steps -= 1;
             }
+
+            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityGroup, collisionHandler);
+            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityBuildingGroup, collisionHandler);
         },
 
         /**
@@ -401,6 +412,10 @@ define('EntityManager', [
         }
 
     };
+
+    function collisionHandler(entity, effect) {
+        console.log(entity, effect);
+    }
 
     return {
 

@@ -166,16 +166,6 @@ define('EffectManager', [
         },
 
         /**
-         * Emits effect with specific attributes. It resembles to the `add` function, but
-         * this function essentially is designed to create particle effects with initial 
-         * velocity and rotation
-         * @return {object} config 
-         */
-        drop: function() {
-
-        },
-
-        /**
          * Removes effect from the private collection
          * @param {object} effect Effect instance
          */

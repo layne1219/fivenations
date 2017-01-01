@@ -52,7 +52,9 @@ define('Effect', ['Util'], function(Util) {
         var customFrame = dataObject.getCustomFrame();
         if (customFrame !== undefined) {
             this.sprite.frame = customFrame;
-        }         
+        }
+
+        this.sprite._parent = this;    
 
     }
 
