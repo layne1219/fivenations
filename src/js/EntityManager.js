@@ -117,6 +117,29 @@ define('EntityManager', [
                         return this;
                     },
                     /**
+                     * Executes the attached logic for firing the given weapons
+                     * @return {void}
+                     * @chainable
+                     */
+                    fire: function(options) {
+
+                        var targetEntity = options.targetEntity.getID();
+                        var weaponIndexes = [];
+
+                        entities.forEach(function(entity) {
+                            weaponIndexes[entity.getId()] = entity.getWeaponManager().getWeaponsCanFireEntity();
+                        });
+
+                        EventBus.getInstance().add({
+                            id: 'entity/fire',
+                            targets: entities,
+                            weaponIndexes: weaponIndexes,
+                            targetEntity: targetEntity
+                        });
+
+                        return this;
+                    },
+                    /**
                      * Directly returns the private collection of entities 
                      * @return {array} Array of entity instances 
                      * @chainable

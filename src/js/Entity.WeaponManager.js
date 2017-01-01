@@ -74,7 +74,8 @@ define('Entity.WeaponManager', ['Entity.Weapon', 'json!weapons'], function(Weapo
         },
 
         /**
-         * Returns an array of weapon instances that are in range of the given entity
+         * Returns an array of weapon instances that can execute their attached fire logic
+         * with relation to the given target entity
          * @param {object} target Entity instance
          * @return {array} list of weapon instances the can fire the target
          */

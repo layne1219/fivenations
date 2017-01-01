@@ -5,10 +5,11 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.Create',
     'Universal.Event.Entity.Remove',
     'Universal.Event.Entity.Reset',
+    'Universal.Event.Entity.Fire',
     'Universal.Event.Player.Create',
     'Universal.Event.Player.Resource.Alter',
     'Universal.Event.Effect.Create'
-], function(EntityMove, EntityPatrol, EntityStop, EntityCreate, EntityRemove, EntityReset, PlayerCreate, PlayerResoureAlter, EffectCreate) {
+], function(EntityMove, EntityPatrol, EntityStop, EntityCreate, EntityRemove, EntityReset, EntityFire, PlayerCreate, PlayerResoureAlter, EffectCreate) {
 
     'use strict';
 
@@ -22,6 +23,7 @@ define('Universal.EventFactory', [
                 'entity/create': new EntityCreate(),
                 'entity/remove': new EntityRemove(),
                 'entity/reset': new EntityReset(),
+                'entity/fire': new EntityFire(),
                 'player/create': new PlayerCreate(),
                 'player/resource/alter': new PlayerResoureAlter(),
                 'effect/create': new EffectCreate()

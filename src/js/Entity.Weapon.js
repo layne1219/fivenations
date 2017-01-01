@@ -1,13 +1,10 @@
 define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
-    var guid = 0;
     var ns = window.fivenations;
     
     function Weapon(data) {
         this.data = data;
         this.ready = false;
-        guid += 1;
-        this.guid = guid;
     }
 
     Weapon.prototype = {
@@ -58,10 +55,6 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
         clearTarget: function() {
             this.target = null;
-        },
-
-        getGUID: function() {
-            return this.guid;
         },
 
         getId: function() {
