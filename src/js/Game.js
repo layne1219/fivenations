@@ -212,7 +212,8 @@ define('Game', [
                     guid: myGUID,
                     name: 'Test Player',
                     team: 1,
-                    user: true
+                    user: true,
+                    authorised: true
                 }
             });
 
