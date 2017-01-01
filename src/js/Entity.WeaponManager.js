@@ -1,4 +1,8 @@
-define('Entity.WeaponManager', ['Entity.Weapon', 'json!weapons'], function(Weapon, weaponsJSON) {
+define('Entity.WeaponManager', [
+    'Entity.Weapon', 
+    'json!weapons', 
+    'Util'
+], function(Weapon, weaponsJSON, Util) {
 
     var cache = {};
 
@@ -81,8 +85,7 @@ define('Entity.WeaponManager', ['Entity.Weapon', 'json!weapons'], function(Weapo
          */
         getWeaponsCanFireEntity: function(target) {
             if (!target) return [];
-            var game = this.entity.getGame();
-            var distance = game.physics.arcade.distanceBetween(this.entity, target);
+            var distance = Util.distanceBetween(this.entity, target);
             return this.weapons.filter(function(weapon) {
                 return weapon.isReady() && weapon.getRange() >= distance;
             });

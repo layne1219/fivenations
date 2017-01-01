@@ -30,9 +30,10 @@ define('Universal.Event.Entity.Fire', [
             targetEntity = ns.game.entityManager.entities(options.data.targetEntity).single();
             
             if (!entity || !targetEntity) return;
+            if (!options.data.weaponIndexes[idx]) return;
 
             weapons = entity.getWeaponManager().getWeapons().filter(function(weapon, weaponIndex) {
-                for (var i = options.data.weaponIndexes[idx].length - 1; i >= 0; i--) {
+                for (var i = options.data.weaponIndexes[idx].length - 1; i >= 0; i -= 1) {
                     if (options.data.weaponIndexes[idx][i] === weaponIndex) {
                         return true;
                     }   

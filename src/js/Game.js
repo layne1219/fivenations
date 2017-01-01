@@ -255,12 +255,13 @@ define('Game', [
                     .entities()
                     .raw();
 
-                entities[0].fire(entities[1], entities[0].getWeaponManager().getWeapons());
-                entities[1].fire(entities[0], entities[1].getWeaponManager().getWeapons());
+                this.entityManager.entities(entities[0].getId()).fire({
+                    targetEntity: entities[1]
+                });
 
-                setTimeout(fire, 2000);
+                setTimeout(fire.bind(this), 2000);
 
-            }, 3000);
+            }.bind(this), 3000);
 
         },
 

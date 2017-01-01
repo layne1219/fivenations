@@ -123,19 +123,32 @@ define('EntityManager', [
                      */
                     fire: function(options) {
 
-                        var targetEntity = options.targetEntity.getID();
+                        var targetEntity = options.targetEntity;
                         var weaponIndexes = [];
+                        var weaponCount = 0;
 
-                        entities.forEach(function(entity) {
-                            weaponIndexes[entity.getId()] = entity.getWeaponManager().getWeaponsCanFireEntity();
+                        entities.forEach(function(entity, idx) {
+                            weaponIndexes[idx] = entity
+                                .getWeaponManager()
+                                .getWeaponsCanFireEntity(targetEntity)
+                                .map(function(weapon, weaponIndex) {
+                                    weaponCount += 1;
+                                    return weaponIndex;
+                                }); 
                         });
 
-                        EventBus.getInstance().add({
-                            id: 'entity/fire',
-                            targets: entities,
-                            weaponIndexes: weaponIndexes,
-                            targetEntity: targetEntity
-                        });
+                        if (weaponCount) {
+
+                            EventBus.getInstance().add({
+                                id: 'entity/fire',
+                                targets: entities,
+                                data: {
+                                    weaponIndexes: weaponIndexes,
+                                    targetEntity: targetEntity.getId()
+                                }
+                            });
+
+                        }
 
                         return this;
                     },

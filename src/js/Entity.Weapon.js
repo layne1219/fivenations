@@ -4,7 +4,7 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
     
     function Weapon(data) {
         this.data = data;
-        this.ready = false;
+        this.ready = true;
     }
 
     Weapon.prototype = {
