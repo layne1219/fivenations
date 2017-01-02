@@ -23,13 +23,13 @@ define('Entity.Activity.Fire', ['Entity.Activity'], function(Activity) {
 
         Activity.prototype.activate.call(this);
 
-        if (!this.targetEntity || this.weapons.length === 0) {
-            this.kill();
+        if (this.targetEntity && this.weapons.length > 0) {
+            this.weapons.forEach(function(weapon) {
+                weapon.fire(this.targetEntity);
+            }.bind(this));
         }
 
-        this.weapons.forEach(function(weapon) {
-            weapon.fire(this.targetEntity);
-        }.bind(this));
+        this.kill();
 
     };
 

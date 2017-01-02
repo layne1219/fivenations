@@ -2,8 +2,13 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
     var ns = window.fivenations;
     
+    function alterData(data) {
+        data.range *= 10;
+        return data;
+    }
+
     function Weapon(data) {
-        this.data = data;
+        this.data = alterData(data);
         this.ready = true;
     }
 
@@ -23,6 +28,7 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
             EffectManager.getInstance().add({
                 id: this.data.effect,
+                emitter: this,
                 x: sprite.x,
                 y: sprite.y,
                 rotation: rotation,
@@ -59,7 +65,11 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
         getId: function() {
             return this.data.id;
-        },      
+        },
+
+        getManager: function() {
+            return this.manager;
+        },   
 
         getName: function() {
             return this.data.name;

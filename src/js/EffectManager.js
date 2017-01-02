@@ -44,6 +44,7 @@ define('EffectManager', [
 
             // adding the freshly created effect to the main array
             effect = new Effect({
+                emitter: config.emitter,
                 manager: this,
                 sprite: sprite,
                 dataObject: dataObject

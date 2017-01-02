@@ -413,8 +413,12 @@ define('EntityManager', [
 
     };
 
-    function collisionHandler(entity, effect) {
-        console.log(entity, effect);
+    function collisionHandler(effectSprite, entitySprite) {
+        var entity = entitySprite._parent;
+        var effect = effectSprite._parent;
+        var weapon = effect.getEmitter();
+        
+        if (weapon.getManager().getEntity() === entity) return;
     }
 
     return {

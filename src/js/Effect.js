@@ -19,6 +19,14 @@ define('Effect', ['Util'], function(Util) {
     }
 
     /**
+     * Saves the object reference that invoked the EffectManager to generate this very effect instance
+     * @param {config} config Configuration object that contains the reference to the manager instance
+     */
+    function setEmitter(config) {
+        this.emitter = config.emitter;
+    }
+
+    /**
      * Prepares to sprite to further use
      * @param {object} config Configuration object
      * @return {void} 
@@ -109,7 +117,8 @@ define('Effect', ['Util'], function(Util) {
     function Effect(config) {   
         setManager.call(this, config);
         setDataObject.call(this, config);
-        setSprite.call(this, config); 
+        setSprite.call(this, config);
+        setEmitter.call(this, config); 
         setAnimations.call(this, config);
         setTTL.call(this, config);       
     }
@@ -122,6 +131,10 @@ define('Effect', ['Util'], function(Util) {
 
         getSprite: function() {
             return this.sprite;
+        },
+
+        getEmitter: function() {
+            return this.emitter;
         },
 
         getDataObject: function() {
