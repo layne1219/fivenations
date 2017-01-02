@@ -46,7 +46,15 @@ define('Effect', ['Util'], function(Util) {
         var variances = dataObject.getVariances();
         if (variances.length) {
             this.sprite.frame = variances[Util.rnd(0, variances.length - 1)];
-        } 
+        }
+
+        // set custom frame if it's configured in the DO
+        var customFrame = dataObject.getCustomFrame();
+        if (customFrame !== undefined) {
+            this.sprite.frame = customFrame;
+        }
+
+        this.sprite._parent = this;    
 
     }
 
@@ -63,9 +71,17 @@ define('Effect', ['Util'], function(Util) {
             var data = animations[key];
             var animation;
             animation = this.sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            
             if (data.oncomplete === 'remove') {
                 registerRemoveEventToAnimation(this, animation);
             }
+            
+            if (data.oncomplete === 'keepLastFrame') {
+                animation.onComplete.add(function() {
+                    this.sprite.frame = data.frames[data.frames.length - 1];
+                }.bind(this));
+            }
+
             if (key === DEFAULT_ANIM_NAME) {
                 this.sprite.animations.play(key);
             }

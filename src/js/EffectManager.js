@@ -26,6 +26,11 @@ define('EffectManager', [
          */
         add: function(config) {
 
+            var effect;
+            var sprite;
+            var dataObject;
+            var point;
+
             if (!config) {
                 throw 'Invalid configuration object passed as a parameter!';
             }
@@ -34,12 +39,11 @@ define('EffectManager', [
                 throw 'The requrested effect is not registered!';
             }
 
-            var effect;
-            var sprite = phaserGame.add.sprite(0, 0, config.id);
-            var dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
+            sprite = phaserGame.add.sprite(0, 0, config.id);
+            dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
 
             // adding the freshly created effect to the main array
-            var effect = new Effect({
+            effect = new Effect({
                 manager: this,
                 sprite: sprite,
                 dataObject: dataObject
@@ -51,15 +55,56 @@ define('EffectManager', [
                 sprite.y = config.y || 0;
             }
 
-            // setting up velocity 
-            if (config.velocity) {
-                // actiavting the ARCADE physics on the sprite object
-                phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);                
-                sprite.body.velocity.set(config.velocity.x, config.velocity.y);
+            if (config.rotation !== undefined) {
+                sprite.rotation = config.rotation;
+            } else if (config.angle !== undefined) {
+                sprite.angle = config.angle;
             }
 
-            var group = Graphics.getInstance().getGroup('effects');
-            group.add(sprite);
+            if (config.velocity || config.acceleration) {
+                phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);
+            }
+
+            if (config.velocity) {
+
+                if (config.rotation !== undefined) {
+                    point = phaserGame.physics.arcade.velocityFromRotation(config.rotation, config.velocity);
+                } else if (config.angle !== undefined) {
+                    point = phaserGame.physics.arcade.velocityFromAngle(config.angle, config.velocity);
+                } else if (config.velocity.x || config.velocity.y) {
+                    point = new Phaser.Point(config.velocity.x || 0, config.velocity.y || 0);
+                }
+
+                if (point) {
+                    sprite.body.velocity = point;
+                }
+
+            }
+
+            if (config.acceleration) {
+
+                if (config.rotation !== undefined) {
+                    point = phaserGame.physics.arcade.accelerationFromRotation(config.rotation, config.acceleration);
+                } else if (config.angle !== undefined) {
+                    point = phaserGame.physics.arcade.accelerationFromAngle(config.angle, config.acceleration);
+                } else if (config.acceleration.x || config.acceleration.y) {
+                    point = new Phaser.Point(config.acceleration.x || 0, config.acceleration.y || 0);
+                }
+
+                if (point) {
+                    sprite.body.acceleration = point;
+                }
+
+            }
+
+            if (config.maxVelocity) {
+                sprite.body.maxVelocity.set(config.maxVelocity);
+            }
+
+            Graphics
+                .getInstance()
+                .getGroup('effects')
+                .add(sprite);
 
             effects.push(effect);
         },

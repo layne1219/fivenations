@@ -56,6 +56,8 @@ define('Entity', [
             // reducing the hitArea according the one specified in the realated DataObject
             sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
 
+            sprite._parent = this;
+
             return sprite;
         },
 
@@ -258,6 +260,18 @@ define('Entity', [
             var follow = new ActivityManager.Follow(this);
             follow.setTarget(targetEntity);
             this.activityManager.add(follow);
+        },
+
+        /**
+         * Registers a Fire activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        fire: function(targetEntity, weapons) {
+            var fire = new ActivityManager.Fire(this);
+            fire.setTarget(targetEntity);
+            fire.setWeapons(weapons);
+            this.activityManager.add(fire);
         },
 
         /**

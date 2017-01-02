@@ -6,6 +6,10 @@ define('EntityManager', [
     'Util'
 ], function(Graphics, Entity, DataObject, EventBus, Util) {
 
+    var GROUP_EFFECTS = 'effects';
+    var GROUP_ENTITIES = 'entities';
+    var GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
+
     var ns = window.fivenations,
 
         phaserGame,
@@ -117,6 +121,42 @@ define('EntityManager', [
                         return this;
                     },
                     /**
+                     * Executes the attached logic for firing the given weapons
+                     * @return {void}
+                     * @chainable
+                     */
+                    fire: function(options) {
+
+                        var targetEntity = options.targetEntity;
+                        var weaponIndexes = [];
+                        var weaponCount = 0;
+
+                        entities.forEach(function(entity, idx) {
+                            weaponIndexes[idx] = entity
+                                .getWeaponManager()
+                                .getWeaponsCanFireEntity(targetEntity)
+                                .map(function(weapon, weaponIndex) {
+                                    weaponCount += 1;
+                                    return weaponIndex;
+                                }); 
+                        });
+
+                        if (weaponCount) {
+
+                            EventBus.getInstance().add({
+                                id: 'entity/fire',
+                                targets: entities,
+                                data: {
+                                    weaponIndexes: weaponIndexes,
+                                    targetEntity: targetEntity.getId()
+                                }
+                            });
+
+                        }
+
+                        return this;
+                    },
+                    /**
                      * Directly returns the private collection of entities 
                      * @return {array} Array of entity instances 
                      * @chainable
@@ -213,6 +253,10 @@ define('EntityManager', [
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
+
+        this.entityGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES);
+        this.entityBuildingGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES_BUILDINGS);       
+        this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
     }
 
     EntityManager.prototype = {
@@ -242,7 +286,7 @@ define('EntityManager', [
                 dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
 
                 // rendering group name
-                groupName = dataObject.isBuilding() ? 'entities-buildings' : 'entities',
+                groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES,
 
                 // choosing the group for entities so that other elements will be obscured by them
                 // it's kind of applying zIndex on entities
@@ -297,6 +341,9 @@ define('EntityManager', [
                 }
                 steps -= 1;
             }
+
+            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityGroup, collisionHandler);
+            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityBuildingGroup, collisionHandler);
         },
 
         /**
@@ -365,6 +412,10 @@ define('EntityManager', [
         }
 
     };
+
+    function collisionHandler(entity, effect) {
+        console.log(entity, effect);
+    }
 
     return {
 

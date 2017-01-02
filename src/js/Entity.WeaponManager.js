@@ -1,4 +1,8 @@
-define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
+define('Entity.WeaponManager', [
+    'Entity.Weapon', 
+    'json!weapons', 
+    'Util'
+], function(Weapon, weaponsJSON, Util) {
 
     var cache = {};
 
@@ -7,12 +11,14 @@ define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
      * @param  {integer} id 
      * @return {object} object with attributes of the weapon
      */
-    function getWeaponById(id){
-        for (var i = weaponsJSON.length - 1; i >= 0; i -= 1) {
-            if (weaponsJSON[i].id !== id) continue;
-            cache[id] = weaponsJSON[i];
+    function createWeaponById(id){
+        if (!cache[id]) {
+            for (var i = weaponsJSON.length - 1; i >= 0; i -= 1) {
+                if (weaponsJSON[i].id !== id) continue;
+                cache[id] = weaponsJSON[i];
+            }
         }
-        return cache[id];
+        return new Weapon(cache[id]);
     }
 
     /**
@@ -32,8 +38,7 @@ define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
          * @return {[void]}
          */
         init: function(entity) {
-            this.weapons = [];
-            this.dataObject = entity.getDataObject();
+            this.entity = entity;
         },
 
         /**
@@ -43,10 +48,14 @@ define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
          */
         initWeapons: function() {
 
-            this.dataObject.getWeapons().forEach(function(id){
+            this.weapons = [];
+
+            this.entity.getDataObject().getWeapons().forEach(function(id){
 
                 if (!id) return;
-                this.weapons.push( getWeaponById(id) );
+                var weapon = createWeaponById(id);
+                weapon.setManager(this);
+                this.weapons.push(weapon);
 
             }.bind(this));
 
@@ -58,6 +67,28 @@ define('Entity.WeaponManager', ['json!weapons'], function(weaponsJSON) {
          */
         getWeapons: function() {
             return this.weapons;
+        },
+
+        /**
+         * Returns the entity possessing this very instance
+         * @return {object} an entity instance
+         */
+        getEntity: function() {
+            return this.entity;
+        },
+
+        /**
+         * Returns an array of weapon instances that can execute their attached fire logic
+         * with relation to the given target entity
+         * @param {object} target Entity instance
+         * @return {array} list of weapon instances the can fire the target
+         */
+        getWeaponsCanFireEntity: function(target) {
+            if (!target) return [];
+            var distance = Util.distanceBetween(this.entity, target);
+            return this.weapons.filter(function(weapon) {
+                return weapon.isReady() && weapon.getRange() >= distance;
+            });
         }
 
     };

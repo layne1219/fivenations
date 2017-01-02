@@ -212,7 +212,8 @@ define('Game', [
                     guid: myGUID,
                     name: 'Test Player',
                     team: 1,
-                    user: true
+                    user: true,
+                    authorised: true
                 }
             });
 
@@ -228,7 +229,7 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 20; i >= 0; i -= 1) {
+            for (var i = 0; i >= 0; i -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: 'hurricane',
@@ -238,7 +239,7 @@ define('Game', [
                 });
             }
 
-            for (var j = 20; j >= 0; j -= 1) {
+            for (var j = 0; j >= 0; j -= 1) {
                 this.entityManager.entities.add({
                     guid: Util.getGUID(),
                     id: 'orca',
@@ -248,23 +249,20 @@ define('Game', [
                 });
             }
 
-            [
-                'blackhole',
-                'nebulacloud',
-                'sporecloud',
-                'destructivefield'
-            ].forEach(function(id) {
+            setTimeout(function fire() {
 
-                EventBus.getInstance().add({
-                    id: 'effect/create',
-                    data: {
-                        id: id,
-                        x: Util.rnd(0, 800),
-                        y: Util.rnd(0, 600)
-                    }
+                var entities = EntityManager
+                    .getInstance()
+                    .entities()
+                    .raw();
+
+                this.entityManager.entities(entities[0].getId()).fire({
+                    targetEntity: entities[1]
                 });
 
-            });
+                setTimeout(fire.bind(this), 2000);
+
+            }.bind(this), 3000);
 
         },
 

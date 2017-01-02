@@ -139,6 +139,21 @@ define('Util', function() {
             };
         },
 
+        /**
+         * Measures the distance between the given entities
+         * @param {object} source first entity
+         * @param {object} target second entity
+         * @return {integer} distance in pixels 
+         */
+        distanceBetween: function (source, target) {
+
+            var dx = source.sprite.x - target.sprite.x;
+            var dy = source.sprite.y - target.sprite.y;
+
+            return Math.sqrt(dx * dx + dy * dy);
+
+        },
+
         // Eventlistener object
         EventDispatcher: (function() {
 

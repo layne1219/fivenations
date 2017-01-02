@@ -12,6 +12,7 @@ define('Player', ['Util'], function(Util) {
         setName.call(this, config);
         setTeamInformation.call(this, config);
         setResources.call(this, config);
+        setAuthority.call(this, config);
     }
 
     function initDispatcher(){
@@ -36,6 +37,10 @@ define('Player', ['Util'], function(Util) {
         this.setSilicium(config.silicium || 0);
         this.setEnergy(config.energy || 0);
         this.setUranium(config.Uranium || 0);
+    }
+
+    function setAuthority(config) {
+        this.authorised = config.authorised;
     }
 
     Player.prototype = {
@@ -88,6 +93,10 @@ define('Player', ['Util'], function(Util) {
             this.uranium = value;
         },
 
+        setAuthority: function(authority) {
+            this.authorised = !!authority;
+        },
+
         getTitanium: function() {
             return this.titanium;
         },
@@ -121,6 +130,10 @@ define('Player', ['Util'], function(Util) {
 
         isControlledByUser: function() {
             return this.user;
+        },
+
+        isAuthorised: function() {
+            return this.authorised;
         }
 
     };
