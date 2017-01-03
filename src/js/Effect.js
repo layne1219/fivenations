@@ -142,8 +142,9 @@ define('Effect', ['Util'], function(Util) {
         },
 
         remove: function() {
-            this.manager.explode(this);
+            this.sprite._group.remove(this.sprite);
             this.sprite.destroy();
+            this.manager.explode(this);
         }
 
     }

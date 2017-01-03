@@ -30,6 +30,7 @@ define('EffectManager', [
             var sprite;
             var dataObject;
             var point;
+            var group;
 
             if (!config) {
                 throw 'Invalid configuration object passed as a parameter!';
@@ -102,10 +103,9 @@ define('EffectManager', [
                 sprite.body.maxVelocity.set(config.maxVelocity);
             }
 
-            Graphics
-                .getInstance()
-                .getGroup('effects')
-                .add(sprite);
+            group = Graphics.getInstance().getGroup('effects');
+            sprite._group = group;
+            group.add(sprite);
 
             effects.push(effect);
         },

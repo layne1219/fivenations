@@ -287,6 +287,7 @@ define('Entity', [
          * @return {void}
          */
         remove: function() {
+            this.sprite._group.remove(this.sprite);
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
             EffectManager.getInstance().explode(this);

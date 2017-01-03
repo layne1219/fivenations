@@ -311,6 +311,7 @@ define('EntityManager', [
             }
 
             group.add(sprite);
+            sprite._group = group;
 
             entities.push(entity);
         },
@@ -343,8 +344,8 @@ define('EntityManager', [
                 steps -= 1;
             }
 
-            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityGroup, collisionHandler);
-            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityBuildingGroup, collisionHandler);
+            phaserGame.physics.arcade.collide(this.effectGroup, this.entityGroup, collisionHandler);
+            phaserGame.physics.arcade.collide(this.effectGroup, this.entityBuildingGroup, collisionHandler);
         },
 
         /**
@@ -426,7 +427,7 @@ define('EntityManager', [
 
         if (collisionEvent.removeEffect) {
             console.log('This must be replaced with Universal.Event');
-            EffectManager.getInstance().remove();
+            EffectManager.getInstance().remove(effect);
         }
 
         if (collisionEvent.damageTarget) {
