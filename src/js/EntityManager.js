@@ -2,9 +2,10 @@ define('EntityManager', [
     'Graphics',
     'Entity',
     'DataObject',
+    'EffectManager',
     'Universal.EventBus',
     'Util'
-], function(Graphics, Entity, DataObject, EventBus, Util) {
+], function(Graphics, Entity, DataObject, EffectManager, EventBus, Util) {
 
     var GROUP_EFFECTS = 'effects';
     var GROUP_ENTITIES = 'entities';
@@ -417,8 +418,23 @@ define('EntityManager', [
         var entity = entitySprite._parent;
         var effect = effectSprite._parent;
         var weapon = effect.getEmitter();
-        
+
+        // effect mainly cannot collide with the entity that initially emitted it
         if (weapon.getManager().getEntity() === entity) return;
+
+        var collisionEvent = effect.getDataObject().getEvent('collision');
+
+        if (collisionEvent.removeEffect) {
+            console.log('This must be replaced with Universal.Event');
+            EffectManager.getInstance().remove();
+        }
+
+        if (collisionEvent.damageTarget) {
+            var damage = weapon.getDamage();
+            var damageShield = weapon.getDamageShield();
+            console.log('Entity is damaged by ', damage, damageShield);
+        }
+
     }
 
     return {
