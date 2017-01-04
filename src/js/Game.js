@@ -11,6 +11,7 @@ define('Game', [
     'UserKeyboard',
     'Universal.EventBus',
     'Universal.EventBusExecuter',
+    'Universal.EventEmitter',
     'Util'
 ], function(
     Signals,
@@ -25,6 +26,7 @@ define('Game', [
     UserKeyboard,
     EventBus,
     EventBusExecuter,
+    EventEmitter,
     Util) {
 
     'use strict';
@@ -86,6 +88,16 @@ define('Game', [
             this.effectManager = EffectManager.getInstance();            
 
             // -----------------------------------------------------------------------
+            //                              EventEmitter
+            // -----------------------------------------------------------------------
+            EventEmitter.create({
+                playerManager: this.playerManager,
+                entityManager: this.entityManager, 
+                effectManager: this.effectManager
+            });
+            this.eventEmitter = EventEmitter.getInstance(); 
+
+            // -----------------------------------------------------------------------
             //                              UserPointer
             // -----------------------------------------------------------------------
             UserPointer.setGame(this.game);
@@ -96,7 +108,8 @@ define('Game', [
 
                 var coords = this.userPointer.getRealCoords();
 
-                this.entityManager
+                this.eventEmitter
+                    .synced
                     .entities(':user:selected')
                     .move({
                         x: coords.x,
@@ -121,7 +134,7 @@ define('Game', [
                     return;
                 }
 
-                if (this.entityManager.entities().raw().filter(function(entity) {
+                if (this.entityManager.entities().filter(function(entity) {
                     return entity.isHover();
                 }).length === 0) {
                     this.userPointer.dispatch('leftbutton/down/disselect');
@@ -137,7 +150,7 @@ define('Game', [
 
             this.userPointer.on('multiselector/up', function(multiselector) {
 
-                this.entityManager.entities().raw().forEach(function(entity) {
+                this.entityManager.entities().forEach(function(entity) {
                     if (!entity.isEntityControlledByUser()) {
                         return;
                     }
@@ -163,7 +176,7 @@ define('Game', [
 
             this.userKeyboard
                 .on('key/delete', function(){
-                    this.entityManager.entities(':selected').remove();
+                    this.eventEmitter.synced.entities(':selected').remove();
                 }.bind(this));
 
             // -----------------------------------------------------------------------
@@ -204,33 +217,23 @@ define('Game', [
             //                                  Players
             // -----------------------------------------------------------------------
             
-            var myGUID = Util.getGUID();
-            // Set up Players
-            EventBus.getInstance().add({
-                id: 'player/create',
-                data: {
-                    guid: myGUID,
-                    name: 'Test Player',
-                    team: 1,
-                    user: true,
-                    authorised: true
-                }
+            this.eventEmitter.synced.player.add({
+                name: 'Test Player',
+                team: 1,
+                user: true,
+                authorised: true
             });
 
-            EventBus.getInstance().add({
-                id: 'player/resource/alter',
-                data: {
-                    guid: myGUID,
-                    titanium: 50
-                }
-            });            
+            this.eventEmitter.synced.player(':user').alter({
+                titanium: 500
+            });
 
             // -----------------------------------------------------------------------
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
             for (var i = 0; i >= 0; i -= 1) {
-                this.entityManager.entities.add({
+                this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'hurricane',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
@@ -240,7 +243,7 @@ define('Game', [
             }
 
             for (var j = 0; j >= 0; j -= 1) {
-                this.entityManager.entities.add({
+                this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'orca',
                     team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
@@ -253,10 +256,9 @@ define('Game', [
 
                 var entities = EntityManager
                     .getInstance()
-                    .entities()
-                    .raw();
+                    .entities();
 
-                this.entityManager.entities(entities[0].getId()).fire({
+                this.eventEmitter.synced.entities(entities[0].getId()).fire({
                     targetEntity: entities[1]
                 });
 

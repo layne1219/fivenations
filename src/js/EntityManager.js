@@ -2,253 +2,19 @@ define('EntityManager', [
     'Graphics',
     'Entity',
     'DataObject',
-    'EffectManager',
-    'Universal.EventBus',
-    'Util'
-], function(Graphics, Entity, DataObject, EffectManager, EventBus, Util) {
+    'EffectManager'
+], function(Graphics, Entity, DataObject, EffectManager) {
 
     var GROUP_EFFECTS = 'effects';
     var GROUP_ENTITIES = 'entities';
     var GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
 
-    var ns = window.fivenations,
+    var ns = window.fivenations;
 
-        phaserGame,
-        singleton,
+    var phaserGame;
+    var singleton;
 
-        // Array for storing all the entities generated 
-        entities = [],
-
-
-        // Entities Event API
-        EventAPI = (function(entities) {
-
-            /**
-             * creates an immediate object that exposes the event API
-             * for entiteis 
-             * @param  {array} entities [Array of Entity instances]
-             * @return {object} event API calls
-             */
-            function eventAPI(entities) {
-
-                return {
-                    /**
-                     * Make all the given entities to move to the given coordinates 
-                     * @param  {object} options [configuration object to create the desired event]
-                     * @return {this}
-                     * @chainable
-                     */
-                    move: function(options) {
-
-                        var entityNumber = entities.length,
-                            rnd = entityNumber === 1 ? 0 : (entityNumber * 4),
-                            data = (function() {
-                                var data = [];
-                                for (var i = entityNumber - 1; i >= 0; i -= 1) {
-                                    data.push({
-                                        x: options.x - rnd / 2 + Util.rnd(0, rnd),
-                                        y: options.y - rnd / 2 + Util.rnd(0, rnd)
-                                    });
-                                }
-                                return data;
-                            })();
-
-                        EventBus.getInstance().add({
-                            id: 'entity/move',
-                            targets: entities,
-                            data: data
-                        });
-
-                        return this;
-                    },
-                    /**
-                     * Makes all the given entities to patrol between the current and given coordinates 
-                     * @param  {object} options [configuration object to create the desired event]
-                     * @return {void}
-                     * @chainable
-                     */
-                    patrol: function(options) {
-
-                        EventBus.getInstance().add({
-                            id: 'entity/patrol',
-                            targets: entities,
-                            data: options
-                        });
-
-                        return this;
-                    },
-                    /**
-                     * Makes all given entities to perform a stop action
-                     * @return {void}
-                     * @chainable
-                     */
-                    stop: function() {
-
-                        EventBus.getInstance().add({
-                            id: 'entity/stop',
-                            targets: entities
-                        });
-
-                        return this;
-                    },
-                    /**
-                     * Removes entities from the game
-                     * @return {void}
-                     * @chainable
-                     */
-                    remove: function() {
-
-                        EventBus.getInstance().add({
-                            id: 'entity/remove',
-                            targets: entities
-                        });
-
-                        return this;
-
-                    },
-                    /**
-                     * Removes all registered activities from the entity's
-                     * entity manager instance
-                     * @return {void}
-                     * @chainable
-                     */
-                    reset: function() {
-
-                        EventBus.getInstance().add({
-                            id: 'entity/reset',
-                            targets: entities
-                        });
-
-                        return this;
-                    },
-                    /**
-                     * Executes the attached logic for firing the given weapons
-                     * @return {void}
-                     * @chainable
-                     */
-                    fire: function(options) {
-
-                        var targetEntity = options.targetEntity;
-                        var weaponIndexes = [];
-                        var weaponCount = 0;
-
-                        entities.forEach(function(entity, idx) {
-                            weaponIndexes[idx] = entity
-                                .getWeaponManager()
-                                .getWeaponsCanFireEntity(targetEntity)
-                                .map(function(weapon, weaponIndex) {
-                                    weaponCount += 1;
-                                    return weaponIndex;
-                                }); 
-                        });
-
-                        if (weaponCount) {
-
-                            EventBus.getInstance().add({
-                                id: 'entity/fire',
-                                targets: entities,
-                                data: {
-                                    weaponIndexes: weaponIndexes,
-                                    targetEntity: targetEntity.getId()
-                                }
-                            });
-
-                        }
-
-                        return this;
-                    },
-                    /**
-                     * Directly returns the private collection of entities 
-                     * @return {array} Array of entity instances 
-                     * @chainable
-                     */
-                    raw: function() {
-                        return entities || [];
-                    },
-
-                    /**
-                     * Directly returns the first element of the private collection
-                     * it is particularly handy when the targets have been filtered
-                     * to only one entity already 
-                     * @return {object} Entity instance
-                     */
-                    single: function() {
-                        return entities[0];
-                    },
-
-                    /**
-                     * Number of instances in the private collection
-                     * @type {integer}
-                     */
-                    length: entities.length
-                }
-            };
-
-            /**
-             * Creates the eventAPI wrapping the given entities
-             * @param  {array} entities [Array of Entity instances]
-             * @return {object} event API calls          
-             */
-            function selector(entities) {
-                if (!entities) throw 'Invalid entities array passed!';
-                entities = [].concat.call(entities);
-                return eventAPI(entities);
-            }
-
-            /**
-             * returns array of entities with the exposing the activity API against them
-             * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
-             * @return {array} [Array of entities]
-             */
-            function $(filter) {
-                var targets;
-                if (typeof filter === 'function') {
-                    targets = entities.filter(filter);
-                } else if (typeof filter === 'string') {
-
-                    if (filter === ':selected') {
-                        targets = entities.filter(function(entity) {
-                            return entity.isSelected();
-                        });
-                    } else if (filter === ':user') {
-                        targets = entities.filter(function(entity) {
-                            return entity.isEntityControlledByUser();
-                        });
-                    } else if (filter === ':user:selected') {
-                        targets = entities.filter(function(entity) {
-                            return entity.isEntityControlledByUser() && entity.isSelected();
-                        });
-                    } else {
-                        targets = entities.filter(function(entity) {
-                            return entity.getId() === filter;
-                        });
-                    }
-
-                } else if (typeof filter === 'object') {
-                    targets = filter;
-                } else {
-                    targets = entities;
-                }
-                return selector(targets);
-            }
-
-            /**
-             * Emits an entity/create event 
-             * @param {[type]} config [description]
-             */
-            $.add = function(config) {
-                if (!config) return;
-                if (!config.guid) config.guid = Util.getGUID();
-                EventBus.getInstance().add({
-                    id: 'entity/create',
-                    data: config
-                });
-            }
-
-            return $;
-
-        })(entities);
-
+    var entities = [];
 
     function EntityManager() {
         if (!phaserGame) {
@@ -376,7 +142,7 @@ define('EntityManager', [
          * @type {object}
          * @see EventAPI
          */
-        entities: EventAPI,
+        entities: createSelector(entities),
 
         /**
          * returns the subsection of the attributes of the given entities
@@ -411,10 +177,25 @@ define('EntityManager', [
          */
         getGame: function() {
             return phaserGame;
+        },
+
+        /**
+         * Creates a selector function with the given entities.
+         * This selector function can be used to filter down entities through a specified API.
+         * @param {entities} Array array of entity instances
+         * @return {function}
+         */
+        getSelector: function(entities) {
+            return createSelector(entities);
         }
 
     };
 
+    /**
+     * Callback to handle collisions between effects and entities
+     * @param {object} effectSprite - Phaser.Sprite
+     * @param {object} entitySprite - Phaser.Sprute
+     */
     function collisionHandler(effectSprite, entitySprite) {
         var entity = entitySprite._parent;
         var effect = effectSprite._parent;
@@ -435,6 +216,54 @@ define('EntityManager', [
             var damageShield = weapon.getDamageShield();
             console.log('Entity is damaged by ', damage, damageShield);
         }
+
+    }
+
+    /**
+     * Creates a function that can be used to filter entities
+     * @param {array} entities Array of entities the can be filtered further
+     * @return {function} 
+     */
+    function createSelector(entities) {
+        /**
+         * returns array of entities with the exposing the activity API against them
+         * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
+         * @return {array} [Array of entities]
+         */
+        return function $(filter) {
+            var targets;
+
+            if (typeof filter === 'function') {
+                targets = entities.filter(filter);
+            } else if (typeof filter === 'string') {
+
+                if (filter === ':selected') {
+                    targets = entities.filter(function(entity) {
+                        return entity.isSelected();
+                    });
+                } else if (filter === ':user') {
+                    targets = entities.filter(function(entity) {
+                        return entity.isEntityControlledByUser();
+                    });
+                } else if (filter === ':user:selected') {
+                    targets = entities.filter(function(entity) {
+                        return entity.isEntityControlledByUser() && entity.isSelected();
+                    });
+                } else {
+                    targets = entities.filter(function(entity) {
+                        return entity.getId() === filter;
+                    });
+                    return targets[0];
+                }
+
+            } else if (typeof filter === 'object') {
+                targets = filter;
+            } else {
+                targets = entities;
+            }
+
+            return [].concat.call(targets);
+        };
 
     }
 

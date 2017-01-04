@@ -45,6 +45,7 @@ define('EffectManager', [
 
             // adding the freshly created effect to the main array
             effect = new Effect({
+                guid: config.guid,
                 emitter: config.emitter,
                 manager: this,
                 sprite: sprite,
@@ -217,6 +218,20 @@ define('EffectManager', [
          */
         getGame: function() {
             return phaserGame;
+        },
+
+        /**
+         * Returns the array of effects or an empty array
+         * @param {string} guid 
+         * @return {object} effect instance
+         */
+        getEffectByGUID: function(guid) {
+            for (var i = effects.length; i >= 0; i -= 1) {
+                if (effects[i].getGUID() === guid) {
+                    return effects[i];
+                }
+            }
+            return null;
         }
 
     };

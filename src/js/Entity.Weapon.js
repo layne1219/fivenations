@@ -1,4 +1,4 @@
-define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
+define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
 
     var ns = window.fivenations;
     
@@ -26,7 +26,7 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
             this.ready = false;
 
-            EffectManager.getInstance().add({
+            EventEmitter.getInstance().synced.effects.add({
                 id: this.data.effect,
                 emitter: this,
                 x: sprite.x,
@@ -35,7 +35,7 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
                 velocity: !this.data.acceleration && this.data.maxVelocity,
                 maxVelocity: this.data.maxVelocity,
                 acceleration: this.data.acceleration
-            });         
+            });
         },
 
         recharge: function() {

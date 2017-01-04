@@ -3,6 +3,14 @@ define('Effect', ['Util'], function(Util) {
     var DEFAULT_ANIM_NAME = 'idle';
 
     /**
+     * Sets the unique id
+     * @param {object} config
+     */
+    function setGUID(config) {
+        this.guid = config.guid;
+    }
+
+    /**
      * Registers the EffectManager instance
      * @param {config} config Configuration object that contains the reference to the manager instance
      */
@@ -114,7 +122,8 @@ define('Effect', ['Util'], function(Util) {
      * @param {object} config Configuration object to initialise the effect object
      * @return {object}
      */
-    function Effect(config) {   
+    function Effect(config) {
+        setGUID.call(this, config);
         setManager.call(this, config);
         setDataObject.call(this, config);
         setSprite.call(this, config);
@@ -127,6 +136,10 @@ define('Effect', ['Util'], function(Util) {
 
         getId: function() {
             return this.id;
+        },
+
+        getGUID: function() {
+            return this.guid;
         },
 
         getSprite: function() {

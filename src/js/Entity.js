@@ -1,6 +1,6 @@
 define('Entity', [
     'PlayerManager',
-    'Universal.EventDispatcher',
+    'Universal.EventEmitter',
     'Entity.ActivityManager',
     'Entity.MotionManager',
     'Entity.AbilityManager',
@@ -11,7 +11,7 @@ define('Entity', [
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(PlayerManager, UED, ActivityManager, MotionManager, AbilityManager, WeaponManager, EffectManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
+], function(PlayerManager, EventEmitter, ActivityManager, MotionManager, AbilityManager, WeaponManager, EffectManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
 
     var
 
@@ -107,7 +107,7 @@ define('Entity', [
 
                     now = new Date().getTime();
                     if (now - this.lastClickTime < 500) {
-                        this.entityManager.entities().raw().filter(function(entity) {
+                        this.entityManager.entities().filter(function(entity) {
                             // If the entity is off screen we need to exclude
                             if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)) {
                                 return false;
@@ -329,7 +329,7 @@ define('Entity', [
             if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
                 this.selected = true;
                 this.eventDispatcher.dispatch('select');
-                UED.getInstance().dispatch('gui/selection/change');
+                EventEmitter.getInstance().local.dispatch('gui/selection/change');
             }
         },
 
@@ -340,7 +340,7 @@ define('Entity', [
         unselect: function() {
             this.selected = false;
             this.eventDispatcher.dispatch('unselect');
-            UED.getInstance().dispatch('gui/selection/change');
+            EventEmitter.getInstance().local.dispatch('gui/selection/change');
         },
 
         /**
