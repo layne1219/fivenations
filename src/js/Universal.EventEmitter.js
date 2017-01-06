@@ -11,8 +11,6 @@ define('Universal.EventEmitter', [
      */
     function createEntityEventAPI(entityManager) {
 
-        var entities = entityManager.entities();
-
         /**
          * creates an immediate object that exposes the event API
          * for entiteis 
@@ -157,8 +155,9 @@ define('Universal.EventEmitter', [
          * @return {array} [Array of entities]
          */
         function $(filter) {
-            var selector = entityManager.getSelector(entities);
-            return eventAPI(selector(filter));
+            var selector = entityManager.getSelector(entityManager.entities());
+            var entities = selector(filter);
+            return eventAPI([].concat.call(entities));
         }
 
         /**
@@ -234,7 +233,7 @@ define('Universal.EventEmitter', [
             if (!config) return;
             if (!config.guid) config.guid = Util.getGUID();
             EventBus.getInstance().add({
-                id: 'entity/create',
+                id: 'player/create',
                 data: config
             });
         };
@@ -299,7 +298,7 @@ define('Universal.EventEmitter', [
         $.add = function(config) {
             if (!config) return;
             if (!config.guid) config.guid = Util.getGUID();
-            EventBus.getInstance.add({
+            EventBus.getInstance().add({
                 id: 'effect/create',
                 data: config
             });

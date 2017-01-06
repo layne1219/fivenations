@@ -217,16 +217,21 @@ define('Game', [
             //                                  Players
             // -----------------------------------------------------------------------
             
-            this.eventEmitter.synced.player.add({
+            var myGUID = Util.getGUID();
+
+            this.eventEmitter.synced.players.add({
+                guid: myGUID,
                 name: 'Test Player',
                 team: 1,
                 user: true,
                 authorised: true
             });
 
-            this.eventEmitter.synced.player(':user').alter({
-                titanium: 500
-            });
+            setTimeout(function() {
+                this.eventEmitter.synced.players(':user').alter({
+                    titanium: 500
+                });
+            }.bind(this), 500);
 
             // -----------------------------------------------------------------------
             //                          Generating entities
