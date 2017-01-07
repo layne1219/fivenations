@@ -2,7 +2,8 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
 
     var ns = window.fivenations;
     
-    function alterData(data) {
+    function alterData(_data) {
+        var data = Object.create(_data);
         data.range *= 10;
         return data;
     }
@@ -24,8 +25,6 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
             var sprite = entity.getSprite();
             var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
 
-            this.ready = false;
-
             EventEmitter.getInstance().synced.effects.add({
                 id: this.data.effect,
                 emitter: this,
@@ -36,18 +35,29 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
                 maxVelocity: this.data.maxVelocity,
                 acceleration: this.data.acceleration
             });
+
+            this.freeze(this.data.cooldown);
         },
 
         recharge: function() {
-            this.ready = true;
+            if (this.ready) return;
+
+            if (this.freezeTime > 0) {
+                this.freezeTime -= 1;
+            } else {
+                console.log(this.data.effect, this.manager.getEntity().getDataObject().getName());
+                this.freezeTime = 0;
+                this.ready = true;
+            }
         },
 
         activate: function() {
             this.ready = true;
         },
 
-        deactivate: function() {
+        freeze: function(time) {
             this.ready = false;
+            this.freezeTime = time || 0;
         },
 
         setManager: function(manager) {

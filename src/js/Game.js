@@ -275,7 +275,11 @@ define('Game', [
                     targetEntity: entities[1]
                 });
 
-                setTimeout(fire.bind(this), 2000);
+                this.eventEmitter.synced.entities(entities[1].getGUID()).fire({
+                    targetEntity: entities[0]
+                });                
+
+                setTimeout(fire.bind(this), 3000);
 
             }.bind(this), 3000);
 

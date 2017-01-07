@@ -1,10 +1,12 @@
 // ------------------------------------------------------------------------------------
 // Stop Button Logc
 // ------------------------------------------------------------------------------------
-define('GUI.StopButtonLogic', function() {
+define('GUI.StopButtonLogic', ['Universal.EventEmitter'], function(EventEmitter) {
     return {
-        activate: function(entityManager /*, controlPanel */) {
-            entityManager
+        activate: function(entityManager) {
+            EventEmitter
+                .getInstance()
+                .synced
                 .entities(':user:selected')
                 .reset()
                 .stop();
@@ -17,16 +19,20 @@ define('GUI.StopButtonLogic', function() {
 // ------------------------------------------------------------------------------------
 define('GUI.MoveButtonLogic', [
     'GUI.Activity.SelectCoords',
-    'GUI.ActivityManager'
-], function(ActivitySelectCoords, ActivityManager) {
+    'GUI.ActivityManager',
+    'Universal.EventEmitter',
+], function(ActivitySelectCoords, ActivityManager, EventEmitter) {
     var ns = window.fivenations;
     return {
         activate: function(entityManager, controlPanel) {
             var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
             activity.on('select', function(mousePointer) {
+
                 var coords = mousePointer.getRealCoords();
 
-                entityManager
+                EventEmitter
+                    .getInstance()
+                    .synced
                     .entities(':user:selected')
                     .move({
                         x: coords.x,
@@ -47,8 +53,9 @@ define('GUI.MoveButtonLogic', [
 // ------------------------------------------------------------------------------------
 define('GUI.PatrolButtonLogic', [
     'GUI.Activity.SelectCoords',
-    'GUI.ActivityManager'
-], function(ActivitySelectCoords, ActivityManager) {
+    'GUI.ActivityManager',
+    'Universal.EventEmitter',
+], function(ActivitySelectCoords, ActivityManager,EventEmitter) {
     var ns = window.fivenations;
     return {
         activate: function(entityManager, controlPanel) {
@@ -56,7 +63,9 @@ define('GUI.PatrolButtonLogic', [
             activity.on('select', function(mousePointer) {
                 var coords = mousePointer.getRealCoords();
 
-                entityManager
+                EventEmitter
+                    .getInstance()
+                    .synced
                     .entities(':user:selected')
                     .patrol({
                         x: coords.x,

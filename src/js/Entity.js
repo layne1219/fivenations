@@ -208,11 +208,9 @@ define('Entity', [
          */
         update: function() {
 
-            // Updating the activities handled by the activity manager instance
             this.activityManager.update();
-
-            // applying all the effects that influences the movement of the entity
             this.motionManager.update();
+            this.weaponManager.update();
 
         },
 
