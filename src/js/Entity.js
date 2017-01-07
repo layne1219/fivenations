@@ -55,6 +55,7 @@ define('Entity', [
 
             // reducing the hitArea according the one specified in the realated DataObject
             sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
+            sprite.body.setSize(dataObject.getWidth(), dataObject.getHeight());
 
             sprite._parent = entity;
 
