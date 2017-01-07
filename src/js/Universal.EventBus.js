@@ -20,7 +20,7 @@ define('Universal.EventBus', function() {
                     }
                     if (evt.targets && evt.targets.length) {
                         evt.targets = evt.targets.map(function(entity) {
-                            return entity.getId();
+                            return entity.getGUID();
                         });
                     }
                     ids = [].concat(evt.id);

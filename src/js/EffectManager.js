@@ -226,7 +226,7 @@ define('EffectManager', [
          * @return {object} effect instance
          */
         getEffectByGUID: function(guid) {
-            for (var i = effects.length; i >= 0; i -= 1) {
+            for (var i = effects.length - 1; i >= 0; i -= 1) {
                 if (effects[i].getGUID() === guid) {
                     return effects[i];
                 }

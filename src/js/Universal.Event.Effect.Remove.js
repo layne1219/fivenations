@@ -4,6 +4,12 @@ define('Universal.Event.Effect.Remove', [
 
     var ns = window.fivenations;
 
+    function removeEffectByGUID(guid) {
+        var effect = ns.game.effectManager.getEffectByGUID(guid);
+        if (!effect) return;
+        ns.game.effectManager.remove(effect);       
+    }
+
     function UniversalEventEffectRemove() {
         var args = [].slice.call(arguments);
         Event.apply(this, args);
@@ -18,19 +24,12 @@ define('Universal.Event.Effect.Remove', [
      * @return {void}
      */
     UniversalEventEffectRemove.prototype.execute = function(options) {
-        var config;
-
-        if (!options.data) {
+        if (!options.targets) {
             return;
         }
-
-        config = options.data;
-        config.guid.forEach(function(guid) {
-            var effect = ns.game.effectManager.getEffectByGUID(guid);
-            if (!effect) return;
-            ns.game.effectManager.remove(effect);    
-        });
-        
+        options.targets.forEach(function(guid) {
+            removeEffectByGUID(guid);
+        });        
     };
 
     return UniversalEventEffectRemove;

@@ -108,9 +108,6 @@ define('EntityManager', [
                 }
                 steps -= 1;
             }
-
-            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityGroup, collisionHandler);
-            phaserGame.physics.arcade.overlap(this.effectGroup, this.entityBuildingGroup, collisionHandler);
         },
 
         /**
@@ -191,33 +188,6 @@ define('EntityManager', [
     };
 
     /**
-     * Callback to handle collisions between effects and entities
-     * @param {object} effectSprite - Phaser.Sprite
-     * @param {object} entitySprite - Phaser.Sprute
-     */
-    function collisionHandler(effectSprite, entitySprite) {
-        var entity = entitySprite._parent;
-        var effect = effectSprite._parent;
-        var weapon = effect.getEmitter();
-
-        // effect mainly cannot collide with the entity that initially emitted it
-        if (weapon.getManager().getEntity() === entity) return;
-
-        var collisionEvent = effect.getDataObject().getEvent('collision');
-
-        if (collisionEvent.removeEffect) {
-            console.log('This must be replaced with Universal.Event');
-        }
-
-        if (collisionEvent.damageTarget) {
-            var damage = weapon.getDamage();
-            var damageShield = weapon.getDamageShield();
-            console.log('Entity is damaged by ', damage, damageShield);
-        }
-
-    }
-
-    /**
      * Creates a function that can be used to filter entities
      * @param {array} entities Array of entities the can be filtered further
      * @return {function} 
@@ -249,7 +219,7 @@ define('EntityManager', [
                     });
                 } else {
                     targets = entities.filter(function(entity) {
-                        return entity.getId() === filter;
+                        return entity.getGUID() === filter;
                     });
                     return targets[0];
                 }

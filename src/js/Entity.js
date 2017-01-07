@@ -420,7 +420,7 @@ define('Entity', [
             return this.weaponManager;
         },
 
-        getId: function() {
+        getGUID: function() {
             return this.guid;
         },
 

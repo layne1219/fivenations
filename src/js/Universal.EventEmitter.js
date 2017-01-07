@@ -137,7 +137,7 @@ define('Universal.EventEmitter', [
                             targets: entities,
                             data: {
                                 weaponIndexes: weaponIndexes,
-                                targetEntity: targetEntity.getId()
+                                targetEntity: targetEntity.getGUID()
                             }
                         });
 
@@ -241,7 +241,11 @@ define('Universal.EventEmitter', [
         return $;
     }
 
-
+    /**
+     * Creates an API for generating Universal Events for Effects
+     * @param {object} effectManager Instance of EffectManager
+     * @return {function}
+     */
     function createEffectEventAPI(effectManager) {
 
         /**
@@ -259,15 +263,9 @@ define('Universal.EventEmitter', [
                  */
                 remove: function() {
 
-                    effects.map(function(effect) {
-                        return effect.getGUID();
-                    }).forEach(function(guid) {
-                        EventBus.getInstance().add({
-                            id: 'effect/remove',
-                            data: {
-                                guid: guid
-                            }
-                        });                        
+                    EventBus.getInstance().add({
+                        id: 'effect/remove',
+                        targets: effects
                     });
 
                 }

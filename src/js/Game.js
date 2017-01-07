@@ -5,6 +5,7 @@ define('Game', [
     'PlayerManager',
     'EntityManager',
     'EffectManager',
+    'CollisionManager',
     'GUI',
     'GUI.ActivityManager',
     'UserPointer',
@@ -20,6 +21,7 @@ define('Game', [
     PlayerManager,
     EntityManager,
     EffectManager,
+    CollisionManager,
     GUI,
     GUIActivityManager,
     UserPointer,
@@ -86,6 +88,12 @@ define('Game', [
             // -----------------------------------------------------------------------
             EffectManager.setGame(this.game);
             this.effectManager = EffectManager.getInstance();            
+
+            // -----------------------------------------------------------------------
+            //                              CollisionManager
+            // -----------------------------------------------------------------------
+            CollisionManager.setGame(this.game);
+            this.collisionManager = CollisionManager.getInstance();            
 
             // -----------------------------------------------------------------------
             //                              EventEmitter
@@ -263,7 +271,7 @@ define('Game', [
                     .getInstance()
                     .entities();
 
-                this.eventEmitter.synced.entities(entities[0].getId()).fire({
+                this.eventEmitter.synced.entities(entities[0].getGUID()).fire({
                     targetEntity: entities[1]
                 });
 
@@ -286,6 +294,9 @@ define('Game', [
 
             // updates effects
             this.effectManager.update();
+
+            // collision handling
+            this.collisionManager.update();
 
             // Rendering GUI elements
             this.GUI.update();
