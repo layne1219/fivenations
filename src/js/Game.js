@@ -279,7 +279,7 @@ define('Game', [
                     targetEntity: entities[0]
                 });                
 
-                setTimeout(fire.bind(this), 3000);
+                setTimeout(fire.bind(this), 100);
 
             }.bind(this), 3000);
 
