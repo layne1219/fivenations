@@ -117,16 +117,16 @@ define('Universal.EventEmitter', [
                 fire: function(options) {
 
                     var targetEntity = options.targetEntity;
-                    var weaponIndexes = [];
+                    var weaponGUIDs = [];
                     var weaponCount = 0;
 
                     entities.forEach(function(entity, idx) {
-                        weaponIndexes[idx] = entity
+                        weaponGUIDs[idx] = entity
                             .getWeaponManager()
                             .getWeaponsCanFireEntity(targetEntity)
-                            .map(function(weapon, weaponIndex) {
+                            .map(function(weapon) {
                                 weaponCount += 1;
-                                return weaponIndex;
+                                return weapon.getGUID();
                             }); 
                     });
 
@@ -136,7 +136,7 @@ define('Universal.EventEmitter', [
                             id: 'entity/fire',
                             targets: entities,
                             data: {
-                                weaponIndexes: weaponIndexes,
+                                weaponGUIDs: weaponGUIDs,
                                 targetEntity: targetEntity.getGUID()
                             }
                         });

@@ -1,6 +1,7 @@
 define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
 
     var ns = window.fivenations;
+    var guid = 0;
     
     function alterData(_data) {
         var data = Object.create(_data);
@@ -11,6 +12,8 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
     function Weapon(data) {
         this.data = alterData(data);
         this.ready = true;
+        this.guid = guid;
+        guid += 1;        
     }
 
     Weapon.prototype = {
@@ -75,6 +78,10 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
 
         getId: function() {
             return this.data.id;
+        },
+
+        getGUID: function() {
+            return this.guid;
         },
 
         getManager: function() {
