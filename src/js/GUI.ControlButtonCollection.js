@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------------
 define('GUI.StopButtonLogic', ['Universal.EventEmitter'], function(EventEmitter) {
     return {
-        activate: function(entityManager) {
+        activate: function() {
             EventEmitter
                 .getInstance()
                 .synced
