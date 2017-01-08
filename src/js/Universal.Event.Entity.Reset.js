@@ -20,7 +20,6 @@ define('Universal.Event.Entity.Reset', ['Universal.Event'], function(Event) {
         options.targets.forEach(function(id) {
             ns.game.entityManager
                 .entities(id)
-                .single()
                 .reset();
         });
     };

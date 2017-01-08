@@ -14,7 +14,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": "-",
-    "cooldown": "0,7",
+    "cooldown": 70,
     "homing": 0,
     "type": "laser",
     "specialty": "-",
@@ -35,7 +35,7 @@
     "effect_range": 8,
     "collusion_effect": 6,
     "power_cost": "-",
-    "cooldown": "1,8",
+    "cooldown": 180,
     "homing": 0,
     "type": "cannon",
     "specialty": "-",
@@ -56,7 +56,7 @@
     "effect_range": 0,
     "collusion_effect": 2,
     "power_cost": "-",
-    "cooldown": 3,
+    "cooldown": 300,
     "homing": 1,
     "type": "rocket",
     "specialty": "-"
@@ -96,7 +96,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": "-",
-    "cooldown": "0,2",
+    "cooldown": 20,
     "homing": 0,
     "type": "cannon",
     "specialty": "Only aim at Fighters"
@@ -136,7 +136,7 @@
     "effect_range": 0,
     "collusion_effect": 8,
     "power_cost": "-",
-    "cooldown": "2,5",
+    "cooldown": 250,
     "homing": 0,
     "type": "rocket",
     "specialty": "-"
@@ -156,7 +156,7 @@
     "effect_range": 20,
     "collusion_effect": 20,
     "power_cost": "-",
-    "cooldown": 8,
+    "cooldown": 800,
     "homing": 0,
     "type": "cannon",
     "specialty": "If it's target destroyed, it can hit another unit (max 3)"
@@ -196,7 +196,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": "-",
-    "cooldown": "1,5",
+    "cooldown": 150,
     "homing": 0,
     "type": "laser",
     "specialty": "Only for mining materials from asteroids"
@@ -256,7 +256,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": 5,
-    "cooldown": 1,
+    "cooldown": 100,
     "homing": 0,
     "type": "laser",
     "specialty": "Can repair ships"
@@ -276,7 +276,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": 5,
-    "cooldown": 1,
+    "cooldown": 100,
     "homing": 0,
     "type": "laser",
     "specialty": "Can restore ship's shield"
@@ -296,7 +296,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": 50,
-    "cooldown": 1,
+    "cooldown": 100,
     "homing": 0,
     "type": "beam",
     "specialty": "Can Dispell bad effects"
@@ -336,7 +336,7 @@
     "effect_range": 0,
     "collusion_effect": 2,
     "power_cost": "-",
-    "cooldown": 2,
+    "cooldown": 200,
     "homing": 1,
     "type": "rocket",
     "specialty": "-"
@@ -376,7 +376,7 @@
     "effect_range": 100,
     "collusion_effect": 30,
     "power_cost": "-",
-    "cooldown": 15,
+    "cooldown": 1500,
     "homing": 0,
     "type": "-",
     "specialty": "-"
@@ -396,7 +396,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": "-",
-    "cooldown": "1,8",
+    "cooldown": 180,
     "homing": 0,
     "type": "laser",
     "specialty": "-"
@@ -416,7 +416,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": "-",
-    "cooldown": 7,
+    "cooldown": 700,
     "homing": 0,
     "type": "laser",
     "specialty": "-"
@@ -436,7 +436,7 @@
     "effect_range": 0,
     "collusion_effect": 5,
     "power_cost": "-",
-    "cooldown": 2,
+    "cooldown": 200,
     "homing": 0,
     "type": "beam",
     "specialty": "-"
@@ -456,7 +456,7 @@
     "effect_range": "-",
     "collusion_effect": "-",
     "power_cost": 1,
-    "cooldown": 20,
+    "cooldown": 2000,
     "homing": 0,
     "type": "-",
     "specialty": "egység hipergyorsan képes haladni, minnél messzebre használja annál több energiát emészt fel, 5 táv / 1 energia"
@@ -476,7 +476,7 @@
     "effect_range": 0,
     "collusion_effect": 0,
     "power_cost": "-",
-    "cooldown": 5,
+    "cooldown": 500,
     "homing": 1,
     "type": "beam",
     "specialty": "Causes Neutralization for the enemy units for 3 sec"

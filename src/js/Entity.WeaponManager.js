@@ -62,6 +62,16 @@ define('Entity.WeaponManager', [
         },
 
         /**
+         * updates weapons on every tick if needed
+         * @return {void}
+         */
+        update: function() {
+            this.weapons.forEach(function(weapon) {
+                weapon.recharge();
+            });
+        },
+
+        /**
          * Returning an array of IDs each of representing a weapon
          * @return {array} A collection of weapons the entity is in a possesion of
          */

@@ -1,9 +1,15 @@
-define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
+define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
 
     var ns = window.fivenations;
     
+    function alterData(_data) {
+        var data = Object.create(_data);
+        data.range *= 10;
+        return data;
+    }
+
     function Weapon(data) {
-        this.data = data;
+        this.data = alterData(data);
         this.ready = true;
     }
 
@@ -19,29 +25,39 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
             var sprite = entity.getSprite();
             var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
 
-            this.ready = false;
-
-            EffectManager.getInstance().add({
+            EventEmitter.getInstance().synced.effects.add({
                 id: this.data.effect,
+                emitter: this,
                 x: sprite.x,
                 y: sprite.y,
                 rotation: rotation,
                 velocity: !this.data.acceleration && this.data.maxVelocity,
                 maxVelocity: this.data.maxVelocity,
                 acceleration: this.data.acceleration
-            });         
+            });
+
+            this.freeze(this.data.cooldown);
         },
 
         recharge: function() {
-            this.ready = true;
+            if (this.ready) return;
+
+            if (this.freezeTime > 0) {
+                this.freezeTime -= 1;
+            } else {
+                console.log(this.data.effect, this.manager.getEntity().getDataObject().getName());
+                this.freezeTime = 0;
+                this.ready = true;
+            }
         },
 
         activate: function() {
             this.ready = true;
         },
 
-        deactivate: function() {
+        freeze: function(time) {
             this.ready = false;
+            this.freezeTime = time || 0;
         },
 
         setManager: function(manager) {
@@ -59,7 +75,11 @@ define('Entity.Weapon', ['EffectManager'], function(EffectManager) {
 
         getId: function() {
             return this.data.id;
-        },      
+        },
+
+        getManager: function() {
+            return this.manager;
+        },   
 
         getName: function() {
             return this.data.name;

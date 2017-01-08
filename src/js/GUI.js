@@ -1,13 +1,13 @@
 define('GUI', [
     'PlayerManager',
-    'Universal.EventDispatcher',
+    'Universal.EventEmitter',
     'Graphics',
     'GUI.ControlButton',
     'GUI.ControlPage',
     'GUI.CancelPage',
     'Util',
     'json!gui'
-], function(PlayerManager, UED, Graphics, ControlButton, ControlPage, CancelPage, Util, guiJSON) {
+], function(PlayerManager, EventEmitter, Graphics, ControlButton, ControlPage, CancelPage, Util, guiJSON) {
  
     var ns = window.fivenations,
 
@@ -542,6 +542,7 @@ define('GUI', [
 
                     this.entityManager
                         .entities(':user:selected')
+                        .reset()
                         .move({
                             x: coords.x,
                             y: coords.y
@@ -631,7 +632,7 @@ define('GUI', [
                  * @return {void}
                  */
                 updateEntities: function() {
-                    this.entityManager.entities().raw().forEach(function(entity) {
+                    this.entityManager.entities().forEach(function(entity) {
                         var x = entity.getSprite().x / this.map.getScreenWidth() * minimizedWidth,
                             y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
                             w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
@@ -1161,7 +1162,7 @@ define('GUI', [
                  */
                 update: function() {
 
-                    var entities = this.entityManager.entities(':selected').raw();
+                    var entities = this.entityManager.entities(':selected');
 
                     if (entities.length === 1) {
 
@@ -1304,8 +1305,8 @@ define('GUI', [
              * @return {void}
              */
             ControlPanel.prototype.setEventListeners = function() {
-                var ued = UED.getInstance();
-                ued.addEventListener('gui/selection/change', this.update.bind(this));
+                var emitter = EventEmitter.getInstance();
+                emitter.local.addEventListener('gui/selection/change', this.update.bind(this));
             };
 
             /**
@@ -1335,7 +1336,7 @@ define('GUI', [
              */
             ControlPanel.prototype.update = function() {
 
-                var entities = this.entityManager.entities(':selected').raw();
+                var entities = this.entityManager.entities(':selected');
 
                 if (!entities || entities.length === 0) {
                     this.hide();

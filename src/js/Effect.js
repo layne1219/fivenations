@@ -3,6 +3,14 @@ define('Effect', ['Util'], function(Util) {
     var DEFAULT_ANIM_NAME = 'idle';
 
     /**
+     * Sets the unique id
+     * @param {object} config
+     */
+    function setGUID(config) {
+        this.guid = config.guid;
+    }
+
+    /**
      * Registers the EffectManager instance
      * @param {config} config Configuration object that contains the reference to the manager instance
      */
@@ -16,6 +24,14 @@ define('Effect', ['Util'], function(Util) {
      */
     function setDataObject(config) {
         this.dataObject = config.dataObject;
+    }
+
+    /**
+     * Saves the object reference that invoked the EffectManager to generate this very effect instance
+     * @param {config} config Configuration object that contains the reference to the manager instance
+     */
+    function setEmitter(config) {
+        this.emitter = config.emitter;
     }
 
     /**
@@ -106,10 +122,12 @@ define('Effect', ['Util'], function(Util) {
      * @param {object} config Configuration object to initialise the effect object
      * @return {object}
      */
-    function Effect(config) {   
+    function Effect(config) {
+        setGUID.call(this, config);
         setManager.call(this, config);
         setDataObject.call(this, config);
-        setSprite.call(this, config); 
+        setSprite.call(this, config);
+        setEmitter.call(this, config); 
         setAnimations.call(this, config);
         setTTL.call(this, config);       
     }
@@ -120,8 +138,16 @@ define('Effect', ['Util'], function(Util) {
             return this.id;
         },
 
+        getGUID: function() {
+            return this.guid;
+        },
+
         getSprite: function() {
             return this.sprite;
+        },
+
+        getEmitter: function() {
+            return this.emitter;
         },
 
         getDataObject: function() {
@@ -129,8 +155,9 @@ define('Effect', ['Util'], function(Util) {
         },
 
         remove: function() {
-            this.manager.explode(this);
+            this.sprite._group.remove(this.sprite);
             this.sprite.destroy();
+            this.manager.explode(this);
         }
 
     }

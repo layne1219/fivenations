@@ -45,7 +45,7 @@ define('Map.Fogofwar', ['Util'], function(Util) {
             },
 
             update: function(entityManager) {
-                entityManager.entities(':user').raw().forEach(function(entity){
+                entityManager.entities(':user').forEach(function(entity){
                     this.visitTilesByEntityVisibility(entity);
                 }.bind(this));
             }            

@@ -26,8 +26,8 @@ define('Universal.Event.Entity.Fire', [
         var weapons;
 
         options.targets.forEach(function(id, idx) {
-            entity = ns.game.entityManager.entities(id).single();
-            targetEntity = ns.game.entityManager.entities(options.data.targetEntity).single();
+            entity = ns.game.entityManager.entities(id);
+            targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
             
             if (!entity || !targetEntity) return;
             if (!options.data.weaponIndexes[idx]) return;

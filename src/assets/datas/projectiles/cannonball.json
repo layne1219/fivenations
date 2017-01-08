@@ -13,6 +13,10 @@
     "events": {
         "remove": {
             "effects": ["blow-2"]
-        }
+        },
+        "collision": {
+            "damageTarget": true,
+            "removeEffect": true
+        }        
     }
 }

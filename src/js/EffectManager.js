@@ -30,6 +30,7 @@ define('EffectManager', [
             var sprite;
             var dataObject;
             var point;
+            var group;
 
             if (!config) {
                 throw 'Invalid configuration object passed as a parameter!';
@@ -44,6 +45,8 @@ define('EffectManager', [
 
             // adding the freshly created effect to the main array
             effect = new Effect({
+                guid: config.guid,
+                emitter: config.emitter,
                 manager: this,
                 sprite: sprite,
                 dataObject: dataObject
@@ -101,10 +104,9 @@ define('EffectManager', [
                 sprite.body.maxVelocity.set(config.maxVelocity);
             }
 
-            Graphics
-                .getInstance()
-                .getGroup('effects')
-                .add(sprite);
+            group = Graphics.getInstance().getGroup('effects');
+            sprite._group = group;
+            group.add(sprite);
 
             effects.push(effect);
         },
@@ -216,6 +218,20 @@ define('EffectManager', [
          */
         getGame: function() {
             return phaserGame;
+        },
+
+        /**
+         * Returns the array of effects or an empty array
+         * @param {string} guid 
+         * @return {object} effect instance
+         */
+        getEffectByGUID: function(guid) {
+            for (var i = effects.length - 1; i >= 0; i -= 1) {
+                if (effects[i].getGUID() === guid) {
+                    return effects[i];
+                }
+            }
+            return null;
         }
 
     };
