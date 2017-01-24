@@ -100,11 +100,11 @@ define('EntityManager', [
          * @param {integer} elapsedTime [elpased time since the last registered tick]
          * @return {void}
          */
-        update: function(elapsedTime) {
+        update: function(authoritative, elapsedTime) {
             var steps = Math.ceil(elapsedTime / (1000 / 60));
             while (steps) {
                 for (var i = entities.length - 1; i >= 0; i -= 1) {
-                    entities[i].update();
+                    entities[i].update(authoritative);
                 }
                 steps -= 1;
             }

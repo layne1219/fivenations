@@ -311,16 +311,11 @@ define('Universal.EventEmitter', [
         return {
 
             local: new Util.EventDispatcher(),
-
             synced: {
-
                 entities: createEntityEventAPI(config.entityManager),
-
                 players: createPlayerEventAPI(config.playerManager),
-
                 effects: createEffectEventAPI(config.effectManager)
             }
-
         };
 
     }

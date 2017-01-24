@@ -34,6 +34,7 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations;
+    var authoritative = false;
 
     function Game() {}
 
@@ -104,6 +105,9 @@ define('Game', [
                 effectManager: this.effectManager
             });
             this.eventEmitter = EventEmitter.getInstance(); 
+            this.eventEmitter.local.addEventListenre('player/create', function() {
+                authoritative = this.playerManager.getUser().isAuthorised();
+            }.bind(this));
 
             // -----------------------------------------------------------------------
             //                              UserPointer
@@ -294,7 +298,7 @@ define('Game', [
             this.map.update(this.entityManager);
 
             // updating entity attributes according to the time elapsed
-            this.entityManager.update(this.game.time.elapsedMS);
+            this.entityManager.update(authoritative, this.game.time.elapsedMS);
 
             // updates effects
             this.effectManager.update();

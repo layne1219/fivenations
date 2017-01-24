@@ -206,7 +206,7 @@ define('Entity', [
          * Rendering the entity
          * @return {void} 
          */
-        update: function() {
+        update: function(authoritative) {
 
             this.activityManager.update();
             this.motionManager.update();
