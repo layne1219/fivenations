@@ -11,7 +11,7 @@ define('Universal.EventBusExecuter', [
 
             var eventbus = EventBus.getInstance();
             var factory = EventFactory.getInstance();
-            var emitter = EventEmitter.getIstance();
+            var emitter = EventEmitter.getInstance();
 
             return {
 

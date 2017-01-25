@@ -105,7 +105,7 @@ define('Game', [
                 effectManager: this.effectManager
             });
             this.eventEmitter = EventEmitter.getInstance(); 
-            this.eventEmitter.local.addEventListenre('player/create', function() {
+            this.eventEmitter.local.addEventListener('player/create', function() {
                 authoritative = this.playerManager.getUser().isAuthorised();
             }.bind(this));
 
@@ -263,7 +263,7 @@ define('Game', [
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'orca',
-                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 1,
                     x: 200 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });

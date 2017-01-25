@@ -5,6 +5,7 @@ define('Entity.WeaponManager', [
 ], function(Weapon, weaponsJSON, Util) {
 
     var cache = {};
+    var minRange;
 
     /**
      * Returns a weapon object by the given Id
@@ -66,7 +67,7 @@ define('Entity.WeaponManager', [
          * @param {boolean} authoritative Determines whether the user is authoritative or not
          * @return {void}
          */
-        update: function(authoritative) {
+        update: function() {
             this.weapons.forEach(function(weapon) {
                 weapon.recharge();
             });
@@ -100,6 +101,22 @@ define('Entity.WeaponManager', [
             return this.weapons.filter(function(weapon) {
                 return weapon.isReady() && weapon.getRange() >= distance;
             });
+        },
+
+        /**
+         * Returns the range the entity must close on the target
+         * in order to make all weapons able to fire
+         * @return {integer} the calcualted range in pixels 
+         */
+        getMinRange: function() {
+            if (!minRange) {
+                minRange = this.weapons.reduce(function(min, weapon) {
+                    var range = weapon.getRange();
+                    if (range < min) return range;
+                    return min; 
+                }, 9999);
+            }
+            return minRange;
         }
 
     };

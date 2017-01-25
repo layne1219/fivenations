@@ -208,9 +208,11 @@ define('Entity', [
          */
         update: function(authoritative) {
 
+            
+
             this.activityManager.update();
             this.motionManager.update();
-            this.weaponManager.update(authoritative);
+            this.weaponManager.update();
 
         },
 
