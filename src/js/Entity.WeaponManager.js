@@ -63,9 +63,10 @@ define('Entity.WeaponManager', [
 
         /**
          * updates weapons on every tick if needed
+         * @param {boolean} authoritative Determines whether the user is authoritative or not
          * @return {void}
          */
-        update: function() {
+        update: function(authoritative) {
             this.weapons.forEach(function(weapon) {
                 weapon.recharge();
             });

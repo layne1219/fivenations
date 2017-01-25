@@ -301,10 +301,10 @@ define('Game', [
             this.entityManager.update(authoritative, this.game.time.elapsedMS);
 
             // updates effects
-            this.effectManager.update();
+            this.effectManager.update(authoritative);
 
             // collision handling
-            this.collisionManager.update();
+            this.collisionManager.update(authoritative);
 
             // Rendering GUI elements
             this.GUI.update();

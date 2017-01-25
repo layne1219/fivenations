@@ -210,7 +210,7 @@ define('Entity', [
 
             this.activityManager.update();
             this.motionManager.update();
-            this.weaponManager.update();
+            this.weaponManager.update(authoritative);
 
         },
 

@@ -48,7 +48,6 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
             if (this.freezeTime > 0) {
                 this.freezeTime -= 1;
             } else {
-                console.log(this.data.effect, this.manager.getEntity().getDataObject().getName());
                 this.freezeTime = 0;
                 this.ready = true;
             }
