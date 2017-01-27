@@ -48,6 +48,16 @@ define('GUI', [
                 'select-medium': [152, 153, 154, 155, 156],
                 'select-small': [157, 158, 159, 160, 161]
 
+                'flash-enemy-big': [121, 125, 121, 125, 121, 125, 121, 125],
+                'flash-enemy-extrabig': [126, 130, 126, 130, 126, 130, 126, 130],
+                'flash-enemy-medium': [131, 135, 131, 135, 131, 135, 131, 135],
+                'flash-enemy-small': [136, 140, 136, 140, 136, 140, 136, 140],
+
+                'flash-big': [141, 145, 141, 145, 141, 145, 141, 145],
+                'flash-extrabig': [147, 151, 147, 151, 147, 151, 147, 151],
+                'flash-medium': [152, 156, 152, 156, 152, 156, 152, 156],
+                'flash-small': [157, 161, 157, 161, 157, 161, 157, 161]
+
             };
 
         })(),
@@ -129,9 +139,9 @@ define('GUI', [
         // --------------------------------------------------------------------------------------
         Selector = (function() {
 
-            var
             // selection animation frame rate
-                SELECTOR_ANIM_FRAME_RATE = 25;
+            var SELECT_ANIM_FRAME_RATE = 25;
+            var FLASH_ANIM_FRAME_RATE = 5;
 
             function Selector() {
 
@@ -148,10 +158,19 @@ define('GUI', [
                     'select-extrabig',
                     'select-medium',
                     'select-small'
+                    'flash-enemy-big',
+                    'flash-enemy-extrabig',
+                    'flash-enemy-medium',
+                    'flash-enemy-small',
+                    'flash-big',
+                    'flash-extrabig',
+                    'flash-medium',
+                    'flash-small'
 
                 ].forEach(function(animation) {
-                    sprite.animations.add(animation, animations[animation]);
-                });
+                    var anim = sprite.animations.add(animation, animations[animation]);
+                    anim.onComplete(this.animationCompleted, this);
+                }.bind(this));
 
                 this.sprite = sprite;
             }
@@ -192,25 +211,49 @@ define('GUI', [
                 },
 
                 show: function() {
-                    var relationship = (function(selector) {
-                            if (selector.parent.isEntityControlledByUser()) {
-                                return '-';
-                            }
-                            return '-enemy-';
-                        })(this),
-
-                        animationName = 'select' + relationship + this.getSize();
-
+                    var anim = 'select';
+                    var animationName = this.getAnimationName(anim);
                     this.sprite.visible = true;
-                    this.sprite.play(animationName, SELECTOR_ANIM_FRAME_RATE);
+                    this.sprite.play(animationName, SELECT_ANIM_FRAME_RATE);
+                    this.currentAnim = anim;
+                },
+
+                flash: function() {
+                    var anim = 'flash';
+                    var animationName = this.getAnimationName(anim);
+                    this.sprite.visible = true;
+                    this.sprite.play(animationName, FLASH_ANIM_FRAME_RATE);
+                    this.currentAnim = anim;
                 },
 
                 hide: function() {
                     this.sprite.visible = false;
                 },
 
+                flash: function() {
+                    var animationName 
+                },
+
                 remove: function() {
                     this.sprite.destroy(true);
+                },
+
+                animationCompleted: function() {
+                    if (this.currentAnim === 'flash') {
+                        this.hide();
+                    } 
+                    this.currentAnim = null;
+                },
+
+                getAnimationName: function(animType) {
+                    var relationship = (function(selector) {
+                        if (selector.parent.isEntityControlledByUser()) {
+                            return '-';
+                        }
+                        return '-enemy-';
+                    })(this);
+                    var animationName = animType + relationship + this.getSize();
+                    return animationName;
                 },
 
                 getSize: function() {
