@@ -192,6 +192,7 @@ define('GUI', [
 
                     entity.on('select', this.show.bind(this));
                     entity.on('unselect', this.hide.bind(this));
+                    entity.on('selectedAsTarget', this.flash.bind(this));
                     entity.on('remove', this.remove.bind(this));
 
                     // Add the selection to the appropriate graphics group as per its type
