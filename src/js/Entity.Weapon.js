@@ -13,12 +13,13 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
         this.data = alterData(data);
         this.ready = true;
         this.guid = guid;
-        guid += 1;        
+        guid += 1;
     }
 
     Weapon.prototype = {
 
         target: null,
+        targetEntity: null,
         manager: null,
 
         fire: function(targetEntity) {
@@ -40,6 +41,10 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
             });
 
             this.freeze(this.data.cooldown);
+        },
+
+        scan: function() {
+            
         },
 
         recharge: function() {

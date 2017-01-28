@@ -1,8 +1,10 @@
 define('EntityManager', [
     'Graphics',
     'Entity',
-    'DataObject'
-], function(Graphics, Entity, DataObject) {
+    'DataObject',
+    'Map',
+    'QuadTree'
+], function(Graphics, Entity, DataObject, Map, QuadTree) {
 
     var GROUP_EFFECTS = 'effects';
     var GROUP_ENTITIES = 'entities';
@@ -23,6 +25,7 @@ define('EntityManager', [
         this.entityGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES);
         this.entityBuildingGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES_BUILDINGS);       
         this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
+
     }
 
     EntityManager.prototype = {
