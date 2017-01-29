@@ -188,6 +188,9 @@ define('Entity', [
         // WeaponManager for handling wepon objects an entity is in a possesion of 
         this.weaponManager = new WeaponManager(this);
 
+        // Player instance
+        this.player = PlayerManaTeger.getPlayerByTeam(this.dataObject.getTeam());
+
     }
 
     Entity.prototype = {
@@ -359,6 +362,15 @@ define('Entity', [
             this.motionManager.stopLevitating();
         },
 
+        /**
+         * Sets the given entity as the closest hostile entity in attack range of this entity
+         * @param {object} entity Closest entity that is in a hostile relation with the one initiated the call
+         * return {object} Entity
+         */
+        setClosestHostileEntityInRange: function(entity) {
+            this.closestHostileEntity = entity;
+        },
+
         hasSlowManeuverability: function() {
             return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
         },
@@ -397,6 +409,18 @@ define('Entity', [
             return this.getDataObject().getTeam() === p.getTeam();
         },
 
+        /**
+         * Returns whether the given entity is hostile or not
+         * @param  {object} entity Entity instance
+         * @return {Boolean} true if the given entity is hostile
+         */
+        isEnemy: function(entity) {
+            var playerManager = PlayerManager.getInstance();
+            var thisPlayer = this.getPlayer();
+            var thatPlayer = entity.getPlayer();
+            return PlayerManager.getInstance().isPlayerHostileTo(thisPlayer, thatPlayer);
+        },
+
         getSprite: function() {
             return this.sprite;
         },
@@ -421,6 +445,10 @@ define('Entity', [
             return this.weaponManager;
         },
 
+        getPlayer: function() {
+            return this.player;
+        },
+
         getGUID: function() {
             return this.guid;
         },
@@ -443,6 +471,14 @@ define('Entity', [
                 x = Math.floor(sprite.x / map.getTileWidth()),
                 y = Math.floor(sprite.y / map.getTileHeight());
             return [x, y];
+        },
+
+        /**
+         * Returns the closest entity that is in hostile relation to the one triggered the function call
+         * @return {object} entity
+         */
+        getClosestHostileEntityInRange: function() {
+            return this.closestHostileEntity;
         }
 
     };

@@ -3,8 +3,9 @@ define('EntityManager', [
     'Entity',
     'DataObject',
     'Map',
-    'QuadTree'
-], function(Graphics, Entity, DataObject, Map, QuadTree) {
+    'QuadTree',
+    'Util'
+], function(Graphics, Entity, DataObject, Map, QuadTree, Util) {
 
     var GROUP_EFFECTS = 'effects';
     var GROUP_ENTITIES = 'entities';
@@ -104,6 +105,10 @@ define('EntityManager', [
          * @return {void}
          */
         update: function(authoritative, elapsedTime) {
+
+            this.updateQuadTree();
+            this.setClosestHostileEntities();
+
             var steps = Math.ceil(elapsedTime / (1000 / 60));
             while (steps) {
                 for (var i = entities.length - 1; i >= 0; i -= 1) {
@@ -144,9 +149,61 @@ define('EntityManager', [
         entities: createSelector(entities),
 
         /**
+         * Initialises a QuadTree to filter candidates for InRange typed functions
+         * @param  {object} map Map instance
+         * @return {void}
+         */
+        initQuadTree: function(map) {
+            this.quadTree = new QuadTree({
+                x: 0,
+                y: 0,
+                width: map.getScreenWidth(),
+                height: map.getScreenHeight()
+            });
+        },
+
+        /**
+         * Updates QuadTree according to the current state of the entity array
+         * @return {void}
+         */
+        updateQuadTree: function() {
+            this.quadTree.clear();
+            for (var i = entities.length - 1; i >= 0; i--) {
+                this.quadTree.insert( entities[i].getSprite() );
+            }
+        },
+
+        /**
+         * Sets the closest hostile entity to the given entity
+         * @param {object} entity Entity instance
+         * @return {void}
+         */
+        setClosestHostileEntities: function(entity) {
+            var entities = this.getEntitiesInRange(entity);
+            entities.filter(function(entityInRange) {
+                return entity.isEnemy(entityInRange);
+            });
+            entity.setClosestHostileEntityInRange(entities.shift());
+        }, 
+
+        /**
+         * Returns an array of candidates that are in range to the given entity
+         * @param  {[type]} entity [description]
+         * @return {[type]}        [description]
+         */
+        getEntitiesInRange: function(entity) {
+            var range = entity.getWeaponManager().getMaxRange();
+            var sprite = entity.getSprite();
+            var candidates = this.quadTree.retrieve( sprite );
+            return candidates.filter(function(candidate) {
+                return Util.distanceBetweenSprites(sprite, candidate) <= range;
+            });
+        },
+
+        /**
          * returns the subsection of the attributes of the given entities
-         * @param  {[array]} entities [Array of the given entities]
-         * @return {[array]}          [Array of the merged abilities]
+         * @param  {array} entities [Array of the given entities]
+         * @return {object} consolidated object of attributes
          */
         getMergedAbilities: function(entities) {
             var abilities,

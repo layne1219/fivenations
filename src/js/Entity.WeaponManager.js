@@ -6,6 +6,7 @@ define('Entity.WeaponManager', [
 
     var cache = {};
     var minRange;
+    var maxRange;
 
     /**
      * Returns a weapon object by the given Id
@@ -118,6 +119,22 @@ define('Entity.WeaponManager', [
             }
             return minRange;
         }
+
+        /**
+         * Returns the range the entity must close on the target
+         * in order to make all weapons able to fire
+         * @return {integer} the calcualted range in pixels 
+         */
+        getMaxRange: function() {
+            if (!maxRange) {
+                maxRange = this.weapons.reduce(function(max, weapon) {
+                    var range = weapon.getRange();
+                    if (range > max) return range;
+                    return min; 
+                }, 0);
+            }
+            return maxRange;
+        }        
 
     };
 
