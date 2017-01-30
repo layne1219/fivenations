@@ -46,7 +46,7 @@ define('GUI', [
                 'select-big': [141, 142, 143, 144, 145],
                 'select-extrabig': [147, 148, 149, 150, 151],
                 'select-medium': [152, 153, 154, 155, 156],
-                'select-small': [157, 158, 159, 160, 161]
+                'select-small': [157, 158, 159, 160, 161],
 
                 'flash-enemy-big': [121, 125, 121, 125, 121, 125, 121, 125],
                 'flash-enemy-extrabig': [126, 130, 126, 130, 126, 130, 126, 130],
@@ -157,7 +157,7 @@ define('GUI', [
                     'select-big',
                     'select-extrabig',
                     'select-medium',
-                    'select-small'
+                    'select-small',
                     'flash-enemy-big',
                     'flash-enemy-extrabig',
                     'flash-enemy-medium',

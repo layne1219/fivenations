@@ -118,7 +118,7 @@ define('Entity.WeaponManager', [
                 }, 9999);
             }
             return minRange;
-        }
+        },
 
         /**
          * Returns the range the entity must close on the target
