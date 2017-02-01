@@ -106,15 +106,13 @@ define('EntityManager', [
          */
         update: function(authoritative, elapsedTime) {
 
-            this.updateQuadTree();
-            this.setClosestHostileEntities();
-
             var steps = Math.ceil(elapsedTime / (1000 / 60));
-            while (steps) {
-                for (var i = entities.length - 1; i >= 0; i -= 1) {
-                    entities[i].update(authoritative);
-                }
-                steps -= 1;
+
+            this.updateQuadTree();
+
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                this.setClosestHostileEntities(entities[i]);
+                this.updateEntity(entities[i], steps, authoritative);
             }
         },
 
@@ -154,6 +152,8 @@ define('EntityManager', [
          * @return {void}
          */
         initQuadTree: function(map) {
+            if (!map) throw 'Invalid Map instance has been passed!';
+
             this.quadTree = new QuadTree({
                 x: 0,
                 y: 0,
@@ -167,8 +167,9 @@ define('EntityManager', [
          * @return {void}
          */
         updateQuadTree: function() {
+            if (!this.quadTree) throw 'QuadTree has not been implemented!';
             this.quadTree.clear();
-            for (var i = entities.length - 1; i >= 0; i--) {
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
                 this.quadTree.insert( entities[i].getSprite() );
             }
         },
@@ -179,12 +180,26 @@ define('EntityManager', [
          * @return {void}
          */
         setClosestHostileEntities: function(entity) {
+            if (!entity) throw 'Invalid Entity instance is passed!';
+
             var entities = this.getEntitiesInRange(entity);
             entities.filter(function(entityInRange) {
                 return entity.isEnemy(entityInRange);
             });
             entity.setClosestHostileEntityInRange(entities.shift());
-        }, 
+        },
+
+        /**
+         * Invokes entity's update function according to the current step cycles
+         * @param  {object} entity Entity instance
+         * @return {void}
+         */
+        updateEntity: function(entity, steps, authoritative) {
+            while (steps) {
+                entity.update(authoritative);
+                steps -= 1;
+            }
+        },        
 
         /**
          * Returns an array of candidates that are in range to the given entity

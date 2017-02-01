@@ -231,10 +231,6 @@ define('GUI', [
                     this.sprite.visible = false;
                 },
 
-                flash: function() {
-                    var animationName 
-                },
-
                 remove: function() {
                     this.sprite.destroy(true);
                 },

@@ -130,7 +130,7 @@ define('Entity.WeaponManager', [
                 maxRange = this.weapons.reduce(function(max, weapon) {
                     var range = weapon.getRange();
                     if (range > max) return range;
-                    return min; 
+                    return max; 
                 }, 0);
             }
             return maxRange;

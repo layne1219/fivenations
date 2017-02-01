@@ -83,6 +83,7 @@ define('Game', [
             // -----------------------------------------------------------------------
             EntityManager.setGame(this.game);
             this.entityManager = EntityManager.getInstance();
+            this.entityManager.initQuadTree(this.map);
 
             // -----------------------------------------------------------------------
             //                              EffectManager

@@ -189,7 +189,7 @@ define('Entity', [
         this.weaponManager = new WeaponManager(this);
 
         // Player instance
-        this.player = PlayerManaTeger.getPlayerByTeam(this.dataObject.getTeam());
+        this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
 
     }
 
@@ -209,9 +209,7 @@ define('Entity', [
          * Rendering the entity
          * @return {void} 
          */
-        update: function(authoritative) {
-
-            
+        update: function() {
 
             this.activityManager.update();
             this.motionManager.update();
@@ -418,7 +416,7 @@ define('Entity', [
             var playerManager = PlayerManager.getInstance();
             var thisPlayer = this.getPlayer();
             var thatPlayer = entity.getPlayer();
-            return PlayerManager.getInstance().isPlayerHostileTo(thisPlayer, thatPlayer);
+            return playerManager.isPlayerHostileTo(thisPlayer, thatPlayer);
         },
 
         getSprite: function() {

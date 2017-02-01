@@ -32,7 +32,7 @@ define('Universal.EventBusExecuter', [
                             });
                             emitter.local.dispatch(evt.id);
                         } catch (ex) {
-                            continue;
+                            console.debug(ex);
                         }
 
                     }
