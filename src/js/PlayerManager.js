@@ -61,7 +61,7 @@ define('PlayerManager', ['Player'], function(Player) {
             },
 
             isPlayerHostileTo: function(a, b) {
-                return a.getTeam() === b.getTeam();
+                return a.getTeam() !== b.getTeam();
             }
 
         };

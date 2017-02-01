@@ -27,6 +27,8 @@ define('EntityManager', [
         this.entityBuildingGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES_BUILDINGS);       
         this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
 
+        this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
+
     }
 
     EntityManager.prototype = {
@@ -105,15 +107,8 @@ define('EntityManager', [
          * @return {void}
          */
         update: function(authoritative, elapsedTime) {
-
-            var steps = Math.ceil(elapsedTime / (1000 / 60));
-
-            this.updateQuadTree();
-
-            for (var i = entities.length - 1; i >= 0; i -= 1) {
-                this.setClosestHostileEntities(entities[i]);
-                this.updateEntity(entities[i], steps, authoritative);
-            }
+            this.updateEntityDistancesOptimised();
+            this.updateEntities(authoritative, elapsedTime);
         },
 
         /**
@@ -162,6 +157,19 @@ define('EntityManager', [
             });
         },
 
+
+        /**
+         * Updates the closest sibling of all the entities. With this information
+         * we can easily and efficiently check whether there is an entity in range.
+         * @return {void}
+         */
+        updateEntityDistances: function() {
+            this.updateQuadTree();
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                this.setClosestEntities(entities[i]);
+            }
+        },
+
         /**
          * Updates QuadTree according to the current state of the entity array
          * @return {void}
@@ -172,21 +180,67 @@ define('EntityManager', [
             for (var i = entities.length - 1; i >= 0; i -= 1) {
                 this.quadTree.insert( entities[i].getSprite() );
             }
-        },
+        },        
 
         /**
-         * Sets the closest hostile entity to the given entity
+         * Sets the closest entities to the given entity
          * @param {object} entity Entity instance
          * @return {void}
          */
-        setClosestHostileEntities: function(entity) {
+        setClosestEntities: function(entity) {
             if (!entity) throw 'Invalid Entity instance is passed!';
 
             var entities = this.getEntitiesInRange(entity);
-            entities.filter(function(entityInRange) {
-                return entity.isEnemy(entityInRange);
-            });
-            entity.setClosestHostileEntityInRange(entities.shift());
+            var closestEnemy = null;
+            var closestAlly = null;
+
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                if (!closestEnemy && entities[i].isEnemy(entity)) {
+                    closestEnemy = entities[i];
+                } else if (!closestAlly) {
+                    closestAlly = entities[i];
+                }
+                if (closestEnemy && closestAlly) break;
+            }
+
+            entity.setClosestHostileEntityInRange(closestEnemy);
+            entity.setClosestAllyEntityInRange(closestAlly);
+        },
+
+        /**
+         * Returns an array of candidates that are in range to the given entity
+         * @param  {[type]} entity [description]
+         * @return {[type]}        [description]
+         */
+        getEntitiesInRange: function(entity) {
+            var range = entity.getWeaponManager().getMaxRange();
+            var sprite = entity.getSprite();
+            var candidates = this.quadTree.retrieve( sprite );
+            return candidates
+                .map(function(candidate) {
+                    return [Util.distanceBetweenSprites(sprite, candidate), candidate];
+                })
+                .filter(function(data) {
+                    if (data[1] === sprite) return false;
+                    return data[0] <= range;
+                })
+                .sort(function(a, b) {
+                    return a[0] > b[0];
+                })
+                .map(function(data) {
+                    return data[1]._parent;
+                });
+        },
+
+        /**
+         * Updates each entities 
+         * @return {void}
+         */
+        updateEntities: function(authoritative, elapsedTime) {
+            var steps = Math.ceil(elapsedTime / (1000 / 60));            
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                this.updateEntity(entities[i], steps, authoritative);
+            }            
         },
 
         /**
@@ -200,20 +254,6 @@ define('EntityManager', [
                 steps -= 1;
             }
         },        
-
-        /**
-         * Returns an array of candidates that are in range to the given entity
-         * @param  {[type]} entity [description]
-         * @return {[type]}        [description]
-         */
-        getEntitiesInRange: function(entity) {
-            var range = entity.getWeaponManager().getMaxRange();
-            var sprite = entity.getSprite();
-            var candidates = this.quadTree.retrieve( sprite );
-            return candidates.filter(function(candidate) {
-                return Util.distanceBetweenSprites(sprite, candidate) <= range;
-            });
-        },
 
         /**
          * returns the subsection of the attributes of the given entities

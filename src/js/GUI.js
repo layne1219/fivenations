@@ -169,7 +169,7 @@ define('GUI', [
 
                 ].forEach(function(animation) {
                     var anim = sprite.animations.add(animation, animations[animation]);
-                    anim.onComplete(this.animationCompleted, this);
+                    anim.onComplete.add(this.animationCompleted, this);
                 }.bind(this));
 
                 this.sprite = sprite;

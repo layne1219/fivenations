@@ -31,6 +31,9 @@ define('Entity', [
          */
         extendSprite = function(entity, sprite, dataObject) {
 
+            var origWidth = dataObject.getWidth();
+            var origHeight = dataObject.getHeight();
+
             // actiavting the ARCADE physics on the sprite object
             entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
@@ -54,8 +57,8 @@ define('Entity', [
             sprite.y = 0;
 
             // reducing the hitArea according the one specified in the realated DataObject
-            sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
-            sprite.body.setSize(dataObject.getWidth(), dataObject.getHeight());
+            sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
+            sprite.body.setSize(origWidth, origHeight, sprite.width / 2 - origWidth / 2, sprite.height / 2 - origHeight / 2);
 
             sprite._parent = entity;
 
@@ -369,6 +372,15 @@ define('Entity', [
             this.closestHostileEntity = entity;
         },
 
+        /**
+         * Sets the given entity as the closest ally entity in attack range of this entity
+         * @param {object} entity Closest entity that is an ally of the one initiated the call
+         * return {object} Entity
+         */
+        setClosestAllyEntityInRange: function(entity) {
+            this.closestAllyEntity = entity;
+        },        
+
         hasSlowManeuverability: function() {
             return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
         },
@@ -416,6 +428,7 @@ define('Entity', [
             var playerManager = PlayerManager.getInstance();
             var thisPlayer = this.getPlayer();
             var thatPlayer = entity.getPlayer();
+            if (thisPlayer === thatPlayer) return false;
             return playerManager.isPlayerHostileTo(thisPlayer, thatPlayer);
         },
 
@@ -477,6 +490,10 @@ define('Entity', [
          */
         getClosestHostileEntityInRange: function() {
             return this.closestHostileEntity;
+        },
+
+        getClosestAllyEntityInRange: function() {
+            return this.closestAllyEntity;
         }
 
     };
