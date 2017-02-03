@@ -29,8 +29,14 @@ define('Entity.Activity.GetInRange', [
         }
         var distance = Util.distanceBetween(this.entity, this.target);
         var range = this.entity.getWeaponManager().getMinRange();
-        saveTargetLastCoords.call(this);
-        this.entity.moveTo(this.targetLastCoords.x, this.targetLastCoords.y);
+        var targetSprite = this.target.getSprite();
+
+        if (distance > range) { 
+            this.entity.moveTo(targetSprite.x, targetSprite.y);
+        } else {
+            this.kill();
+            this.entity.stop();
+        }
     };
 
     /**
@@ -53,16 +59,6 @@ define('Entity.Activity.GetInRange', [
             throw 'Invalid entity is passed to be followed!';
         }
         this.target = entity;
-        saveTargetLastCoords.call(this);
-    };
-
-    /**
-     * Saving the target entity's coordinates
-     * @return {[void]}
-     */
-    GetInRange.prototype.saveTargetLastCoords = function() {
-        this.targetLastCoords.x = this.target.getSprite().x;
-        this.targetLastCoords.y = this.target.getSprite().y;
     };
 
     return GetInRange;
