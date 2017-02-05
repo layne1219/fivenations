@@ -5,8 +5,10 @@ define('Entity.ActivityManager', [
     'Entity.Activity.Follow',
     'Entity.Activity.Stop',
     'Entity.Activity.Idle',
-    'Entity.Activity.Fire'
-], function(Activity, Move, Patrol, Follow, Stop, Idle, Fire) {
+    'Entity.Activity.Fire',
+    'Entity.Activity.GetInRange',
+    'Entity.Activity.Attack'
+], function(Activity, Move, Patrol, Follow, Stop, Idle, Fire, GetInRange, Attack) {
 
     function ActivityManager(entity) {
 
@@ -87,6 +89,8 @@ define('Entity.ActivityManager', [
     ActivityManager.Patrol = Patrol;
     ActivityManager.Follow = Follow;
     ActivityManager.Fire = Fire;
+    ActivityManager.GetInRange = GetInRange;
+    ActivityManager.Attack = Attack;
 
     return ActivityManager;
 

@@ -288,6 +288,15 @@ define('Game', [
 
             }.bind(this), 3000);
 
+            setTimeout(function() {
+                var entities = EntityManager
+                    .getInstance()
+                    .entities();
+
+                entities[0].attack(entities[1]);
+
+            }, 3000);
+
         },
 
         update: function() {

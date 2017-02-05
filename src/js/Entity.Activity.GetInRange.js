@@ -1,7 +1,8 @@
 define('Entity.Activity.GetInRange', [
-    'Entity.Activity', 
+    'Entity.Activity',
+    'Entity.Activity.Move', 
     'Util'
-], function(Activity, Util) {
+], function(Activity, Move, Util) {
 
     /**
      * Constructor function to FollowActivity
@@ -9,34 +10,43 @@ define('Entity.Activity.GetInRange', [
      * @return {[object]} 
      */
     function GetInRange(entity) {
-        Activity.call(this);
-        this.entity = entity;
-        this.targetLastCoords = {};
+        Move.call(this, entity);
     }
 
-    GetInRange.prototype = new Activity;
+    GetInRange.prototype = new Move;
     GetInRange.prototype.constructor = GetInRange;
 
     /**
-     * Updating the activity on every tick as follows:
-     * - If the target entity is set 
-     * - If the target entity has moved since the last tick  
+     * Updating the activity on every tick  
      * @return {[void]}
      */
     GetInRange.prototype.update = function() {
+
+        var distance;
+        var range;
+
         if (!this.target) {
             return;
         }
-        var distance = Util.distanceBetween(this.entity, this.target);
-        var range = this.entity.getWeaponManager().getMinRange();
-        var targetSprite = this.target.getSprite();
 
-        if (distance > range) { 
-            this.entity.moveTo(targetSprite.x, targetSprite.y);
-        } else {
-            this.kill();
+        distance = Util.distanceBetween(this.entity, this.target);
+        range = this.entity.getWeaponManager().getMinRange();
+
+        if (distance <= range) {
             this.entity.stop();
+            this.kill();
         }
+
+        if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
+            return;
+        } else {
+            this.setCoords({
+                x: this.target.getSprite().x,
+                y: this.target.getSprite().y
+            });
+            this.entity.getMotionManager().moveTo(this);
+        }
+
     };
 
     /**
@@ -45,9 +55,6 @@ define('Entity.Activity.GetInRange', [
      */
     GetInRange.prototype.activate = function() {
         Activity.prototype.activate.call(this);
-        if (this.entity && this.target) {
-            this.entity.moveTo(this.targetLastCoords.x, this.targetLastCoords.y);
-        }
     };
 
     /**

@@ -1,4 +1,4 @@
-define('Entity.Activity.Attack', ['Entity.Activity'], function(Activity) {
+define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity, Util) {
 
     /**
      * Constructor function to Attack
@@ -8,7 +8,6 @@ define('Entity.Activity.Attack', ['Entity.Activity'], function(Activity) {
     function Attack(entity) {
         Activity.call(this);
         this.entity = entity;
-        this.coords = {};
     }
 
     Attack.prototype = new Activity;
@@ -19,29 +18,40 @@ define('Entity.Activity.Attack', ['Entity.Activity'], function(Activity) {
      * @return {[void]}
      */
     Attack.prototype.activate = function() {
-        if (this.entity) {
-            this.entity.getMotionManager().AttackTo(this);
-        }
         Activity.prototype.activate.call(this);
     };
 
     /**
-     * Saving the target to which the entity will be Attackd
+     * Updating the activity on every tick  
      * @return {[void]}
      */
-    Attack.prototype.setCoords = function(coords) {
-        if (!coords) {
-            throw 'The given paramater is invalid to set up the coordinates!';
+    Attack.prototype.update = function() {
+
+        var distance;
+        var range;
+
+        if (!this.target) {
+            return;
         }
-        this.coords = coords;
-    };
+
+        distance = Util.distanceBetween(this.entity, this.target);
+        range = this.entity.getWeaponManager().getMinRange();
+
+        if (distance > range) {
+            this.entity.getInRange(this.target);
+        }
+
+    };    
 
     /**
-     * Returns the coordinates to which the entity Attacks 
-     * @return {object} object literal that contains the coordinates
+     * Saving the target entity that will be attacked 
+     * @return {[void]}
      */
-    Attack.prototype.getCoords = function() {
-        return this.coords;
+    Attack.prototype.setTarget = function(entity) {
+        if (!entity) {
+            throw 'Invalid entity is passed to be followed!';
+        }
+        this.target = entity;
     };
 
     return Attack;

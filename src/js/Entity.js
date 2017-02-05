@@ -280,6 +280,28 @@ define('Entity', [
         },
 
         /**
+         * Registers a GetInRange activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        getInRange: function(targetEntity) {
+            var getInRange = new ActivityManager.GetInRange(this);
+            getInRange.setTarget(targetEntity);
+            this.activityManager.add(getInRange);
+        },
+
+        /**
+         * Registers a Attack activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        attack: function(targetEntity) {
+            var attack = new ActivityManager.Attack(this);
+            attack.setTarget(targetEntity);
+            this.activityManager.add(attack);
+        },
+
+        /**
          * Removes all activity from the ActivityManager instance
          * @return {void}
          */
