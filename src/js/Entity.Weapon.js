@@ -18,7 +18,6 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
 
     Weapon.prototype = {
 
-        target: null,
         targetEntity: null,
         manager: null,
 
@@ -44,7 +43,15 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
         },
 
         scan: function() {
-            
+            if (this.ready && !this.targetEntity) {
+                var entity = this.getManager().getEntity();
+                var targetEntity = entity.getClosestHostileEntityInRange();
+                if (!targetEntity) {
+                    this.clearTargetEntity();
+                } else {
+                    this.setTargetEntity(targetEntity);
+                }
+            }
         },
 
         recharge: function() {
@@ -72,12 +79,12 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
             this.manager = manager;
         },
 
-        setTarget: function(entity) {
-            this.target = entity;
+        setTargetEntity: function(entity) {
+            this.targetEntity = entity;
         },
 
-        clearTarget: function() {
-            this.target = null;
+        clearTargetEntity: function() {
+            this.targetEntity = null;
         },
 
         getId: function() {
@@ -112,8 +119,8 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
             return this.data.upgrade_level;
         },
 
-        getTarget: function() {
-            return this.target;
+        getTargetEntity: function() {
+            return this.targetEntity;
         },
 
         isReady: function() {
