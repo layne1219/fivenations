@@ -144,6 +144,24 @@ define('Universal.EventEmitter', [
                     }
 
                     return this;
+                },
+                /**
+                 * Executes the attached logic for attack the given target
+                 * @return {void}
+                 * @chainable
+                 */
+                attack: function(options) {
+
+                    var targetEntity = options.targetEntity;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/attack',
+                        targets: entities,
+                        data: {
+                            targetEntity: targetEntity.getGUID()
+                        }
+                    });
+
                 }
 
             }
