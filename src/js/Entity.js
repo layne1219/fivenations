@@ -209,6 +209,16 @@ define('Entity', [
         },
 
         /**
+         * removing custom callbacks to the passed events
+         * @param  {string}   event    
+         * @param  {Function} callback 
+         * @return {void}            
+         */  
+        off: function(event, callback) {
+            this.eventDispatcher.removeEventListener(event, callback);
+        },
+
+        /**
          * Rendering the entity
          * @return {void} 
          */
@@ -299,6 +309,7 @@ define('Entity', [
             var attack = new ActivityManager.Attack(this);
             attack.setTarget(targetEntity);
             this.activityManager.add(attack);
+            this.weaponManager.setTargetEntity(targetEntity);
         },
 
         /**
@@ -307,6 +318,7 @@ define('Entity', [
          */
         reset: function() {
             this.activityManager.removeAll();
+            this.weaponManager.clearTargetEntity();
         },
 
         /**

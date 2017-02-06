@@ -70,7 +70,28 @@ define('Entity.WeaponManager', [
          */
         update: function() {
             this.weapons.forEach(function(weapon) {
-                weapon.recharge();
+                weapon.update();
+            });
+        },
+
+        /**
+         * Resets the targets of the weapons
+         * @return {void}
+         **/
+        clearTargetEntity: function() {
+            this.weapons.forEach(function(weapon) {
+                weapon.clearTargetEntity();
+            });
+        },
+
+        /**
+         * Sets the target for all the weapon to the given entity
+         * @param {object} targetEntity Entity instance 
+         * @return {void}
+         */
+        setTargetEntity: function(targetEntity) {
+            this.weapons.forEach(function(weapon) {
+                weapon.setTargetEntity(targetEntity);
             });
         },
 

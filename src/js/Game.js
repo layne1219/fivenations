@@ -270,32 +270,17 @@ define('Game', [
                 });
             }
 
-            setTimeout(function fire() {
-
-                var entities = EntityManager
-                    .getInstance()
-                    .entities();
-
-                this.eventEmitter.synced.entities(entities[0].getGUID()).fire({
-                    targetEntity: entities[1]
-                });
-
-                this.eventEmitter.synced.entities(entities[1].getGUID()).fire({
-                    targetEntity: entities[0]
-                });                
-
-                setTimeout(fire.bind(this), 100);
-
-            }.bind(this), 3000);
 
             setTimeout(function() {
                 var entities = EntityManager
                     .getInstance()
                     .entities();
 
-                entities[0].attack(entities[1]);
+                this.eventEmitter.synced.entities(entities[0].getGUID()).attack({
+                    targetEntity: entities[1]
+                });
 
-            }, 3000);
+            }.bind(this), 3000);
 
         },
 

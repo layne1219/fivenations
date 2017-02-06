@@ -1,4 +1,4 @@
-define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
+define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitter, Util) {
 
     var ns = window.fivenations;
     var guid = 0;
@@ -14,6 +14,10 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
         this.ready = true;
         this.guid = guid;
         guid += 1;
+
+        this.onTargetEntityRemove = function() {
+            this.clearTargetEntity();
+        }.bind(this);
     }
 
     Weapon.prototype = {
@@ -21,42 +25,16 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
         targetEntity: null,
         manager: null,
 
-        fire: function(targetEntity) {
-
-            var targetSprite = targetEntity.getSprite();
-            var entity = this.manager.getEntity();
-            var sprite = entity.getSprite();
-            var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
-
-            EventEmitter.getInstance().synced.effects.add({
-                id: this.data.effect,
-                emitter: this,
-                x: sprite.x,
-                y: sprite.y,
-                rotation: rotation,
-                velocity: !this.data.acceleration && this.data.maxVelocity,
-                maxVelocity: this.data.maxVelocity,
-                acceleration: this.data.acceleration
-            });
-
-            this.freeze(this.data.cooldown);
-        },
-
-        scan: function() {
-            if (this.ready && !this.targetEntity) {
-                var entity = this.getManager().getEntity();
-                var targetEntity = entity.getClosestHostileEntityInRange();
-                if (!targetEntity) {
-                    this.clearTargetEntity();
-                } else {
-                    this.setTargetEntity(targetEntity);
-                }
+        update: function() {
+            if (this.ready) {
+                this.scan();
+                this.release();
+            } else {
+                this.recharge();
             }
         },
 
         recharge: function() {
-            if (this.ready) return;
-
             if (this.freezeTime > 0) {
                 this.freezeTime -= 1;
             } else {
@@ -64,6 +42,49 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
                 this.ready = true;
             }
         },
+
+        scan: function() {
+            if (this.targetEntity) return;
+
+            var targetEntity = this.entity.getClosestHostileEntityInRange();
+            if (!targetEntity) {
+                this.clearTargetEntity();
+            } else {
+                this.setTargetEntity(targetEntity);
+            }
+        },
+
+        release: function() {
+            if (this.targetEntity) {
+                this.fire(this.targetEntity);
+            }
+        },
+
+        fire: function(targetEntity) {
+
+            var targetSprite = targetEntity.getSprite();
+            var sprite = this.entity.getSprite();
+            var distance = Util.distanceBetweenSprites(sprite, targetSprite);
+
+            if (distance <= this.getRange()) {
+
+                var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
+
+                EventEmitter.getInstance().synced.effects.add({
+                    id: this.data.effect,
+                    emitter: this,
+                    x: sprite.x,
+                    y: sprite.y,
+                    rotation: rotation,
+                    velocity: !this.data.acceleration && this.data.maxVelocity,
+                    maxVelocity: this.data.maxVelocity,
+                    acceleration: this.data.acceleration
+                });
+
+                this.freeze(this.data.cooldown);
+            }
+
+        },        
 
         activate: function() {
             this.ready = true;
@@ -77,10 +98,17 @@ define('Entity.Weapon', ['Universal.EventEmitter'], function(EventEmitter) {
         setManager: function(manager) {
             if (!manager) throw 'Invalid WeaponManager is passed!';
             this.manager = manager;
+            this.entity = manager.getEntity();
         },
 
         setTargetEntity: function(entity) {
+            
+            if (this.targetEntity) {
+                this.targetEntity.off('remove', this.onTargetEntityRemove);
+            }
+
             this.targetEntity = entity;
+            this.targetEntity.on('remove', this.onTargetEntityRemove);
         },
 
         clearTargetEntity: function() {

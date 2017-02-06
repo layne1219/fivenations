@@ -21,7 +21,7 @@ define('Universal.Event.Entity.Attack', ['Universal.Event'], function(Event) {
             return;
         }
         options.targets.forEach(function(id) {
-            var targetEntity = options.data.targetEntity;
+            var targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
             ns.game.entityManager.entities(id).attack(targetEntity);
         });
     };
