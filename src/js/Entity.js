@@ -466,6 +466,14 @@ define('Entity', [
             return playerManager.isPlayerHostileTo(thisPlayer, thatPlayer);
         },
 
+        /**
+         * Returns whethe the entity can be a target of other entities
+         * @return {Boolean} true if the entity is targetable
+         */
+        isTargetable: function() {
+            return true;
+        },
+
         getSprite: function() {
             return this.sprite;
         },

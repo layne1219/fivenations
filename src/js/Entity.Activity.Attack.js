@@ -8,6 +8,10 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
     function Attack(entity) {
         Activity.call(this);
         this.entity = entity;
+
+        this.onTargetEntityRemove = function() {
+            this.kill();
+        }.bind(this);        
     }
 
     Attack.prototype = new Activity;
@@ -30,8 +34,8 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
         var distance;
         var range;
 
-        if (!this.target) {
-            return;
+        if (!this.target.isTargetable()) {
+            this.kill();
         }
 
         distance = Util.distanceBetween(this.entity, this.target);
@@ -51,7 +55,13 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
         if (!entity) {
             throw 'Invalid entity is passed to be followed!';
         }
+
+        if (this.target) {
+            this.target.off('remove', this.onTargetEntityRemove);
+        }
+
         this.target = entity;
+        this.target.on('remove', this.onTargetEntityRemove);
     };
 
     return Attack;
