@@ -7,6 +7,7 @@ define('Entity.WeaponManager', [
     var cache = {};
     var minRange;
     var maxRange;
+    var hasOffensiveWeapon;
 
     /**
      * Returns a weapon object by the given Id
@@ -155,8 +156,20 @@ define('Entity.WeaponManager', [
                 }, 0);
             }
             return maxRange;
-        }        
+        },
 
+        hasOffensiveWeapon: function() {
+            if (hasOffensiveWeapon === undefined) {
+                for (var i = weapons.length - 1; i >= 0; i--) {
+                    if (weapons[i].getDamage() > 0 || weapons[i].getDamageShield()) {
+                        hasOffensiveWeapon = true;
+                        break;
+                    }
+                }
+            }
+            return hasOffensiveWeapon;
+        }
+        
     };
 
     return WeaponManager;

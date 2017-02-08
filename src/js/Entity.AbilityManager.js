@@ -22,6 +22,7 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON) {
 
             this.entity = entity;
             this.dataObject = entity.getDataObject();
+            this.weaponManager = entity.getWeaponManager();
         },
 
         /**
@@ -40,6 +41,10 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON) {
                 ]);
             }
 
+            if (this.canAttack()) {
+                this.abilities.push(abilitiesJSON.attack);
+            }
+
         },
 
         /**
@@ -48,6 +53,14 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON) {
          */
         canMove: function() {
             return this.dataObject.getSpeed() > 0;
+        },
+
+        /**
+         * Returns whether the entity can attack hostile entities
+         * @return {boolean} 
+         */
+        canAttack: function() {
+            return this.weaponManager.hasOffensiveWeapon();
         },
 
         /**
