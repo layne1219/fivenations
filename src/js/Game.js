@@ -120,16 +120,47 @@ define('Game', [
             this.userPointer.on('rightbutton/down', function() {
 
                 var coords = this.userPointer.getRealCoords();
+                var targetEntity;
 
-                this.eventEmitter
-                    .synced
-                    .entities(':user:selected')
-                    .move({
-                        x: coords.x,
-                        y: coords.y
-                    });
+                // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
+                if (GUI.getInstance().isHover()) {
+                    this.userPointer.dispatch('rightbutton/down/gui');
+                    return;
+                }
 
-                this.GUI.putClickAnim(coords.x, coords.y);
+                var entitiesHovering = this.entityManager.entities().filter(function(entity) {
+                    if (entity.isHover()){
+                        targetEntity = entity;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+                if (entitiesHovering.length > 0) {
+
+                    this.eventEmitter
+                        .synced
+                        .entities(':user:selected')
+                        .attack({
+                            targetEntity: targetEntity
+                        });
+
+                    targetEntity.selectedAsTarget();
+
+                } else {
+
+                    this.eventEmitter
+                        .synced
+                        .entities(':user:selected')
+                        .move({
+                            x: coords.x,
+                            y: coords.y
+                        });
+
+                    this.GUI.putClickAnim(coords.x, coords.y);
+
+                }                          
 
             }.bind(this));
 

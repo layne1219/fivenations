@@ -26,7 +26,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         manager: null,
 
         update: function() {
-            if (this.ready) {
+            if (this.ready && this.isReleasable()) {
                 this.scan();
                 this.release();
             } else {
@@ -153,6 +153,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
 
         isReady: function() {
             return this.ready;
+        },
+
+        isReleasable: function() {
+            return true;
         }
 
     }

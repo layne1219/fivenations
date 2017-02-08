@@ -372,6 +372,15 @@ define('Entity', [
             }
         },
 
+
+        /**
+         * Selects the entity as a target of another entity
+         * @return {void}
+         */
+        selectedAsTarget: function() {
+            this.eventDispatcher.dispatch('selectedAsTarget');
+        },
+
         /**
          * Unselects entity
          * @return {void}
