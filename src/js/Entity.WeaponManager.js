@@ -158,10 +158,14 @@ define('Entity.WeaponManager', [
             return maxRange;
         },
 
+        /**
+         * Returns whether the entity has any sort of weapon that can damage a hostile enemy
+         * @return {boolean} 
+         */
         hasOffensiveWeapon: function() {
             if (hasOffensiveWeapon === undefined) {
-                for (var i = weapons.length - 1; i >= 0; i--) {
-                    if (weapons[i].getDamage() > 0 || weapons[i].getDamageShield()) {
+                for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
+                    if (this.weapons[i].getDamage() > 0 || this.weapons[i].getDamageShield()) {
                         hasOffensiveWeapon = true;
                         break;
                     }

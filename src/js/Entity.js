@@ -7,11 +7,25 @@ define('Entity', [
     'Entity.WeaponManager',
     'EffectManager',
     'GUI',
+    'GUI.ActivityManager',
     'UserKeyboard',
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(PlayerManager, EventEmitter, ActivityManager, MotionManager, AbilityManager, WeaponManager, EffectManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
+], function(
+    PlayerManager, 
+    EventEmitter, 
+    ActivityManager, 
+    MotionManager, 
+    AbilityManager, 
+    WeaponManager, 
+    EffectManager, 
+    GUI,
+    GUIActivityManager,
+    UserKeyboard, 
+    UserPointer, 
+    EventBus, 
+    Util) {
 
     var
 
@@ -100,8 +114,13 @@ define('Entity', [
         extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
             // input events registered on the sprite object
             sprite.events.onInputDown.add(function() {
-                var now,
-                    game = this.game;
+                var now;
+                var game = this.game;
+
+                if (GUIActivityManager.getInstance().hasActiveSelection()) {
+                    return;
+                }
+
                 if (UserPointer.getInstance().isLeftButtonDown()) {
                     // If the user holds SHIFT we will extend the number of selected entities
                     if (!UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
@@ -185,11 +204,11 @@ define('Entity', [
         // MotionManager for altering the coordinates of the entity
         this.motionManager = new MotionManager(this);
 
-        // AbilityManager for determining which abilities are available for this entity
-        this.abilityManager = new AbilityManager(this);
-
         // WeaponManager for handling wepon objects an entity is in a possesion of 
         this.weaponManager = new WeaponManager(this);
+
+        // AbilityManager for determining which abilities are available for this entity
+        this.abilityManager = new AbilityManager(this);
 
         // Player instance
         this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
