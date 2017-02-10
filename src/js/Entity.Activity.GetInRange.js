@@ -35,6 +35,7 @@ define('Entity.Activity.GetInRange', [
         if (distance <= range) {
             this.entity.stop();
             this.kill();
+            return;
         }
 
         if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
