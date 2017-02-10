@@ -28,7 +28,8 @@ define('Universal.EventBusExecuter', [
                             evtObj = factory.getEventObjectById(evt.id);
                             evtObj.execute({
                                 targets: evt.targets,
-                                data: evt.data
+                                data: evt.data,
+                                resetActivityQueue: evt.resetActivityQueue
                             });
                             emitter.local.dispatch(evt.id);
                         } catch (ex) {

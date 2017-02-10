@@ -41,6 +41,10 @@ define('Universal.Event.Entity.Fire', [
                 return false;
             });
 
+            if (options.resetActivityQueue) {
+                entity.reset();    
+            }
+
             entity.fire(targetEntity, weapons);
 
         }); 

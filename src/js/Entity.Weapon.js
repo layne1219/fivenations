@@ -151,6 +151,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             return this.targetEntity;
         },
 
+        isSelfContained: function() {
+            return this.data.self_contained || false;  
+        },
+
         isReady: function() {
             return this.ready;
         },

@@ -91,7 +91,10 @@ define('Entity.WeaponManager', [
          * @return {void}
          */
         setTargetEntity: function(targetEntity) {
-            this.weapons.forEach(function(weapon) {
+            this.weapons.filter(function(weapon) {
+                return !weapon.isSelfContained();
+            })
+            .forEach(function(weapon) {
                 weapon.setTargetEntity(targetEntity);
             });
         },

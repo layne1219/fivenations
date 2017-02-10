@@ -44,7 +44,8 @@ define('Universal.EventEmitter', [
                     EventBus.getInstance().add({
                         id: 'entity/move',
                         targets: entities,
-                        data: data
+                        data: data,
+                        resetActivityQueue: options.resetActivityQueue
                     });
 
                     return this;
@@ -60,7 +61,8 @@ define('Universal.EventEmitter', [
                     EventBus.getInstance().add({
                         id: 'entity/patrol',
                         targets: entities,
-                        data: options
+                        data: options,
+                        resetActivityQueue: options.resetActivityQueue
                     });
 
                     return this;
@@ -70,11 +72,12 @@ define('Universal.EventEmitter', [
                  * @return {void}
                  * @chainable
                  */
-                stop: function() {
+                stop: function(options) {
 
                     EventBus.getInstance().add({
                         id: 'entity/stop',
-                        targets: entities
+                        targets: entities,
+                        resetActivityQueue: options.resetActivityQueue
                     });
 
                     return this;
@@ -137,8 +140,9 @@ define('Universal.EventEmitter', [
                             targets: entities,
                             data: {
                                 weaponGUIDs: weaponGUIDs,
-                                targetEntity: targetEntity.getGUID()
-                            }
+                                targetEntity: targetEntity.getGUID(),
+                            },
+                            resetActivityQueue: options.resetActivityQueue
                         });
 
                     }
@@ -159,7 +163,8 @@ define('Universal.EventEmitter', [
                         targets: entities,
                         data: {
                             targetEntity: targetEntity.getGUID()
-                        }
+                        },
+                        resetActivityQueue: options.resetActivityQueue
                     });
 
                 }

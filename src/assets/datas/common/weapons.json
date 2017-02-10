@@ -99,7 +99,8 @@
     "cooldown": 20,
     "homing": 0,
     "type": "cannon",
-    "specialty": "Only aim at Fighters"
+    "specialty": "Only aim at Fighters",
+    "self_contained": true
   },
   {
     "name": "Repairing Hangar",

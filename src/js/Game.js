@@ -120,7 +120,9 @@ define('Game', [
             this.userPointer.on('rightbutton/down', function() {
 
                 var coords = this.userPointer.getRealCoords();
+                var resetActivityQueue = true;
                 var targetEntity;
+                var entitiesHovering;
 
                 // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
                 if (GUI.getInstance().isHover()) {
@@ -128,7 +130,7 @@ define('Game', [
                     return;
                 }
 
-                var entitiesHovering = this.entityManager.entities().filter(function(entity) {
+                entitiesHovering = this.entityManager.entities().filter(function(entity) {
                     if (entity.isHover()){
                         targetEntity = entity;
                         return true;
@@ -137,13 +139,18 @@ define('Game', [
                     }
                 });
 
+                if (UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
+                    resetActivityQueue = false;
+                }
+
                 if (entitiesHovering.length > 0) {
 
                     this.eventEmitter
                         .synced
                         .entities(':user:selected')
                         .attack({
-                            targetEntity: targetEntity
+                            targetEntity: targetEntity,
+                            resetActivityQueue: resetActivityQueue
                         });
 
                     targetEntity.selectedAsTarget();
@@ -155,7 +162,8 @@ define('Game', [
                         .entities(':user:selected')
                         .move({
                             x: coords.x,
-                            y: coords.y
+                            y: coords.y,
+                            resetActivityQueue: resetActivityQueue
                         });
 
                     this.GUI.putClickAnim(coords.x, coords.y);
