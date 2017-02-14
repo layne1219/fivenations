@@ -69,7 +69,10 @@ define('Entity.WeaponManager', [
          * @param {boolean} authoritative Determines whether the user is authoritative or not
          * @return {void}
          */
-        update: function() {
+        update: function(authoritative) {
+            // non authoritative players don't need to exectue these'
+            if (!authoritative) return;
+
             this.weapons.forEach(function(weapon) {
                 weapon.update();
             });

@@ -167,6 +167,27 @@ define('Universal.EventEmitter', [
                         resetActivityQueue: options.resetActivityQueue
                     });
 
+                    return this;
+                },
+                /**
+                 * Inflicts a defined damage to the specify entities
+                 * @return {void}
+                 * @chainable
+                 */
+                damage: function(options) {
+
+                    var weapon = options.weapon;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/damage',
+                        targets: entities,
+                        data: {
+                            damage: weapon.getDamage(),
+                            damageShield: weapon.getDamageShield()
+                        }
+                    });
+
+                    return this;
                 }
 
             }

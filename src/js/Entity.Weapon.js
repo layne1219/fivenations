@@ -49,8 +49,14 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             var targetEntity = this.entity.getClosestHostileEntityInRange();
             if (!targetEntity) {
                 this.clearTargetEntity();
-            } else {
+            } else if (this.isSelfContained()) {
                 this.setTargetEntity(targetEntity);
+            } else {
+                EventEmitter
+                    .getInstance()
+                    .synced
+                    .entities(this.entity.getGUID())
+                    .attack({ targetEntity: targetEntity });                
             }
         },
 
@@ -99,6 +105,8 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (!manager) throw 'Invalid WeaponManager is passed!';
             this.manager = manager;
             this.entity = manager.getEntity();
+            this.entityType = this.entity.getDataObject().getType();
+            this.unconditionalRelese = this.entityType === 'Fighetr' || this.isSelfContained();
         },
 
         setTargetEntity: function(entity) {
@@ -152,7 +160,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         },
 
         isSelfContained: function() {
-            return this.data.self_contained || false;  
+            return this.data.self_contained;  
         },
 
         isReady: function() {
@@ -160,7 +168,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         },
 
         isReleasable: function() {
-            return true;
+            if (this.unconditionalRelese) return true;
+            
+            // if the entity stands still
+            return this.entity.getMotionManager().movement.velocity === 0;
         }
 
     }

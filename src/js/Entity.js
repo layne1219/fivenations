@@ -70,9 +70,9 @@ define('Entity', [
             sprite.x = 0;
             sprite.y = 0;
 
-            // reducing the hitArea according the one specified in the realated DataObject
+            // reducing the hitArea according to the one specified in the realated DataObject
             sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-            sprite.body.setSize(origWidth, origHeight, sprite.width / 2 - origWidth / 2, sprite.height / 2 - origHeight / 2);
+            sprite.body.setSize(origWidth, origHeight, 0, 0);
 
             sprite._parent = entity;
 
@@ -241,11 +241,11 @@ define('Entity', [
          * Rendering the entity
          * @return {void} 
          */
-        update: function() {
+        update: function(authoritative) {
 
             this.activityManager.update();
             this.motionManager.update();
-            this.weaponManager.update();
+            this.weaponManager.update(authoritative);
 
         },
 
@@ -329,6 +329,14 @@ define('Entity', [
             attack.setTarget(targetEntity);
             this.activityManager.add(attack);
             this.weaponManager.setTargetEntity(targetEntity);
+        },
+
+        /**
+         * Alters entity attributes according to the given parameters
+         * @param {object} params 
+         */
+        damage: function(params) {
+            this.dataObject().damage(params);
         },
 
         /**

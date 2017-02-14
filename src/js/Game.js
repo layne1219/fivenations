@@ -279,6 +279,15 @@ define('Game', [
                 authorised: true
             });
 
+            this.eventEmitter.synced.players.add({
+                guid: myGUID,
+                name: 'Test Player 2',
+                team: 2,
+                user: false,
+                authorised: false
+            });
+
+
             setTimeout(function() {
                 this.eventEmitter.synced.players(':user').alter({
                     titanium: 500
@@ -289,11 +298,11 @@ define('Game', [
             //                          Generating entities
             // -----------------------------------------------------------------------
             // TENTATIVE CODE SNIPPET
-            for (var i = 0; i >= 0; i -= 1) {
+            for (var i = 3; i >= 0; i -= 1) {
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'hurricane',
-                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 2, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
@@ -308,18 +317,6 @@ define('Game', [
                     y: 450 + Util.rnd(0, 100)
                 });
             }
-
-
-            setTimeout(function() {
-                var entities = EntityManager
-                    .getInstance()
-                    .entities();
-
-                this.eventEmitter.synced.entities(entities[0].getGUID()).attack({
-                    targetEntity: entities[1]
-                });
-
-            }.bind(this), 3000);
 
         },
 
