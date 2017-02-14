@@ -32,9 +32,15 @@ define('Universal.Event.Entity.Move', ['Universal.Event'], function(Event) {
         var x, y;
 
         options.targets.forEach(function(id, idx) {
+            var entity = ns.game.entityManager.entities(id);
             x = options.data.x || options.data[idx].x;
             y = options.data.y || options.data[idx].y;
-            ns.game.entityManager.entities(id).moveTo(x, y);
+
+            if (options.resetActivityQueue) {
+                entity.reset();    
+            }
+
+            entity.moveTo(x, y);
         });
     };
 

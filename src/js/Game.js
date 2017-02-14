@@ -34,6 +34,7 @@ define('Game', [
     'use strict';
 
     var ns = window.fivenations;
+    var authoritative = false;
 
     function Game() {}
 
@@ -82,6 +83,7 @@ define('Game', [
             // -----------------------------------------------------------------------
             EntityManager.setGame(this.game);
             this.entityManager = EntityManager.getInstance();
+            this.entityManager.initQuadTree(this.map);
 
             // -----------------------------------------------------------------------
             //                              EffectManager
@@ -104,6 +106,9 @@ define('Game', [
                 effectManager: this.effectManager
             });
             this.eventEmitter = EventEmitter.getInstance(); 
+            this.eventEmitter.local.addEventListener('player/create', function() {
+                authoritative = this.playerManager.getUser().isAuthorised();
+            }.bind(this));
 
             // -----------------------------------------------------------------------
             //                              UserPointer
@@ -115,16 +120,55 @@ define('Game', [
             this.userPointer.on('rightbutton/down', function() {
 
                 var coords = this.userPointer.getRealCoords();
+                var resetActivityQueue = true;
+                var targetEntity;
+                var entitiesHovering;
 
-                this.eventEmitter
-                    .synced
-                    .entities(':user:selected')
-                    .move({
-                        x: coords.x,
-                        y: coords.y
-                    });
+                // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
+                if (GUI.getInstance().isHover()) {
+                    this.userPointer.dispatch('rightbutton/down/gui');
+                    return;
+                }
 
-                this.GUI.putClickAnim(coords.x, coords.y);
+                entitiesHovering = this.entityManager.entities().filter(function(entity) {
+                    if (entity.isHover()){
+                        targetEntity = entity;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+                if (UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
+                    resetActivityQueue = false;
+                }
+
+                if (entitiesHovering.length > 0) {
+
+                    this.eventEmitter
+                        .synced
+                        .entities(':user:selected')
+                        .attack({
+                            targetEntity: targetEntity,
+                            resetActivityQueue: resetActivityQueue
+                        });
+
+                    targetEntity.selectedAsTarget();
+
+                } else {
+
+                    this.eventEmitter
+                        .synced
+                        .entities(':user:selected')
+                        .move({
+                            x: coords.x,
+                            y: coords.y,
+                            resetActivityQueue: resetActivityQueue
+                        });
+
+                    this.GUI.putClickAnim(coords.x, coords.y);
+
+                }                          
 
             }.bind(this));
 
@@ -259,27 +303,21 @@ define('Game', [
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'orca',
-                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 1,
                     x: 200 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
 
-            setTimeout(function fire() {
 
+            setTimeout(function() {
                 var entities = EntityManager
                     .getInstance()
                     .entities();
 
-                this.eventEmitter.synced.entities(entities[0].getGUID()).fire({
+                this.eventEmitter.synced.entities(entities[0].getGUID()).attack({
                     targetEntity: entities[1]
                 });
-
-                this.eventEmitter.synced.entities(entities[1].getGUID()).fire({
-                    targetEntity: entities[0]
-                });                
-
-                setTimeout(fire.bind(this), 100);
 
             }.bind(this), 3000);
 
@@ -294,13 +332,13 @@ define('Game', [
             this.map.update(this.entityManager);
 
             // updating entity attributes according to the time elapsed
-            this.entityManager.update(this.game.time.elapsedMS);
+            this.entityManager.update(authoritative, this.game.time.elapsedMS);
 
             // updates effects
-            this.effectManager.update();
+            this.effectManager.update(authoritative);
 
             // collision handling
-            this.collisionManager.update();
+            this.collisionManager.update(authoritative);
 
             // Rendering GUI elements
             this.GUI.update();

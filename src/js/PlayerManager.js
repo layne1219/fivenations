@@ -41,7 +41,16 @@ define('PlayerManager', ['Player'], function(Player) {
                         return players[i];
                     }
                 }
-            },            
+            },
+
+            getPlayerByTeam: function(team) {
+                if (!team) throw 'First parameter must be a valid Team Id!';
+                for (var i = players.length - 1; i >= 0; i -= 1) {
+                    if (players[i].getTeam() === team) {
+                        return players[i];
+                    }
+                }
+            },                    
 
             getPlayersNumber: function() {
                 return players.length;
@@ -49,6 +58,10 @@ define('PlayerManager', ['Player'], function(Player) {
 
             getColors: function() {
                 return colors;
+            },
+
+            isPlayerHostileTo: function(a, b) {
+                return a.getTeam() !== b.getTeam();
             }
 
         };

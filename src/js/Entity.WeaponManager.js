@@ -5,6 +5,9 @@ define('Entity.WeaponManager', [
 ], function(Weapon, weaponsJSON, Util) {
 
     var cache = {};
+    var minRange;
+    var maxRange;
+    var hasOffensiveWeapon;
 
     /**
      * Returns a weapon object by the given Id
@@ -63,11 +66,36 @@ define('Entity.WeaponManager', [
 
         /**
          * updates weapons on every tick if needed
+         * @param {boolean} authoritative Determines whether the user is authoritative or not
          * @return {void}
          */
         update: function() {
             this.weapons.forEach(function(weapon) {
-                weapon.recharge();
+                weapon.update();
+            });
+        },
+
+        /**
+         * Resets the targets of the weapons
+         * @return {void}
+         **/
+        clearTargetEntity: function() {
+            this.weapons.forEach(function(weapon) {
+                weapon.clearTargetEntity();
+            });
+        },
+
+        /**
+         * Sets the target for all the weapon to the given entity
+         * @param {object} targetEntity Entity instance 
+         * @return {void}
+         */
+        setTargetEntity: function(targetEntity) {
+            this.weapons.filter(function(weapon) {
+                return !weapon.isSelfContained();
+            })
+            .forEach(function(weapon) {
+                weapon.setTargetEntity(targetEntity);
             });
         },
 
@@ -99,8 +127,56 @@ define('Entity.WeaponManager', [
             return this.weapons.filter(function(weapon) {
                 return weapon.isReady() && weapon.getRange() >= distance;
             });
-        }
+        },
 
+        /**
+         * Returns the range the entity must close on the target
+         * in order to make all weapons able to fire
+         * @return {integer} the calcualted range in pixels 
+         */
+        getMinRange: function() {
+            if (!minRange) {
+                minRange = this.weapons.reduce(function(min, weapon) {
+                    var range = weapon.getRange();
+                    if (range < min) return range;
+                    return min; 
+                }, 9999);
+            }
+            return minRange;
+        },
+
+        /**
+         * Returns the range the entity must close on the target
+         * in order to make all weapons able to fire
+         * @return {integer} the calcualted range in pixels 
+         */
+        getMaxRange: function() {
+            if (!maxRange) {
+                maxRange = this.weapons.reduce(function(max, weapon) {
+                    var range = weapon.getRange();
+                    if (range > max) return range;
+                    return max; 
+                }, 0);
+            }
+            return maxRange;
+        },
+
+        /**
+         * Returns whether the entity has any sort of weapon that can damage a hostile enemy
+         * @return {boolean} 
+         */
+        hasOffensiveWeapon: function() {
+            if (hasOffensiveWeapon === undefined) {
+                for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
+                    if (this.weapons[i].getDamage() > 0 || this.weapons[i].getDamageShield()) {
+                        hasOffensiveWeapon = true;
+                        break;
+                    }
+                }
+            }
+            return hasOffensiveWeapon;
+        }
+        
     };
 
     return WeaponManager;

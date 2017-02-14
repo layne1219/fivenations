@@ -154,6 +154,21 @@ define('Util', function() {
 
         },
 
+        /**
+         * Measures the distance between the given sprites
+         * @param {object} source first entity
+         * @param {object} target second entity
+         * @return {integer} distance in pixels 
+         */
+        distanceBetweenSprites: function (source, target) {
+
+            var dx = source.x - target.x;
+            var dy = source.y - target.y;
+
+            return Math.sqrt(dx * dx + dy * dy);
+
+        },        
+
         // Eventlistener object
         EventDispatcher: (function() {
 

@@ -7,11 +7,25 @@ define('Entity', [
     'Entity.WeaponManager',
     'EffectManager',
     'GUI',
+    'GUI.ActivityManager',
     'UserKeyboard',
     'UserPointer',
     'Universal.EventBus',
     'Util'
-], function(PlayerManager, EventEmitter, ActivityManager, MotionManager, AbilityManager, WeaponManager, EffectManager, GUI, UserKeyboard, UserPointer, EventBus, Util) {
+], function(
+    PlayerManager, 
+    EventEmitter, 
+    ActivityManager, 
+    MotionManager, 
+    AbilityManager, 
+    WeaponManager, 
+    EffectManager, 
+    GUI,
+    GUIActivityManager,
+    UserKeyboard, 
+    UserPointer, 
+    EventBus, 
+    Util) {
 
     var
 
@@ -30,6 +44,9 @@ define('Entity', [
          * @return {[object]} 
          */
         extendSprite = function(entity, sprite, dataObject) {
+
+            var origWidth = dataObject.getWidth();
+            var origHeight = dataObject.getHeight();
 
             // actiavting the ARCADE physics on the sprite object
             entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -54,8 +71,8 @@ define('Entity', [
             sprite.y = 0;
 
             // reducing the hitArea according the one specified in the realated DataObject
-            sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
-            sprite.body.setSize(dataObject.getWidth(), dataObject.getHeight());
+            sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
+            sprite.body.setSize(origWidth, origHeight, sprite.width / 2 - origWidth / 2, sprite.height / 2 - origHeight / 2);
 
             sprite._parent = entity;
 
@@ -97,8 +114,13 @@ define('Entity', [
         extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
             // input events registered on the sprite object
             sprite.events.onInputDown.add(function() {
-                var now,
-                    game = this.game;
+                var now;
+                var game = this.game;
+
+                if (GUIActivityManager.getInstance().hasActiveSelection()) {
+                    return;
+                }
+
                 if (UserPointer.getInstance().isLeftButtonDown()) {
                     // If the user holds SHIFT we will extend the number of selected entities
                     if (!UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
@@ -182,11 +204,14 @@ define('Entity', [
         // MotionManager for altering the coordinates of the entity
         this.motionManager = new MotionManager(this);
 
+        // WeaponManager for handling wepon objects an entity is in a possesion of 
+        this.weaponManager = new WeaponManager(this);
+
         // AbilityManager for determining which abilities are available for this entity
         this.abilityManager = new AbilityManager(this);
 
-        // WeaponManager for handling wepon objects an entity is in a possesion of 
-        this.weaponManager = new WeaponManager(this);
+        // Player instance
+        this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
 
     }
 
@@ -200,6 +225,16 @@ define('Entity', [
          */
         on: function(event, callback) {
             this.eventDispatcher.addEventListener(event, callback);
+        },
+
+        /**
+         * removing custom callbacks to the passed events
+         * @param  {string}   event    
+         * @param  {Function} callback 
+         * @return {void}            
+         */  
+        off: function(event, callback) {
+            this.eventDispatcher.removeEventListener(event, callback);
         },
 
         /**
@@ -274,11 +309,35 @@ define('Entity', [
         },
 
         /**
+         * Registers a GetInRange activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        getInRange: function(targetEntity) {
+            var getInRange = new ActivityManager.GetInRange(this);
+            getInRange.setTarget(targetEntity);
+            this.activityManager.add(getInRange);
+        },
+
+        /**
+         * Registers a Attack activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        attack: function(targetEntity) {
+            var attack = new ActivityManager.Attack(this);
+            attack.setTarget(targetEntity);
+            this.activityManager.add(attack);
+            this.weaponManager.setTargetEntity(targetEntity);
+        },
+
+        /**
          * Removes all activity from the ActivityManager instance
          * @return {void}
          */
         reset: function() {
             this.activityManager.removeAll();
+            this.weaponManager.clearTargetEntity();
         },
 
         /**
@@ -332,6 +391,15 @@ define('Entity', [
             }
         },
 
+
+        /**
+         * Selects the entity as a target of another entity
+         * @return {void}
+         */
+        selectedAsTarget: function() {
+            this.eventDispatcher.dispatch('selectedAsTarget');
+        },
+
         /**
          * Unselects entity
          * @return {void}
@@ -356,6 +424,24 @@ define('Entity', [
         stopLevitating: function() {
             this.motionManager.stopLevitating();
         },
+
+        /**
+         * Sets the given entity as the closest hostile entity in attack range of this entity
+         * @param {object} entity Closest entity that is in a hostile relation with the one initiated the call
+         * return {object} Entity
+         */
+        setClosestHostileEntityInRange: function(entity) {
+            this.closestHostileEntity = entity;
+        },
+
+        /**
+         * Sets the given entity as the closest ally entity in attack range of this entity
+         * @param {object} entity Closest entity that is an ally of the one initiated the call
+         * return {object} Entity
+         */
+        setClosestAllyEntityInRange: function(entity) {
+            this.closestAllyEntity = entity;
+        },        
 
         hasSlowManeuverability: function() {
             return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
@@ -395,6 +481,27 @@ define('Entity', [
             return this.getDataObject().getTeam() === p.getTeam();
         },
 
+        /**
+         * Returns whether the given entity is hostile or not
+         * @param  {object} entity Entity instance
+         * @return {Boolean} true if the given entity is hostile
+         */
+        isEnemy: function(entity) {
+            var playerManager = PlayerManager.getInstance();
+            var thisPlayer = this.getPlayer();
+            var thatPlayer = entity.getPlayer();
+            if (thisPlayer === thatPlayer) return false;
+            return playerManager.isPlayerHostileTo(thisPlayer, thatPlayer);
+        },
+
+        /**
+         * Returns whethe the entity can be a target of other entities
+         * @return {Boolean} true if the entity is targetable
+         */
+        isTargetable: function() {
+            return true;
+        },
+
         getSprite: function() {
             return this.sprite;
         },
@@ -419,6 +526,10 @@ define('Entity', [
             return this.weaponManager;
         },
 
+        getPlayer: function() {
+            return this.player;
+        },
+
         getGUID: function() {
             return this.guid;
         },
@@ -441,6 +552,18 @@ define('Entity', [
                 x = Math.floor(sprite.x / map.getTileWidth()),
                 y = Math.floor(sprite.y / map.getTileHeight());
             return [x, y];
+        },
+
+        /**
+         * Returns the closest entity that is in hostile relation to the one triggered the function call
+         * @return {object} entity
+         */
+        getClosestHostileEntityInRange: function() {
+            return this.closestHostileEntity;
+        },
+
+        getClosestAllyEntityInRange: function() {
+            return this.closestAllyEntity;
         }
 
     };

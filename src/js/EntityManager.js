@@ -1,8 +1,11 @@
 define('EntityManager', [
     'Graphics',
     'Entity',
-    'DataObject'
-], function(Graphics, Entity, DataObject) {
+    'DataObject',
+    'Map',
+    'QuadTree',
+    'Util'
+], function(Graphics, Entity, DataObject, Map, QuadTree, Util) {
 
     var GROUP_EFFECTS = 'effects';
     var GROUP_ENTITIES = 'entities';
@@ -23,6 +26,9 @@ define('EntityManager', [
         this.entityGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES);
         this.entityBuildingGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES_BUILDINGS);       
         this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
+
+        this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
+
     }
 
     EntityManager.prototype = {
@@ -100,14 +106,9 @@ define('EntityManager', [
          * @param {integer} elapsedTime [elpased time since the last registered tick]
          * @return {void}
          */
-        update: function(elapsedTime) {
-            var steps = Math.ceil(elapsedTime / (1000 / 60));
-            while (steps) {
-                for (var i = entities.length - 1; i >= 0; i -= 1) {
-                    entities[i].update();
-                }
-                steps -= 1;
-            }
+        update: function(authoritative, elapsedTime) {
+            this.updateEntityDistancesOptimised();
+            this.updateEntities(authoritative, elapsedTime);
         },
 
         /**
@@ -141,9 +142,123 @@ define('EntityManager', [
         entities: createSelector(entities),
 
         /**
+         * Initialises a QuadTree to filter candidates for InRange typed functions
+         * @param  {object} map Map instance
+         * @return {void}
+         */
+        initQuadTree: function(map) {
+            if (!map) throw 'Invalid Map instance has been passed!';
+
+            this.quadTree = new QuadTree({
+                x: 0,
+                y: 0,
+                width: map.getScreenWidth(),
+                height: map.getScreenHeight()
+            });
+        },
+
+
+        /**
+         * Updates the closest sibling of all the entities. With this information
+         * we can easily and efficiently check whether there is an entity in range.
+         * @return {void}
+         */
+        updateEntityDistances: function() {
+            this.updateQuadTree();
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                this.setClosestEntities(entities[i]);
+            }
+        },
+
+        /**
+         * Updates QuadTree according to the current state of the entity array
+         * @return {void}
+         */
+        updateQuadTree: function() {
+            if (!this.quadTree) throw 'QuadTree has not been implemented!';
+            this.quadTree.clear();
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                this.quadTree.insert( entities[i].getSprite() );
+            }
+        },        
+
+        /**
+         * Sets the closest entities to the given entity
+         * @param {object} entity Entity instance
+         * @return {void}
+         */
+        setClosestEntities: function(entity) {
+            if (!entity) throw 'Invalid Entity instance is passed!';
+
+            var entities = this.getEntitiesInRange(entity);
+            var closestEnemy = null;
+            var closestAlly = null;
+
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                if (!closestEnemy && entities[i].isEnemy(entity)) {
+                    closestEnemy = entities[i];
+                } else if (!closestAlly) {
+                    closestAlly = entities[i];
+                }
+                if (closestEnemy && closestAlly) break;
+            }
+
+            entity.setClosestHostileEntityInRange(closestEnemy);
+            entity.setClosestAllyEntityInRange(closestAlly);
+        },
+
+        /**
+         * Returns an array of candidates that are in range to the given entity
+         * @param  {[type]} entity [description]
+         * @return {[type]}        [description]
+         */
+        getEntitiesInRange: function(entity) {
+            var range = entity.getWeaponManager().getMaxRange();
+            var sprite = entity.getSprite();
+            var candidates = this.quadTree.retrieve( sprite );
+            return candidates
+                .map(function(candidate) {
+                    return [Util.distanceBetweenSprites(sprite, candidate), candidate];
+                })
+                .filter(function(data) {
+                    if (data[1] === sprite) return false;
+                    return data[0] <= range;
+                })
+                .sort(function(a, b) {
+                    return a[0] > b[0];
+                })
+                .map(function(data) {
+                    return data[1]._parent;
+                });
+        },
+
+        /**
+         * Updates each entities 
+         * @return {void}
+         */
+        updateEntities: function(authoritative, elapsedTime) {
+            var steps = Math.ceil(elapsedTime / (1000 / 60));            
+            for (var i = entities.length - 1; i >= 0; i -= 1) {
+                this.updateEntity(entities[i], steps, authoritative);
+            }            
+        },
+
+        /**
+         * Invokes entity's update function according to the current step cycles
+         * @param  {object} entity Entity instance
+         * @return {void}
+         */
+        updateEntity: function(entity, steps, authoritative) {
+            while (steps) {
+                entity.update(authoritative);
+                steps -= 1;
+            }
+        },        
+
+        /**
          * returns the subsection of the attributes of the given entities
-         * @param  {[array]} entities [Array of the given entities]
-         * @return {[array]}          [Array of the merged abilities]
+         * @param  {array} entities [Array of the given entities]
+         * @return {object} consolidated object of attributes
          */
         getMergedAbilities: function(entities) {
             var abilities,

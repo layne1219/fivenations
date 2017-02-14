@@ -23,7 +23,9 @@ define('GUI.Activity.SelectCoords', [
 
         this.callback = function(mousePointer) {
             this.dispatcher.dispatch('select', mousePointer);
-            this.getActivityManager().cancel();
+            setTimeout(function() {
+                this.getActivityManager().cancel();
+            }.bind(this), 10);
         }.bind(this);
 
         UserPointer.getInstance().on('leftbutton/down/activity', this.callback);

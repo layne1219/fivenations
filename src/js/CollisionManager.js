@@ -17,23 +17,12 @@ define('CollisionManager', [
         var entityGroup = Graphics.getInstance().getGroup('entities');
         var entityBuildingGroup = Graphics.getInstance().getGroup('entities-buildings');
         var effectGroup = Graphics.getInstance().getGroup('effects');
-        var playerManager = PlayerManager.getInstance();
-        var user;
-        var checkCollision = false;
 
         return {
 
-            update: function() {
+            update: function(authoritative) {
 
-                // @TODO Check this only when there is a new player joining to the game
-                if (user === undefined) {
-                    user = playerManager.getUser();
-                    if (user) {
-                        checkCollision = user.isAuthorised();
-                    }
-                }
-
-                if (checkCollision) {
+                if (authoritative) {
                     phaserGame.physics.arcade.overlap(effectGroup, entityGroup, collisionHandler);
                     phaserGame.physics.arcade.overlap(effectGroup, entityBuildingGroup, collisionHandler);
                 }
