@@ -72,7 +72,7 @@ define('Entity', [
 
             // reducing the hitArea according to the one specified in the realated DataObject
             sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-            sprite.body.setSize(origWidth, origHeight, 0, 0);
+            sprite.body.setSize(origWidth, origHeight, sprite.width / 2 - origWidth / 2, sprite.height / 2 - origHeight / 2);
 
             sprite._parent = entity;
 
@@ -336,7 +336,7 @@ define('Entity', [
          * @param {object} params 
          */
         damage: function(params) {
-            this.dataObject().damage(params);
+            this.dataObject.damage(params);
         },
 
         /**

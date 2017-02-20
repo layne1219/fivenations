@@ -55,7 +55,7 @@ define('CollisionManager', [
         }
 
         if (collisionEvent.damageTarget) {
-            eventEmitter.synced.entities(entity).damage(weapon);
+            eventEmitter.synced.entities(entity).damage({ weapon: weapon });
         }
 
     }   

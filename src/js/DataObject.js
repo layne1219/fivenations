@@ -23,7 +23,7 @@ define('DataObject', ['json!sizes'], function(sizes) {
         // publish any data variable held by the entity
         return {
 
-            damage: function(params) {
+            damage: function(params, callback) {
                 var shield = this.getShield();
                 if (shield > 0) {
                     var diff = shield - params.damageShield;
@@ -39,7 +39,7 @@ define('DataObject', ['json!sizes'], function(sizes) {
             },
 
             damageHull: function(value) {
-                data.hull -= Math.min(value - data.armor, 0);
+                data.hull = Math.max(data.hull - Math.max(value - data.armor, 1), 0);
             },
 
             damageShield: function(value) {
