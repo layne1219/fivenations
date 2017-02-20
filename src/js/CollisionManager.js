@@ -48,15 +48,14 @@ define('CollisionManager', [
         if (weapon.getManager().getEntity() === entity) return;
 
         var collisionEvent = effect.getDataObject().getEvent('collision');
+        var eventEmitter = EventEmitter.getInstance();
 
         if (collisionEvent.removeEffect) {
-            EventEmitter.getInstance().synced.effects(effect).remove();
+            eventEmitter.synced.effects(effect).remove();
         }
 
         if (collisionEvent.damageTarget) {
-            var damage = weapon.getDamage();
-            var damageShield = weapon.getDamageShield();
-            console.log('Entity is damaged by ', damage, damageShield);
+            eventEmitter.synced.entities(entity).damage({ weapon: weapon });
         }
 
     }   
