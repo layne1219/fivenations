@@ -84,6 +84,11 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (distance <= this.getRange()) {
 
                 var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
+                var velocity = this.data.velocity;
+
+                if (!velocity) {
+                    velocity = this.data.acceleration || this.data.maxVelocity;
+                }
 
                 EventEmitter.getInstance().synced.effects.add({
                     id: this.data.effect,
@@ -91,7 +96,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                     x: sprite.x,
                     y: sprite.y,
                     rotation: rotation,
-                    velocity: !this.data.acceleration && this.data.maxVelocity,
+                    velocity: velocity,
                     maxVelocity: this.data.maxVelocity,
                     acceleration: this.data.acceleration
                 });
