@@ -41,11 +41,17 @@ define('CollisionManager', [
         var entity = entitySprite._parent;
         var effect = effectSprite._parent;
         var weapon = effect.getEmitter();
+        var getEmitterEntity; 
 
         if (!entity || !effect || !weapon) return;
 
+        getEmitterEntity = weapon.getManager().getEntity();
+
         // effect mainly cannot collide with the entity that initially emitted it
-        if (weapon.getManager().getEntity() === entity) return;
+        if (getEmitterEntity === entity) return;
+
+        // effect cannot collide with friendly entities unless the friendly fire is on
+        if (!getEmitterEntity.isEnemy(entity) && !weapon.hasFriendlyFire()) return;
 
         var collisionEvent = effect.getDataObject().getEvent('collision');
         var eventEmitter = EventEmitter.getInstance();
