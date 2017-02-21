@@ -31,7 +31,7 @@ define('DataObject', ['json!sizes'], function(sizes) {
                         this.damageShield(params.damageShield);
                         this.damageHull(-diff);
                     } else {
-                        this.damageShield(diff);
+                        this.damageShield(params.damageShield);
                     }
                 } else {
                     this.damageHull(params.damage);
