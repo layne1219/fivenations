@@ -22,6 +22,9 @@ define('Universal.Event.Entity.Damage', ['Universal.Event'], function(Event) {
         }
         options.targets.forEach(function(id) {
             var entity = ns.game.entityManager.entities(id);
+            
+            if (!entity) return;
+
             entity.damage(options.data);
         });
     };

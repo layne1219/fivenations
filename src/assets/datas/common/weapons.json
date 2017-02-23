@@ -60,7 +60,8 @@
     "cooldown": 300,
     "homing": 1,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "cannonball"
   },
   {
     "name": "Radar",

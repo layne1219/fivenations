@@ -318,6 +318,16 @@ define('Game', [
                 });
             }
 
+            window.add = function(id, team) {
+                this.eventEmitter.synced.entities.add({
+                    guid: Util.getGUID(),
+                    id: id || 'hurricane',
+                    team: team || 1,
+                    x: 0 + Util.rnd(0, 2000),
+                    y: 0 + Util.rnd(0, 2000)
+                });
+            }.bind(this);
+
         },
 
         update: function() {
