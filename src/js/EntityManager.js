@@ -99,6 +99,8 @@ define('EntityManager', [
             }
             entity.remove();
             entity = null;
+            // when an entity is removed we've got to refresh the quad tree
+            this.updateEntityDistances();
         },
 
         /**
