@@ -50,8 +50,9 @@
     "damage_shield": 20,
     "range": 60,
     "speed": 30,
-    "acceleration": 8,
-    "maxVelocity": 60,
+    "acceleration": 50,
+    "velocity": 100,
+    "maxVelocity": 300,
     "maneuverability": 40,
     "accuracy": 100,
     "effect_range": 0,
@@ -61,7 +62,7 @@
     "homing": 1,
     "type": "rocket",
     "specialty": "-",
-    "effect": "cannonball"
+    "effect": "missile"
   },
   {
     "name": "Radar",
