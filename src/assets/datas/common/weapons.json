@@ -29,6 +29,7 @@
     "range": 40,
     "speed": 40,
     "acceleration": 200,
+    "velocity": 200,
     "maxVelocity": 600,
     "maneuverability": 100,
     "accuracy": 60,
@@ -59,7 +60,8 @@
     "cooldown": 300,
     "homing": 1,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "cannonball"
   },
   {
     "name": "Radar",

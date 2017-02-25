@@ -44,14 +44,23 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         },
 
         scan: function() {
+            // if the weapon has a target already
             if (this.targetEntity) return;
 
             var targetEntity = this.entity.getClosestHostileEntityInRange();
+
+            // if there is no target nearby
             if (!targetEntity) {
                 this.clearTargetEntity();
-            } else if (this.isSelfContained()) {
-                this.setTargetEntity(targetEntity);
             } else {
+                // if there is a target nearby
+
+                // if the weapon finds its target independently from the manual select
+                if (this.isSelfContained()) {
+                    this.setTargetEntity(targetEntity);
+                }
+
+                // we trigger the Attack event regardless
                 EventEmitter
                     .getInstance()
                     .synced
@@ -75,6 +84,11 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (distance <= this.getRange()) {
 
                 var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
+                var velocity = this.data.velocity;
+
+                if (!velocity) {
+                    velocity = this.data.acceleration || this.data.maxVelocity;
+                }
 
                 EventEmitter.getInstance().synced.effects.add({
                     id: this.data.effect,
@@ -82,7 +96,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                     x: sprite.x,
                     y: sprite.y,
                     rotation: rotation,
-                    velocity: !this.data.acceleration && this.data.maxVelocity,
+                    velocity: velocity,
                     maxVelocity: this.data.maxVelocity,
                     acceleration: this.data.acceleration
                 });
@@ -106,7 +120,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             this.manager = manager;
             this.entity = manager.getEntity();
             this.entityType = this.entity.getDataObject().getType();
-            this.unconditionalRelese = this.entityType === 'Fighetr' || this.isSelfContained();
+            this.unconditionalRelese = this.entityType === 'Fighter' || this.isSelfContained();
         },
 
         setTargetEntity: function(entity) {
@@ -172,6 +186,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             
             // if the entity stands still
             return this.entity.getMotionManager().movement.velocity === 0;
+        },
+
+        hasFriendlyFire: function() {
+            return this.data.friendly_fire;
         }
 
     }

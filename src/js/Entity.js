@@ -337,6 +337,10 @@ define('Entity', [
          */
         damage: function(params) {
             this.dataObject.damage(params);
+
+            if (this.dataObject.getHull() <= 0) {
+                this.entityManager.remove(this);
+            }
         },
 
         /**
