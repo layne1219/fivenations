@@ -9,7 +9,7 @@ define('GUI.StopButtonLogic', ['Universal.EventEmitter'], function(EventEmitter)
                 .synced
                 .entities(':user:selected')
                 .reset()
-                .stop();
+                .stop({ resetActivityQueue: true });
         }
     };
 });

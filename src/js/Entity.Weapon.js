@@ -13,6 +13,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         this.data = alterData(data);
         this.ready = true;
         this.guid = guid;
+        this.level = 0;
         guid += 1;
 
         this.onTargetEntityRemove = function() {
@@ -93,8 +94,8 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                 EventEmitter.getInstance().synced.effects.add({
                     id: this.data.effect,
                     emitter: this,
-                    x: sprite.x,
-                    y: sprite.y,
+                    x: sprite.x + Util.rnd(0, 16) - 8,
+                    y: sprite.y + Util.rnd(0, 16) - 8,
                     rotation: rotation,
                     velocity: velocity,
                     maxVelocity: this.data.maxVelocity,
@@ -163,6 +164,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
 
         getRange: function() {
             return this.data.range;         
+        },
+
+        getCurrentLevel: function() {
+            return this.level;
         },
 
         getUpgradeLevel: function() {

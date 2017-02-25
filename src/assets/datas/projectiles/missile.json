@@ -1,0 +1,21 @@
+{
+    "id": "missile",
+    "size": "xsm",
+    "ttl": 200,
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [8, 9, 10, 11, 12, 13]
+        }
+    },    
+    "events": {
+        "remove": {
+            "effects": ["blow-2"]
+        },
+        "collision": {
+            "damageTarget": true,
+            "removeEffect": true
+        }        
+    }
+}
