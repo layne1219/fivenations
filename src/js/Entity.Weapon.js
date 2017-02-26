@@ -54,19 +54,20 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (!targetEntity) {
                 this.clearTargetEntity();
             } else {
-                // if there is a target nearby
 
                 // if the weapon finds its target independently from the manual select
                 if (this.isSelfContained()) {
                     this.setTargetEntity(targetEntity);
                 }
 
-                // we trigger the Attack event regardless
-                EventEmitter
-                    .getInstance()
-                    .synced
-                    .entities(this.entity.getGUID())
-                    .attack({ targetEntity: targetEntity });                
+                if (this.manager._lastEntityAttacked !== targetEntity) {
+                    EventEmitter
+                        .getInstance()
+                        .synced
+                        .entities(this.entity.getGUID())
+                        .attack({ targetEntity: targetEntity });
+                    this.manager._lastEntityAttacked = targetEntity;
+                }
             }
         },
 

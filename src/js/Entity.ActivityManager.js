@@ -80,6 +80,12 @@ define('Entity.ActivityManager', [
                 }
             },
 
+            debug: function() {
+                return activities.map(function(activity) {
+                    return activity.__proto__.constructor.name;
+                });
+            }
+
         };
 
     }

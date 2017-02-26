@@ -5,9 +5,6 @@ define('Entity.WeaponManager', [
 ], function(Weapon, weaponsJSON, Util) {
 
     var cache = {};
-    var minRange;
-    var maxRange;
-    var hasOffensiveWeapon;
 
     /**
      * Returns a weapon object by the given Id
@@ -86,6 +83,7 @@ define('Entity.WeaponManager', [
             this.weapons.forEach(function(weapon) {
                 weapon.clearTargetEntity();
             });
+            this.targetEntityWillBeSet = false;
         },
 
         /**
@@ -100,6 +98,18 @@ define('Entity.WeaponManager', [
             .forEach(function(weapon) {
                 weapon.setTargetEntity(targetEntity);
             });
+        },
+
+        /**
+         * Returns a boolean that indicates whether the entity has a target entity
+         * @return {boolean}
+         */
+        hasTargetEntity: function() {
+            for (var i = 0, l = this.weapons.length - 1; i < l; i += 1) {
+                if (this.weapons[i].isSelfContained()) continue;
+                if (this.weapons[i].getTargetEntity()) return true;
+            }
+            return false;
         },
 
         /**
@@ -138,14 +148,14 @@ define('Entity.WeaponManager', [
          * @return {integer} the calcualted range in pixels 
          */
         getMinRange: function() {
-            if (!minRange) {
-                minRange = this.weapons.reduce(function(min, weapon) {
+            if (!this.minRange) {
+                this.minRange = this.weapons.reduce(function(min, weapon) {
                     var range = weapon.getRange();
                     if (range < min) return range;
                     return min; 
                 }, 9999);
             }
-            return minRange;
+            return this.minRange;
         },
 
         /**
@@ -154,14 +164,14 @@ define('Entity.WeaponManager', [
          * @return {integer} the calcualted range in pixels 
          */
         getMaxRange: function() {
-            if (!maxRange) {
-                maxRange = this.weapons.reduce(function(max, weapon) {
+            if (!this.maxRange) {
+                this.maxRange = this.weapons.reduce(function(max, weapon) {
                     var range = weapon.getRange();
                     if (range > max) return range;
                     return max; 
                 }, 0);
             }
-            return maxRange;
+            return this.maxRange;
         },
 
         /**
@@ -169,15 +179,15 @@ define('Entity.WeaponManager', [
          * @return {boolean} 
          */
         hasOffensiveWeapon: function() {
-            if (hasOffensiveWeapon === undefined) {
+            if (this.hasOffensiveWeapon === undefined) {
                 for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
                     if (this.weapons[i].getDamage() > 0 || this.weapons[i].getDamageShield()) {
-                        hasOffensiveWeapon = true;
+                        this.hasOffensiveWeapon = true;
                         break;
                     }
                 }
             }
-            return hasOffensiveWeapon;
+            return this.hasOffensiveWeapon;
         }
         
     };
