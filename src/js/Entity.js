@@ -340,6 +340,8 @@ define('Entity', [
 
             if (this.dataObject.getHull() <= 0) {
                 this.entityManager.remove(this);
+            } else {
+                this.eventDispatcher.dispatch('damage');
             }
         },
 
