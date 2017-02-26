@@ -8,6 +8,7 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
     function Attack(entity) {
         Activity.call(this);
         this.entity = entity;
+        this._firstExecution = true;
 
         this.onTargetEntityRemove = function() {
             this.kill();
@@ -23,25 +24,29 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
      */
     Attack.prototype.activate = function() {
         Activity.prototype.activate.call(this);
-    };
-
-    /**
-     * Updating the activity on every tick  
-     * @return {[void]}
-     */
-    Attack.prototype.update = function() {
-
-        var distance;
-        var range;
 
         if (!this.target.isTargetable()) {
             this.kill();
         }
 
-        distance = Util.distanceBetween(this.entity, this.target);
-        range = this.entity.getWeaponManager().getMinRange();
+        if (this._firstExecution && this.isTargetInRange()) {
+            this._firstExecution = false;
+            this.entity.stop();
+        }        
 
-        if (distance > range) {
+    };
+
+    /**
+     * Updates the activity on every tick  
+     * @return {[void]}
+     */
+    Attack.prototype.update = function() {
+
+        if (!this.target.isTargetable()) {
+            this.kill();
+        }
+
+        if (!this.isTargetInRange()) {
             this.entity.getInRange(this.target);
         }
 
@@ -62,6 +67,20 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
 
         this.target = entity;
         this.target.on('remove', this.onTargetEntityRemove);
+    };
+
+    /**
+     * Checks whether the specified target entity is in range 
+     * @return {boolean}
+     */
+    Attack.prototype.isTargetInRange = function() {
+        var distance;
+        var range;
+
+        distance = Util.distanceBetween(this.entity, this.target);
+        range = this.entity.getWeaponManager().getMinRange();
+
+        return distance <= range;
     };
 
     return Attack;

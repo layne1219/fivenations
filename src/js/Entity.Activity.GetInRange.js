@@ -41,26 +41,35 @@ define('Entity.Activity.GetInRange', [
         if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
             return;
         } else {
-            this.setCoords({
-                x: this.target.getSprite().x,
-                y: this.target.getSprite().y
-            });
-            this.entity.getMotionManager().moveTo(this);
+            this.moveTowardsTarget();
         }
 
     };
 
     /**
      * Applying the activity on an entity
-     * @return {[void]}
+     * @return {void}
      */
     GetInRange.prototype.activate = function() {
         Activity.prototype.activate.call(this);
+        this.moveTowardsTarget();
+    };
+
+    /**
+     * Move towards the target entity
+     * @return {void}
+     */
+    GetInRange.prototype.moveTowardsTarget = function() {
+        this.setCoords({
+            x: this.target.getSprite().x,
+            y: this.target.getSprite().y
+        });
+        this.entity.getMotionManager().moveTo(this);
     };
 
     /**
      * Saving the target entity that will be followed 
-     * @return {[void]}
+     * @return {void}
      */
     GetInRange.prototype.setTarget = function(entity) {
         if (!entity) {

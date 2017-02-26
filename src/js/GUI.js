@@ -999,7 +999,7 @@ define('GUI', [
 
                 WeaponGroupPopup.prototype.updateContent = function(weapon){
 
-                    var title, value, upgradedValue;
+                    var title, value, upgradedValue, output;
 
                     // Name
                     this.nameElm.text = weapon.getName();
@@ -1011,18 +1011,20 @@ define('GUI', [
                     // Damage to Hull
                     title = 'DMG to Hull: ';
                     value = weapon.getDamage();
-                    upgradedValue = value && (' + ' + weapon.getUpgradeLevel()) || '';
+                    upgradedValue = weapon.getCurrentLevel() * weapon.getUpgradeLevel();
 
-                    this.hullElm.text = title + value + upgradedValue;
+                    output = value && (' + ' + upgradedValue) || '';
+
+                    this.hullElm.text = title + value + output;
                     this.hullElm.addColor('#00FF00', title.length);
                     this.hullElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
 
                     // Damage to Shield
                     title = 'DMG to Shield: ';
                     value = weapon.getDamageShield();
-                    upgradedValue = value && (' + ' + weapon.getUpgradeLevel()) || '';
+                    output = value && (' + ' + upgradedValue) || '';
 
-                    this.shieldElm.text = title + value + upgradedValue;
+                    this.shieldElm.text = title + value + output;
                     this.shieldElm.addColor('#475D86', title.length);
                     this.shieldElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
 

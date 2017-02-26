@@ -13,6 +13,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         this.data = alterData(data);
         this.ready = true;
         this.guid = guid;
+        this.level = 0;
         guid += 1;
 
         this.onTargetEntityRemove = function() {
@@ -53,19 +54,20 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (!targetEntity) {
                 this.clearTargetEntity();
             } else {
-                // if there is a target nearby
 
                 // if the weapon finds its target independently from the manual select
                 if (this.isSelfContained()) {
                     this.setTargetEntity(targetEntity);
                 }
 
-                // we trigger the Attack event regardless
-                EventEmitter
-                    .getInstance()
-                    .synced
-                    .entities(this.entity.getGUID())
-                    .attack({ targetEntity: targetEntity });                
+                if (this.manager._lastEntityAttacked !== targetEntity) {
+                    EventEmitter
+                        .getInstance()
+                        .synced
+                        .entities(this.entity.getGUID())
+                        .attack({ targetEntity: targetEntity });
+                    this.manager._lastEntityAttacked = targetEntity;
+                }
             }
         },
 
@@ -93,8 +95,8 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                 EventEmitter.getInstance().synced.effects.add({
                     id: this.data.effect,
                     emitter: this,
-                    x: sprite.x,
-                    y: sprite.y,
+                    x: sprite.x + Util.rnd(0, 16) - 8,
+                    y: sprite.y + Util.rnd(0, 16) - 8,
                     rotation: rotation,
                     velocity: velocity,
                     maxVelocity: this.data.maxVelocity,
@@ -163,6 +165,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
 
         getRange: function() {
             return this.data.range;         
+        },
+
+        getCurrentLevel: function() {
+            return this.level;
         },
 
         getUpgradeLevel: function() {
