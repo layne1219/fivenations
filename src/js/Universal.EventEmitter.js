@@ -51,6 +51,28 @@ define('Universal.EventEmitter', [
                     return this;
                 },
                 /**
+                 * Makes all the given entities to follow the given target entity 
+                 * @param  {object} options [configuration object to create the desired event]
+                 * @return {void}
+                 * @chainable
+                 */
+                follow: function(options) {
+
+                    var targetEntity = options.targetEntity;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/follow',
+                        targets: entities,
+                        data: {
+                            targetEntity: targetEntity.getGUID()
+                        },
+                        resetActivityQueue: options.resetActivityQueue
+                    });
+
+
+                    return this;
+                },                
+                /**
                  * Makes all the given entities to patrol between the current and given coordinates 
                  * @param  {object} options [configuration object to create the desired event]
                  * @return {void}
