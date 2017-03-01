@@ -78,12 +78,6 @@ define('Entity.ActivityManager', [
                 if (activities[currentIdx].isActivated()) {
                     activities[currentIdx].update();
                 }
-            },
-
-            debug: function() {
-                return activities.map(function(activity) {
-                    return activity.__proto__.constructor.name;
-                });
             }
 
         };

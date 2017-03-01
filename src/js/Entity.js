@@ -505,7 +505,7 @@ define('Entity', [
             var thisPlayer = this.getPlayer();
             var thatPlayer = entity.getPlayer();
             if (thisPlayer === thatPlayer) return false;
-            return playerManager.isPlayerHostileTo(thisPlayer, thatPlayer);
+            return playerManager.isPlayerHostileToPlayer(thisPlayer, thatPlayer);
         },
 
         /**

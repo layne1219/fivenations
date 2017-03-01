@@ -240,10 +240,8 @@ define('EntityManager', [
          */
         updateEntities: function(authoritative, elapsedTime) {
             var steps = Math.ceil(elapsedTime / (1000 / 60));
-            var lines = 0;           
             for (var i = entities.length - 1; i >= 0; i -= 1) {
                 this.updateEntity(entities[i], steps, authoritative);
-                phaserGame.debug.text(entities[i].getActivityManager().debug(), 2, 28 + lines++ * 15, '#eeffff');
             }            
         },
 
