@@ -203,13 +203,32 @@ define('EffectManager', [
          * @return {void}
          */
         update: function() {
+            var disposables = [];
             for (var i = effects.length - 1; i >= 0; i -= 1) {
-                if (!effects[i].ttl) continue;
-                effects[i].ttl -= 1;
-                if (effects[i].ttl === 0) {
-                    this.removeByIndex(i);
+                if (this.isEffectExpired(effect[i])) {
+                    disposables.push(i);
                 }
             }
+        },
+
+        /**
+         * Updates ttl attribute of the given effect entity and returns
+         * @param {object} effect Effect entity
+         * @return {boolean} true if the effect needs to be removed
+         */
+        isEffectExpired: function(effect) {
+            if (!effects.ttl) return false;
+            effects.ttl -= 1;                
+            return effects.ttl === 0;
+        },
+
+        /**
+         * makes the given effect to follow its target if specififed
+         * @param  {object} effect Effect entity
+         * @return {void}
+         */
+        followTarget: function(effect) {
+            
         },
 
         /**

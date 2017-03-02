@@ -31,7 +31,10 @@ define('Effect', ['Util'], function(Util) {
      * @param {config} config Configuration object that contains the reference to the manager instance
      */
     function setEmitter(config) {
-        this.emitter = config.emitter;
+        if (config.emitter) {
+            this.emitter = config.emitter;
+            this.targetEntity = this.emitter.getTargetEntity();
+        }
     }
 
     /**
@@ -149,6 +152,10 @@ define('Effect', ['Util'], function(Util) {
         getEmitter: function() {
             return this.emitter;
         },
+
+        getTargetEntity: function() {
+            return this.targetEntity;
+        }
 
         getDataObject: function() {
             return this.dataObject;
