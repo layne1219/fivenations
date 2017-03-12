@@ -312,7 +312,7 @@ define('Game', [
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'hurricane',
-                    team: 2, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
@@ -322,7 +322,7 @@ define('Game', [
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'hailstorm',
-                    team: 1,
+                    team: 2,
                     x: 200 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });

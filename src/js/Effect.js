@@ -34,6 +34,9 @@ define('Effect', ['Util'], function(Util) {
         if (config.emitter) {
             this.emitter = config.emitter;
             this.targetEntity = this.emitter.getTargetEntity();
+            this.targetEntity.on('remove', function() {
+                this.targetEntity = null;
+            }.bind(this));
         }
     }
 
@@ -137,6 +140,12 @@ define('Effect', ['Util'], function(Util) {
 
     Effect.prototype = {
 
+        remove: function() {
+            this.sprite._group.remove(this.sprite);
+            this.sprite.destroy();
+            this.manager.explode(this);
+        },
+
         getId: function() {
             return this.id;
         },
@@ -155,16 +164,14 @@ define('Effect', ['Util'], function(Util) {
 
         getTargetEntity: function() {
             return this.targetEntity;
-        }
+        },
 
         getDataObject: function() {
             return this.dataObject;
         },
 
-        remove: function() {
-            this.sprite._group.remove(this.sprite);
-            this.sprite.destroy();
-            this.manager.explode(this);
+        willFollowTarget: function() {
+            return this.dataObject.getFollowTarget();
         }
 
     }

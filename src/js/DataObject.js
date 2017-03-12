@@ -208,6 +208,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
 
             getTTL: function() {
                 return data.ttl;
+            },
+
+            getFollowTarget: function() {
+                return data.followTarget;
             }
 
         };

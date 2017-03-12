@@ -1,7 +1,8 @@
 {
     "id": "missile",
     "size": "xsm",
-    "ttl": 200,
+    "ttl": 750,
+    "followTarget": true,
     "animations": {
         "idle": {
             "rate": 20,
