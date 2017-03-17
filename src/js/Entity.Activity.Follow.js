@@ -1,30 +1,19 @@
-define('Entity.Activity.Follow', ['Entity.Activity'], function(Activity) {
-
-    // private vars
-    var
-    /**
-     * saving the last coordinates of the target entity so that we can omit 
-     * invoking the moveTo in the update function when not necessary
-     * @return {[void]}
-     */
-        saveTargetLastCoords = function() {
-            this.targetLastCoords.x = this.target.getSprite().x;
-            this.targetLastCoords.y = this.target.getSprite().y;
-        };
+define('Entity.Activity.Follow', [     
+    'Entity.Activity',
+    'Entity.Activity.Move' 
+], function(Activity, Move) {
 
     /**
      * Constructor function to FollowActivity
      * @param  {[object]} entity Instance of an Entity class
      * @return {[object]} 
      */
-    function FollowActivity(entity) {
-        Activity.call(this);
-        this.entity = entity;
-        this.targetLastCoords = {};
+    function Follow(entity) {
+        Move.call(this, entity);
     }
 
-    FollowActivity.prototype = new Activity;
-    FollowActivity.prototype.constructor = FollowActivity;
+    Follow.prototype = new Move;
+    Follow.prototype.constructor = Follow;
 
     /**
      * Updating the activity on every tick as follows:
@@ -32,40 +21,50 @@ define('Entity.Activity.Follow', ['Entity.Activity'], function(Activity) {
      * - If the target entity has moved since the last tick  
      * @return {[void]}
      */
-    FollowActivity.prototype.update = function() {
+    Follow.prototype.update = function() {
         if (!this.target) {
             return;
         }
-        if (this.targetLastCoords.x === this.target.getSprite().x && this.targetLastCoords.y === this.target.getSprite().y) {
+        if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
             return;
         }
-        saveTargetLastCoords.call(this);
-        this.entity.moveTo(this.targetLastCoords.x, this.targetLastCoords.y);
+        this.moveTowardsTarget();
     };
 
     /**
      * Applying the activity on an entity
      * @return {[void]}
      */
-    FollowActivity.prototype.activate = function() {
+    Follow.prototype.activate = function() {
         Activity.prototype.activate.call(this);
         if (this.entity && this.target) {
-            this.entity.moveTo(this.targetLastCoords.x, this.targetLastCoords.y);
+            this.moveTowardsTarget();
         }
     };
 
     /**
-     * Saving the target entity that will be followed 
-     * @return {[void]}
+     * Move towards the target entity
+     * @return {void}
      */
-    FollowActivity.prototype.setTarget = function(entity) {
+    Follow.prototype.moveTowardsTarget = function() {
+        this.setCoords({
+            x: this.target.getSprite().x,
+            y: this.target.getSprite().y
+        });
+        this.entity.getMotionManager().moveTo(this);
+    };
+
+    /**
+     * Saving the target entity that will be followed 
+     * @return {void}
+     */
+    Follow.prototype.setTarget = function(entity) {
         if (!entity) {
             throw 'Invalid entity is passed to be followed!';
         }
         this.target = entity;
-        saveTargetLastCoords.call(this);
-    };
+    };    
 
-    return FollowActivity;
+    return Follow;
 
 });

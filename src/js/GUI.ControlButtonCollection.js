@@ -9,7 +9,7 @@ define('GUI.StopButtonLogic', ['Universal.EventEmitter'], function(EventEmitter)
                 .synced
                 .entities(':user:selected')
                 .reset()
-                .stop();
+                .stop({ resetActivityQueue: true });
         }
     };
 });
@@ -137,6 +137,47 @@ define('GUI.AttackButtonLogic', [
     };
 });
 
+// ------------------------------------------------------------------------------------
+// Follow Button Logc
+// ------------------------------------------------------------------------------------
+define('GUI.FollowButtonLogic', [
+    'GUI.Activity.SelectCoords',
+    'GUI.ActivityManager',
+    'Universal.EventEmitter',
+], function(ActivitySelectCoords, ActivityManager, EventEmitter) {
+    return {
+        activate: function(entityManager, controlPanel) {
+            var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
+            activity.on('select', function() {
+
+                var targetEntity;
+                entityManager.entities().filter(function(entity) {
+                    if (entity.isHover()) {
+                        targetEntity = entity;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+                if (targetEntity) {
+                    EventEmitter
+                        .getInstance()
+                        .synced
+                        .entities(':user:selected')
+                        .follow({
+                            targetEntity: targetEntity
+                        });
+                    targetEntity.selectedAsTarget();
+                }
+
+                controlPanel.selectMainPage();
+            });
+
+            controlPanel.selectCancelPage();
+        }
+    };
+});
 
 define('GUI.ControlButtonCollection', [
     'GUI.StopButtonLogic',
@@ -144,6 +185,7 @@ define('GUI.ControlButtonCollection', [
     'GUI.PatrolButtonLogic',
     'GUI.CancelButtonLogic',
     'GUI.AttackButtonLogic',
+    'GUI.FollowButtonLogic',
     'json!abilities'
 ], function(
     StopButtonLogic, 
@@ -151,6 +193,7 @@ define('GUI.ControlButtonCollection', [
     PatrolButtonLogic, 
     CancelButtonLogic, 
     AttackButtonLogic,
+    FollowButtonLogic,
     abilitiesJSON
 ) {
 
@@ -161,6 +204,7 @@ define('GUI.ControlButtonCollection', [
     buttonLogics[abilitiesJSON.patrol] = PatrolButtonLogic;
     buttonLogics[abilitiesJSON.cancel] = CancelButtonLogic;
     buttonLogics[abilitiesJSON.attack] = AttackButtonLogic;
+    buttonLogics[abilitiesJSON.follow] = FollowButtonLogic;
 
     return {
 

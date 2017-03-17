@@ -239,7 +239,7 @@ define('EntityManager', [
          * @return {void}
          */
         updateEntities: function(authoritative, elapsedTime) {
-            var steps = Math.ceil(elapsedTime / (1000 / 60));            
+            var steps = Math.ceil(elapsedTime / (1000 / 60));
             for (var i = entities.length - 1; i >= 0; i -= 1) {
                 this.updateEntity(entities[i], steps, authoritative);
             }            

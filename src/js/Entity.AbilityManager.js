@@ -35,6 +35,7 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON) {
                 this.abilities = this.abilities.concat([
                     abilitiesJSON.move,
                     abilitiesJSON.stop,
+                    abilitiesJSON.follow,
                     abilitiesJSON.patrol,
                     abilitiesJSON.hold,
                     abilitiesJSON.defend

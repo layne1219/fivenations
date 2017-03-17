@@ -25,139 +25,138 @@ define('Entity', [
     UserKeyboard, 
     UserPointer, 
     EventBus, 
-    Util) {
+    Util
+) {
 
-    var
+    var SLOW_MANOUVERABAILITY_TRESHOLD = 25;
+    var MAX_SELECTABLE_UNITS = 22;
+    var ANIMATION_IDLE_FOREVER = 'idle-forever';
 
-        SLOW_MANOUVERABAILITY_TRESHOLD = 25,
-        MAX_SELECTABLE_UNITS = 22,
-        ANIMATION_IDLE_FOREVER = 'idle-forever',
+    var ns = window.fivenations;
 
-        ns = window.fivenations,
+    /**
+     * Initialising the Phaser.Sprite object with all the additional child elements 
+     * such as selector and property bars 
+     * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
+     * @param {[object]} [sprite] Phaser.Sprite object to which the extended properties and child elements will be linked
+     * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
+     * @return {[object]} 
+     */
+    var extendSprite = function(entity, sprite, dataObject) {
 
-        /**
-         * Initialising the Phaser.Sprite object with all the additional child elements 
-         * such as selector and property bars 
-         * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
-         * @param {[object]} [sprite] Phaser.Sprite object to which the extended properties and child elements will be linked
-         * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
-         * @return {[object]} 
-         */
-        extendSprite = function(entity, sprite, dataObject) {
+        var origWidth = dataObject.getWidth();
+        var origHeight = dataObject.getHeight();
 
-            var origWidth = dataObject.getWidth();
-            var origHeight = dataObject.getHeight();
+        // actiavting the ARCADE physics on the sprite object
+        entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
-            // actiavting the ARCADE physics on the sprite object
-            entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+        // Set up the Phaser.Sprite object
+        sprite.anchor.setTo(0.5, 0.5);
 
-            // Set up the Phaser.Sprite object
-            sprite.anchor.setTo(0.5, 0.5);
+        // enabling input events applied on the sprite object
+        sprite.inputEnabled = true;
 
-            // enabling input events applied on the sprite object
-            sprite.inputEnabled = true;
+        // helper variable for storing whether the input is over the sprite
+        sprite.hover = false;
 
-            // helper variable for storing whether the input is over the sprite
-            sprite.hover = false;
+        // sets the animations defined in the DO
+        extendSpriteWithAnimations(sprite, dataObject);
 
-            // sets the animations defined in the DO
-            extendSpriteWithAnimations(sprite, dataObject);
+        // applying event listeners on the passed sprite object
+        extendSpriteWithEventListeners(entity, sprite, dataObject);
 
-            // applying event listeners on the passed sprite object
-            extendSpriteWithEventListeners(entity, sprite, dataObject);
+        // coords
+        sprite.x = 0;
+        sprite.y = 0;
 
-            // coords
-            sprite.x = 0;
-            sprite.y = 0;
+        // reducing the hitArea according to the one specified in the realated DataObject
+        sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
+        sprite.body.setSize(origWidth, origHeight, sprite.width / 2 - origWidth / 2, sprite.height / 2 - origHeight / 2);
 
-            // reducing the hitArea according to the one specified in the realated DataObject
-            sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-            sprite.body.setSize(origWidth, origHeight, sprite.width / 2 - origWidth / 2, sprite.height / 2 - origHeight / 2);
+        sprite._parent = entity;
 
-            sprite._parent = entity;
+        return sprite;
+    };
 
-            return sprite;
-        },
+    /**
+     * Registers animations sequences against the given sprite object if there is any specified in the DO 
+     * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
+     * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
+     * @return {void}
+     */
+    var extendSpriteWithAnimations = function(sprite, dataObject){
+        var animations = dataObject.getAnimations();
+        if (!animations || typeof animations !== 'object') return;
+        Object.keys(animations).forEach(function(key){
+            var data = animations[key];
+            if (data.length) {
+                data.forEach(function(animationData, idx){
+                    sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
+                });
+            } else {
+                sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            }
+            // if there is an animation called `idle-forever` it is played straight away
+            if (key === ANIMATION_IDLE_FOREVER) {
+                sprite.animations.play(key);
+            }
+        });
+    };
 
-        /**
-         * Registers animations sequences against the given sprite object if there is any specified in the DO 
-         * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
-         * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
-         * @return {void}
-         */
-        extendSpriteWithAnimations = function(sprite, dataObject){
-            var animations = dataObject.getAnimations();
-            if (!animations || typeof animations !== 'object') return;
-            Object.keys(animations).forEach(function(key){
-                var data = animations[key];
-                if (data.length) {
-                    data.forEach(function(animationData, idx){
-                        sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
+    /**
+     * Extending the given sprite with event listeners
+     * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
+     * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
+     * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
+     * @return {[object]} 
+     */
+    var extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
+        // input events registered on the sprite object
+        sprite.events.onInputDown.add(function() {
+            var now;
+            var game = this.game;
+
+            if (GUIActivityManager.getInstance().hasActiveSelection()) {
+                return;
+            }
+
+            if (UserPointer.getInstance().isLeftButtonDown()) {
+                // If the user holds SHIFT we will extend the number of selected entities
+                if (!UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
+                    this.entityManager.unselectAll();
+                }
+                this.select();
+
+                now = new Date().getTime();
+                if (now - this.lastClickTime < 500) {
+                    this.entityManager.entities().filter(function(entity) {
+                        // If the entity is off screen we need to exclude
+                        if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)) {
+                            return false;
+                        }
+                        if (!Util.between(entity.getSprite().y - game.camera.y, 0, ns.window.height)) {
+                            return false;
+                        }
+                        // we need to include only the indentical entities                           
+                        return entity.getDataObject().getId() === dataObject.getId();
+                    }).forEach(function(entity) {
+                        entity.select();
                     });
-                } else {
-                    sprite.animations.add(key, data.frames, data.rate, data.loopable);
-                }
-                // if there is an animation called `idle-forever` it is played straight away
-                if (key === ANIMATION_IDLE_FOREVER) {
-                    sprite.animations.play(key);
-                }
-            });
-        },
-
-        /**
-         * Extending the given sprite with event listeners
-         * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
-         * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
-         * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
-         * @return {[object]} 
-         */
-        extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
-            // input events registered on the sprite object
-            sprite.events.onInputDown.add(function() {
-                var now;
-                var game = this.game;
-
-                if (GUIActivityManager.getInstance().hasActiveSelection()) {
-                    return;
                 }
 
-                if (UserPointer.getInstance().isLeftButtonDown()) {
-                    // If the user holds SHIFT we will extend the number of selected entities
-                    if (!UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
-                        this.entityManager.unselectAll();
-                    }
-                    this.select();
+                // this needs to be attached to the individual sprite instance
+                this.lastClickTime = now;
+            }
+        }, entity);
 
-                    now = new Date().getTime();
-                    if (now - this.lastClickTime < 500) {
-                        this.entityManager.entities().filter(function(entity) {
-                            // If the entity is off screen we need to exclude
-                            if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)) {
-                                return false;
-                            }
-                            if (!Util.between(entity.getSprite().y - game.camera.y, 0, ns.window.height)) {
-                                return false;
-                            }
-                            // we need to include only the indentical entities                           
-                            return entity.getDataObject().getId() === dataObject.getId();
-                        }).forEach(function(entity) {
-                            entity.select();
-                        });
-                    }
+        sprite.events.onInputOut.add(function() {
+            sprite.hover = false;
+        }, this);
 
-                    // this needs to be attached to the individual sprite instance
-                    this.lastClickTime = now;
-                }
-            }, entity);
-
-            sprite.events.onInputOut.add(function() {
-                sprite.hover = false;
-            }, this);
-
-            sprite.events.onInputOver.add(function() {
-                sprite.hover = true;
-            }, this);
-        };
+        sprite.events.onInputOver.add(function() {
+            sprite.hover = true;
+        }, this);
+    };
 
 
     /**
@@ -197,6 +196,9 @@ define('Entity', [
         // adding the StatusDisplay object to show the current status 
         // of the entity's attributes
         this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
+
+        // energy shield animation
+        this.energyShield = GUI.getInstance().addEnergyShield(this);
 
         // ActivityManager
         this.activityManager = new ActivityManager(this);
@@ -340,6 +342,8 @@ define('Entity', [
 
             if (this.dataObject.getHull() <= 0) {
                 this.entityManager.remove(this);
+            } else {
+                this.eventDispatcher.dispatch('damage');
             }
         },
 
@@ -503,7 +507,7 @@ define('Entity', [
             var thisPlayer = this.getPlayer();
             var thatPlayer = entity.getPlayer();
             if (thisPlayer === thatPlayer) return false;
-            return playerManager.isPlayerHostileTo(thisPlayer, thatPlayer);
+            return playerManager.isPlayerHostileToPlayer(thisPlayer, thatPlayer);
         },
 
         /**

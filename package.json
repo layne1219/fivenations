@@ -6,7 +6,8 @@
   "version": "0.0.0",
   "dependencies": {
     "express": "^4.14.0",
-    "forever": "^0.15.2"
+    "forever": "^0.15.2",
+    "phantomjs-prebuilt": "^2.1.14"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",

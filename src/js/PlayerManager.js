@@ -60,8 +60,12 @@ define('PlayerManager', ['Player'], function(Player) {
                 return colors;
             },
 
-            isPlayerHostileTo: function(a, b) {
+            isPlayerHostileToPlayer: function(a, b) {
                 return a.getTeam() !== b.getTeam();
+            },
+            
+            isEntityHostileToPlayer: function(entity, player) {
+                return this.isPlayerHostileToPlayer(player, entity.getPlayer())
             }
 
         };

@@ -119,6 +119,8 @@ define('Game', [
             // Right Mouse Button to send units to a position
             this.userPointer.on('rightbutton/down', function() {
 
+                // @TODO refactor this function as it has become too complex and long
+
                 var coords = this.userPointer.getRealCoords();
                 var resetActivityQueue = true;
                 var targetEntity;
@@ -130,6 +132,7 @@ define('Game', [
                     return;
                 }
 
+                // checks whether the user hovers an entity
                 entitiesHovering = this.entityManager.entities().filter(function(entity) {
                     if (entity.isHover()){
                         targetEntity = entity;
@@ -145,13 +148,20 @@ define('Game', [
 
                 if (entitiesHovering.length > 0) {
 
-                    this.eventEmitter
-                        .synced
-                        .entities(':user:selected')
-                        .attack({
+                    var selectedEntities = this.eventEmitter.synced.entities(':user:selected');
+
+                    // if the entity is hostile we should trigger the attack short hand
+                    if (this.playerManager.isEntityHostileToPlayer(targetEntity, this.playerManager.getUser())) {
+                        selectedEntities.attack({
                             targetEntity: targetEntity,
                             resetActivityQueue: resetActivityQueue
                         });
+                    } else {
+                        selectedEntities.follow({
+                            targetEntity: targetEntity,
+                            resetActivityQueue: resetActivityQueue
+                        });
+                    }
 
                     targetEntity.selectedAsTarget();
 
@@ -302,7 +312,7 @@ define('Game', [
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
                     id: 'hurricane',
-                    team: 2, //Util.rnd(1, this.playerManager.getPlayersNumber())
+                    team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
                     x: 500 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
@@ -311,8 +321,8 @@ define('Game', [
             for (var j = 0; j >= 0; j -= 1) {
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
-                    id: 'orca',
-                    team: 1,
+                    id: 'hailstorm',
+                    team: 2,
                     x: 200 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });

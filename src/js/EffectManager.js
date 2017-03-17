@@ -2,8 +2,9 @@ define('EffectManager', [
     'Graphics',
     'Effect',
     'DataObject',
+    'Universal.EventEmitter',
     'Util'
-], function(Graphics, Effect, DataObject, Util) {
+], function(Graphics, Effect, DataObject, EventEmitter, Util) {
 
     var ns = window.fivenations;
 
@@ -81,6 +82,9 @@ define('EffectManager', [
                 if (point) {
                     sprite.body.velocity = point;
                 }
+
+                // saving the original velocity for later use (like effects following targets)
+                sprite.body._origVelocity = config.velocity;
 
             }
 
@@ -200,16 +204,63 @@ define('EffectManager', [
         
         /**
          * Update function called on every tick
+         * @param {boolean} authoritative Flag to indicate the authoritative client
          * @return {void}
          */
-        update: function() {
+        update: function(authoritative) {
+
             for (var i = effects.length - 1; i >= 0; i -= 1) {
-                if (!effects[i].ttl) continue;
-                effects[i].ttl -= 1;
-                if (effects[i].ttl === 0) {
-                    this.removeByIndex(i);
+                if (authoritative && this.isEffectExpired(effects[i])) {
+                    EventEmitter.getInstance().synced.effects(effects[i]).remove();
+                } else {
+                    if (effects[i].willFollowTarget()) {
+                        this.followTarget(effects[i]);
+                    }
                 }
             }
+
+        },
+
+        /**
+         * Updates ttl attribute of the given effect entity and returns
+         * @param {object} effect Effect entity
+         * @return {boolean} true if the effect needs to be removed
+         */
+        isEffectExpired: function(effect) {
+            if (effect.ttl === 0) return true;
+            if (effect.ttl > 0) effect.ttl -= 1;                
+            return false;
+        },
+
+        /**
+         * makes the given effect to follow its target if specififed
+         * @param  {object} effect Effect entity
+         * @return {void}
+         */
+        followTarget: function(effect) {
+            var targetEntity = effect.getTargetEntity();
+            var rotation;
+            var sprite;
+            var targetSprite;
+            var point;
+            
+            if (!targetEntity) {
+
+                effect.ttl = 0;
+
+            } else {
+            
+                sprite = effect.getSprite();
+                targetSprite = targetEntity.getSprite();
+
+                rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
+                point = phaserGame.physics.arcade.velocityFromRotation(rotation, sprite.body._origVelocity, sprite.body.velocity);
+                
+                sprite.body.velocity = point;
+                sprite.rotation = rotation;
+
+            }
+
         },
 
         /**

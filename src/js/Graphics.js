@@ -11,8 +11,10 @@ define('Graphics', function() {
                 'starfield',
                 'selectors-buildings',
                 'entities-buildings',
+                'energy-shields-buildings',
                 'selectors',
                 'entities',
+                'energy-shields',
                 'effects',                
                 'prior-gui-elements'
             ];

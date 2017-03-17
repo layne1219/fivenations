@@ -23,7 +23,6 @@ define('Universal.EventBusExecuter', [
                         if (!evt.id) {
                             continue;
                         }
-
                         try {
                             evtObj = factory.getEventObjectById(evt.id);
                             evtObj.execute({

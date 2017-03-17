@@ -78,7 +78,7 @@ define('Entity.ActivityManager', [
                 if (activities[currentIdx].isActivated()) {
                     activities[currentIdx].update();
                 }
-            },
+            }
 
         };
 

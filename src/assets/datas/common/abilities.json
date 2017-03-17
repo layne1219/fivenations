@@ -1,6 +1,7 @@
 {
     "move": 65,
     "stop": 66,
+    "follow": 65,
     "patrol": 67,
     "hold": 68,
     "defend": 69,
