@@ -29,6 +29,9 @@ define('Preloader', [
      */
     function loadGUI(preloader) {
         preloader.load.atlasJSONHash('gui', 'assets/images/gui/GUI_element.png', 'assets/images/gui/GUI_element.json');
+        preloader.load.atlasJSONHash('effect-shield-big', 'assets/images/effects/effect_shield_big.png', 'assets/images/effects/effect_shield_big.json');
+        preloader.load.atlasJSONHash('effect-shield-medium', 'assets/images/effects/effect_shield_medium.png', 'assets/images/effects/effect_shield_medium.json');
+        preloader.load.atlasJSONHash('effect-shield-sm', 'assets/images/effects/effect_shield_sm.png', 'assets/images/effects/effect_shield_sm.json');
         preloader.load.atlasJSONHash('gui.icons.fed', 'assets/images/gui/fed_icons.png', 'assets/images/gui/fed_icons.json');
         preloader.load.atlasJSONHash('gui.icons.ath', 'assets/images/gui/ath_icons.png', 'assets/images/gui/ath_icons.json');
         preloader.load.atlasJSONHash('gui.icons.syl', 'assets/images/gui/syl_icons.png', 'assets/images/gui/syl_icons.json');

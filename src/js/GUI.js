@@ -56,13 +56,17 @@ define('GUI', [
                 'flash-big': [141, 145, 141, 145, 141, 145, 141, 145],
                 'flash-extrabig': [147, 151, 147, 151, 147, 151, 147, 151],
                 'flash-medium': [152, 156, 152, 156, 152, 156, 152, 156],
-                'flash-small': [157, 161, 157, 161, 157, 161, 157, 161]
+                'flash-small': [157, 161, 157, 161, 157, 161, 157, 161],
+
+                'energy-shield-big': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                'energy-shield-medium': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                'energy-shield-small': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
             };
 
         })(),
 
-        // size ranges for different spirtes
+        // size ranges for different sprites
         categories = {
             'big': [100, 149],
             'extrabig': [150, 999],
@@ -274,6 +278,102 @@ define('GUI', [
             };
 
             return Selector;
+
+        })(),
+
+        // --------------------------------------------------------------------------------------
+        // Energy Shield animation
+        // --------------------------------------------------------------------------------------
+        EnergyShield = (function() {
+
+            var ANIM_FRAME_RATE = 25;
+            var ANIM_ID = 'damage';
+
+            function EnergyShield() {}
+
+            EnergyShield.prototype = {
+
+                size: null,
+                parent: null,
+                width: 0,
+                height: 0,
+
+                appendTo: function(entity) {
+
+                    var groupName;
+
+                    this.sprite = this.createSpriteByParent(entity);
+
+                    // Add the selection to the appropriate graphics group as per its type
+                    groupName = entity.getDataObject().isBuilding() ? 'energy-shields-buildings' : 'energy-shield';
+                    Graphics.getInstance().getGroup(groupName).add(this.sprite);
+
+                    entity.on('damage', this.show.bind(this));
+                    entity.on('remove', this.remove.bind(this));
+
+                    // the sprite is not a child of the entity for various overlapping issues
+                    // therefore it needs to follow it upon every tick 
+                    this.sprite.update = function() {
+                        this.x = entity.getSprite().x;
+                        this.y = entity.getSprite().y;
+                    };
+
+                    this.parent = entity;
+                },
+
+                createSpriteByParent: function(parent) {
+                    var width = parent.getDataObject().getWidth();
+                    var height = parent.getDataObject().getHeight();
+                    var size = this.getSize(width, height);
+                    var spriteName = 'energy-shield-' + size;
+                    var sprite = phaserGame.add.image(0, 0, spriteName);
+                    sprite.visible = false;
+                    sprite.anchor.setTo(0.5, 0.5);
+                
+                    var anim = sprite.animations.add(ANIM_ID, animations[spriteName]);
+                    anim.onComplete.add(this.animationCompleted, this);
+                    
+                    return sprite;
+                },
+
+                show: function() {
+                    this.sprite.visible = true;
+                    this.sprite.play(ANIM_ID, ANIM_FRAME_RATE);
+                },
+
+                hide: function() {
+                    this.sprite.visible = false;
+                },
+
+                remove: function() {
+                    this.sprite.destroy(true);
+                },
+
+                animationCompleted: function() {
+                    this.hide();
+                },
+
+                getSize: function(width, height) {
+
+                    if (!this.size) {
+
+                        Object.keys(categories).forEach(function(size) {
+                            if (Util.between(Math.max(width, height), categories[size][0], categories[size][1])) {
+                                if (size === 'extrabig') {
+                                    this.size = 'big';
+                                } else {
+                                    this.size = size;
+                                }
+                            }
+                        }, this);
+                    }
+
+                    return this.size;
+                }
+
+            };
+
+            return EnergyShield;
 
         })(),
 
@@ -1690,6 +1790,16 @@ define('GUI', [
                 var selector = new Selector();
                 selector.appendTo(entity);
                 return selector;
+            },
+
+            /**
+             * Links the given entity to a new EnergyShield instance
+             * @param {object} entity Instance of Eneity 
+             */
+            addEnergyShield: function(entity) {
+                var energyShield = new EnergyShield();
+                energyShield.appendTo(entity);
+                return energyShield;
             },
 
             /**
