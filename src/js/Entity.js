@@ -76,7 +76,7 @@ define('Entity', [
         sprite._parent = entity;
 
         return sprite;
-    },
+    };
 
     /**
      * Registers animations sequences against the given sprite object if there is any specified in the DO 
@@ -101,7 +101,7 @@ define('Entity', [
                 sprite.animations.play(key);
             }
         });
-    },
+    };
 
     /**
      * Extending the given sprite with event listeners

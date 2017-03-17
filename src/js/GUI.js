@@ -305,10 +305,10 @@ define('GUI', [
                     this.sprite = this.createSpriteByParent(entity);
 
                     // Add the selection to the appropriate graphics group as per its type
-                    groupName = entity.getDataObject().isBuilding() ? 'energy-shields-buildings' : 'energy-shield';
+                    groupName = entity.getDataObject().isBuilding() ? 'energy-shields-buildings' : 'energy-shields';
                     Graphics.getInstance().getGroup(groupName).add(this.sprite);
 
-                    entity.on('damage', this.show.bind(this));
+                    entity.on('damage', this.onDamage.bind(this));
                     entity.on('remove', this.remove.bind(this));
 
                     // the sprite is not a child of the entity for various overlapping issues
@@ -334,6 +334,12 @@ define('GUI', [
                     anim.onComplete.add(this.animationCompleted, this);
                     
                     return sprite;
+                },
+
+                onDamage: function() {
+                    if (this.parent.getDataObject().getShield() > 0) {
+                        this.show();
+                    }
                 },
 
                 show: function() {
