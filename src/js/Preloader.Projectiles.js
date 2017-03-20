@@ -27,6 +27,13 @@ define('Preloader.Projectiles', function() {
             spriteURL: PATH_ASSETS_IMG + '/weapons.png',
             atlasURL: PATH_ASSETS_IMG + '/weapons.json',
             dataURL: PATH_ASSETS_DATA + '/missile.json'
+        },
+
+        'asr-missile': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+            dataURL: PATH_ASSETS_DATA + '/asr-missile.json'
         }
 
     });

@@ -333,8 +333,8 @@
     "damage_shield": 15,
     "range": 40,
     "speed": 30,
-    "acceleration": 8,
-    "maxVelocity": 60,
+    "acceleration": 50,
+    "maxVelocity": 300,
     "maneuverability": 40,
     "accuracy": 100,
     "effect_range": 0,
@@ -343,7 +343,8 @@
     "cooldown": 200,
     "homing": 1,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "asr-missile"
   },
   {
     "name": "Nuclear Missile POD",
