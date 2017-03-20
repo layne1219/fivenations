@@ -343,7 +343,8 @@
     "cooldown": 200,
     "homing": 1,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "asr-missile"
   },
   {
     "name": "Nuclear Missile POD",
