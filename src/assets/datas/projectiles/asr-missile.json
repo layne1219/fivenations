@@ -2,7 +2,7 @@
     "id": "asr-missile",
     "size": "xsm",
     "ttl": 200,
-    "customFrame": 17,
+    "customFrame": 21,
     "events": {
         "remove": {
             "effects": ["blow-2"]
