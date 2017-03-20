@@ -1,7 +1,8 @@
 {
     "id": "asr-missile",
     "size": "xsm",
-    "ttl": 200,
+    "ttl": 450,
+    "followTarget": true,
     "customFrame": 21,
     "events": {
         "remove": {
