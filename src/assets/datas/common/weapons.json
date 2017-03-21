@@ -152,9 +152,9 @@
     "upgrade_level": 7,
     "damage_shield": 120,
     "range": 70,
-    "speed": 40,
-    "acceleration": 5,
-    "maxVelocity": 60,
+    "velocity": 40,
+    "acceleration": 25,
+    "maxVelocity": 100,
     "maneuverability": 100,
     "accuracy": 75,
     "effect_range": 20,
@@ -163,7 +163,8 @@
     "cooldown": 800,
     "homing": 0,
     "type": "cannon",
-    "specialty": "If it's target destroyed, it can hit another unit (max 3)"
+    "specialty": "If it's target destroyed, it can hit another unit (max 3)",
+    "effect": "ragnarok-heavy-gun"
   },
   {
     "name": "Cargo",
