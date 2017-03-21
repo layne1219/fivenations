@@ -10,7 +10,7 @@
 	"speed": 50,
 	"maneuverability": 50,
 	"vision": 40,
-	"weapons": [ 17, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"weapons": [ 17, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
 	"titanium": 70,
 	"silicium": 10,
 	"energy": 50,

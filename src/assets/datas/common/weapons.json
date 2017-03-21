@@ -6,7 +6,6 @@
     "upgrade_level": 1,
     "damage_shield": 8,
     "range": 20,
-    "speed": 100,
     "acceleration": 0,
     "maxVelocity": 1000,
     "maneuverability": 100,
@@ -132,9 +131,9 @@
     "upgrade_level": 3,
     "damage_shield": 35,
     "range": 50,
-    "speed": 50,
-    "acceleration": 4,
-    "maxVelocity": 70,
+    "velocity": 150,
+    "acceleration": 50,
+    "maxVelocity": 200,
     "maneuverability": 100,
     "accuracy": 80,
     "effect_range": 0,
@@ -143,7 +142,8 @@
     "cooldown": 250,
     "homing": 0,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "kinetic-torpedo"
   },
   {
     "name": "Ragnarok Heavy Gun",

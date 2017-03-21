@@ -1,0 +1,23 @@
+{
+    "id": "kinetic-torpedo",
+    "size": "xsm",
+    "ttl": 750,
+    "followTarget": false,
+    "animations": {
+        "idle": {
+            "oncomplete": "keepLastFrame",
+            "rate": 20,
+            "loopable": true,
+            "frames": [15, 16, 17, 18, 19, 20]
+        }
+    },    
+    "events": {
+        "remove": {
+            "effects": ["blow-2"]
+        },
+        "collision": {
+            "damageTarget": true,
+            "removeEffect": true
+        }        
+    }
+}
