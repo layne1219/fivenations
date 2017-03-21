@@ -7,8 +7,8 @@
         "idle": {
             "oncomplete": "keepLastFrame",
             "rate": 20,
-            "loopable": true,
-            "frames": [15, 16, 17, 18, 19, 20]
+            "loopable": false,
+            "frames": [15, 16, 17, 18, 19]
         }
     },    
     "events": {
