@@ -20,7 +20,7 @@
         }        
     },
     "trails": {
-        "rate": 50,
+        "rate": 10,
         "effect": "smoke-trail-1"
     }
 }

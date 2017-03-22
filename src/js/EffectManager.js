@@ -272,11 +272,11 @@ define('EffectManager', [
          * @return {void}
          */
         emitTrails: function(effect) {
-            if (effects.ttl % effects.getTrailsRate() === 0) {
+            if (effect.ttl % effect.getTrailsRate() === 0) {
                 this.add({
-                    id: effects.getTrailsEffect(),
-                    x: sprite.x + Util.rnd(0, 10) - 5,
-                    y: sprite.y + Util.rnd(0, 10) - 5
+                    id: effect.getTrailsEffect(),
+                    x: effect.getSprite().x + Util.rnd(0, 10) - 5,
+                    y: effect.getSprite().y + Util.rnd(0, 10) - 5
                 });
             }
         },
