@@ -18,5 +18,9 @@
             "damageTarget": true,
             "removeEffect": true
         }        
+    },
+    "trails": {
+        "rate": 50,
+        "effect": "smoke-trail-1"
     }
 }

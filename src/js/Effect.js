@@ -172,7 +172,28 @@ define('Effect', ['Util'], function(Util) {
 
         willFollowTarget: function() {
             return this.dataObject.getFollowTarget();
-        }
+        },
+
+        hasTrails: function() {
+            if (!this.trails) {
+                this.trails = this.dataObject.getTrails();
+            }
+            return !!this.trails;
+        },
+
+        getTrailsRate: function() {
+            if (!this.trails) {
+                this.trails = this.dataObject.getTrails();
+            }
+            return this.trails.rate;
+        },
+
+        getTrailsEffect: function() {
+            if (!this.trails) {
+                this.trails = this.dataObject.getTrails();
+            }
+            return this.trails.effect;
+        }        
 
     }
 

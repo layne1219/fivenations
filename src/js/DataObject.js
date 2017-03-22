@@ -212,6 +212,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
 
             getFollowTarget: function() {
                 return data.followTarget;
+            },
+
+            getTrails: function() {
+                return data.trails;
             }
 
         };
