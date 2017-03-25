@@ -121,6 +121,17 @@ define('Entity.MotionManager', [
         },
 
         /**
+         * Rotates the entity towards the given target that the activity returns
+         * @return {void}
+         */
+        rotateToTarget: function(activity) {
+            this.activity = activity;
+            this.effectManager.resetEffects();
+            this.effectManager.addEffect(Effects.get('initMovement'));
+            this.effectManager.addEffect(Effects.get('rotateToTarget'));
+        },
+
+        /**
          * Makes the entity slowly floating up and down
          * @return {void}
          */

@@ -92,6 +92,8 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                     velocity = this.data.acceleration || this.data.maxVelocity;
                 }
 
+                this.entity.rotateToTarget(targetEntity);
+
                 EventEmitter.getInstance().synced.effects.add({
                     id: this.data.effect,
                     emitter: this,

@@ -334,6 +334,17 @@ define('Entity', [
         },
 
         /**
+         * Registers a RotateToTarget activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+         rotateToTarget: function(targetEntity) {
+            var rotate = new ActivityManager.RotateToTarget(this);
+            rotate.setTarget(targetEntity);
+            this.activityManager.add(rotate);
+        },
+
+        /**
          * Alters entity attributes according to the given parameters
          * @param {object} params 
          */
