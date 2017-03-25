@@ -92,8 +92,6 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                     velocity = this.data.acceleration || this.data.maxVelocity;
                 }
 
-                this.entity.rotateToTarget(targetEntity);
-
                 EventEmitter.getInstance().synced.effects.add({
                     id: this.data.effect,
                     emitter: this,
@@ -124,7 +122,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             this.manager = manager;
             this.entity = manager.getEntity();
             this.entityType = this.entity.getDataObject().getType();
-            this.unconditionalRelese = this.entityType === 'Fighter' || this.isSelfContained();
+            this.unconditionalRelease = this.entityType === 'Fighter' || this.isSelfContained();
         },
 
         setTargetEntity: function(entity) {
@@ -190,14 +188,25 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         },
 
         isReleasable: function() {
-            if (this.unconditionalRelese) return true;
+            if (this.unconditionalRelease) return true;
             
             // if the entity stands still
-            return this.entity.getMotionManager().movement.velocity === 0;
+            if (this.entity.getMotionManager().movement.velocity !== 0) return false;
+
+            // if the entity doesn't face target entity
+            if (this.requiresEntityToFaceTarget()) {
+                return this.entity
+                            .getMotionManager()
+                            .isEntityFacingTarget(this.targetEntity);
+            }
         },
 
         hasFriendlyFire: function() {
             return this.data.friendly_fire;
+        },
+
+        requiresEntityToFaceTarget: function() {
+            return this.data.requires_entity_to_face_target;
         }
 
     }

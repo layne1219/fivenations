@@ -40,8 +40,8 @@ define('Entity.Activity.RotateToTarget', ['Entity.Activity'], function(Activity)
      * Returns the coordinates to which the entity moves 
      * @return {object} object literal that contains the coordinates
      */
-    Move.prototype.getCoords = function() {
-        var sprite this.targetEntity.getSprite();
+    RotateToTarget.prototype.getCoords = function() {
+        var sprite = this.targetEntity.getSprite();
         return {
             x: sprite.x,
             y: sprite.y

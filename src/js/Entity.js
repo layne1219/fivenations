@@ -338,7 +338,7 @@ define('Entity', [
          * @param  {object} targetEntity [Entity] 
          * @return {void}
          */
-         rotateToTarget: function(targetEntity) {
+        rotateToTarget: function(targetEntity) {
             var rotate = new ActivityManager.RotateToTarget(this);
             rotate.setTarget(targetEntity);
             this.activityManager.add(rotate);

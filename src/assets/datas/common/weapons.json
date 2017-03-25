@@ -39,6 +39,7 @@
     "homing": 0,
     "type": "cannon",
     "specialty": "-",
+    "requires_entity_to_face_target": true,
     "effect": "cannonball"
   },
   {
@@ -61,6 +62,7 @@
     "homing": 1,
     "type": "rocket",
     "specialty": "-",
+    "requires_entity_to_face_target": true,
     "effect": "missile"
   },
   {
