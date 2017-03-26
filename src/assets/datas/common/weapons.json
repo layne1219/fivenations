@@ -17,6 +17,7 @@
     "homing": 0,
     "type": "laser",
     "specialty": "-",
+    "requires_entity_to_face_target": true,
     "effect": "laser-beam-1"
   },
   {

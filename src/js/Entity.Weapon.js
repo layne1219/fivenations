@@ -27,9 +27,14 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         manager: null,
 
         update: function() {
-            if (this.ready && this.isReleasable()) {
-                this.scan();
-                this.release();
+            if (this.isReady()) {
+                if (this.hasTargetEntity()) {
+                    if (this.isReleasable()) {
+                        this.release();
+                    }
+                } else {
+                    this.scan();
+                }
             } else {
                 this.recharge();
             }
@@ -197,12 +202,18 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (this.requiresEntityToFaceTarget()) {
                 return this.entity
                             .getMotionManager()
-                            .isEntityFacingTarget(this.targetEntity);
+                            .isEntityFacingTargetEntity(this.targetEntity);
             }
+
+            return true;
         },
 
         hasFriendlyFire: function() {
             return this.data.friendly_fire;
+        },
+
+        hasTargetEntity: function() {
+            return this.targetEntity;
         },
 
         requiresEntityToFaceTarget: function() {

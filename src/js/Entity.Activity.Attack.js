@@ -48,6 +48,8 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
 
         if (!this.isTargetInRange()) {
             this.entity.getInRange(this.target);
+        } else if (!this.isEntityFacingTarget()) {
+            this.entity.rotateToTarget(this.target);
         }
 
     };    
@@ -81,6 +83,17 @@ define('Entity.Activity.Attack', ['Entity.Activity', 'Util'], function(Activity,
         range = this.entity.getWeaponManager().getMinRange();
 
         return distance <= range;
+    };
+
+    /**
+     * Checks whether the specified target entity is facing
+     * the given target entity 
+     * @return {boolean}
+     */
+    Attack.prototype.isEntityFacingTarget = function() {
+        return this.entity
+            .getMotionManager()
+            .isEntityFacingTargetEntity(this.target);
     };
 
     return Attack;

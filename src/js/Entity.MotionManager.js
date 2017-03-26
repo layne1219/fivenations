@@ -269,6 +269,19 @@ define('Entity.MotionManager', [
         },
 
         /**
+         * Checks whether the entity is facing towards it's target
+         * @param  {object} targetEntity
+         * @return {boolean}
+         */
+        isEntityFacingTargetEntity: function(targetEntity) {
+            var sprite = this.entity.getSprite();
+            var targetSprite = targetEntity.getSprite();
+            var targetAngle = Math.atan2(targetSprite.y - sprite.y, targetSprite.x - sprite.x);
+            var targetAngleCode = this.getTargetAngleCodeByTargetAngle(targetAngle);
+            return this.rotation.currentAngleCode === targetAngleCode;
+        },
+
+        /**
          * Returns the current angle code determined by the updateRotation method
          * @returns {integer} current angle code that usually goes from 0 to 15
          */
@@ -282,7 +295,26 @@ define('Entity.MotionManager', [
          */
         getEntity: function() {
             return this.entity;
+        },
+
+        /**
+         * Returns the calculated target angle code according to the given angle
+         * @oaram {float} targetAngle
+         * @return {integer}
+         */
+        getTargetAngleCodeByTargetAngle: function(targetAngle) {
+            var rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
+            var calculatedAngle;
+
+            if (this.rotation.maxAngleCount === 1) return 0;
+
+            calculatedAngle = Phaser.Math.radToDeg(targetAngle);
+            if (calculatedAngle < 0) {
+                calculatedAngle = 360 - Math.abs(calculatedAngle);
+            }
+            return (Math.floor(calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;
         }
+
     };
 
     return MotionManager;

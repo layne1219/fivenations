@@ -13,13 +13,8 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
          * @return {boolean} always returns false
          */
         initMovement: function(motionManager) {
-            var targetCoords; 
-            var distance;
-            var rotationOffset; 
-
-            targetCoords = motionManager.activity.getCoords();
-            distance = Phaser.Math.distance(motionManager.sprite.x, motionManager.sprite.y, targetCoords.x, targetCoords.y);
-            rotationOffset = Math.floor(motionManager.rotation.maxAngleCount * 0.75);
+            var targetCoords = motionManager.activity.getCoords();
+            var distance = Phaser.Math.distance(motionManager.sprite.x, motionManager.sprite.y, targetCoords.x, targetCoords.y);
 
             motionManager.movement.originX = motionManager.sprite.x;
             motionManager.movement.originY = motionManager.sprite.y;
@@ -28,17 +23,11 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
             motionManager.movement.targetInitialDistance = distance;
             motionManager.movement.targetDragTreshold = Math.min(motionManager.movement.maxTargetDragTreshold, distance / 2);
             motionManager.movement.targetAngle = Math.atan2(motionManager.movement.targetY - motionManager.sprite.y, motionManager.movement.targetX - motionManager.sprite.x);
+            motionManager.rotation.targetAngleCode = motionManager.getTargetAngleCodeByTargetAngle(motionManager.movement.targetAngle);
 
             if (motionManager.rotation.maxAngleCount === 1) {
                 motionManager.movement.currentAngle = motionManager.movement.targetAngle;
-                motionManager.rotation.targetAngleCode = motionManager.rotation.currentAngleCode = 0;
             } else {
-                motionManager.rotation.calculatedAngle = Phaser.Math.radToDeg(Math.atan2(targetCoords.y - motionManager.sprite.y, targetCoords.x - motionManager.sprite.x));
-                if (motionManager.rotation.calculatedAngle < 0) {
-                    motionManager.rotation.calculatedAngle = 360 - Math.abs(motionManager.rotation.calculatedAngle);
-                }
-                motionManager.rotation.targetAngleCode = (Math.floor(motionManager.rotation.calculatedAngle / (360 / motionManager.rotation.maxAngleCount)) + rotationOffset) % motionManager.rotation.maxAngleCount;
-
                 motionManager.rotation.stepNumberToRight = Util.calculateStepTo(motionManager.rotation.currentAngleCode, motionManager.rotation.targetAngleCode, motionManager.rotation.maxAngleCount, 1);
                 motionManager.rotation.stepNumberToLeft = Util.calculateStepTo(motionManager.rotation.currentAngleCode, motionManager.rotation.targetAngleCode, motionManager.rotation.maxAngleCount, -1);
             }
