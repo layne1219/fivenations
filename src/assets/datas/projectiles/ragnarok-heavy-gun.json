@@ -1,0 +1,16 @@
+{
+    "id": "ragnarok-heavy-gun",
+    "size": "xsm",
+    "ttl": 750,
+    "followTarget": false,
+    "customFrame": 20,    
+    "events": {
+        "remove": {
+            "effects": ["blow-2"]
+        },
+        "collision": {
+            "damageTarget": true,
+            "removeEffect": true
+        }        
+    }
+}

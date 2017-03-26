@@ -6,7 +6,6 @@
     "upgrade_level": 1,
     "damage_shield": 8,
     "range": 20,
-    "speed": 100,
     "acceleration": 0,
     "maxVelocity": 1000,
     "maneuverability": 100,
@@ -18,6 +17,7 @@
     "homing": 0,
     "type": "laser",
     "specialty": "-",
+    "requires_entity_to_face_target": true,
     "effect": "laser-beam-1"
   },
   {
@@ -40,6 +40,7 @@
     "homing": 0,
     "type": "cannon",
     "specialty": "-",
+    "requires_entity_to_face_target": true,
     "effect": "cannonball"
   },
   {
@@ -62,6 +63,7 @@
     "homing": 1,
     "type": "rocket",
     "specialty": "-",
+    "requires_entity_to_face_target": true,
     "effect": "missile"
   },
   {
@@ -132,9 +134,9 @@
     "upgrade_level": 3,
     "damage_shield": 35,
     "range": 50,
-    "speed": 50,
-    "acceleration": 4,
-    "maxVelocity": 70,
+    "velocity": 150,
+    "acceleration": 50,
+    "maxVelocity": 200,
     "maneuverability": 100,
     "accuracy": 80,
     "effect_range": 0,
@@ -143,7 +145,8 @@
     "cooldown": 250,
     "homing": 0,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "kinetic-torpedo"
   },
   {
     "name": "Ragnarok Heavy Gun",
@@ -152,9 +155,9 @@
     "upgrade_level": 7,
     "damage_shield": 120,
     "range": 70,
-    "speed": 40,
-    "acceleration": 5,
-    "maxVelocity": 60,
+    "velocity": 40,
+    "acceleration": 25,
+    "maxVelocity": 100,
     "maneuverability": 100,
     "accuracy": 75,
     "effect_range": 20,
@@ -163,7 +166,8 @@
     "cooldown": 800,
     "homing": 0,
     "type": "cannon",
-    "specialty": "If it's target destroyed, it can hit another unit (max 3)"
+    "specialty": "If it's target destroyed, it can hit another unit (max 3)",
+    "effect": "ragnarok-heavy-gun"
   },
   {
     "name": "Cargo",
@@ -333,8 +337,9 @@
     "damage_shield": 15,
     "range": 40,
     "speed": 30,
-    "acceleration": 8,
-    "maxVelocity": 60,
+    "acceleration": 50,
+    "velocity": 175,
+    "maxVelocity": 400,
     "maneuverability": 40,
     "accuracy": 100,
     "effect_range": 0,
@@ -343,7 +348,8 @@
     "cooldown": 200,
     "homing": 1,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "effect": "asr-missile"
   },
   {
     "name": "Nuclear Missile POD",

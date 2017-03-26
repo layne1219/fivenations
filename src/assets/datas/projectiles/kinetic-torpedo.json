@@ -1,13 +1,14 @@
 {
-    "id": "missile",
+    "id": "kinetic-torpedo",
     "size": "xsm",
     "ttl": 750,
-    "followTarget": true,
+    "followTarget": false,
     "animations": {
         "idle": {
+            "oncomplete": "keepLastFrame",
             "rate": 20,
-            "loopable": true,
-            "frames": [8, 9, 10, 11, 12, 13]
+            "loopable": false,
+            "frames": [15, 16, 17, 18, 19]
         }
     },    
     "events": {
@@ -18,9 +19,5 @@
             "damageTarget": true,
             "removeEffect": true
         }        
-    },
-    "trails": {
-        "rate": 20,
-        "effect": "smoke-trail-1"
     }
 }

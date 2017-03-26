@@ -174,8 +174,36 @@ define('Preloader.Effects', function() {
             spriteURL: PATH_ASSETS_IMG + '/effect_sporecloud.png',
             atlasURL: PATH_ASSETS_IMG + '/effect_sporecloud.json',
             dataURL: PATH_ASSETS_DATA + '/sporecloud.json'
-        }
+        },
 
+        'smoke-trail-1': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/smoke_trail01.png',
+            atlasURL: PATH_ASSETS_IMG + '/smoke_trail01.json',
+            dataURL: PATH_ASSETS_DATA + '/smoke-trail-1.json'
+        },
+
+        'smoke-trail-2': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/smoke_trail02.png',
+            atlasURL: PATH_ASSETS_IMG + '/smoke_trail02.json',
+            dataURL: PATH_ASSETS_DATA + '/smoke-trail-2.json'
+        },
+
+        'smoke-trail-3': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/smoke_trail03.png',
+            atlasURL: PATH_ASSETS_IMG + '/smoke_trail03.json',
+            dataURL: PATH_ASSETS_DATA + '/smoke-trail-3.json'
+        },
+
+        'smoke-trail-4': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/smoke_trail04.png',
+            atlasURL: PATH_ASSETS_IMG + '/smoke_trail04.json',
+            dataURL: PATH_ASSETS_DATA + '/smoke-trail-4.json'
+        },
+        
     });
 
     return {

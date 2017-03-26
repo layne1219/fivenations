@@ -27,9 +27,14 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         manager: null,
 
         update: function() {
-            if (this.ready && this.isReleasable()) {
-                this.scan();
-                this.release();
+            if (this.isReady()) {
+                if (this.hasTargetEntity()) {
+                    if (this.isReleasable()) {
+                        this.release();
+                    }
+                } else {
+                    this.scan();
+                }
             } else {
                 this.recharge();
             }
@@ -122,7 +127,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             this.manager = manager;
             this.entity = manager.getEntity();
             this.entityType = this.entity.getDataObject().getType();
-            this.unconditionalRelese = this.entityType === 'Fighter' || this.isSelfContained();
+            this.unconditionalRelease = this.entityType === 'Fighter' || this.isSelfContained();
         },
 
         setTargetEntity: function(entity) {
@@ -188,14 +193,31 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
         },
 
         isReleasable: function() {
-            if (this.unconditionalRelese) return true;
+            if (this.unconditionalRelease) return true;
             
             // if the entity stands still
-            return this.entity.getMotionManager().movement.velocity === 0;
+            if (this.entity.getMotionManager().movement.velocity !== 0) return false;
+
+            // if the entity doesn't face target entity
+            if (this.requiresEntityToFaceTarget()) {
+                return this.entity
+                            .getMotionManager()
+                            .isEntityFacingTargetEntity(this.targetEntity);
+            }
+
+            return true;
         },
 
         hasFriendlyFire: function() {
             return this.data.friendly_fire;
+        },
+
+        hasTargetEntity: function() {
+            return this.targetEntity;
+        },
+
+        requiresEntityToFaceTarget: function() {
+            return this.data.requires_entity_to_face_target;
         }
 
     }

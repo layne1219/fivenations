@@ -216,6 +216,9 @@ define('EffectManager', [
                     if (effects[i].willFollowTarget()) {
                         this.followTarget(effects[i]);
                     }
+                    if (effects[i].hasTrails()) {
+                        this.emitTrails(effects[i]);
+                    }
                 }
             }
 
@@ -261,6 +264,21 @@ define('EffectManager', [
 
             }
 
+        },
+
+        /**
+         * emits the effects configured as trail
+         * @param  {object} effect Effect entity
+         * @return {void}
+         */
+        emitTrails: function(effect) {
+            if (effect.ttl % effect.getTrailsRate() === 0) {
+                this.add({
+                    id: effect.getTrailsEffect(),
+                    x: effect.getSprite().x + Util.rnd(0, 10) - 5,
+                    y: effect.getSprite().y + Util.rnd(0, 10) - 5
+                });
+            }
         },
 
         /**

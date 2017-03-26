@@ -1,0 +1,16 @@
+{
+    "id": "asr-missile",
+    "size": "xsm",
+    "ttl": 450,
+    "followTarget": true,
+    "customFrame": 21,
+    "events": {
+        "remove": {
+            "effects": ["blow-2"]
+        },
+        "collision": {
+            "damageTarget": true,
+            "removeEffect": true
+        }        
+    }
+}

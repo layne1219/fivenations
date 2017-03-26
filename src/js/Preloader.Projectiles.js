@@ -27,7 +27,28 @@ define('Preloader.Projectiles', function() {
             spriteURL: PATH_ASSETS_IMG + '/weapons.png',
             atlasURL: PATH_ASSETS_IMG + '/weapons.json',
             dataURL: PATH_ASSETS_DATA + '/missile.json'
-        }
+        },
+
+        'kinetic-torpedo': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+            dataURL: PATH_ASSETS_DATA + '/kinetic-torpedo.json'
+        },
+
+        'asr-missile': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+            dataURL: PATH_ASSETS_DATA + '/asr-missile.json'
+        },
+
+        'ragnarok-heavy-gun': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+            dataURL: PATH_ASSETS_DATA + '/ragnarok-heavy-gun.json'
+        },
 
     });
 
