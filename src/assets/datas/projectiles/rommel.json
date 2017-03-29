@@ -1,7 +1,7 @@
 {
     "id": "rommel",
     "size": "xsm",
-    "ttl": 50,
+    "ttl": 75,
     "followTarget": false,
     "customFrame": 14,    
     "events": {

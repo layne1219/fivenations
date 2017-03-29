@@ -94,8 +94,9 @@
     "damage_shield": 5,
     "range": 25,
     "speed": 60,
+    "velocity": 250, 
     "acceleration": 0,
-    "maxVelocity": 60,
+    "maxVelocity": 250,
     "maneuverability": 100,
     "accuracy": 40,
     "effect_range": 0,
@@ -106,7 +107,7 @@
     "type": "cannon",
     "specialty": "Only aim at Fighters",
     "requires_entity_to_face_target": false,
-    "self_contained": ,
+    "self_contained": true,
     "effect": "rommel"
   },
   {
