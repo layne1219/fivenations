@@ -1,0 +1,16 @@
+{
+    "id": "rommel",
+    "size": "xsm",
+    "ttl": 50,
+    "followTarget": false,
+    "customFrame": 14,    
+    "events": {
+        "remove": {
+            "effects": ["blow-1"]
+        },
+        "collision": {
+            "damageTarget": true,
+            "removeEffect": true
+        }        
+    }
+}

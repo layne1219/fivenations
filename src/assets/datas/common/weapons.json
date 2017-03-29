@@ -105,7 +105,9 @@
     "homing": 0,
     "type": "cannon",
     "specialty": "Only aim at Fighters",
-    "self_contained": true
+    "requires_entity_to_face_target": false,
+    "self_contained": ,
+    "effect": "rommel"
   },
   {
     "name": "Repairing Hangar",
