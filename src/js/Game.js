@@ -152,15 +152,26 @@ define('Game', [
 
                     // if the entity is hostile we should trigger the attack short hand
                     if (this.playerManager.isEntityHostileToPlayer(targetEntity, this.playerManager.getUser())) {
+
                         selectedEntities.attack({
                             targetEntity: targetEntity,
                             resetActivityQueue: resetActivityQueue
                         });
+                        
                     } else {
-                        selectedEntities.follow({
+
+                        // short hand for 'dock'
+                        selectedEntities.getToDock({
                             targetEntity: targetEntity,
                             resetActivityQueue: resetActivityQueue
                         });
+
+                        // short hand for follow
+                       /* selectedEntities.follow({
+                            targetEntity: targetEntity,
+                            resetActivityQueue: resetActivityQueue
+                        });*/
+
                     }
 
                     targetEntity.selectedAsTarget();

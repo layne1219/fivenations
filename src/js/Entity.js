@@ -322,6 +322,17 @@ define('Entity', [
         },
 
         /**
+         * Registers a GetToDock activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        getToDock: function(targetEntity) {
+            var getToDock = new ActivityManager.GetToDock(this);
+            getToDock.setTarget(targetEntity);
+            this.activityManager.add(getToDock);
+        },        
+
+        /**
          * Registers a Attack activity with the given entity set as target
          * @param  {object} targetEntity [Entity] 
          * @return {void}
@@ -522,11 +533,33 @@ define('Entity', [
         },
 
         /**
-         * Returns whethe the entity can be a target of other entities
+         * Returns wether the entity can be a target of other entities
          * @return {Boolean} true if the entity is targetable
          */
         isTargetable: function() {
             return true;
+        },
+
+        /**
+         * Returns wether the entity can take fighters in
+         * @return {Boolean}
+         */
+        isDockable: function() {
+            if (this.dockable === undefined) {
+                this.dockable = this.weaponManager.hasWeapon(WeaponManager.WEAPON_DOCK);
+            }
+            return this.dockable;
+        },
+
+        /**
+         * Returns wether the entity can dock
+         * @return {Boolean}
+         */
+        canDock: function() {
+            if (this.canDock === undefined) {
+                this.canDock = this.dataObject.isFighter();
+            }
+            return this.canDock;
         },
 
         getSprite: function() {

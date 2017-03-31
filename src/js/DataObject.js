@@ -216,6 +216,10 @@ define('DataObject', ['json!sizes'], function(sizes) {
 
             getTrails: function() {
                 return data.trails;
+            },
+
+            isFighter: function() {
+                return this.getType() === 'Fighter';
             }
 
         };

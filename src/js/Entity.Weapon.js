@@ -126,8 +126,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             if (!manager) throw 'Invalid WeaponManager is passed!';
             this.manager = manager;
             this.entity = manager.getEntity();
-            this.entityType = this.entity.getDataObject().getType();
-            this.unconditionalRelease = this.entityType === 'Fighter' || this.isSelfContained();
+            this.unconditionalRelease = this.entity.getDataObject().isFighter() || this.isSelfContained();
         },
 
         setTargetEntity: function(entity) {
