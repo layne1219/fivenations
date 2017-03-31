@@ -322,6 +322,17 @@ define('Entity', [
         },
 
         /**
+         * Registers a GetToDock activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        getToDock: function(targetEntity) {
+            var getToDock = new ActivityManager.GetToDock(this);
+            getToDock.setTarget(targetEntity);
+            this.activityManager.add(getToDock);
+        },        
+
+        /**
          * Registers a Attack activity with the given entity set as target
          * @param  {object} targetEntity [Entity] 
          * @return {void}
