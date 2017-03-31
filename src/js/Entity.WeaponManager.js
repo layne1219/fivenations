@@ -150,8 +150,13 @@ define('Entity.WeaponManager', [
         getMinRange: function() {
             if (!this.minRange) {
                 this.minRange = this.weapons.reduce(function(min, weapon) {
-                    var range = weapon.getRange();
+                    var range;
+                    // self contained weapons don't participate in this calculations
+                    if (weapon.isSelfContained()) return min;
+
+                    range = weapon.getRange();
                     if (range < min) return range;
+
                     return min; 
                 }, 9999);
             }
