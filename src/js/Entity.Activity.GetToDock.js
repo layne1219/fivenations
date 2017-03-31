@@ -1,16 +1,15 @@
 define('Entity.Activity.GetToDock', [
-    'Entity.Activity',
     'Entity.Activity.GetInRange', 
     'Util'
-], function(GetInRange, Move, Util) {
+], function(GetInRange, Util) {
 
     /**
-     * Constructor function to FollowActivity
+     * Constructor function to GetToDock
      * @param  {[object]} entity Instance of an Entity class
      * @return {[object]} 
      */
     function GetToDock(entity) {
-        Move.call(this, entity);
+        GetInRange.call(this, entity);
     }
 
     GetToDock.prototype = new GetInRange;

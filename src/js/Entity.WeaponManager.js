@@ -188,9 +188,25 @@ define('Entity.WeaponManager', [
                 }
             }
             return this.hasOffensiveWeapon;
-        }
-        
+        },
+
+        /**
+         * Returns whether the entity has any weapon with the given id
+         * @return {Boolean}
+         */
+        hasWeapon: function(id) {
+            if (!id) return false;
+            for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
+                if (this.weapons[i].getId() === id) {
+                    return true;
+                }
+            }
+            return false;
+        }        
     };
+
+    // exposes Constant like ID variables
+    WeaponManager.WEAPON_DOCK = 6;
 
     return WeaponManager;
 
