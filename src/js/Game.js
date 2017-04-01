@@ -160,17 +160,11 @@ define('Game', [
                         
                     } else {
 
-                        // short hand for 'dock'
-                        selectedEntities.getToDock({
+                        // short hand for follow
+                        selectedEntities.follow({
                             targetEntity: targetEntity,
                             resetActivityQueue: resetActivityQueue
                         });
-
-                        // short hand for follow
-                       /* selectedEntities.follow({
-                            targetEntity: targetEntity,
-                            resetActivityQueue: resetActivityQueue
-                        });*/
 
                     }
 

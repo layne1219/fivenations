@@ -231,6 +231,26 @@ define('Universal.EventEmitter', [
 
                     return this;
                 },
+                /**
+                 * Docks entities into the target entity
+                 * @return {void}
+                 * @chainable
+                 */
+                dock: function(options) {
+
+                    var targetEntity = options.targetEntity;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/dock',
+                        targets: entities,
+                        data: {
+                            targetEntity: targetEntity.getGUID()
+                        },
+                        resetActivityQueue: options.resetActivityQueue
+                    });
+
+                    return this;
+                },
 
             }
         };

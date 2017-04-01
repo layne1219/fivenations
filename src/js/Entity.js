@@ -356,6 +356,37 @@ define('Entity', [
         },
 
         /**
+         * Adds the given entity to the container for docked entities 
+         * @param {object} targetEntity [Entity]
+         * @return {void}
+         */
+        dockTarget: function(targetEntity) {
+            targetEntity.hibernate();
+            if (this.docker === undefined) {
+                this.docker = [];
+            }
+            this.docker.push(targetEntity);
+        },
+
+        /**
+         * Reactivates all the entities that have been enclosed into the docker array
+         * @return {void}
+         */
+        undock: function() {
+            if (this.docker === undefined) return;
+
+            var entitiesToRelease = [];
+
+            this.docker.forEach(function(entity) {
+                entity.reactivate();
+                entitiesToRelease.push(entity);
+            });
+            this.docker = [];
+
+            return entitiesToRelease;
+        },
+
+        /**
          * Alters entity attributes according to the given parameters
          * @param {object} params 
          */
@@ -387,6 +418,28 @@ define('Entity', [
             this.sprite.destroy();
             this.eventDispatcher.dispatch('remove');
             EffectManager.getInstance().explode(this);
+        },
+
+        /**
+         * Makes the entity unavailable for further actions including 
+         * rendering it into the gameplay without removing it completely. This is
+         * usually used to actions such as docking into another entity.
+         */
+        hibernate: function() {
+            this.sprite.visible = false;
+            this.hibarnated = true;
+            this.eventDispatcher.dispatch('hibarnate');
+        },
+
+        /**
+         * Makes the entity unavailable for further actions including 
+         * rendering it into the gameplay without removing it completely. This is
+         * usually used to actions such as docking into another entity.
+         */
+        reactivate: function() {
+            this.sprite.visible = true;
+            this.hibarnated = false;
+            this.eventDispatcher.dispatch('reactivated');
         },
 
         /**
@@ -537,7 +590,15 @@ define('Entity', [
          * @return {Boolean} true if the entity is targetable
          */
         isTargetable: function() {
-            return true;
+            return this.isActive();
+        },
+
+        /**
+         * Returns whether the entity is active or not
+         * @return {Boolean}
+         */
+        isActive: function() {
+            return this.hibarnated;
         },
 
         /**

@@ -10,6 +10,7 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.GetToDock',
     'Universal.Event.Entity.Damage',
     'Universal.Event.Entity.Follow',
+    'Universal.Event.Entity.Dock',
     'Universal.Event.Player.Create',
     'Universal.Event.Player.Resource.Alter',
     'Universal.Event.Effect.Create',
@@ -26,6 +27,7 @@ define('Universal.EventFactory', [
     EntityGetToDock,
     EntityDamage,
     EntityFollow,
+    EntityDock,
     PlayerCreate, 
     PlayerResoureAlter, 
     EffectCreate,
@@ -38,6 +40,8 @@ define('Universal.EventFactory', [
         createEventFactory = function() {
 
             var events = {
+                
+                // Entity
                 'entity/move': new EntityMove(),
                 'entity/patrol': new EntityPatrol(),
                 'entity/stop': new EntityStop(),
@@ -49,8 +53,13 @@ define('Universal.EventFactory', [
                 'entity/getToDock': new EntityGetToDock(),
                 'entity/damage': new EntityDamage(),
                 'entity/follow': new EntityFollow(),
+                'entity/dock': new EntityDock(),
+
+                // Player
                 'player/create': new PlayerCreate(),
                 'player/resource/alter': new PlayerResoureAlter(),
+                
+                // Effects
                 'effect/create': new EffectCreate(),
                 'effect/remove': new EffectRemove()
             };
@@ -78,10 +87,8 @@ define('Universal.EventFactory', [
                 singleton = createEventFactory();
             }
             return singleton;
-
         }
 
     }
-
 
 });
