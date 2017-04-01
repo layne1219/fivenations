@@ -365,6 +365,7 @@ define('Entity', [
             if (this.docker === undefined) {
                 this.docker = [];
             }
+            targetEntity.unselect();
             this.docker.push(targetEntity);
         },
 
@@ -475,6 +476,8 @@ define('Entity', [
          * @return {void}
          */
         select: function() {
+            if (this.isHibernated()) return;
+
             if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
                 this.selected = true;
                 this.eventDispatcher.dispatch('select');
@@ -590,14 +593,14 @@ define('Entity', [
          * @return {Boolean} true if the entity is targetable
          */
         isTargetable: function() {
-            return this.isActive();
+            return this.isHibernated();
         },
 
         /**
          * Returns whether the entity is active or not
          * @return {Boolean}
          */
-        isActive: function() {
+        isHibernated: function() {
             return this.hibarnated;
         },
 
@@ -617,10 +620,10 @@ define('Entity', [
          * @return {Boolean}
          */
         canDock: function() {
-            if (this.canDock === undefined) {
-                this.canDock = this.dataObject.isFighter();
+            if (this.isAbleToDock === undefined) {
+                this.isAbleToDock = this.dataObject.isFighter();
             }
-            return this.canDock;
+            return this.isAbleToDock;
         },
 
         getSprite: function() {

@@ -52,9 +52,9 @@ define('Entity.Activity.GetToDock', [
      * @return {void}
      */
     GetToDock.prototype.setTarget = function(entity) {
-        GetInRange.prototype.setTarget(entity);
+        GetInRange.prototype.setTarget.call(this, entity);
         // for optimisation 
-        this.range = entity.getDataObject().getWidth();
+        this.range = entity.getDataObject().getWidth() / 2;
     }
 
     /**
@@ -71,14 +71,14 @@ define('Entity.Activity.GetToDock', [
 
         EventEmitter
             .getInstance()
+            .synced
             .entities(this.entity)
-            .sync
             .dock({
                 targetEntity: this.target,
                 resetActivityQueue: true
             });
     }
 
-    return GetInRange;
+    return GetToDock;
 
 });

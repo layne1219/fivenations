@@ -326,12 +326,27 @@ define('Game', [
             for (var j = 0; j >= 0; j -= 1) {
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
-                    id: 'hailstorm',
-                    team: 2,
+                    id: 'stgeorge',
+                    team: 1,
                     x: 200 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
             }
+
+            setTimeout(function() {
+                var entities = this.entityManager.entities(); 
+                var fighters = entities.filter(function(entity) {
+                    return entity.canDock();
+                });
+
+                this.eventEmitter
+                    .synced
+                    .entities(fighters)
+                    .getToDock({
+                        targetEntity: entities[entities.length - 1],
+                        resetActivityQueue: true
+                    })
+            }.bind(this), 2000);
 
             window.add = function(id, team) {
                 this.eventEmitter.synced.entities.add({
