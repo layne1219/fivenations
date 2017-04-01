@@ -1,7 +1,9 @@
 define('Entity.Activity.GetToDock', [
-    'Entity.Activity.GetInRange', 
+    'Entity.Activity.GetInRange',
+    'PlayerManager',
+    'Universal.EventEmitter',
     'Util'
-], function(GetInRange, Util) {
+], function(GetInRange, PlayerManager, EventEmitter, Util) {
 
     /**
      * Constructor function to GetToDock
@@ -31,10 +33,12 @@ define('Entity.Activity.GetToDock', [
 
         if (distance <= this.range) {
             this.entity.stop();
+            this.emitDockEvent();
             this.kill();
             return;
         }
 
+        // checks whether the target has moved sinec the last check
         if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
             return;
         } else {
@@ -51,6 +55,28 @@ define('Entity.Activity.GetToDock', [
         GetInRange.prototype.setTarget(entity);
         // for optimisation 
         this.range = entity.getDataObject().getWidth();
+    }
+
+    /**
+     * Emits the Universal.Event.Entity.Dock event provided the player is authorised
+     * @return {void}
+     */ 
+    GetToDock.prototype.emitDockEvent = function() {
+        var authorised = PlayerManager
+            .getInstance()
+            .getUser()
+            .isAuthorised();
+
+        if (!authorised) return;
+
+        EventEmitter
+            .getInstance()
+            .entities(this.entity)
+            .sync
+            .dock({
+                targetEntity: this.target,
+                resetActivityQueue: true
+            });
     }
 
     return GetInRange;
