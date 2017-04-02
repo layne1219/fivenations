@@ -53,6 +53,8 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             // if the weapon has a target already
             if (this.targetEntity) return;
 
+            var targetTypes;
+            var targetEntityType;
             var targetEntity = this.entity.getClosestHostileEntityInRange();
 
             // if there is no target nearby
@@ -60,18 +62,26 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
                 this.clearTargetEntity();
             } else {
 
+                targetTypes = this.getTargetTypes();
+                targetEntityType = targetEntity.getDataObject().getType();
+
+                if (targetTypes && targetTypes.indexOf(targetEntityType) === -1) {
+                    return;
+                }
+
                 // if the weapon finds its target independently from the manual select
                 if (this.isSelfContained()) {
                     this.setTargetEntity(targetEntity);
-                }
+                } else {
 
-                if (this.manager._lastEntityAttacked !== targetEntity) {
-                    EventEmitter
-                        .getInstance()
-                        .synced
-                        .entities(this.entity.getGUID())
-                        .attack({ targetEntity: targetEntity });
-                    this.manager._lastEntityAttacked = targetEntity;
+                    if (this.manager._lastEntityAttacked !== targetEntity) {
+                        EventEmitter
+                            .getInstance()
+                            .synced
+                            .entities(this.entity.getGUID())
+                            .attack({ targetEntity: targetEntity });
+                        this.manager._lastEntityAttacked = targetEntity;
+                    }
                 }
             }
         },
@@ -183,6 +193,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             return this.targetEntity;
         },
 
+        getTargetTypes: function() {
+            return this.data.targetTypes;
+        },
+
         isSelfContained: function() {
             return this.data.self_contained;  
         },
@@ -217,7 +231,7 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
 
         requiresEntityToFaceTarget: function() {
             return this.data.requires_entity_to_face_target;
-        }
+        },
 
     }
 

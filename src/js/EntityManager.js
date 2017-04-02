@@ -224,10 +224,11 @@ define('EntityManager', [
                 })
                 .filter(function(data) {
                     if (data[1] === sprite) return false;
+                    if (data[1]._parent.isHibernated()) return false;
                     return data[0] <= range;
                 })
                 .sort(function(a, b) {
-                    return a[0] > b[0];
+                    return a[0] < b[0];
                 })
                 .map(function(data) {
                     return data[1]._parent;
@@ -242,6 +243,11 @@ define('EntityManager', [
             var steps = Math.ceil(elapsedTime / (1000 / 60));
             for (var i = entities.length - 1; i >= 0; i -= 1) {
                 this.updateEntity(entities[i], steps, authoritative);
+
+                var closest = entities[i].getClosestHostileEntityInRange();
+                if (closest) {
+                    phaserGame.debug.body(closest.getSprite());
+                }
             }            
         },
 

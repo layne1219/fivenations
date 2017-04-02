@@ -107,6 +107,7 @@
     "type": "cannon",
     "specialty": "Only aim at Fighters",
     "requires_entity_to_face_target": false,
+    "targetTypes": ["Fighter"],
     "self_contained": true,
     "effect": "rommel"
   },

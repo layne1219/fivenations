@@ -593,7 +593,7 @@ define('Entity', [
          * @return {Boolean} true if the entity is targetable
          */
         isTargetable: function() {
-            return this.isHibernated();
+            return !this.isHibernated();
         },
 
         /**
@@ -601,7 +601,7 @@ define('Entity', [
          * @return {Boolean}
          */
         isHibernated: function() {
-            return this.hibarnated;
+            return !!this.hibarnated;
         },
 
         /**
