@@ -1,12 +1,21 @@
 ### Five Nations [![Build Status](https://travis-ci.org/vbence86/fivenations.svg?branch=master)](https://travis-ci.org/vbence86/fivenations)
 A browser based real time strategy game that uses HTML5 components and runs in the browser. The gameplay is built on Phaser and employs P2 physics engine. Since this is an open source project all form of contribution and feedback are welcomed. 
 
-#### Install (Dev)
-Clone the project and run 
-`npm install`
-Run the dev environment
-`gulp`
+#### Install
+Clone the project
+```
+git clone https://github.com/vbence86/fivenations.git
+```
 
+After cloning the project install the dependencies
+```
+npm install
+```
+
+#### Run Development Server
+```
+npm start
+```
 
 #### Publish
 Build the public resources
