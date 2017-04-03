@@ -141,7 +141,7 @@ define('Entity.MotionManager.Effects', ['Util'], function(Util) {
          * @return {boolean} returns true all the time
          */
         levitating: function(motionManager) {
-            motionManager.sprite.anchor.y = motionManager.levitation.defaultAnchorY + Math.sin(motionManager.levitation.time / 25) / 70;
+            motionManager.sprite.anchor.y = motionManager.levitation.defaultAnchorY + Math.sin(motionManager.levitation.time / 50) / 100;
             motionManager.levitation.time += 1;
             return true;
         }

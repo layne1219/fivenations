@@ -179,6 +179,49 @@ define('GUI.FollowButtonLogic', [
     };
 });
 
+// ------------------------------------------------------------------------------------
+// Dock Button Logc
+// ------------------------------------------------------------------------------------
+define('GUI.DockButtonLogic', [
+    'GUI.Activity.SelectCoords',
+    'GUI.ActivityManager',
+    'Universal.EventEmitter',
+], function(ActivitySelectCoords, ActivityManager, EventEmitter) {
+    return {
+        activate: function(entityManager, controlPanel) {
+            var activity = ActivityManager.getInstance().start(ActivitySelectCoords);
+            activity.on('select', function() {
+
+                var targetEntity;
+                entityManager.entities().filter(function(entity) {
+                    if (entity.isHover()) {
+                        targetEntity = entity;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+                if (targetEntity) {
+                    EventEmitter
+                        .getInstance()
+                        .synced
+                        .entities(':user:selected')
+                        .getToDock({
+                            targetEntity: targetEntity
+                        });
+                    targetEntity.selectedAsTarget();
+                }
+
+                controlPanel.selectMainPage();
+            });
+
+            controlPanel.selectCancelPage();
+        }
+    };
+});
+
+
 define('GUI.ControlButtonCollection', [
     'GUI.StopButtonLogic',
     'GUI.MoveButtonLogic',
@@ -186,6 +229,7 @@ define('GUI.ControlButtonCollection', [
     'GUI.CancelButtonLogic',
     'GUI.AttackButtonLogic',
     'GUI.FollowButtonLogic',
+    'GUI.DockButtonLogic',
     'json!abilities'
 ], function(
     StopButtonLogic, 
@@ -194,6 +238,7 @@ define('GUI.ControlButtonCollection', [
     CancelButtonLogic, 
     AttackButtonLogic,
     FollowButtonLogic,
+    DockButtonLogic,
     abilitiesJSON
 ) {
 
@@ -205,6 +250,7 @@ define('GUI.ControlButtonCollection', [
     buttonLogics[abilitiesJSON.cancel] = CancelButtonLogic;
     buttonLogics[abilitiesJSON.attack] = AttackButtonLogic;
     buttonLogics[abilitiesJSON.follow] = FollowButtonLogic;
+    buttonLogics[abilitiesJSON.dock] = DockButtonLogic;
 
     return {
 

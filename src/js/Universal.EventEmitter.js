@@ -210,7 +210,47 @@ define('Universal.EventEmitter', [
                     });
 
                     return this;
-                }
+                },
+                /**
+                 * Executes the attached logic for getting to the given target in order to dock
+                 * @return {void}
+                 * @chainable
+                 */
+                getToDock: function(options) {
+
+                    var targetEntity = options.targetEntity;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/getToDock',
+                        targets: entities,
+                        data: {
+                            targetEntity: targetEntity.getGUID()
+                        },
+                        resetActivityQueue: options.resetActivityQueue
+                    });
+
+                    return this;
+                },
+                /**
+                 * Docks entities into the target entity
+                 * @return {void}
+                 * @chainable
+                 */
+                dock: function(options) {
+
+                    var targetEntity = options.targetEntity;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/dock',
+                        targets: entities,
+                        data: {
+                            targetEntity: targetEntity.getGUID()
+                        },
+                        resetActivityQueue: options.resetActivityQueue
+                    });
+
+                    return this;
+                },
 
             }
         };

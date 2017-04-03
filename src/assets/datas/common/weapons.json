@@ -94,8 +94,9 @@
     "damage_shield": 5,
     "range": 25,
     "speed": 60,
+    "velocity": 250, 
     "acceleration": 0,
-    "maxVelocity": 60,
+    "maxVelocity": 250,
     "maneuverability": 100,
     "accuracy": 40,
     "effect_range": 0,
@@ -105,7 +106,10 @@
     "homing": 0,
     "type": "cannon",
     "specialty": "Only aim at Fighters",
-    "self_contained": true
+    "requires_entity_to_face_target": false,
+    "targetTypes": ["Fighter"],
+    "self_contained": true,
+    "effect": "rommel"
   },
   {
     "name": "Repairing Hangar",

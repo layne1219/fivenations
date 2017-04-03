@@ -29,6 +29,13 @@ define('Preloader.Projectiles', function() {
             dataURL: PATH_ASSETS_DATA + '/missile.json'
         },
 
+        'rommel': {
+            preloading: true,
+            spriteURL: PATH_ASSETS_IMG + '/weapons.png',
+            atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+            dataURL: PATH_ASSETS_DATA + '/rommel.json'
+        },
+
         'kinetic-torpedo': {
             preloading: true,
             spriteURL: PATH_ASSETS_IMG + '/weapons.png',

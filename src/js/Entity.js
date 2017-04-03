@@ -322,6 +322,17 @@ define('Entity', [
         },
 
         /**
+         * Registers a GetToDock activity with the given entity set as target
+         * @param  {object} targetEntity [Entity] 
+         * @return {void}
+         */
+        getToDock: function(targetEntity) {
+            var getToDock = new ActivityManager.GetToDock(this);
+            getToDock.setTarget(targetEntity);
+            this.activityManager.add(getToDock);
+        },        
+
+        /**
          * Registers a Attack activity with the given entity set as target
          * @param  {object} targetEntity [Entity] 
          * @return {void}
@@ -342,6 +353,38 @@ define('Entity', [
             var rotate = new ActivityManager.RotateToTarget(this);
             rotate.setTarget(targetEntity);
             this.activityManager.add(rotate);
+        },
+
+        /**
+         * Adds the given entity to the container for docked entities 
+         * @param {object} targetEntity [Entity]
+         * @return {void}
+         */
+        dockTarget: function(targetEntity) {
+            targetEntity.hibernate();
+            if (this.docker === undefined) {
+                this.docker = [];
+            }
+            targetEntity.unselect();
+            this.docker.push(targetEntity);
+        },
+
+        /**
+         * Reactivates all the entities that have been enclosed into the docker array
+         * @return {void}
+         */
+        undock: function() {
+            if (this.docker === undefined) return;
+
+            var entitiesToRelease = [];
+
+            this.docker.forEach(function(entity) {
+                entity.reactivate();
+                entitiesToRelease.push(entity);
+            });
+            this.docker = [];
+
+            return entitiesToRelease;
         },
 
         /**
@@ -379,6 +422,28 @@ define('Entity', [
         },
 
         /**
+         * Makes the entity unavailable for further actions including 
+         * rendering it into the gameplay without removing it completely. This is
+         * usually used to actions such as docking into another entity.
+         */
+        hibernate: function() {
+            this.sprite.visible = false;
+            this.hibarnated = true;
+            this.eventDispatcher.dispatch('hibarnate');
+        },
+
+        /**
+         * Makes the entity unavailable for further actions including 
+         * rendering it into the gameplay without removing it completely. This is
+         * usually used to actions such as docking into another entity.
+         */
+        reactivate: function() {
+            this.sprite.visible = true;
+            this.hibarnated = false;
+            this.eventDispatcher.dispatch('reactivated');
+        },
+
+        /**
          * Sets the given animation to be played through the 
          * animation manager Phaser exposes
          * @param {string} key identifier of the animation to be played
@@ -411,6 +476,8 @@ define('Entity', [
          * @return {void}
          */
         select: function() {
+            if (this.isHibernated()) return;
+
             if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
                 this.selected = true;
                 this.eventDispatcher.dispatch('select');
@@ -522,11 +589,41 @@ define('Entity', [
         },
 
         /**
-         * Returns whethe the entity can be a target of other entities
+         * Returns wether the entity can be a target of other entities
          * @return {Boolean} true if the entity is targetable
          */
         isTargetable: function() {
-            return true;
+            return !this.isHibernated();
+        },
+
+        /**
+         * Returns whether the entity is active or not
+         * @return {Boolean}
+         */
+        isHibernated: function() {
+            return !!this.hibarnated;
+        },
+
+        /**
+         * Returns wether the entity can take fighters in
+         * @return {Boolean}
+         */
+        isDockable: function() {
+            if (this.dockable === undefined) {
+                this.dockable = this.weaponManager.hasWeapon(WeaponManager.WEAPON_DOCK);
+            }
+            return this.dockable;
+        },
+
+        /**
+         * Returns wether the entity can dock
+         * @return {Boolean}
+         */
+        canDock: function() {
+            if (this.isAbleToDock === undefined) {
+                this.isAbleToDock = this.dataObject.isFighter();
+            }
+            return this.isAbleToDock;
         },
 
         getSprite: function() {

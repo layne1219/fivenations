@@ -87,14 +87,12 @@ define('Entity.MotionManager', [
          */
         moveTo: function(activity) {
 
-            if (!activity) throw 'Invalid Activity instance has been passed!';
-
             this.activity = activity;
 
             this.effectManager.resetEffects();
             this.effectManager.addEffect(Effects.get('initMovement'));
 
-            if (this.movement.velocity > 0 && this.rotation.currentAngleCode !== this.rotation.targetAngleCode && this.entity.hasSlowManeuverability()) {
+            if (this.isRequiredToStopBeforeFurtherAction()) {
                 this.effectManager.addEffect(Effects.get('stopping'));
                 this.effectManager.addEffect(Effects.get('resetMovement'));
             }
@@ -126,8 +124,15 @@ define('Entity.MotionManager', [
          */
         rotateToTarget: function(activity) {
             this.activity = activity;
+
             this.effectManager.resetEffects();
             this.effectManager.addEffect(Effects.get('initMovement'));
+
+            if (this.isRequiredToStopBeforeFurtherAction()) {
+                this.effectManager.addEffect(Effects.get('stopping'));
+                this.effectManager.addEffect(Effects.get('resetMovement'));
+            }
+
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
         },
 
@@ -282,6 +287,15 @@ define('Entity.MotionManager', [
         },
 
         /**
+         * Returns whether the entity needs trigger the stop action
+         * before having any further actions added to its motion queue
+         * @return {boolean}
+         */
+        isRequiredToStopBeforeFurtherAction: function() {
+            return this.movement.velocity > 0 && this.rotation.currentAngleCode !== this.rotation.targetAngleCode && this.entity.hasSlowManeuverability();
+        },
+
+        /**
          * Returns the current angle code determined by the updateRotation method
          * @returns {integer} current angle code that usually goes from 0 to 15
          */
@@ -313,7 +327,7 @@ define('Entity.MotionManager', [
                 calculatedAngle = 360 - Math.abs(calculatedAngle);
             }
             return (Math.floor(calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;
-        }
+        },        
 
     };
 

@@ -50,6 +50,9 @@ define('CollisionManager', [
         // effect mainly cannot collide with the entity that initially emitted it
         if (getEmitterEntity === entity) return;
 
+        // effect cannot collide with hibernated entities
+        if (entity.isHibernated()) return;
+
         // effect cannot collide with friendly entities unless the friendly fire is on
         if (!getEmitterEntity.isEnemy(entity) && !weapon.hasFriendlyFire()) return;
 

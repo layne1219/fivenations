@@ -46,6 +46,14 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON) {
                 this.abilities.push(abilitiesJSON.attack);
             }
 
+            if (this.canDock()) {
+                this.abilities.push(abilitiesJSON.dock);
+            }
+
+            if (this.isDockable()) {
+                this.abilities.push(abilitiesJSON.undock);
+            }
+
         },
 
         /**
@@ -62,6 +70,23 @@ define('Entity.AbilityManager', ['json!abilities'], function(abilitiesJSON) {
          */
         canAttack: function() {
             return this.weaponManager.hasOffensiveWeapon();
+        },
+
+        /**
+         * Returns whether the entity can dock into other entities
+         * @return {boolean} 
+         */
+        canDock: function() {
+            return this.entity.canDock();
+        },
+
+        /**
+         * Returns whether the entity has a repair dock and therefore able to 
+         * inhabit entities
+         * @return {boolean} 
+         */
+        isDockable: function() {
+            return this.entity.isDockable();
         },
 
         /**

@@ -152,15 +152,20 @@ define('Game', [
 
                     // if the entity is hostile we should trigger the attack short hand
                     if (this.playerManager.isEntityHostileToPlayer(targetEntity, this.playerManager.getUser())) {
+
                         selectedEntities.attack({
                             targetEntity: targetEntity,
                             resetActivityQueue: resetActivityQueue
                         });
+                        
                     } else {
+
+                        // short hand for follow
                         selectedEntities.follow({
                             targetEntity: targetEntity,
                             resetActivityQueue: resetActivityQueue
                         });
+
                     }
 
                     targetEntity.selectedAsTarget();
@@ -321,8 +326,8 @@ define('Game', [
             for (var j = 0; j >= 0; j -= 1) {
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
-                    id: 'hailstorm',
-                    team: 2,
+                    id: 'stgeorge',
+                    team: 1,
                     x: 200 + Util.rnd(0, 100),
                     y: 450 + Util.rnd(0, 100)
                 });
