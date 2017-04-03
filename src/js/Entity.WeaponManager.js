@@ -154,6 +154,8 @@ define('Entity.WeaponManager', [
                     // self contained weapons don't participate in this calculations
                     if (weapon.isSelfContained()) return min;
 
+                    if (!weapon.isOffensive()) return min;
+
                     range = weapon.getRange();
                     if (range < min) return range;
 
@@ -186,7 +188,7 @@ define('Entity.WeaponManager', [
         hasOffensiveWeapon: function() {
             if (this.hasOffensiveWeapon === undefined) {
                 for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
-                    if (this.weapons[i].getDamage() > 0 || this.weapons[i].getDamageShield()) {
+                    if (this.weapons[i].isOffensive()) {
                         this.hasOffensiveWeapon = true;
                         break;
                     }

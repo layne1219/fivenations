@@ -221,6 +221,10 @@ define('Entity.Weapon', ['Universal.EventEmitter', 'Util'], function(EventEmitte
             return true;
         },
 
+        isOffensive: function() {
+            return this.getDamage() > 0 || this.getDamageShield() > 0;
+        },
+
         hasFriendlyFire: function() {
             return this.data.friendly_fire;
         },
