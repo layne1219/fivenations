@@ -21,6 +21,28 @@ define('Universal.EventEmitter', [
 
             return {
                 /**
+                 * Make all the given entities relocated at the given coordinates 
+                 * @param  {object} options [configuration object to create the desired event]
+                 * @return {this}
+                 * @chainable
+                 */
+                place: function(options) {
+
+                    var data = {
+                        x: options.x,
+                        y: options.y
+                    };
+
+                    EventBus.getInstance().add({
+                        id: 'entity/place',
+                        targets: entities,
+                        data: data,
+                        resetActivityQueue: options.resetActivityQueue
+                    });
+
+                    return this;
+                },                
+                /**
                  * Make all the given entities to move to the given coordinates 
                  * @param  {object} options [configuration object to create the desired event]
                  * @return {this}
@@ -251,6 +273,23 @@ define('Universal.EventEmitter', [
 
                     return this;
                 },
+                /**
+                 * Undocks entities fromt the specified entity
+                 * @return {void}
+                 * @chainable
+                 */
+                undock: function(options) {
+
+                    var resetActivityQueue = options && options.resetActivityQueue || false;
+
+                    EventBus.getInstance().add({
+                        id: 'entity/undock',
+                        targets: entities,
+                        resetActivityQueue: resetActivityQueue
+                    });
+
+                    return this;
+                },                
 
             }
         };

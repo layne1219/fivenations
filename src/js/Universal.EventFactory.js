@@ -11,6 +11,8 @@ define('Universal.EventFactory', [
     'Universal.Event.Entity.Damage',
     'Universal.Event.Entity.Follow',
     'Universal.Event.Entity.Dock',
+    'Universal.Event.Entity.Undock',
+    'Universal.Event.Entity.Place',
     'Universal.Event.Player.Create',
     'Universal.Event.Player.Resource.Alter',
     'Universal.Event.Effect.Create',
@@ -28,6 +30,8 @@ define('Universal.EventFactory', [
     EntityDamage,
     EntityFollow,
     EntityDock,
+    EntityUndock,
+    EntityPlace,
     PlayerCreate, 
     PlayerResoureAlter, 
     EffectCreate,
@@ -54,6 +58,8 @@ define('Universal.EventFactory', [
                 'entity/damage': new EntityDamage(),
                 'entity/follow': new EntityFollow(),
                 'entity/dock': new EntityDock(),
+                'entity/undock': new EntityUndock(),
+                'entity/place': new EntityPlace(),
 
                 // Player
                 'player/create': new PlayerCreate(),

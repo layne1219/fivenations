@@ -108,6 +108,15 @@ define('Entity.MotionManager', [
         },
 
         /**
+         * Resets all motion related effects and helper variables 
+         * from being effecting the given entity
+         * @return {void}
+         */
+        reset: function() {
+            this.effectManager.resetEffects();
+        },
+
+        /**
          * Terminate the entity from any further movement by applying a suitable drag on it
          * @return {void}
          */
