@@ -333,33 +333,6 @@ define('Game', [
                 });
             }
 
-
-            setTimeout(function() {
-                var entities = this.entityManager.entities();
-                var docker = entities[entities.length - 1]; 
-                var fighters = entities.filter(function(entity) {
-                    return entity.canDock();
-                });
-
-                this.eventEmitter
-                    .synced
-                    .entities(fighters)
-                    .getToDock({
-                        targetEntity: docker,
-                        resetActivityQueue: true
-                    });
-
-                setTimeout(function() {
-                    this.eventEmitter
-                        .synced
-                        .entities(docker)
-                        .undock();
-                }.bind(this), 10000);
-
-            }.bind(this), 2000);
-
-
-
             window.add = function(id, team) {
                 this.eventEmitter.synced.entities.add({
                     guid: Util.getGUID(),
