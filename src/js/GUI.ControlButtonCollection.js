@@ -221,6 +221,26 @@ define('GUI.DockButtonLogic', [
     };
 });
 
+// ------------------------------------------------------------------------------------
+// Dock Button Logc
+// ------------------------------------------------------------------------------------
+define('GUI.UndockButtonLogic', [
+    'Universal.EventEmitter',
+], function(EventEmitter) {
+    return {
+        activate: function() {
+            EventEmitter
+                .getInstance()
+                .synced
+                .entities(':user:selected')
+                .reset()
+                .undock();
+        }
+    };    
+});
+
+
+
 
 define('GUI.ControlButtonCollection', [
     'GUI.StopButtonLogic',
@@ -230,6 +250,7 @@ define('GUI.ControlButtonCollection', [
     'GUI.AttackButtonLogic',
     'GUI.FollowButtonLogic',
     'GUI.DockButtonLogic',
+    'GUI.UndockButtonLogic',
     'json!abilities'
 ], function(
     StopButtonLogic, 
@@ -239,6 +260,7 @@ define('GUI.ControlButtonCollection', [
     AttackButtonLogic,
     FollowButtonLogic,
     DockButtonLogic,
+    UndockButtonLogic,
     abilitiesJSON
 ) {
 
@@ -251,6 +273,7 @@ define('GUI.ControlButtonCollection', [
     buttonLogics[abilitiesJSON.attack] = AttackButtonLogic;
     buttonLogics[abilitiesJSON.follow] = FollowButtonLogic;
     buttonLogics[abilitiesJSON.dock] = DockButtonLogic;
+    buttonLogics[abilitiesJSON.undock] = UndockButtonLogic;
 
     return {
 
