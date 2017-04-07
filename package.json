@@ -10,7 +10,7 @@
     "phantomjs-prebuilt": "^2.1.14"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.4",
+    "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",

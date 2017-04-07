@@ -3,6 +3,7 @@
         "browser" : true,
         "node": true
     },
+    "parser": "babel-eslint",
     "plugins" : [],
     "globals": {
         "define": true,
