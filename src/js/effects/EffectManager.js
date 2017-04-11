@@ -2,7 +2,7 @@ import Util from '../common/Util';
 import Graphics from '../common/Graphics';
 import DataObject from '../model/DataObject';
 import EventEmitter from '../synced/EventEmitter';
-import Effect from 'Effect';
+import Effect from './Effect';
 
 const ns = window.fivenations;
 

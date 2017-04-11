@@ -1,0 +1,78 @@
+import Player from './Player';
+
+var colors = [
+    '0x08A2EA',
+    '0x10B308',
+    '0xF28209',
+    '0xBA10D9',
+    '0xD40F0F',
+    '0xF8F8F9',
+    '0xE5C410',
+    '0x65615D'
+];
+
+var players = [];
+
+var singleton = {
+
+    addPlayer: function(config) {
+        if (!config) throw 'Invalid configuration for constructing a Player instance!';
+        players.push(new Player(config));
+    },
+
+    getPlayers: function() {
+        return players;
+    },
+
+    getUser: function() {
+        for (var i = players.length - 1; i >= 0; i -= 1) {
+            if (players[i].isControlledByUser()) {
+                return players[i];
+            }
+        }
+        return false;
+    },
+
+    getPlayerByGUID: function(guid) {
+        if (!guid) throw 'First parameter must be a valid guid!';
+        for (var i = players.length - 1; i >= 0; i -= 1) {
+            if (players[i].getGUID() === guid) {
+                return players[i];
+            }
+        }
+    },
+
+    getPlayerByTeam: function(team) {
+        if (!team) throw 'First parameter must be a valid Team Id!';
+        for (var i = players.length - 1; i >= 0; i -= 1) {
+            if (players[i].getTeam() === team) {
+                return players[i];
+            }
+        }
+    },                    
+
+    getPlayersNumber: function() {
+        return players.length;
+    },
+
+    getColors: function() {
+        return colors;
+    },
+
+    isPlayerHostileToPlayer: function(a, b) {
+        return a.getTeam() !== b.getTeam();
+    },
+    
+    isEntityHostileToPlayer: function(entity, player) {
+        return this.isPlayerHostileToPlayer(player, entity.getPlayer())
+    }
+
+};
+
+export default {
+
+    getInstance: function() {
+        return singleton;
+    }
+
+};

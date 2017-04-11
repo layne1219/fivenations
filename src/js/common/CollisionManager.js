@@ -1,5 +1,5 @@
-import Graphics from 'Graphics';
-import EventEmitter from '../synced/EventEmitter';
+import Graphics from './Graphics';
+import EventEmitter from '../sync/EventEmitter';
 
 let phaserGame;
 let singleton;
