@@ -14,7 +14,6 @@
     "babel-loader": "^6.4.1",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
-    "bower": "^1.7.9",
     "chai": "^3.5.0",
     "css-loader": "^0.28.0",
     "del": "^2.2.0",
@@ -45,10 +44,7 @@
     "webpack": "^2.3.3"
   },
   "scripts": {
-    "post-install": "node ./node_modules/bower/bin/bower install",
-    "start": "node ./node_modules/gulp/bin/gulp.js",
-    "build": "npm run test && node ./node_modules/gulp/bin/gulp.js build",
-    "lint": "node ./node_modules/gulp/bin/gulp.js lint",
+    "build": "npm run test && build.sh",
     "start-server": "forever server-runner.js",
     "stop-server": "forever stopall",
     "test": "mocha --delay --require babel-core/register test/phantomjs/**/*.spec.js"

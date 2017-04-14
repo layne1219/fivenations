@@ -13,7 +13,7 @@ import EntityDock from './Entity.Dock';
 import EntityUndock from './Entity.Undock'; 
 import EntityPlace from './Entity.Place'; 
 import PlayerCreate from './Player.Create';  
-import PlayerResoureAlter from './Player.ResoureAlter';  
+import PlayerResoureAlter from './Player.Resoure.Alter';  
 import EffectCreate from './Effect.Create'; 
 import EffectRemove from './Effect.Remove'; 
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Five Nations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="HandheldFriendly" content="True">
+    <meta http-equiv="cleartype" content="on">
+
+    <style>
+      /** =========================================================================
+       *                                  GENERAL DEFINITIONS
+       *  ========================================================================= 
+       */
+      body {
+          margin: 0;
+          padding: 0;
+          background-color: black;
+      }
+
+      #fivenations-game {
+          margin: auto;
+      }
+
+      @font-face {
+          font-family: 'BerlinSansFB-Bold';
+          src: url('assets/fonts/BerlinSansFB-Bold/BerlinSansFB-Bold.eot?#iefix') format('embedded-opentype'),  
+               url('assets/fonts/BerlinSansFB-Bold/BerlinSansFB-Bold.woff') format('woff'), 
+               url('assets/fonts/BerlinSansFB-Bold/BerlinSansFB-Bold.ttf')  format('truetype'), 
+               url('assets/fonts/BerlinSansFB-Bold/BerlinSansFB-Bold.svg#BerlinSansFB-Bold') format('svg');
+          font-weight: normal;
+          font-style: normal;
+      }
+
+      @font-face {
+          font-family: 'BerlinSansFB-Reg';
+          src: url('assets/fonts/BerlinSansFB-Reg/BerlinSansFB-Reg.eot?#iefix') format('embedded-opentype'),  
+               url('assets/fonts/BerlinSansFB-Reg/BerlinSansFB-Reg.woff') format('woff'), 
+               url('assets/fonts/BerlinSansFB-Reg/BerlinSansFB-Reg.ttf')  format('truetype'), 
+               url('assets/fonts/BerlinSansFB-Reg/BerlinSansFB-Reg.svg#BerlinSansFB-Reg') format('svg');
+          font-weight: normal;
+          font-style: normal;
+      }
+
+      @font-face {
+          font-family: 'BerlinSansFBDemi-Bold';
+          src: url('assets/fonts/BerlinSansFBDemi-Bold/BerlinSansFBDemi-Bold.eot?#iefix') format('embedded-opentype'),  
+               url('assets/fonts/BerlinSansFBDemi-Bold/BerlinSansFBDemi-Bold.woff') format('woff'), 
+               url('assets/fonts/BerlinSansFBDemi-Bold/BerlinSansFBDemi-Bold.ttf')  format('truetype'), 
+               url('assets/fonts/BerlinSansFBDemi-Bold/BerlinSansFBDemi-Bold.svg#BerlinSansFBDemi-Bold') format('svg');
+          font-weight: normal;
+          font-style: normal;
+      }    
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TTQ7SZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TTQ7SZ');</script>
+    <!-- End Google Tag Manager -->
+
+    <div id="font-preloader">
+      <span style="font-family: 'BerlinSansFB-Bold'; color:transparent; position:absolute;">t</span>
+      <span style="font-family: 'BerlinSansFB-Reg'; color:transparent; position:absolute;">t</span>
+      <span style="font-family: 'BerlinSansFBDemi-Bold'; color:transparent; position:absolute;">t</span>
+    </div>
+
+    <div id="fivenations-game"></div>
+    <script src="dist/vendor.bundle.js"></script>
+    <script src="dist/bundle.js"></script>
+
+  </body>
+
+</html>
