@@ -11,7 +11,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 function build(){
-    var command = 'gulp build';
+    var command = 'npm run update && npm run build';
     var options = {
         cwd: '../../'
     };
