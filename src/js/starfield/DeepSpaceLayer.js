@@ -2,8 +2,6 @@ import Graphics from '../common/Graphics';
 import PlanetAreaGenerator from './PlanetAreaGenerator';
 
 const ns = window.fivenations;
-const width = ns.window.width;
-const height = ns.window.height;
 let sprites;
 
 function DeepSpaceLayer(map) {
@@ -29,8 +27,10 @@ DeepSpaceLayer.prototype = {
     },
 
     createTexture: function() {
-        var container;
-        
+        const width = ns.window.width;
+        const height = ns.window.height;
+        let container;
+                
         this.texture = this.game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
 
         container = this.game.add.image(0, 0, this.texture);

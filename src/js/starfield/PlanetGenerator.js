@@ -3,8 +3,6 @@ import SpaceObjectGenerator from './SpaceObjectGenerator';
 import Util from '../common/Util';
 
 const ns = window.fivenations;
-const screenWidth = ns.window.width;
-const screenHeight = ns.window.height;
 
 function PlanetGenerator(deepSpaceLayer) {
     SpaceObjectGenerator.call(this, deepSpaceLayer);
@@ -29,6 +27,8 @@ PlanetGenerator.prototype.createPlanet = function(numberOfPlanets) {
 PlanetGenerator.prototype.createRandomizedPlanet = function() {
     const NUMBER_OF_TYPES = 2;
     const NUMBER_OF_FRAMES = 10;
+    const screenWidth = ns.window.width;
+    const screenHeight = ns.window.height;
 
     const map = this.deepSpaceLayer.getMap();
     const sprites = this.deepSpaceLayer.getSprites();

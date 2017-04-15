@@ -1,19 +1,14 @@
-import 'phaser';
+import 'phaser-shim';
+import './globals';
 import Boot from './scenes/Boot';
 import Preloader from './scenes/Preloader';
 import Menu from './scenes/Menu';
 import Game from './scenes/Game';
 
+const ns = window.fivenations;
+
 const DEFAULT_CANVAS_WIDTH = 1024;
 const DEFAULT_CANVAS_HEIGHT = 768;
-
-const ns = window.fivenations = window.fivenations || {};
-
-// Shared 
-ns.gui = ns.gui || {};
-
-// Cache for assets are not required to be loaded more than once
-ns.cache = {};
 
 let game;
 
