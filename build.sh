@@ -10,7 +10,7 @@ export NODE_ENV=production
 
 if [ -d "$DIST" ]; then rm -Rf $DIST; fi
 
-webpack -p --bail
+webpack --config wepback.production.config.js -p --bail
 
 # RESOURCES
 cp -r $SOURCE/$RESOURCES $DIST/$RESOURCES
