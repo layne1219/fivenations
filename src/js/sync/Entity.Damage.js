@@ -28,4 +28,4 @@ EntityDamage.prototype.execute = function(options) {
     });
 };
 
-return EntityDamage;
+export default EntityDamage;

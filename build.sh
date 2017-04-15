@@ -13,7 +13,7 @@ if [ -d "$DIST" ]; then rm -Rf $DIST; fi
 webpack -p --bail
 
 # RESOURCES
-cp -r $RESOURCES $DIST/$RESOURCES
+cp -r $SOURCE/$RESOURCES $DIST/$RESOURCES
 
 # HTML 
 cp $SOURCE/web/index.html $DIST

@@ -1,4 +1,4 @@
-const sizes = require('../assets/datas/common/sizes.json');
+const sizes = require('../../assets/datas/common/sizes.json');
 
 function getDimensionsBySize(size) {
     if (!size || !sizes[size]) throw 'The given sizes is unrecognisable!';

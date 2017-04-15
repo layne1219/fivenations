@@ -1,9 +1,9 @@
-import GUI from './GUI';
-import Starfield from './Starfield';
-import Entities from './Entities';
-import Wreckages from './Wreckages';
-import Effects from './Effects';
-import Projectiles from './Projectiles';
+import GUI from '../preloader/GUI';
+import Starfield from '../preloader/Starfield';
+import Entities from '../preloader/Entities';
+import Wreckages from '../preloader/Wreckages';
+import Effects from '../preloader/Effects';
+import Projectiles from '../preloader/Projectiles';
 
 /**
  * Private function to set up all the assets needs to be loaded before the game starts

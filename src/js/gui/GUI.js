@@ -1,7 +1,5 @@
-import PlayerManager from '../players/PlayerManager';
 import EventEmitter from '../sync/EventEmitter';
 import Graphics from '../common/Graphics';
-import ControlButton from './ControlButton';
 import ControlPage from './ControlPage';
 import CancelPage from './CancelPage';
 import Util from '../common/Util';

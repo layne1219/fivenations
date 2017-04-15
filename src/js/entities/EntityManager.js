@@ -1,4 +1,4 @@
-import Graphics from '../gui/Graphics';
+import Graphics from '../common/Graphics';
 import Entity from './Entity';
 import DataObject from '../model/DataObject';
 import QuadTree from '../common/QuadTree';

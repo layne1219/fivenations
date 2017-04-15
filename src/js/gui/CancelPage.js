@@ -1,7 +1,6 @@
 const abilitiesJSON = require('../../assets/datas/common/abilities.json');
 
 import ControlPage from './ControlPage';
-import Util from '../common/Util';
 
 /**
  * Constructing an a custom CommandPage that consists solely one cancel button

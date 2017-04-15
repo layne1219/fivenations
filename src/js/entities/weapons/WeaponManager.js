@@ -1,6 +1,6 @@
 const weaponsJSON = require('../../../assets/datas/common/weapons.json');
 
-import Weapon from '.Weapon';
+import Weapon from './Weapon';
 import Util from '../../common/Util';
 
 var cache = {};
