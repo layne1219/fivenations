@@ -5,7 +5,7 @@ module.exports = {
   entry: {
     app: [
       'babel-polyfill',
-      path.resolve(__dirname, 'src/js/main.js')
+      path.resolve(__dirname, 'src/js/browser-connector.js')
     ]
   },
   output: {

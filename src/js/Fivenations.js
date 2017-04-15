@@ -23,7 +23,7 @@ function exposeGameAttributes(params) {
 
 function initPhaserGame(params) {
     const { width, height, canvasElmId } = params;
-    game = new Phaser.Game(width, height, Phaser.AUTO, canvasElmId);
+    game = new Phaser.Game(width || DEFAULT_CANVAS_WIDTH, height || DEFAULT_CANVAS_HEIGHT, Phaser.AUTO, canvasElmId);
     game.state.add('boot', Boot);
     game.state.add('preloader', Preloader);
     game.state.add('menu', Menu);

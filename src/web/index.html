@@ -74,7 +74,10 @@
 
     <div id="fivenations-game"></div>
     <script src="js/bundle.js"></script>
-
+    <script>
+      var app = new window.FiveNations({ canvasElmId: 'fivenations-game' });
+      app.start();
+    </script>
   </body>
 
 </html>
