@@ -26,6 +26,7 @@
     "webpack": "^2.3.3"
   },
   "scripts": {
+    "update": "git checkout master && git pull",
     "build": "./build.sh",
     "lint": "eslint src/js/**/*.js",
     "start-server": "forever server-runner.js",
