@@ -20,4 +20,4 @@ cp $SOURCE/web/favicon.ico $DIST
 cp $SOURCE/web/sitemap.xml $DIST
 cp $SOURCE/web/robots.txt $DIST
 
-webpack -p --bail
+webpack --config webpack.development.config.js -p --bail
