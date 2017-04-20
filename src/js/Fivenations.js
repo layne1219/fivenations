@@ -1,3 +1,5 @@
+import '../scss/main.scss';
+
 import 'phaser-shim';
 import './globals';
 import Boot from './scenes/Boot';
