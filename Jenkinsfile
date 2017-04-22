@@ -1,14 +1,19 @@
 pipeline {
-    agent { docker 'node:6.3' }
+    agent { docker 'node:7-alpine' }
     stages {
     	stage('install dependencies') {
     		steps {
     			sh 'npm install'
     		}
     	}
-        stage('build') {
+        stage('sanity check') {
             steps {
-                sh 'npm run build'
+                sh 'npm run test'
+            }
+        }
+        stage('build docker image') {
+            steps {
+                sh 'docker build -t fivenations:master'
             }
         }
     }
