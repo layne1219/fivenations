@@ -4,6 +4,9 @@ pipeline {
 		stage('Sanity check') {
 		    agent { docker 'node:7-alpine' }
 		    steps {
+		    	sh 'mkdir ~/.npm-global'
+		    	sh 'npm config set prefix "~/.npm-global"'
+		    	sh 'export PATH=~/.npm-global/bin:$PATH'
 		        sh 'npm install'
 		        sh 'npm run test' 
 		    }
