@@ -4,9 +4,7 @@ pipeline {
 		stage('Sanity check') {
 		    agent { docker 'node:7-alpine' }
 		    steps {
-		    	sh 'mkdir ~/.npm-global'
-		    	sh 'npm config set prefix "~/.npm-global"'
-		    	sh 'export PATH=~/.npm-global/bin:$PATH'
+		    	sh 'sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}'
 		        sh 'npm install'
 		        sh 'npm run test' 
 		    }
