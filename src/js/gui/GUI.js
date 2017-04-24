@@ -414,14 +414,15 @@ const ColorIndicator = (function() {
             this.parent = entity;
         },
 
-        createSpriteByParent: function(parent) {
-            const team = parent.getPlayer().getTeam();
-            const width = parent.getDataObject().getWidth();
+        createSpriteByParent: function(entity) {
+            const team = entity.getPlayer().getTeam();
+            const width = entity.getDataObject().getWidth();
+            const ratio = width / SPRITE_WIDTH * 1.75;
             const sprite = phaserGame.add.image(0, 0, 'color-indicator');
 
             sprite.visible = true;
             sprite.anchor.setTo(0.5, 0.5);
-            sprite.scale = width / SPRITE_WIDTH;
+            sprite.scale.setTo(ratio, ratio);
             sprite.frame = team - 1;
             
             return sprite;

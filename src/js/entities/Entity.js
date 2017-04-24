@@ -185,9 +185,6 @@ function Entity(config) {
     // energy shield animation
     this.energyShield = gui.addEnergyShield(this);
 
-    // color indicator sprite
-    this.colorIndicator = gui.addColorIndicator(this);
-
     // ActivityManager
     this.activityManager = new ActivityManager(this);
 
@@ -202,6 +199,9 @@ function Entity(config) {
 
     // Player instance
     this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
+
+    // color indicator sprite
+    this.colorIndicator = gui.addColorIndicator(this);
 
 }
 

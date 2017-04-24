@@ -240,11 +240,6 @@ EntityManager.prototype = {
         var steps = Math.ceil(elapsedTime / (1000 / 60));
         for (var i = entities.length - 1; i >= 0; i -= 1) {
             this.updateEntity(entities[i], steps, authoritative);
-
-            var closest = entities[i].getClosestHostileEntityInRange();
-            if (closest) {
-                phaserGame.debug.body(closest.getSprite());
-            }
         }            
     },
 
