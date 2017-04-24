@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "muzzleflash_blue00000.png",
+	"frame": {"x":221,"y":50,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00001.png",
+	"frame": {"x":368,"y":1,"w":39,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":40,"w":39,"h":37},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00002.png",
+	"frame": {"x":272,"y":1,"w":46,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":36,"w":46,"h":45},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00003.png",
+	"frame": {"x":169,"y":1,"w":50,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":34,"w":50,"h":49},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00004.png",
+	"frame": {"x":1,"y":1,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00005.png",
+	"frame": {"x":57,"y":1,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00006.png",
+	"frame": {"x":113,"y":1,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00007.png",
+	"frame": {"x":221,"y":1,"w":49,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":35,"w":49,"h":47},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00008.png",
+	"frame": {"x":320,"y":1,"w":46,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":36,"w":46,"h":45},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_blue00009.png",
+	"frame": {"x":409,"y":1,"w":25,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":47,"w":25,"h":26},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "muzzleflash_blue.png",
+	"format": "RGBA8888",
+	"size": {"w":435,"h":54},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0315ab04dccbc8a2a04cfd25fbb25628:9b568fc3aeec22af60e9aebe2f3f478d:6f62a01c324c90b7d7cee42139a5d2f7$"
+}
+}

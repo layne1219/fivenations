@@ -1,0 +1,300 @@
+{"frames": [
+
+{
+	"filename": "tho_un11_c010000.png",
+	"frame": {"x":108,"y":1,"w":46,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":129,"y":121,"w":46,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010001.png",
+	"frame": {"x":1,"y":1,"w":52,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":127,"y":121,"w":52,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010002.png",
+	"frame": {"x":156,"y":1,"w":55,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":122,"w":55,"h":49},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010003.png",
+	"frame": {"x":510,"y":1,"w":57,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":123,"w":57,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010004.png",
+	"frame": {"x":390,"y":1,"w":58,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":123,"w":58,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010005.png",
+	"frame": {"x":628,"y":1,"w":56,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":123,"w":56,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010006.png",
+	"frame": {"x":978,"y":1,"w":54,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":127,"y":123,"w":54,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010007.png",
+	"frame": {"x":1424,"y":1,"w":53,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":124,"w":53,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010008.png",
+	"frame": {"x":1588,"y":1,"w":51,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":125,"w":51,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010009.png",
+	"frame": {"x":1314,"y":1,"w":53,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":126,"w":53,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010010.png",
+	"frame": {"x":1034,"y":1,"w":54,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":127,"y":127,"w":54,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010011.png",
+	"frame": {"x":686,"y":1,"w":56,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":127,"w":56,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010012.png",
+	"frame": {"x":270,"y":1,"w":58,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":127,"w":58,"h":48},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010013.png",
+	"frame": {"x":860,"y":1,"w":57,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":129,"w":57,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010014.png",
+	"frame": {"x":1200,"y":1,"w":55,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":130,"w":55,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010015.png",
+	"frame": {"x":1534,"y":1,"w":52,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":127,"y":130,"w":52,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010016.png",
+	"frame": {"x":1747,"y":1,"w":46,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":129,"y":130,"w":46,"h":43},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010017.png",
+	"frame": {"x":1641,"y":1,"w":51,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":130,"w":51,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010018.png",
+	"frame": {"x":1257,"y":1,"w":55,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":123,"y":130,"w":55,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010019.png",
+	"frame": {"x":919,"y":1,"w":57,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":129,"w":57,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010020.png",
+	"frame": {"x":330,"y":1,"w":58,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":127,"w":58,"h":48},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010021.png",
+	"frame": {"x":744,"y":1,"w":56,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":127,"w":56,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010022.png",
+	"frame": {"x":1090,"y":1,"w":53,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":124,"y":127,"w":53,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010023.png",
+	"frame": {"x":1369,"y":1,"w":53,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":126,"w":53,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010024.png",
+	"frame": {"x":1694,"y":1,"w":51,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":127,"y":125,"w":51,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010025.png",
+	"frame": {"x":1479,"y":1,"w":53,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":124,"w":53,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010026.png",
+	"frame": {"x":1145,"y":1,"w":53,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":124,"y":123,"w":53,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010027.png",
+	"frame": {"x":802,"y":1,"w":56,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":123,"w":56,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010028.png",
+	"frame": {"x":450,"y":1,"w":58,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":123,"w":58,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010029.png",
+	"frame": {"x":569,"y":1,"w":57,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":123,"w":57,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010030.png",
+	"frame": {"x":213,"y":1,"w":55,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":123,"y":122,"w":55,"h":49},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un11_c010031.png",
+	"frame": {"x":55,"y":1,"w":51,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":121,"w":51,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tho_unit11.png",
+	"format": "RGBA8888",
+	"size": {"w":1794,"h":52},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f5c641bf992594320914159c8e0e4ddd:0ac22083f463c88528c9029e9ab467ee:de4ece1903e93929a9a9864f61ec94e4$"
+}
+}

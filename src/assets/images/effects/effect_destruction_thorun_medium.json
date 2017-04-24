@@ -1,0 +1,822 @@
+{"frames": [
+
+{
+	"filename": "destruction_thorunship_medium00000.png",
+	"frame": {"x":234,"y":566,"w":7,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":99,"w":7,"h":9},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00001.png",
+	"frame": {"x":297,"y":562,"w":14,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":95,"y":98,"w":14,"h":14},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00002.png",
+	"frame": {"x":1974,"y":1,"w":36,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":82,"y":87,"w":36,"h":34},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00003.png",
+	"frame": {"x":1887,"y":522,"w":44,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":78,"y":83,"w":44,"h":42},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00004.png",
+	"frame": {"x":356,"y":509,"w":52,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":81,"w":52,"h":48},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00005.png",
+	"frame": {"x":297,"y":509,"w":57,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":80,"w":57,"h":51},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00006.png",
+	"frame": {"x":234,"y":509,"w":61,"h":55},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":78,"w":61,"h":55},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00007.png",
+	"frame": {"x":161,"y":510,"w":71,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":75,"w":71,"h":61},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00008.png",
+	"frame": {"x":84,"y":510,"w":75,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":74,"w":75,"h":64},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00009.png",
+	"frame": {"x":1,"y":510,"w":81,"h":67},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":73,"w":81,"h":67},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00010.png",
+	"frame": {"x":1918,"y":347,"w":85,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":72,"w":85,"h":70},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00011.png",
+	"frame": {"x":1911,"y":272,"w":90,"h":73},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":71,"w":90,"h":73},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00012.png",
+	"frame": {"x":1818,"y":272,"w":91,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":71,"w":91,"h":74},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00013.png",
+	"frame": {"x":1821,"y":190,"w":93,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":70,"w":93,"h":75},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00014.png",
+	"frame": {"x":1821,"y":112,"w":94,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":70,"w":94,"h":76},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00015.png",
+	"frame": {"x":1918,"y":112,"w":96,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":69,"w":96,"h":78},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00016.png",
+	"frame": {"x":1916,"y":192,"w":98,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":69,"w":98,"h":78},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00017.png",
+	"frame": {"x":1887,"y":441,"w":99,"h":79},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":69,"w":99,"h":79},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00018.png",
+	"frame": {"x":728,"y":489,"w":100,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":68,"w":100,"h":80},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00019.png",
+	"frame": {"x":516,"y":494,"w":102,"h":82},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":67,"w":102,"h":82},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00020.png",
+	"frame": {"x":410,"y":494,"w":104,"h":84},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":67,"w":104,"h":84},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00021.png",
+	"frame": {"x":620,"y":489,"w":106,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":66,"w":106,"h":87},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00022.png",
+	"frame": {"x":1806,"y":349,"w":110,"h":90},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":65,"w":110,"h":90},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00023.png",
+	"frame": {"x":1078,"y":487,"w":114,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":64,"w":114,"h":91},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00024.png",
+	"frame": {"x":830,"y":488,"w":119,"h":90},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":42,"y":62,"w":119,"h":90},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00025.png",
+	"frame": {"x":951,"y":487,"w":125,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":62,"w":125,"h":91},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00026.png",
+	"frame": {"x":1756,"y":452,"w":129,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":60,"w":129,"h":94},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00027.png",
+	"frame": {"x":1194,"y":482,"w":131,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":59,"w":131,"h":95},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00028.png",
+	"frame": {"x":1468,"y":478,"w":135,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":58,"w":135,"h":97},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00029.png",
+	"frame": {"x":1327,"y":478,"w":139,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":57,"w":139,"h":98},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00030.png",
+	"frame": {"x":1662,"y":349,"w":142,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":55,"w":142,"h":101},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00031.png",
+	"frame": {"x":1605,"y":470,"w":149,"h":103},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":54,"w":149,"h":103},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00032.png",
+	"frame": {"x":1819,"y":1,"w":153,"h":109},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":53,"w":153,"h":109},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00033.png",
+	"frame": {"x":1660,"y":1,"w":157,"h":110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":52,"w":157,"h":110},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00034.png",
+	"frame": {"x":1659,"y":118,"w":160,"h":112},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":50,"w":160,"h":112},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00035.png",
+	"frame": {"x":1653,"y":234,"w":163,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":50,"w":163,"h":113},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00036.png",
+	"frame": {"x":1491,"y":118,"w":166,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":50,"w":166,"h":114},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00037.png",
+	"frame": {"x":1483,"y":238,"w":168,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":50,"w":168,"h":115},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00038.png",
+	"frame": {"x":1487,"y":1,"w":171,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":50,"w":171,"h":115},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00039.png",
+	"frame": {"x":1311,"y":1,"w":174,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":50,"w":174,"h":115},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00040.png",
+	"frame": {"x":1303,"y":239,"w":178,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":50,"w":178,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00041.png",
+	"frame": {"x":557,"y":367,"w":178,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":49,"w":178,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00042.png",
+	"frame": {"x":557,"y":245,"w":179,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":49,"w":179,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00043.png",
+	"frame": {"x":187,"y":128,"w":180,"h":123},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":49,"w":180,"h":123},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00044.png",
+	"frame": {"x":186,"y":383,"w":182,"h":124},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":49,"w":182,"h":124},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00045.png",
+	"frame": {"x":186,"y":256,"w":182,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":48,"w":182,"h":125},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00046.png",
+	"frame": {"x":1,"y":256,"w":183,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":48,"w":183,"h":125},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00047.png",
+	"frame": {"x":1,"y":383,"w":183,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":48,"w":183,"h":125},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00048.png",
+	"frame": {"x":1,"y":1,"w":183,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":47,"w":183,"h":126},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00049.png",
+	"frame": {"x":1,"y":129,"w":184,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":47,"w":184,"h":125},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00050.png",
+	"frame": {"x":186,"y":1,"w":184,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":47,"w":184,"h":125},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00051.png",
+	"frame": {"x":925,"y":366,"w":184,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":47,"w":184,"h":119},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00052.png",
+	"frame": {"x":557,"y":123,"w":184,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":184,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00053.png",
+	"frame": {"x":560,"y":1,"w":184,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":184,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00054.png",
+	"frame": {"x":370,"y":250,"w":185,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":185,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00055.png",
+	"frame": {"x":370,"y":372,"w":185,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":185,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00056.png",
+	"frame": {"x":369,"y":128,"w":186,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00057.png",
+	"frame": {"x":372,"y":1,"w":186,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00058.png",
+	"frame": {"x":737,"y":367,"w":186,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":119},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00059.png",
+	"frame": {"x":738,"y":245,"w":186,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":119},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00060.png",
+	"frame": {"x":743,"y":123,"w":187,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":187,"h":118},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00061.png",
+	"frame": {"x":746,"y":1,"w":187,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":187,"h":118},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00062.png",
+	"frame": {"x":926,"y":243,"w":187,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":187,"h":118},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00063.png",
+	"frame": {"x":932,"y":121,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00064.png",
+	"frame": {"x":935,"y":1,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00065.png",
+	"frame": {"x":1111,"y":363,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00066.png",
+	"frame": {"x":1115,"y":240,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00067.png",
+	"frame": {"x":1120,"y":120,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00068.png",
+	"frame": {"x":1123,"y":1,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00069.png",
+	"frame": {"x":1299,"y":359,"w":186,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":46,"w":186,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00070.png",
+	"frame": {"x":1308,"y":120,"w":181,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":47,"w":181,"h":116},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00071.png",
+	"frame": {"x":1487,"y":355,"w":173,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":49,"w":173,"h":113},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00072.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00073.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00074.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00075.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00076.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00077.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00078.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00079.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00080.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00081.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00082.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00083.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00084.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00085.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00086.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00087.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00088.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_thorunship_medium00089.png",
+	"frame": {"x":161,"y":573,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "effect_destruction_thorun_medium.png",
+	"format": "RGBA8888",
+	"size": {"w":2015,"h":579},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0a6ae20e16f376c4c0e3f89880b19e37:0c6dbc49cdc3835c79e54f523d95b03e:0ae84650ec2ae778704a6b037f7c35b9$"
+}
+}
