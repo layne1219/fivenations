@@ -155,6 +155,8 @@ var extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
  */
 function Entity(config) {
 
+    const gui = GUI.getInstance();
+
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
 
@@ -174,14 +176,17 @@ function Entity(config) {
     this.sprite = extendSprite(this, config.sprite, config.dataObject);
 
     // adding the Selector object to highligh whether the unit is seleted or not
-    this.selector = GUI.getInstance().addSelector(this);
+    this.selector = gui.addSelector(this);
 
     // adding the StatusDisplay object to show the current status 
     // of the entity's attributes
-    this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
+    this.statusDisplay = gui.addStatusDisplay(this);
 
     // energy shield animation
-    this.energyShield = GUI.getInstance().addEnergyShield(this);
+    this.energyShield = gui.addEnergyShield(this);
+
+    // color indicator sprite
+    this.colorIndicator = gui.addColorIndicator(this);
 
     // ActivityManager
     this.activityManager = new ActivityManager(this);

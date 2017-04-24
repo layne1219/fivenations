@@ -13,5 +13,6 @@ export default {
         preloader.load.atlasJSONHash('gui.icons.ath', 'assets/images/gui/ath_icons.png', 'assets/images/gui/ath_icons.json');
         preloader.load.atlasJSONHash('gui.icons.syl', 'assets/images/gui/syl_icons.png', 'assets/images/gui/syl_icons.json');
         preloader.load.atlasJSONHash('gui.icons.obj', 'assets/images/gui/obj_icons.png', 'assets/images/gui/obj_icons.json');
+        preloader.load.atlasJSONHash('color-indicator', 'assets/images/gui/player_color_indicator.png', 'assets/images/gui/player_color_indicator.json');
     }    
 }

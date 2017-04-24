@@ -382,6 +382,70 @@ const EnergyShield = (function() {
 })();
 
 // --------------------------------------------------------------------------------------
+// Colour indicator
+// --------------------------------------------------------------------------------------
+const ColorIndicator = (function() {
+
+    const SPRITE_WIDTH = 234;
+
+    function ColorIndicator() {}
+
+    ColorIndicator.prototype = {
+
+        appendTo: function(entity) {
+
+            var groupName;
+
+            this.sprite = this.createSpriteByParent(entity);
+
+            // Add the selection to the appropriate graphics group as per its type
+            groupName = 'color-indicators';
+            Graphics.getInstance().getGroup(groupName).add(this.sprite);
+
+            entity.on('remove', this.remove.bind(this));
+
+            // the sprite is not a child of the entity for various overlapping issues
+            // therefore it needs to follow it upon every tick 
+            this.sprite.update = function() {
+                this.x = entity.getSprite().x;
+                this.y = entity.getSprite().y;
+            };
+
+            this.parent = entity;
+        },
+
+        createSpriteByParent: function(parent) {
+            const team = parent.getPlayer().getTeam();
+            const width = parent.getDataObject().getWidth();
+            const sprite = phaserGame.add.image(0, 0, 'color-indicator');
+
+            sprite.visible = true;
+            sprite.anchor.setTo(0.5, 0.5);
+            sprite.scale = width / SPRITE_WIDTH;
+            sprite.frame = team - 1;
+            
+            return sprite;
+        },
+
+        show: function() {
+            this.sprite.visible = true;
+        },
+
+        hide: function() {
+            this.sprite.visible = false;
+        },
+
+        remove: function() {
+            this.sprite.destroy(true);
+        }
+
+    };
+
+    return ColorIndicator;
+
+})();
+
+// --------------------------------------------------------------------------------------
 // StatusBar to display the current value of one of the entity's attribute on a 
 // horizontal bar to indicate the percentage
 // --------------------------------------------------------------------------------------
@@ -1798,6 +1862,16 @@ GUI.prototype = {
         var energyShield = new EnergyShield();
         energyShield.appendTo(entity);
         return energyShield;
+    },
+
+    /**
+     * Links the given entity to a new EnergyShield instance
+     * @param {object} entity Instance of Eneity 
+     */
+    addColorIndicator: function(entity) {
+        var colorIndicator = new ColorIndicator();
+        colorIndicator.appendTo(entity);
+        return colorIndicator;
     },
 
     /**
