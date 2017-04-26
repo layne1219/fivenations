@@ -598,7 +598,7 @@ Entity.prototype = {
      */
     isDockable: function() {
         if (this.dockable === undefined) {
-            this.dockable = this.weaponManager.hasWeapon(WeaponManager.WEAPON_DOCK);
+            this.dockable = this.dataObject.getMaxHangar() > 0;
         }
         return this.dockable;
     },
