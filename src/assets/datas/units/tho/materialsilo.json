@@ -1,0 +1,40 @@
+{
+    "id": "materialsilo",
+    "name": "Material Silo",
+    "type": "building",
+    "building": true,
+    "hull": 400,
+    "shield": 100,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 500,
+    "silicium": 100,
+    "energy": 300,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 74,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "size": "m",
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["destruction-meduim"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

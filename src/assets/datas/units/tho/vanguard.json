@@ -1,0 +1,32 @@
+{
+	"id": "vanguard",
+	"name": "Vanguard",
+	"type": "Special Cruiser",
+	"hull": 350,
+	"shield": 100,
+	"armor": 2,
+	"power": 150, 
+	"hangar": 0,
+	"speed": 25,
+	"maneuverability": 15,
+	"vision": 50,
+	"weapons": [ 61, 62, 13, 4, 51, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 150,
+	"silicium": 200,
+	"energy": 350,
+	"uranium": 0,
+	"space": 5,
+	"buildingTime": 40,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "m",
+	"events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 3,
+			"maxWrecks": 5,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

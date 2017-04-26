@@ -1,0 +1,32 @@
+{
+	"id": "corsair",
+	"name": "Corsair",
+	"type": "Destroyer",
+	"hull": 100,
+	"shield": 60,
+	"armor": 1,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 40,
+	"maneuverability": 30,
+	"vision": 50,
+	"weapons": [ 56, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 100,
+	"silicium": 50,
+	"energy": 120,
+	"uranium": 0,
+	"space": 3,
+	"buildingTime": 28,
+	"directions": 16,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "sm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-small"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"id": "havoc",
+	"name": "Havoc",
+	"type": "Special Destroyer",
+	"hull": 160,
+	"shield": 100,
+	"armor": 1,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 25,
+	"maneuverability": 20,
+	"vision": 70,
+	"weapons": [ 57, 51, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 280,
+	"silicium": 225,
+	"energy": 250,
+	"uranium": 0,
+	"space": 8,
+	"buildingTime": 50,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "sm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-small"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	}
+}

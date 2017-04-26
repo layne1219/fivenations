@@ -1,0 +1,40 @@
+{
+    "id": "provincialbeacon",
+    "name": "Provincial Beacon",
+    "type": "building",
+    "building": true,
+    "hull": 150,
+    "shield": 100,
+    "armor": 1,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 75,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 100,
+    "silicium": 250,
+    "energy": 350,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 60,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "size": "m",
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": false,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

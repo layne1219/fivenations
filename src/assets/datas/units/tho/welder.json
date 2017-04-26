@@ -1,0 +1,32 @@
+{
+	"id": "welder",
+	"name": "Welder",
+	"type": "Worker",
+	"hull": 40,
+	"shield": 10,
+	"armor": 0,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 40,
+	"maneuverability": 35,
+	"vision": 15,
+	"weapons": [ 11, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 40,
+	"silicium": 0,
+	"energy": 40,
+	"uranium": 0,
+	"space": 2,
+	"buildingTime": 10,
+	"directions": 16,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "xsm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-small"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	}
+}

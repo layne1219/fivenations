@@ -1,0 +1,32 @@
+{
+	"id": "grinder",
+	"name": "Grinder",
+	"type": "Cruiser",
+	"hull": 500,
+	"shield": 150,
+	"armor": 3,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 20,
+	"maneuverability": 10,
+	"vision": 50,
+	"weapons": [ 52, 52, 49, 49, 51, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 400,
+	"silicium": 250,
+	"energy": 300,
+	"uranium": 10,
+	"space": 12,
+	"buildingTime": 60,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "m",
+	"events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["tho-wreck-1", "tho-wreck-2", "tho-wreck-3", "fed-wreck-4", "tho-wreck-5"]
+		}
+	}	
+}
