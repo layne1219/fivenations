@@ -332,7 +332,7 @@ ns.entities = ns.entities || {
     },
 
     // ----------------------------------------------------------------------------
-    // SYN
+    // SYL
     // ----------------------------------------------------------------------------
     spear: {
         preloading: true,
@@ -523,6 +523,190 @@ ns.entities = ns.entities || {
         dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcomplex.json'
     },
 
+    // ----------------------------------------------------------------------------
+    // THO
+    // ----------------------------------------------------------------------------
+    predator: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit01.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit01.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/predator.json'
+    },
+
+    maraduer: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit02.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit02.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/maraduer.json'
+    },
+
+    devastator: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit03.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit03.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/devastator.json'
+    },
+
+    grinder: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit04.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit04.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/grinder.json'
+    },
+
+    vindicator: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit05.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit05.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/vindicator.json'
+    },
+
+    flagship: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit06.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit06.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/flagship.json'
+    },
+
+    harvester: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit07.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit07.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/harvester.json'
+    },
+
+    welder: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit08.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit08.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/welder.json'
+    },
+
+    hunter: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit09.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit09.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/hunter.json'
+    },
+
+    corsair: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit10.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit10.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/corsair.json'
+    },
+
+    havoc: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit11.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit11.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/havoc.json'
+    },
+
+    breaker: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit12.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit12.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/breaker.json'
+    },
+
+    vanguard: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit13.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit13.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/vanguard.json'
+    },
+
+    capitol: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build01.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build01.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/capitol.json'
+    },
+
+    materialsilo: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build02.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build02.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/materialsilo.json'
+    },
+
+    habitat: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build03.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build03.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/habitat.json'
+    },
+
+    powerplant: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build04.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build04.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/powerplant.json'
+    },
+
+    energystorage: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build05.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build05.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/energystorage.json'
+    },
+
+    hall: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build06.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build06.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/hall.json'
+    },
+
+    flagshipyard: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build07.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build07.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/flagshipyard.json'
+    },
+
+    forum: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build08.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build08.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/forum.json'
+    },
+
+    skycourt: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build09.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build09.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/skycourt.json'
+    },
+
+    senate: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build10.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build10.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/senate.json'
+    },
+
+    guardstation: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build11.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build11.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/guardstation.json'
+    },
+
+    provincialbeacon: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build12.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build12.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/provincialbeacon.json'
+    },
+
+    ioncannon: {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build13.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build13.json',
+        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/ioncannon.json'
+    },
 
     // ----------------------------------------------------------------------------
     // ASTEROIDS
