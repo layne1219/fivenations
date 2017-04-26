@@ -401,6 +401,137 @@
             "faceFrame": 39,
             "iconFrame": 52
         },
+        
+        "predator": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 65,
+            "iconFrame": 52
+        },
+        "maraduer": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 66,
+            "iconFrame": 53
+        },
+        "devastator": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 67,
+            "iconFrame": 54
+        },
+        "grinder": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 68,
+            "iconFrame": 55
+        },
+        "vindicator": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 69,
+            "iconFrame": 56
+        },
+        "flagship": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 70,
+            "iconFrame": 57
+        },
+        "harvester": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 71,
+            "iconFrame": 58
+        },
+        "welder": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 72,
+            "iconFrame": 59
+        },
+        "hunter": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 73,
+            "iconFrame": 60
+        },
+        "corsair": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 74,
+            "iconFrame": 61
+        },
+        "havoc": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 75,
+            "iconFrame": 62
+        },
+        "breaker": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 76,
+            "iconFrame": 63
+        },
+        "vanguard": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 77,
+            "iconFrame": 64
+        },
+        "capitol": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 26,
+            "iconFrame": 39
+        },
+        "materialsilo": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 27,
+            "iconFrame": 40
+        },
+        "habitat": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 28,
+            "iconFrame": 41
+        },
+        "powerplant": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 29,
+            "iconFrame": 42
+        },
+        "energystorage": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 30,
+            "iconFrame": 43
+        },
+        "hall": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 31,
+            "iconFrame": 44
+        },
+        "flagshipyard": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 32,
+            "iconFrame": 45
+        },
+        "forum": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 33,
+            "iconFrame": 46
+        },
+        "skycourt": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 34,
+            "iconFrame": 47
+        },
+        "senate": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 35,
+            "iconFrame": 48
+        },
+        "guardstation": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 36,
+            "iconFrame": 49
+        },
+        "provincialbeacon": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 37,
+            "iconFrame": 50
+        },
+        "ioncannon": {
+            "spriteId": "gui.icons.tho",
+            "faceFrame": 38,
+            "iconFrame": 51
+        },
         "asteroid1": {
             "spriteId": "gui.icons.obj",
             "faceFrame": 1,

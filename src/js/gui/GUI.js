@@ -84,6 +84,7 @@ const createIconSprites = function(container) {
             'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
             'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath')),
             'gui.icons.syl': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.syl')),
+            'gui.icons.tho': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.tho')),
             'gui.icons.obj': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.obj'))
         },
         each = function(callback) {
