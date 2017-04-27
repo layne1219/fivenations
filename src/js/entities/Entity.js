@@ -497,6 +497,7 @@ Entity.prototype = {
      * @return {void}
      */
     levitate: function() {
+        if (this.dataObject.isBuilding()) return;
         this.motionManager.levitate();
     },
 
@@ -504,6 +505,7 @@ Entity.prototype = {
      * Stops the floating animation
      */
     stopLevitating: function() {
+        if (this.dataObject.isBuilding()) return;
         this.motionManager.stopLevitating();
     },
 
@@ -612,6 +614,14 @@ Entity.prototype = {
             this.isAbleToDock = this.dataObject.isFighter();
         }
         return this.isAbleToDock;
+    },
+
+    /**
+     * Returns whether the entity can move or not
+     * @return {Boolean}
+     */
+    canMove: function() {
+        return this.dataObject.getSpeed() > 0;
     },
 
     getSprite: function() {
