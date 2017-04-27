@@ -18,10 +18,17 @@ Move.prototype.constructor = Move;
  * @return {[void]}
  */
 Move.prototype.activate = function() {
+    Activity.prototype.activate.call(this);
+
+    if (!this.entity.canMove()) {
+        this.kill();
+        return;
+    }
+
     if (this.entity) {
         this.entity.getMotionManager().moveTo(this);
     }
-    Activity.prototype.activate.call(this);
+
 };
 
 /**

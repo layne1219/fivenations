@@ -69,7 +69,10 @@ AbilityManager.prototype = {
      * @return {boolean} 
      */
     canAttack: function() {
-        return this.weaponManager.hasOffensiveWeapon();
+        if (this.weaponManager.hasOffensiveWeapon()) {
+            return true;
+        }
+        return false;
     },
 
     /**

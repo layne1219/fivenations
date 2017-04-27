@@ -332,6 +332,13 @@ function createSelector(entities) {
                 targets = entities.filter(function(entity) {
                     return entity.isEntityControlledByUser() && entity.isSelected();
                 });
+            } else if (filter === ':user:selected:not(building)') {
+                targets = entities.filter(function(entity) {
+                    if (!entity.isEntityControlledByUser()) return false;
+                    if (!entity.isSelected()) return false;
+                    if (entity.getDataObject().isBuilding()) return false;
+                    return true;
+                });
             } else {
                 targets = entities.filter(function(entity) {
                     return entity.getGUID() === filter;

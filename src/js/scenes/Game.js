@@ -154,7 +154,7 @@ Game.prototype = {
 
                 this.eventEmitter
                     .synced
-                    .entities(':user:selected')
+                    .entities(':user:selected:not(building)')
                     .move({
                         x: coords.x,
                         y: coords.y,
