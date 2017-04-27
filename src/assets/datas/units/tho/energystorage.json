@@ -20,7 +20,7 @@
     "buildingTime": 30,
     "directions": 0,
     "animFrame": 1,
-    "animType": ["idle"],
+    "animType": [],
     "size": "sm",
     "events": {
 		"remove": {

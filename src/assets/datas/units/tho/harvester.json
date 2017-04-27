@@ -17,7 +17,7 @@
 	"uranium": 0,
 	"space": 8,
 	"buildingTime": 40,
-	"directions": 0,
+	"directions": 32,
 	"animFrame": 1,
 	"animType": 0,
 	"size": "m",
