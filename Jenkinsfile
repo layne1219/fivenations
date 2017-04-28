@@ -1,6 +1,8 @@
 pipeline {
-    def build = 'fivenations:build_${env.BUILD_ID}'
-    def port = '9000'
+    environment {
+        build = 'fivenations:build_${env.BUILD_ID}'
+        port = '9000'
+    }
 	agent any
     stages {
         stage('Build docker image') {
