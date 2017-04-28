@@ -7,17 +7,18 @@ pipeline {
     stages {
         stage('Build docker image') {
             steps {
-                sh 'docker build -t ${build} .'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"            
+                sh "docker build -t ${build} ."
             }
         }
         stage('Stop currently running container') {
             steps {
-                sh 'docker rm -f $(docker ps | grep ${port} | awk '{print $1}')'
+                sh "docker rm -f $(docker ps | grep ${port} | awk '{print $1}')"
             }
         }        
         stage('Deploy docker image') {
             steps {
-                sh 'docker run -d -p ${port}:${port} -it ${build}'
+                sh "docker run -d -p ${port}:${port} -it ${build}"
             }
         }
     }
