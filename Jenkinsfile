@@ -1,5 +1,5 @@
 pipeline {
-    def build = 'fivenations:build_${env.BUILD_ID}
+    def build = 'fivenations:build_${env.BUILD_ID}'
     def port = '9000'
 	agent any
     stages {
