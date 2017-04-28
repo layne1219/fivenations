@@ -14,7 +14,7 @@ pipeline {
         stage('Stop currently running container') {
             steps {
                 sh "export FV_CID=\$(docker ps | grep ${env.FV_PORT} | awk '{print \$1}')"
-                sh "if [ \$FV_CID ]; then docker rm -f \$FV_CID; fi"
+                sh "docker rm -f \$FV_CID;"
             }
         }        
         stage('Deploy docker image') {
