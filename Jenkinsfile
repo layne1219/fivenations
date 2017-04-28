@@ -8,7 +8,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"            
-                sh "docker build -t ${env.DOCKER_IMAGE} ."
+                sh "docker build --no-cache -t ${env.DOCKER_IMAGE} ."
             }
         }
         stage('Stop currently running container') {
