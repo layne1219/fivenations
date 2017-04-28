@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('Build docker image') {
             steps {
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"            
                 sh 'docker build -t ${build} .'
             }
         }
