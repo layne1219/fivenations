@@ -13,7 +13,10 @@ pipeline {
         }
         stage('Stop currently running container') {
             steps {
-                sh "docker rm -f \$(docker ps | grep ${env.FV_PORT} | awk '{print \$1}')"
+                sh "FV_CID=\$(docker ps | grep ${env.FV_PORT} | awk '{print \$1}')"
+                sh "if [[ -n $FV_CID ]]; then \ 
+                        docker rm -f \$(\$FV_CID) \ 
+                    fi"
             }
         }        
         stage('Deploy docker image') {
