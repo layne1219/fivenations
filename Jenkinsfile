@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Stop currently running container') {
             steps {
-                sh "docker rm -f \$(docker ps | grep ${port} | awk '{print $1}')"
+                sh "docker rm -f \$(docker ps | grep ${port} | awk '{print \$1}')"
             }
         }        
         stage('Deploy docker image') {
