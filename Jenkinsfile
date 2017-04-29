@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        DOCKER_IMAGE = "fivenations:build_${env.BUILD_ID}"
+        DOCKER_IMAGE = "fivenations:${env.BRANCH_NAME}_${env.BUILD_ID}"
         FV_PORT = '9000'
     }
 	agent any
@@ -14,7 +14,7 @@ pipeline {
         stage('Stop currently running container') {
             steps {
                 sh "export FV_CID=\$(docker ps | grep ${env.FV_PORT} | awk '{print \$1}')"
-                sh "docker rm -f \$FV_CID;"
+                sh "docker rm -f \$FV_CID && echo 'container ${SUCCESS_BUILD} removed' || echo 'container ${SUCCESS_BUILD} does not exist'"
             }
         }        
         stage('Deploy docker image') {
