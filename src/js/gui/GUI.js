@@ -1034,7 +1034,7 @@ const EntityDetailsDisplay = (function() {
 
             // Hangar
             var hangarTitle = 'Hangar: ',
-                hangarValue = dataObject.getHangar(),
+                hangarValue = entity.getNumberOfDockerEntities(),
                 hangarMaxValue = '/' + dataObject.getMaxHangar();
 
             this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;

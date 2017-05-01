@@ -349,6 +349,9 @@ Entity.prototype = {
      * @return {void}
      */
     dockTarget: function(targetEntity) {
+        if (this.getNumberOfDockerEntities() >= this.dataObject.getMaxHangar()) {
+            return;
+        }
         targetEntity.hibernate();
         if (this.docker === undefined) {
             this.docker = [];
@@ -674,6 +677,17 @@ Entity.prototype = {
             x = Math.floor(sprite.x / map.getTileWidth()),
             y = Math.floor(sprite.y / map.getTileHeight());
         return [x, y];
+    },
+
+    getDockedEntities: function() {
+        return this.docker;
+    },
+
+    getNumberOfDockerEntities: function() {
+        if (!this.docker) {
+            return 0;
+        }
+        return this.docker.length;
     },
 
     /**
