@@ -1,0 +1,18 @@
+{
+    "id": "tho-wreck-3",
+    "animType": ["idle"],
+    "size": "l",
+    "ttl": 100,
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["blow-2"]
+		}
+	}
+}

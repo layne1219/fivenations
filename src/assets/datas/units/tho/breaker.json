@@ -1,0 +1,32 @@
+{
+	"id": "breaker",
+	"name": "Breaker",
+	"type": "Special Cruiser",
+	"hull": 150,
+	"shield": 80,
+	"armor": 2,
+	"power": 450, 
+	"hangar": 0,
+	"speed": 25,
+	"maneuverability": 20,
+	"vision": 50,
+	"weapons": [ 58, 59, 15, 51, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 250,
+	"silicium": 250,
+	"energy": 350,
+	"uranium": 100,
+	"space": 8,
+	"buildingTime": 80,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "m",
+	"events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 3,
+			"maxWrecks": 5,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

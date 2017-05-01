@@ -1,0 +1,40 @@
+{
+    "id": "hall",
+    "name": "Hall",
+    "type": "building",
+    "building": true,
+    "hull": 1000,
+    "shield": 100,
+    "armor": 5,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 800,
+    "silicium": 450,
+    "energy": 600,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 130,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["construction"],
+    "size": "l",
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": false,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["destruction-big"],
+			"minWrecks": 10,
+			"maxWrecks": 15,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"id": "flagship",
+	"name": "Flagship",
+	"type": "Carrier",
+	"hull": 1600,
+	"shield": 800,
+	"armor": 5,
+	"power": 0, 
+	"hangar": 25,
+	"speed": 15,
+	"maneuverability": 15,
+	"vision": 100,
+	"weapons": [ 50, 50, 50, 50, 53, 53, 54, 54, 6, 55, 51, 0 ],
+	"titanium": 500,
+	"silicium": 250,
+	"energy": 250,
+	"uranium": 25,
+	"space": 35,
+	"buildingTime": 40,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "l",
+	"events": {
+		"remove": {
+			"effects": ["destruction-big"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	} 
+}

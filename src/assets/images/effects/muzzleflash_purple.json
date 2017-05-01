@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "muzzleflash_purple00000.png",
+	"frame": {"x":221,"y":50,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00001.png",
+	"frame": {"x":368,"y":1,"w":39,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":41,"y":40,"w":39,"h":37},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00002.png",
+	"frame": {"x":272,"y":1,"w":46,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":36,"w":46,"h":45},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00003.png",
+	"frame": {"x":169,"y":1,"w":50,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":34,"w":50,"h":49},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00004.png",
+	"frame": {"x":1,"y":1,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00005.png",
+	"frame": {"x":57,"y":1,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00006.png",
+	"frame": {"x":113,"y":1,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00007.png",
+	"frame": {"x":221,"y":1,"w":49,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":35,"w":49,"h":47},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00008.png",
+	"frame": {"x":320,"y":1,"w":46,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":36,"w":46,"h":45},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_purple00009.png",
+	"frame": {"x":409,"y":1,"w":25,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":47,"w":25,"h":26},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "muzzleflash_purple.png",
+	"format": "RGBA8888",
+	"size": {"w":435,"h":54},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:43236a588947b73c6e40554daf299036:7a68929bb6821d7e1077439f86ed99ae:2f417cda1a502a4569d8177b6a147496$"
+}
+}

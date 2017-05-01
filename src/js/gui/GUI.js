@@ -84,6 +84,7 @@ const createIconSprites = function(container) {
             'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
             'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath')),
             'gui.icons.syl': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.syl')),
+            'gui.icons.tho': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.tho')),
             'gui.icons.obj': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.obj'))
         },
         each = function(callback) {
@@ -378,6 +379,71 @@ const EnergyShield = (function() {
     };
 
     return EnergyShield;
+
+})();
+
+// --------------------------------------------------------------------------------------
+// Colour indicator
+// --------------------------------------------------------------------------------------
+const ColorIndicator = (function() {
+
+    const SPRITE_WIDTH = 234;
+
+    function ColorIndicator() {}
+
+    ColorIndicator.prototype = {
+
+        appendTo: function(entity) {
+
+            var groupName;
+
+            this.sprite = this.createSpriteByParent(entity);
+
+            // Add the selection to the appropriate graphics group as per its type
+            groupName = 'color-indicators';
+            Graphics.getInstance().getGroup(groupName).add(this.sprite);
+
+            entity.on('remove', this.remove.bind(this));
+
+            // the sprite is not a child of the entity for various overlapping issues
+            // therefore it needs to follow it upon every tick 
+            this.sprite.update = function() {
+                this.x = entity.getSprite().x;
+                this.y = entity.getSprite().y;
+            };
+
+            this.parent = entity;
+        },
+
+        createSpriteByParent: function(entity) {
+            const team = entity.getPlayer().getTeam();
+            const width = entity.getDataObject().getWidth();
+            const ratio = width / SPRITE_WIDTH * 1.75;
+            const sprite = phaserGame.add.image(0, 0, 'color-indicator');
+
+            sprite.visible = true;
+            sprite.anchor.setTo(0.5, 0.5);
+            sprite.scale.setTo(ratio, ratio);
+            sprite.frame = team - 1;
+            
+            return sprite;
+        },
+
+        show: function() {
+            this.sprite.visible = true;
+        },
+
+        hide: function() {
+            this.sprite.visible = false;
+        },
+
+        remove: function() {
+            this.sprite.destroy(true);
+        }
+
+    };
+
+    return ColorIndicator;
 
 })();
 
@@ -1798,6 +1864,16 @@ GUI.prototype = {
         var energyShield = new EnergyShield();
         energyShield.appendTo(entity);
         return energyShield;
+    },
+
+    /**
+     * Links the given entity to a new EnergyShield instance
+     * @param {object} entity Instance of Eneity 
+     */
+    addColorIndicator: function(entity) {
+        var colorIndicator = new ColorIndicator();
+        colorIndicator.appendTo(entity);
+        return colorIndicator;
     },
 
     /**

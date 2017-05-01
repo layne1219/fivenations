@@ -1,0 +1,40 @@
+{
+    "id": "senate",
+    "name": "Senate",
+    "type": "building",
+    "building": true,
+    "hull": 1000,
+    "shield": 200,
+    "armor": 5,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 50,
+    "weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 1000,
+    "silicium": 650,
+    "energy": 900,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 150,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["construction"],
+    "size": "l",
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": false,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

@@ -1,0 +1,201 @@
+{"frames": [
+
+{
+	"filename": "effect_defensivestasis00000.png",
+	"frame": {"x":1,"y":815,"w":202,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":50,"w":202,"h":198},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00001.png",
+	"frame": {"x":412,"y":813,"w":202,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":49,"w":202,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00002.png",
+	"frame": {"x":414,"y":612,"w":203,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":49,"w":203,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00003.png",
+	"frame": {"x":208,"y":612,"w":204,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":49,"w":204,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00004.png",
+	"frame": {"x":623,"y":409,"w":204,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":49,"w":204,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00005.png",
+	"frame": {"x":625,"y":206,"w":205,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":48,"w":205,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00006.png",
+	"frame": {"x":209,"y":409,"w":205,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":48,"w":205,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00007.png",
+	"frame": {"x":209,"y":206,"w":206,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":48,"w":206,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00008.png",
+	"frame": {"x":210,"y":1,"w":206,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":47,"w":206,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00009.png",
+	"frame": {"x":418,"y":1,"w":206,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":47,"w":206,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00010.png",
+	"frame": {"x":1,"y":1,"w":207,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":47,"w":207,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00011.png",
+	"frame": {"x":626,"y":1,"w":206,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":47,"w":206,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00012.png",
+	"frame": {"x":1,"y":206,"w":206,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":47,"w":206,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00013.png",
+	"frame": {"x":417,"y":206,"w":206,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":48,"w":206,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00014.png",
+	"frame": {"x":1,"y":411,"w":205,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":48,"w":205,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00015.png",
+	"frame": {"x":416,"y":409,"w":205,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":48,"w":205,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00016.png",
+	"frame": {"x":623,"y":611,"w":204,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":49,"w":204,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00017.png",
+	"frame": {"x":1,"y":614,"w":204,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":49,"w":204,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00018.png",
+	"frame": {"x":207,"y":813,"w":203,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":49,"w":203,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00019.png",
+	"frame": {"x":616,"y":813,"w":202,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":49,"w":202,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "effect_defensivestasis00020.png",
+	"frame": {"x":820,"y":813,"w":202,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":50,"w":202,"h":198},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "uniteffect_defensivestasis.png",
+	"format": "RGBA8888",
+	"size": {"w":1023,"h":1014},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:47d73e385f26332341f3a8ce426348c6:64fdb7c3ff6ae816abcfa77d219c8f48:29f95ed3e68fb410107b7424484167f4$"
+}
+}

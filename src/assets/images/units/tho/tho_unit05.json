@@ -1,0 +1,300 @@
+{"frames": [
+
+{
+	"filename": "tho_un05_c010000.png",
+	"frame": {"x":1,"y":1,"w":74,"h":142},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":79,"w":74,"h":142},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010001.png",
+	"frame": {"x":77,"y":1,"w":79,"h":140},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":80,"w":79,"h":140},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010002.png",
+	"frame": {"x":239,"y":1,"w":93,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":83,"w":93,"h":134},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010003.png",
+	"frame": {"x":857,"y":1,"w":118,"h":124},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":101,"y":87,"w":118,"h":124},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010004.png",
+	"frame": {"x":941,"y":127,"w":140,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":88,"y":92,"w":140,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010005.png",
+	"frame": {"x":486,"y":132,"w":155,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":78,"y":99,"w":155,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010006.png",
+	"frame": {"x":1366,"y":80,"w":167,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":108,"w":167,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010007.png",
+	"frame": {"x":1366,"y":157,"w":171,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":116,"w":171,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010008.png",
+	"frame": {"x":1708,"y":72,"w":170,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":118,"w":170,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010009.png",
+	"frame": {"x":1535,"y":78,"w":171,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":121,"w":171,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010010.png",
+	"frame": {"x":1,"y":145,"w":167,"h":77},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":122,"w":167,"h":77},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010011.png",
+	"frame": {"x":170,"y":143,"w":156,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":78,"y":113,"w":156,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010012.png",
+	"frame": {"x":800,"y":129,"w":139,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":88,"y":105,"w":139,"h":108},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010013.png",
+	"frame": {"x":1097,"y":1,"w":118,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":101,"y":99,"w":118,"h":118},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010014.png",
+	"frame": {"x":667,"y":1,"w":93,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":93,"w":93,"h":126},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010015.png",
+	"frame": {"x":429,"y":1,"w":79,"h":129},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":90,"w":79,"h":129},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010016.png",
+	"frame": {"x":591,"y":1,"w":74,"h":128},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":89,"w":74,"h":128},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010017.png",
+	"frame": {"x":510,"y":1,"w":79,"h":129},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":106,"y":90,"w":79,"h":129},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010018.png",
+	"frame": {"x":762,"y":1,"w":93,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":93,"y":93,"w":93,"h":126},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010019.png",
+	"frame": {"x":1217,"y":1,"w":118,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":81,"y":99,"w":118,"h":118},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010020.png",
+	"frame": {"x":1225,"y":121,"w":139,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":105,"w":139,"h":108},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010021.png",
+	"frame": {"x":328,"y":137,"w":156,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":66,"y":113,"w":156,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010022.png",
+	"frame": {"x":1337,"y":1,"w":167,"h":77},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":122,"w":167,"h":77},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010023.png",
+	"frame": {"x":1675,"y":1,"w":171,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":121,"w":171,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010024.png",
+	"frame": {"x":1712,"y":143,"w":170,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":67,"y":119,"w":170,"h":68},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010025.png",
+	"frame": {"x":1539,"y":149,"w":171,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":116,"w":171,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010026.png",
+	"frame": {"x":1506,"y":1,"w":167,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":108,"w":167,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010027.png",
+	"frame": {"x":643,"y":131,"w":155,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":67,"y":99,"w":155,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010028.png",
+	"frame": {"x":1083,"y":127,"w":140,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":92,"w":140,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010029.png",
+	"frame": {"x":977,"y":1,"w":118,"h":124},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":81,"y":87,"w":118,"h":124},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010030.png",
+	"frame": {"x":334,"y":1,"w":93,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":93,"y":83,"w":93,"h":134},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_un05_c010031.png",
+	"frame": {"x":158,"y":1,"w":79,"h":140},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":106,"y":80,"w":79,"h":140},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tho_unit05.png",
+	"format": "RGBA8888",
+	"size": {"w":1903,"h":239},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3828039975178ce95fb9feb88761f6cd:86d66dd44a1f3c5f30ee329b40ad2405:4e18636112ce3d4da0c750647b55da66$"
+}
+}

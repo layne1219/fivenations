@@ -1,0 +1,33 @@
+{
+    "id": "habitat",
+    "name": "Habitat",
+    "type": "building",
+    "building": true,
+    "hull": 300,
+    "shield": 100,
+    "armor": 3,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 20,
+    "weapons": [ 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 200,
+    "silicium": 0,
+    "energy": 100,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 44,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": [],
+    "size": "m",
+    "events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 3,
+			"maxWrecks": 5,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

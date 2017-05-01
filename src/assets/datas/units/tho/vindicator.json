@@ -1,0 +1,32 @@
+{
+	"id": "vindicator",
+	"name": "Vindicator",
+	"type": "Battleship",
+	"hull": 1500,
+	"shield": 500,
+	"armor": 5,
+	"power": 0, 
+	"hangar": 10,
+	"speed": 15,
+	"maneuverability": 15,
+	"vision": 100,
+	"weapons": [ 50, 50, 50, 50, 53, 54, 51, 0, 0, 0, 0, 0 ],
+	"titanium": 1700,
+	"silicium": 750,
+	"energy": 1000,
+	"uranium": 60,
+	"space": 30,
+	"buildingTime": 120,
+	"directions": 32,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "l",
+	"events": {
+		"remove": {
+			"effects": ["destruction-big"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	} 
+}

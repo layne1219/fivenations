@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "torkolattuz_yellow_00000.png",
+	"frame": {"x":164,"y":121,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00001.png",
+	"frame": {"x":1,"y":75,"w":49,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":35,"w":49,"h":47},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00002.png",
+	"frame": {"x":102,"y":67,"w":60,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":31,"w":60,"h":56},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00003.png",
+	"frame": {"x":83,"y":1,"w":70,"h":64},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":27,"w":70,"h":64},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00004.png",
+	"frame": {"x":1,"y":1,"w":80,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":23,"w":80,"h":72},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00005.png",
+	"frame": {"x":155,"y":1,"w":69,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":29,"w":69,"h":60},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00006.png",
+	"frame": {"x":226,"y":1,"w":69,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":29,"w":69,"h":60},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00007.png",
+	"frame": {"x":164,"y":63,"w":65,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":31,"w":65,"h":56},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00008.png",
+	"frame": {"x":231,"y":63,"w":62,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":32,"w":62,"h":54},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "torkolattuz_yellow_00009.png",
+	"frame": {"x":52,"y":75,"w":48,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":36,"w":48,"h":48},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "muzzleflash_yellow.png",
+	"format": "RGBA8888",
+	"size": {"w":298,"h":125},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:96f7f9f751d7324cbab62c9b865a9a4b:514f39c74342fb15a3950929acc80649:49a683bb4d6ee0c2010a8762b17d98e0$"
+}
+}

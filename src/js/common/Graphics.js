@@ -7,6 +7,7 @@ function createGraphicsInstance() {
         // layers ordered as follows
         groupNames = [
             'starfield',
+            'color-indicators',
             'selectors-buildings',
             'entities-buildings',
             'energy-shields-buildings',

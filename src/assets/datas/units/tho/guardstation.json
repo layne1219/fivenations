@@ -1,0 +1,40 @@
+{
+    "id": "guardstation",
+    "name": "Guard Station",
+    "type": "building",
+    "building": true,
+    "hull": 700,
+    "shield": 200,
+    "armor": 4,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 100,
+    "weapons": [ 4, 54, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 500,
+    "silicium": 200,
+    "energy": 250,
+    "uranium": 0,
+    "space": 0,
+    "buildingTime": 90,
+    "directions": 0,
+    "animFrame": 1,
+    "animType": ["idle"],
+    "size": "m",
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

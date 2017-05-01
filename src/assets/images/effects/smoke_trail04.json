@@ -1,7 +1,7 @@
-{"frames": {
+{"frames": [
 
-"smoketrail4_00000.png":
 {
+	"filename": "trail0400000.png",
 	"frame": {"x":363,"y":113,"w":9,"h":9},
 	"rotated": false,
 	"trimmed": true,
@@ -9,8 +9,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00001.png":
 {
+	"filename": "trail0400001.png",
 	"frame": {"x":347,"y":113,"w":14,"h":14},
 	"rotated": false,
 	"trimmed": true,
@@ -18,8 +18,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00002.png":
 {
+	"filename": "trail0400002.png",
 	"frame": {"x":347,"y":81,"w":30,"h":30},
 	"rotated": false,
 	"trimmed": true,
@@ -27,8 +27,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00003.png":
 {
+	"filename": "trail0400003.png",
 	"frame": {"x":268,"y":81,"w":39,"h":37},
 	"rotated": false,
 	"trimmed": true,
@@ -36,8 +36,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00004.png":
 {
+	"filename": "trail0400004.png",
 	"frame": {"x":1,"y":88,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -45,8 +45,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00005.png":
 {
+	"filename": "trail0400005.png",
 	"frame": {"x":92,"y":88,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -54,8 +54,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00006.png":
 {
+	"filename": "trail0400006.png",
 	"frame": {"x":322,"y":41,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -63,8 +63,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00007.png":
 {
+	"filename": "trail0400007.png",
 	"frame": {"x":366,"y":41,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -72,8 +72,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00008.png":
 {
+	"filename": "trail0400008.png",
 	"frame": {"x":136,"y":81,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -81,8 +81,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00009.png":
 {
+	"filename": "trail0400009.png",
 	"frame": {"x":180,"y":81,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -90,8 +90,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00010.png":
 {
+	"filename": "trail0400010.png",
 	"frame": {"x":224,"y":81,"w":42,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -99,8 +99,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00011.png":
 {
+	"filename": "trail0400011.png",
 	"frame": {"x":138,"y":1,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -108,8 +108,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00012.png":
 {
+	"filename": "trail0400012.png",
 	"frame": {"x":184,"y":1,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -117,8 +117,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00013.png":
 {
+	"filename": "trail0400013.png",
 	"frame": {"x":230,"y":1,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -126,8 +126,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00014.png":
 {
+	"filename": "trail0400014.png",
 	"frame": {"x":276,"y":1,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -135,8 +135,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00015.png":
 {
+	"filename": "trail0400015.png",
 	"frame": {"x":322,"y":1,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -144,8 +144,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00016.png":
 {
+	"filename": "trail0400016.png",
 	"frame": {"x":138,"y":41,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -153,8 +153,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00017.png":
 {
+	"filename": "trail0400017.png",
 	"frame": {"x":184,"y":41,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -162,8 +162,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00018.png":
 {
+	"filename": "trail0400018.png",
 	"frame": {"x":230,"y":41,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -171,8 +171,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00019.png":
 {
+	"filename": "trail0400019.png",
 	"frame": {"x":276,"y":41,"w":44,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -180,8 +180,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00020.png":
 {
+	"filename": "trail0400020.png",
 	"frame": {"x":46,"y":87,"w":44,"h":40},
 	"rotated": false,
 	"trimmed": true,
@@ -189,8 +189,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00021.png":
 {
+	"filename": "trail0400021.png",
 	"frame": {"x":1,"y":1,"w":44,"h":41},
 	"rotated": false,
 	"trimmed": true,
@@ -198,8 +198,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00022.png":
 {
+	"filename": "trail0400022.png",
 	"frame": {"x":92,"y":44,"w":41,"h":42},
 	"rotated": false,
 	"trimmed": true,
@@ -207,8 +207,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00023.png":
 {
+	"filename": "trail0400023.png",
 	"frame": {"x":93,"y":1,"w":43,"h":41},
 	"rotated": false,
 	"trimmed": true,
@@ -216,8 +216,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00024.png":
 {
+	"filename": "trail0400024.png",
 	"frame": {"x":1,"y":44,"w":43,"h":42},
 	"rotated": false,
 	"trimmed": true,
@@ -225,8 +225,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00025.png":
 {
+	"filename": "trail0400025.png",
 	"frame": {"x":47,"y":1,"w":44,"h":41},
 	"rotated": false,
 	"trimmed": true,
@@ -234,8 +234,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00026.png":
 {
+	"filename": "trail0400026.png",
 	"frame": {"x":46,"y":44,"w":44,"h":41},
 	"rotated": false,
 	"trimmed": true,
@@ -243,8 +243,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00027.png":
 {
+	"filename": "trail0400027.png",
 	"frame": {"x":368,"y":1,"w":39,"h":38},
 	"rotated": false,
 	"trimmed": true,
@@ -252,8 +252,8 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00028.png":
 {
+	"filename": "trail0400028.png",
 	"frame": {"x":309,"y":81,"w":36,"h":37},
 	"rotated": false,
 	"trimmed": true,
@@ -261,15 +261,15 @@
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"smoketrail4_00029.png":
 {
+	"filename": "trail0400029.png",
 	"frame": {"x":379,"y":81,"w":29,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":11,"y":13,"w":29,"h":28},
 	"sourceSize": {"w":50,"h":50},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
@@ -277,6 +277,6 @@
 	"format": "RGBA8888",
 	"size": {"w":409,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2036edd01a514508d935ce34bae3d98e:567f97fd2fed198dff34db4f7c292b4a:2f5df5bef68997611cc79ebb3e79f538$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0d007deb90e5af8603eed8065efc90d9:567f97fd2fed198dff34db4f7c292b4a:2f5df5bef68997611cc79ebb3e79f538$"
 }
 }

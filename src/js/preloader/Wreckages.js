@@ -6,7 +6,7 @@ const NO_WRECKAGES_PER_NATION = 5;
 // const like object to describe all the wreckages participating in the gameplay 
 ns.effects = ns.effects || {};
 
-['fed', 'ath', 'syl'].forEach(function(nation) {
+['fed', 'ath', 'syl', 'tho'].forEach(function(nation) {
     
     for (var i = 1; i <= NO_WRECKAGES_PER_NATION; i += 1) {
         ns.effects[nation + '-wreck-' + i] = {

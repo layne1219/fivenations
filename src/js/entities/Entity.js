@@ -155,6 +155,8 @@ var extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
  */
 function Entity(config) {
 
+    const gui = GUI.getInstance();
+
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
 
@@ -174,14 +176,14 @@ function Entity(config) {
     this.sprite = extendSprite(this, config.sprite, config.dataObject);
 
     // adding the Selector object to highligh whether the unit is seleted or not
-    this.selector = GUI.getInstance().addSelector(this);
+    this.selector = gui.addSelector(this);
 
     // adding the StatusDisplay object to show the current status 
     // of the entity's attributes
-    this.statusDisplay = GUI.getInstance().addStatusDisplay(this);
+    this.statusDisplay = gui.addStatusDisplay(this);
 
     // energy shield animation
-    this.energyShield = GUI.getInstance().addEnergyShield(this);
+    this.energyShield = gui.addEnergyShield(this);
 
     // ActivityManager
     this.activityManager = new ActivityManager(this);
@@ -197,6 +199,9 @@ function Entity(config) {
 
     // Player instance
     this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
+
+    // color indicator sprite
+    this.colorIndicator = gui.addColorIndicator(this);
 
 }
 
@@ -492,6 +497,7 @@ Entity.prototype = {
      * @return {void}
      */
     levitate: function() {
+        if (this.dataObject.isBuilding()) return;
         this.motionManager.levitate();
     },
 
@@ -499,6 +505,7 @@ Entity.prototype = {
      * Stops the floating animation
      */
     stopLevitating: function() {
+        if (this.dataObject.isBuilding()) return;
         this.motionManager.stopLevitating();
     },
 
@@ -593,7 +600,7 @@ Entity.prototype = {
      */
     isDockable: function() {
         if (this.dockable === undefined) {
-            this.dockable = this.weaponManager.hasWeapon(WeaponManager.WEAPON_DOCK);
+            this.dockable = this.dataObject.getMaxHangar() > 0;
         }
         return this.dockable;
     },
@@ -607,6 +614,14 @@ Entity.prototype = {
             this.isAbleToDock = this.dataObject.isFighter();
         }
         return this.isAbleToDock;
+    },
+
+    /**
+     * Returns whether the entity can move or not
+     * @return {Boolean}
+     */
+    canMove: function() {
+        return this.dataObject.getSpeed() > 0;
     },
 
     getSprite: function() {

@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM mhart/alpine-node:7.9.0
 MAINTAINER Bence Varga <vbence86@gmail.com>
 
 # Environment variables
@@ -6,17 +6,17 @@ ENV DOCUMENT_ROOT=/var/www
 ENV FIVE_NATIONS_PATH=${DOCUMENT_ROOT}/fivenations
 ENV FIVE_NATIONS_REPO=https://github.com/vbence86/fivenations
 
-# Install Node.js and npm
-RUN apt-get update && apt-get install -y \
-    nodejs \
-    npm \
-    git
+# Install git
+RUN apk update && \
+    apk add bash && \
+    apk add --update git && \
+    rm -rf /tmp/* /var/cache/apk/*
 
 # Install app
 WORKDIR ${DOCUMENT_ROOT}
 RUN git clone ${FIVE_NATIONS_REPO} 
 WORKDIR ${FIVE_NATIONS_PATH}
-RUN git checkout master
+RUN git checkout feature/0.26
 RUN npm install
 
 # run a NodeJS server and expose the app

@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "muzzleflash_electric00000.png",
+	"frame": {"x":441,"y":37,"w":16,"h":13},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":50,"w":16,"h":13},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00001.png",
+	"frame": {"x":441,"y":1,"w":37,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":42,"y":41,"w":37,"h":34},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00002.png",
+	"frame": {"x":333,"y":1,"w":45,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":37,"w":45,"h":43},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00003.png",
+	"frame": {"x":283,"y":1,"w":48,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":36,"w":48,"h":45},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00004.png",
+	"frame": {"x":113,"y":1,"w":51,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":34,"w":51,"h":49},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00005.png",
+	"frame": {"x":58,"y":1,"w":53,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":34,"w":53,"h":49},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00006.png",
+	"frame": {"x":1,"y":1,"w":55,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":34,"w":55,"h":49},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00007.png",
+	"frame": {"x":166,"y":1,"w":56,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":36,"w":56,"h":47},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00008.png",
+	"frame": {"x":224,"y":1,"w":57,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":34,"w":57,"h":46},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_electric00009.png",
+	"frame": {"x":380,"y":1,"w":59,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":36,"y":39,"w":59,"h":42},
+	"sourceSize": {"w":120,"h":120},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "muzzleflash_electric.png",
+	"format": "RGBA8888",
+	"size": {"w":479,"h":51},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3e7e301af7f67ffbec868058306bdb3f:e8f6016c1cfe558b075b3cdbf0ad6a0b:f0fb64848d14f9cedfd89ceee88a8a72$"
+}
+}

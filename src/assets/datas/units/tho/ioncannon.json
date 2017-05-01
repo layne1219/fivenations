@@ -1,0 +1,33 @@
+{
+    "id": "ioncannon",
+    "name": "Ion Cannon",
+    "type": "building",
+    "building": true,
+    "hull": 200,
+    "shield": 100,
+    "armor": 2,
+    "power": 0, 
+    "hangar": 0,
+    "speed": 0,
+    "maneuverability": 0,
+    "vision": 50,
+    "weapons": [ 88, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    "titanium": 200,
+    "silicium": 450,
+    "energy": 800,
+    "uranium": 100,
+    "space": 0,
+    "buildingTime": 140,
+    "directions": 32,
+    "animFrame": 1,
+    "animType": [],
+    "size": "m",
+    "events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 5,
+			"maxWrecks": 10,
+			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
+		}
+	}
+}

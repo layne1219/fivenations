@@ -240,11 +240,6 @@ EntityManager.prototype = {
         var steps = Math.ceil(elapsedTime / (1000 / 60));
         for (var i = entities.length - 1; i >= 0; i -= 1) {
             this.updateEntity(entities[i], steps, authoritative);
-
-            var closest = entities[i].getClosestHostileEntityInRange();
-            if (closest) {
-                phaserGame.debug.body(closest.getSprite());
-            }
         }            
     },
 
@@ -336,6 +331,13 @@ function createSelector(entities) {
             } else if (filter === ':user:selected') {
                 targets = entities.filter(function(entity) {
                     return entity.isEntityControlledByUser() && entity.isSelected();
+                });
+            } else if (filter === ':user:selected:not(building)') {
+                targets = entities.filter(function(entity) {
+                    if (!entity.isEntityControlledByUser()) return false;
+                    if (!entity.isSelected()) return false;
+                    if (entity.getDataObject().isBuilding()) return false;
+                    return true;
                 });
             } else {
                 targets = entities.filter(function(entity) {

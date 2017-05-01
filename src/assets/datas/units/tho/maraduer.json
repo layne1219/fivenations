@@ -1,0 +1,32 @@
+{
+	"id": "maraduer",
+	"name": "Maraduer",
+	"type": "Destroyer",
+	"hull": 140,
+	"shield": 80,
+	"armor": 1,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 35,
+	"maneuverability": 30,
+	"vision": 50,
+	"weapons": [ 49, 49, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 140,
+	"silicium": 450,
+	"energy": 90,
+	"uranium": 0,
+	"space": 3,
+	"buildingTime": 60,
+	"directions": 16,
+	"animFrame": 1,
+	"animType": 0,
+	"size": "sm",
+	"events": {
+		"remove": {
+			"effects": ["destruction-medium"],
+			"minWrecks": 2,
+			"maxWrecks": 3,
+			"wrecks": ["tho-wreck-1", "tho-wreck-2", "tho-wreck-3", "fed-wreck-4", "tho-wreck-5"]
+		}
+	}	
+}
