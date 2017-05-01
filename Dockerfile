@@ -16,7 +16,7 @@ RUN apk update && \
 WORKDIR ${DOCUMENT_ROOT}
 RUN git clone ${FIVE_NATIONS_REPO} 
 WORKDIR ${FIVE_NATIONS_PATH}
-RUN git checkout feature/0.26
+RUN git checkout master
 RUN npm install
 
 # run a NodeJS server and expose the app
