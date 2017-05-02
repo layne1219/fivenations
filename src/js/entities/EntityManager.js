@@ -145,7 +145,7 @@ EntityManager.prototype = {
      * @param  {object} map Map instance
      * @return {void}
      */
-    initQuadTree: function(map) {
+    createQuadTree: function(map) {
         if (!map) throw 'Invalid Map instance has been passed!';
 
         this.quadTree = new QuadTree({

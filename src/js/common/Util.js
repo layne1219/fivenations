@@ -209,6 +209,9 @@ export default {
                 }
             }
         };
+        EventDispatcher.prototype.reset = function() {
+            this.events = {};
+        }
 
         return EventDispatcher;
 

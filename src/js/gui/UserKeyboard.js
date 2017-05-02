@@ -12,7 +12,6 @@ function UserKeyboard() {
 
 function init() {
     dispatcher = new Util.EventDispatcher();
-    // handling the curser key events
     cursors = phaserGame.input.keyboard.createCursorKeys();
 }
 
@@ -51,6 +50,10 @@ UserKeyboard.prototype = {
 
     update: function() {
         listenToCursorKeys();
+    },
+
+    reset: function() {
+        dispatcher.reset();
     }
 };
 

@@ -17,6 +17,12 @@ Map.prototype = {
 
     init: function(config) {
 
+        this.setConfig(config);
+
+    },
+
+    setConfig: function(config) {
+
         if (!config.width || config.width < 32) {
             throw 'Invalid width property! It must be a valid number bigger than 32!';
         }
@@ -28,7 +34,8 @@ Map.prototype = {
         this.config.tileWidth = TILE_WIDTH;
         this.config.tileHeight = TILE_HEIGHT;
         this.config.scrollSpeed = SCROLL_SPEED;
-    },        
+
+    },
 
     setGame: function(game) {
         this.game = game;
