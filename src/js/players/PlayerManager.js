@@ -122,9 +122,11 @@ export default {
 
     /**
      * Returns singleton instance of PlayerManager
+     * @param  {boolean} reset
      * @return {object}
      */
-    getInstance: function() {
+    getInstance: function(reset) {
+        if (reset) singleton.reset();
         return singleton;
     }
 

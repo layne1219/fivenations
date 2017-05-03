@@ -402,14 +402,23 @@ Entity.prototype = {
     },
 
     /**
-     * Removes entity from gameplay
+     * Triggers the remove event and creates and explosion with 
+     * removing the entity from the gameplay
      * @return {void}
      */
     remove: function() {
+        this.delete();
+        EffectManager.getInstance().explode(this);
+    },
+
+    /**
+     * Removes the entity from the gameplay
+     * @return {[type]} [description]
+     */
+    delete: function() {
+        this.eventDispatcher.dispatch('remove');
         this.sprite._group.remove(this.sprite);
         this.sprite.destroy();
-        this.eventDispatcher.dispatch('remove');
-        EffectManager.getInstance().explode(this);
     },
 
     /**

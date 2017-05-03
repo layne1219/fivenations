@@ -31,7 +31,7 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         // Graphics object gathering functonality that assist in rendering
         Graphics.setGame(this.game);
-        this.graphics = Graphics.getInstance();
+        this.graphics = Graphics.getInstance(true); // force new instance
 
         // -----------------------------------------------------------------------
         //                                  Map
@@ -46,19 +46,20 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         //                               Player manager
         // -----------------------------------------------------------------------
-        this.playerManager = PlayerManager.getInstance();
+        this.playerManager = PlayerManager.getInstance(true);
 
         // -----------------------------------------------------------------------
         //                              EntityManager
         // -----------------------------------------------------------------------
         EntityManager.setGame(this.game);
-        this.entityManager = EntityManager.getInstance();
+        this.entityManager = EntityManager.getInstance(true);
+        this.entityManager.createQuadTree(this.map);
 
         // -----------------------------------------------------------------------
         //                              EffectManager
         // -----------------------------------------------------------------------
         EffectManager.setGame(this.game);
-        this.effectManager = EffectManager.getInstance();            
+        this.effectManager = EffectManager.getInstance(true);            
 
         // -----------------------------------------------------------------------
         //                              CollisionManager
@@ -83,7 +84,7 @@ Game.prototype = {
         //                              UserPointer
         // -----------------------------------------------------------------------
         UserPointer.setGame(this.game);
-        this.userPointer = UserPointer.getInstance();
+        this.userPointer = UserPointer.getInstance(true);
 
         // Right Mouse Button to send units to a position
         this.userPointer.on('rightbutton/down', function() {
@@ -202,7 +203,7 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         // Set up UserKeyboard
         UserKeyboard.setGame(this.game);
-        this.userKeyboard = UserKeyboard.getInstance();
+        this.userKeyboard = UserKeyboard.getInstance(true);
 
         this.userKeyboard
             .on('cursor/down', this.map.scrollDown.bind(this.map))
@@ -224,7 +225,7 @@ Game.prototype = {
             .setEntityManager(this.entityManager)
             .setUserPointer(this.userPointer)
             .setPlayerManager(this.playerManager)
-            .getInstance();
+            .getInstance(true);
 
         // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
@@ -244,14 +245,6 @@ Game.prototype = {
         // Kicking off the main event loop
         this.eventBusExecuter = EventBusExecuter.getInstance();
 
-
-        this.eventEmitter.synced.players.add({
-            name: 'Test Player',
-            team: 1,
-            user: true,
-            authorised: true
-        });
-
         window.add = function(id, team) {
             this.eventEmitter.synced.entities.add({
                 id: id || 'hurricane',
@@ -261,38 +254,22 @@ Game.prototype = {
             });
         }.bind(this);
 
-    },
-
-    start: function() {
-
-        this.started = true;
-
-        // -----------------------------------------------------------------------
-        //                               Player manager
-        // -----------------------------------------------------------------------
-        this.playerManager.reset();
-
-        // -----------------------------------------------------------------------
-        //                              EntityManager
-        // -----------------------------------------------------------------------
-        this.entityManager.reset();
-        this.entityManager.createQuadTree(this.map);
-
-        // -----------------------------------------------------------------------
-        //                              EffectManager
-        // -----------------------------------------------------------------------
-        this.effectManager.reset();            
-
-        // -----------------------------------------------------------------------
-        //                                EventBus
-        // -----------------------------------------------------------------------
-        this.eventBusExecuter.reset();
         
+        this.eventEmitter.synced.players.add({
+            name: 'Test Player',
+            team: 1,
+            user: true,
+            authorised: true
+        });
+
+        add('hurricane');
+        add('orca');
+        add('crow');
+        add('icarus');        
+
     },
 
     update: function() {
-
-        if (!this.started) return;
 
         // Execute all the registered events on the EventBus
         this.eventBusExecuter.run();

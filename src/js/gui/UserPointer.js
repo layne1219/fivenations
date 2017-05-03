@@ -154,13 +154,14 @@ export default {
 
     /**
      * Fetching the singleton instance of the UserPointer protoype
+     * @param {boolean forceNewInstance
      * @return {object} UserPointer
      */
-    getInstance: function() {
+    getInstance: function(forceNewInstance) {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!singleton) {
+        if (!singleton || forceNewInstance) {
             singleton = new UserPointer();
         }
         return singleton;

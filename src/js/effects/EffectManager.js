@@ -314,14 +314,16 @@ export default {
 
     /**
      * returns singleton instance of the manager object
+     * @param {boolean} forceNewInstance
      * @return {object} Singleton instance of EffectManager
      */
-    getInstance: function() {
+    getInstance: function(forceNewInstance) {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!singleton) {
+        if (!singleton || forceNewInstance) {
             singleton = new EffectManager();
+            singleton.reset();
         }
         return singleton;
     }

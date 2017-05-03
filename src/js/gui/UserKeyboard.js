@@ -63,11 +63,11 @@ export default {
         phaserGame = game;
     },
 
-    getInstance: function() {
+    getInstance: function(forceNewInstance) {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!singleton) {
+        if (!singleton || forceNewInstance) {
             singleton = new UserKeyboard();
         }
         return singleton;
