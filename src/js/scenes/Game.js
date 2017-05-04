@@ -245,28 +245,6 @@ Game.prototype = {
         // Kicking off the main event loop
         this.eventBusExecuter = EventBusExecuter.getInstance();
 
-        window.add = function(id, team) {
-            this.eventEmitter.synced.entities.add({
-                id: id || 'hurricane',
-                team: team || 1,
-                x: 0 + Math.random() * 600,
-                y: 0 + Math.random() * 600
-            });
-        }.bind(this);
-
-        
-        this.eventEmitter.synced.players.add({
-            name: 'Test Player',
-            team: 1,
-            user: true,
-            authorised: true
-        });
-
-        add('hurricane');
-        add('orca');
-        add('crow');
-        add('icarus');        
-
     },
 
     update: function() {
