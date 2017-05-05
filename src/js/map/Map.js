@@ -5,112 +5,78 @@ import Util from '../common/Util';
 const FOG_OF_WAR_REFRESH_RATE = 50;
 
 // map configration template
+const MIN_WIDTH = 32;
+const MIN_HEIGHT = 32;
 const TILE_WIDTH = 40;
 const TILE_HEIGHT = 40;
 const SCROLL_SPEED = 10;
 
-function Map(config) {
-    this.init(config);
+let game;
+let width = MIN_WIDTH * TILE_WIDTH;
+let height = MIN_HEIGHT * TILE_HEIGHt;
+let scrollSpeed = SCROLL_SPEED;
+
+let starfield;
+let fogofwar;
+
+function initGame( { _game } ) {
+    game = _game;
+    game.stage.backgroundColor = '#000';
 }
+
+function setSize({_width, _height}) {
+    width = _width;
+    height = _height;
+    game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
+}
+
+function initLayers() {
+    starfield = new Starfield(this);
+    fogofwar = Fogofwar.create(this);
+    fogofwar.update = Util.interval(fogofwar.update, FOG_OF_WAR_REFRESH_RATE, fogofwar);
+}
+
+function Map() {}
 
 Map.prototype = {
 
-    init: function(config) {
-
-        this.setConfig(config);
-
-    },
-
-    setConfig: function(config) {
-
-        if (!config.width || config.width < 32) {
-            throw 'Invalid width property! It must be a valid number bigger than 32!';
-        }
-        if (!config.height || config.height < 32) {
-            throw 'Invalid width property! It must be a valid number bigger than 32!';
-        }
-
-        this.config = config;
-        this.config.tileWidth = TILE_WIDTH;
-        this.config.tileHeight = TILE_HEIGHT;
-        this.config.scrollSpeed = SCROLL_SPEED;
-
-    },
-
-    setGame: function(game) {
-        this.game = game;
-        this.game.stage.backgroundColor = '#000';
-        game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
-        this.initLayers();
-    },
-
-    initLayers: function() {
-        this.starfield = new Starfield(this);
-        this.fogofwar = Fogofwar.create(this);
-        this.fogofwar.update = Util.interval(this.fogofwar.update, FOG_OF_WAR_REFRESH_RATE, this.fogofwar);
+    new: function(config) {
+        setSize(config);
+        initGame(config);
+        initLayers(config);
     },
 
     update: function(entityManager) {
-        this.starfield.update();
-        this.fogofwar.update(entityManager);
-    },
-
-    scrollTo: function(x, y) {
-        this.game.camera.x = x;
-        this.game.camera.y = y;
-    },
-
-    scrollToTile: function(x, y) {
-        this.game.camera.x = x * this.config.tiles.tileWidth;
-        this.game.camera.y = y * this.config.tiles.tileHeight;
-    },
-
-    scrollLeft: function(extent) {
-        this.game.camera.x -= extent || this.config.scrollSpeed;
-    },
-
-    scrollRight: function(extent) {
-        this.game.camera.x += extent || this.config.scrollSpeed;
-    },
-
-    scrollUp: function(extent) {
-        this.game.camera.y -= extent || this.config.scrollSpeed;
-    },
-
-    scrollDown: function(extent) {
-        this.game.camera.y += extent || this.config.scrollSpeed;
-    },
-
-    getGame: function() {
-        return this.game;
+        starfield.update();
+        fogofwar.update(entityManager);
     },
 
     getScreenWidth: function() {
-        return this.config.tileWidth * this.config.width;
+        return TILE_WIDTH * width;
     },
 
     getScreenHeight: function() {
-        return this.config.tileHeight * this.config.height;
+        return TILE_HEIGHT * height;
     },
 
     getWidth: function() {
-        return this.config.width;
+        return width;
     },
 
     getHeight: function() {
-        return this.config.height;
+        return height;
     },
 
     getTileWidth: function() {
-        return this.config.tileWidth;
+        return TILE_WIDTH;
     },
 
     getTileHeight: function() {
-        return this.config.tileHeight;
+        return TILE_HEIGHT;
     },
 
     getFogofwar: function() {
-        return this.fogofwar;
+        return fogofwar;
     }
 
 }

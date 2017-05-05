@@ -37,11 +37,7 @@ Game.prototype = {
         //                                  Map
         // -----------------------------------------------------------------------
         // Generate a Map
-        this.map = new Map({
-            width: 128,
-            height: 128
-        });
-        this.map.setGame(this.game);
+        this.map = new Map();
 
         // -----------------------------------------------------------------------
         //                               Player manager
