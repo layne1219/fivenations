@@ -13,7 +13,7 @@ const SCROLL_SPEED = 10;
 
 let game;
 let width = MIN_WIDTH * TILE_WIDTH;
-let height = MIN_HEIGHT * TILE_HEIGHt;
+let height = MIN_HEIGHT * TILE_HEIGHT;
 let scrollSpeed = SCROLL_SPEED;
 
 let starfield;

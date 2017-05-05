@@ -213,17 +213,6 @@ Game.prototype = {
             }.bind(this));
 
         // -----------------------------------------------------------------------
-        //                              GUI
-        // -----------------------------------------------------------------------
-        // Set up the GUI object 
-        this.GUI = GUI.setGame(this.game)
-            .setMap(this.map)
-            .setEntityManager(this.entityManager)
-            .setUserPointer(this.userPointer)
-            .setPlayerManager(this.playerManager)
-            .getInstance(true);
-
-        // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
         // -----------------------------------------------------------------------
         // Set up the GUI.ActivityManager
@@ -240,6 +229,17 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         // Kicking off the main event loop
         this.eventBusExecuter = EventBusExecuter.getInstance();
+
+        // -----------------------------------------------------------------------
+        //                              GUI
+        // -----------------------------------------------------------------------
+        // Set up the GUI object 
+        this.GUI = GUI.setGame(this.game)
+            .setMap(this.map)
+            .setEntityManager(this.entityManager)
+            .setUserPointer(this.userPointer)
+            .setPlayerManager(this.playerManager)
+            .getInstance(true);
 
     },
 
