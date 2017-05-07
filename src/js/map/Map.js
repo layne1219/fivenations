@@ -14,12 +14,11 @@ const SCROLL_SPEED = 10;
 let game;
 let width = MIN_WIDTH * TILE_WIDTH;
 let height = MIN_HEIGHT * TILE_HEIGHT;
-let scrollSpeed = SCROLL_SPEED;
 
 let starfield;
 let fogofwar;
 
-function initGame( { _game } ) {
+function initGame(_game) {
     game = _game;
     game.stage.backgroundColor = '#000';
 }
@@ -36,19 +35,46 @@ function initLayers() {
     fogofwar.update = Util.interval(fogofwar.update, FOG_OF_WAR_REFRESH_RATE, fogofwar);
 }
 
-function Map() {}
+function Map(game) {
+    initGame(game);
+}
 
 Map.prototype = {
 
     new: function(config) {
         setSize(config);
-        initGame(config);
         initLayers(config);
     },
 
     update: function(entityManager) {
-        starfield.update();
-        fogofwar.update(entityManager);
+        if (starfield) starfield.update();
+        if (fogofwar) fogofwar.update(entityManager);
+    },
+
+    scrollTo: function(x, y) {
+        game.camera.x = x;
+        game.camera.y = y;
+    },
+
+    scrollToTile: function(x, y) {
+        game.camera.x = x * TILE_WIDTH;
+        game.camera.y = y * TILE_HEIGHT;
+    },
+
+    scrollLeft: function(extent) {
+        game.camera.x -= extent || SCROLL_SPEED;
+    },
+
+    scrollRight: function(extent) {
+        game.camera.x += extent || SCROLL_SPEED;
+    },
+
+    scrollUp: function(extent) {
+        game.camera.y -= extent || SCROLL_SPEED;
+    },
+
+    scrollDown: function(extent) {
+        game.camera.y += extent || SCROLL_SPEED;
     },
 
     getScreenWidth: function() {

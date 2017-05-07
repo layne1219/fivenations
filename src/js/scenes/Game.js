@@ -1,5 +1,6 @@
 import Signals from '../common/Signals';
 import Graphics from '../common/Graphics';
+import Scriptbox from '../common/Scriptbox';
 import Map from '../map/Map';
 import PlayerManager from '../players/PlayerManager';
 import EntityManager from '../entities/EntityManager';
@@ -13,11 +14,16 @@ import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
 
 const ns = window.fivenations;
+let script;
 let authoritative = false;
 
 function Game() {}
 
 Game.prototype = {
+
+    init: function(params) {
+        script = params.script;
+    },
 
     create: function() {
 
@@ -37,7 +43,7 @@ Game.prototype = {
         //                                  Map
         // -----------------------------------------------------------------------
         // Generate a Map
-        this.map = new Map();
+        this.map = new Map(this.game);
 
         // -----------------------------------------------------------------------
         //                               Player manager
@@ -213,21 +219,24 @@ Game.prototype = {
             }.bind(this));
 
         // -----------------------------------------------------------------------
+        //                              Scriptbox
+        // -----------------------------------------------------------------------
+        this.scriptbox = Scriptbox.getInstance();
+        this.scriptbox.run(script || 'default');
+
+        // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
         // -----------------------------------------------------------------------
-        // Set up the GUI.ActivityManager
         this.guiActivityManager = GUIActivityManager.getInstance();
 
         // -----------------------------------------------------------------------
         //                              Physic engine
         // -----------------------------------------------------------------------
-        // Activating the basic physic engine 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // -----------------------------------------------------------------------
         //                                EventBus
         // -----------------------------------------------------------------------
-        // Kicking off the main event loop
         this.eventBusExecuter = EventBusExecuter.getInstance();
 
         // -----------------------------------------------------------------------
