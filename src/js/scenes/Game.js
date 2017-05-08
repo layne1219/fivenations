@@ -22,7 +22,9 @@ function Game() {}
 Game.prototype = {
 
     init: function(params) {
-        script = params.script;
+        if (params) {
+            script = params.script;
+        }
     },
 
     create: function() {
@@ -55,7 +57,6 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         EntityManager.setGame(this.game);
         this.entityManager = EntityManager.getInstance(true);
-        this.entityManager.createQuadTree(this.map);
 
         // -----------------------------------------------------------------------
         //                              EffectManager
@@ -222,7 +223,18 @@ Game.prototype = {
         //                              Scriptbox
         // -----------------------------------------------------------------------
         this.scriptbox = Scriptbox.getInstance();
-        this.scriptbox.run(script || 'default');
+        this.scriptbox.run(script || 'default', this);
+
+        // -----------------------------------------------------------------------
+        //                              GUI
+        // -----------------------------------------------------------------------
+        // Set up the GUI object 
+        this.GUI = GUI.setGame(this.game)
+            .setMap(this.map)
+            .setEntityManager(this.entityManager)
+            .setUserPointer(this.userPointer)
+            .setPlayerManager(this.playerManager)
+            .getInstance(true);
 
         // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
@@ -240,15 +252,9 @@ Game.prototype = {
         this.eventBusExecuter = EventBusExecuter.getInstance();
 
         // -----------------------------------------------------------------------
-        //                              GUI
+        //                                QuadTree
         // -----------------------------------------------------------------------
-        // Set up the GUI object 
-        this.GUI = GUI.setGame(this.game)
-            .setMap(this.map)
-            .setEntityManager(this.entityManager)
-            .setUserPointer(this.userPointer)
-            .setPlayerManager(this.playerManager)
-            .getInstance(true);
+        this.entityManager.createQuadTree(this.map);
 
     },
 

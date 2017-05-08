@@ -35,7 +35,41 @@
     <div id="fivenations-game"></div>
     <script src="js/bundle.js"></script>
     <script>
-      var app = new window.FiveNations({ canvasElmId: 'fivenations-game' });
+      var app = new FiveNations({ canvasElmId: 'fivenations-game' });
+      var scriptBox = FiveNations.Scriptbox.getInstance();
+      scriptBox.add('default', function(game) {
+
+
+        game.map.new({
+          width: 32,
+          height: 32
+        });
+
+        game.eventEmitter.synced.players.add({
+          user: true,
+          team: 1,
+          authoritive: true
+        });
+
+        for (var i = 3; i >= 0; i -= 1) {
+            game.eventEmitter.synced.entities.add({
+                id: 'hurricane',
+                team: 1,
+                x: 500 + Math.random() * 1000,
+                y: 450 + Math.random() * 1000
+            });
+        }
+
+        for (var j = 0; j >= 0; j -= 1) {
+            game.eventEmitter.synced.entities.add({
+                id: 'stgeorge',
+                team: 1,
+                x: 200 + Math.random() * 1000,
+                y: 450 + Math.random() * 1000
+            });
+        }
+
+      });
       app.start();
     </script>
   </body>

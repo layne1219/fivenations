@@ -8,8 +8,9 @@ class Scriptbox {
     }
 
     run(key) {
-        if (!scripts[key] ) return;
-        scripts[key]();
+        if (!scripts[key]) return;
+        const params = [].slice.call(arguments, 1);
+        scripts[key].apply(null, params);
     }
 
     has(key) {
