@@ -8,6 +8,16 @@ function EffectManager(motionManager) {
 EffectManager.prototype = {
 
     /**
+     * Immediately exectutes the given effect
+     * @param {function} effect to get executed immediately
+     * @return {void}
+     */
+    execute: function(effect) {
+        if ('function' !== typeof effect) return;
+        effect.call(null, this.motionManager);
+    },
+
+    /**
      * Invoking the currently selected effect from the effect queue at every tick
      * @return {[void]}
      */

@@ -88,7 +88,7 @@ MotionManager.prototype = {
         this.activity = activity;
 
         this.effectManager.resetEffects();
-        this.effectManager.addEffect(Effects.get('initMovement'));
+        this.effectManager.execute(Effects.get('initMovement'));
 
         if (this.isRequiredToStopBeforeFurtherAction()) {
             this.effectManager.addEffect(Effects.get('stopping'));

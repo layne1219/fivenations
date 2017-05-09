@@ -2,6 +2,7 @@ import '../scss/main.scss';
 
 import 'phaser-shim';
 import './globals';
+import Util from './common/Util';
 import Boot from './scenes/Boot';
 import Preloader from './scenes/Preloader';
 import Menu from './scenes/Menu';
@@ -26,17 +27,22 @@ function exposeGameAttributes(params) {
 function initPhaserGame(params) {
     const { width, height, canvasElmId } = params;
     game = new Phaser.Game(width || DEFAULT_CANVAS_WIDTH, height || DEFAULT_CANVAS_HEIGHT, Phaser.AUTO, canvasElmId);
+}
+
+function initScenes() {
     game.state.add('boot', Boot);
     game.state.add('preloader', Preloader);
     game.state.add('menu', Menu);
     game.state.add('game', Game);
 }
 
-export default class App {
+export default class App extends Util.EventDispatcher {
 
     constructor(params) {
+        super();
         exposeGameAttributes(params);
         initPhaserGame(params);
+        initScenes();
     }
 
     start() {

@@ -13,8 +13,9 @@ function createEventExecuter() {
     return {
 
         run: function() {
-            var evt,
-                evtObj;
+            let evt;
+            let evtObj;
+
             while ((evt = eventbus.next())) {
 
                 if (!evt.id) {
@@ -34,6 +35,10 @@ function createEventExecuter() {
 
             }
 
+        },
+
+        reset: function() {
+            eventbus.reset();
         }
 
     };

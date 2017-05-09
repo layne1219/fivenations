@@ -6,6 +6,12 @@ Boot.prototype = {
     },
 
     create: function() {
+
+        // preventing the context menu to appear when the user clicks with the right mouse button
+        this.game.canvas.oncontextmenu = function(e) {
+            e.preventDefault();
+        };
+
         // configure game
         this.game.input.maxPointers = 1;
 

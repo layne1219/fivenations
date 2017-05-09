@@ -46,13 +46,14 @@ export default {
 
     /**
      * Accessing the singleton instance of the GUI 
+     * @param {boolean} forceNewInstance 
      * @return {object} GUI
      */
-    getInstance: function() {
+    getInstance: function(forceNewInstance) {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!singleton) {
+        if (!singleton || forceNewInstance) {
             singleton = createGraphicsInstance();
         }
         return singleton;

@@ -1,5 +1,6 @@
 import Signals from '../common/Signals';
 import Graphics from '../common/Graphics';
+import Scriptbox from '../common/Scriptbox';
 import Map from '../map/Map';
 import PlayerManager from '../players/PlayerManager';
 import EntityManager from '../entities/EntityManager';
@@ -11,25 +12,22 @@ import UserPointer from '../gui/UserPointer';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
-import Util from '../common/Util';
 
 const ns = window.fivenations;
+let script;
 let authoritative = false;
 
 function Game() {}
 
 Game.prototype = {
 
-    preloader: function() {
-
+    init: function(params) {
+        if (params) {
+            script = params.script;
+        }
     },
 
     create: function() {
-
-        // preventing the context menu to appear when the user clicks with the right mouse button
-        this.game.canvas.oncontextmenu = function(e) {
-            e.preventDefault();
-        };
 
         // publishing the Game object 
         ns.game = this;
@@ -41,35 +39,30 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         // Graphics object gathering functonality that assist in rendering
         Graphics.setGame(this.game);
-        this.graphics = Graphics.getInstance();
+        this.graphics = Graphics.getInstance(true); // force new instance
 
         // -----------------------------------------------------------------------
         //                                  Map
         // -----------------------------------------------------------------------
         // Generate a Map
-        this.map = new Map({
-            width: 128,
-            height: 128
-        });
-        this.map.setGame(this.game);
+        this.map = new Map(this.game);
 
         // -----------------------------------------------------------------------
         //                               Player manager
         // -----------------------------------------------------------------------
-        this.playerManager = PlayerManager.getInstance();
+        this.playerManager = PlayerManager.getInstance(true);
 
         // -----------------------------------------------------------------------
         //                              EntityManager
         // -----------------------------------------------------------------------
         EntityManager.setGame(this.game);
-        this.entityManager = EntityManager.getInstance();
-        this.entityManager.initQuadTree(this.map);
+        this.entityManager = EntityManager.getInstance(true);
 
         // -----------------------------------------------------------------------
         //                              EffectManager
         // -----------------------------------------------------------------------
         EffectManager.setGame(this.game);
-        this.effectManager = EffectManager.getInstance();            
+        this.effectManager = EffectManager.getInstance(true);            
 
         // -----------------------------------------------------------------------
         //                              CollisionManager
@@ -94,7 +87,7 @@ Game.prototype = {
         //                              UserPointer
         // -----------------------------------------------------------------------
         UserPointer.setGame(this.game);
-        this.userPointer = UserPointer.getInstance();
+        this.userPointer = UserPointer.getInstance(true);
 
         // Right Mouse Button to send units to a position
         this.userPointer.on('rightbutton/down', function() {
@@ -213,7 +206,7 @@ Game.prototype = {
         // -----------------------------------------------------------------------
         // Set up UserKeyboard
         UserKeyboard.setGame(this.game);
-        this.userKeyboard = UserKeyboard.getInstance();
+        this.userKeyboard = UserKeyboard.getInstance(true);
 
         this.userKeyboard
             .on('cursor/down', this.map.scrollDown.bind(this.map))
@@ -227,6 +220,12 @@ Game.prototype = {
             }.bind(this));
 
         // -----------------------------------------------------------------------
+        //                              Scriptbox
+        // -----------------------------------------------------------------------
+        this.scriptbox = Scriptbox.getInstance();
+        this.scriptbox.run(script || 'default', this);
+
+        // -----------------------------------------------------------------------
         //                              GUI
         // -----------------------------------------------------------------------
         // Set up the GUI object 
@@ -235,100 +234,34 @@ Game.prototype = {
             .setEntityManager(this.entityManager)
             .setUserPointer(this.userPointer)
             .setPlayerManager(this.playerManager)
-            .getInstance();
-
-        /*window.gui = this.game.add.sprite(10, 10, 'gui.icons.obj');
-        window.gui.visible = true;
-        window.gui.frame = 1;
-        Graphics.getInstance().getGroup('entities').add(gui);*/
+            .getInstance(true);
 
         // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
         // -----------------------------------------------------------------------
-        // Set up the GUI.ActivityManager
         this.guiActivityManager = GUIActivityManager.getInstance();
 
         // -----------------------------------------------------------------------
         //                              Physic engine
         // -----------------------------------------------------------------------
-        // Activating the basic physic engine 
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // -----------------------------------------------------------------------
         //                                EventBus
         // -----------------------------------------------------------------------
-        // Kicking off the main event loop
-        this.game.eventBusExecuter = EventBusExecuter.getInstance();
+        this.eventBusExecuter = EventBusExecuter.getInstance();
 
         // -----------------------------------------------------------------------
-        //                                  Players
+        //                                QuadTree
         // -----------------------------------------------------------------------
-        
-        var myGUID = Util.getGUID();
-
-        this.eventEmitter.synced.players.add({
-            guid: myGUID,
-            name: 'Test Player',
-            team: 1,
-            user: true,
-            authorised: true
-        });
-
-        this.eventEmitter.synced.players.add({
-            guid: myGUID,
-            name: 'Test Player 2',
-            team: 2,
-            user: false,
-            authorised: false
-        });
-
-
-        setTimeout(function() {
-            this.eventEmitter.synced.players(':user').alter({
-                titanium: 500
-            });
-        }.bind(this), 500);
-
-        // -----------------------------------------------------------------------
-        //                          Generating entities
-        // -----------------------------------------------------------------------
-        // TENTATIVE CODE SNIPPET
-        for (var i = 3; i >= 0; i -= 1) {
-            this.eventEmitter.synced.entities.add({
-                guid: Util.getGUID(),
-                id: 'hurricane',
-                team: 1, //Util.rnd(1, this.playerManager.getPlayersNumber())
-                x: 500 + Util.rnd(0, 100),
-                y: 450 + Util.rnd(0, 100)
-            });
-        }
-
-        for (var j = 0; j >= 0; j -= 1) {
-            this.eventEmitter.synced.entities.add({
-                guid: Util.getGUID(),
-                id: 'stgeorge',
-                team: 1,
-                x: 200 + Util.rnd(0, 100),
-                y: 450 + Util.rnd(0, 100)
-            });
-        }
-
-        window.add = function(id, team) {
-            this.eventEmitter.synced.entities.add({
-                guid: Util.getGUID(),
-                id: id || 'hurricane',
-                team: team || 1,
-                x: 0 + Util.rnd(0, 2000),
-                y: 0 + Util.rnd(0, 2000)
-            });
-        }.bind(this);
+        this.entityManager.createQuadTree(this.map);
 
     },
 
     update: function() {
 
         // Execute all the registered events on the EventBus
-        this.game.eventBusExecuter.run();
+        this.eventBusExecuter.run();
 
         // Rendering the map
         this.map.update(this.entityManager);

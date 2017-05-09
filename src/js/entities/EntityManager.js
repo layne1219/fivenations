@@ -115,7 +115,10 @@ EntityManager.prototype = {
      * @return {void}
      */
     reset: function() {
-        entities = [];
+        while (entities.length) {
+            const entity = entities.pop();
+            entity.delete();
+        }
     },
 
     /**
@@ -145,7 +148,7 @@ EntityManager.prototype = {
      * @param  {object} map Map instance
      * @return {void}
      */
-    initQuadTree: function(map) {
+    createQuadTree: function(map) {
         if (!map) throw 'Invalid Map instance has been passed!';
 
         this.quadTree = new QuadTree({
@@ -369,14 +372,16 @@ export default {
 
     /**
      * returns singleton instance of the manager object
+     * @param {boolean} forceNewInstance 
      * @return {object} Singleton instance of EntityManager
      */
-    getInstance: function() {
+    getInstance: function(forceNewInstance) {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!singleton) {
+        if (!singleton || forceNewInstance) {
             singleton = new EntityManager();
+            singleton.reset();
         }
         return singleton;
     }

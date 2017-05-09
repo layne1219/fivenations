@@ -31,7 +31,7 @@ function ActivityManager(entity) {
                 if (activities[currentIdx] instanceof Idle){
                     this.removeByIndex(currentIdx);
                 }
-            }              
+            }
             activities.push(activity);
             activity.setManager(this);
             // @TODO review this dependency 

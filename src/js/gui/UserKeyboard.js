@@ -12,7 +12,6 @@ function UserKeyboard() {
 
 function init() {
     dispatcher = new Util.EventDispatcher();
-    // handling the curser key events
     cursors = phaserGame.input.keyboard.createCursorKeys();
 }
 
@@ -51,6 +50,10 @@ UserKeyboard.prototype = {
 
     update: function() {
         listenToCursorKeys();
+    },
+
+    reset: function() {
+        dispatcher.reset();
     }
 };
 
@@ -60,11 +63,11 @@ export default {
         phaserGame = game;
     },
 
-    getInstance: function() {
+    getInstance: function(forceNewInstance) {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!singleton) {
+        if (!singleton || forceNewInstance) {
             singleton = new UserKeyboard();
         }
         return singleton;
