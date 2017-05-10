@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Stop currently running container') {
             steps {
-                sh "docker rm -f \$(docker ps | grep ${env.FV_PORT} | awk '{print \$1} && echo 'container removed' || echo 'container does not exist'"
+                sh "docker rm -f \$(docker ps | grep ${env.FV_PORT} | awk '{print \$1}') && echo 'container removed' || echo 'container does not exist'"
             }
         }        
         stage('Deploy docker image') {
