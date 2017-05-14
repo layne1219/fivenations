@@ -6,46 +6,24 @@ import EntitySizes from './EntitySizes';
 import Selector from './Selector';
 import EnergyShield from './EnergyShield';
 import ColorIndicator from './ColorIndicator';
+import StatusDisplay from './StatusDisplay';
 import Util from '../common/Util';
 
-
 const guiJSON = require('../../assets/datas/common/gui.json'); 
-
 const ns = window.fivenations;
-
-// Rainbow table for entity icons 
 const entityIcons = guiJSON.icons;
+const animations = {
+    'click-move': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    'click-enemy': [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+    'click-friendly': [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44],
+};
 
-// setting up the frames for the individual GUI animations
-const animations = (function() {
-
-    return {
-
-        'click-move': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-        'click-enemy': [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
-        'click-friendly': [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44],
-
-    };
-
-})();
-
-// reference to the Phaser Game object
 let phaserGame;
-
-// reference to the EntityManager singleton object
 let entityManager;
-
-// reference to the Manager singleton object
 let playerManager;
-
-// reference to the Map object
 let map;
-
-// reference to the UserPointer
 let userPointer;
-
-// reference to the singleton GUI object 
-let _gui;
+let singleton;
 
 /**
  * Returns a map of icons with keys set as the sprite key of the icons
@@ -108,212 +86,6 @@ const createIconSprites = function(container) {
     }
 };
 
-// --------------------------------------------------------------------------------------
-// StatusBar to display the current value of one of the entity's attribute on a 
-// horizontal bar to indicate the percentage
-// --------------------------------------------------------------------------------------
-const StatusBar = (function() {
-
-    var backgroundFrames = {
-        'big': 162,
-        'extrabig': 162,
-        'medium': 167,
-        'small': 172
-    };
-
-    function F(width, color) {
-
-        if (undefined === width) {
-            width = 1;
-        }
-
-        // wrapper for the background sprite and the dynamic graphics object 
-        this.group = phaserGame.add.group();
-
-        // background for the StatusBar
-        this.sprite = phaserGame.add.sprite(0, 0, 'gui');
-        this.sprite.frame = backgroundFrames[this.getSize(width)];
-
-        // fixed colour if is not omitted
-        this.color = color;
-
-        // graphics for the dynamic bar 
-        this.graphics = phaserGame.add.graphics(0, 0);
-
-        // adding the individual elements to the container 
-        this.group.add(this.sprite);
-        this.group.add(this.graphics);
-    }
-
-    F.prototype = {
-
-        update: function(ratio) {
-
-            this.graphics.clear();
-            this.graphics.beginFill(this.color || Util.getColorFromRatio(ratio));
-            this.graphics.drawRect(1, 1, Math.floor(this.sprite.width * ratio) - 2, 3);
-            this.graphics.endFill();
-
-        },
-
-        show: function() {
-            this.group.visible = true;
-        },
-
-        hide: function() {
-            this.group.visible = false;
-        },
-
-        getSize: function(width) {
-
-            if (!this.size) {
-
-                Object.keys(EntitySizes).forEach(function(size) {
-                    if (Util.between(width, EntitySizes[size][0], EntitySizes[size][1])) {
-                        this.size = size;
-                    }
-                }, this);
-            }
-
-            return this.size;
-        },
-
-        getGroup: function() {
-            return this.group;
-        }
-    };
-
-    return F;
-
-})();
-
-// --------------------------------------------------------------------------------------
-// Status display for Entities
-// --------------------------------------------------------------------------------------
-const StatusDisplay = (function() {
-
-    function F(entity) {
-
-        var width;
-
-        if (!entity || 'function' !== typeof entity.getSprite) {
-            throw 'First parameter must be an instance of Entity!';
-        }
-
-        width = Math.max(entity.getDataObject().getWidth(), entity.getDataObject().getHeight());
-
-        // creating the group for the individual StatusBar objects
-        this.group = phaserGame.add.group();
-        this.group.visible = false;
-
-        // Shield if there is any
-        if (entity.getDataObject().getMaxShield() > 0) {
-            this.shieldBar = new StatusBar(width, '0x475D86');
-            this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
-            this.shieldBar.getGroup().y = -entity.getDataObject().getHeight();
-            this.group.add(this.shieldBar.getGroup());
-        }
-        // Health
-        this.healthBar = new StatusBar(width);
-        this.healthBar.getGroup().x = this.healthBar.getGroup().width / -2;
-        this.healthBar.getGroup().y = -entity.getDataObject().getHeight() + (this.group.children.length * 6);
-        this.group.add(this.healthBar.getGroup());
-
-        // Power if there is any
-        if (entity.getDataObject().getMaxPower() > 0) {
-            this.powerBar = new StatusBar(width, '0xFF00FF');
-            this.powerBar.getGroup().x = this.powerBar.getGroup().width / -2;
-            this.powerBar.getGroup().y = -entity.getDataObject().getHeight() + (this.group.children.length * 6);
-            this.group.add(this.powerBar.getGroup());
-        }
-
-        Graphics.getInstance().getGroup('prior-gui-elements').add(this.group);
-
-    }
-
-    F.prototype = {
-
-        group: null,
-        parent: null,
-
-        /**
-         * attaching the StatusDisplay to an entity
-         * @param  {[object]} entity [reference to an instance of an Entity]
-         * @return {[void]}
-         */
-        appendTo: function(entity) {
-
-            entity.on('select', this.show.bind(this));
-            entity.on('unselect', this.hide.bind(this));
-            entity.on('damage', this.update.bind(this));
-            entity.on('remove', this.remove.bind(this));
-
-            // the sprite is not a child of the entity for various overlapping issues
-            // therefore it needs to follow it upon every tick 
-            this.group.update = function() {
-                this.x = entity.getSprite().x;
-                this.y = entity.getSprite().y;
-            };
-
-            this.parent = entity;
-        },
-
-        /**
-         * Refresing the graphics objects according to the current values of 
-         * the exposed abilities of the entity
-         * @return {[void]}
-         */
-        update: function() {
-
-            var dataObject = this.parent.getDataObject(),
-                ratio;
-
-            if (this.healthBar) {
-                ratio = dataObject.getHull() / dataObject.getMaxHull();
-                this.healthBar.update(ratio);
-            }
-
-            if (this.shieldBar) {
-                ratio = dataObject.getShield() / dataObject.getMaxShield();
-                this.shieldBar.update(ratio);
-            }
-
-            if (this.powerBar) {
-                ratio = dataObject.getPower() / dataObject.getMaxPower();
-                this.powerBar.update(ratio);
-            }
-        },
-
-        /**
-         * Making the StatusDisplay visible
-         * @return {[void]}
-         */
-        show: function() {
-            this.update();
-            this.group.visible = true;
-        },
-
-        /**
-         * Making the StatusDisplay unvisible
-         * @return {[void]}
-         */
-        hide: function() {
-            this.group.visible = false;
-        },
-
-        /**
-         * remove the group from the Phaser render layer
-         * @return {[void]}
-         */
-        remove: function() {
-            this.group.destroy(true); // true for destroying all the children
-        }
-
-    };
-
-    return F;
-
-})();
 
 // Basic panel background element
 const Panel = (function() {
@@ -1512,7 +1284,7 @@ GUI.prototype = {
      * @param {Entity} entity 
      */
     addSelector: function(entity) {
-        var selector = new Selector(phaserGame);
+        const selector = new Selector(phaserGame);
         selector.appendTo(entity);
         return selector;
     },
@@ -1522,7 +1294,7 @@ GUI.prototype = {
      * @param {object} entity Instance of Eneity 
      */
     addEnergyShield: function(entity) {
-        var energyShield = new EnergyShield(phaserGame);
+        const energyShield = new EnergyShield(phaserGame);
         energyShield.appendTo(entity);
         return energyShield;
     },
@@ -1532,7 +1304,7 @@ GUI.prototype = {
      * @param {object} entity Instance of Eneity 
      */
     addColorIndicator: function(entity) {
-        var colorIndicator = new ColorIndicator(phaserGame);
+        const colorIndicator = new ColorIndicator(phaserGame);
         colorIndicator.appendTo(entity);
         return colorIndicator;
     },
@@ -1542,7 +1314,7 @@ GUI.prototype = {
      * @param {Entity} entity 
      */
     addStatusDisplay: function(entity) {
-        var statusDisplay = new StatusDisplay(entity);
+        const statusDisplay = new StatusDisplay(phaserGame);
         statusDisplay.appendTo(entity);
         return statusDisplay;
     },
@@ -1616,9 +1388,9 @@ export default {
         if (!phaserGame) {
             throw 'Invoke setGame first to pass the Phaser Game entity!';
         }
-        if (!_gui || forceNewInstance) {
-            _gui = new GUI();
+        if (!singleton || forceNewInstance) {
+            singleton = new GUI();
         }
-        return _gui;
+        return singleton;
     }
 };
