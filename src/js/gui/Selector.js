@@ -1,5 +1,6 @@
 import Graphics from '../common/Graphics';
 import EntitySizes from './EntitySizes';
+import Util from '../common/Util';
 
 const SELECT_ANIM_FRAME_RATE = 25;
 const FLASH_ANIM_FRAME_RATE = 5;
