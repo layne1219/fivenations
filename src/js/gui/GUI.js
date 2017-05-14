@@ -1701,7 +1701,7 @@ GUI.prototype = {
      * @param {Entity} entity 
      */
     addSelector: function(entity) {
-        var selector = new Selector();
+        var selector = new Selector(phaserGame);
         selector.appendTo(entity);
         return selector;
     },

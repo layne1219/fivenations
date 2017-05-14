@@ -1,3 +1,4 @@
+import Graphics from '../common/Graphics';
 import EntitySizes from './EntitySizes';
 
 const SELECT_ANIM_FRAME_RATE = 25;
