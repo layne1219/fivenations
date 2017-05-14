@@ -2,7 +2,10 @@ import EventEmitter from '../sync/EventEmitter';
 import Graphics from '../common/Graphics';
 import ControlPage from './ControlPage';
 import CancelPage from './CancelPage';
+import EntitySizes from './EntitySizes';
+import Selector from './Selector';
 import Util from '../common/Util';
+
 
 const guiJSON = require('../../assets/datas/common/gui.json'); 
 
@@ -47,14 +50,6 @@ const animations = (function() {
     };
 
 })();
-
-// size ranges for different sprites
-const categories = {
-    'big': [100, 149],
-    'extrabig': [150, 999],
-    'medium': [50, 99],
-    'small': [0, 49]
-};
 
 // reference to the Phaser Game object
 let phaserGame;
@@ -134,151 +129,6 @@ const createIconSprites = function(container) {
         }
     }
 };
-
-
-// --------------------------------------------------------------------------------------
-// Selector object to handle the selection animation and the displaying of the 
-// element with the appropriate size
-// --------------------------------------------------------------------------------------
-const Selector = (function() {
-
-    // selection animation frame rate
-    var SELECT_ANIM_FRAME_RATE = 25;
-    var FLASH_ANIM_FRAME_RATE = 5;
-
-    function Selector() {
-
-        var sprite = phaserGame.add.image(0, 0, 'gui');
-        sprite.visible = false;
-        sprite.anchor.setTo(0.5, 0.5);
-
-        [
-            'select-enemy-big',
-            'select-enemy-extrabig',
-            'select-enemy-medium',
-            'select-enemy-small',
-            'select-big',
-            'select-extrabig',
-            'select-medium',
-            'select-small',
-            'flash-enemy-big',
-            'flash-enemy-extrabig',
-            'flash-enemy-medium',
-            'flash-enemy-small',
-            'flash-big',
-            'flash-extrabig',
-            'flash-medium',
-            'flash-small'
-
-        ].forEach(function(animation) {
-            var anim = sprite.animations.add(animation, animations[animation]);
-            anim.onComplete.add(this.animationCompleted, this);
-        }.bind(this));
-
-        this.sprite = sprite;
-    }
-
-    Selector.prototype = {
-
-        size: null,
-        parent: null,
-        width: 0,
-        height: 0,
-
-        appendTo: function(entity) {
-
-            var groupName;
-
-            if (!entity || 'function' !== typeof entity.getSprite) {
-                throw 'First parameter must be an instance of Entity!';
-            }
-
-            entity.on('select', this.show.bind(this));
-            entity.on('unselect', this.hide.bind(this));
-            entity.on('selectedAsTarget', this.flash.bind(this));
-            entity.on('remove', this.remove.bind(this));
-
-            // Add the selection to the appropriate graphics group as per its type
-            groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
-            Graphics.getInstance().getGroup(groupName).add(this.sprite);
-
-            // the sprite is not a child of the entity for various overlapping issues
-            // therefore it needs to follow it upon every tick 
-            this.sprite.update = function() {
-                this.x = entity.getSprite().x;
-                this.y = entity.getSprite().y;
-            };
-
-            this.parent = entity;
-            this.width = this.parent.getDataObject().getWidth();
-            this.height = this.parent.getDataObject().getHeight();
-        },
-
-        show: function() {
-            var anim = 'select';
-            var animationName = this.getAnimationName(anim);
-            this.sprite.visible = true;
-            this.sprite.play(animationName, SELECT_ANIM_FRAME_RATE);
-            this.currentAnim = anim;
-        },
-
-        flash: function() {
-            var anim = 'flash';
-            var animationName = this.getAnimationName(anim);
-            this.sprite.visible = true;
-            this.sprite.play(animationName, FLASH_ANIM_FRAME_RATE);
-            this.currentAnim = anim;
-        },
-
-        hide: function() {
-            this.sprite.visible = false;
-        },
-
-        remove: function() {
-            this.sprite.destroy(true);
-        },
-
-        animationCompleted: function() {
-            if (this.currentAnim === 'flash') {
-                this.hide();
-            } 
-            this.currentAnim = null;
-        },
-
-        getAnimationName: function(animType) {
-            var relationship = (function(selector) {
-                if (selector.parent.isEntityControlledByUser()) {
-                    return '-';
-                }
-                return '-enemy-';
-            })(this);
-            var animationName = animType + relationship + this.getSize();
-            return animationName;
-        },
-
-        getSize: function() {
-
-            if (!this.parent) {
-                throw 'There is no Entity attached to this Selector instance!';
-            }
-
-            if (!this.size) {
-
-                Object.keys(categories).forEach(function(size) {
-                    if (Util.between(Math.max(this.width, this.height), categories[size][0], categories[size][1])) {
-                        this.size = size;
-                    }
-                }, this);
-            }
-
-            return this.size;
-        }
-
-    };
-
-    return Selector;
-
-})();
 
 // --------------------------------------------------------------------------------------
 // Energy Shield animation
@@ -362,8 +212,8 @@ const EnergyShield = (function() {
 
             if (!this.size) {
 
-                Object.keys(categories).forEach(function(size) {
-                    if (Util.between(Math.max(width, height), categories[size][0], categories[size][1])) {
+                Object.keys(EntitySizes).forEach(function(size) {
+                    if (Util.between(Math.max(width, height), EntitySizes[size][0], EntitySizes[size][1])) {
                         if (size === 'extrabig') {
                             this.size = 'big';
                         } else {
@@ -507,8 +357,8 @@ const StatusBar = (function() {
 
             if (!this.size) {
 
-                Object.keys(categories).forEach(function(size) {
-                    if (Util.between(width, categories[size][0], categories[size][1])) {
+                Object.keys(EntitySizes).forEach(function(size) {
+                    if (Util.between(width, EntitySizes[size][0], EntitySizes[size][1])) {
                         this.size = size;
                     }
                 }, this);
