@@ -7,6 +7,8 @@ import Selector from './Selector';
 import EnergyShield from './EnergyShield';
 import ColorIndicator from './ColorIndicator';
 import StatusDisplay from './StatusDisplay';
+import Panel from './Panel';
+import Minimap from './Minimap';
 import Util from '../common/Util';
 
 const guiJSON = require('../../assets/datas/common/gui.json'); 
@@ -85,242 +87,6 @@ const createIconSprites = function(container) {
         }
     }
 };
-
-
-// Basic panel background element
-const Panel = (function() {
-
-    var spriteKey = 'gui',
-        frame = 64;
-
-    function F() {
-        Phaser.Image.call(this, phaserGame, 0, ns.window.height - 222, spriteKey, frame);
-        this.fixedToCamera = true;
-    }
-
-    F.prototype = Object.create(Phaser.Image.prototype);
-    F.prototype.constructor = F;
-
-    /**
-     * Attach the Panel object to the a random Phaser.Game element
-     * @param {object} panel Main GUI Group
-     * @return {void}
-     */
-    F.prototype.appendTo = function(parent) {
-
-        if (!parent) {
-            throw 'Invalid Phaser element object!';
-        }
-
-        parent.add(this);
-
-    };
-
-    return F;
-
-})();
-
-// --------------------------------------------------------------------------------------
-// Status display for Entities
-// --------------------------------------------------------------------------------------
-const Minimap = (function() {
-
-    var minimizedWidth = 160,
-        minimizedHeight = 160;
-
-    /**
-     * Minimap construct function in order to get the manager instances that needed to draw
-     * the map with all the elements need to be displayed
-     * @param {[object]} map           [reference to a Map instance]
-     * @param {[object]} entityManager [reference to the singleton instance of EntityManager]
-     */
-    function F(map, entityManager) {
-
-        // Create a graphics object to display the desired elements
-        this.graphics = phaserGame.add.graphics(0, 0);
-
-        // referencies to local variables 
-        this.map = map;
-        this.entityManager = entityManager;
-
-        // calculating the ratio
-        this.ratio = {
-            x: minimizedWidth / this.map.getScreenWidth(),
-            y: minimizedHeight / this.map.getScreenHeight()
-        };
-
-    }
-
-    function setEventListeners() {
-        setLeftButtonListeners.call(this);
-        setRightButtonListeners.call(this);
-    }
-
-    function setLeftButtonListeners() {
-        // making the minimap area clickable 
-        userPointer.on('leftbutton/move', function(userPointer) {
-
-            var coords = getMouseCoords(userPointer, this.map, this.panel, this.graphics, true);
-
-            // if getMouseCoords returns with false then the coordinates are not legit
-            if (!coords) {
-                return;
-            }
-
-            this.map.scrollTo(coords.x, coords.y);
-
-        }.bind(this));
-    }
-
-    function setRightButtonListeners() {
-        // making the minimap area clickable 
-        userPointer.on('rightbutton/down', function(userPointer) {
-
-            var coords = getMouseCoords(userPointer, this.map, this.panel, this.graphics);
-
-            // if getMouseCoords returns with false then the coordinates are not legit
-            if (!coords) {
-                return;
-            }
-
-            this.entityManager
-                .entities(':user:selected')
-                .reset()
-                .move({
-                    x: coords.x,
-                    y: coords.y
-                });
-
-        }.bind(this));
-    }
-
-    function getMouseCoords(userPointer, map, panel, graphics, alignToCentre) {
-        var mapWidth = map.getScreenWidth(),
-            mapHeight = map.getScreenHeight(),
-            ratioX = ns.window.width / mapWidth,
-            ratioY = ns.window.height / mapHeight,
-            width = minimizedWidth * ratioX,
-            height = minimizedHeight * ratioY,
-            mouseCoords = userPointer.getRealCoords(),
-            mouseX = mouseCoords.x - panel.x - graphics.x,
-            mouseY = mouseCoords.y - panel.y - graphics.y;
-
-        if (mouseX > minimizedWidth || mouseY > minimizedHeight || mouseY < 0) {
-            return false;
-        }
-
-        // cancelling the multiselection 
-        userPointer.stopMultiselection();
-
-        if (alignToCentre) {
-            mouseX -= width / 2;
-            mouseY -= height / 2;
-        }
-
-        ratioX = mouseX / minimizedWidth;
-        ratioY = mouseY / minimizedHeight;
-
-        return {
-            x: mapWidth * ratioX,
-            y: mapHeight * ratioY
-        };
-    }
-
-    F.prototype = {
-
-        /**
-         * 	
-         * Attach the Minimap object to the main GUI Panel
-         * @param {object} panel Main GUI Panel
-         * @param {integer} x Horizontal offset from the parent's anchor point 
-         * @param {integer} y Vertical offset from the parent's anchor point 
-         */
-        appendTo: function(panel, x, y) {
-
-            if (!panel) {
-                throw 'Invalid Phaser.Sprite object!';
-            }
-
-            panel.addChild(this.getGraphics());
-            this.graphics.x = x;
-            this.graphics.y = y; // this is the place for the minimap on the big panel sprite
-
-            this.panel = panel;
-
-            // registering the callbacks listening for the mouse event in order to execute 
-            // further logic when the user interacts with the Minimap
-            setEventListeners.call(this);
-        },
-
-        /**
-         * Resetting the graphics object
-         * @return {void}
-         */
-        reset: function() {
-            this.graphics.clear();
-        },
-
-        /**
-         * Updating the minimap
-         * @return {void} 				 
-         */
-        update: function() {
-            this.reset();
-            this.updateEntities();
-            this.updateCamera();
-        },
-
-        /**
-         * update all entities on the minimap
-         * @return {void}
-         */
-        updateEntities: function() {
-            this.entityManager.entities().forEach(function(entity) {
-                var x = entity.getSprite().x / this.map.getScreenWidth() * minimizedWidth,
-                    y = entity.getSprite().y / this.map.getScreenHeight() * minimizedHeight,
-                    w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * minimizedWidth),
-                    h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * minimizedHeight),
-                    colors = playerManager.getColors(),
-                    color = colors[entity.getDataObject().getTeam() - 1];
-
-                this.graphics.beginFill(color);
-                this.graphics.drawRect(x, y, w, h);
-                this.graphics.endFill();
-
-            }.bind(this));
-        },
-
-        /**
-         * Redrawing the rectangle showing the viewport of the phaser camera object
-         * @return {void} 
-         */
-        updateCamera: function() {
-            var ratioX = ns.window.width / this.map.getScreenWidth(),
-                ratioY = ns.window.height / this.map.getScreenHeight(),
-                w = minimizedWidth * ratioX,
-                h = minimizedHeight * ratioY,
-                x = phaserGame.camera.x / (this.map.getScreenWidth() - ns.window.width) * (minimizedWidth - w),
-                y = phaserGame.camera.y / (this.map.getScreenHeight() - ns.window.height) * (minimizedHeight - h),
-                color = '0xFFFFFF';
-
-            this.graphics.lineStyle(1, color, 1);
-            this.graphics.drawRect(x, y, w, h);
-        },
-
-        /**
-         * Returning the Phaser.Graphics object being used
-         * @return {Phaser.Graphics} 
-         */
-        getGraphics: function() {
-            return this.graphics;
-        },
-
-
-    };
-
-    return F;
-
-})();
 
 // --------------------------------------------------------------------------------------
 // EntityDetailsDisplay for Entities
@@ -1224,11 +990,11 @@ function initClickAnimations() {
 function initGUIDisplayElements() {
 
     // Creating the Panel
-    panel = new Panel();
+    panel = new Panel(phaserGame);
     panel.appendTo(group);
 
     // Setting up the Minimap and attacing to the Panel
-    minimap = new Minimap(map, entityManager);
+    minimap = new Minimap({ phaserGame, map, entityManager, userPointer, playerManager });
     minimap.appendTo(panel, 0, 61);
 
     // Setting up the EntityDetailsDisplay and linking it to the Panel
