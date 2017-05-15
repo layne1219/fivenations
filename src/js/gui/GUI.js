@@ -1,12 +1,10 @@
-import EventEmitter from '../sync/EventEmitter';
-import ControlPage from './ControlPage';
-import CancelPage from './CancelPage';
 import Selector from './Selector';
 import EnergyShield from './EnergyShield';
 import ColorIndicator from './ColorIndicator';
 import StatusDisplay from './StatusDisplay';
 import Panel from './Panel';
 import Minimap from './Minimap';
+import ControlPanel from './ControlPanel';
 import Util from '../common/Util';
 
 const guiJSON = require('../../assets/datas/common/gui.json'); 
@@ -643,171 +641,6 @@ const EntityDetailsDisplay = (function() {
 
 })();
 
-// --------------------------------------------------------------------------------------
-// ControlPanel for Selected entities
-// --------------------------------------------------------------------------------------
-const ControlPanel = (function() {
-
-    /**
-     * Constructing an ControlPanel instance
-     * @param {object} entityManager [reference to the singleton instance of EntityManager]
-     */
-    function ControlPanel(entityManager) {
-        // applying the inherited constructor function
-        Phaser.Group.call(this, phaserGame);
-
-        // initialising the pages and buttons
-        this.init(entityManager);
-    }
-
-    // Making the prototype inherited from Phaser.Group prototype
-    ControlPanel.prototype = Object.create(Phaser.Group.prototype);
-    ControlPanel.prototype.constructor = ControlPanel;
-
-    ControlPanel.prototype.init = function(entityManager) {
-
-        this.entityManager = entityManager;
-
-        // we are creating two pages for all the possible controls
-        this.controlPanelPages = [
-            this.add(new ControlPage(this.entityManager)), // main page for the major control buttons
-            this.add(new ControlPage(this.entityManager)), // a sub page for extended controls like constructions
-            this.add(new CancelPage(this.entityManager)) // a page for cancelling the selected activity
-        ];
-        // make the first page visible
-        this.selectMainPage();
-
-        // set up event listeners
-        this.setEventListeners();
-    };
-
-    /**
-     * Displaying the main page
-     * @return {[viod]}
-     */
-    ControlPanel.prototype.selectMainPage = function() {
-        this.selectPage(0);
-    };
-
-    /**
-     * Displaying the page registered with the passed page Index 
-     * @param  {integer} pageIdx Index of the page in the containing Array
-     * @return {void}
-     */
-    ControlPanel.prototype.selectPage = function(pageIdx) {
-
-        for (var i = 0; i < this.controlPanelPages.length; i += 1) {
-            if (i === pageIdx) {
-                this.controlPanelPages[i].visible = true;
-            } else {
-                this.controlPanelPages[i].visible = false;
-            }
-        }
-
-        this.selectedPageIndex = pageIdx;
-
-    };
-
-    /**
-     * register a listener against changes in the current selection.
-     * There is no further need of re-determining what buttons need to be displayed
-     * @return {void}
-     */
-    ControlPanel.prototype.setEventListeners = function() {
-        var emitter = EventEmitter.getInstance();
-        emitter.local.addEventListener('gui/selection/change', this.update.bind(this));
-    };
-
-    /**
-     * Appending the ControlPanel to the main Panel element
-     * @param  {object} panel [Panel]
-     * @param  {integer} x     [horizontal offset of the ControlPanel element on the Panel]
-     * @param  {integer} y     [vertical offset of the ControlPanel element on the Panel]
-     * @return {void}
-     */
-    ControlPanel.prototype.appendTo = function(panel, x, y) {
-
-        if (!panel) {
-            throw 'Invalid Phaser.Sprite object!';
-        }
-
-        this.x = x;
-        this.y = y;
-        panel.addChild(this);
-
-        this.panel = panel;
-    };
-
-    /**
-     * Refresing the graphics objects according to the current values of 
-     * the exposed abilities of the entity
-     * @return {[void]}
-     */
-    ControlPanel.prototype.update = function() {
-
-        var entities = this.entityManager.entities(':selected');
-
-        if (!entities || entities.length === 0) {
-            this.hide();
-            return;
-        }
-
-        this.show();
-        if (this.controlPanelPages[this.selectedPageIndex]) {
-            this.controlPanelPages[this.selectedPageIndex].update(entities);
-        }
-
-    };
-
-    /**
-     * Displaying the secondary page
-     * @return {[viod]}
-     */
-    ControlPanel.prototype.selectSecondaryPage = function() {
-        this.selectPage(1);
-    };
-
-    /**
-     * Displaying the cancel page
-     * @return {[viod]}
-     */
-    ControlPanel.prototype.selectCancelPage = function() {
-        this.selectPage(2);
-    };
-
-
-    /**
-     * Making the ControlPanel visible
-     * @return {[void]}
-     */
-    ControlPanel.prototype.show = function() {
-        this.visible = true;
-    };
-
-    /**
-     * Making the ControlPanel unvisible
-     * @return {[void]}
-     */
-    ControlPanel.prototype.hide = function() {
-        this.visible = false;
-    };
-
-    /**
-     * Making the ControlPanel unvisible
-     * @return {[void]}
-     */
-    ControlPanel.prototype.getEntityManager = function() {
-        return this.entityManager;
-    };
-
-
-    return ControlPanel;
-
-})();
-
-// --------------------------------------------------------------------------------------
-// ControlPanel for Selected entities
-// --------------------------------------------------------------------------------------
 const ResourceDisplay = (function() {
 
     function ResourceGroup(config){
@@ -1000,7 +833,7 @@ function initGUIDisplayElements() {
     entityDetailsDisplay.appendTo(panel, 200, 110);
 
     // ControlPanel
-    controlPanel = new ControlPanel(entityManager);
+    controlPanel = new ControlPanel({ entityManager, phaserGame });
     controlPanel.appendTo(panel, 815, 15);
 
     // Resource display
