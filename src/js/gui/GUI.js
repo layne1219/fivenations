@@ -5,10 +5,10 @@ import StatusDisplay from './StatusDisplay';
 import Panel from './Panel';
 import Minimap from './Minimap';
 import ControlPanel from './ControlPanel';
+import ResourceDisplay from './ResourceDisplay';
 import Util from '../common/Util';
 
 const guiJSON = require('../../assets/datas/common/gui.json'); 
-const ns = window.fivenations;
 const entityIcons = guiJSON.icons;
 const animations = {
     'click-move': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
@@ -641,116 +641,6 @@ const EntityDetailsDisplay = (function() {
 
 })();
 
-const ResourceDisplay = (function() {
-
-    function ResourceGroup(config){
-        Phaser.Group.call(this, phaserGame);
-        this.initTextComponents(config);
-    }
-
-    ResourceGroup.prototype = Object.create(Phaser.Group.prototype);
-    ResourceGroup.prototype.constructor = ResourceGroup;
-
-    ResourceGroup.prototype.initTextComponents = function(config){
-        var style = {
-            font: '11px BerlinSansFB-Reg',
-            fill: '#FFFFFF',
-            boundsAlignH: 'center'
-        };
-        if (!config) config = {};
-        this.textGroup = this.add(phaserGame.add.text(config.x || 0, config.y || 0, '', style));
-        this.textGroup.setTextBounds(0, 0, 60, 15);
-    };
-
-    ResourceGroup.prototype.updateContent = function(values){
-        var current, max;
-        if (!values) values = {};
-
-        current = values.current || 0;
-        max = values.max;
-
-        this.textGroup.text = current;
-        if (max) { 
-            this.textGroup.text += '/' + max;
-        }
-        this.textGroup.addColor('#FFFFFF', 0);
-        this.textGroup.addColor('#475D86', current.toString().length + 1);
-    };
-
-    /**
-     * Constructor
-     * @param {object} playerManager [reference to the singleton instance of PlayerManager]
-     */
-    function ResourceDisplay(playerManager) {
-        Phaser.Group.call(this, phaserGame);
-        this.setPlayerManager(playerManager);
-        this.initTextElements();
-        this.registerEventListeners();
-    }
-
-    // Making the prototype inherited from Phaser.Group prototype
-    ResourceDisplay.prototype = Object.create(Phaser.Group.prototype);
-    ResourceDisplay.prototype.constructor = ResourceDisplay;
-
-    ResourceDisplay.prototype.setPlayerManager = function(playerManager) {
-        this.playerManager = playerManager;
-    };
-
-    ResourceDisplay.prototype.initTextElements = function(){
-        this.titanium = new ResourceGroup({x: 0, y: 0});
-        this.add(this.titanium);
-
-        this.silicium = new ResourceGroup({x: 76, y: 0});
-        this.add(this.silicium);
-
-        this.energy = new ResourceGroup({x: 152, y: 0});
-        this.add(this.energy);
-
-        this.uranium = new ResourceGroup({x: 228, y: 0});
-        this.add(this.uranium);
-
-        this.food = new ResourceGroup({x: 304, y: 0});
-        this.add(this.food);
-    };
-
-    ResourceDisplay.prototype.registerEventListeners = function() {
-        ns.game.signals.onPlayerResourcesUpdate.add(this.updateContent, this);
-    };
-
-    ResourceDisplay.prototype.updateContent = function() {
-        var user = this.playerManager.getUser();
-        this.titanium.updateContent({ current: user.getTitanium() });
-        this.silicium.updateContent({ current: user.getSilicium() });
-        this.energy.updateContent({ current: user.getEnergy() });
-        this.uranium.updateContent({ current: user.getUranium() });
-        this.food.updateContent({ current: user.getCurrentEntityNumber() });
-    };
-
-    /**
-     * Appends the ResourceDisplay to the main Panel element
-     * @param  {object} panel [Panel]
-     * @param  {integer} x [horizontal offset of the ControlPanel element on the Panel]
-     * @param  {integer} y [vertical offset of the ControlPanel element on the Panel]
-     * @return {void}
-     */
-    ResourceDisplay.prototype.appendTo = function(panel, x, y) {
-
-        if (!panel) {
-            throw 'Invalid Phaser.Sprite object!';
-        }
-
-        this.x = x;
-        this.y = y;
-        panel.addChild(this);
-
-        this.panel = panel;
-    };
-
-    return ResourceDisplay;
-
-})();
-
-
 // =============================================================================================
 // 											GUI object 
 // =============================================================================================
@@ -837,7 +727,7 @@ function initGUIDisplayElements() {
     controlPanel.appendTo(panel, 815, 15);
 
     // Resource display
-    resourceDisplay = new ResourceDisplay(playerManager);
+    resourceDisplay = new ResourceDisplay({ playerManager, phaserGame });
     resourceDisplay.appendTo(panel, 425, 88);
 }
 
