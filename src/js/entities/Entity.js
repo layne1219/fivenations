@@ -429,7 +429,7 @@ Entity.prototype = {
     hibernate: function() {
         this.sprite.visible = false;
         this.hibarnated = true;
-        this.eventDispatcher.dispatch('hibarnate');
+        this.eventDispatcher.dispatch('hibernate');
     },
 
     /**

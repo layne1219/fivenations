@@ -19,6 +19,8 @@ export default class ColorIndicator {
         Graphics.getInstance().getGroup(groupName).add(this.sprite);
 
         entity.on('remove', this.remove.bind(this));
+        entity.on('hibernate', this.hide.bind(this));
+        entity.on('reactivated', this.show.bind(this));
 
         // the sprite is not a child of the entity for various overlapping issues
         // therefore it needs to follow it upon every tick 
