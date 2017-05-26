@@ -327,6 +327,10 @@ function createSelector(entities) {
                 targets = entities.filter(function(entity) {
                     return entity.isSelected();
                 });
+            } else if (filter === ':not(hibernated)') {
+                targets = entities.filter(function(entity) {
+                    return !entity.isHibernated();
+                });
             } else if (filter === ':user') {
                 targets = entities.filter(function(entity) {
                     return entity.isEntityControlledByUser();

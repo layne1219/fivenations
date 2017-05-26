@@ -154,7 +154,7 @@ export default class Minimap {
      * @return {void}
      */
     updateEntities() {
-        this.entityManager.entities().forEach(function(entity) {
+        this.entityManager.entities(':not(hibernated)').forEach(function(entity) {
             const x = entity.getSprite().x / this.map.getScreenWidth() * MINIMIZED_WIDTH;
             const y = entity.getSprite().y / this.map.getScreenHeight() * MINIMIZED_HEIGHT;
             const w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * MINIMIZED_WIDTH);
