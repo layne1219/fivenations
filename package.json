@@ -3,7 +3,7 @@
   "description": "",
   "readme": "",
   "repository": "",
-  "version": "0.26.0",
+  "version": "0.29.0",
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2"
@@ -30,11 +30,13 @@
     "sass-loader": "^6.0.3",
     "script-loader": "^0.7.0",
     "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
     "webpack": "^2.3.3"
   },
   "scripts": {
     "update": "git checkout master && git pull",
     "build": "./build.sh",
+    "build-standalone": "./build-standalone.sh",
     "dev": "./dev.sh",
     "lint": "eslint src/js/**/*.js",
     "start-server": "forever server-runner.js",
