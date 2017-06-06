@@ -1,5 +1,4 @@
-### Five Nations [![Build Status](https://travis-ci.org/vbence86/fivenations.svg?branch=master)](https://travis-ci.org/vbence86/fivenations) [![Build Status](https://semaphoreci.com/api/v1/vbence86/fivenations/branches/master/badge.svg)](https://semaphoreci.com/vbence86/fivenations)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/935f2ebf03654b0a9537d4cc7c4bcd1f)](https://www.codacy.com/app/vbence86/fivenations?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vbence86/fivenations&amp;utm_campaign=Badge_Grade)
+### Five Nations [![Build Status](https://travis-ci.org/vbence86/fivenations.svg?branch=master)](https://travis-ci.org/vbence86/fivenations) [![Build Status](https://semaphoreci.com/api/v1/vbence86/fivenations/branches/master/badge.svg)](https://semaphoreci.com/vbence86/fivenations) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/935f2ebf03654b0a9537d4cc7c4bcd1f)](https://www.codacy.com/app/vbence86/fivenations?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vbence86/fivenations&amp;utm_campaign=Badge_Grade)
 A browser based real time strategy game that uses HTML5 components and runs in the browser. The gameplay is built on Phaser and employs P2 physics engine. Since this is an open source project all form of contribution and feedback are welcomed. 
 
 #### Install
