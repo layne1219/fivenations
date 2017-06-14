@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const S3Plugin = require('webpack-s3-plugin');
 const defaultConfig = require('./webpack.default.config.js');
 const version = require('./package.json').version;
 const bundleName = `fivenations.${version}.js`;
@@ -13,6 +14,20 @@ plugins.push(
         output: {
             comments: false
         }
+    })
+);
+
+plugins.push(
+    new S3Plugin({
+      include: /.*\.(js)/,
+      directory: 'standalone',
+      s3Options: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      },
+      s3UploadOptions: {
+        Bucket: 'fivenations'
+      }
     })
 );
 
