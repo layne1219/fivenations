@@ -3,7 +3,7 @@
 set -e
 
 SOURCE=src
-DIST=dist-standalone
+DIST=standalone
 
 export NODE_ENV=production
 
