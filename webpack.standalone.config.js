@@ -28,6 +28,17 @@ plugins.push(
       s3UploadOptions: {
         Bucket: 'fivenations'
       }
+    }),
+    new S3Plugin({
+      include: /.*\.(gif|jpg|jpeg|png|json)/,
+      directory: 'src/assets',
+      s3Options: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      },
+      s3UploadOptions: {
+        Bucket: 'fivenations/assets'
+      }
     })
 );
 
