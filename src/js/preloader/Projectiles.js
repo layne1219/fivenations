@@ -1,6 +1,8 @@
 const ns = window.fivenations;
-const PATH_ASSETS_DATA = 'assets/datas/projectiles';
-const PATH_ASSETS_IMG = 'assets/images/projectiles';
+const PUBLIC_URL = process.env.PUBLIC_URL;
+const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/projectiles`;
+const PATH_ASSETS_IMG = `${PUBLIC_URL}/assets/images/projectiles`;
+
 
 // const like object to describe all the effects participating in the gameplay 
 ns.effects = Object.assign(ns.effects || {}, {

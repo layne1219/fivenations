@@ -1,8 +1,12 @@
+const PUBLIC_URL = process.env.PUBLIC_URL;
+const PATH_ASSETS = `${PUBLIC_URL}/assets/images`;
+
 function Boot() {}
 
 Boot.prototype = {
     preload: function() {
-        this.load.image('preloader', 'assets/images/preloader.gif');
+        this.load.crossOrigin = 'anonymous';
+        this.load.image('preloader', `${PATH_ASSETS}/preloader.gif`);
     },
 
     create: function() {

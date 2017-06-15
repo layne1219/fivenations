@@ -1,6 +1,8 @@
 const ns = window.fivenations;
-const PATH_ASSETS_DATA_UNITS = 'assets/datas/units';
-const PATH_ASSETS_IMG_UNITS = 'assets/images/units';
+const PUBLIC_URL = process.env.PUBLIC_URL;
+const PATH_ASSETS_DATA_UNITS = `${PUBLIC_URL}/assets/datas/units`;
+const PATH_ASSETS_IMG_UNITS = `${PUBLIC_URL}/assets/images/units`;
+
 const NO_WRECKAGES_PER_NATION = 5;
 
 // const like object to describe all the wreckages participating in the gameplay 
