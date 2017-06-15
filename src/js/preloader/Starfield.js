@@ -1,4 +1,4 @@
-const PUBLIC_URL = process.env.PUBLIC_PATH;
+const PUBLIC_URL = process.env.PUBLIC_URL;
 const PATH_ASSETS = `${PUBLIC_URL}/assets/images`;
 
 
