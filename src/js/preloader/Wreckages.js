@@ -1,5 +1,5 @@
 const ns = window.fivenations;
-const PUBLIC_PATH = process.env.PUBLIC_URL;
+const PUBLIC_URL = process.env.PUBLIC_URL;
 const PATH_ASSETS_DATA_UNITS = `${PUBLIC_URL}/assets/datas/units`;
 const PATH_ASSETS_IMG_UNITS = `${PUBLIC_URL}/assets/images/units`;
 
