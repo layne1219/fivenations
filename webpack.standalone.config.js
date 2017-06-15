@@ -7,39 +7,39 @@ const bundleName = `fivenations.${version}.js`;
 
 const plugins = defaultConfig.plugins;
 plugins.push(
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.optimize.UglifyJsPlugin({
-        drop_console: true,
-        minimize: true,
-        output: {
-            comments: false
-        }
-    })
+  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  new webpack.optimize.UglifyJsPlugin({
+    drop_console: true,
+    minimize: true,
+    output: {
+      comments: false
+    }
+  })
 );
 
 plugins.push(
-    new S3Plugin({
-      include: /.*\.(js)/,
-      directory: 'standalone',
-      s3Options: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      },
-      s3UploadOptions: {
-        Bucket: 'fivenations'
-      }
-    }),
-    new S3Plugin({
-      include: /.*\.(gif|jpg|jpeg|png|json)/,
-      directory: 'src/assets',
-      s3Options: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      },
-      s3UploadOptions: {
-        Bucket: 'fivenations/assets'
-      }
-    })
+  new S3Plugin({
+    include: /.*\.(js)/,
+    directory: 'standalone',
+    s3Options: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+    s3UploadOptions: {
+      Bucket: 'fivenations'
+    }
+  }),
+  new S3Plugin({
+    include: /.*\.(gif|jpg|jpeg|png|json)/,
+    directory: 'src/assets',
+    s3Options: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+    s3UploadOptions: {
+      Bucket: 'fivenations/assets'
+    }
+  })
 );
 
 module.exports = Object.assign(defaultConfig, {
