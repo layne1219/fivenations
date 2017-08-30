@@ -36,9 +36,9 @@
   },
   "scripts": {
     "update": "git checkout master && git pull",
-    "build": "./build.sh",
-    "build-standalone": "./build-standalone.sh",
-    "dev": "./dev.sh",
+    "build": "./scripts/build.sh",
+    "build-standalone": "./scripts/build-standalone.sh",
+    "dev": "./scripts/dev.sh",
     "lint": "eslint src/js/**/*.js",
     "start-server": "forever server-runner.js",
     "stop-server": "forever stopall",
