@@ -3,10 +3,10 @@
 set -e
 
 SOURCE=src
-DIST=dist
+DIST=build
 RESOURCES=assets
 
-export NODE_ENV=production
+export NODE_ENV=development
 
 if [ -d "$DIST" ]; then rm -Rf $DIST; fi
 
@@ -20,4 +20,4 @@ cp $SOURCE/web/favicon.ico $DIST
 cp $SOURCE/web/sitemap.xml $DIST
 cp $SOURCE/web/robots.txt $DIST
 
-webpack --config webpack.development.config.js -p --bail
+webpack --config ./config/webpack.development.config.js -p --bail

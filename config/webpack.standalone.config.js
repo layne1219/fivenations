@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const S3Plugin = require('webpack-s3-plugin');
 const defaultConfig = require('./webpack.default.config.js');
-const version = require('./package.json').version;
+const paths = require('./paths.js');
+const version = require(paths.appPackageJson).version;
 const bundleName = `fivenations.${version}.js`;
 
 const plugins = defaultConfig.plugins;
@@ -20,7 +21,7 @@ plugins.push(
 plugins.push(
   new S3Plugin({
     include: /.*\.(js)/,
-    directory: 'standalone',
+    directory: paths.appLib,
     s3Options: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -31,7 +32,7 @@ plugins.push(
   }),
   new S3Plugin({
     include: /.*\.(gif|jpg|jpeg|png|json)/,
-    directory: 'src/assets',
+    directory: paths.appLib + 'src/assets',
     s3Options: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -44,7 +45,7 @@ plugins.push(
 
 module.exports = Object.assign(defaultConfig, {
     output: {
-        path: path.resolve(__dirname, 'standalone/'),
+        path: paths.appLib,
         publicPath: '/',
         filename: bundleName
     },

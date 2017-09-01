@@ -1,18 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
+const paths = require('./paths.js');
 
 module.exports = {
     entry: {
         app: [
             'babel-polyfill',
-            path.resolve(__dirname, 'src/js/browser-connector.js')
+            paths.appIndexJs
         ]
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-                'PUBLIC_URL': JSON.stringify(process.env.S3_PUBLIC_URL || ''),
+                'PUBLIC_URL': JSON.stringify(paths.publicUrl),
             }
         })
     ],

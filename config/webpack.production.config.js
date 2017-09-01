@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const defaultConfig = require('./webpack.default.config.js');
 const bundleName = 'bundle.js';
+const paths = require('./paths.js');
 
 const plugins = defaultConfig.plugins;
 plugins.push(
@@ -17,7 +18,7 @@ plugins.push(
 
 module.exports = Object.assign(defaultConfig, {
     output: {
-        path: path.resolve(__dirname, 'dist/js'),
+        path: paths.appBuild + '/js',
         publicPath: '/js/',
         filename: bundleName
     },

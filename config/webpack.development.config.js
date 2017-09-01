@@ -3,20 +3,21 @@ const webpack = require('webpack');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const defaultConfig = require('./webpack.default.config.js');
 const plugins = defaultConfig.plugins;
+const paths = require('./paths.js');
 
 plugins.push(
     new BrowserSyncPlugin({
         host: process.env.IP || 'localhost',
         port: process.env.PORT || 9000,
         server: {
-            baseDir: ['./', './dist']
+            baseDir: ['./', paths.appBuild]
         }
     })
 );
 
 module.exports = Object.assign(defaultConfig, {
     output: {
-        path: path.resolve(__dirname, 'dist/js'),
+        path: paths.appBuild + '/js/',
         publicPath: '/js/',
         filename: 'bundle.js'
     },
