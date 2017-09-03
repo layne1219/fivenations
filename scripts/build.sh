@@ -3,14 +3,14 @@
 set -e
 
 SOURCE=src
-DIST=dist
+DIST=build
 RESOURCES=assets
 
 export NODE_ENV=production
 
 if [ -d "$DIST" ]; then rm -Rf $DIST; fi
 
-webpack --config webpack.production.config.js -p --bail
+webpack --config ./config/webpack.production.config.js -p --bail
 
 # RESOURCES
 cp -r $SOURCE/$RESOURCES $DIST/$RESOURCES

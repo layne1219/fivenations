@@ -32,7 +32,7 @@ plugins.push(
   }),
   new S3Plugin({
     include: /.*\.(gif|jpg|jpeg|png|json)/,
-    directory: paths.appLib + 'src/assets',
+    directory: paths.appSrc + '/assets',
     s3Options: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
