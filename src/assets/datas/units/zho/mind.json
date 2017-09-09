@@ -1,195 +1,195 @@
 {
-	"id": "venator",
-	"name": "Venator",
-	"type": "Medium (Destroyer)",
-	"hull": 100,
+	"id": "mind",
+	"name": "Mind",
+	"type": "Large (Cruiser)",
+	"hull": 350,
 	"shield": 0,
-	"armor": 1,
+	"armor": 2,
 	"power": 0, 
 	"hangar": 0,
-	"speed": 40,
-	"maneuverability": 40,
-	"vision": 50,
-	"weapons": [ 101, 101, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 100,
-	"silicium": 0,
-	"energy": 80,
+	"speed": 35,
+	"maneuverability": 45,
+	"vision": 100,
+	"weapons": [ 67, 4, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 300,
+	"silicium": 250,
+	"energy": 380,
 	"uranium": 0,
-	"space": 3,
-	"buildingTime": 25,
+	"space": 8,
+	"buildingTime": 40,
 	"directions": 16,
-    "animFrame": 5,
+    "animFrame": 7,
     "animType": 0,
-    "size": "m",
+    "size": "l",
     "animations": {
         "idle": [
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [0, 1, 2, 3, 4]
+                "frames": [0, 1, 2, 3, 4, 5, 6]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [5, 6, 7, 8, 9]
+                "frames": [7, 8, 9, 10, 11, 12, 13]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [10, 11, 12, 13, 14]
+                "frames": [14, 15, 16, 17, 18, 19, 20]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [15, 16, 17, 18, 19]
+                "frames": [21, 22, 23, 24, 25, 26, 27]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [20, 21, 22, 23, 24]
+                "frames": [28, 29, 30, 31, 32, 33, 34]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [25, 26, 27, 28, 29]
+                "frames": [35, 36, 37, 38, 39, 40, 41]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [30, 31, 32, 33, 34]
+                "frames": [42, 43, 44, 45, 46, 47, 48]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [35, 36, 37, 38, 39]
+                "frames": [49, 50, 51, 52, 53, 54, 55]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [40, 41, 42, 43, 44]
+                "frames": [56, 57, 58, 59, 60, 61, 62]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [45,46, 47, 48, 49]
+                "frames": [63, 64, 65, 66, 67, 68, 69]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [50, 51, 52, 53, 54]
+                "frames": [70, 71, 72, 73, 74, 75, 76]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [55, 56, 57, 58, 59]
+                "frames": [77, 78, 79, 80, 81, 82, 83]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [60, 61, 62, 63, 64]
+                "frames": [84, 85, 86, 87, 88, 89, 90]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [65, 66, 67, 68, 69]
+                "frames": [91, 92, 93, 94, 95, 96, 97]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [70, 71, 72, 73, 74]
+                "frames": [98, 99, 100, 101, 102, 103, 104]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [75, 76, 77, 78, 79]
+                "frames": [105, 106, 107, 108, 109, 110, 111]
             }
         ],
         "move": [
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [0, 1, 2, 3, 4]
+                "frames": [0, 1, 2, 3, 4, 5, 6]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [5, 6, 7, 8, 9]
+                "frames": [7, 8, 9, 10, 11, 12, 13]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [10, 11, 12, 13, 14]
+                "frames": [14, 15, 16, 17, 18, 19, 20]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [15, 16, 17, 18, 19]
+                "frames": [21, 22, 23, 24, 25, 26, 27]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [20, 21, 22, 23, 24]
+                "frames": [28, 29, 30, 31, 32, 33, 34]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [25, 26, 27, 28, 29]
+                "frames": [35, 36, 37, 38, 39, 40, 41]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [30, 31, 32, 33, 34]
+                "frames": [42, 43, 44, 45, 46, 47, 48]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [35, 36, 37, 38, 39]
+                "frames": [49, 50, 51, 52, 53, 54, 55]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [40, 41, 42, 43, 44]
+                "frames": [56, 57, 58, 59, 60, 61, 62]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [45,46, 47, 48, 49]
+                "frames": [63, 64, 65, 66, 67, 68, 69]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [50, 51, 52, 53, 54]
+                "frames": [70, 71, 72, 73, 74, 75, 76]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [55, 56, 57, 58, 59]
+                "frames": [77, 78, 79, 80, 81, 82, 83]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [60, 61, 62, 63, 64]
+                "frames": [84, 85, 86, 87, 88, 89, 90]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [65, 66, 67, 68, 69]
+                "frames": [91, 92, 93, 94, 95, 96, 97]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [70, 71, 72, 73, 74]
+                "frames": [98, 99, 100, 101, 102, 103, 104]
             },
             {
                 "rate": 30,
                 "loopable": true,
-                "frames": [75, 76, 77, 78, 79]
+                "frames": [105, 106, 107, 108, 109, 110, 111]
             }
         ]
     },
 	"events": {
 		"remove": {
-			"effects": ["destruction-bio-medium"],
+			"effects": ["destruction-bio-big"],
 			"minWrecks": 0,
 			"maxWrecks": 0,
 			"wrecks": []
