@@ -20,8 +20,18 @@ module.exports = {
   module: {
     rules: [
       { 
-        test: /(pixi|phaser).js/, 
-        use: ['script-loader'] 
+        test: /pixi.js/, 
+        use: [{
+          loader: 'expose-loader',
+          options: 'PIXI'
+        }] 
+      }, 
+      { 
+        test: /phaser.js/, 
+        use: [{
+          loader: 'expose-loader',
+          options: 'Phaser'
+        }] 
       }, 
       { 
         test: /\.js$/, 
