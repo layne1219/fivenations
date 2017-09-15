@@ -532,6 +532,158 @@
             "faceFrame": 38,
             "iconFrame": 51
         },
+
+        "spawn": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 74,
+            "iconFrame": 58
+        },
+        "guard": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 75,
+            "iconFrame": 59
+        },
+        "venator": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 76,
+            "iconFrame": 60
+        },
+        "mind": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 77,
+            "iconFrame": 61
+        },
+        "overseer": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 78,
+            "iconFrame": 62
+        },
+        "swarmmother": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 79,
+            "iconFrame": 63
+        },
+        "spikeworm": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 80,
+            "iconFrame": 64
+        },
+        "queen": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 81,
+            "iconFrame": 65
+        },
+        "ovum": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 82,
+            "iconFrame": 66
+        },
+        "mindovum": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 83,
+            "iconFrame": 67
+        },
+        "reincarnate": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 84,
+            "iconFrame": 68
+        },
+        "worker": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 85,
+            "iconFrame": 69
+        },
+        "rictus": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 86,
+            "iconFrame": 70
+        },
+        "mite": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 87,
+            "iconFrame": 71
+        },
+        "ruptor": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 88,
+            "iconFrame": 72
+        },
+        "decay": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 89,
+            "iconFrame": 73
+        },
+        "cropbed": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 30,
+            "iconFrame": 44
+        },
+        "nutrientcolony": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 31,
+            "iconFrame": 45
+        },
+        "metabolist": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 32,
+            "iconFrame": 46
+        },
+        "agaric": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 33,
+            "iconFrame": 47
+        },
+        "mindfungus": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 34,
+            "iconFrame": 48
+        },
+        "clathruscolony": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 35,
+            "iconFrame": 49
+        },
+        "symbioticorgan": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 36,
+            "iconFrame": 50
+        },
+        "evulatory": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 37,
+            "iconFrame": 51
+        },
+        "swarmmembrane": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 38,
+            "iconFrame": 52
+        },
+        "chrysodendron": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 39,
+            "iconFrame": 53
+        },
+        "chimneyplant": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 40,
+            "iconFrame": 54
+        },
+        "decaychamber": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 41,
+            "iconFrame": 55
+        },
+        "fonia": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 42,
+            "iconFrame": 56
+        },
+        "seed": {
+            "spriteId": "gui.icons.zho",
+            "faceFrame": 43,
+            "iconFrame": 57
+        },
+
         "asteroid1": {
             "spriteId": "gui.icons.obj",
             "faceFrame": 1,

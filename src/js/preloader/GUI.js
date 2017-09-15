@@ -16,6 +16,7 @@ export default {
         preloader.load.atlasJSONHash('gui.icons.ath', `${PATH_ASSETS}/gui/ath_icons.png`, `${PATH_ASSETS}/gui/ath_icons.json`);
         preloader.load.atlasJSONHash('gui.icons.syl', `${PATH_ASSETS}/gui/syl_icons.png`, `${PATH_ASSETS}/gui/syl_icons.json`);
         preloader.load.atlasJSONHash('gui.icons.tho', `${PATH_ASSETS}/gui/tho_icons.png`, `${PATH_ASSETS}/gui/tho_icons.json`);
+        preloader.load.atlasJSONHash('gui.icons.zho', `${PATH_ASSETS}/gui/zho_icons.png`, `${PATH_ASSETS}/gui/zho_icons.json`);
         preloader.load.atlasJSONHash('gui.icons.obj', `${PATH_ASSETS}/gui/obj_icons.png`, `${PATH_ASSETS}/gui/obj_icons.json`);
         preloader.load.atlasJSONHash('color-indicator', `${PATH_ASSETS}/gui/player_color_indicator.png`, `${PATH_ASSETS}/gui/player_color_indicator.json`);
     }    
