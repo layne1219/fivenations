@@ -20,7 +20,7 @@
 	"directions": 16,
     "animFrame": 10,
     "animType": 0,
-    "size": "sm",
+    "size": "l",
     "animations": {
         "idle": [
             {
@@ -559,7 +559,7 @@
     },
 	"events": {
 		"remove": {
-			"effects": ["destruction-bio-small"],
+			"effects": ["destruction-bio-large"],
 			"minWrecks": 0,
 			"maxWrecks": 0,
 			"wrecks": []

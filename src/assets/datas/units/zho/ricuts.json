@@ -559,7 +559,7 @@
     },
 	"events": {
 		"remove": {
-			"effects": ["destruction-bio-small"],
+			"effects": ["destruction-bio-medium"],
 			"minWrecks": 0,
 			"maxWrecks": 0,
 			"wrecks": []
