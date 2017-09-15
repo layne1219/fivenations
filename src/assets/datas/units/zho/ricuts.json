@@ -556,7 +556,7 @@
                 ]
             }
         ]
-    }
+    },
 	"events": {
 		"remove": {
 			"effects": ["destruction-bio-small"],
