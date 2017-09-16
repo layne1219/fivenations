@@ -1,0 +1,568 @@
+{
+	"id": "rictus",
+	"name": "Rictus",
+	"type": "Medium (Destroyer)",
+	"hull": 200,
+	"shield": 0,
+	"armor": 1,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 25,
+	"maneuverability": 25,
+	"vision": 50,
+	"weapons": [ 78, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 180,
+	"silicium": 200,
+	"energy": 200,
+	"uranium": 0,
+	"space": 8,
+	"buildingTime": 40,
+	"directions": 16,
+    "animFrame": 10,
+    "animType": 0,
+    "size": "m",
+    "animations": {
+        "idle": [
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    20,
+                    21,
+                    22,
+                    23,
+                    24
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    30,
+                    31,
+                    32,
+                    33,
+                    34
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    40,
+                    41,
+                    42,
+                    43,
+                    44
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    50,
+                    51,
+                    52,
+                    53,
+                    54
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    60,
+                    61,
+                    62,
+                    63,
+                    64
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    70,
+                    71,
+                    72,
+                    73,
+                    74
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    80,
+                    81,
+                    82,
+                    83,
+                    84
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    90,
+                    91,
+                    92,
+                    93,
+                    94
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    100,
+                    101,
+                    102,
+                    103,
+                    104
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    110,
+                    111,
+                    112,
+                    113,
+                    114
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    120,
+                    121,
+                    122,
+                    123,
+                    124
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    130,
+                    131,
+                    132,
+                    133,
+                    134
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    140,
+                    141,
+                    142,
+                    143,
+                    144
+                ]
+            },
+            {
+                "rate": 15,
+                "loopable": true,
+                "frames": [
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                ]
+            }
+        ],
+        "move": [
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    10,
+                    11,
+                    12,
+                    13,
+                    14
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    20,
+                    21,
+                    22,
+                    23,
+                    24
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    30,
+                    31,
+                    32,
+                    33,
+                    34
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    40,
+                    41,
+                    42,
+                    43,
+                    44
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    50,
+                    51,
+                    52,
+                    53,
+                    54
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    60,
+                    61,
+                    62,
+                    63,
+                    64
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    70,
+                    71,
+                    72,
+                    73,
+                    74
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    80,
+                    81,
+                    82,
+                    83,
+                    84
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    90,
+                    91,
+                    92,
+                    93,
+                    94
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    100,
+                    101,
+                    102,
+                    103,
+                    104
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    110,
+                    111,
+                    112,
+                    113,
+                    114
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    120,
+                    121,
+                    122,
+                    123,
+                    124
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    130,
+                    131,
+                    132,
+                    133,
+                    134
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    140,
+                    141,
+                    142,
+                    143,
+                    144
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                ]
+            }
+        ],
+        "attack": [
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    15,
+                    16,
+                    17,
+                    18,
+                    19
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    25,
+                    26,
+                    27,
+                    28,
+                    29
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    45,
+                    46,
+                    47,
+                    48,
+                    49
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    55,
+                    56,
+                    57,
+                    58,
+                    59
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    65,
+                    66,
+                    67,
+                    68,
+                    69
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    75,
+                    76,
+                    77,
+                    78,
+                    79
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    85,
+                    86,
+                    87,
+                    88,
+                    89
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    95,
+                    96,
+                    97,
+                    98,
+                    99
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    105,
+                    106,
+                    107,
+                    108,
+                    109
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    115,
+                    116,
+                    117,
+                    118,
+                    119
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    125,
+                    126,
+                    127,
+                    128,
+                    129
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    135,
+                    136,
+                    137,
+                    138,
+                    139
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    145,
+                    146,
+                    147,
+                    148,
+                    149
+                ]
+            },
+            {
+                "rate": 30,
+                "loopable": true,
+                "frames": [
+                    155,
+                    156,
+                    157,
+                    158,
+                    159
+                ]
+            }
+        ]
+    },
+	"events": {
+		"remove": {
+			"effects": ["destruction-bio-medium"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	}
+}

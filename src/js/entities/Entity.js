@@ -468,6 +468,8 @@ Entity.prototype = {
      * @return {void}
      */
     stopAnimation: function() {
+        // idle-forever animation cannot be stopped 
+        if (this.sprite.animations.currentAnim.name === ANIMATION_IDLE_FOREVER) return;
         this.sprite.animations.stop(null, true);
     },
 
@@ -484,7 +486,6 @@ Entity.prototype = {
             EventEmitter.getInstance().local.dispatch('gui/selection/change');
         }
     },
-
 
     /**
      * Selects the entity as a target of another entity

@@ -51,23 +51,34 @@
           authorised: true
         });
 
-        for (var i = 3; i >= 0; i -= 1) {
+        var names = [
+          'spawn',
+          'guard',
+          'venator',
+          'mind',
+          'overseer',
+          'swarmmother',
+          'spikeworm',
+          'queen',
+          'ovum',
+          'mindovum',
+          'reincarnate',
+          'worker',
+          'rictus',
+          'mite',
+          'ruptor',
+          'decay'
+        ];
+
+        for (var i = 15; i >= 0; i -= 1) {
             game.eventEmitter.synced.entities.add({
-                id: 'hurricane',
+                id: names[i],
                 team: 1,
-                x: 500 + Math.random() * 1000,
-                y: 450 + Math.random() * 1000
+                x: 350 + Math.random() * 500,
+                y: 350 + Math.random() * 500
             });
         }
 
-        for (var j = 0; j >= 0; j -= 1) {
-            game.eventEmitter.synced.entities.add({
-                id: 'stgeorge',
-                team: 1,
-                x: 200 + Math.random() * 1000,
-                y: 450 + Math.random() * 1000
-            });
-        }
 
       });
       app.start();

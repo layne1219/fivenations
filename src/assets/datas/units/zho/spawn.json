@@ -1,0 +1,39 @@
+{
+	"id": "spawn",
+	"name": "Spawn",
+	"type": "Special",
+	"hull": 30,
+	"shield": 0,
+	"armor": 0,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 25,
+	"maneuverability": 80,
+	"vision": 15,
+	"weapons": [ 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 20,
+	"silicium": 0,
+	"energy": 10,
+	"uranium": 0,
+	"space": 1,
+	"buildingTime": 5,
+	"directions": 1,
+	"animFrame": 1,
+	"animType": ["idle-forever"],
+	"size": "xsm",
+    "animations": {
+        "idle-forever": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        }
+    },
+	"events": {
+		"remove": {
+			"effects": ["destruction-bio-small"],
+			"minWrecks": 0,
+			"maxWrecks": 0,
+			"wrecks": []
+		}
+	}
+}

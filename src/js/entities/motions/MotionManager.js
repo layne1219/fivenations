@@ -95,8 +95,11 @@ MotionManager.prototype = {
             this.effectManager.addEffect(Effects.get('resetMovement'));
         }
 
-        this.effectManager.addEffect(Effects.get('stopAnimation'));
-        this.effectManager.addEffect(Effects.get('rotateToTarget'));
+        if (!this.isEntityFacingTarget()) {
+            this.effectManager.addEffect(Effects.get('stopAnimation'));
+            this.effectManager.addEffect(Effects.get('rotateToTarget'));
+        }
+
         this.effectManager.addEffect(Effects.get('accelerateToTarget'));
         this.effectManager.addEffect(Effects.get('moveToTarget'));
         this.effectManager.addEffect(Effects.get('stopping'));
@@ -294,12 +297,20 @@ MotionManager.prototype = {
     },
 
     /**
+     * Returns whether the entity is headed towards its target
+     * @return {boolean}
+     */
+    isEntityFacingTarget: function() {
+        return this.rotation.currentAngleCode === this.rotation.targetAngleCode
+    },
+
+    /**
      * Returns whether the entity needs trigger the stop action
      * before having any further actions added to its motion queue
      * @return {boolean}
      */
     isRequiredToStopBeforeFurtherAction: function() {
-        return this.movement.velocity > 0 && this.rotation.currentAngleCode !== this.rotation.targetAngleCode && this.entity.hasSlowManeuverability();
+        return this.movement.velocity > 0 && !this.isEntityFacingTarget() && this.entity.hasSlowManeuverability();
     },
 
     /**

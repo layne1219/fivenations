@@ -10,7 +10,7 @@ module.exports = {
         if (app) throw 'Server is already running!';
 
         if (!port) port = 9000;
-        if (!dir) dir = 'dist/';
+        if (!dir) dir = 'build/';
 
         app = express();
         app.use(express.static(dir));
