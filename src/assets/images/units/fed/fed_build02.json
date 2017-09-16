@@ -1,101 +1,101 @@
 {"frames": [
 
 {
-	"filename": "fed_build02_c010000.png",
-	"frame": {"x":1,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00000.png",
+	"frame": {"x":1035,"y":1,"w":145,"h":120},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":86,"y":92,"w":145,"h":120},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010001.png",
-	"frame": {"x":132,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00001.png",
+	"frame": {"x":1182,"y":1,"w":145,"h":120},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":86,"y":92,"w":145,"h":120},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010002.png",
-	"frame": {"x":263,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00002.png",
+	"frame": {"x":1329,"y":1,"w":145,"h":120},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":86,"y":92,"w":145,"h":120},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010003.png",
-	"frame": {"x":394,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00003.png",
+	"frame": {"x":1476,"y":1,"w":145,"h":120},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":86,"y":92,"w":145,"h":120},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010004.png",
-	"frame": {"x":525,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00004.png",
+	"frame": {"x":593,"y":1,"w":145,"h":123},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":86,"y":92,"w":145,"h":123},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010005.png",
-	"frame": {"x":656,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00005.png",
+	"frame": {"x":740,"y":1,"w":145,"h":123},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":86,"y":92,"w":145,"h":123},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010006.png",
-	"frame": {"x":787,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00006.png",
+	"frame": {"x":1,"y":1,"w":146,"h":126},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":85,"y":89,"w":146,"h":126},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010007.png",
-	"frame": {"x":918,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00007.png",
+	"frame": {"x":149,"y":1,"w":146,"h":126},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":85,"y":89,"w":146,"h":126},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010008.png",
-	"frame": {"x":1049,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00008.png",
+	"frame": {"x":297,"y":1,"w":146,"h":126},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":85,"y":89,"w":146,"h":126},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010009.png",
-	"frame": {"x":1180,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00009.png",
+	"frame": {"x":445,"y":1,"w":146,"h":126},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":85,"y":89,"w":146,"h":126},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "fed_build02_c010010.png",
-	"frame": {"x":1311,"y":1,"w":129,"h":119},
+	"filename": "fed_build02_00010.png",
+	"frame": {"x":887,"y":1,"w":146,"h":122},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":68,"w":129,"h":119},
+	"spriteSourceSize": {"x":85,"y":90,"w":146,"h":122},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -104,8 +104,8 @@
 	"version": "1.0",
 	"image": "fed_build02.png",
 	"format": "RGBA8888",
-	"size": {"w":1441,"h":121},
+	"size": {"w":1622,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:85d079c082b1fd09bb2f91494287b894:1d6671aae6362c6dc4cdf3342645379a:d173a8aed195554498723168f68d5d1a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cd8feee480321cf8b4444d9cf1cfd993:a16cb0a4fd50d99519971b94784417bd:d173a8aed195554498723168f68d5d1a$"
 }
 }

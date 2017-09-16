@@ -1,102 +1,102 @@
-{"frames": {
+{"frames": [
 
-"tho_build09_c010000.png":
 {
-	"frame": {"x":1,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00000.png",
+	"frame": {"x":1,"y":1,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010001.png":
 {
-	"frame": {"x":121,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00001.png",
+	"frame": {"x":1,"y":135,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010002.png":
 {
-	"frame": {"x":241,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00002.png",
+	"frame": {"x":1,"y":269,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010003.png":
 {
-	"frame": {"x":361,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00003.png",
+	"frame": {"x":1,"y":403,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010004.png":
 {
-	"frame": {"x":481,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00004.png",
+	"frame": {"x":1,"y":537,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010005.png":
 {
-	"frame": {"x":601,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00005.png",
+	"frame": {"x":1,"y":671,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010006.png":
 {
-	"frame": {"x":721,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00006.png",
+	"frame": {"x":1,"y":805,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010007.png":
 {
-	"frame": {"x":841,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00007.png",
+	"frame": {"x":1,"y":939,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010008.png":
 {
-	"frame": {"x":961,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00008.png",
+	"frame": {"x":1,"y":1073,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"tho_build09_c010009.png":
 {
-	"frame": {"x":1,"y":1,"w":118,"h":114},
+	"filename": "tho_build09_00009.png",
+	"frame": {"x":1,"y":1,"w":118,"h":132},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":79,"w":118,"h":114},
+	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "tho_build09.png",
 	"format": "RGBA8888",
-	"size": {"w":1080,"h":116},
+	"size": {"w":120,"h":1206},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:09d47db9b14241411d3825f85508504a:2e77c7816f89a6eccee40001a1bb36fb:e5a07bf8e29592294120a293470f0382$"
+	"smartupdate": "$TexturePacker:SmartUpdate:71a793e7ec70d26b39e8a682dc1e6bf9:356c5be45437797edf59a5ff7ee3627b:e5a07bf8e29592294120a293470f0382$"
 }
 }

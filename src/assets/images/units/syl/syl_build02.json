@@ -1,21 +1,21 @@
-{"frames": {
+{"frames": [
 
-"syl_build02_c010000.png":
 {
-	"frame": {"x":1,"y":1,"w":115,"h":95},
+	"filename": "syl_build02_0000.png",
+	"frame": {"x":1,"y":1,"w":109,"h":91},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":91,"y":102,"w":115,"h":95},
+	"spriteSourceSize": {"x":91,"y":99,"w":109,"h":91},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "syl_build02.png",
 	"format": "RGBA8888",
-	"size": {"w":117,"h":97},
+	"size": {"w":111,"h":93},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:52b55e2960b72ac70544dd69eefe0fbe:7dfbc1eaed6b346eeff1f57b855d7dff:b548eadf9af9559ed21df198103107d5$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1fcff9a8f0458bc7eb78dc90af108674:869036d02b4695138683de4092ae42ee:b548eadf9af9559ed21df198103107d5$"
 }
 }

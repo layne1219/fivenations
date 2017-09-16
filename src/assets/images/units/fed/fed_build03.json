@@ -1,11 +1,11 @@
 {"frames": [
 
 {
-	"filename": "fed_build03_c010000.png",
-	"frame": {"x":1,"y":1,"w":70,"h":79},
+	"filename": "fed_build03_00000.png",
+	"frame": {"x":1,"y":1,"w":76,"h":87},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":115,"y":84,"w":70,"h":79},
+	"spriteSourceSize": {"x":112,"y":113,"w":76,"h":87},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -14,8 +14,8 @@
 	"version": "1.0",
 	"image": "fed_build03.png",
 	"format": "RGBA8888",
-	"size": {"w":72,"h":81},
+	"size": {"w":78,"h":89},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:85a6432a46b5804ffd4309badf3c2b1e:b44b82cc6e252387886611a02157539f:8b8b803be0bc0384d2b4a2583f9449b1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cba0723c88c82ad379faf5a8e3eccd17:076d265ee605f4216b492d0d0333b2fa:8b8b803be0bc0384d2b4a2583f9449b1$"
 }
 }

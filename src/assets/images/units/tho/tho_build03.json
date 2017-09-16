@@ -1,21 +1,21 @@
-{"frames": {
+{"frames": [
 
-"tho_build03_c010000.png":
 {
-	"frame": {"x":1,"y":1,"w":74,"h":68},
+	"filename": "tho_build03_0000.png",
+	"frame": {"x":1,"y":1,"w":76,"h":65},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":113,"y":93,"w":74,"h":68},
+	"spriteSourceSize": {"x":112,"y":113,"w":76,"h":65},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "tho_build03.png",
 	"format": "RGBA8888",
-	"size": {"w":76,"h":70},
+	"size": {"w":78,"h":67},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:36ea28a6f35cbbc9cbaf4b8e943c6f50:fb57f1cc873a859ea9be8f8c3eea3dd7:c36d49586c4bfc3f9ebfd98ce5d59acf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:854e98603a0a3e3f156ffd3fb7b094fb:48dd789febbcac73e0255ad9b6bee15b:c36d49586c4bfc3f9ebfd98ce5d59acf$"
 }
 }

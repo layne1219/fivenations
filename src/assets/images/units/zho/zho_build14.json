@@ -1,11 +1,11 @@
 {"frames": [
 
 {
-	"filename": "zho_build01_c010000.png",
-	"frame": {"x":1,"y":1,"w":88,"h":88},
+	"filename": "zho_build14_c010000.png",
+	"frame": {"x":1,"y":1,"w":93,"h":94},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":95,"w":88,"h":88},
+	"spriteSourceSize": {"x":103,"y":87,"w":93,"h":94},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -14,8 +14,8 @@
 	"version": "1.0",
 	"image": "zho_build14.png",
 	"format": "RGBA8888",
-	"size": {"w":90,"h":90},
+	"size": {"w":95,"h":96},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1d07b751671c65ffda65fa21dd0f4497:8ee5e621e30d859247c6155d8da4bd05:5715b728810eca2de6351580096b64ea$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c61a4155f7307ec85139438a30182a7a:b7803ea3695580cdcd8dbf1403a72716:5715b728810eca2de6351580096b64ea$"
 }
 }

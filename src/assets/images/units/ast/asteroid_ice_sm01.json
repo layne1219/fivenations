@@ -1,156 +1,156 @@
-{"frames": {
+{"frames": [
 
-"icemeteor_sm010000.png":
 {
-	"frame": {"x":140,"y":1,"w":32,"h":36},
+	"filename": "icemeteor_sm01_0000.png",
+	"frame": {"x":1,"y":34,"w":28,"h":28},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":133,"y":131,"w":32,"h":36},
+	"spriteSourceSize": {"x":135,"y":136,"w":28,"h":28},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010002.png":
 {
-	"frame": {"x":1,"y":39,"w":35,"h":34},
+	"filename": "icemeteor_sm01_0002.png",
+	"frame": {"x":144,"y":33,"w":28,"h":26},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":133,"w":35,"h":34},
+	"spriteSourceSize": {"x":135,"y":137,"w":28,"h":26},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010004.png":
 {
-	"frame": {"x":1,"y":75,"w":37,"h":32},
+	"filename": "icemeteor_sm01_0004.png",
+	"frame": {"x":203,"y":33,"w":28,"h":23},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":32},
+	"spriteSourceSize": {"x":135,"y":139,"w":28,"h":23},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010006.png":
 {
-	"frame": {"x":40,"y":74,"w":37,"h":31},
+	"filename": "icemeteor_sm01_0006.png",
+	"frame": {"x":174,"y":33,"w":27,"h":26},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":131,"y":135,"w":37,"h":31},
+	"spriteSourceSize": {"x":136,"y":137,"w":27,"h":26},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010008.png":
 {
-	"frame": {"x":152,"y":74,"w":36,"h":31},
+	"filename": "icemeteor_sm01_0008.png",
+	"frame": {"x":88,"y":33,"w":26,"h":28},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":131,"y":135,"w":36,"h":31},
+	"spriteSourceSize": {"x":136,"y":136,"w":26,"h":28},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010010.png":
 {
-	"frame": {"x":79,"y":73,"w":34,"h":33},
+	"filename": "icemeteor_sm01_0010.png",
+	"frame": {"x":177,"y":1,"w":26,"h":30},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":134,"w":34,"h":33},
+	"spriteSourceSize": {"x":136,"y":135,"w":26,"h":30},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010012.png":
 {
-	"frame": {"x":115,"y":40,"w":33,"h":35},
+	"filename": "icemeteor_sm01_0012.png",
+	"frame": {"x":28,"y":1,"w":24,"h":31},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":133,"w":33,"h":35},
+	"spriteSourceSize": {"x":137,"y":134,"w":24,"h":31},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010014.png":
 {
-	"frame": {"x":38,"y":1,"w":32,"h":37},
+	"filename": "icemeteor_sm01_0014.png",
+	"frame": {"x":1,"y":1,"w":25,"h":31},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":132,"w":32,"h":37},
+	"spriteSourceSize": {"x":137,"y":134,"w":25,"h":31},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010016.png":
 {
-	"frame": {"x":72,"y":1,"w":32,"h":37},
+	"filename": "icemeteor_sm01_0016.png",
+	"frame": {"x":205,"y":1,"w":25,"h":30},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":132,"w":32,"h":37},
+	"spriteSourceSize": {"x":137,"y":134,"w":25,"h":30},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010018.png":
 {
-	"frame": {"x":1,"y":1,"w":35,"h":36},
+	"filename": "icemeteor_sm01_0018.png",
+	"frame": {"x":60,"y":33,"w":26,"h":29},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":133,"w":35,"h":36},
+	"spriteSourceSize": {"x":137,"y":135,"w":26,"h":29},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010020.png":
 {
-	"frame": {"x":38,"y":40,"w":36,"h":32},
+	"filename": "icemeteor_sm01_0020.png",
+	"frame": {"x":116,"y":33,"w":26,"h":28},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":135,"w":36,"h":32},
+	"spriteSourceSize": {"x":137,"y":136,"w":26,"h":28},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010022.png":
 {
-	"frame": {"x":76,"y":40,"w":37,"h":31},
+	"filename": "icemeteor_sm01_0022.png",
+	"frame": {"x":31,"y":34,"w":27,"h":28},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":132,"y":136,"w":37,"h":31},
+	"spriteSourceSize": {"x":137,"y":135,"w":27,"h":28},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010024.png":
 {
-	"frame": {"x":115,"y":77,"w":35,"h":30},
+	"filename": "icemeteor_sm01_0024.png",
+	"frame": {"x":117,"y":1,"w":28,"h":30},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":133,"y":137,"w":35,"h":30},
+	"spriteSourceSize": {"x":136,"y":134,"w":28,"h":30},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010026.png":
 {
-	"frame": {"x":150,"y":39,"w":34,"h":33},
+	"filename": "icemeteor_sm01_0026.png",
+	"frame": {"x":54,"y":1,"w":30,"h":30},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":133,"y":135,"w":34,"h":33},
+	"spriteSourceSize": {"x":135,"y":134,"w":30,"h":30},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010028.png":
 {
-	"frame": {"x":174,"y":1,"w":32,"h":35},
+	"filename": "icemeteor_sm01_0028.png",
+	"frame": {"x":86,"y":1,"w":29,"h":30},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":133,"y":133,"w":32,"h":35},
+	"spriteSourceSize": {"x":135,"y":134,"w":29,"h":30},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"icemeteor_sm010030.png":
 {
-	"frame": {"x":106,"y":1,"w":32,"h":37},
+	"filename": "icemeteor_sm01_0030.png",
+	"frame": {"x":147,"y":1,"w":28,"h":30},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":133,"y":131,"w":32,"h":37},
+	"spriteSourceSize": {"x":135,"y":134,"w":28,"h":30},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "asteroid_ice_sm01.png",
 	"format": "RGBA8888",
-	"size": {"w":207,"h":108},
+	"size": {"w":232,"h":63},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:05f2ab7b5bc0c71176215801062d0a60:4f1fd2ba7ac1558d259d97566adcfac2:48e9cf9a46bfd173587d414b2e36ac70$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c37fe2d56349412b12f73b7d32be0996:7225a354fec7e742fd8213e5394b1232:48e9cf9a46bfd173587d414b2e36ac70$"
 }
 }

@@ -1,102 +1,102 @@
-{"frames": {
+{"frames": [
 
-"ath_build07_c010000.png":
 {
-	"frame": {"x":1,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00000.png",
+	"frame": {"x":1,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010001.png":
 {
-	"frame": {"x":157,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00001.png",
+	"frame": {"x":147,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010002.png":
 {
-	"frame": {"x":313,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00002.png",
+	"frame": {"x":293,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010003.png":
 {
-	"frame": {"x":469,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00003.png",
+	"frame": {"x":439,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010004.png":
 {
-	"frame": {"x":625,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00004.png",
+	"frame": {"x":585,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010005.png":
 {
-	"frame": {"x":781,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00005.png",
+	"frame": {"x":731,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010006.png":
 {
-	"frame": {"x":937,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00006.png",
+	"frame": {"x":877,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010007.png":
 {
-	"frame": {"x":1093,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00007.png",
+	"frame": {"x":1023,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010008.png":
 {
-	"frame": {"x":1249,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00008.png",
+	"frame": {"x":1169,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"ath_build07_c010009.png":
 {
-	"frame": {"x":1405,"y":1,"w":154,"h":126},
+	"filename": "ath_build07_00009.png",
+	"frame": {"x":1,"y":1,"w":144,"h":113},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":77,"w":154,"h":126},
+	"spriteSourceSize": {"x":83,"y":88,"w":144,"h":113},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "ath_build07.png",
 	"format": "RGBA8888",
-	"size": {"w":1560,"h":128},
+	"size": {"w":1314,"h":115},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e810541da183f8d5c07de1a61fb2212a:e9693a4552e88acc6e8bf6d9cc7f92d4:6dc052e2a7b2d624b88e2d2172c446b2$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9779dbab197c8bc45a945a5fc3fb4b6c:da900f87472eb8152289e7787c748bc5:6dc052e2a7b2d624b88e2d2172c446b2$"
 }
 }
