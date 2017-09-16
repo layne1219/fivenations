@@ -20,86 +20,86 @@
 	"directions": 16,
     "animFrame": 5,
     "animType": 0,
-    "size": "xs",
+    "size": "xsm",
     "animations": {
         "idle": [
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [0, 1, 2, 3, 4]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [5, 6, 7, 8, 9]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [10, 11, 12, 13, 14]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [15, 16, 17, 18, 19]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [20, 21, 22, 23, 24]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [25, 26, 27, 28, 29]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
-                "frames": [50, 31, 32, 33, 34]
+                "frames": [30, 31, 32, 33, 34]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [35, 36, 37, 38, 39]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [40, 41, 42, 43, 44]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [45,46, 47, 48, 49]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [50, 51, 52, 53, 54]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [55, 56, 57, 58, 59]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [60, 61, 62, 63, 64]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [65, 66, 67, 68, 69]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [70, 71, 72, 73, 74]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [75, 76, 77, 78, 79]
             }
@@ -189,7 +189,7 @@
     },
 	"events": {
 		"remove": {
-			"effects": ["destruction-bio-medium"],
+			"effects": ["destruction-bio-small"],
 			"minWrecks": 0,
 			"maxWrecks": 0,
 			"wrecks": []

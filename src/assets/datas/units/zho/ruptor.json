@@ -24,7 +24,7 @@
     "animations": {
         "idle": [
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     0,
@@ -38,7 +38,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     15,
@@ -52,7 +52,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     30,
@@ -66,7 +66,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     45,
@@ -80,7 +80,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     60,
@@ -94,7 +94,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     75,
@@ -108,7 +108,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     90,
@@ -122,7 +122,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     105,
@@ -136,7 +136,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     120,
@@ -150,7 +150,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     135,
@@ -164,7 +164,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     150,
@@ -178,7 +178,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     165,
@@ -192,7 +192,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     180,
@@ -206,7 +206,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     195,
@@ -220,7 +220,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     210,
@@ -234,7 +234,7 @@
                 ]
             },
             {
-                "rate": 50,
+                "rate": 15,
                 "loopable": true,
                 "frames": [
                     225,
