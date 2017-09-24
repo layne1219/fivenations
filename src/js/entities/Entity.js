@@ -72,11 +72,11 @@ const extendSpriteWithAnimations = function(sprite, dataObject) {
         const data = animations[key];
         if (data.length) {
             data.forEach(function(animationData, idx) {
-                const frames = data.frames.map(v => v + getAnimationOffset);
+                const frames = data.frames.map(v => v + anmationOffset);
                 sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);        
             });
         } else {
-            const frames = data.frames.map(v => v + getAnimationOffset);
+            const frames = data.frames.map(v => v + anmationOffset);
             sprite.animations.add(key, frames, data.rate, data.loopable);
         }
         // if the animation is called `idle-forever` it is started straightaway
