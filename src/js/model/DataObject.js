@@ -1,3 +1,4 @@
+const { ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../common/Const';
 const sizes = require('../../assets/datas/common/sizes.json');
 
 function getDimensionsBySize(size) {
@@ -184,6 +185,10 @@ function DataObject(json) {
 
         getAnimationByKey: function(key) {
             return data.animations[key];
+        },
+
+        getAnimationOffset: function() {
+            return data.animationOffset || ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED;
         },
 
         hasAnimation: function(key) {

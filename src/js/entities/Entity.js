@@ -66,6 +66,7 @@ const extendSprite = function(entity, sprite, dataObject) {
  */
 const extendSpriteWithAnimations = function(sprite, dataObject){
     const animations = dataObject.getAnimations();
+    const anmationOffset = dataObject.getAnimationOffset();
     if (!animations || typeof animations !== 'object') return;
     Object.keys(animations).forEach(function(key){
         const data = animations[key];
@@ -76,8 +77,8 @@ const extendSpriteWithAnimations = function(sprite, dataObject){
         } else {
             sprite.animations.add(key, data.frames, data.rate, data.loopable);
         }
-        // if there is an animation called `idle-forever` it is played straight away
-        if (key === ANIMATION_IDLE_FOREVER) {
+        // if the animation is called `idle-forever` it is started straightaway
+        if (key === Const.ANIMATION_IDLE_FOREVER) {
             sprite.animations.play(key);
         }
     });
