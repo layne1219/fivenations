@@ -64,18 +64,20 @@ const extendSprite = function(entity, sprite, dataObject) {
  * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
  * @return {void}
  */
-const extendSpriteWithAnimations = function(sprite, dataObject){
+const extendSpriteWithAnimations = function(sprite, dataObject) {
     const animations = dataObject.getAnimations();
     const anmationOffset = dataObject.getAnimationOffset();
     if (!animations || typeof animations !== 'object') return;
-    Object.keys(animations).forEach(function(key){
+    Object.keys(animations).forEach(function(key) {
         const data = animations[key];
         if (data.length) {
-            data.forEach(function(animationData, idx){
-                sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
+            data.forEach(function(animationData, idx) {
+                const frames = data.frames.map(v => v + getAnimationOffset);
+                sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);        
             });
         } else {
-            sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            const frames = data.frames.map(v => v + getAnimationOffset);
+            sprite.animations.add(key, frames, data.rate, data.loopable);
         }
         // if the animation is called `idle-forever` it is started straightaway
         if (key === Const.ANIMATION_IDLE_FOREVER) {
