@@ -1,9 +1,8 @@
-const { ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../common/Const';
-const sizes = require('../../assets/datas/common/sizes.json');
+import { ENTITY_SIZES, ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../common/Const';
 
 function getDimensionsBySize(size) {
-    if (!size || !sizes[size]) throw 'The given sizes is unrecognisable!';
-    return sizes[size];
+    if (!size || !ENTITY_SIZES[size]) return ENTITY_SIZES.m;
+    return ENTITY_SIZES[size];
 }
 
 function DataObject(json) {
