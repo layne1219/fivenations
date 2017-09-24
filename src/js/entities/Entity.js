@@ -9,11 +9,8 @@ import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager'; 
 import UserKeyboard from '../gui/UserKeyboard';  
 import UserPointer from '../gui/UserPointer';  
-import Util from '../common/Util'; 
-
-const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
-const MAX_SELECTABLE_UNITS = 22;
-const ANIMATION_IDLE_FOREVER = 'idle-forever';
+import Util from '../common/Util';
+import * as Const from '../common/Const'; 
 
 const ns = window.fivenations;
 
@@ -469,7 +466,7 @@ Entity.prototype = {
      */
     stopAnimation: function() {
         // idle-forever animation cannot be stopped 
-        if (this.sprite.animations.currentAnim.name === ANIMATION_IDLE_FOREVER) return;
+        if (this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER) return;
         this.sprite.animations.stop(null, true);
     },
 
@@ -480,7 +477,7 @@ Entity.prototype = {
     select: function() {
         if (this.isHibernated()) return;
 
-        if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
+        if (this.entityManager.entities(':selected').length < Const.MAX_SELECTABLE_UNITS) {
             this.selected = true;
             this.eventDispatcher.dispatch('select');
             EventEmitter.getInstance().local.dispatch('gui/selection/change');
@@ -541,7 +538,7 @@ Entity.prototype = {
     },        
 
     hasSlowManeuverability: function() {
-        return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
+        return this.getDataObject().getManeuverability() < Const.SLOW_MANOUVERABAILITY_TRESHOLD;
     },
 
     isSelected: function() {
