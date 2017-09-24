@@ -11,11 +11,11 @@ import UserKeyboard from '../gui/UserKeyboard';
 import UserPointer from '../gui/UserPointer';  
 import Util from '../common/Util'; 
 
-var SLOW_MANOUVERABAILITY_TRESHOLD = 25;
-var MAX_SELECTABLE_UNITS = 22;
-var ANIMATION_IDLE_FOREVER = 'idle-forever';
+const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
+const MAX_SELECTABLE_UNITS = 22;
+const ANIMATION_IDLE_FOREVER = 'idle-forever';
 
-var ns = window.fivenations;
+const ns = window.fivenations;
 
 /**
  * Initialising the Phaser.Sprite object with all the additional child elements 
@@ -25,10 +25,10 @@ var ns = window.fivenations;
  * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
  * @return {[object]} 
  */
-var extendSprite = function(entity, sprite, dataObject) {
+const extendSprite = function(entity, sprite, dataObject) {
 
-    var origWidth = dataObject.getWidth();
-    var origHeight = dataObject.getHeight();
+    const origWidth = dataObject.getWidth();
+    const origHeight = dataObject.getHeight();
 
     // actiavting the ARCADE physics on the sprite object
     entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -67,11 +67,11 @@ var extendSprite = function(entity, sprite, dataObject) {
  * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
  * @return {void}
  */
-var extendSpriteWithAnimations = function(sprite, dataObject){
-    var animations = dataObject.getAnimations();
+const extendSpriteWithAnimations = function(sprite, dataObject){
+    const animations = dataObject.getAnimations();
     if (!animations || typeof animations !== 'object') return;
     Object.keys(animations).forEach(function(key){
-        var data = animations[key];
+        const data = animations[key];
         if (data.length) {
             data.forEach(function(animationData, idx){
                 sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
@@ -93,11 +93,11 @@ var extendSpriteWithAnimations = function(sprite, dataObject){
  * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
  * @return {[object]} 
  */
-var extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
+const extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
     // input events registered on the sprite object
     sprite.events.onInputDown.add(function() {
-        var now;
-        var game = this.game;
+        const game = this.game;
+        let now;
 
         if (GUIActivityManager.getInstance().hasActiveSelection()) {
             return;
