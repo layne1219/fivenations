@@ -1,8 +1,26 @@
 {"frames": [
 
 {
+	"filename": "gui_ico_obj_sm_titaniumasteroid.png",
+	"frame": {"x":56,"y":312,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_obj_titaniumasteroid.png",
+	"frame": {"x":1,"y":1,"w":105,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":105,"h":99},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "titaniummeteor_sm01_00000.png",
-	"frame": {"x":56,"y":260,"w":51,"h":45},
+	"frame": {"x":55,"y":414,"w":51,"h":45},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":124,"y":124,"w":51,"h":45},
@@ -11,7 +29,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00001.png",
-	"frame": {"x":1,"y":149,"w":55,"h":60},
+	"frame": {"x":1,"y":250,"w":55,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":119,"w":55,"h":60},
@@ -20,7 +38,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00002.png",
-	"frame": {"x":59,"y":1,"w":48,"h":62},
+	"frame": {"x":59,"y":102,"w":48,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":123,"y":119,"w":48,"h":62},
@@ -29,7 +47,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00003.png",
-	"frame": {"x":1,"y":333,"w":50,"h":58},
+	"frame": {"x":54,"y":461,"w":50,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":122,"y":124,"w":50,"h":58},
@@ -38,7 +56,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00004.png",
-	"frame": {"x":1,"y":283,"w":52,"h":48},
+	"frame": {"x":1,"y":384,"w":52,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":121,"y":125,"w":52,"h":48},
@@ -47,7 +65,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00005.png",
-	"frame": {"x":1,"y":77,"w":56,"h":70},
+	"frame": {"x":1,"y":178,"w":56,"h":70},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":113,"w":56,"h":70},
@@ -56,7 +74,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00006.png",
-	"frame": {"x":1,"y":1,"w":56,"h":74},
+	"frame": {"x":1,"y":102,"w":56,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":117,"y":111,"w":56,"h":74},
@@ -65,7 +83,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00007.png",
-	"frame": {"x":1,"y":211,"w":53,"h":70},
+	"frame": {"x":1,"y":312,"w":53,"h":70},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":114,"w":53,"h":70},
@@ -74,7 +92,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00008.png",
-	"frame": {"x":59,"y":65,"w":48,"h":47},
+	"frame": {"x":59,"y":166,"w":48,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":124,"y":121,"w":48,"h":47},
@@ -83,7 +101,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00009.png",
-	"frame": {"x":52,"y":400,"w":46,"h":48},
+	"frame": {"x":1,"y":527,"w":46,"h":48},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":124,"y":121,"w":46,"h":48},
@@ -92,7 +110,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00010.png",
-	"frame": {"x":59,"y":114,"w":47,"h":44},
+	"frame": {"x":59,"y":215,"w":47,"h":44},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":123,"y":126,"w":47,"h":44},
@@ -101,7 +119,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00011.png",
-	"frame": {"x":53,"y":353,"w":50,"h":45},
+	"frame": {"x":1,"y":480,"w":50,"h":45},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":122,"y":126,"w":50,"h":45},
@@ -110,7 +128,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00012.png",
-	"frame": {"x":58,"y":160,"w":49,"h":49},
+	"frame": {"x":58,"y":261,"w":49,"h":49},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":121,"y":123,"w":49,"h":49},
@@ -119,7 +137,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00013.png",
-	"frame": {"x":1,"y":393,"w":49,"h":49},
+	"frame": {"x":53,"y":521,"w":49,"h":49},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":122,"y":122,"w":49,"h":49},
@@ -128,7 +146,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00014.png",
-	"frame": {"x":56,"y":211,"w":51,"h":47},
+	"frame": {"x":56,"y":365,"w":51,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":122,"y":124,"w":51,"h":47},
@@ -137,7 +155,7 @@
 },
 {
 	"filename": "titaniummeteor_sm01_00015.png",
-	"frame": {"x":55,"y":307,"w":51,"h":44},
+	"frame": {"x":1,"y":434,"w":51,"h":44},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":123,"y":126,"w":51,"h":44},
@@ -149,8 +167,8 @@
 	"version": "1.0",
 	"image": "asteroid_titanium_sm01.png",
 	"format": "RGBA8888",
-	"size": {"w":108,"h":449},
+	"size": {"w":108,"h":576},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7af2da01b5e39947a2a0f76261a9293e:e0fa876c939660b71c724f1638c54281:e12453e0052962a2dc7ff7293fc5b4de$"
+	"smartupdate": "$TexturePacker:SmartUpdate:12dbdf46a37b9b6456cafb449f76397b:381ae1d5b098e1e3f1baba9e0949762a:e12453e0052962a2dc7ff7293fc5b4de$"
 }
 }

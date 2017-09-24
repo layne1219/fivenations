@@ -1,206 +1,8 @@
 {"frames": [
 
 {
-	"filename": "syl_build_01_buildingphase_end.png",
-	"frame": {"x":325,"y":1,"w":164,"h":154},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":68,"y":69,"w":164,"h":154},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_02_buildingphase_end.png",
-	"frame": {"x":913,"y":1,"w":126,"h":123},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":89,"w":126,"h":123},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_03_buildingphase_end.png",
-	"frame": {"x":1508,"y":1,"w":121,"h":91},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":92,"y":105,"w":121,"h":91},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_04_buildingphase_end.png",
-	"frame": {"x":879,"y":136,"w":126,"h":117},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":95,"w":126,"h":117},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_05_buildingphase01.png",
-	"frame": {"x":1391,"y":118,"w":103,"h":92},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":107,"w":103,"h":92},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_05_buildingphase02.png",
-	"frame": {"x":252,"y":162,"w":126,"h":92},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":107,"w":126,"h":92},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_05_buildingphase03.png",
-	"frame": {"x":1135,"y":126,"w":126,"h":117},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":95,"w":126,"h":117},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_05_buildingphase04.png",
-	"frame": {"x":1164,"y":1,"w":126,"h":117},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":95,"w":126,"h":117},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_06_buildingphase01.png",
-	"frame": {"x":764,"y":148,"w":113,"h":92},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":107,"w":113,"h":92},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_06_buildingphase02.png",
-	"frame": {"x":508,"y":151,"w":126,"h":92},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":107,"w":126,"h":92},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_06_buildingphase03.png",
-	"frame": {"x":1263,"y":120,"w":126,"h":117},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":95,"w":126,"h":117},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_06_buildingphase04.png",
-	"frame": {"x":785,"y":1,"w":126,"h":133},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":79,"w":126,"h":133},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_07_buildingphase_end.png",
-	"frame": {"x":380,"y":157,"w":126,"h":95},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":101,"w":126,"h":95},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_08_buildingphase_end.png",
-	"frame": {"x":636,"y":148,"w":126,"h":107},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":98,"w":126,"h":107},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_09_buildingphase_end.png",
-	"frame": {"x":1,"y":1,"w":156,"h":167},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":77,"y":60,"w":156,"h":167},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_10_buildingphase_end.png",
-	"frame": {"x":1415,"y":1,"w":91,"h":92},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":104,"y":104,"w":91,"h":92},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_11_buildingphase_end.png",
-	"frame": {"x":1,"y":170,"w":126,"h":84},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":107,"w":126,"h":84},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_12_buildingphase_end.png",
-	"frame": {"x":1007,"y":126,"w":126,"h":123},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":89,"w":126,"h":123},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_13_buildingphase_end.png",
-	"frame": {"x":1292,"y":1,"w":121,"h":115},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":92,"y":89,"w":121,"h":115},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_14_buildingphase_end.png",
-	"frame": {"x":491,"y":1,"w":127,"h":148},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":87,"y":77,"w":127,"h":148},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_hq_buildingphase01.png",
-	"frame": {"x":620,"y":1,"w":163,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":70,"y":78,"w":163,"h":145},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "syl_build_hq_buildingphase02.png",
-	"frame": {"x":159,"y":1,"w":164,"h":159},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":69,"y":72,"w":164,"h":159},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
 	"filename": "syl_build_l_buildingphase01.png",
-	"frame": {"x":1391,"y":212,"w":48,"h":32},
+	"frame": {"x":202,"y":155,"w":48,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":126,"y":134,"w":48,"h":32},
@@ -209,7 +11,7 @@
 },
 {
 	"filename": "syl_build_l_buildingphase02.png",
-	"frame": {"x":129,"y":170,"w":121,"h":82},
+	"frame": {"x":124,"y":1,"w":121,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":92,"y":109,"w":121,"h":82},
@@ -218,7 +20,7 @@
 },
 {
 	"filename": "syl_build_l_buildingphase03.png",
-	"frame": {"x":1041,"y":1,"w":121,"h":123},
+	"frame": {"x":1,"y":1,"w":121,"h":123},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":92,"y":89,"w":121,"h":123},
@@ -227,7 +29,7 @@
 },
 {
 	"filename": "syl_build_m_buildingphase01.png",
-	"frame": {"x":1391,"y":212,"w":48,"h":32},
+	"frame": {"x":202,"y":155,"w":48,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":126,"y":134,"w":48,"h":32},
@@ -236,7 +38,7 @@
 },
 {
 	"filename": "syl_build_m_buildingphase02.png",
-	"frame": {"x":1496,"y":187,"w":104,"h":68},
+	"frame": {"x":124,"y":85,"w":104,"h":68},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":116,"w":104,"h":68},
@@ -245,7 +47,7 @@
 },
 {
 	"filename": "syl_build_m_buildingphase03.png",
-	"frame": {"x":1508,"y":94,"w":121,"h":91},
+	"frame": {"x":1,"y":126,"w":121,"h":91},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":92,"y":105,"w":121,"h":91},
@@ -254,7 +56,7 @@
 },
 {
 	"filename": "syl_build_s_buildingphase01.png",
-	"frame": {"x":1391,"y":212,"w":48,"h":32},
+	"frame": {"x":202,"y":155,"w":48,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":126,"y":134,"w":48,"h":32},
@@ -263,7 +65,7 @@
 },
 {
 	"filename": "syl_build_s_buildingphase02.png",
-	"frame": {"x":1602,"y":187,"w":76,"h":68},
+	"frame": {"x":124,"y":155,"w":76,"h":68},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":116,"w":76,"h":68},
@@ -275,8 +77,8 @@
 	"version": "1.0",
 	"image": "syl_build_buildingphases.png",
 	"format": "RGBA8888",
-	"size": {"w":1679,"h":256},
+	"size": {"w":251,"h":224},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:621423083f0276988f7833e411135980:868a8530f6b31fd27bcb2d07d1a9cf70:45be2685172b401bfbb9dfbbc21107c8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c8b3cf082f56a0ea206e16f60ee72a0e:da9c005e7ddda9ef143311618c97d629:45be2685172b401bfbb9dfbbc21107c8$"
 }
 }

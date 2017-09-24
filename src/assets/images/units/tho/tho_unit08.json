@@ -1,8 +1,35 @@
 {"frames": [
 
 {
+	"filename": "gui_construct_tho_unit08.png",
+	"frame": {"x":148,"y":1,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_tho_sm_unit08.png",
+	"frame": {"x":95,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_tho_unit08.png",
+	"frame": {"x":1,"y":1,"w":92,"h":89},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":11,"w":92,"h":89},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "tho08_0000.png",
-	"frame": {"x":59,"y":1,"w":25,"h":38},
+	"frame": {"x":130,"y":54,"w":25,"h":38},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":137,"y":126,"w":25,"h":38},
@@ -11,7 +38,7 @@
 },
 {
 	"filename": "tho08_0001.png",
-	"frame": {"x":1,"y":1,"w":26,"h":39},
+	"frame": {"x":223,"y":1,"w":26,"h":39},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":127,"w":26,"h":39},
@@ -20,7 +47,7 @@
 },
 {
 	"filename": "tho08_0002.png",
-	"frame": {"x":86,"y":1,"w":33,"h":36},
+	"frame": {"x":95,"y":54,"w":33,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":129,"y":128,"w":33,"h":36},
@@ -29,7 +56,7 @@
 },
 {
 	"filename": "tho08_0003.png",
-	"frame": {"x":196,"y":1,"w":37,"h":30},
+	"frame": {"x":41,"y":92,"w":37,"h":30},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":127,"y":131,"w":37,"h":30},
@@ -38,7 +65,7 @@
 },
 {
 	"filename": "tho08_0004.png",
-	"frame": {"x":170,"y":33,"w":37,"h":24},
+	"frame": {"x":80,"y":92,"w":37,"h":24},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":128,"y":134,"w":37,"h":24},
@@ -47,7 +74,7 @@
 },
 {
 	"filename": "tho08_0005.png",
-	"frame": {"x":235,"y":1,"w":37,"h":17},
+	"frame": {"x":197,"y":104,"w":37,"h":17},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":127,"y":137,"w":37,"h":17},
@@ -56,7 +83,7 @@
 },
 {
 	"filename": "tho08_0006.png",
-	"frame": {"x":41,"y":41,"w":34,"h":19},
+	"frame": {"x":187,"y":60,"w":34,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":128,"y":135,"w":34,"h":19},
@@ -65,7 +92,7 @@
 },
 {
 	"filename": "tho08_0007.png",
-	"frame": {"x":112,"y":39,"w":27,"h":21},
+	"frame": {"x":157,"y":81,"w":27,"h":21},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":27,"h":21},
@@ -74,7 +101,7 @@
 },
 {
 	"filename": "tho08_0008.png",
-	"frame": {"x":209,"y":33,"w":24,"h":21},
+	"frame": {"x":223,"y":42,"w":24,"h":21},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":137,"y":134,"w":24,"h":21},
@@ -83,7 +110,7 @@
 },
 {
 	"filename": "tho08_0009.png",
-	"frame": {"x":141,"y":39,"w":27,"h":21},
+	"frame": {"x":186,"y":81,"w":27,"h":21},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":138,"y":134,"w":27,"h":21},
@@ -92,7 +119,7 @@
 },
 {
 	"filename": "tho08_0010.png",
-	"frame": {"x":77,"y":41,"w":33,"h":19},
+	"frame": {"x":188,"y":39,"w":33,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":136,"y":135,"w":33,"h":19},
@@ -101,7 +128,7 @@
 },
 {
 	"filename": "tho08_0011.png",
-	"frame": {"x":1,"y":42,"w":38,"h":18},
+	"frame": {"x":157,"y":104,"w":38,"h":18},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":136,"w":38,"h":18},
@@ -110,7 +137,7 @@
 },
 {
 	"filename": "tho08_0012.png",
-	"frame": {"x":235,"y":20,"w":36,"h":23},
+	"frame": {"x":119,"y":94,"w":36,"h":23},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":134,"w":36,"h":23},
@@ -119,7 +146,7 @@
 },
 {
 	"filename": "tho08_0013.png",
-	"frame": {"x":156,"y":1,"w":38,"h":30},
+	"frame": {"x":1,"y":92,"w":38,"h":30},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":131,"w":38,"h":30},
@@ -128,7 +155,7 @@
 },
 {
 	"filename": "tho08_0014.png",
-	"frame": {"x":121,"y":1,"w":33,"h":36},
+	"frame": {"x":188,"y":1,"w":33,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":137,"y":128,"w":33,"h":36},
@@ -137,7 +164,7 @@
 },
 {
 	"filename": "tho08_0015.png",
-	"frame": {"x":29,"y":1,"w":28,"h":38},
+	"frame": {"x":157,"y":41,"w":28,"h":38},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":138,"y":127,"w":28,"h":38},
@@ -149,8 +176,8 @@
 	"version": "1.0",
 	"image": "tho_unit08.png",
 	"format": "RGBA8888",
-	"size": {"w":273,"h":61},
+	"size": {"w":250,"h":123},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:28339dc54b622db6fdc9d31029dc0245:e8c0007ec3d4bed653d51f5f456fa16d:31a625ef3c6843f5baaedd23b07974b6$"
+	"smartupdate": "$TexturePacker:SmartUpdate:02f29ada53c5217f80c3a9ca5e15add2:03c52ac86737460c1e39c6cccad32933:31a625ef3c6843f5baaedd23b07974b6$"
 }
 }

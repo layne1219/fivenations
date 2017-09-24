@@ -1,134 +1,8 @@
 {"frames": [
 
 {
-	"filename": "tho_build_01_buildingphase_end.png",
-	"frame": {"x":1,"y":1,"w":185,"h":173},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":59,"y":68,"w":185,"h":173},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_02_buildingphase_end.png",
-	"frame": {"x":353,"y":1,"w":104,"h":135},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":81,"w":104,"h":135},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_03_buildingphase_end.png",
-	"frame": {"x":166,"y":615,"w":104,"h":121},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":95,"w":104,"h":121},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_04_buildingphase_end.png",
-	"frame": {"x":272,"y":603,"w":104,"h":121},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":95,"w":104,"h":121},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_05_buildingphase_end.png",
-	"frame": {"x":390,"y":384,"w":92,"h":82},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":104,"y":101,"w":92,"h":82},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_06_buildingphase_end.png",
-	"frame": {"x":1,"y":176,"w":168,"h":173},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":64,"y":68,"w":168,"h":173},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_07_buildingphase_end.png",
-	"frame": {"x":188,"y":1,"w":163,"h":173},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":69,"y":68,"w":163,"h":173},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_08_buildingphase_end.png",
-	"frame": {"x":166,"y":478,"w":104,"h":135},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":81,"w":104,"h":135},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_09_buildingphase_end.png",
-	"frame": {"x":166,"y":351,"w":115,"h":125},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":95,"w":115,"h":125},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_10_buildingphase_end.png",
-	"frame": {"x":171,"y":176,"w":163,"h":173},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":69,"y":68,"w":163,"h":173},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_11_buildingphase_end.png",
-	"frame": {"x":390,"y":138,"w":104,"h":121},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":95,"w":104,"h":121},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_12_buildingphase_end.png",
-	"frame": {"x":379,"y":590,"w":86,"h":84},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":100,"w":86,"h":84},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_13_buildingphase_end.png",
-	"frame": {"x":390,"y":261,"w":104,"h":121},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":95,"w":104,"h":121},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "tho_build_14_buildingphase_end.png",
-	"frame": {"x":1,"y":351,"w":163,"h":178},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":69,"y":68,"w":163,"h":178},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
 	"filename": "tho_build_L_buildingphase01.png",
-	"frame": {"x":1,"y":706,"w":51,"h":35},
+	"frame": {"x":1,"y":176,"w":51,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":124,"y":137,"w":51,"h":35},
@@ -137,7 +11,7 @@
 },
 {
 	"filename": "tho_build_L_buildingphase02.png",
-	"frame": {"x":283,"y":351,"w":105,"h":127},
+	"frame": {"x":166,"y":1,"w":105,"h":127},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":88,"w":105,"h":127},
@@ -146,7 +20,7 @@
 },
 {
 	"filename": "tho_build_L_buildingphase03.png",
-	"frame": {"x":1,"y":531,"w":163,"h":173},
+	"frame": {"x":1,"y":1,"w":163,"h":173},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":68,"y":68,"w":163,"h":173},
@@ -155,7 +29,7 @@
 },
 {
 	"filename": "tho_build_M_buildingphase01.png",
-	"frame": {"x":1,"y":706,"w":51,"h":35},
+	"frame": {"x":1,"y":176,"w":51,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":124,"y":137,"w":51,"h":35},
@@ -164,7 +38,7 @@
 },
 {
 	"filename": "tho_build_M_buildingphase02.png",
-	"frame": {"x":379,"y":480,"w":105,"h":108},
+	"frame": {"x":273,"y":124,"w":105,"h":108},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":94,"w":105,"h":108},
@@ -173,7 +47,7 @@
 },
 {
 	"filename": "tho_build_M_buildingphase03.png",
-	"frame": {"x":272,"y":480,"w":105,"h":121},
+	"frame": {"x":273,"y":1,"w":105,"h":121},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":94,"w":105,"h":121},
@@ -182,7 +56,7 @@
 },
 {
 	"filename": "tho_build_S_buildingphase01.png",
-	"frame": {"x":1,"y":706,"w":51,"h":35},
+	"frame": {"x":1,"y":176,"w":51,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":124,"y":137,"w":51,"h":35},
@@ -191,7 +65,7 @@
 },
 {
 	"filename": "tho_build_S_buildingphase02.png",
-	"frame": {"x":378,"y":676,"w":86,"h":85},
+	"frame": {"x":166,"y":130,"w":86,"h":85},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":99,"w":86,"h":85},
@@ -203,8 +77,8 @@
 	"version": "1.0",
 	"image": "tho_build_buildingphases.png",
 	"format": "RGBA8888",
-	"size": {"w":495,"h":762},
+	"size": {"w":379,"h":233},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8c28a0a2be65302abf746a4aac500f5d:57d7ceff10ecbeba2c4186e1a182080b:8f8e29dfb52972a1dff0a463d6d39064$"
+	"smartupdate": "$TexturePacker:SmartUpdate:830742ed0350b9e9772c945e7aa4263b:71680535ac651f407bf966b9142e59c1:8f8e29dfb52972a1dff0a463d6d39064$"
 }
 }

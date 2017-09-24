@@ -1,8 +1,17 @@
 {"frames": [
 
 {
+	"filename": "fed07_building_buildend.png",
+	"frame": {"x":1,"y":1,"w":175,"h":145},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":71,"w":175,"h":145},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "fed_build07_00000.png",
-	"frame": {"x":1,"y":1104,"w":118,"h":177},
+	"frame": {"x":121,"y":699,"w":118,"h":177},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":39,"w":118,"h":177},
@@ -11,7 +20,7 @@
 },
 {
 	"filename": "fed_build07_00001.png",
-	"frame": {"x":1,"y":1,"w":118,"h":182},
+	"frame": {"x":1,"y":148,"w":118,"h":182},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":34,"w":118,"h":182},
@@ -20,7 +29,7 @@
 },
 {
 	"filename": "fed_build07_00002.png",
-	"frame": {"x":1,"y":185,"w":118,"h":182},
+	"frame": {"x":121,"y":148,"w":118,"h":182},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":34,"w":118,"h":182},
@@ -29,7 +38,7 @@
 },
 {
 	"filename": "fed_build07_00003.png",
-	"frame": {"x":1,"y":369,"w":118,"h":182},
+	"frame": {"x":1,"y":332,"w":118,"h":182},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":34,"w":118,"h":182},
@@ -38,7 +47,7 @@
 },
 {
 	"filename": "fed_build07_00004.png",
-	"frame": {"x":1,"y":553,"w":118,"h":182},
+	"frame": {"x":121,"y":332,"w":118,"h":182},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":34,"w":118,"h":182},
@@ -47,7 +56,7 @@
 },
 {
 	"filename": "fed_build07_00005.png",
-	"frame": {"x":1,"y":737,"w":118,"h":182},
+	"frame": {"x":1,"y":516,"w":118,"h":182},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":34,"w":118,"h":182},
@@ -56,7 +65,7 @@
 },
 {
 	"filename": "fed_build07_00006.png",
-	"frame": {"x":1,"y":921,"w":118,"h":181},
+	"frame": {"x":121,"y":516,"w":118,"h":181},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":35,"w":118,"h":181},
@@ -65,7 +74,7 @@
 },
 {
 	"filename": "fed_build07_00007.png",
-	"frame": {"x":1,"y":1283,"w":118,"h":177},
+	"frame": {"x":1,"y":700,"w":118,"h":177},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":39,"w":118,"h":177},
@@ -74,7 +83,7 @@
 },
 {
 	"filename": "fed_build07_00008.png",
-	"frame": {"x":1,"y":1462,"w":118,"h":177},
+	"frame": {"x":121,"y":878,"w":118,"h":177},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":39,"w":118,"h":177},
@@ -83,7 +92,7 @@
 },
 {
 	"filename": "fed_build07_00009.png",
-	"frame": {"x":1,"y":1641,"w":118,"h":177},
+	"frame": {"x":1,"y":879,"w":118,"h":177},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":39,"w":118,"h":177},
@@ -92,11 +101,38 @@
 },
 {
 	"filename": "fed_build07_00010.png",
-	"frame": {"x":1,"y":1820,"w":118,"h":177},
+	"frame": {"x":121,"y":1057,"w":118,"h":177},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":84,"y":39,"w":118,"h":177},
 	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_fed_build07.png",
+	"frame": {"x":178,"y":54,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_build07.png",
+	"frame": {"x":1,"y":1058,"w":82,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":0,"w":82,"h":111},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_sm_build07.png",
+	"frame": {"x":178,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -104,8 +140,8 @@
 	"version": "1.0",
 	"image": "fed_build07.png",
 	"format": "RGBA8888",
-	"size": {"w":120,"h":1998},
+	"size": {"w":240,"h":1235},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:281d67f32332ddfaa401f7a097100b9e:a56ab2fa96b11c689257d50d666f6cb7:73ddd68281c303deec1633d0cf527ff8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:4e22ba55982cdca393206a0fc4a28927:184b10b2a46e37e62143bdd58f2bf7ff:73ddd68281c303deec1633d0cf527ff8$"
 }
 }

@@ -51,34 +51,14 @@
           authorised: true
         });
 
-        var names = [
-          'spawn',
-          'guard',
-          'venator',
-          'mind',
-          'overseer',
-          'swarmmother',
-          'spikeworm',
-          'queen',
-          'ovum',
-          'mindovum',
-          'reincarnate',
-          'worker',
-          'rictus',
-          'mite',
-          'ruptor',
-          'decay'
-        ];
-
-        for (var i = 15; i >= 0; i -= 1) {
+        Object.keys(window.fivenations.entities).forEach(function(id) {
             game.eventEmitter.synced.entities.add({
-                id: names[i],
+                id: id,
                 team: 1,
-                x: 350 + Math.random() * 500,
-                y: 350 + Math.random() * 500
+                x: 50 + Math.random() * 700,
+                y: 50 + Math.random() * 700
             });
-        }
-
+        });
 
       });
       app.start();

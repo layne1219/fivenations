@@ -1,6 +1,15 @@
 {"frames": [
 
 {
+	"filename": "fed10_building_buildend.png",
+	"frame": {"x":3181,"y":1,"w":175,"h":149},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":74,"w":175,"h":149},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "fed_build10_00000.png",
 	"frame": {"x":1,"y":1,"w":157,"h":176},
 	"rotated": false,
@@ -179,14 +188,41 @@
 	"spriteSourceSize": {"x":72,"y":59,"w":157,"h":176},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_fed_build10.png",
+	"frame": {"x":3411,"y":114,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_build10.png",
+	"frame": {"x":3358,"y":1,"w":89,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":0,"w":89,"h":111},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_sm_build10.png",
+	"frame": {"x":3358,"y":114,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "fed_build10.png",
 	"format": "RGBA8888",
-	"size": {"w":3180,"h":178},
+	"size": {"w":3450,"h":178},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:cda8bc83bd732612b908573d4974f90a:9a2c309690f9a17841a75354c195e61b:6587d49023d4e24ddcc8d684f4ab7f30$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ecef304295982a96ed6f47a8f821025b:c35e90d00d2597f4da83fc8facd20df7:6587d49023d4e24ddcc8d684f4ab7f30$"
 }
 }

@@ -2,11 +2,74 @@
 
 {
 	"filename": "ath_build03_0000.png",
-	"frame": {"x":1,"y":1,"w":62,"h":58},
+	"frame": {"x":1,"y":91,"w":62,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":119,"y":121,"w":62,"h":58},
 	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_03_buildingphase01.png",
+	"frame": {"x":65,"y":91,"w":62,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":121,"w":62,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_03_buildingphase02.png",
+	"frame": {"x":1,"y":151,"w":62,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":121,"w":62,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_03_buildingphase03.png",
+	"frame": {"x":65,"y":151,"w":62,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":121,"w":62,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_03_buildingphase04.png",
+	"frame": {"x":1,"y":211,"w":62,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":121,"w":62,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_ath_build03.png",
+	"frame": {"x":88,"y":1,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_ath_build03.png",
+	"frame": {"x":1,"y":1,"w":85,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":10,"w":85,"h":88},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_ath_sm_build03.png",
+	"frame": {"x":65,"y":211,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -14,8 +77,8 @@
 	"version": "1.0",
 	"image": "ath_build03.png",
 	"format": "RGBA8888",
-	"size": {"w":64,"h":60},
+	"size": {"w":128,"h":270},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:23946da70c10a2045598076ebf5c82ca:f8f304139240360c3764d4f1a991a396:6d34319030b63736362e194106dd74dc$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3007d6ef6cb4173bd1a1dcad26d0cc6e:1d62dc0a8a6ec4941c94b547c8a8b518:6d34319030b63736362e194106dd74dc$"
 }
 }

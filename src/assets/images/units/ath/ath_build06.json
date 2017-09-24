@@ -2,7 +2,7 @@
 
 {
 	"filename": "ath_build06_00000.png",
-	"frame": {"x":1,"y":561,"w":60,"h":77},
+	"frame": {"x":63,"y":110,"w":60,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":105,"w":60,"h":77},
@@ -11,7 +11,7 @@
 },
 {
 	"filename": "ath_build06_00001.png",
-	"frame": {"x":1,"y":640,"w":60,"h":77},
+	"frame": {"x":63,"y":189,"w":60,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":105,"w":60,"h":77},
@@ -20,7 +20,7 @@
 },
 {
 	"filename": "ath_build06_00002.png",
-	"frame": {"x":1,"y":1,"w":60,"h":78},
+	"frame": {"x":1,"y":110,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -29,7 +29,7 @@
 },
 {
 	"filename": "ath_build06_00003.png",
-	"frame": {"x":1,"y":81,"w":60,"h":78},
+	"frame": {"x":1,"y":190,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -38,7 +38,7 @@
 },
 {
 	"filename": "ath_build06_00004.png",
-	"frame": {"x":1,"y":161,"w":60,"h":78},
+	"frame": {"x":1,"y":270,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -47,7 +47,7 @@
 },
 {
 	"filename": "ath_build06_00005.png",
-	"frame": {"x":1,"y":241,"w":60,"h":78},
+	"frame": {"x":1,"y":350,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -56,7 +56,7 @@
 },
 {
 	"filename": "ath_build06_00006.png",
-	"frame": {"x":1,"y":321,"w":60,"h":78},
+	"frame": {"x":1,"y":430,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -65,7 +65,7 @@
 },
 {
 	"filename": "ath_build06_00007.png",
-	"frame": {"x":1,"y":401,"w":60,"h":78},
+	"frame": {"x":1,"y":510,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "ath_build06_00008.png",
-	"frame": {"x":1,"y":481,"w":60,"h":78},
+	"frame": {"x":1,"y":590,"w":60,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":104,"w":60,"h":78},
@@ -83,7 +83,7 @@
 },
 {
 	"filename": "ath_build06_00009.png",
-	"frame": {"x":1,"y":719,"w":60,"h":77},
+	"frame": {"x":63,"y":268,"w":60,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":105,"w":60,"h":77},
@@ -92,11 +92,74 @@
 },
 {
 	"filename": "ath_build06_00010.png",
-	"frame": {"x":1,"y":798,"w":60,"h":77},
+	"frame": {"x":63,"y":347,"w":60,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":105,"w":60,"h":77},
 	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_06_buildingphase00.png",
+	"frame": {"x":1,"y":670,"w":60,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":120,"y":111,"w":60,"h":71},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_06_buildingphase01.png",
+	"frame": {"x":63,"y":426,"w":60,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":120,"y":110,"w":60,"h":72},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_06_buildingphase02.png",
+	"frame": {"x":63,"y":500,"w":60,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":120,"y":110,"w":60,"h":72},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ath_build_06_buildingphase03.png",
+	"frame": {"x":63,"y":574,"w":60,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":120,"y":110,"w":60,"h":72},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_ath_build06.png",
+	"frame": {"x":63,"y":701,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_ath_build06.png",
+	"frame": {"x":1,"y":1,"w":101,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":3,"w":101,"h":107},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_ath_sm_build06.png",
+	"frame": {"x":63,"y":648,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -104,8 +167,8 @@
 	"version": "1.0",
 	"image": "ath_build06.png",
 	"format": "RGBA8888",
-	"size": {"w":62,"h":876},
+	"size": {"w":124,"h":742},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e2032fa54cb53a53ee93daa49207d9d3:cfdb6641eb6bd87fc07600e40b75e6b4:9e1e323d06a29fa52898290a654765f9$"
+	"smartupdate": "$TexturePacker:SmartUpdate:42761878a6ad3d693e28bbd624365099:0587a2dc7a919cf428f58f9e14fda041:9e1e323d06a29fa52898290a654765f9$"
 }
 }

@@ -1,8 +1,26 @@
 {"frames": [
 
 {
+	"filename": "gui_ico_obj_siliciumasteroid.png",
+	"frame": {"x":1636,"y":126,"w":119,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":119,"h":108},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_obj_sm_siliciumasteroid.png",
+	"frame": {"x":1690,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "siliconmeteor_01_00000.png",
-	"frame": {"x":1156,"y":1,"w":98,"h":113},
+	"frame": {"x":1231,"y":128,"w":98,"h":113},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":86,"w":98,"h":113},
@@ -11,7 +29,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00001.png",
-	"frame": {"x":1562,"y":116,"w":98,"h":116},
+	"frame": {"x":312,"y":133,"w":98,"h":116},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":87,"w":98,"h":116},
@@ -20,7 +38,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00002.png",
-	"frame": {"x":211,"y":132,"w":99,"h":119},
+	"frame": {"x":822,"y":129,"w":99,"h":119},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":89,"w":99,"h":119},
@@ -29,7 +47,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00003.png",
-	"frame": {"x":418,"y":131,"w":98,"h":119},
+	"frame": {"x":923,"y":129,"w":98,"h":119},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":103,"y":93,"w":98,"h":119},
@@ -38,7 +56,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00004.png",
-	"frame": {"x":518,"y":128,"w":103,"h":125},
+	"frame": {"x":1169,"y":1,"w":103,"h":125},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":88,"w":103,"h":125},
@@ -47,7 +65,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00005.png",
-	"frame": {"x":1046,"y":117,"w":104,"h":130},
+	"frame": {"x":219,"y":1,"w":104,"h":130},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":86,"w":104,"h":130},
@@ -56,7 +74,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00006.png",
-	"frame": {"x":938,"y":117,"w":106,"h":132},
+	"frame": {"x":1,"y":1,"w":106,"h":132},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":84,"w":106,"h":132},
@@ -65,7 +83,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00007.png",
-	"frame": {"x":1,"y":1,"w":108,"h":131},
+	"frame": {"x":109,"y":1,"w":108,"h":131},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":84,"w":108,"h":131},
@@ -74,7 +92,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00008.png",
-	"frame": {"x":111,"y":1,"w":108,"h":129},
+	"frame": {"x":429,"y":1,"w":108,"h":129},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":84,"w":108,"h":129},
@@ -83,7 +101,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00009.png",
-	"frame": {"x":623,"y":126,"w":103,"h":126},
+	"frame": {"x":748,"y":1,"w":103,"h":126},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":100,"y":86,"w":103,"h":126},
@@ -92,7 +110,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00010.png",
-	"frame": {"x":536,"y":1,"w":104,"h":123},
+	"frame": {"x":1482,"y":1,"w":104,"h":123},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":87,"w":104,"h":123},
@@ -101,7 +119,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00011.png",
-	"frame": {"x":1256,"y":1,"w":102,"h":125},
+	"frame": {"x":1274,"y":1,"w":102,"h":125},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":85,"w":102,"h":125},
@@ -110,7 +128,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00012.png",
-	"frame": {"x":728,"y":126,"w":103,"h":126},
+	"frame": {"x":853,"y":1,"w":103,"h":126},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":84,"w":103,"h":126},
@@ -119,7 +137,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00013.png",
-	"frame": {"x":326,"y":1,"w":102,"h":128},
+	"frame": {"x":644,"y":1,"w":102,"h":128},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":83,"w":102,"h":128},
@@ -128,7 +146,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00014.png",
-	"frame": {"x":1152,"y":116,"w":102,"h":130},
+	"frame": {"x":325,"y":1,"w":102,"h":130},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":82,"w":102,"h":130},
@@ -137,7 +155,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00015.png",
-	"frame": {"x":221,"y":1,"w":103,"h":129},
+	"frame": {"x":539,"y":1,"w":103,"h":129},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":83,"w":103,"h":129},
@@ -146,7 +164,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00016.png",
-	"frame": {"x":833,"y":126,"w":103,"h":126},
+	"frame": {"x":958,"y":1,"w":103,"h":126},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":85,"w":103,"h":126},
@@ -155,7 +173,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00017.png",
-	"frame": {"x":1,"y":134,"w":103,"h":118},
+	"frame": {"x":717,"y":131,"w":103,"h":118},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":88,"w":103,"h":118},
@@ -164,7 +182,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00018.png",
-	"frame": {"x":312,"y":132,"w":104,"h":113},
+	"frame": {"x":1023,"y":129,"w":104,"h":113},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":90,"w":104,"h":113},
@@ -173,7 +191,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00019.png",
-	"frame": {"x":848,"y":1,"w":102,"h":114},
+	"frame": {"x":1,"y":135,"w":102,"h":114},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":89,"w":102,"h":114},
@@ -182,7 +200,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00020.png",
-	"frame": {"x":1360,"y":118,"w":99,"h":115},
+	"frame": {"x":515,"y":132,"w":99,"h":115},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":91,"w":99,"h":115},
@@ -191,7 +209,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00021.png",
-	"frame": {"x":1360,"y":1,"w":101,"h":115},
+	"frame": {"x":412,"y":133,"w":101,"h":115},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":94,"w":101,"h":115},
@@ -200,7 +218,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00022.png",
-	"frame": {"x":106,"y":134,"w":103,"h":115},
+	"frame": {"x":207,"y":134,"w":103,"h":115},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":94,"w":103,"h":115},
@@ -209,7 +227,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00023.png",
-	"frame": {"x":642,"y":1,"w":102,"h":123},
+	"frame": {"x":1532,"y":126,"w":102,"h":123},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":86,"w":102,"h":123},
@@ -218,7 +236,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00024.png",
-	"frame": {"x":430,"y":1,"w":104,"h":125},
+	"frame": {"x":1063,"y":1,"w":104,"h":125},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":82,"w":104,"h":125},
@@ -227,7 +245,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00025.png",
-	"frame": {"x":1256,"y":128,"w":102,"h":125},
+	"frame": {"x":1378,"y":1,"w":102,"h":125},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":80,"w":102,"h":125},
@@ -236,7 +254,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00026.png",
-	"frame": {"x":746,"y":1,"w":100,"h":123},
+	"frame": {"x":1588,"y":1,"w":100,"h":123},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":79,"w":100,"h":123},
@@ -245,7 +263,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00027.png",
-	"frame": {"x":952,"y":1,"w":100,"h":114},
+	"frame": {"x":105,"y":135,"w":100,"h":114},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":78,"w":100,"h":114},
@@ -254,7 +272,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00028.png",
-	"frame": {"x":1461,"y":118,"w":99,"h":115},
+	"frame": {"x":616,"y":132,"w":99,"h":115},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":79,"w":99,"h":115},
@@ -263,7 +281,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00029.png",
-	"frame": {"x":1463,"y":1,"w":98,"h":113},
+	"frame": {"x":1331,"y":128,"w":98,"h":113},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":82,"w":98,"h":113},
@@ -272,7 +290,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00030.png",
-	"frame": {"x":1054,"y":1,"w":100,"h":113},
+	"frame": {"x":1129,"y":128,"w":100,"h":113},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":100,"y":85,"w":100,"h":113},
@@ -281,7 +299,7 @@
 },
 {
 	"filename": "siliconmeteor_01_00031.png",
-	"frame": {"x":1563,"y":1,"w":99,"h":110},
+	"frame": {"x":1431,"y":128,"w":99,"h":110},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":100,"y":87,"w":99,"h":110},
@@ -293,8 +311,8 @@
 	"version": "1.0",
 	"image": "asteroid_silicon01.png",
 	"format": "RGBA8888",
-	"size": {"w":1663,"h":254},
+	"size": {"w":1756,"h":250},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a01dd361d191b7a3212f60c90228dab4:56de2a69c626d0a2b68879d679e681cd:83ad808dda4e0ba0a59fdcb3201e4b01$"
+	"smartupdate": "$TexturePacker:SmartUpdate:710feadcd30905820d81d3bd2b2ac9af:1062f4944bd3562a0d01f22dc39e7e3f:83ad808dda4e0ba0a59fdcb3201e4b01$"
 }
 }

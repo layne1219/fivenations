@@ -2,7 +2,7 @@
 
 {
 	"filename": "fed13_0000.png",
-	"frame": {"x":52,"y":1,"w":49,"h":76},
+	"frame": {"x":128,"y":530,"w":49,"h":76},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":125,"y":114,"w":49,"h":76},
@@ -11,7 +11,7 @@
 },
 {
 	"filename": "fed13_0001.png",
-	"frame": {"x":204,"y":1,"w":49,"h":74},
+	"frame": {"x":195,"y":172,"w":49,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":132,"y":115,"w":49,"h":74},
@@ -20,7 +20,7 @@
 },
 {
 	"filename": "fed13_0002.png",
-	"frame": {"x":432,"y":1,"w":62,"h":71},
+	"frame": {"x":184,"y":248,"w":62,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":125,"y":116,"w":62,"h":71},
@@ -29,7 +29,7 @@
 },
 {
 	"filename": "fed13_0003.png",
-	"frame": {"x":708,"y":1,"w":72,"h":65},
+	"frame": {"x":85,"y":389,"w":72,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":119,"y":119,"w":72,"h":65},
@@ -38,7 +38,7 @@
 },
 {
 	"filename": "fed13_0004.png",
-	"frame": {"x":767,"y":68,"w":82,"h":59},
+	"frame": {"x":1,"y":327,"w":82,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":122,"w":82,"h":59},
@@ -47,7 +47,7 @@
 },
 {
 	"filename": "fed13_0005.png",
-	"frame": {"x":940,"y":1,"w":89,"h":53},
+	"frame": {"x":1,"y":216,"w":89,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":125,"w":89,"h":53},
@@ -56,7 +56,7 @@
 },
 {
 	"filename": "fed13_0006.png",
-	"frame": {"x":195,"y":79,"w":96,"h":46},
+	"frame": {"x":1,"y":119,"w":96,"h":46},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":128,"w":96,"h":46},
@@ -65,7 +65,7 @@
 },
 {
 	"filename": "fed13_0007.png",
-	"frame": {"x":1135,"y":1,"w":100,"h":36},
+	"frame": {"x":1,"y":1,"w":100,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":133,"w":100,"h":36},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "fed13_0008.png",
-	"frame": {"x":1031,"y":1,"w":102,"h":36},
+	"frame": {"x":103,"y":1,"w":102,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":136,"w":102,"h":36},
@@ -83,7 +83,7 @@
 },
 {
 	"filename": "fed13_0009.png",
-	"frame": {"x":390,"y":75,"w":100,"h":40},
+	"frame": {"x":1,"y":77,"w":100,"h":40},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":137,"w":100,"h":40},
@@ -92,7 +92,7 @@
 },
 {
 	"filename": "fed13_0010.png",
-	"frame": {"x":1,"y":80,"w":95,"h":47},
+	"frame": {"x":1,"y":167,"w":95,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":133,"w":95,"h":47},
@@ -101,7 +101,7 @@
 },
 {
 	"filename": "fed13_0011.png",
-	"frame": {"x":676,"y":70,"w":89,"h":54},
+	"frame": {"x":1,"y":271,"w":89,"h":54},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":128,"w":89,"h":54},
@@ -110,7 +110,7 @@
 },
 {
 	"filename": "fed13_0012.png",
-	"frame": {"x":856,"y":1,"w":82,"h":60},
+	"frame": {"x":169,"y":328,"w":82,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":124,"w":82,"h":60},
@@ -119,7 +119,7 @@
 },
 {
 	"filename": "fed13_0013.png",
-	"frame": {"x":634,"y":1,"w":72,"h":67},
+	"frame": {"x":1,"y":450,"w":72,"h":67},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":119,"y":121,"w":72,"h":67},
@@ -128,7 +128,7 @@
 },
 {
 	"filename": "fed13_0014.png",
-	"frame": {"x":305,"y":1,"w":62,"h":72},
+	"frame": {"x":1,"y":519,"w":62,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":125,"y":118,"w":62,"h":72},
@@ -137,7 +137,7 @@
 },
 {
 	"filename": "fed13_0015.png",
-	"frame": {"x":103,"y":1,"w":49,"h":76},
+	"frame": {"x":179,"y":530,"w":49,"h":76},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":132,"y":116,"w":49,"h":76},
@@ -146,7 +146,7 @@
 },
 {
 	"filename": "fed13_0016.png",
-	"frame": {"x":1,"y":1,"w":49,"h":77},
+	"frame": {"x":51,"y":599,"w":49,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":125,"y":116,"w":49,"h":77},
@@ -155,7 +155,7 @@
 },
 {
 	"filename": "fed13_0017.png",
-	"frame": {"x":154,"y":1,"w":48,"h":76},
+	"frame": {"x":1,"y":593,"w":48,"h":76},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":116,"w":48,"h":76},
@@ -164,7 +164,7 @@
 },
 {
 	"filename": "fed13_0018.png",
-	"frame": {"x":369,"y":1,"w":61,"h":72},
+	"frame": {"x":65,"y":525,"w":61,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":118,"w":61,"h":72},
@@ -173,7 +173,7 @@
 },
 {
 	"filename": "fed13_0019.png",
-	"frame": {"x":559,"y":1,"w":73,"h":67},
+	"frame": {"x":75,"y":456,"w":73,"h":67},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":121,"w":73,"h":67},
@@ -182,7 +182,7 @@
 },
 {
 	"filename": "fed13_0020.png",
-	"frame": {"x":935,"y":63,"w":82,"h":60},
+	"frame": {"x":1,"y":388,"w":82,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":124,"w":82,"h":60},
@@ -191,7 +191,7 @@
 },
 {
 	"filename": "fed13_0021.png",
-	"frame": {"x":584,"y":70,"w":90,"h":55},
+	"frame": {"x":92,"y":271,"w":90,"h":55},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":128,"w":90,"h":55},
@@ -200,7 +200,7 @@
 },
 {
 	"filename": "fed13_0022.png",
-	"frame": {"x":98,"y":79,"w":95,"h":47},
+	"frame": {"x":98,"y":167,"w":95,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":133,"w":95,"h":47},
@@ -209,7 +209,7 @@
 },
 {
 	"filename": "fed13_0023.png",
-	"frame": {"x":1019,"y":56,"w":100,"h":40},
+	"frame": {"x":103,"y":77,"w":100,"h":40},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":137,"w":100,"h":40},
@@ -218,7 +218,7 @@
 },
 {
 	"filename": "fed13_0024.png",
-	"frame": {"x":1121,"y":39,"w":102,"h":36},
+	"frame": {"x":1,"y":39,"w":102,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":136,"w":102,"h":36},
@@ -227,7 +227,7 @@
 },
 {
 	"filename": "fed13_0025.png",
-	"frame": {"x":1121,"y":77,"w":100,"h":36},
+	"frame": {"x":105,"y":39,"w":100,"h":36},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":99,"y":133,"w":100,"h":36},
@@ -236,7 +236,7 @@
 },
 {
 	"filename": "fed13_0026.png",
-	"frame": {"x":293,"y":77,"w":95,"h":46},
+	"frame": {"x":99,"y":119,"w":95,"h":46},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":128,"w":95,"h":46},
@@ -245,7 +245,7 @@
 },
 {
 	"filename": "fed13_0027.png",
-	"frame": {"x":492,"y":74,"w":90,"h":53},
+	"frame": {"x":92,"y":216,"w":90,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":125,"w":90,"h":53},
@@ -254,7 +254,7 @@
 },
 {
 	"filename": "fed13_0028.png",
-	"frame": {"x":851,"y":68,"w":82,"h":59},
+	"frame": {"x":85,"y":328,"w":82,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":122,"w":82,"h":59},
@@ -263,7 +263,7 @@
 },
 {
 	"filename": "fed13_0029.png",
-	"frame": {"x":782,"y":1,"w":72,"h":65},
+	"frame": {"x":159,"y":390,"w":72,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":119,"w":72,"h":65},
@@ -272,7 +272,7 @@
 },
 {
 	"filename": "fed13_0030.png",
-	"frame": {"x":496,"y":1,"w":61,"h":71},
+	"frame": {"x":150,"y":457,"w":61,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":116,"w":61,"h":71},
@@ -281,11 +281,38 @@
 },
 {
 	"filename": "fed13_0031.png",
-	"frame": {"x":255,"y":1,"w":48,"h":74},
+	"frame": {"x":207,"y":41,"w":48,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":115,"w":48,"h":74},
 	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_fed_unit13.png",
+	"frame": {"x":207,"y":1,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_sm_unit13.png",
+	"frame": {"x":196,"y":119,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_unit13.png",
+	"frame": {"x":102,"y":608,"w":122,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":16,"w":122,"h":80},
+	"sourceSize": {"w":127,"h":111},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -293,8 +320,8 @@
 	"version": "1.0",
 	"image": "fed_unit13.png",
 	"format": "RGBA8888",
-	"size": {"w":1236,"h":128},
+	"size": {"w":256,"h":689},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:763b59ea3f38ba111d580c95a3258663:a63778098cfa833b1cedd835bcf8cfb8:63b94b451b861c20c0036c842d3fcda2$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1a721f22ed0c046c350aaec9786abb9c:6bacef2e041d16950dbfd23f1b570aec:63b94b451b861c20c0036c842d3fcda2$"
 }
 }

@@ -1,0 +1,48 @@
+{"frames": {
+
+"fog_type_foreground_b1.png":
+{
+	"frame": {"x":344,"y":1,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":66,"w":283,"h":247},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fog_type_foreground_b2.png":
+{
+	"frame": {"x":291,"y":262,"w":308,"h":216},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":98,"w":308,"h":216},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fog_type_foreground_b3.png":
+{
+	"frame": {"x":1,"y":262,"w":288,"h":230},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":75,"w":288,"h":230},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fog_type_foreground_b4.png":
+{
+	"frame": {"x":1,"y":1,"w":341,"h":259},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":68,"w":341,"h":259},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "foreground_clouds_type02.png",
+	"format": "RGBA8888",
+	"size": {"w":628,"h":493},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:822e8e7c07dea4f20ec8b206d8c7ed63:23383f805bfd5c662003fe6a3cddddf0:9706b76bc6cd1b7ce452183cd1a977d4$"
+}
+}

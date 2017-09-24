@@ -1,8 +1,26 @@
 {"frames": [
 
 {
+	"filename": "gui_ico_obj_iceasteroid.png",
+	"frame": {"x":1,"y":1,"w":100,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":3,"w":100,"h":99},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_obj_sm_iceasteroid.png",
+	"frame": {"x":1,"y":1063,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "icemeteor_01_00000.png",
-	"frame": {"x":178,"y":176,"w":55,"h":59},
+	"frame": {"x":66,"y":221,"w":55,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":117,"y":125,"w":55,"h":59},
@@ -11,7 +29,7 @@
 },
 {
 	"filename": "icemeteor_01_00001.png",
-	"frame": {"x":1,"y":174,"w":54,"h":58},
+	"frame": {"x":58,"y":1017,"w":54,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":126,"w":54,"h":58},
@@ -20,7 +38,7 @@
 },
 {
 	"filename": "icemeteor_01_00002.png",
-	"frame": {"x":1,"y":115,"w":55,"h":57},
+	"frame": {"x":1,"y":1004,"w":55,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":127,"w":55,"h":57},
@@ -29,7 +47,7 @@
 },
 {
 	"filename": "icemeteor_01_00003.png",
-	"frame": {"x":189,"y":1,"w":56,"h":56},
+	"frame": {"x":66,"y":163,"w":56,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":118,"y":128,"w":56,"h":56},
@@ -38,7 +56,7 @@
 },
 {
 	"filename": "icemeteor_01_00004.png",
-	"frame": {"x":1,"y":57,"w":58,"h":56},
+	"frame": {"x":1,"y":946,"w":58,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":117,"y":128,"w":58,"h":56},
@@ -47,7 +65,7 @@
 },
 {
 	"filename": "icemeteor_01_00005.png",
-	"frame": {"x":58,"y":116,"w":59,"h":57},
+	"frame": {"x":64,"y":592,"w":59,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":127,"w":59,"h":57},
@@ -56,7 +74,7 @@
 },
 {
 	"filename": "icemeteor_01_00006.png",
-	"frame": {"x":57,"y":175,"w":59,"h":58},
+	"frame": {"x":64,"y":532,"w":59,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":126,"w":59,"h":58},
@@ -65,7 +83,7 @@
 },
 {
 	"filename": "icemeteor_01_00007.png",
-	"frame": {"x":1,"y":235,"w":61,"h":59},
+	"frame": {"x":1,"y":461,"w":61,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":115,"y":125,"w":61,"h":59},
@@ -74,7 +92,7 @@
 },
 {
 	"filename": "icemeteor_01_00008.png",
-	"frame": {"x":1,"y":358,"w":61,"h":61},
+	"frame": {"x":1,"y":398,"w":61,"h":61},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":115,"y":123,"w":61,"h":61},
@@ -83,7 +101,7 @@
 },
 {
 	"filename": "icemeteor_01_00009.png",
-	"frame": {"x":62,"y":423,"w":60,"h":62},
+	"frame": {"x":1,"y":639,"w":60,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":115,"y":122,"w":60,"h":62},
@@ -92,7 +110,7 @@
 },
 {
 	"filename": "icemeteor_01_00010.png",
-	"frame": {"x":124,"y":423,"w":60,"h":62},
+	"frame": {"x":63,"y":651,"w":60,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":115,"y":122,"w":60,"h":62},
@@ -101,7 +119,7 @@
 },
 {
 	"filename": "icemeteor_01_00011.png",
-	"frame": {"x":186,"y":423,"w":61,"h":62},
+	"frame": {"x":1,"y":334,"w":61,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":122,"w":61,"h":62},
@@ -110,7 +128,7 @@
 },
 {
 	"filename": "icemeteor_01_00012.png",
-	"frame": {"x":64,"y":360,"w":60,"h":61},
+	"frame": {"x":1,"y":703,"w":60,"h":61},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":122,"w":60,"h":61},
@@ -119,7 +137,7 @@
 },
 {
 	"filename": "icemeteor_01_00013.png",
-	"frame": {"x":126,"y":360,"w":59,"h":61},
+	"frame": {"x":64,"y":344,"w":59,"h":61},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":122,"w":59,"h":61},
@@ -128,7 +146,7 @@
 },
 {
 	"filename": "icemeteor_01_00014.png",
-	"frame": {"x":1,"y":296,"w":58,"h":60},
+	"frame": {"x":65,"y":282,"w":58,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":122,"w":58,"h":60},
@@ -137,7 +155,7 @@
 },
 {
 	"filename": "icemeteor_01_00015.png",
-	"frame": {"x":64,"y":235,"w":58,"h":59},
+	"frame": {"x":1,"y":885,"w":58,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":123,"w":58,"h":59},
@@ -146,7 +164,7 @@
 },
 {
 	"filename": "icemeteor_01_00016.png",
-	"frame": {"x":118,"y":175,"w":58,"h":58},
+	"frame": {"x":61,"y":899,"w":58,"h":58},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":124,"w":58,"h":58},
@@ -155,7 +173,7 @@
 },
 {
 	"filename": "icemeteor_01_00017.png",
-	"frame": {"x":119,"y":116,"w":59,"h":57},
+	"frame": {"x":63,"y":778,"w":59,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":125,"w":59,"h":57},
@@ -164,7 +182,7 @@
 },
 {
 	"filename": "icemeteor_01_00018.png",
-	"frame": {"x":61,"y":58,"w":58,"h":56},
+	"frame": {"x":61,"y":959,"w":58,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":125,"w":58,"h":56},
@@ -173,7 +191,7 @@
 },
 {
 	"filename": "icemeteor_01_00019.png",
-	"frame": {"x":64,"y":1,"w":59,"h":55},
+	"frame": {"x":1,"y":828,"w":59,"h":55},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":126,"w":59,"h":55},
@@ -182,7 +200,7 @@
 },
 {
 	"filename": "icemeteor_01_00020.png",
-	"frame": {"x":1,"y":1,"w":61,"h":54},
+	"frame": {"x":1,"y":583,"w":61,"h":54},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":127,"w":61,"h":54},
@@ -191,7 +209,7 @@
 },
 {
 	"filename": "icemeteor_01_00021.png",
-	"frame": {"x":125,"y":1,"w":62,"h":55},
+	"frame": {"x":1,"y":277,"w":62,"h":55},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":126,"w":62,"h":55},
@@ -200,7 +218,7 @@
 },
 {
 	"filename": "icemeteor_01_00022.png",
-	"frame": {"x":121,"y":58,"w":63,"h":56},
+	"frame": {"x":1,"y":161,"w":63,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":114,"y":125,"w":63,"h":56},
@@ -209,7 +227,7 @@
 },
 {
 	"filename": "icemeteor_01_00023.png",
-	"frame": {"x":186,"y":59,"w":63,"h":56},
+	"frame": {"x":1,"y":219,"w":63,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":115,"y":125,"w":63,"h":56},
@@ -218,7 +236,7 @@
 },
 {
 	"filename": "icemeteor_01_00024.png",
-	"frame": {"x":180,"y":117,"w":63,"h":57},
+	"frame": {"x":1,"y":102,"w":63,"h":57},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":115,"y":124,"w":63,"h":57},
@@ -227,7 +245,7 @@
 },
 {
 	"filename": "icemeteor_01_00025.png",
-	"frame": {"x":124,"y":237,"w":61,"h":59},
+	"frame": {"x":1,"y":522,"w":61,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":124,"w":61,"h":59},
@@ -236,7 +254,7 @@
 },
 {
 	"filename": "icemeteor_01_00026.png",
-	"frame": {"x":61,"y":296,"w":60,"h":60},
+	"frame": {"x":1,"y":766,"w":60,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":123,"w":60,"h":60},
@@ -245,7 +263,7 @@
 },
 {
 	"filename": "icemeteor_01_00027.png",
-	"frame": {"x":187,"y":360,"w":60,"h":61},
+	"frame": {"x":63,"y":715,"w":60,"h":61},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":123,"w":60,"h":61},
@@ -254,7 +272,7 @@
 },
 {
 	"filename": "icemeteor_01_00028.png",
-	"frame": {"x":1,"y":421,"w":59,"h":61},
+	"frame": {"x":64,"y":407,"w":59,"h":61},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":123,"w":59,"h":61},
@@ -263,7 +281,7 @@
 },
 {
 	"filename": "icemeteor_01_00029.png",
-	"frame": {"x":123,"y":298,"w":59,"h":60},
+	"frame": {"x":64,"y":470,"w":59,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":124,"w":59,"h":60},
@@ -272,7 +290,7 @@
 },
 {
 	"filename": "icemeteor_01_00030.png",
-	"frame": {"x":184,"y":298,"w":58,"h":60},
+	"frame": {"x":62,"y":837,"w":58,"h":60},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":116,"y":124,"w":58,"h":60},
@@ -281,7 +299,7 @@
 },
 {
 	"filename": "icemeteor_01_00031.png",
-	"frame": {"x":187,"y":237,"w":56,"h":59},
+	"frame": {"x":66,"y":102,"w":56,"h":59},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":117,"y":125,"w":56,"h":59},
@@ -293,8 +311,8 @@
 	"version": "1.0",
 	"image": "asteroid_ice01.png",
 	"format": "RGBA8888",
-	"size": {"w":250,"h":486},
+	"size": {"w":124,"h":1115},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:84343f47ba98b948371f14c4b625b91b:bdf2d560b8bc1be7e61c2cfa2461513d:d1dcfaa7f71051e65a932b4627c459cd$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7ba554c1e6b1f72cc03322bd96a2ca56:a137f594276a3021574dcf9abab59bff:d1dcfaa7f71051e65a932b4627c459cd$"
 }
 }

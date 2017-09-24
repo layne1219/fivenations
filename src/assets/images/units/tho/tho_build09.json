@@ -1,6 +1,33 @@
 {"frames": [
 
 {
+	"filename": "gui_construct_tho_build09.png",
+	"frame": {"x":54,"y":1447,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_tho_build09.png",
+	"frame": {"x":1,"y":1334,"w":90,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":0,"w":90,"h":111},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_tho_sm_build09.png",
+	"frame": {"x":1,"y":1447,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "tho_build09_00000.png",
 	"frame": {"x":1,"y":1,"w":118,"h":132},
 	"rotated": false,
@@ -89,14 +116,23 @@
 	"spriteSourceSize": {"x":95,"y":88,"w":118,"h":132},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_build_09_buildingphase_end.png",
+	"frame": {"x":1,"y":1207,"w":115,"h":125},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":95,"w":115,"h":125},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "tho_build09.png",
 	"format": "RGBA8888",
-	"size": {"w":120,"h":1206},
+	"size": {"w":120,"h":1499},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:71a793e7ec70d26b39e8a682dc1e6bf9:356c5be45437797edf59a5ff7ee3627b:e5a07bf8e29592294120a293470f0382$"
+	"smartupdate": "$TexturePacker:SmartUpdate:29ac6a353a8d286a596b9c3a24da1825:133177ae8976bde30d79b526b684f58b:e5a07bf8e29592294120a293470f0382$"
 }
 }

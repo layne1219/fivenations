@@ -1,134 +1,8 @@
 {"frames": [
 
 {
-	"filename": "fed01_building_buildend.png",
-	"frame": {"x":178,"y":201,"w":171,"h":181},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":64,"y":45,"w":171,"h":181},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed02_building_buildend.png",
-	"frame": {"x":87,"y":856,"w":176,"h":138},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":76,"w":176,"h":138},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed03_building_buildend.png",
-	"frame": {"x":351,"y":228,"w":120,"h":99},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":90,"y":101,"w":120,"h":99},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed04_building_buildend.png",
-	"frame": {"x":349,"y":525,"w":120,"h":95},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":90,"y":101,"w":120,"h":95},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed05_building_buildend.png",
-	"frame": {"x":301,"y":702,"w":176,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":68,"w":176,"h":146},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed06_building_buildend.png",
-	"frame": {"x":123,"y":694,"w":176,"h":160},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":70,"w":176,"h":160},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed07_building_buildend.png",
-	"frame": {"x":172,"y":547,"w":175,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":71,"w":175,"h":145},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed08_building_buildend.png",
-	"frame": {"x":370,"y":122,"w":120,"h":104},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":89,"y":101,"w":120,"h":104},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed09_building_buildend.png",
-	"frame": {"x":351,"y":329,"w":120,"h":96},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":89,"y":101,"w":120,"h":96},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed10_building_buildend.png",
-	"frame": {"x":1,"y":385,"w":175,"h":149},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":63,"y":74,"w":175,"h":149},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed11_building_buildend.png",
-	"frame": {"x":349,"y":622,"w":84,"h":78},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":106,"w":84,"h":78},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed12_building_buildend.png",
-	"frame": {"x":1,"y":1,"w":189,"h":187},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":53,"w":189,"h":187},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed13_building_buildend.png",
-	"frame": {"x":349,"y":427,"w":120,"h":96},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":89,"y":100,"w":120,"h":96},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed14_building_buildend.png",
-	"frame": {"x":192,"y":1,"w":176,"h":198},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":41,"w":176,"h":198},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
 	"filename": "fed_build_L_buildingphase01.png",
-	"frame": {"x":471,"y":427,"w":37,"h":35},
+	"frame": {"x":264,"y":143,"w":37,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":35},
@@ -137,7 +11,7 @@
 },
 {
 	"filename": "fed_build_L_buildingphase02.png",
-	"frame": {"x":301,"y":850,"w":175,"h":140},
+	"frame": {"x":178,"y":1,"w":175,"h":140},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":62,"y":74,"w":175,"h":140},
@@ -146,7 +20,7 @@
 },
 {
 	"filename": "fed_build_L_buildingphase03.png",
-	"frame": {"x":1,"y":190,"w":175,"h":193},
+	"frame": {"x":1,"y":1,"w":175,"h":193},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":62,"y":37,"w":175,"h":193},
@@ -155,7 +29,7 @@
 },
 {
 	"filename": "fed_build_M_buildingphase01.png",
-	"frame": {"x":471,"y":427,"w":37,"h":35},
+	"frame": {"x":264,"y":143,"w":37,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":35},
@@ -164,7 +38,7 @@
 },
 {
 	"filename": "fed_build_M_buildingphase02.png",
-	"frame": {"x":1,"y":692,"w":120,"h":95},
+	"frame": {"x":355,"y":122,"w":120,"h":95},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":89,"y":101,"w":120,"h":95},
@@ -173,7 +47,7 @@
 },
 {
 	"filename": "fed_build_M_buildingphase03.png",
-	"frame": {"x":370,"y":1,"w":120,"h":119},
+	"frame": {"x":355,"y":1,"w":120,"h":119},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":89,"y":91,"w":120,"h":119},
@@ -182,7 +56,7 @@
 },
 {
 	"filename": "fed_build_S_buildingphase01.png",
-	"frame": {"x":471,"y":427,"w":37,"h":35},
+	"frame": {"x":264,"y":143,"w":37,"h":35},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":35},
@@ -191,28 +65,10 @@
 },
 {
 	"filename": "fed_build_S_buildingphase02.png",
-	"frame": {"x":1,"y":789,"w":84,"h":78},
+	"frame": {"x":178,"y":143,"w":84,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":106,"w":84,"h":78},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed_buildingphases_hq01.png",
-	"frame": {"x":1,"y":536,"w":169,"h":154},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":65,"y":72,"w":169,"h":154},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "fed_buildingphases_hq02.png",
-	"frame": {"x":178,"y":384,"w":169,"h":161},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":65,"y":65,"w":169,"h":161},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -221,8 +77,8 @@
 	"version": "1.0",
 	"image": "fed_build_buildingphases.png",
 	"format": "RGBA8888",
-	"size": {"w":509,"h":995},
+	"size": {"w":476,"h":222},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:69ef831621717c29c345c99c15a801d3:4870e1ca21b6f605cec9ac9164aa865b:ffb9688312137853dd3eeb12ffa9ee41$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a258e3cc4c03a769b1ec435af99d8b33:3b5b83ae0d7c1d7e045879d166dda758:ffb9688312137853dd3eeb12ffa9ee41$"
 }
 }

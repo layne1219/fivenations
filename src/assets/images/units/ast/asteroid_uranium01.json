@@ -1,8 +1,26 @@
 {"frames": [
 
 {
+	"filename": "gui_ico_obj_sm_uraniumasteroid.png",
+	"frame": {"x":1,"y":199,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_obj_uraniumasteroid.png",
+	"frame": {"x":1,"y":1,"w":104,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":104,"h":97},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "uraniummeteor_01_00000.png",
-	"frame": {"x":1,"y":533,"w":73,"h":81},
+	"frame": {"x":650,"y":85,"w":73,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":110,"y":102,"w":73,"h":81},
@@ -11,7 +29,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00001.png",
-	"frame": {"x":1,"y":616,"w":73,"h":75},
+	"frame": {"x":883,"y":162,"w":73,"h":75},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":108,"w":73,"h":75},
@@ -20,7 +38,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00002.png",
-	"frame": {"x":77,"y":857,"w":73,"h":71},
+	"frame": {"x":919,"y":1,"w":73,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":112,"w":73,"h":71},
@@ -29,7 +47,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00003.png",
-	"frame": {"x":159,"y":694,"w":71,"h":70},
+	"frame": {"x":246,"y":185,"w":71,"h":70},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":113,"w":71,"h":70},
@@ -38,7 +56,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00004.png",
-	"frame": {"x":1,"y":693,"w":70,"h":78},
+	"frame": {"x":812,"y":82,"w":70,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":106,"w":70,"h":78},
@@ -47,7 +65,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00005.png",
-	"frame": {"x":166,"y":530,"w":73,"h":81},
+	"frame": {"x":672,"y":1,"w":73,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":105,"w":73,"h":81},
@@ -56,7 +74,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00006.png",
-	"frame": {"x":77,"y":445,"w":73,"h":83},
+	"frame": {"x":491,"y":171,"w":73,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":104,"w":73,"h":83},
@@ -65,7 +83,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00007.png",
-	"frame": {"x":83,"y":192,"w":74,"h":85},
+	"frame": {"x":411,"y":88,"w":74,"h":85},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":102,"w":74,"h":85},
@@ -74,7 +92,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00008.png",
-	"frame": {"x":83,"y":279,"w":74,"h":83},
+	"frame": {"x":487,"y":86,"w":74,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":104,"w":74,"h":83},
@@ -83,7 +101,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00009.png",
-	"frame": {"x":1,"y":451,"w":74,"h":80},
+	"frame": {"x":415,"y":175,"w":74,"h":80},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":107,"w":74,"h":80},
@@ -92,7 +110,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00010.png",
-	"frame": {"x":1,"y":367,"w":74,"h":82},
+	"frame": {"x":566,"y":170,"w":74,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":106,"w":74,"h":82},
@@ -101,7 +119,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00011.png",
-	"frame": {"x":162,"y":613,"w":74,"h":79},
+	"frame": {"x":807,"y":165,"w":74,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":110,"w":74,"h":79},
@@ -110,7 +128,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00012.png",
-	"frame": {"x":1,"y":282,"w":74,"h":83},
+	"frame": {"x":512,"y":1,"w":74,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":107,"w":74,"h":83},
@@ -119,7 +137,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00013.png",
-	"frame": {"x":164,"y":187,"w":78,"h":83},
+	"frame": {"x":432,"y":1,"w":78,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":107,"w":78,"h":83},
@@ -128,7 +146,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00014.png",
-	"frame": {"x":1,"y":194,"w":80,"h":86},
+	"frame": {"x":268,"y":1,"w":80,"h":86},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":110,"y":106,"w":80,"h":86},
@@ -137,7 +155,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00015.png",
-	"frame": {"x":1,"y":100,"w":80,"h":92},
+	"frame": {"x":164,"y":96,"w":80,"h":92},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":110,"y":104,"w":80,"h":92},
@@ -146,7 +164,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00016.png",
-	"frame": {"x":1,"y":1,"w":80,"h":97},
+	"frame": {"x":1,"y":100,"w":80,"h":97},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":110,"y":100,"w":80,"h":97},
@@ -155,7 +173,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00017.png",
-	"frame": {"x":83,"y":1,"w":79,"h":96},
+	"frame": {"x":83,"y":100,"w":79,"h":96},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":100,"w":79,"h":96},
@@ -164,7 +182,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00018.png",
-	"frame": {"x":83,"y":99,"w":79,"h":91},
+	"frame": {"x":187,"y":1,"w":79,"h":91},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":110,"y":99,"w":79,"h":91},
@@ -173,7 +191,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00019.png",
-	"frame": {"x":164,"y":1,"w":78,"h":93},
+	"frame": {"x":107,"y":1,"w":78,"h":93},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":96,"w":78,"h":93},
@@ -182,7 +200,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00020.png",
-	"frame": {"x":164,"y":96,"w":78,"h":89},
+	"frame": {"x":246,"y":94,"w":78,"h":89},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":96,"w":78,"h":89},
@@ -191,7 +209,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00021.png",
-	"frame": {"x":159,"y":359,"w":80,"h":85},
+	"frame": {"x":350,"y":1,"w":80,"h":85},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":111,"y":96,"w":80,"h":85},
@@ -200,7 +218,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00022.png",
-	"frame": {"x":159,"y":272,"w":83,"h":85},
+	"frame": {"x":326,"y":89,"w":83,"h":85},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":97,"w":83,"h":85},
@@ -209,7 +227,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00023.png",
-	"frame": {"x":76,"y":611,"w":84,"h":81},
+	"frame": {"x":642,"y":170,"w":84,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":100,"w":84,"h":81},
@@ -218,7 +236,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00024.png",
-	"frame": {"x":73,"y":694,"w":84,"h":77},
+	"frame": {"x":833,"y":1,"w":84,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":104,"w":84,"h":77},
@@ -227,7 +245,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00025.png",
-	"frame": {"x":152,"y":854,"w":84,"h":79},
+	"frame": {"x":747,"y":1,"w":84,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":102,"w":84,"h":79},
@@ -236,7 +254,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00026.png",
-	"frame": {"x":77,"y":530,"w":87,"h":79},
+	"frame": {"x":326,"y":176,"w":87,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":103,"w":87,"h":79},
@@ -245,7 +263,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00027.png",
-	"frame": {"x":85,"y":773,"w":85,"h":79},
+	"frame": {"x":725,"y":84,"w":85,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":100,"w":85,"h":79},
@@ -254,7 +272,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00028.png",
-	"frame": {"x":152,"y":446,"w":85,"h":82},
+	"frame": {"x":563,"y":86,"w":85,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":98,"w":85,"h":82},
@@ -263,7 +281,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00029.png",
-	"frame": {"x":1,"y":773,"w":82,"h":82},
+	"frame": {"x":588,"y":1,"w":82,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":99,"w":82,"h":82},
@@ -272,7 +290,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00030.png",
-	"frame": {"x":77,"y":364,"w":77,"h":79},
+	"frame": {"x":728,"y":165,"w":77,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":102,"w":77,"h":79},
@@ -281,7 +299,7 @@
 },
 {
 	"filename": "uraniummeteor_01_00031.png",
-	"frame": {"x":1,"y":857,"w":74,"h":74},
+	"frame": {"x":884,"y":80,"w":74,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":107,"w":74,"h":74},
@@ -293,8 +311,8 @@
 	"version": "1.0",
 	"image": "asteroid_uranium01.png",
 	"format": "RGBA8888",
-	"size": {"w":243,"h":934},
+	"size": {"w":993,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:91b1e34095cc5735b3960347aed84a64:83b06cba4d9555240938c70f6204711d:9496263b885e9f243f4cbb2a4566f93a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:35ae13eb04527c8163b99e1bf892683e:8986403d4bd33db378e9a3d2b5d393c3:9496263b885e9f243f4cbb2a4566f93a$"
 }
 }

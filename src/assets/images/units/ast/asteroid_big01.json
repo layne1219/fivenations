@@ -1,6 +1,24 @@
 {"frames": [
 
 {
+	"filename": "gui_ico_obj_asteroid.png",
+	"frame": {"x":122,"y":353,"w":93,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":3,"w":93,"h":102},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_obj_sm_asteroid.png",
+	"frame": {"x":1,"y":1802,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "meteor_big01_00000.png",
 	"frame": {"x":1,"y":418,"w":117,"h":94},
 	"rotated": false,
@@ -56,7 +74,7 @@
 },
 {
 	"filename": "meteor_big01_00006.png",
-	"frame": {"x":1,"y":1599,"w":108,"h":110},
+	"frame": {"x":112,"y":1503,"w":108,"h":110},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":95,"y":92,"w":108,"h":110},
@@ -65,7 +83,7 @@
 },
 {
 	"filename": "meteor_big01_00007.png",
-	"frame": {"x":118,"y":827,"w":102,"h":116},
+	"frame": {"x":118,"y":815,"w":102,"h":116},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":89,"w":102,"h":116},
@@ -92,7 +110,7 @@
 },
 {
 	"filename": "meteor_big01_00010.png",
-	"frame": {"x":122,"y":353,"w":92,"h":114},
+	"frame": {"x":118,"y":1054,"w":92,"h":114},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":89,"w":92,"h":114},
@@ -110,7 +128,7 @@
 },
 {
 	"filename": "meteor_big01_00012.png",
-	"frame": {"x":120,"y":469,"w":99,"h":109},
+	"frame": {"x":120,"y":457,"w":99,"h":109},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":94,"w":99,"h":109},
@@ -119,7 +137,7 @@
 },
 {
 	"filename": "meteor_big01_00013.png",
-	"frame": {"x":117,"y":1182,"w":103,"h":104},
+	"frame": {"x":116,"y":1286,"w":103,"h":104},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":98,"w":103,"h":104},
@@ -128,7 +146,7 @@
 },
 {
 	"filename": "meteor_big01_00014.png",
-	"frame": {"x":111,"y":1710,"w":105,"h":100},
+	"frame": {"x":1,"y":1700,"w":105,"h":100},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":101,"w":105,"h":100},
@@ -137,7 +155,7 @@
 },
 {
 	"filename": "meteor_big01_00015.png",
-	"frame": {"x":1,"y":1711,"w":105,"h":99},
+	"frame": {"x":108,"y":1738,"w":105,"h":99},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":101,"w":105,"h":99},
@@ -146,7 +164,7 @@
 },
 {
 	"filename": "meteor_big01_00016.png",
-	"frame": {"x":111,"y":1609,"w":108,"h":99},
+	"frame": {"x":1,"y":1599,"w":108,"h":99},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":101,"w":108,"h":99},
@@ -209,7 +227,7 @@
 },
 {
 	"filename": "meteor_big01_00023.png",
-	"frame": {"x":113,"y":1486,"w":106,"h":121},
+	"frame": {"x":111,"y":1615,"w":106,"h":121},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":96,"y":82,"w":106,"h":121},
@@ -218,7 +236,7 @@
 },
 {
 	"filename": "meteor_big01_00024.png",
-	"frame": {"x":119,"y":704,"w":101,"h":121},
+	"frame": {"x":119,"y":692,"w":101,"h":121},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":83,"w":101,"h":121},
@@ -227,7 +245,7 @@
 },
 {
 	"filename": "meteor_big01_00025.png",
-	"frame": {"x":119,"y":580,"w":101,"h":122},
+	"frame": {"x":119,"y":568,"w":101,"h":122},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":84,"w":101,"h":122},
@@ -236,7 +254,7 @@
 },
 {
 	"filename": "meteor_big01_00026.png",
-	"frame": {"x":118,"y":945,"w":101,"h":119},
+	"frame": {"x":118,"y":933,"w":101,"h":119},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":87,"w":101,"h":119},
@@ -245,7 +263,7 @@
 },
 {
 	"filename": "meteor_big01_00027.png",
-	"frame": {"x":117,"y":1066,"w":103,"h":114},
+	"frame": {"x":117,"y":1170,"w":103,"h":114},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":97,"y":92,"w":103,"h":114},
@@ -254,7 +272,7 @@
 },
 {
 	"filename": "meteor_big01_00028.png",
-	"frame": {"x":113,"y":1375,"w":107,"h":109},
+	"frame": {"x":113,"y":1392,"w":107,"h":109},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":95,"y":96,"w":107,"h":109},
@@ -293,8 +311,8 @@
 	"version": "1.0",
 	"image": "asteroid_big01.png",
 	"format": "RGBA8888",
-	"size": {"w":221,"h":1811},
+	"size": {"w":221,"h":1854},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d32a0de1a005999a22b5ac7510608c9b:45bf35885f22dca08260e4b43916d558:38dd2d832e88a8bdcfd41a4565290ebf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:54c9db88623ba5248703df5dbcd06b1a:89a4a85b3a09e581aed232f4a261d776:38dd2d832e88a8bdcfd41a4565290ebf$"
 }
 }

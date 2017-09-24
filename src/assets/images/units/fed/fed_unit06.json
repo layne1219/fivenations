@@ -2,7 +2,7 @@
 
 {
 	"filename": "fed06_0000.png",
-	"frame": {"x":1,"y":1439,"w":57,"h":126},
+	"frame": {"x":1,"y":1538,"w":57,"h":126},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":92,"w":57,"h":126},
@@ -29,7 +29,7 @@
 },
 {
 	"filename": "fed06_0003.png",
-	"frame": {"x":131,"y":1199,"w":109,"h":118},
+	"frame": {"x":131,"y":1298,"w":109,"h":118},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":92,"w":109,"h":118},
@@ -38,7 +38,7 @@
 },
 {
 	"filename": "fed06_0004.png",
-	"frame": {"x":119,"y":1439,"w":127,"h":108},
+	"frame": {"x":1,"y":1428,"w":127,"h":108},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":91,"y":96,"w":127,"h":108},
@@ -146,7 +146,7 @@
 },
 {
 	"filename": "fed06_0016.png",
-	"frame": {"x":60,"y":1439,"w":57,"h":116},
+	"frame": {"x":60,"y":1538,"w":57,"h":116},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":122,"y":99,"w":57,"h":116},
@@ -263,7 +263,7 @@
 },
 {
 	"filename": "fed06_0029.png",
-	"frame": {"x":131,"y":1319,"w":109,"h":118},
+	"frame": {"x":131,"y":1418,"w":109,"h":118},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":93,"w":109,"h":118},
@@ -287,14 +287,41 @@
 	"spriteSourceSize": {"x":107,"y":91,"w":72,"h":126},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_fed_unit06.png",
+	"frame": {"x":119,"y":1591,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_sm_unit06.png",
+	"frame": {"x":119,"y":1538,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_fed_unit06.png",
+	"frame": {"x":131,"y":1199,"w":118,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":11,"w":118,"h":97},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "fed_unit06.png",
 	"format": "RGBA8888",
-	"size": {"w":253,"h":1566},
+	"size": {"w":253,"h":1665},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9cd18bf77d7092c5c24fe737663bbc9e:36298133670d3d8727d347b5c0d97885:a5b367840eef05a91abdd6d9aafafb9c$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e3540c1e69f6aeece680b71dff93e287:57e0b72df2925c8e0713445a31346cf7:a5b367840eef05a91abdd6d9aafafb9c$"
 }
 }

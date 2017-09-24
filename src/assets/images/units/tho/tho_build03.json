@@ -1,11 +1,47 @@
 {"frames": [
 
 {
+	"filename": "gui_construct_tho_build03.png",
+	"frame": {"x":1,"y":1,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_tho_build03.png",
+	"frame": {"x":1,"y":121,"w":100,"h":84},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":11,"w":100,"h":84},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_tho_sm_build03.png",
+	"frame": {"x":41,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "tho_build03_0000.png",
-	"frame": {"x":1,"y":1,"w":76,"h":65},
+	"frame": {"x":1,"y":54,"w":76,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":113,"w":76,"h":65},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_build_03_buildingphase_end.png",
+	"frame": {"x":1,"y":207,"w":104,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":95,"w":104,"h":121},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -14,8 +50,8 @@
 	"version": "1.0",
 	"image": "tho_build03.png",
 	"format": "RGBA8888",
-	"size": {"w":78,"h":67},
+	"size": {"w":106,"h":329},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:854e98603a0a3e3f156ffd3fb7b094fb:48dd789febbcac73e0255ad9b6bee15b:c36d49586c4bfc3f9ebfd98ce5d59acf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c05aa87c151d2b6b43ab28e68eee0677:636a6053b6a0ea6bf671e0b913444c5a:c36d49586c4bfc3f9ebfd98ce5d59acf$"
 }
 }

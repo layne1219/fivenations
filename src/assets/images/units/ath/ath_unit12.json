@@ -2,7 +2,7 @@
 
 {
 	"filename": "ath12_0000.png",
-	"frame": {"x":71,"y":1,"w":31,"h":29},
+	"frame": {"x":209,"y":32,"w":31,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":133,"w":31,"h":29},
@@ -11,7 +11,7 @@
 },
 {
 	"filename": "ath12_0001.png",
-	"frame": {"x":1,"y":138,"w":30,"h":29},
+	"frame": {"x":211,"y":63,"w":30,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":133,"w":30,"h":29},
@@ -20,7 +20,7 @@
 },
 {
 	"filename": "ath12_0002.png",
-	"frame": {"x":33,"y":158,"w":33,"h":28},
+	"frame": {"x":141,"y":96,"w":33,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":28},
@@ -29,7 +29,7 @@
 },
 {
 	"filename": "ath12_0003.png",
-	"frame": {"x":33,"y":96,"w":33,"h":29},
+	"frame": {"x":206,"y":1,"w":33,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":29},
@@ -38,7 +38,7 @@
 },
 {
 	"filename": "ath12_0004.png",
-	"frame": {"x":33,"y":127,"w":33,"h":29},
+	"frame": {"x":141,"y":65,"w":33,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":29},
@@ -47,7 +47,7 @@
 },
 {
 	"filename": "ath12_0005.png",
-	"frame": {"x":68,"y":96,"w":33,"h":29},
+	"frame": {"x":174,"y":32,"w":33,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":29},
@@ -56,7 +56,7 @@
 },
 {
 	"filename": "ath12_0006.png",
-	"frame": {"x":1,"y":1,"w":33,"h":31},
+	"frame": {"x":106,"y":88,"w":33,"h":31},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":31},
@@ -65,7 +65,7 @@
 },
 {
 	"filename": "ath12_0007.png",
-	"frame": {"x":1,"y":104,"w":30,"h":32},
+	"frame": {"x":106,"y":54,"w":30,"h":32},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":134,"w":30,"h":32},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "ath12_0008.png",
-	"frame": {"x":1,"y":34,"w":31,"h":33},
+	"frame": {"x":41,"y":80,"w":31,"h":33},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":133,"w":31,"h":33},
@@ -83,7 +83,7 @@
 },
 {
 	"filename": "ath12_0009.png",
-	"frame": {"x":1,"y":69,"w":30,"h":33},
+	"frame": {"x":74,"y":80,"w":30,"h":33},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":133,"w":30,"h":33},
@@ -92,7 +92,7 @@
 },
 {
 	"filename": "ath12_0010.png",
-	"frame": {"x":36,"y":1,"w":33,"h":31},
+	"frame": {"x":135,"y":1,"w":33,"h":31},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":31},
@@ -101,7 +101,7 @@
 },
 {
 	"filename": "ath12_0011.png",
-	"frame": {"x":34,"y":34,"w":34,"h":29},
+	"frame": {"x":138,"y":34,"w":34,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":132,"y":134,"w":34,"h":29},
@@ -110,7 +110,7 @@
 },
 {
 	"filename": "ath12_0012.png",
-	"frame": {"x":68,"y":127,"w":33,"h":29},
+	"frame": {"x":176,"y":63,"w":33,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":29},
@@ -119,7 +119,7 @@
 },
 {
 	"filename": "ath12_0013.png",
-	"frame": {"x":34,"y":65,"w":34,"h":29},
+	"frame": {"x":170,"y":1,"w":34,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":132,"y":134,"w":34,"h":29},
@@ -128,7 +128,7 @@
 },
 {
 	"filename": "ath12_0014.png",
-	"frame": {"x":68,"y":158,"w":33,"h":28},
+	"frame": {"x":208,"y":94,"w":33,"h":28},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":134,"w":33,"h":28},
@@ -137,11 +137,38 @@
 },
 {
 	"filename": "ath12_0015.png",
-	"frame": {"x":71,"y":32,"w":30,"h":29},
+	"frame": {"x":176,"y":94,"w":30,"h":29},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":134,"y":133,"w":30,"h":29},
 	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_ath_unit12.png",
+	"frame": {"x":1,"y":80,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_ath_sm_unit12.png",
+	"frame": {"x":82,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_ath_unit12.png",
+	"frame": {"x":1,"y":1,"w":79,"h":77},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":17,"w":79,"h":77},
+	"sourceSize": {"w":127,"h":111},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -149,8 +176,8 @@
 	"version": "1.0",
 	"image": "ath_unit12.png",
 	"format": "RGBA8888",
-	"size": {"w":103,"h":187},
+	"size": {"w":242,"h":125},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b921c53fcf7cf1c9e79fc5b6d688302c:f9d007aa72a7d3b26336183760a5cde5:8f36b6097f19503c50189859d29642a7$"
+	"smartupdate": "$TexturePacker:SmartUpdate:dda5042f2a63f6b181e7171932e92790:ccfdcacaa692bfedd3ca7d8deb66a114:8f36b6097f19503c50189859d29642a7$"
 }
 }
