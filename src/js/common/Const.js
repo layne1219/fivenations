@@ -32,4 +32,4 @@ export const ANIMATION_IDLE_FOREVER = 'idle-forever';
 
 // Offset for all entity animations when the icons are bundled
 // into the entity's spritesheet 
-export const ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED = 3;
+export const ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED = 0;

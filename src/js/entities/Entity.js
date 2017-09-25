@@ -468,6 +468,7 @@ Entity.prototype = {
      * @return {void}
      */
     stopAnimation: function() {
+        if (!this.sprite.animations.currentAnim) return;
         // idle-forever animation cannot be stopped 
         if (this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER) return;
         this.sprite.animations.stop(null, true);
