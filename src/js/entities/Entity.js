@@ -67,6 +67,7 @@ const extendSprite = function(entity, sprite, dataObject) {
 const extendSpriteWithAnimations = function(sprite, dataObject) {
     const animations = dataObject.getAnimations();
     const anmationOffset = dataObject.getAnimationOffset();
+    sprite.frame = anmationOffset;
     if (!animations || typeof animations !== 'object') return;
     Object.keys(animations).forEach(function(key) {
         const data = animations[key];
