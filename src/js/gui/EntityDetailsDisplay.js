@@ -27,63 +27,39 @@ const text = {
  * @param {object} container Container into which the sprites will be added
  * @return {object} map of sprites
  */
-function createIconSprites(container, phaserGame) {
-    const sprites = {
-        'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
-        'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath')),
-        'gui.icons.syl': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.syl')),
-        'gui.icons.tho': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.tho')),
-        'gui.icons.zho': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.zho')),
-        'gui.icons.obj': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.obj'))
-    };
-    function each(callback) {
-        Object.keys(sprites).forEach(function(key) {
-            callback.call(container, sprites[key]);
-        });
-    }
+function createIconSprite(container, phaserGame) {
+    const width = 128;
+    const height = 111;
+    const bmd = phaserGame.add.bitmapData(width, height);
+    const image = bmd.addToWorld(0, 0);
     let last;
 
-    each(function(sprite) {
-        sprite.visible = false;
-    });
-
+    container.add(image);
+    
     return {
 
         move: function(x, y) {
-            each(function(sprite) {
-                sprite.x = x;
-                sprite.y = y;
-            });
+            image.x = x;
+            image.y = y;
         },
 
-        show: function(key, frame) {
-            if (last) {
-                if (last !== sprites[key]) {
-                    last.visible = false;
-                }
+        show: function(entity) {
+            if (last !== entity.sprite) {
+                const oldFrame = entity.sprite.frame;
+                entity.sprite.frame = 1;
+                bmd.clear();
+                bmd.draw(entity.sprite, width, height);
+                entity.sprite.frame = oldFrame;
             }
-            sprites[key].visible = true;
-            if (frame) {
-                sprites[key].frame = frame;
-            }
-            last = sprites[key];
+            last = entity.sprite;
         },
 
         hide: function() {
-            if (last) {
-                last.visible = false;
-            } else {
-                each(function(sprite) {
-                    sprite.visible = false;
-                });
-            }
         },
 
         click: function(callback, ctx) {
-            each(function(sprite) {
-                sprite.inputEnabled = true;
-                sprite.events.onInputDown.add(callback, ctx);
-            });
+            image.inputEnabled = true;
+            image.events.onInputDown.add(callback, ctx);
         }
 
     }
@@ -96,7 +72,7 @@ class MainAttributeGroup extends Phaser.Group {
         super(phaserGame);
 
         // creating a Phaser.Sprite object for the entity icons
-        this.iconSprites = createIconSprites(this, phaserGame);
+        this.iconSprite = createIconSprite(this, phaserGame);
 
         // Text objects to display entity attributes
         this.nameElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop, '', {
@@ -144,7 +120,7 @@ class MainAttributeGroup extends Phaser.Group {
             throw 'Invalid DataObject has been passed!';
         }
 
-        this.iconSprites.show(entityIcons[dataObject.getId()].spriteId, entityIcons[dataObject.getId()].faceFrame);
+        this.iconSprite.show(entity);
 
         // Names
         this.nameElm.text = dataObject.getName();
@@ -394,7 +370,7 @@ class MultiselectionGroup extends Phaser.Group {
             this.shieldBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1));
 
             // Icons
-            this.icons[i] = createIconSprites(this, phaserGame);
+            this.icons[i] = createIconSprite(this, phaserGame);
             this.icons[i].move(x, y);
             this.icons[i].click((idx => {
                 return function() {
