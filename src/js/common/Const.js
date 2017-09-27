@@ -33,3 +33,17 @@ export const ANIMATION_IDLE_FOREVER = 'idle-forever';
 // Offset for all entity animations when the icons are bundled
 // into the entity's spritesheet 
 export const ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED = 3;
+
+// Icon ids placed into the entity spridesheet
+export const ENTITY_ICON_CONSTRUCT = 0;
+export const ENTITY_ICON = 1;
+export const ENTITY_ICON_DIMENSIONS = { 
+    width: 128,
+    height: 111
+};
+
+export const ENTITY_ICON_SMALL = 2;
+export const ENTITY_ICON_SMALL_DIMENSIONS = { 
+    width: 51,
+    height: 51
+};
