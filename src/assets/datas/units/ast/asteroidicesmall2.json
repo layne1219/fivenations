@@ -21,6 +21,7 @@
 	"animFrame": 1,
 	"animType": ["idle-forever"],
 	"size": "sm",
+	"animationOffset": 2,	
     "animations": {
         "idle-forever": {
             "rate": 28,

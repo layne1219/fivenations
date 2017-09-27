@@ -16,6 +16,7 @@ function MotionManager(entity) {
     this.entity = entity;
     this.sprite = entity.getSprite();
     this.animationManager = entity.getAnimationManager();
+    this.animationOffset = this.entity.getDataObject().getAnimationOffset();
 
     this.movement = createMovementObject(entity);
     this.rotation = createRotationObject(entity);
@@ -238,7 +239,7 @@ MotionManager.prototype = {
             this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
         }
 
-        this.sprite.frame = this.rotation.currentAngleCode * this.rotation.framePadding;
+        this.sprite.frame = this.rotation.currentAngleCode * this.rotation.framePadding + this.animationOffset;
 
     },
 

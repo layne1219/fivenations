@@ -9,13 +9,10 @@ import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager'; 
 import UserKeyboard from '../gui/UserKeyboard';  
 import UserPointer from '../gui/UserPointer';  
-import Util from '../common/Util'; 
+import Util from '../common/Util';
+import * as Const from '../common/Const'; 
 
-var SLOW_MANOUVERABAILITY_TRESHOLD = 25;
-var MAX_SELECTABLE_UNITS = 22;
-var ANIMATION_IDLE_FOREVER = 'idle-forever';
-
-var ns = window.fivenations;
+const ns = window.fivenations;
 
 /**
  * Initialising the Phaser.Sprite object with all the additional child elements 
@@ -25,10 +22,10 @@ var ns = window.fivenations;
  * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
  * @return {[object]} 
  */
-var extendSprite = function(entity, sprite, dataObject) {
+const extendSprite = function(entity, sprite, dataObject) {
 
-    var origWidth = dataObject.getWidth();
-    var origHeight = dataObject.getHeight();
+    const origWidth = dataObject.getWidth();
+    const origHeight = dataObject.getHeight();
 
     // actiavting the ARCADE physics on the sprite object
     entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -67,20 +64,24 @@ var extendSprite = function(entity, sprite, dataObject) {
  * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
  * @return {void}
  */
-var extendSpriteWithAnimations = function(sprite, dataObject){
-    var animations = dataObject.getAnimations();
+const extendSpriteWithAnimations = function(sprite, dataObject) {
+    const animations = dataObject.getAnimations();
+    const anmationOffset = dataObject.getAnimationOffset();
+    sprite.frame = anmationOffset;
     if (!animations || typeof animations !== 'object') return;
-    Object.keys(animations).forEach(function(key){
-        var data = animations[key];
+    Object.keys(animations).forEach(function(key) {
+        const data = animations[key];
         if (data.length) {
-            data.forEach(function(animationData, idx){
-                sprite.animations.add(key + idx, animationData.frames, animationData.rate, animationData.loopable);        
+            data.forEach(function(animationData, idx) {
+                const frames = data.frames.map(v => v + anmationOffset);
+                sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);        
             });
         } else {
-            sprite.animations.add(key, data.frames, data.rate, data.loopable);
+            const frames = data.frames.map(v => v + anmationOffset);
+            sprite.animations.add(key, frames, data.rate, data.loopable);
         }
-        // if there is an animation called `idle-forever` it is played straight away
-        if (key === ANIMATION_IDLE_FOREVER) {
+        // if the animation is called `idle-forever` it is started straightaway
+        if (key === Const.ANIMATION_IDLE_FOREVER) {
             sprite.animations.play(key);
         }
     });
@@ -93,11 +94,11 @@ var extendSpriteWithAnimations = function(sprite, dataObject){
  * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
  * @return {[object]} 
  */
-var extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
+const extendSpriteWithEventListeners = function(entity, sprite, dataObject) {
     // input events registered on the sprite object
     sprite.events.onInputDown.add(function() {
-        var now;
-        var game = this.game;
+        const game = this.game;
+        let now;
 
         if (GUIActivityManager.getInstance().hasActiveSelection()) {
             return;
@@ -246,7 +247,7 @@ Entity.prototype = {
      * @return {[void]}
      */
     moveTo: function(targetX, targetY) {
-        var move = new ActivityManager.Move(this);
+        const move = new ActivityManager.Move(this);
         move.setCoords({x: targetX, y: targetY});
         this.activityManager.add(move);
     },
@@ -256,7 +257,7 @@ Entity.prototype = {
      * @return {void}
      */
     stop: function() {
-        var stop = new ActivityManager.Stop(this);
+        const stop = new ActivityManager.Stop(this);
         this.activityManager.add(stop);
         this.eventDispatcher.dispatch('stop', this);
     },
@@ -269,7 +270,7 @@ Entity.prototype = {
      * @return {void}
      */
     patrol: function(x, y) {
-        var patrol = new ActivityManager.Patrol(this);
+        const patrol = new ActivityManager.Patrol(this);
         patrol.setStartPoint(this.sprite.x, this.sprite.y);
         patrol.setDestionation(x, y);
         this.activityManager.add(patrol);
@@ -281,7 +282,7 @@ Entity.prototype = {
      * @return {void}
      */
     follow: function(targetEntity) {
-        var follow = new ActivityManager.Follow(this);
+        const follow = new ActivityManager.Follow(this);
         follow.setTarget(targetEntity);
         this.activityManager.add(follow);
     },
@@ -292,7 +293,7 @@ Entity.prototype = {
      * @return {void}
      */
     fire: function(targetEntity, weapons) {
-        var fire = new ActivityManager.Fire(this);
+        const fire = new ActivityManager.Fire(this);
         fire.setTarget(targetEntity);
         fire.setWeapons(weapons);
         this.activityManager.add(fire);
@@ -304,7 +305,7 @@ Entity.prototype = {
      * @return {void}
      */
     getInRange: function(targetEntity) {
-        var getInRange = new ActivityManager.GetInRange(this);
+        const getInRange = new ActivityManager.GetInRange(this);
         getInRange.setTarget(targetEntity);
         this.activityManager.add(getInRange);
     },
@@ -315,7 +316,7 @@ Entity.prototype = {
      * @return {void}
      */
     getToDock: function(targetEntity) {
-        var getToDock = new ActivityManager.GetToDock(this);
+        const getToDock = new ActivityManager.GetToDock(this);
         getToDock.setTarget(targetEntity);
         this.activityManager.add(getToDock);
     },        
@@ -326,7 +327,7 @@ Entity.prototype = {
      * @return {void}
      */
     attack: function(targetEntity) {
-        var attack = new ActivityManager.Attack(this);
+        const attack = new ActivityManager.Attack(this);
         attack.setTarget(targetEntity);
         this.activityManager.add(attack);
         this.weaponManager.setTargetEntity(targetEntity);
@@ -338,7 +339,7 @@ Entity.prototype = {
      * @return {void}
      */
     rotateToTarget: function(targetEntity) {
-        var rotate = new ActivityManager.RotateToTarget(this);
+        const rotate = new ActivityManager.RotateToTarget(this);
         rotate.setTarget(targetEntity);
         this.activityManager.add(rotate);
     },
@@ -367,7 +368,7 @@ Entity.prototype = {
     undock: function() {
         if (this.docker === undefined) return;
 
-        var entitiesToRelease = [];
+        const entitiesToRelease = [];
 
         this.docker.forEach(function(entity) {
             entity.reactivate();
@@ -450,9 +451,9 @@ Entity.prototype = {
      * @return {void}
      */
     animate: function(key) {
-        var angleCode = this.motionManager.getCurrentAngleCode();
-        var keyWithAngleCode = key + angleCode;
-        var animationKey;
+        const angleCode = this.motionManager.getCurrentAngleCode();
+        const keyWithAngleCode = key + angleCode;
+        let animationKey;
         if (this.sprite.animations.getAnimation(keyWithAngleCode)) {
             animationKey = keyWithAngleCode;
         } else if (this.sprite.animations.getAnimation(key)) {
@@ -468,8 +469,9 @@ Entity.prototype = {
      * @return {void}
      */
     stopAnimation: function() {
+        if (!this.sprite.animations.currentAnim) return;
         // idle-forever animation cannot be stopped 
-        if (this.sprite.animations.currentAnim.name === ANIMATION_IDLE_FOREVER) return;
+        if (this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER) return;
         this.sprite.animations.stop(null, true);
     },
 
@@ -480,7 +482,7 @@ Entity.prototype = {
     select: function() {
         if (this.isHibernated()) return;
 
-        if (this.entityManager.entities(':selected').length < MAX_SELECTABLE_UNITS) {
+        if (this.entityManager.entities(':selected').length < Const.MAX_SELECTABLE_UNITS) {
             this.selected = true;
             this.eventDispatcher.dispatch('select');
             EventEmitter.getInstance().local.dispatch('gui/selection/change');
@@ -541,7 +543,7 @@ Entity.prototype = {
     },        
 
     hasSlowManeuverability: function() {
-        return this.getDataObject().getManeuverability() < SLOW_MANOUVERABAILITY_TRESHOLD;
+        return this.getDataObject().getManeuverability() < Const.SLOW_MANOUVERABAILITY_TRESHOLD;
     },
 
     isSelected: function() {
@@ -573,7 +575,7 @@ Entity.prototype = {
      * @return {Boolean}
      */
     isEntityControlledByUser: function(player) {
-        var p = player || PlayerManager.getInstance().getUser();
+        const p = player || PlayerManager.getInstance().getUser();
         if (!p) return false;
         return this.getDataObject().getTeam() === p.getTeam();
     },
@@ -584,9 +586,9 @@ Entity.prototype = {
      * @return {Boolean} true if the given entity is hostile
      */
     isEnemy: function(entity) {
-        var playerManager = PlayerManager.getInstance();
-        var thisPlayer = this.getPlayer();
-        var thatPlayer = entity.getPlayer();
+        const playerManager = PlayerManager.getInstance();
+        const thisPlayer = this.getPlayer();
+        const thatPlayer = entity.getPlayer();
         if (thisPlayer === thatPlayer) return false;
         return playerManager.isPlayerHostileToPlayer(thisPlayer, thatPlayer);
     },
@@ -674,7 +676,7 @@ Entity.prototype = {
     },
 
     getAnimationByKey: function(key) {
-        var animations = this.getAnimations();
+        const animations = this.getAnimations();
         if (!animations){
             return null;
         }
@@ -682,10 +684,9 @@ Entity.prototype = {
     },
 
     getTile: function(map) {
-        if (!map) throw 'Invalid Map obect was given!';
-        var sprite = this.getSprite(),
-            x = Math.floor(sprite.x / map.getTileWidth()),
-            y = Math.floor(sprite.y / map.getTileHeight());
+        const sprite = this.getSprite();
+        const x = Math.floor(sprite.x / map.getTileWidth());
+        const y = Math.floor(sprite.y / map.getTileHeight());
         return [x, y];
     },
 

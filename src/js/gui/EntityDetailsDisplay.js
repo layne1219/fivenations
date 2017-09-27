@@ -1,5 +1,10 @@
 import Util from '../common/Util';
-const guiJSON = require('../../assets/datas/common/gui.json'); 
+import { 
+    ENTITY_ICON,
+    ENTITY_ICON_DIMENSIONS,
+    ENTITY_ICON_SMALL,
+    ENTITY_ICON_SMALL_DIMENSIONS
+} from '../common/Const'; 
 
 const weaponNumber = 12;
 const weaponPopupPaddingX = 20;
@@ -13,7 +18,6 @@ const rows = 2;
 const statusBarHeight = 3;
 const statusBarMargin = 2;
 
-const entityIcons = guiJSON.icons;
 const text = {
     marginLeft: 132,
     marginTop: 5,
@@ -22,68 +26,65 @@ const text = {
     color: '#77C7D2'
 };
 
+function createIcon({container, phaserGame}) {
+    return createIconSprite({ 
+        width: ENTITY_ICON_DIMENSIONS.width,
+        height: ENTITY_ICON_DIMENSIONS.height,
+        frame: ENTITY_ICON,
+        container, 
+        phaserGame, 
+    });
+}
+
+function createSmallIcon({container, phaserGame}) {
+    return createIconSprite({ 
+        width: ENTITY_ICON_SMALL_DIMENSIONS.width,
+        height: ENTITY_ICON_SMALL_DIMENSIONS.height,
+        frame: ENTITY_ICON_SMALL,
+        container, 
+        phaserGame, 
+    });
+}
+
 /**
  * Returns a map of icons with keys set as the sprite key of the icons
- * @param {object} container Container into which the sprites will be added
+ * @param {object} configuration for the icon to be generated
  * @return {object} map of sprites
  */
-function createIconSprites(container, phaserGame) {
-    const sprites = {
-        'gui.icons.fed': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.fed')),
-        'gui.icons.ath': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.ath')),
-        'gui.icons.syl': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.syl')),
-        'gui.icons.tho': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.tho')),
-        'gui.icons.zho': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.zho')),
-        'gui.icons.obj': container.add(phaserGame.add.sprite(0, 0, 'gui.icons.obj'))
-    };
-    function each(callback) {
-        Object.keys(sprites).forEach(function(key) {
-            callback.call(container, sprites[key]);
-        });
-    }
+function createIconSprite({container, phaserGame, width, height, frame}) {
+    const bmd = phaserGame.add.bitmapData(width, height);
+    const image = bmd.addToWorld(0, 0);
     let last;
 
-    each(function(sprite) {
-        sprite.visible = false;
-    });
-
+    container.add(image);
+    
     return {
 
         move: function(x, y) {
-            each(function(sprite) {
-                sprite.x = x;
-                sprite.y = y;
-            });
+            image.x = x;
+            image.y = y;
         },
 
-        show: function(key, frame) {
-            if (last) {
-                if (last !== sprites[key]) {
-                    last.visible = false;
-                }
+        show: function(entity) {
+            if (last !== entity.sprite) {
+                const oldFrame = entity.sprite.frame;
+                entity.sprite.frame = frame;
+                entity.sprite.anchor.setTo(0, 0);
+                bmd.clear();
+                bmd.draw(entity.sprite, 0, 0);
+                entity.sprite.anchor.setTo(0.5, 0.5);
+                entity.sprite.frame = oldFrame;
             }
-            sprites[key].visible = true;
-            if (frame) {
-                sprites[key].frame = frame;
-            }
-            last = sprites[key];
+            last = entity.sprite;
         },
 
         hide: function() {
-            if (last) {
-                last.visible = false;
-            } else {
-                each(function(sprite) {
-                    sprite.visible = false;
-                });
-            }
+            bmd.clear();
         },
 
         click: function(callback, ctx) {
-            each(function(sprite) {
-                sprite.inputEnabled = true;
-                sprite.events.onInputDown.add(callback, ctx);
-            });
+            image.inputEnabled = true;
+            image.events.onInputDown.add(callback, ctx);
         }
 
     }
@@ -95,8 +96,8 @@ class MainAttributeGroup extends Phaser.Group {
 
         super(phaserGame);
 
-        // creating a Phaser.Sprite object for the entity icons
-        this.iconSprites = createIconSprites(this, phaserGame);
+        // creating an object for the entity icons
+        this.iconSprite = createIcon({container: this, phaserGame});
 
         // Text objects to display entity attributes
         this.nameElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop, '', {
@@ -144,7 +145,7 @@ class MainAttributeGroup extends Phaser.Group {
             throw 'Invalid DataObject has been passed!';
         }
 
-        this.iconSprites.show(entityIcons[dataObject.getId()].spriteId, entityIcons[dataObject.getId()].faceFrame);
+        this.iconSprite.show(entity);
 
         // Names
         this.nameElm.text = dataObject.getName();
@@ -389,18 +390,19 @@ class MultiselectionGroup extends Phaser.Group {
             const x = i % columns * (iconWidth + margin);
             const y = Math.floor(i / columns) * (iconHeight + margin);
 
-            // StatusBars
-            this.healthBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight - statusBarMargin));
-            this.shieldBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1));
-
             // Icons
-            this.icons[i] = createIconSprites(this, phaserGame);
+            this.icons[i] = createSmallIcon({container: this, phaserGame});
             this.icons[i].move(x, y);
             this.icons[i].click((idx => {
                 return function() {
                     entityManager.unselectAll(this.entities[idx]);
                 };
             })(i), this);
+
+            // StatusBars
+            this.healthBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight - statusBarMargin));
+            this.shieldBar[i] = this.add(phaserGame.add.graphics(x + statusBarMargin, y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1));
+            
         }
 
         
@@ -427,8 +429,8 @@ class MultiselectionGroup extends Phaser.Group {
                 dataObject = entities[i].getDataObject();
 
                 this.entities[i] = entities[i];
-
-                this.icons[i].show(entityIcons[dataObject.getId()].spriteId, entityIcons[dataObject.getId()].iconFrame);
+                
+                this.icons[i].show(entities[i]);
 
                 this.renderBar(this.healthBar[i], dataObject.getHull() / dataObject.getMaxHull());
                 if (dataObject.getMaxShield() > 0) {

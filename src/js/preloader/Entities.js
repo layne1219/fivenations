@@ -763,8 +763,8 @@ ns.entities = ns.entities || {
 
     queen: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit08_0.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit08_0.json',
+        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit08.png',
+        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit08.json',
         dataURL: PATH_ASSETS_DATA_UNITS + '/zho/queen.json'
     },
 
