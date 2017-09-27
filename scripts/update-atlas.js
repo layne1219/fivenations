@@ -209,12 +209,10 @@ files.forEach(file => {
 			const newData = Object.assign({}, data);
 			const tmp = Object.assign({}, newData.frames[1]);
 
-			newData.frames.unshift(tmp);
-
-			/*if (tmp.filename.indexOf('_sm_') !== -1) {
+			if (tmp.filename.indexOf('_sm_') !== -1) {
 				newData.frames[1] = Object.assign({}, newData.frames[2]);
 				newData.frames[2] = tmp; 
-			}*/
+			}
 
 			return jsonFile.writeFile(target, newData, {spaces: 2});
 		})
