@@ -41,14 +41,14 @@
           authorised: true
         });
 
-        Object.keys(window.fivenations.entities).forEach(function(id) {
+        window.addEntity = function(key) {
             game.eventEmitter.synced.entities.add({
-                id: id,
+                id: key || 'hurricane',
                 team: 1,
                 x: 50 + Math.random() * 700,
                 y: 50 + Math.random() * 700
             });
-        });
+          };
 
       });
       app.start();
