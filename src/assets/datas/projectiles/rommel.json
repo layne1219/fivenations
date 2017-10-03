@@ -1,5 +1,6 @@
 {
     "id": "rommel",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 75,
     "followTarget": false,

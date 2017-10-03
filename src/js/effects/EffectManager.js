@@ -4,6 +4,7 @@ import DataObject from '../model/DataObject';
 import EventEmitter from '../sync/EventEmitter';
 import Effect from './Effect';
 
+const DEFAULT_GRAPHICS_GROUP = 'effects';
 const ns = window.fivenations;
 
 let effects = [];
@@ -24,11 +25,12 @@ EffectManager.prototype = {
      */
     add: function(config) {
 
-        var effect;
-        var sprite;
-        var dataObject;
-        var point;
-        var group;
+        let effect;
+        let sprite;
+        let dataObject;
+        let point;
+        let group;
+        let groupName;
 
         if (!config) {
             throw 'Invalid configuration object passed as a parameter!';
@@ -105,7 +107,8 @@ EffectManager.prototype = {
             sprite.body.maxVelocity.set(config.maxVelocity);
         }
 
-        group = Graphics.getInstance().getGroup('effects');
+        groupName = dataObject.getTargetGraphicsGroup() || DEFAULT_GRAPHICS_GROUP;
+        group = Graphics.getInstance().getGroup(groupName);
         sprite._group = group;
         group.add(sprite);
 

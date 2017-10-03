@@ -1,5 +1,6 @@
 {
     "id": "ragnarok-heavy-gun",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 750,
     "followTarget": false,

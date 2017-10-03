@@ -227,6 +227,10 @@ function DataObject(json) {
 
         isFighter: function() {
             return this.getType() === 'Fighter';
+        },
+
+        getTargetGraphicsGroup: function() {
+            return data.targetGraphicsGroup;
         }
 
     };

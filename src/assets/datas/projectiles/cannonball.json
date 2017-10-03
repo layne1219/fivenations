@@ -1,5 +1,6 @@
 {
     "id": "cannonball",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 200,
     "animations": {

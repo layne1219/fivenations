@@ -1,5 +1,6 @@
 {
     "id": "asr-missile",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 450,
     "followTarget": true,

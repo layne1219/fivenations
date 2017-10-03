@@ -1,5 +1,6 @@
 {
     "id": "laser-beam-1",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 50,
     "animations": {
