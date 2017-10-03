@@ -1,4 +1,7 @@
-import { ENTITY_SIZES, ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../common/Const';
+import { 
+    ENTITY_SIZES, 
+    ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED 
+} from '../common/Const';
 
 function getDimensionsBySize(size) {
     if (!size || !ENTITY_SIZES[size]) return ENTITY_SIZES.m;
