@@ -1,0 +1,12 @@
+{
+    "id": "flash",
+    "size": "sm",
+    "customFrame": 0,
+    "events": {
+        "init": {
+            "animation": [
+                "flash"
+            ]
+        }        
+    }
+}
