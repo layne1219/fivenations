@@ -200,7 +200,7 @@ EffectManager.prototype = {
             }
         }
         return null;
-    }
+    },
 
     /*******************************************************************************
      *                         EFFECT MANIPULATOR FUNCTIONALITIES                  *

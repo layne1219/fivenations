@@ -1,9 +1,8 @@
-
 class Animations {
-	
-	flash() {
-	
-	}
+  
+  	flash() {
+  
+  	}
 
 }
 
