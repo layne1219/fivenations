@@ -3,6 +3,7 @@ import Graphics from '../common/Graphics';
 import DataObject from '../model/DataObject';
 import EventEmitter from '../sync/EventEmitter';
 import Effect from './Effect';
+import Animations from './Animations';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
 const ns = window.fivenations;
@@ -116,62 +117,6 @@ EffectManager.prototype = {
     },
 
     /**
-     * Triggers an explosion animation configured in the DataObject
-     * @param {object} entity Any object possesses DataObject instance
-     */
-    explode: function(entity) {
-        if (!entity || !entity.getDataObject) return;
-
-        var effectId;
-        var sprite;
-        var minWrecks;
-        var maxWrecks;
-        var i;
-        var eventData = entity.getDataObject().getEvent('remove');
-
-        if (!eventData) return;
-
-        sprite = entity.getSprite();
-
-        if (eventData.effects && eventData.effects.length) {
-            if (eventData.randomize) {
-                effectId = eventData.effects[Util.rnd(0, eventData.effects.length - 1)];
-                this.add({
-                    id: effectId,
-                    x: sprite.x,
-                    y: sprite.y
-                });
-            } else {
-                eventData.effects.forEach(function(effectId) {
-                    this.add({
-                        id: effectId,
-                        x: sprite.x,
-                        y: sprite.y
-                    });
-                }.bind(this));
-            }
-        }
-
-        if (eventData.wrecks && eventData.wrecks.length) {
-            minWrecks = eventData.minWrecks || 0;
-            maxWrecks = eventData.maxWrecks || 0;
-            for (i = minWrecks; i <= maxWrecks; i += 1) {
-                effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
-                this.add({
-                    id: effectId,
-                    x: sprite.x + Util.rnd(0, 30) - 15,
-                    y: sprite.y + Util.rnd(0, 30) - 15,
-                    velocity: {
-                        x: (Math.random() - 0.5) * Util.rnd(75, 100),
-                        y: (Math.random() - 0.5) * Util.rnd(75, 100)
-                    }
-                });                        
-            }
-        }
-
-    },
-
-    /**
      * Removes effect from the private collection
      * @param {object} effect Effect instance
      */
@@ -236,6 +181,88 @@ EffectManager.prototype = {
     },
 
     /**
+     * returns the Phaser.Game object for inconvinience 
+     * @return {[object]} [Phaser.Game instnace]
+     */
+    getGame: function() {
+        return phaserGame;
+    },
+
+    /**
+     * Returns the array of effects or an empty array
+     * @param {string} guid 
+     * @return {object} effect instance
+     */
+    getEffectByGUID: function(guid) {
+        for (var i = effects.length - 1; i >= 0; i -= 1) {
+            if (effects[i].getGUID() === guid) {
+                return effects[i];
+            }
+        }
+        return null;
+    }
+
+    /*******************************************************************************
+     *                         EFFECT MANIPULATOR FUNCTIONALITIES                  *
+     *******************************************************************************/
+
+    /**
+     * Triggers an explosion animation configured in the DataObject
+     * @param {object} entity Any object possesses DataObject instance
+     */
+    explode: function(entity) {
+        if (!entity || !entity.getDataObject) return;
+
+        var effectId;
+        var sprite;
+        var minWrecks;
+        var maxWrecks;
+        var i;
+        var eventData = entity.getDataObject().getEvent('remove');
+
+        if (!eventData) return;
+
+        sprite = entity.getSprite();
+
+        if (eventData.effects && eventData.effects.length) {
+            if (eventData.randomize) {
+                effectId = eventData.effects[Util.rnd(0, eventData.effects.length - 1)];
+                this.add({
+                    id: effectId,
+                    x: sprite.x,
+                    y: sprite.y
+                });
+            } else {
+                eventData.effects.forEach(function(effectId) {
+                    this.add({
+                        id: effectId,
+                        x: sprite.x,
+                        y: sprite.y
+                    });
+                }.bind(this));
+            }
+        }
+
+        if (eventData.wrecks && eventData.wrecks.length) {
+            minWrecks = eventData.minWrecks || 0;
+            maxWrecks = eventData.maxWrecks || 0;
+            for (i = minWrecks; i <= maxWrecks; i += 1) {
+                effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
+                this.add({
+                    id: effectId,
+                    x: sprite.x + Util.rnd(0, 30) - 15,
+                    y: sprite.y + Util.rnd(0, 30) - 15,
+                    velocity: {
+                        x: (Math.random() - 0.5) * Util.rnd(75, 100),
+                        y: (Math.random() - 0.5) * Util.rnd(75, 100)
+                    }
+                });                        
+            }
+        }
+
+    },    
+
+    /**
      * makes the given effect to follow its target if specififed
      * @param  {object} effect Effect entity
      * @return {void}
@@ -281,30 +308,10 @@ EffectManager.prototype = {
         }
     },
 
-    /**
-     * returns the Phaser.Game object for inconvinience 
-     * @return {[object]} [Phaser.Game instnace]
-     */
-    getGame: function() {
-        return phaserGame;
-    },
-
-    /**
-     * Returns the array of effects or an empty array
-     * @param {string} guid 
-     * @return {object} effect instance
-     */
-    getEffectByGUID: function(guid) {
-        for (var i = effects.length - 1; i >= 0; i -= 1) {
-            if (effects[i].getGUID() === guid) {
-                return effects[i];
-            }
-        }
-        return null;
-    }
 
 };
 
+export { Animations };
 export default {
 
     /**

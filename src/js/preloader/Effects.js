@@ -201,6 +201,13 @@ ns.effects = Object.assign(ns.effects || {}, {
         atlasURL: PATH_ASSETS_IMG + '/smoke_trail04.json',
         dataURL: PATH_ASSETS_DATA + '/smoke-trail-4.json'
     },
+
+    'flash': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + '/flash.png',
+        atlasURL: PATH_ASSETS_IMG + '/flash.json',
+        dataURL: PATH_ASSETS_DATA + '/flash.json'
+    },    
     
 });
 
