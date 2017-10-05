@@ -4,7 +4,7 @@
     "customFrame": 0,
     "events": {
         "init": {
-            "animation": [
+            "execute": [
                 "flash"
             ]
         }        

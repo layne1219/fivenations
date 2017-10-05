@@ -3,7 +3,6 @@ import Graphics from '../common/Graphics';
 import DataObject from '../model/DataObject';
 import EventEmitter from '../sync/EventEmitter';
 import Effect from './Effect';
-import Animations from './Animations';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
 const ns = window.fivenations;
@@ -12,13 +11,13 @@ let effects = [];
 let phaserGame;
 let singleton;
 
-function EffectManager() {
-    if (!phaserGame) {
-        throw 'Invoke setGame first to pass the Phaser Game entity!';
-    }
-}
+class EffectManager {
 
-EffectManager.prototype = {
+    constructor() {
+        if (!phaserGame) {
+            throw 'Invoke setGame first to pass the Phaser Game entity!';
+        }       
+    }
 
     /**
      * Adds an effect object to the private collection
@@ -202,6 +201,14 @@ EffectManager.prototype = {
         return null;
     },
 
+    /**
+     * Returns an instance of the AnimationManager class
+     * @return {object} instance of AnimationManager class
+     */
+    getAnimationManager() {
+        return this.animationManager;
+    }
+
     /*******************************************************************************
      *                         EFFECT MANIPULATOR FUNCTIONALITIES                  *
      *******************************************************************************/
@@ -309,9 +316,29 @@ EffectManager.prototype = {
     },
 
 
+    /**
+     * makes the effects flash and disappear quickly
+     * @param  {object} effect Effect entity
+     * @return {void}
+     */
+    flash(effect) {
+        if (!effect) return;
+
+        const sprite = effect.getSprite();
+        const maxAlpha = 1;
+        const duration = 100;
+
+        sprite.alpha = 0;
+        
+        const flashTween = phaserGame.add.tween(sprite).to({alpha: maxAlpha}, duration, Phaser.Easing.Bounce.InOut, true, 0, 0, true);
+        flashTween.onComplete.add(function() {
+            this.remove(effect);
+        }, this);
+    }
+
+
 };
 
-export { Animations };
 export default {
 
     /**
