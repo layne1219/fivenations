@@ -1,12 +1,13 @@
 {
     "id": "flash",
     "size": "sm",
-    "customFrame": 0,
+    "customFrame": 4,
     "events": {
-        "init": {
-            "execute": [
-                "flash"
-            ]
+        "create": {
+            "execute": {
+                "target": "self",
+                "command": "flash"
+            }
         }        
     }
 }

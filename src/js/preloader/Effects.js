@@ -204,10 +204,10 @@ ns.effects = Object.assign(ns.effects || {}, {
 
     'flash': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/flash.png',
-        atlasURL: PATH_ASSETS_IMG + '/flash.json',
+        spriteURL: PATH_ASSETS_IMG + '/effect_blow05_1.png',
+        atlasURL: PATH_ASSETS_IMG + '/effect_blow05_1.json',
         dataURL: PATH_ASSETS_DATA + '/flash.json'
-    },    
+    },   
     
 });
 
