@@ -114,7 +114,7 @@ class EffectManager {
         // executes defined functionality in the data object
         const initEventConfig = dataObject.getEvent('create');
 
-        if (initEventConfig.execute) {
+        if (initEventConfig && initEventConfig.execute) {
             const exec = initEventConfig.execute;
             const target = exec.target === 'self' ? effect : null; 
             const func = this[exec.command] && this[exec.command].bind(this);
@@ -201,7 +201,7 @@ class EffectManager {
     /**
      * Returns the array of effects or an empty array
      * @param {string} guid 
-     * @return {object} effect instance
+     * @return {object} effect instance 
      */
     getEffectByGUID(guid) {
         for (var i = effects.length - 1; i >= 0; i -= 1) {
@@ -214,7 +214,7 @@ class EffectManager {
 
     /**
      * Returns an instance of the AnimationManager class
-     * @return {object} instance of AnimationManager class
+     * @return {object} instancse of AnimationManager class
      */
     getAnimationManager() {
         return this.animationManager;
@@ -251,13 +251,13 @@ class EffectManager {
                     y: sprite.y
                 });
             } else {
-                eventData.effects.forEach(function(effectId) {
+                eventData.effects.forEach(effectId => {
                     this.add({
                         id: effectId,
                         x: sprite.x,
                         y: sprite.y
                     });
-                }.bind(this));
+                });
             }
         }
 
