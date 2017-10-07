@@ -445,7 +445,7 @@ export default {
 
             const spriteUrl = PATH_ASSETS_IMG + ns.effects[key].spriteURL;
             const atlasUrl = PATH_ASSETS_IMG + ns.effects[key].atlasURL;
-            const dataUrl PATH_ASSETS_DATA + ns.effects[key].dataURL;
+            const dataUrl = PATH_ASSETS_DATA + ns.effects[key].dataURL;
 
             preloader.load.atlasJSONHash(key, spriteUrl, atlasUrl);
             preloader.load.json(key, dataUrl);

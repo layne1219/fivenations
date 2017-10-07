@@ -1,7 +1,7 @@
 const ns = window.fivenations;
 const PUBLIC_URL = process.env.PUBLIC_URL;
-const PATH_ASSETS_DATA_UNITS = `${PUBLIC_URL}/assets/datas/units`;
-const PATH_ASSETS_IMG_UNITS = `${PUBLIC_URL}/assets/images/units`;
+const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/units`;
+const PATH_ASSETS_IMG = `${PUBLIC_URL}/assets/images/units`;
 
 // const like object to describe all the entities participating in the gameplay 
 ns.entities = ns.entities || {
@@ -11,165 +11,165 @@ ns.entities = ns.entities || {
     // ----------------------------------------------------------------------------
     hurricane: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/hurricane.json'
+        spriteURL: '/fed/fed_unit01.png',
+        atlasURL: '/fed/fed_unit01.json',
+        dataURL: '/fed/hurricane.json'
     },
     orca: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/orca.json'
+        spriteURL: '/fed/fed_unit02.png',
+        atlasURL: '/fed/fed_unit02.json',
+        dataURL: '/fed/orca.json'
     },
     hailstorm: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/hailstorm.json'
+        spriteURL: '/fed/fed_unit03.png',
+        atlasURL: '/fed/fed_unit03.json',
+        dataURL: '/fed/hailstorm.json'
     },
     stgeorge: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/stgeorge.json'
+        spriteURL: '/fed/fed_unit04.png',
+        atlasURL: '/fed/fed_unit04.json',
+        dataURL: '/fed/stgeorge.json'
     },
     avenger: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/avenger.json'
+        spriteURL: '/fed/fed_unit05.png',
+        atlasURL: '/fed/fed_unit05.json',
+        dataURL: '/fed/avenger.json'
     },
     avenger2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/avenger2.json'
+        spriteURL: '/fed/fed_unit06.png',
+        atlasURL: '/fed/fed_unit06.json',
+        dataURL: '/fed/avenger2.json'
     },
     icarus: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/icarus.json'
+        spriteURL: '/fed/fed_unit07.png',
+        atlasURL: '/fed/fed_unit07.json',
+        dataURL: '/fed/icarus.json'
     },
     engineershuttle: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/engineershuttle.json'
+        spriteURL: '/fed/fed_unit08.png',
+        atlasURL: '/fed/fed_unit08.json',
+        dataURL: '/fed/engineershuttle.json'
     },
     kutuzov: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/kutuzov.json'
+        spriteURL: '/fed/fed_unit09.png',
+        atlasURL: '/fed/fed_unit09.json',
+        dataURL: '/fed/kutuzov.json'
     },
     pasteur: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/pasteur.json'
+        spriteURL: '/fed/fed_unit10.png',
+        atlasURL: '/fed/fed_unit10.json',
+        dataURL: '/fed/pasteur.json'
     },
     dresda: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/dresda.json'
+        spriteURL: '/fed/fed_unit11.png',
+        atlasURL: '/fed/fed_unit11.json',
+        dataURL: '/fed/dresda.json'
     },
     crow: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/crow.json'
+        spriteURL: '/fed/fed_unit12.png',
+        atlasURL: '/fed/fed_unit12.json',
+        dataURL: '/fed/crow.json'
     },
     teller: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/teller.json'
+        spriteURL: '/fed/fed_unit13.png',
+        atlasURL: '/fed/fed_unit13.json',
+        dataURL: '/fed/teller.json'
     },
     nuclearmissile: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit14.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_unit14.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/nuclearmissile.json'
+        spriteURL: '/fed/fed_unit14.png',
+        atlasURL: '/fed/fed_unit14.json',
+        dataURL: '/fed/nuclearmissile.json'
     },
     commandcenter: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/commandcenter.json'
+        spriteURL: '/fed/fed_build01.png',
+        atlasURL: '/fed/fed_build01.json',
+        dataURL: '/fed/commandcenter.json'
     },
     miningstation: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/miningstation.json'
+        spriteURL: '/fed/fed_build02.png',
+        atlasURL: '/fed/fed_build02.json',
+        dataURL: '/fed/miningstation.json'
     },
     civilianbase: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/civilianbase.json'
+        spriteURL: '/fed/fed_build03.png',
+        atlasURL: '/fed/fed_build03.json',
+        dataURL: '/fed/civilianbase.json'
     },
     solarstation: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/solarstation.json'
+        spriteURL: '/fed/fed_build04.png',
+        atlasURL: '/fed/fed_build04.json',
+        dataURL: '/fed/solarstation.json'
     },
     shipfactory: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/shipfactory.json'
+        spriteURL: '/fed/fed_build05.png',
+        atlasURL: '/fed/fed_build05.json',
+        dataURL: '/fed/shipfactory.json'
     },
     dockyard: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/dockyard.json'
+        spriteURL: '/fed/fed_build06.png',
+        atlasURL: '/fed/fed_build06.json',
+        dataURL: '/fed/dockyard.json'
     },
     merchantport: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/merchantport.json'
+        spriteURL: '/fed/fed_build07.png',
+        atlasURL: '/fed/fed_build07.json',
+        dataURL: '/fed/merchantport.json'
     },
     researchcenter: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/researchcenter.json'
+        spriteURL: '/fed/fed_build08.png',
+        atlasURL: '/fed/fed_build08.json',
+        dataURL: '/fed/researchcenter.json'
     },
     astrometricstation: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/astrometricstation.json'
+        spriteURL: '/fed/fed_build09.png',
+        atlasURL: '/fed/fed_build09.json',
+        dataURL: '/fed/astrometricstation.json'
     },
     fleetheadquarters: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/fleetheadquarters.json'
+        spriteURL: '/fed/fed_build10.png',
+        atlasURL: '/fed/fed_build10.json',
+        dataURL: '/fed/fleetheadquarters.json'
     },
     defensesatellite: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/defensesatellite.json'
+        spriteURL: '/fed/fed_build11.png',
+        atlasURL: '/fed/fed_build11.json',
+        dataURL: '/fed/defensesatellite.json'
     },
     defenseplatform: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/defenseplatform.json'
+        spriteURL: '/fed/fed_build12.png',
+        atlasURL: '/fed/fed_build12.json',
+        dataURL: '/fed/defenseplatform.json'
     },
     fusionreactor: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/fed/fed_build13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/fed/fusionreactor.json'
+        spriteURL: '/fed/fed_build13.png',
+        atlasURL: '/fed/fed_build13.json',
+        dataURL: '/fed/fusionreactor.json'
     },
 
     // ----------------------------------------------------------------------------
@@ -177,159 +177,159 @@ ns.entities = ns.entities || {
     // ----------------------------------------------------------------------------
     intruder: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/intruder.json'
+        spriteURL: '/ath/ath_unit01.png',
+        atlasURL: '/ath/ath_unit01.json',
+        dataURL: '/ath/intruder.json'
     },
     warpglider: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/warpglider.json'
+        spriteURL: '/ath/ath_unit02.png',
+        atlasURL: '/ath/ath_unit02.json',
+        dataURL: '/ath/warpglider.json'
     },
     flanker: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/flanker.json'
+        spriteURL: '/ath/ath_unit03.png',
+        atlasURL: '/ath/ath_unit03.json',
+        dataURL: '/ath/flanker.json'
     },
     mothership: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/mothership.json'
+        spriteURL: '/ath/ath_unit04.png',
+        atlasURL: '/ath/ath_unit04.json',
+        dataURL: '/ath/mothership.json'
     },
     invader: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/invader.json'
+        spriteURL: '/ath/ath_unit05.png',
+        atlasURL: '/ath/ath_unit05.json',
+        dataURL: '/ath/invader.json'
     },
     explorer: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/explorer.json'
+        spriteURL: '/ath/ath_unit06.png',
+        atlasURL: '/ath/ath_unit06.json',
+        dataURL: '/ath/explorer.json'
     },
     drone: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/drone.json'
+        spriteURL: '/ath/ath_unit07.png',
+        atlasURL: '/ath/ath_unit07.json',
+        dataURL: '/ath/drone.json'
     },
     gathering: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/gathering.json'
+        spriteURL: '/ath/ath_unit08.png',
+        atlasURL: '/ath/ath_unit08.json',
+        dataURL: '/ath/gathering.json'
     },
     clairvoyant: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/clairvoyant.json'
+        spriteURL: '/ath/ath_unit09.png',
+        atlasURL: '/ath/ath_unit09.json',
+        dataURL: '/ath/clairvoyant.json'
     },
     lancet: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/lancet.json'
+        spriteURL: '/ath/ath_unit10.png',
+        atlasURL: '/ath/ath_unit10.json',
+        dataURL: '/ath/lancet.json'
     },
     theocrat: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/theocrat.json'
+        spriteURL: '/ath/ath_unit11.png',
+        atlasURL: '/ath/ath_unit11.json',
+        dataURL: '/ath/theocrat.json'
     },
     lifevessel: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/lifevessel.json'
+        spriteURL: '/ath/ath_unit12.png',
+        atlasURL: '/ath/ath_unit12.json',
+        dataURL: '/ath/lifevessel.json'
     },
     rector: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_unit13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/rector.json'
+        spriteURL: '/ath/ath_unit13.png',
+        atlasURL: '/ath/ath_unit13.json',
+        dataURL: '/ath/rector.json'
     },
     centralpyramid: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/centralpyramid.json'
+        spriteURL: '/ath/ath_build01.png',
+        atlasURL: '/ath/ath_build01.json',
+        dataURL: '/ath/centralpyramid.json'
     },        
     masstransmitter: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/masstransmitter.json'
+        spriteURL: '/ath/ath_build02.png',
+        atlasURL: '/ath/ath_build02.json',
+        dataURL: '/ath/masstransmitter.json'
     },        
     biosphere: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/biosphere.json'
+        spriteURL: '/ath/ath_build03.png',
+        atlasURL: '/ath/ath_build03.json',
+        dataURL: '/ath/biosphere.json'
     },        
     powercore: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/powercore.json'
+        spriteURL: '/ath/ath_build04.png',
+        atlasURL: '/ath/ath_build04.json',
+        dataURL: '/ath/powercore.json'
     },        
     polaronsphere: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/polaronsphere.json'
+        spriteURL: '/ath/ath_build05.png',
+        atlasURL: '/ath/ath_build05.json',
+        dataURL: '/ath/polaronsphere.json'
     },        
     obelisk: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/obelisk.json'
+        spriteURL: '/ath/ath_build06.png',
+        atlasURL: '/ath/ath_build06.json',
+        dataURL: '/ath/obelisk.json'
     },        
     sanctuary: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/sanctuary.json'
+        spriteURL: '/ath/ath_build07.png',
+        atlasURL: '/ath/ath_build07.json',
+        dataURL: '/ath/sanctuary.json'
     },        
     synodum: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/synodum.json'
+        spriteURL: '/ath/ath_build08.png',
+        atlasURL: '/ath/ath_build08.json',
+        dataURL: '/ath/synodum.json'
     },        
     conservatory: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/conservatory.json'
+        spriteURL: '/ath/ath_build09.png',
+        atlasURL: '/ath/ath_build09.json',
+        dataURL: '/ath/conservatory.json'
     },        
     monumentofwill: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/monumentofwill.json'
+        spriteURL: '/ath/ath_build10.png',
+        atlasURL: '/ath/ath_build10.json',
+        dataURL: '/ath/monumentofwill.json'
     },        
     basilica: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/basilica.json'
+        spriteURL: '/ath/ath_build11.png',
+        atlasURL: '/ath/ath_build11.json',
+        dataURL: '/ath/basilica.json'
     },        
     theocratsseat: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/theocratsseat.json'
+        spriteURL: '/ath/ath_build12.png',
+        atlasURL: '/ath/ath_build12.json',
+        dataURL: '/ath/theocratsseat.json'
     },        
     shieldgenerator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ath/ath_build13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ath/shieldgenerator.json'
+        spriteURL: '/ath/ath_build13.png',
+        atlasURL: '/ath/ath_build13.json',
+        dataURL: '/ath/shieldgenerator.json'
     },
 
     // ----------------------------------------------------------------------------
@@ -337,191 +337,191 @@ ns.entities = ns.entities || {
     // ----------------------------------------------------------------------------
     spear: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/spear.json'
+        spriteURL: '/syl/syl_unit01.png',
+        atlasURL: '/syl/syl_unit01.json',
+        dataURL: '/syl/spear.json'
     },
 
     twinblade: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/twinblade.json'
+        spriteURL: '/syl/syl_unit02.png',
+        atlasURL: '/syl/syl_unit02.json',
+        dataURL: '/syl/twinblade.json'
     },
 
     gloom: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/gloom.json'
+        spriteURL: '/syl/syl_unit03.png',
+        atlasURL: '/syl/syl_unit03.json',
+        dataURL: '/syl/gloom.json'
     },
 
     eclipse: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/eclipse.json'
+        spriteURL: '/syl/syl_unit04.png',
+        atlasURL: '/syl/syl_unit04.json',
+        dataURL: '/syl/eclipse.json'
     },
 
     shade: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/shade.json'
+        spriteURL: '/syl/syl_unit05.png',
+        atlasURL: '/syl/syl_unit05.json',
+        dataURL: '/syl/shade.json'
     },
 
     plasmaraid: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/plasmaraid.json'
+        spriteURL: '/syl/syl_unit06.png',
+        atlasURL: '/syl/syl_unit06.json',
+        dataURL: '/syl/plasmaraid.json'
     },
 
     hauler: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/hauler.json'
+        spriteURL: '/syl/syl_unit07.png',
+        atlasURL: '/syl/syl_unit07.json',
+        dataURL: '/syl/hauler.json'
     },
 
     labor: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/labor.json'
+        spriteURL: '/syl/syl_unit08.png',
+        atlasURL: '/syl/syl_unit08.json',
+        dataURL: '/syl/labor.json'
     },
 
     installator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/installator.json'
+        spriteURL: '/syl/syl_unit09.png',
+        atlasURL: '/syl/syl_unit09.json',
+        dataURL: '/syl/installator.json'
     },
 
     absorber: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/absorber.json'
+        spriteURL: '/syl/syl_unit10.png',
+        atlasURL: '/syl/syl_unit10.json',
+        dataURL: '/syl/absorber.json'
     },
 
     assimilator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/assimilator.json'
+        spriteURL: '/syl/syl_unit11.png',
+        atlasURL: '/syl/syl_unit11.json',
+        dataURL: '/syl/assimilator.json'
     },
 
     mask: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/mask.json'
+        spriteURL: '/syl/syl_unit12.png',
+        atlasURL: '/syl/syl_unit12.json',
+        dataURL: '/syl/mask.json'
     },
 
     caldron: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/caldron.json'
+        spriteURL: '/syl/syl_unit13.png',
+        atlasURL: '/syl/syl_unit13.json',
+        dataURL: '/syl/caldron.json'
     },
 
     leechmine: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit14.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_unit14.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/leechmine.json'
+        spriteURL: '/syl/syl_unit14.png',
+        atlasURL: '/syl/syl_unit14.json',
+        dataURL: '/syl/leechmine.json'
     },
 
     installationprime: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/installationprime.json'
+        spriteURL: '/syl/syl_build01.png',
+        atlasURL: '/syl/syl_build01.json',
+        dataURL: '/syl/installationprime.json'
     },
 
     refinery: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/refinery.json'
+        spriteURL: '/syl/syl_build02.png',
+        atlasURL: '/syl/syl_build02.json',
+        dataURL: '/syl/refinery.json'
     },
 
     supportcenter: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcenter.json'
+        spriteURL: '/syl/syl_build03.png',
+        atlasURL: '/syl/syl_build03.json',
+        dataURL: '/syl/supportcenter.json'
     },
 
     manufacture: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/manufacture.json'
+        spriteURL: '/syl/syl_build04.png',
+        atlasURL: '/syl/syl_build04.json',
+        dataURL: '/syl/manufacture.json'
     },
 
     advancedmanufacture: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/advancedmanufacture.json'
+        spriteURL: '/syl/syl_build05.png',
+        atlasURL: '/syl/syl_build05.json',
+        dataURL: '/syl/advancedmanufacture.json'
     },
 
     manufactureprime: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/manufactureprime.json'
+        spriteURL: '/syl/syl_build06.png',
+        atlasURL: '/syl/syl_build06.json',
+        dataURL: '/syl/manufactureprime.json'
     },
 
     defensiveserver: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/defensiveserver.json'
+        spriteURL: '/syl/syl_build07.png',
+        atlasURL: '/syl/syl_build07.json',
+        dataURL: '/syl/defensiveserver.json'
     },
 
     offensiveserver: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/offensiveserver.json'
+        spriteURL: '/syl/syl_build08.png',
+        atlasURL: '/syl/syl_build08.json',
+        dataURL: '/syl/offensiveserver.json'
     },
 
     quantumcore: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/quantumcore.json'
+        spriteURL: '/syl/syl_build09.png',
+        atlasURL: '/syl/syl_build09.json',
+        dataURL: '/syl/quantumcore.json'
     },
 
     aegis: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/aegis.json'
+        spriteURL: '/syl/syl_build10.png',
+        atlasURL: '/syl/syl_build10.json',
+        dataURL: '/syl/aegis.json'
     },
 
     wormholegenerator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/wormholegenerator.json'
+        spriteURL: '/syl/syl_build11.png',
+        atlasURL: '/syl/syl_build11.json',
+        dataURL: '/syl/wormholegenerator.json'
     },
 
     repairstation: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/repairstation.json'
+        spriteURL: '/syl/syl_build12.png',
+        atlasURL: '/syl/syl_build12.json',
+        dataURL: '/syl/repairstation.json'
     },
 
     supportcomplex: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/syl/syl_build13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/syl/supportcomplex.json'
+        spriteURL: '/syl/syl_build13.png',
+        atlasURL: '/syl/syl_build13.json',
+        dataURL: '/syl/supportcomplex.json'
     },
 
     // ----------------------------------------------------------------------------
@@ -529,184 +529,184 @@ ns.entities = ns.entities || {
     // ----------------------------------------------------------------------------
     predator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/predator.json'
+        spriteURL: '/tho/tho_unit01.png',
+        atlasURL: '/tho/tho_unit01.json',
+        dataURL: '/tho/predator.json'
     },
 
     maraduer: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/maraduer.json'
+        spriteURL: '/tho/tho_unit02.png',
+        atlasURL: '/tho/tho_unit02.json',
+        dataURL: '/tho/maraduer.json'
     },
 
     devastator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/devastator.json'
+        spriteURL: '/tho/tho_unit03.png',
+        atlasURL: '/tho/tho_unit03.json',
+        dataURL: '/tho/devastator.json'
     },
 
     grinder: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/grinder.json'
+        spriteURL: '/tho/tho_unit04.png',
+        atlasURL: '/tho/tho_unit04.json',
+        dataURL: '/tho/grinder.json'
     },
 
     vindicator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/vindicator.json'
+        spriteURL: '/tho/tho_unit05.png',
+        atlasURL: '/tho/tho_unit05.json',
+        dataURL: '/tho/vindicator.json'
     },
 
     flagship: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/flagship.json'
+        spriteURL: '/tho/tho_unit06.png',
+        atlasURL: '/tho/tho_unit06.json',
+        dataURL: '/tho/flagship.json'
     },
 
     harvester: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/harvester.json'
+        spriteURL: '/tho/tho_unit07.png',
+        atlasURL: '/tho/tho_unit07.json',
+        dataURL: '/tho/harvester.json'
     },
 
     welder: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/welder.json'
+        spriteURL: '/tho/tho_unit08.png',
+        atlasURL: '/tho/tho_unit08.json',
+        dataURL: '/tho/welder.json'
     },
 
     hunter: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/hunter.json'
+        spriteURL: '/tho/tho_unit09.png',
+        atlasURL: '/tho/tho_unit09.json',
+        dataURL: '/tho/hunter.json'
     },
 
     corsair: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/corsair.json'
+        spriteURL: '/tho/tho_unit10.png',
+        atlasURL: '/tho/tho_unit10.json',
+        dataURL: '/tho/corsair.json'
     },
 
     havoc: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/havoc.json'
+        spriteURL: '/tho/tho_unit11.png',
+        atlasURL: '/tho/tho_unit11.json',
+        dataURL: '/tho/havoc.json'
     },
 
     breaker: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/breaker.json'
+        spriteURL: '/tho/tho_unit12.png',
+        atlasURL: '/tho/tho_unit12.json',
+        dataURL: '/tho/breaker.json'
     },
 
     vanguard: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_unit13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/vanguard.json'
+        spriteURL: '/tho/tho_unit13.png',
+        atlasURL: '/tho/tho_unit13.json',
+        dataURL: '/tho/vanguard.json'
     },
 
     capitol: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/capitol.json'
+        spriteURL: '/tho/tho_build01.png',
+        atlasURL: '/tho/tho_build01.json',
+        dataURL: '/tho/capitol.json'
     },
 
     materialsilo: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/materialsilo.json'
+        spriteURL: '/tho/tho_build02.png',
+        atlasURL: '/tho/tho_build02.json',
+        dataURL: '/tho/materialsilo.json'
     },
 
     habitat: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/habitat.json'
+        spriteURL: '/tho/tho_build03.png',
+        atlasURL: '/tho/tho_build03.json',
+        dataURL: '/tho/habitat.json'
     },
 
     powerplant: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/powerplant.json'
+        spriteURL: '/tho/tho_build04.png',
+        atlasURL: '/tho/tho_build04.json',
+        dataURL: '/tho/powerplant.json'
     },
 
     energystorage: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/energystorage.json'
+        spriteURL: '/tho/tho_build05.png',
+        atlasURL: '/tho/tho_build05.json',
+        dataURL: '/tho/energystorage.json'
     },
 
     hall: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/hall.json'
+        spriteURL: '/tho/tho_build06.png',
+        atlasURL: '/tho/tho_build06.json',
+        dataURL: '/tho/hall.json'
     },
 
     flagshipyard: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/flagshipyard.json'
+        spriteURL: '/tho/tho_build07.png',
+        atlasURL: '/tho/tho_build07.json',
+        dataURL: '/tho/flagshipyard.json'
     },
 
     forum: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/forum.json'
+        spriteURL: '/tho/tho_build08.png',
+        atlasURL: '/tho/tho_build08.json',
+        dataURL: '/tho/forum.json'
     },
 
     skycourt: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/skycourt.json'
+        spriteURL: '/tho/tho_build09.png',
+        atlasURL: '/tho/tho_build09.json',
+        dataURL: '/tho/skycourt.json'
     },
 
     senate: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/senate.json'
+        spriteURL: '/tho/tho_build10.png',
+        atlasURL: '/tho/tho_build10.json',
+        dataURL: '/tho/senate.json'
     },
 
     guardstation: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/guardstation.json'
+        spriteURL: '/tho/tho_build11.png',
+        atlasURL: '/tho/tho_build11.json',
+        dataURL: '/tho/guardstation.json'
     },
 
     provincialbeacon: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/provincialbeacon.json'
+        spriteURL: '/tho/tho_build12.png',
+        atlasURL: '/tho/tho_build12.json',
+        dataURL: '/tho/provincialbeacon.json'
     },
 
     ioncannon: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/tho/tho_build13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/tho/ioncannon.json'
+        spriteURL: '/tho/tho_build13.png',
+        atlasURL: '/tho/tho_build13.json',
+        dataURL: '/tho/ioncannon.json'
     },
 
     // ----------------------------------------------------------------------------
@@ -714,212 +714,212 @@ ns.entities = ns.entities || {
     // ----------------------------------------------------------------------------
     spawn: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/spawn.json'
+        spriteURL: '/zho/zho_unit01.png',
+        atlasURL: '/zho/zho_unit01.json',
+        dataURL: '/zho/spawn.json'
     },
 
     guard: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/guard.json'
+        spriteURL: '/zho/zho_unit02.png',
+        atlasURL: '/zho/zho_unit02.json',
+        dataURL: '/zho/guard.json'
     },
 
     venator: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/venator.json'
+        spriteURL: '/zho/zho_unit03.png',
+        atlasURL: '/zho/zho_unit03.json',
+        dataURL: '/zho/venator.json'
     },
 
     mind: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/mind.json'
+        spriteURL: '/zho/zho_unit04.png',
+        atlasURL: '/zho/zho_unit04.json',
+        dataURL: '/zho/mind.json'
     },
 
     overseer: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/overseer.json'
+        spriteURL: '/zho/zho_unit05.png',
+        atlasURL: '/zho/zho_unit05.json',
+        dataURL: '/zho/overseer.json'
     },
 
     swarmmother: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/swarmmother.json'
+        spriteURL: '/zho/zho_unit06.png',
+        atlasURL: '/zho/zho_unit06.json',
+        dataURL: '/zho/swarmmother.json'
     },
 
     spikeworm: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/spikeworm.json'
+        spriteURL: '/zho/zho_unit07.png',
+        atlasURL: '/zho/zho_unit07.json',
+        dataURL: '/zho/spikeworm.json'
     },
 
     queen: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/queen.json'
+        spriteURL: '/zho/zho_unit08.png',
+        atlasURL: '/zho/zho_unit08.json',
+        dataURL: '/zho/queen.json'
     },
 
     ovum: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/ovum.json'
+        spriteURL: '/zho/zho_unit09.png',
+        atlasURL: '/zho/zho_unit09.json',
+        dataURL: '/zho/ovum.json'
     },
 
     mindovum: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/mindovum.json'
+        spriteURL: '/zho/zho_unit10.png',
+        atlasURL: '/zho/zho_unit10.json',
+        dataURL: '/zho/mindovum.json'
     },
 
     reincarnate: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/reincarnate.json'
+        spriteURL: '/zho/zho_unit11.png',
+        atlasURL: '/zho/zho_unit11.json',
+        dataURL: '/zho/reincarnate.json'
     },
 
     worker: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/worker.json'
+        spriteURL: '/zho/zho_unit12.png',
+        atlasURL: '/zho/zho_unit12.json',
+        dataURL: '/zho/worker.json'
     },
 
     rictus: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/rictus.json'
+        spriteURL: '/zho/zho_unit13.png',
+        atlasURL: '/zho/zho_unit13.json',
+        dataURL: '/zho/rictus.json'
     },
 
     mite: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit14.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit14.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/mite.json'
+        spriteURL: '/zho/zho_unit14.png',
+        atlasURL: '/zho/zho_unit14.json',
+        dataURL: '/zho/mite.json'
     },
 
     ruptor: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit15.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit15.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/ruptor.json'
+        spriteURL: '/zho/zho_unit15.png',
+        atlasURL: '/zho/zho_unit15.json',
+        dataURL: '/zho/ruptor.json'
     },
 
     decay: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit16.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_unit16.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/decay.json'
+        spriteURL: '/zho/zho_unit16.png',
+        atlasURL: '/zho/zho_unit16.json',
+        dataURL: '/zho/decay.json'
     },
 
     cropbed: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/cropbed.json'
+        spriteURL: '/zho/zho_build01.png',
+        atlasURL: '/zho/zho_build01.json',
+        dataURL: '/zho/cropbed.json'
     },
 
     nutrientcolony: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/nutrientcolony.json'
+        spriteURL: '/zho/zho_build02.png',
+        atlasURL: '/zho/zho_build02.json',
+        dataURL: '/zho/nutrientcolony.json'
     },
 
     metabolist: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/metabolist.json'
+        spriteURL: '/zho/zho_build03.png',
+        atlasURL: '/zho/zho_build03.json',
+        dataURL: '/zho/metabolist.json'
     },
 
     agaric: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/agaric.json'
+        spriteURL: '/zho/zho_build04.png',
+        atlasURL: '/zho/zho_build04.json',
+        dataURL: '/zho/agaric.json'
     },
 
     mindfungus: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build05.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build05.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/mindfungus.json'
+        spriteURL: '/zho/zho_build05.png',
+        atlasURL: '/zho/zho_build05.json',
+        dataURL: '/zho/mindfungus.json'
     },
 
     clathruscolony: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build06.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build06.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/clathruscolony.json'
+        spriteURL: '/zho/zho_build06.png',
+        atlasURL: '/zho/zho_build06.json',
+        dataURL: '/zho/clathruscolony.json'
     },
 
     symbioticorgan: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build07.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build07.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/symbioticorgan.json'
+        spriteURL: '/zho/zho_build07.png',
+        atlasURL: '/zho/zho_build07.json',
+        dataURL: '/zho/symbioticorgan.json'
     },
 
     evulatory: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build08.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build08.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/evulatory.json'
+        spriteURL: '/zho/zho_build08.png',
+        atlasURL: '/zho/zho_build08.json',
+        dataURL: '/zho/evulatory.json'
     },
 
     swarmmembrane: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build09.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build09.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/swarmmembrane.json'
+        spriteURL: '/zho/zho_build09.png',
+        atlasURL: '/zho/zho_build09.json',
+        dataURL: '/zho/swarmmembrane.json'
     },
 
     chrysodendron: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build10.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build10.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/chrysodendron.json'
+        spriteURL: '/zho/zho_build10.png',
+        atlasURL: '/zho/zho_build10.json',
+        dataURL: '/zho/chrysodendron.json'
     },
 
     chimneyplant: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build11.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build11.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/chimneyplant.json'
+        spriteURL: '/zho/zho_build11.png',
+        atlasURL: '/zho/zho_build11.json',
+        dataURL: '/zho/chimneyplant.json'
     },
 
     decaychamber: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build12.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build12.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/decaychamber.json'
+        spriteURL: '/zho/zho_build12.png',
+        atlasURL: '/zho/zho_build12.json',
+        dataURL: '/zho/decaychamber.json'
     },
 
     fonia: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build13.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build13.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/fonia.json'
+        spriteURL: '/zho/zho_build13.png',
+        atlasURL: '/zho/zho_build13.json',
+        dataURL: '/zho/fonia.json'
     },
 
     seed: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build14.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/zho/zho_build14.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/zho/seed.json'
+        spriteURL: '/zho/zho_build14.png',
+        atlasURL: '/zho/zho_build14.json',
+        dataURL: '/zho/seed.json'
     },
 
     // ----------------------------------------------------------------------------
@@ -927,159 +927,159 @@ ns.entities = ns.entities || {
     // ----------------------------------------------------------------------------
     asteroid1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid1.json'            
+        spriteURL: '/ast/asteroid01.png',
+        atlasURL: '/ast/asteroid01.json',
+        dataURL: '/ast/asteroid1.json'            
     },
     asteroid2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid2.json'            
+        spriteURL: '/ast/asteroid02.png',
+        atlasURL: '/ast/asteroid02.json',
+        dataURL: '/ast/asteroid2.json'            
     },
     asteroid3: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid3.json'            
+        spriteURL: '/ast/asteroid03.png',
+        atlasURL: '/ast/asteroid03.json',
+        dataURL: '/ast/asteroid3.json'            
     },
     asteroid4: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroid4.json'            
+        spriteURL: '/ast/asteroid04.png',
+        atlasURL: '/ast/asteroid04.json',
+        dataURL: '/ast/asteroid4.json'            
     },
     asteroidbig1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidbig1.json'            
+        spriteURL: '/ast/asteroid_big01.png',
+        atlasURL: '/ast/asteroid_big01.json',
+        dataURL: '/ast/asteroidbig1.json'            
     },
     asteroidbig2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_big02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidbig2.json'            
+        spriteURL: '/ast/asteroid_big02.png',
+        atlasURL: '/ast/asteroid_big02.json',
+        dataURL: '/ast/asteroidbig2.json'            
     },        
     asteroidsmall1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall1.json'            
+        spriteURL: '/ast/asteroid_sm01.png',
+        atlasURL: '/ast/asteroid_sm01.json',
+        dataURL: '/ast/asteroidsmall1.json'            
     },
     asteroidsmall2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall2.json'            
+        spriteURL: '/ast/asteroid_sm02.png',
+        atlasURL: '/ast/asteroid_sm02.json',
+        dataURL: '/ast/asteroidsmall2.json'            
     },
     asteroidsmall3: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm03.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm03.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall3.json'            
+        spriteURL: '/ast/asteroid_sm03.png',
+        atlasURL: '/ast/asteroid_sm03.json',
+        dataURL: '/ast/asteroidsmall3.json'            
     },
     asteroidsmall4: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm04.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_sm04.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsmall4.json'            
+        spriteURL: '/ast/asteroid_sm04.png',
+        atlasURL: '/ast/asteroid_sm04.json',
+        dataURL: '/ast/asteroidsmall4.json'            
     },
     asteroidice1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice1.json'            
+        spriteURL: '/ast/asteroid_ice01.png',
+        atlasURL: '/ast/asteroid_ice01.json',
+        dataURL: '/ast/asteroidice1.json'            
     },
     asteroidice2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice2.json'            
+        spriteURL: '/ast/asteroid_ice01.png',
+        atlasURL: '/ast/asteroid_ice01.json',
+        dataURL: '/ast/asteroidice2.json'            
     },
     asteroidicesmall1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice1.json'            
+        spriteURL: '/ast/asteroid_ice_sm01.png',
+        atlasURL: '/ast/asteroid_ice_sm01.json',
+        dataURL: '/ast/asteroidice1.json'            
     },
     asteroidicesmall2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_ice_sm02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidice2.json'            
+        spriteURL: '/ast/asteroid_ice_sm02.png',
+        atlasURL: '/ast/asteroid_ice_sm02.json',
+        dataURL: '/ast/asteroidice2.json'            
     },
     asteroidsilicon1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsilicon1.json'            
+        spriteURL: '/ast/asteroid_silicon01.png',
+        atlasURL: '/ast/asteroid_silicon01.json',
+        dataURL: '/ast/asteroidsilicon1.json'            
     },
     asteroidsilicon2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsilicon2.json'            
+        spriteURL: '/ast/asteroid_silicon02.png',
+        atlasURL: '/ast/asteroid_silicon02.json',
+        dataURL: '/ast/asteroidsilicon2.json'            
     },
     asteroidsiliconsmall1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsiliconsmall1.json'            
+        spriteURL: '/ast/asteroid_silicon_sm01.png',
+        atlasURL: '/ast/asteroid_silicon_sm01.json',
+        dataURL: '/ast/asteroidsiliconsmall1.json'            
     },
     asteroidsiliconsmall2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_silicon_sm02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidsiliconsmall2.json'            
+        spriteURL: '/ast/asteroid_silicon_sm02.png',
+        atlasURL: '/ast/asteroid_silicon_sm02.json',
+        dataURL: '/ast/asteroidsiliconsmall2.json'            
     },                
     asteroidtitanium1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitanium1.json'            
+        spriteURL: '/ast/asteroid_titanium01.png',
+        atlasURL: '/ast/asteroid_titanium01.json',
+        dataURL: '/ast/asteroidtitanium1.json'            
     },
     asteroidtitanium2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitanium2.json'            
+        spriteURL: '/ast/asteroid_titanium02.png',
+        atlasURL: '/ast/asteroid_titanium02.json',
+        dataURL: '/ast/asteroidtitanium2.json'            
     },
     asteroidtitaniumsmall1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitaniumsmall1.json'            
+        spriteURL: '/ast/asteroid_titanium_sm01.png',
+        atlasURL: '/ast/asteroid_titanium_sm01.json',
+        dataURL: '/ast/asteroidtitaniumsmall1.json'            
     },
     asteroidtitaniumsmall2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_titanium_sm02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroidtitaniumsmall2.json'            
+        spriteURL: '/ast/asteroid_titanium_sm02.png',
+        atlasURL: '/ast/asteroid_titanium_sm02.json',
+        dataURL: '/ast/asteroidtitaniumsmall2.json'            
     },
     asteroiduranium1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduranium1.json'            
+        spriteURL: '/ast/asteroid_uranium01.png',
+        atlasURL: '/ast/asteroid_uranium01.json',
+        dataURL: '/ast/asteroiduranium1.json'            
     },
     asteroiduranium2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduranium2.json'            
+        spriteURL: '/ast/asteroid_uranium02.png',
+        atlasURL: '/ast/asteroid_uranium02.json',
+        dataURL: '/ast/asteroiduranium2.json'            
     },
     asteroiduraniumsmall1: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm01.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm01.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduraniumsmall1.json'            
+        spriteURL: '/ast/asteroid_uranium_sm01.png',
+        atlasURL: '/ast/asteroid_uranium_sm01.json',
+        dataURL: '/ast/asteroiduraniumsmall1.json'            
     },
     asteroiduraniumsmall2: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm02.png',
-        atlasURL: PATH_ASSETS_IMG_UNITS + '/ast/asteroid_uranium_sm02.json',
-        dataURL: PATH_ASSETS_DATA_UNITS + '/ast/asteroiduraniumsmall2.json'            
+        spriteURL: '/ast/asteroid_uranium_sm02.png',
+        atlasURL: '/ast/asteroid_uranium_sm02.json',
+        dataURL: '/ast/asteroiduraniumsmall2.json'            
     }
 };
 
@@ -1098,8 +1098,12 @@ export default {
                 return;
             }
 
-            preloader.load.atlasJSONHash(key, ns.entities[key].spriteURL, ns.entities[key].atlasURL);
-            preloader.load.json(key, ns.entities[key].dataURL);
+            const spriteUrl = PATH_ASSETS_IMG + ns.effects[key].spriteURL;
+            const atlasUrl = PATH_ASSETS_IMG + ns.effects[key].atlasURL;
+            const dataUrl = PATH_ASSETS_DATA + ns.effects[key].dataURL;
+
+            preloader.load.atlasJSONHash(key, spriteUrl, atlasUrl);
+            preloader.load.json(key, dataUrl);
             
         }, preloader);
 
