@@ -1,7 +1,7 @@
 {
-    "id": "flash",
+    "id": "flash-green-7",
     "size": "sm",
-    "customFrame": 4,
+    "customFrame": 14,
     "events": {
         "create": {
             "execute": {
