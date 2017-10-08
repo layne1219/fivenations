@@ -45,22 +45,29 @@ EntityManager.prototype = {
             throw 'The requrested entity is not registered!';
         }
 
-        var entity,
+        let entity;
+        let dataSource;
 
-            team = config.team || 1,
+        const team = config.team || 1;
 
-            // instanciating a Phaser.Game.Sprite objet for the entity
-            sprite = phaserGame.add.sprite(0, 0, config.id),
+        // instanciating a Phaser.Game.Sprite objet for the entity
+        const sprite = phaserGame.add.sprite(0, 0, config.id);
 
-            // fomring the DataObject instance from the preloaded JSON file
-            dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
+        // fetching the DataObject instance from the preloaded JSON file
+        if (localStorage && localStorage.getItem(config.id)) {
+            dataSource = JSON.parse(localStorage.getItem(config.id));
+        } else {
+            dataSource = phaserGame.cache.getJSON(config.id);
+        }
 
-            // rendering group name
-            groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES,
+        const dataObject = new DataObject(dataSource);
 
-            // choosing the group for entities so that other elements will be obscured by them
-            // it's kind of applying zIndex on entities
-            group = Graphics.getInstance().getGroup(groupName);
+        // rendering group name
+        const groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES;
+
+        // choosing the group for entities so that other elements will be obscured by them
+        // it's kind of applying zIndex on entities
+        const group = Graphics.getInstance().getGroup(groupName);
 
         // passing the team Id from the config param object
         dataObject.setTeam(team);

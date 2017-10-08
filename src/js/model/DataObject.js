@@ -10,7 +10,7 @@ function getDimensionsBySize(size) {
 
 function DataObject(json) {
 
-    var data = Object.create(json);
+    var data = Object.assign(json, {});
 
     // setting up custom gameplay related data attributes
     data.maxhull = data.hull;
@@ -231,6 +231,21 @@ function DataObject(json) {
 
         getTargetGraphicsGroup: function() {
             return data.targetGraphicsGroup;
+        },
+
+        toJSON: function() {
+            const blackList = [
+                'maxhangar',
+                'maxpower',
+                'maxshield',
+                'maxhull',
+                'dimensions',
+                'team'
+            ];
+            return JSON.stringify(data, (key, value) => {
+                if (blackList.indexOf(key) !== -1) return undefined;
+                return value;
+            }, '  ');
         }
 
     };

@@ -16,19 +16,41 @@
 
       #fivenations-game {
           margin: auto;
-      }    
+      }
+
+      #fivenations-editor {
+        text-align: center;
+      }
+
+      #fivenations-editor textarea {
+        background-color: black;
+        border: 1px solid green;
+        color: white;
+        height: 500px;
+        font-family: 'Courier New';
+        font-size: 16px;
+        margin: 20px auto;
+        padding: 10px;
+        width: 90%;
+      } 
+
     </style>
   </head>
 
   <body>
 
     <div id="fivenations-game"></div>
+    <div id="fivenations-editor">
+      <textarea id="fivenations-editor-textarea"></textarea>
+    </div>
     <script src="js/bundle.js"></script>
     <script>
+      var textArea = document.getElementById('fivenations-editor-textarea');
+      var keyupListener;
+
       var app = new FiveNations({ canvasElmId: 'fivenations-game' });
       var scriptBox = FiveNations.Scriptbox.getInstance();
       scriptBox.add('default', function(game) {
-
 
         game.map.new({
           width: 32,
@@ -48,13 +70,43 @@
         });
 
         window.addEntity = function(id, team) {
-            game.eventEmitter.synced.entities.add({
-                id: id || 'hurricane',
-                team: team || 1,
-                x: 50 + Math.random() * 700,
-                y: 50 + Math.random() * 700
-            });
-          };
+          game.eventEmitter.synced.entities.add({
+            id: id || 'hurricane',
+            team: team || 1,
+            x: 50 + Math.random() * 700,
+            y: 50 + Math.random() * 700
+          });
+        };
+
+        game.eventEmitter.local.addEventListener('gui/selection/change', () => {
+
+          var dataSource;
+          var entities = game.entityManager.entities(':selected');
+          if (!entities || entities.length === 0 || entities.length > 1) {
+            textArea.value = '';
+            return;
+          }
+
+          var dataObject = entities[0].getDataObject();
+          var id = dataObject.getId();
+          var json;
+
+          if (localStorage.getItem(id)) {
+            json = localStorage.getItem(id);
+          } else {
+            json = dataObject.toJSON();
+          }
+
+          textArea.value = json;
+          localStorage.setItem(dataObject.getId(), textArea.value);
+
+          if (keyupListener) textArea.removeEventListener('keyup', keyupListener);
+
+          keyupListener = textArea.addEventListener('keyup', () => {
+            localStorage.setItem(dataObject.getId(), textArea.value);
+          }); 
+
+        });      
 
       });
       app.start();
