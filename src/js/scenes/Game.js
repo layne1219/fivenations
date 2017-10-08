@@ -286,7 +286,10 @@ Game.prototype = {
 
         this.game.time.advancedTiming = true;
         this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
+
+        this.game.time.desiredFps = this.game.time.suggestedFps;
     }
+
 };
 
 export default Game;

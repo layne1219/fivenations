@@ -26,6 +26,7 @@ function EntityManager() {
 
     this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
 
+    this.kickstart = true;
 }
 
 EntityManager.prototype = {
@@ -101,13 +102,25 @@ EntityManager.prototype = {
     },
 
     /**
-     * Alters entity attributes 
-     * @param {integer} elapsedTime [elpased time since the last registered tick]
+     * Alters entity attributes and executes update functions according to
+     * the elapsed time
+     * @param {boolean} authoritative determines whether the player is authorised
+     * to issue changes that might alter the gameplay
      * @return {void}
      */
-    update: function(authoritative, elapsedTime) {
+    update: function(authoritative) {
+        this.updateLogic(authoritative);
+    },
+
+    /**
+     * Updates all entity related game logic
+     * @param {boolean} authoritative determines whether the player is authorised
+     * to issue changes that might alter the gameplay
+     * @return {void}
+     */
+    updateLogic: function(authoritative) {
         this.updateEntityDistancesOptimised();
-        this.updateEntities(authoritative, elapsedTime);
+        this.updateEntities(authoritative);
     },
 
     /**
@@ -237,30 +250,19 @@ EntityManager.prototype = {
 
     /**
      * Updates each entities 
+     * @param {boolean} authoritative determines wether the player is authorised
+     * to generate effects that migh alter the gameplay 
      * @return {void}
      */
-    updateEntities: function(authoritative, elapsedTime) {
-        var steps = Math.ceil(elapsedTime / (1000 / 60));
+    updateEntities: function(authoritative) {
         for (var i = entities.length - 1; i >= 0; i -= 1) {
-            this.updateEntity(entities[i], steps, authoritative);
+            entities[i].update(authoritative);
         }            
-    },
-
-    /**
-     * Invokes entity's update function according to the current step cycles
-     * @param  {object} entity Entity instance
-     * @return {void}
-     */
-    updateEntity: function(entity, steps, authoritative) {
-        while (steps) {
-            entity.update(authoritative);
-            steps -= 1;
-        }
-    },        
+    },     
 
     /**
      * returns the subsection of the attributes of the given entities
-     * @param  {array} entities [Array of the given entities]
+     * @param  {array} entities - Array of the given entities
      * @return {object} consolidated object of attributes
      */
     getMergedAbilities: function(entities) {
@@ -287,7 +289,7 @@ EntityManager.prototype = {
 
     /**
      * returns the Phaser.Game object for inconvinience 
-     * @return {[object]} [Phaser.Game instnace]
+     * @return {object} Phaser.Game instance
      */
     getGame: function() {
         return phaserGame;
@@ -296,7 +298,7 @@ EntityManager.prototype = {
     /**
      * Creates a selector function with the given entities.
      * This selector function can be used to filter down entities through a specified API.
-     * @param {entities} Array array of entity instances
+     * @param {Array} entities - array of entity instances
      * @return {function}
      */
     getSelector: function(entities) {
