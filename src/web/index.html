@@ -24,15 +24,15 @@
 
       textarea {
         background-color: black;
-        border: 1px solid green;
+        border: 1px solid #0569C9;
         color: white;
         display: inline-block;
         height: 500px;
         font-family: 'Courier New';
         font-size: 16px;
-        margin: 20px auto;
+        margin: 20px;
         padding: 10px;
-        width: 40%;
+        width: 25%;
       } 
 
     </style>
@@ -45,6 +45,8 @@
     </div>
     <script src="js/bundle.js"></script>
     <script>
+
+      var editorParentElm = 'fivenations-entity-editor';
 
       function Editor(id) {
         var parent = document.getElementById(editorParentElm);
@@ -59,29 +61,29 @@
           this.setData(key, data);
           this.persist();
           this.setOnChangeListener();
-        }
+        },
 
         setData: function(key, data) {
           this.key = key;
           this.textArea.value = data;
-        }
+        },
 
         clear: function() {
           this.textArea.value = '';
-        }
+        },
 
         setOnChangeListener: function() {
           if (this.keyUpListener) this.textArea.removeEventListener('keyup', this.keyUpListener);
           this.keyUpListener = this.textArea.addEventListener('keyup', () => {
             this.persist();
           });        
-        }
+        },
 
         persist: function() {
           localStorage.setItem(this.key, this.textArea.value);
         }
 
-      }
+      };
 
       function getEditorManager() {
         var editors = ['entity', 'weapon', 'projectile'].reduce((obj, key) => {
@@ -157,7 +159,7 @@
 
         });
 
-        game.eventEmitter.local.addEventListener('gui/weapon/click', item => {
+        game.eventEmitter.local.addEventListener('gui/weapon/click', weapon => {
 
           var id = weapon.getId();
           var json;

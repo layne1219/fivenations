@@ -235,7 +235,7 @@ class WeaponGroup extends Phaser.Group {
         }
 
         function click(item) {
-           this.dispatcher.dispatch('click', item); 
+            this.dispatcher.dispatch('click', item); 
         }
 
     }
