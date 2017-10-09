@@ -192,6 +192,10 @@ Weapon.prototype = {
         return this.data.targetTypes;
     },
 
+    getEffect: function() {
+        return this.data.effect;
+    },
+
     toJSON: function() {
         return JSON.stringify(this.data, null, '  ');
     },

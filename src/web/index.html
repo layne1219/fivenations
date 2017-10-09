@@ -163,6 +163,7 @@
 
           var id = weapon.getId();
           var json;
+          var projectileId;
 
           if (!id) return;
 
@@ -175,6 +176,22 @@
           editorManager
             .get('weapon')
             .edit(id, json);
+
+          projectileId = weapon.getEffect();
+
+          if (!projectileId) return;
+          
+          if (localStorage.getItem(projectileId)) {
+            json = localStorage.getItem(projectileId);
+          } else {
+            json = JSON.stringify(game.game.cache.getJSON(projectileId), null, '  ');
+          }
+
+          if (!json) return;
+
+          editorManager
+            .get('projectile')
+            .edit(projectileId, json);
 
         });
 
