@@ -4,14 +4,8 @@ import Util from '../../common/Util';
 var ns = window.fivenations;
 var guid = 0;
 
-function alterData(_data) {
-    var data = Object.create(_data);
-    data.range *= 10;
-    return data;
-}
-
 function Weapon(data) {
-    this.data = alterData(data);
+    this.data = Object.assign(data, {});
     this.ready = true;
     this.guid = guid;
     this.level = 0;
@@ -196,6 +190,10 @@ Weapon.prototype = {
 
     getTargetTypes: function() {
         return this.data.targetTypes;
+    },
+
+    toJSON: function() {
+        return JSON.stringify(this.data, null, '  ');
     },
 
     isSelfContained: function() {

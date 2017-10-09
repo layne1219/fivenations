@@ -1,3 +1,4 @@
+import EventEmitter from '../sync/EventEmitter';
 import Util from '../common/Util';
 import { 
     ENTITY_ICON,
@@ -218,6 +219,7 @@ class WeaponGroup extends Phaser.Group {
             weaponText.inputEnabled = true;
             weaponText.events.onInputOver.add(over, this);
             weaponText.events.onInputOut.add(out, this);
+            weaponText.events.onInputDown.add(click, this);
 
             this.weaponTexts.push(weaponText);
         }
@@ -230,6 +232,10 @@ class WeaponGroup extends Phaser.Group {
         function out(item) {
             this.dispatcher.dispatch('out', item);
             item.alpha=1;
+        }
+
+        function click(item) {
+           this.dispatcher.dispatch('click', item); 
         }
 
     }
@@ -504,14 +510,17 @@ export default class EntityDetailsDisplay {
         weaponGroupPopup = new WeaponGroupPopup(phaserGame);
 
         weaponGroup.add(weaponGroupPopup);
-        weaponGroup.on('over', function(item){
+        weaponGroup.on('over', item => {
             weaponGroupPopup.x = item.x + weaponPopupPaddingX;
             weaponGroupPopup.y = item.y - weaponGroupPopup.height + weaponPopupPaddingY;
             weaponGroupPopup.visible = true;
             weaponGroupPopup.updateContent(item.weapon);
         });
-        weaponGroup.on('out', function(){
+        weaponGroup.on('out', () => {
             weaponGroupPopup.visible = false;
+        });
+        weaponGroup.on('click', item => {
+            EventEmitter.getInstance().local.dispatch('gui/weapon/click', item.weapon);
         });
 
         container.add(mainAttributeGroup);
