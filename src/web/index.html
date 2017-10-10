@@ -22,18 +22,29 @@
         text-align: center;
       }
 
+      #fivenations-entity-editor div {
+        display: inline-block;
+        position: relative;
+        margin: 20px;
+        width: 25%;
+      }
+
       textarea {
         background-color: black;
         border: 1px solid #0569C9;
         color: white;
-        display: inline-block;
         height: 500px;
         font-family: 'Courier New';
         font-size: 16px;
-        margin: 20px;
         padding: 10px;
-        width: 25%;
-      } 
+        width: 100%;
+      }
+
+      button {
+        bottom: 10px;
+        position: absolute;
+        right: -17px;
+      }
 
     </style>
   </head>
@@ -48,11 +59,60 @@
 
       var editorParentElm = 'fivenations-entity-editor';
 
+      /* function to save JSON to file from browser
+      * adapted from http://bgrins.github.io/devtools-snippets/#console-save
+      * @param {Object} data -- json object to save
+      * @param {String} file -- file name to save to 
+      */
+      function saveJSON(data, filename){
+
+          if(!data) {
+              console.error('No data')
+              return;
+          }
+
+          if(!filename) filename = 'console.json';
+
+          if(typeof data === "object"){
+              data = JSON.stringify(data, undefined, 4)
+          }
+
+          var blob = new Blob([data], {type: 'application/json'});
+          var a = document.createElement('a');
+          var evt = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+          });
+
+          a.download = filename;
+          a.href = window.URL.createObjectURL(blob);
+          a.dataset.downloadurl =  ['application/json', a.download, a.href].join(':');
+          a.dispatchEvent(evt);
+      }
+
+      /** 
+       * Editor object that represents an editorial block with all
+       * the requried functionality
+       * @param {string} id
+       */
       function Editor(id) {
         var parent = document.getElementById(editorParentElm);
+        var div = document.createElement('div');
+        
         this.textArea = document.createElement('textarea');
         this.textArea.setAttribute('id', id);
-        parent.appendChild(this.textArea);
+
+        var button = document.createElement('button');
+        button.innerHTML = 'Save';
+        button.addEventListener('click', () => {
+          if (!this.key || !this.textArea.value) return;
+          saveJSON(this.textArea.value, this.key);
+        });
+
+        div.appendChild(this.textArea);
+        div.appendChild(button);
+        parent.appendChild(div);
       }
 
       Editor.prototype = {
