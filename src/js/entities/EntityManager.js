@@ -26,6 +26,7 @@ function EntityManager() {
 
     this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
 
+    this.kickstart = true;
 }
 
 EntityManager.prototype = {
@@ -44,22 +45,29 @@ EntityManager.prototype = {
             throw 'The requrested entity is not registered!';
         }
 
-        var entity,
+        let entity;
+        let dataSource;
 
-            team = config.team || 1,
+        const team = config.team || 1;
 
-            // instanciating a Phaser.Game.Sprite objet for the entity
-            sprite = phaserGame.add.sprite(0, 0, config.id),
+        // instanciating a Phaser.Game.Sprite objet for the entity
+        const sprite = phaserGame.add.sprite(0, 0, config.id);
 
-            // fomring the DataObject instance from the preloaded JSON file
-            dataObject = new DataObject(phaserGame.cache.getJSON(config.id)),
+        // fetching the DataObject instance from the preloaded JSON file
+        if (localStorage && localStorage.getItem(config.id)) {
+            dataSource = JSON.parse(localStorage.getItem(config.id));
+        } else {
+            dataSource = phaserGame.cache.getJSON(config.id);
+        }
 
-            // rendering group name
-            groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES,
+        const dataObject = new DataObject(dataSource);
 
-            // choosing the group for entities so that other elements will be obscured by them
-            // it's kind of applying zIndex on entities
-            group = Graphics.getInstance().getGroup(groupName);
+        // rendering group name
+        const groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES;
+
+        // choosing the group for entities so that other elements will be obscured by them
+        // it's kind of applying zIndex on entities
+        const group = Graphics.getInstance().getGroup(groupName);
 
         // passing the team Id from the config param object
         dataObject.setTeam(team);
@@ -101,13 +109,25 @@ EntityManager.prototype = {
     },
 
     /**
-     * Alters entity attributes 
-     * @param {integer} elapsedTime [elpased time since the last registered tick]
+     * Alters entity attributes and executes update functions according to
+     * the elapsed time
+     * @param {boolean} authoritative determines whether the player is authorised
+     * to issue changes that might alter the gameplay
      * @return {void}
      */
-    update: function(authoritative, elapsedTime) {
+    update: function(authoritative) {
+        this.updateLogic(authoritative);
+    },
+
+    /**
+     * Updates all entity related game logic
+     * @param {boolean} authoritative determines whether the player is authorised
+     * to issue changes that might alter the gameplay
+     * @return {void}
+     */
+    updateLogic: function(authoritative) {
         this.updateEntityDistancesOptimised();
-        this.updateEntities(authoritative, elapsedTime);
+        this.updateEntities(authoritative);
     },
 
     /**
@@ -237,30 +257,19 @@ EntityManager.prototype = {
 
     /**
      * Updates each entities 
+     * @param {boolean} authoritative determines wether the player is authorised
+     * to generate effects that migh alter the gameplay 
      * @return {void}
      */
-    updateEntities: function(authoritative, elapsedTime) {
-        var steps = Math.ceil(elapsedTime / (1000 / 60));
+    updateEntities: function(authoritative) {
         for (var i = entities.length - 1; i >= 0; i -= 1) {
-            this.updateEntity(entities[i], steps, authoritative);
+            entities[i].update(authoritative);
         }            
-    },
-
-    /**
-     * Invokes entity's update function according to the current step cycles
-     * @param  {object} entity Entity instance
-     * @return {void}
-     */
-    updateEntity: function(entity, steps, authoritative) {
-        while (steps) {
-            entity.update(authoritative);
-            steps -= 1;
-        }
-    },        
+    },     
 
     /**
      * returns the subsection of the attributes of the given entities
-     * @param  {array} entities [Array of the given entities]
+     * @param  {array} entities - Array of the given entities
      * @return {object} consolidated object of attributes
      */
     getMergedAbilities: function(entities) {
@@ -287,7 +296,7 @@ EntityManager.prototype = {
 
     /**
      * returns the Phaser.Game object for inconvinience 
-     * @return {[object]} [Phaser.Game instnace]
+     * @return {object} Phaser.Game instance
      */
     getGame: function() {
         return phaserGame;
@@ -296,7 +305,7 @@ EntityManager.prototype = {
     /**
      * Creates a selector function with the given entities.
      * This selector function can be used to filter down entities through a specified API.
-     * @param {entities} Array array of entity instances
+     * @param {Array} entities - array of entity instances
      * @return {function}
      */
     getSelector: function(entities) {

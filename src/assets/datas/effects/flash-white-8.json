@@ -1,0 +1,13 @@
+{
+    "id": "flash-white-8",
+    "size": "sm",
+    "customFrame": 31,
+    "events": {
+        "create": {
+            "execute": {
+                "target": "self",
+                "command": "flash"
+            }
+        }        
+    }
+}

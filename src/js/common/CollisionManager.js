@@ -12,7 +12,7 @@ let singleton;
 function createCollisionManager() {
     var entityGroup = Graphics.getInstance().getGroup('entities');
     var entityBuildingGroup = Graphics.getInstance().getGroup('entities-buildings');
-    var effectGroup = Graphics.getInstance().getGroup('effects');
+    var effectGroup = Graphics.getInstance().getGroup('projectiles');
 
     return {
 

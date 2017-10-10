@@ -4,45 +4,44 @@ import DataObject from '../model/DataObject';
 import EventEmitter from '../sync/EventEmitter';
 import Effect from './Effect';
 
+const DEFAULT_GRAPHICS_GROUP = 'effects';
 const ns = window.fivenations;
 
 let effects = [];
 let phaserGame;
 let singleton;
 
-function EffectManager() {
-    if (!phaserGame) {
-        throw 'Invoke setGame first to pass the Phaser Game entity!';
-    }
-}
+class EffectManager {
 
-EffectManager.prototype = {
+    constructor() {
+        if (!phaserGame) {
+            throw 'Invoke setGame first to pass the Phaser Game entity!';
+        }       
+    }
 
     /**
      * Adds an effect object to the private collection
      * @param {object} config configuration object
      */
-    add: function(config) {
+    add(config) {
 
-        var effect;
-        var sprite;
-        var dataObject;
-        var point;
-        var group;
+        let point;
+        let group;
+        let groupName;
+        let dataSource;
 
-        if (!config) {
-            throw 'Invalid configuration object passed as a parameter!';
+        const sprite = phaserGame.add.sprite(0, 0, config.id);
+        
+        // fetching the DataObject instance from the preloaded JSON file
+        if (localStorage && localStorage.getItem(config.id)) {
+            dataSource = JSON.parse(localStorage.getItem(config.id));
+        } else {
+            dataSource = phaserGame.cache.getJSON(config.id);
         }
-
-        if (Object.keys(ns.effects).indexOf(config.id) === -1) {
-            throw 'The requrested effect is not registered!';
-        }
-
-        sprite = phaserGame.add.sprite(0, 0, config.id);
-        dataObject = new DataObject(phaserGame.cache.getJSON(config.id));
+        const dataObject = new DataObject(dataSource);
 
         // adding the freshly created effect to the main array
-        effect = new Effect({
+        const effect = new Effect({
             guid: config.guid,
             emitter: config.emitter,
             manager: this,
@@ -56,16 +55,19 @@ EffectManager.prototype = {
             sprite.y = config.y || 0;
         }
 
+        // Heading of the effect
         if (config.rotation !== undefined) {
             sprite.rotation = config.rotation;
         } else if (config.angle !== undefined) {
             sprite.angle = config.angle;
         }
 
+        // Activates physics engine if required
         if (config.velocity || config.acceleration) {
             phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);
         }
 
+        // sets up velocity 
         if (config.velocity) {
 
             if (config.rotation !== undefined) {
@@ -85,6 +87,7 @@ EffectManager.prototype = {
 
         }
 
+        // sets acceleration
         if (config.acceleration) {
 
             if (config.rotation !== undefined) {
@@ -105,18 +108,135 @@ EffectManager.prototype = {
             sprite.body.maxVelocity.set(config.maxVelocity);
         }
 
-        group = Graphics.getInstance().getGroup('effects');
+        // adds sprite to the appropriate graphics group 
+        groupName = dataObject.getTargetGraphicsGroup() || DEFAULT_GRAPHICS_GROUP;
+        group = Graphics.getInstance().getGroup(groupName);
         sprite._group = group;
         group.add(sprite);
 
+        // triggers registered listener if any
+        if (config.callback) {
+            config.callback(effect);
+        } 
+
+        // executes defined functionality in the data object
+        const initEventConfig = dataObject.getEvent('create');
+
+        if (initEventConfig && initEventConfig.execute) {
+            const exec = initEventConfig.execute;
+            const target = exec.target === 'self' ? effect : null; 
+            const func = this[exec.command] && this[exec.command].bind(this);
+
+            if (func) func(target); 
+        }
+
+        // pushes it to the local effect collection 
         effects.push(effect);
-    },
+    }
+
+    /**
+     * Removes effect from the private collection
+     * @param {object} effect Effect instance
+     */
+    remove(effect) {
+        for (var i = effects.length - 1; i >= 0; i -= 1) {
+            if (effect === effects[i]) {
+                this.removeByIndex(i);
+            }
+        }
+        effect = null;
+    }
+
+    /**
+     * Removes effect with the given index from the private collection
+     * @param {integer} idx index of the effect in the effect queue
+     */        
+    removeByIndex(idx) {
+        if (!effects[idx]) return;
+        effects[idx].remove();
+        effects.splice(idx, 1);
+    }
+
+    /**
+     * destroys all the existing effects
+     * @return {void}
+     */
+    reset() {
+        effects = [];
+    }
+    
+    /**
+     * Update function called on every tick
+     * @param {boolean} authoritative Flag to indicate the authoritative client
+     * @return {void}
+     */
+    update(authoritative) {
+
+        for (var i = effects.length - 1; i >= 0; i -= 1) {
+            if (authoritative && this.isEffectExpired(effects[i])) {
+                EventEmitter.getInstance().synced.effects(effects[i]).remove();
+            } else {
+                if (effects[i].willFollowTarget()) {
+                    this.followTarget(effects[i]);
+                }
+                if (effects[i].hasTrails()) {
+                    this.emitTrails(effects[i]);
+                }
+            }
+        }
+
+    }
+
+    /**
+     * Updates ttl attribute of the given effect entity and returns
+     * @param {object} effect Effect entity
+     * @return {boolean} true if the effect needs to be removed
+     */
+    isEffectExpired(effect) {
+        if (effect.ttl === 0) return true;
+        if (effect.ttl > 0) effect.ttl -= 1;                
+        return false;
+    }
+
+    /**
+     * returns the Phaser.Game object for inconvinience 
+     * @return {[object]} [Phaser.Game instnace]
+     */
+    getGame() {
+        return phaserGame;
+    }
+
+    /**
+     * Returns the array of effects or an empty array
+     * @param {string} guid 
+     * @return {object} effect instance 
+     */
+    getEffectByGUID(guid) {
+        for (var i = effects.length - 1; i >= 0; i -= 1) {
+            if (effects[i].getGUID() === guid) {
+                return effects[i];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns an instance of the AnimationManager class
+     * @return {object} instancse of AnimationManager class
+     */
+    getAnimationManager() {
+        return this.animationManager;
+    }
+
+    /*******************************************************************************
+     *                         EFFECT MANIPULATOR FUNCTIONALITIES                  *
+     *******************************************************************************/
 
     /**
      * Triggers an explosion animation configured in the DataObject
      * @param {object} entity Any object possesses DataObject instance
      */
-    explode: function(entity) {
+    explode(entity) {
         if (!entity || !entity.getDataObject) return;
 
         var effectId;
@@ -139,13 +259,13 @@ EffectManager.prototype = {
                     y: sprite.y
                 });
             } else {
-                eventData.effects.forEach(function(effectId) {
+                eventData.effects.forEach(effectId => {
                     this.add({
                         id: effectId,
                         x: sprite.x,
                         y: sprite.y
                     });
-                }.bind(this));
+                });
             }
         }
 
@@ -166,78 +286,14 @@ EffectManager.prototype = {
             }
         }
 
-    },
-
-    /**
-     * Removes effect from the private collection
-     * @param {object} effect Effect instance
-     */
-    remove: function(effect) {
-        for (var i = effects.length - 1; i >= 0; i -= 1) {
-            if (effect === effects[i]) {
-                this.removeByIndex(i);
-            }
-        }
-        effect = null;
-    },
-
-    /**
-     * Removes effect with the given index from the private collection
-     * @param {integer} idx index of the effect in the effect queue
-     */        
-    removeByIndex: function(idx) {
-        if (!effects[idx]) return;
-        effects[idx].remove();
-        effects.splice(idx, 1);
-    },
-
-    /**
-     * destroys all the existing effects
-     * @return {void}
-     */
-    reset: function() {
-        effects = [];
-    },
-    
-    /**
-     * Update function called on every tick
-     * @param {boolean} authoritative Flag to indicate the authoritative client
-     * @return {void}
-     */
-    update: function(authoritative) {
-
-        for (var i = effects.length - 1; i >= 0; i -= 1) {
-            if (authoritative && this.isEffectExpired(effects[i])) {
-                EventEmitter.getInstance().synced.effects(effects[i]).remove();
-            } else {
-                if (effects[i].willFollowTarget()) {
-                    this.followTarget(effects[i]);
-                }
-                if (effects[i].hasTrails()) {
-                    this.emitTrails(effects[i]);
-                }
-            }
-        }
-
-    },
-
-    /**
-     * Updates ttl attribute of the given effect entity and returns
-     * @param {object} effect Effect entity
-     * @return {boolean} true if the effect needs to be removed
-     */
-    isEffectExpired: function(effect) {
-        if (effect.ttl === 0) return true;
-        if (effect.ttl > 0) effect.ttl -= 1;                
-        return false;
-    },
+    }    
 
     /**
      * makes the given effect to follow its target if specififed
      * @param  {object} effect Effect entity
      * @return {void}
      */
-    followTarget: function(effect) {
+    followTarget(effect) {
         var targetEntity = effect.getTargetEntity();
         var rotation;
         var sprite;
@@ -261,14 +317,14 @@ EffectManager.prototype = {
 
         }
 
-    },
+    }
 
     /**
      * emits the effects configured as trail
      * @param  {object} effect Effect entity
      * @return {void}
      */
-    emitTrails: function(effect) {
+    emitTrails(effect) {
         if (effect.ttl % effect.getTrailsRate() === 0) {
             this.add({
                 id: effect.getTrailsEffect(),
@@ -276,29 +332,26 @@ EffectManager.prototype = {
                 y: effect.getSprite().y + Util.rnd(0, 10) - 5
             });
         }
-    },
-
-    /**
-     * returns the Phaser.Game object for inconvinience 
-     * @return {[object]} [Phaser.Game instnace]
-     */
-    getGame: function() {
-        return phaserGame;
-    },
-
-    /**
-     * Returns the array of effects or an empty array
-     * @param {string} guid 
-     * @return {object} effect instance
-     */
-    getEffectByGUID: function(guid) {
-        for (var i = effects.length - 1; i >= 0; i -= 1) {
-            if (effects[i].getGUID() === guid) {
-                return effects[i];
-            }
-        }
-        return null;
     }
+
+
+    /**
+     * makes the effects flash and disappear quickly
+     * @param  {object} effect Effect entity
+     * @return {void}
+     */
+    flash(effect) {
+        if (!effect) return;
+
+        const sprite = effect.getSprite();
+        sprite.alpha = 0;
+        
+        const flashTween = phaserGame.add.tween(sprite).to({alpha: 1}, 200, Phaser.Easing.Bounce.InOut, true, 0, 0, true);
+        flashTween.onComplete.add(function() {
+            this.remove(effect);
+        }, this);
+    }
+
 
 };
 

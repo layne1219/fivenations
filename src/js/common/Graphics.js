@@ -12,6 +12,7 @@ function createGraphicsInstance() {
             'entities-buildings',
             'energy-shields-buildings',
             'selectors',
+            'projectiles',
             'entities',
             'energy-shields',
             'effects',                

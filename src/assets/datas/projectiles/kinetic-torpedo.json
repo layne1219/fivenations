@@ -1,5 +1,6 @@
 {
     "id": "kinetic-torpedo",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 750,
     "followTarget": false,

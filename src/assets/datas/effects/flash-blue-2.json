@@ -1,0 +1,13 @@
+{
+    "id": "flash-blue-2",
+    "size": "sm",
+    "customFrame": 1,
+    "events": {
+        "create": {
+            "execute": {
+                "target": "self",
+                "command": "flash"
+            }
+        }        
+    }
+}

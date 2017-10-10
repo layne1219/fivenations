@@ -1,5 +1,6 @@
 {
     "id": "laser-beam-1",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 50,
     "animations": {
@@ -12,7 +13,7 @@
     },    
     "events": {
         "remove": {
-            "effects": ["blow-1"]
+            "effects": ["flash-blue-2","blow-1"]
         },
         "collision": {
             "damageTarget": true,

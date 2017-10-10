@@ -1,5 +1,6 @@
 {
     "id": "missile",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 750,
     "followTarget": true,

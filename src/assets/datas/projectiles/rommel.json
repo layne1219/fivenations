@@ -1,12 +1,13 @@
 {
     "id": "rommel",
+    "targetGraphicsGroup": "projectiles",
     "size": "xsm",
     "ttl": 75,
     "followTarget": false,
     "customFrame": 14,    
     "events": {
         "remove": {
-            "effects": ["blow-1"]
+            "effects": ["flash-orange-2", "blow-1"]
         },
         "collision": {
             "damageTarget": true,

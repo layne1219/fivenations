@@ -1,0 +1,13 @@
+{
+    "id": "flash-orange-5",
+    "size": "sm",
+    "customFrame": 20,
+    "events": {
+        "create": {
+            "execute": {
+                "target": "self",
+                "command": "flash"
+            }
+        }        
+    }
+}

@@ -10,14 +10,20 @@ var cache = {};
  * @param  {integer} id 
  * @return {object} object with attributes of the weapon
  */
-function createWeaponById(id){
+function createWeaponById(id) {
+    let dataSource;
     if (!cache[id]) {
         for (var i = weaponsJSON.length - 1; i >= 0; i -= 1) {
             if (weaponsJSON[i].id !== id) continue;
             cache[id] = weaponsJSON[i];
         }
     }
-    return new Weapon(cache[id]);
+    if (localStorage && localStorage.getItem(id)) {
+        dataSource = JSON.parse(localStorage.getItem(id));
+    } else {
+        dataSource = cache[id];
+    }    
+    return new Weapon(dataSource);
 }
 
 /**

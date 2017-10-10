@@ -1,4 +1,7 @@
-import { ENTITY_SIZES, ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../common/Const';
+import { 
+    ENTITY_SIZES, 
+    ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED 
+} from '../common/Const';
 
 function getDimensionsBySize(size) {
     if (!size || !ENTITY_SIZES[size]) return ENTITY_SIZES.m;
@@ -7,7 +10,7 @@ function getDimensionsBySize(size) {
 
 function DataObject(json) {
 
-    var data = Object.create(json);
+    var data = Object.assign(json, {});
 
     // setting up custom gameplay related data attributes
     data.maxhull = data.hull;
@@ -224,6 +227,25 @@ function DataObject(json) {
 
         isFighter: function() {
             return this.getType() === 'Fighter';
+        },
+
+        getTargetGraphicsGroup: function() {
+            return data.targetGraphicsGroup;
+        },
+
+        toJSON: function() {
+            const blackList = [
+                'maxhangar',
+                'maxpower',
+                'maxshield',
+                'maxhull',
+                'dimensions',
+                'team'
+            ];
+            return JSON.stringify(data, (key, value) => {
+                if (blackList.indexOf(key) !== -1) return undefined;
+                return value;
+            }, '  ');
         }
 
     };
