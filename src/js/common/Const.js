@@ -47,3 +47,14 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
     width: 51,
     height: 51
 };
+
+export const GUI_BUTTON_STYLE = {
+    font: '11px BerlinSansFB-Reg',
+    fill: '#FFFFFF',
+    boundsAlignH: 'center'
+    wordWrap: true, 
+    align: "center"
+};
+
+export const GUI_BUTTON_SPRITESHEET = 'button_sprite_sheet';
+
