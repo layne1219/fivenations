@@ -51,9 +51,9 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
 export const GUI_BUTTON_STYLE = {
     font: '11px BerlinSansFB-Reg',
     fill: '#FFFFFF',
-    boundsAlignH: 'center'
+    boundsAlignH: 'center',
     wordWrap: true, 
-    align: "center"
+    align: 'center'
 };
 
 export const GUI_BUTTON_SPRITESHEET = 'button_sprite_sheet';

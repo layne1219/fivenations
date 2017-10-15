@@ -1,7 +1,7 @@
 import { 
     GUI_BUTTON_STYLE,
     GUI_BUTTON_SPRITESHEET 
-} as '../common/Const';
+} from '../common/Const';
 const ns = window.fivenations;
 
 class Button extends Phaser.Group {
@@ -17,7 +17,7 @@ class Button extends Phaser.Group {
         const onClick = () => config.onClick && config.onClick.bind(this);
 
         this.sprite = phaserGame.add.button(0, 0, GUI_BUTTON_SPRITESHEET, onClick);
-        this.text = phaserGame.add.text(0, 0, "", {
+        this.text = phaserGame.add.text(0, 0, 'OK', {
             ...GUI_BUTTON_STYLE,
             wordWrapWidth: this.sprite.width,
         });
