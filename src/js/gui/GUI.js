@@ -7,6 +7,7 @@ import Minimap from './Minimap';
 import ControlPanel from './ControlPanel';
 import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
+import Button from './Button';
 
 // Frame rate for the click animations
 const CLICK_ANIM_FRAMERATE = 20;
@@ -172,13 +173,24 @@ GUI.prototype = {
     },
 
     /**
-     * Linking the StatusDisplay object to a Entity
+     * Links the StatusDisplay object to a Entity
      * @param {Entity} entity 
      */
     addStatusDisplay: function(entity) {
         const statusDisplay = new StatusDisplay(phaserGame);
         statusDisplay.appendTo(entity);
         return statusDisplay;
+    },
+
+    /**
+     * Adds a Basic GUI Button to the GUI graphics group
+     * @param {object} config - configuration object to instantiate the Button
+     */
+    addButton: function(config = {}) {
+        const button = new Button(config);
+        button.x = config.x || 0;
+        button.y = config.y || 0;
+        group.add(button);
     },
 
     /**
