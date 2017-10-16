@@ -47,3 +47,23 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
     width: 51,
     height: 51
 };
+
+export const GUI_BUTTON = {
+    spritesheet: {
+        id: 'button_sprite_sheet',
+        url: 'gui/button_sprite_sheet.png',
+    },
+    frames: {
+        over: 2,
+        out: 1,
+        down: 0,
+    },
+    style: {
+        font: '11px BerlinSansFB-Reg',
+        fill: '#FFFFFF',
+        boundsAlignH: 'center',
+        wordWrap: true, 
+        align: 'center'
+    }
+};
+
