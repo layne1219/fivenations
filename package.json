@@ -45,8 +45,8 @@
     "build-standalone": "npm run lint && ./scripts/build-standalone.sh",
     "dev": "npm run lint && ./scripts/dev.sh",
     "lint": "eslint src/js/**/*.js",
-    "start-server": "forever server-runner.js",
-    "stop-server": "forever stopall",
+    "start-server": "forever start server-runner.js",
+    "stop-server": "forever stop server-runner.js",
     "test": "mocha --delay --require babel-core/register test/phantomjs/**/*.spec.js"
   }
 }
