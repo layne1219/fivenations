@@ -12,6 +12,9 @@
         }
     },    
     "events": {
+        "create": {
+            "effects": ["flash-orange-2"]
+        },        
         "remove": {
             "effects": ["flash-blue-2","blow-1"]
         },

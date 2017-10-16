@@ -78,3 +78,10 @@ export const GUI_CLOSE_BUTTON = {
         down: 0,
     }
 };
+
+export const GUI_POPUP = {
+    spritesheet: {
+        id: 'popup',
+        url: 'gui/popups.png',
+    }    
+}

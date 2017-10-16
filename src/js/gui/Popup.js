@@ -1,4 +1,6 @@
 import { GUI_POPUP } from '../common/Const';
+import Button from './Button';
+import CloseButton from './CloseButton';
 const ns = window.fivenations;
 
 /**
@@ -12,7 +14,8 @@ class Popup extends Phaser.Group {
     constructor(config){
         super(ns.game.game);
         this.initBasicComponents(config);
-        this.initButtons(config);
+        this.initConfirmButton(config);
+        this.initCloseButton(config);
     }
 
     /**
@@ -37,13 +40,37 @@ class Popup extends Phaser.Group {
     }
 
     /**
-     * Generates the Confirm and Close buttons according to the given 
+     * Generates the Confirm button according to the given 
      * configuration object
      * @param {object} config - Configuration object 
      */
-    initButtons(config) {
+    initConfirmButton(config) {
+        const { text, onClick } = config;
+        this.button = new Button({
+            text,
+            onClick
+        });
+        this.button.x = 0;
+        this.button.y = 0;
 
+        this.add(this.button);
     }
+
+    /**
+     * Generates the Confirm button according to the given 
+     * configuration object
+     * @param {object} config - Configuration object 
+     */
+    initCloseButton(config) {
+        const { onClick } = config;
+        this.button = new CloseButton({
+            onClick
+        });
+        this.button.x = 0;
+        this.button.y = 0;
+        
+        this.add(this.button);
+    }    
 
     /**
      * Updates the button instance according to the passed configuration object
