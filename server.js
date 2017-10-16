@@ -9,7 +9,7 @@ module.exports = {
 
         if (app) throw 'Server is already running!';
 
-        if (!port) port = 9000;
+        if (!port) port = 8612;
         if (!dir) dir = 'build/';
 
         app = express();
