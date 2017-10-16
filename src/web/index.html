@@ -184,12 +184,12 @@
           authorised: false
         });
 
-        window.addEntity = function(id, team) {
+        window.addEntity = function(id, team, x, y) {
           game.eventEmitter.synced.entities.add({
             id: id || 'hurricane',
             team: team || 1,
-            x: 50 + Math.random() * 700,
-            y: 50 + Math.random() * 700
+            x: x || (50 + Math.random() * 700),
+            y: y || (50 + Math.random() * 700)
           });
         };
 
