@@ -51,12 +51,12 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
 export const GUI_BUTTON = {
     spritesheet: {
         id: 'button_sprite_sheet',
-        url: 'gui/button_sprite_sheet.png',
+        url: 'gui/button_sprite_sheet.png'
     },
     frames: {
         over: 2,
         out: 1,
-        down: 0,
+        down: 0
     },
     style: {
         font: '11px BerlinSansFB-Reg',
@@ -67,3 +67,14 @@ export const GUI_BUTTON = {
     }
 };
 
+export const GUI_CLOSE_BUTTON = {
+    spritesheet: {
+        id: 'close_button',
+        url: 'gui/close_button.png',
+    },
+    frames: {
+        over: 0,
+        out: 0,
+        down: 0,
+    }
+};
