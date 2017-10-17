@@ -51,8 +51,8 @@ ns.effects = Object.assign(ns.effects || {}, {
 
     'ragnarok-heavy-gun': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/ragnarok-heavy-gun.json'
     },
 
