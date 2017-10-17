@@ -83,5 +83,6 @@ export const GUI_POPUP = {
     spritesheet: {
         id: 'popup',
         url: 'gui/popups.png',
-    }    
+    },
+    padding: 10    
 }

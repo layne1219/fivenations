@@ -50,8 +50,8 @@ class Popup extends Phaser.Group {
             text,
             onClick
         });
-        this.button.x = 0;
-        this.button.y = 0;
+        this.button.x = this.background.width / 2 - this.button.width;
+        this.button.y = this.background.height - this.button.height - GUI_POPUP.padding;
 
         this.add(this.button);
     }
@@ -62,14 +62,20 @@ class Popup extends Phaser.Group {
      * @param {object} config - Configuration object 
      */
     initCloseButton(config) {
-        const { onClick } = config;
-        this.button = new CloseButton({
-            onClick
+        const onClose = () => {
+            if (typeof config.onClose === 'function') {
+                onClose.call(this);
+            }
+            this.hide();
+        };
+
+        this.closeButton = new CloseButton({
+            onClick: onClose
         });
-        this.button.x = 0;
-        this.button.y = 0;
+        this.closeButton.x = this.background.width - this.closeButton.width - GUI_POPUP.padding;
+        this.closeButton.y = GUI_POPUP.padding;
         
-        this.add(this.button);
+        this.add(this.closeButton);
     }    
 
     /**
@@ -79,6 +85,20 @@ class Popup extends Phaser.Group {
     update(config) {
         if (!config) return;
         if (config.text) this.text = config.text;
+    }
+
+    /**
+     * Makes the popup visible
+     */
+    show() {
+        this.visible = true;
+    }
+
+    /**
+     * Makes the popup hide
+     */
+    hide() {
+        this.visible = false;
     }
     
 }
