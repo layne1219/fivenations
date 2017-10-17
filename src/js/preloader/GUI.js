@@ -1,5 +1,6 @@
 import { 
     GUI_BUTTON,
+    GUI_CLOSE_BUTTON,
     GUI_POPUP 
 } from '../common/Const';
 
