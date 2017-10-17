@@ -7,7 +7,9 @@ import Minimap from './Minimap';
 import ControlPanel from './ControlPanel';
 import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
-import Button from './Button';
+import Popup from './Popup';
+
+const ns = window.fivenations;
 
 // Frame rate for the click animations
 const CLICK_ANIM_FRAMERATE = 20;
@@ -183,14 +185,21 @@ GUI.prototype = {
     },
 
     /**
-     * Adds a Basic GUI Button to the GUI graphics group
+     * Adds a Basic GUI Popup to the GUI graphics group
      * @param {object} config - configuration object to instantiate the Button
      */
-    addButton: function(config = {}) {
-        const button = new Button(config);
-        button.x = config.x || 0;
-        button.y = config.y || 0;
-        group.add(button);
+    addPopup: function(config = {}) {
+        const { x, y } = config;
+        const popup = new Popup(config);
+        if (!x && !y) {
+            popup.x = ns.window.width / 2;
+            popup.y = ns.window.height / 2;
+        } else {
+            popup.x = x || 0;
+            popup.y = y || 0;
+        }
+        group.add(popup);
+        return popup;
     },
 
     /**

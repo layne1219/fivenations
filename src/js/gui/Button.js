@@ -21,9 +21,10 @@ class Button extends Phaser.Group {
      */
     initComponents(config) {
         const phaserGame = ns.game.game;
-        const onClick = () => config.onClick && config.onClick.bind(this);
+        const onClick = () => config.onClick && config.onClick.call(this);
 
         this.sprite = phaserGame.add.button(0, 0, GUI_BUTTON.spritesheet.id, onClick, this, GUI_BUTTON.frames.over, GUI_BUTTON.frames.out, GUI_BUTTON.frames.down);
+        this.sprite.anchor.set(0.5);
 
         this.text = phaserGame.add.text(0, 0, 'OK', {
             ...GUI_BUTTON.style,

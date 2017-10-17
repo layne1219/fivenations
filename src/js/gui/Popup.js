@@ -28,10 +28,11 @@ class Popup extends Phaser.Group {
         const { text } = config;
 
         this.background = phaserGame.add.sprite(0, 0, id);
+        this.background.anchor.set(0.5);
 
         this.text = phaserGame.add.text(0, 0, text, {
             ...GUI_POPUP.style,
-            wordWrapWidth: this.sprite.width,
+            wordWrapWidth: this.background.width,
         });
         this.text.anchor.set(0.5);
 
@@ -50,8 +51,8 @@ class Popup extends Phaser.Group {
             text,
             onClick
         });
-        this.button.x = this.background.width / 2 - this.button.width;
-        this.button.y = this.background.height - this.button.height - GUI_POPUP.padding;
+        this.button.x = 0;
+        this.button.y = this.background.height / 2 - this.button.height / 2 - GUI_POPUP.padding;
 
         this.add(this.button);
     }
@@ -72,8 +73,8 @@ class Popup extends Phaser.Group {
         this.closeButton = new CloseButton({
             onClick: onClose
         });
-        this.closeButton.x = this.background.width - this.closeButton.width - GUI_POPUP.padding;
-        this.closeButton.y = GUI_POPUP.padding;
+        this.closeButton.x = this.background.width / 2 - this.closeButton.width / 2 - GUI_POPUP.padding;
+        this.closeButton.y = -this.background.height / 2 + this.closeButton.height / 2 + GUI_POPUP.padding;
         
         this.add(this.closeButton);
     }    
