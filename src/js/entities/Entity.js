@@ -73,7 +73,7 @@ const extendSpriteWithAnimations = function(sprite, dataObject) {
         const data = animations[key];
         if (data.length) {
             data.forEach(function(animationData, idx) {
-                const frames = data.frames.map(v => v + anmationOffset);
+                const frames = animationData.frames.map(v => v + anmationOffset);
                 sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);        
             });
         } else {
