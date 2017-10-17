@@ -9,43 +9,43 @@ ns.effects = Object.assign(ns.effects || {}, {
 
     'laser-beam-1': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/laser-beam-1.json'
     },
 
     'cannonball': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/cannonball.json'
     },
 
     'missile': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/missile.json'
     },
 
     'rommel': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/rommel.json'
     },
 
     'kinetic-torpedo': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/kinetic-torpedo.json'
     },
 
     'asr-missile': {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + '/weapons.png',
-        atlasURL: PATH_ASSETS_IMG + '/weapons.json',
+        spriteURL: PATH_ASSETS_IMG + '/weapon_projectiles.png',
+        atlasURL: PATH_ASSETS_IMG + '/weapon_projectiles.json',
         dataURL: PATH_ASSETS_DATA + '/asr-missile.json'
     },
 
