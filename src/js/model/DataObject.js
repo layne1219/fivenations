@@ -186,6 +186,7 @@ function DataObject(json) {
         },
 
         getAnimationByKey: function(key) {
+            if (!data.animations) return;
             return data.animations[key];
         },
 

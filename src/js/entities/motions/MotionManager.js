@@ -16,7 +16,7 @@ function MotionManager(entity) {
     this.entity = entity;
     this.sprite = entity.getSprite();
     this.animationManager = entity.getAnimationManager();
-    this.animationOffset = this.entity.getDataObject().getAnimationOffset();
+    this.rotationFrames = createRotationFrames(entity);
 
     this.movement = createMovementObject(entity);
     this.rotation = createRotationObject(entity);
@@ -73,6 +73,32 @@ function createLevitationObject(entity) {
     return {
         time: 0,
         defaultAnchorY: entity.getSprite().anchor.y 
+    }
+}
+
+/**
+ * Generates a list of frames that makes a full rotation cycle
+ * @param  {object} entity - Entity instance to which the animations belong
+ * @return {array} array that incorporates the frames for rotation
+ */
+function createRotationFrames(entity) {
+    const data = entity.getDataObject();
+    const animationOffset = data.getAnimationOffset();
+    const moveAnimation = data.getAnimationByKey('move');
+
+    if (moveAnimation && moveAnimation.length) {
+        return moveAnimation.map(anim => {
+            if (!anim || !anim.frames || !anim.frames.length) return 0; 
+            return anim.frames[0] + animationOffset;
+        });
+    } else {
+        const directions = data.getDirections() || 1;
+        const framePadding = data.getAnimFrame() || 1;
+        const frames = [];
+        for (let i = 0; i < directions; i += 1) {
+            frames.push( i * framePadding + animationOffset);
+        }
+        return frames;
     }
 }
 
@@ -239,7 +265,7 @@ MotionManager.prototype = {
             this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
         }
 
-        this.sprite.frame = this.rotation.currentAngleCode * this.rotation.framePadding + this.animationOffset;
+        this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
 
     },
 
