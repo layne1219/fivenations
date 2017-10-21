@@ -183,6 +183,20 @@ Game.prototype = {
 
         }.bind(this));
 
+        // @TODO test code delete it
+        this.userPointer.on('rightbutton/down', () => {
+            if (!window.editorMode) return;
+            var coords = this.userPointer.getRealCoords();
+            
+            this.eventEmitter.synced.entities.add({
+                id: window.currEntityId || 'hurricane',
+                team: window.currEntityTeam || 1,
+                x: coords.x || (50 + Math.random() * 700),
+                y: coords.y || (50 + Math.random() * 700)
+            });
+            console.log(window.currEntityId, coords.x, coords.y);          
+        });
+
         // If the user pointer isn't over the GUI area, nor any entities
         this.userPointer.on('leftbutton/down/disselect', function() {
             this.entityManager.unselectAll();
