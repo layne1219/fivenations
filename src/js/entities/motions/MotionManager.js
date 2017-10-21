@@ -240,7 +240,7 @@ MotionManager.prototype = {
      */
     updateRotation: function() {
 
-        if (this.movement.velocity > 0 && this.entity.hasSlowManeuverability()) {
+        if (this.isMoving() && this.entity.hasSlowManeuverability()) {
             return;
         }
 
@@ -337,7 +337,15 @@ MotionManager.prototype = {
      * @return {boolean}
      */
     isRequiredToStopBeforeFurtherAction: function() {
-        return this.movement.velocity > 0 && !this.isEntityFacingTarget() && this.entity.hasSlowManeuverability();
+        return this.isMoving() && !this.isEntityFacingTarget() && this.entity.hasSlowManeuverability();
+    },
+
+    /**
+     * Returns whether the entity is moving in any direction 
+     * @return {boolean}
+     */
+    isMoving: function() {
+        return this.movement.velocity > 0;        
     },
 
     /**

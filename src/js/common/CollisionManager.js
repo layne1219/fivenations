@@ -41,6 +41,8 @@ function collisionHandler(effectSprite, entitySprite) {
 
     if (!entity || !effect || !weapon) return;
 
+    if (effect._readyToUnmount) return;
+
     getEmitterEntity = weapon.getManager().getEntity();
 
     // effect mainly cannot collide with the entity that initially emitted it
@@ -56,6 +58,7 @@ function collisionHandler(effectSprite, entitySprite) {
     var eventEmitter = EventEmitter.getInstance();
 
     if (collisionEvent.removeEffect) {
+        effect._readyToUnmount = true;
         eventEmitter.synced.effects(effect).remove();
     }
 

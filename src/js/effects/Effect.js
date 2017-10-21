@@ -193,7 +193,7 @@ Effect.prototype = {
             this.trails = this.dataObject.getTrails();
         }
         return this.trails.effect;
-    }        
+    } 
 
 }
 
