@@ -6,9 +6,8 @@
     "followTarget": false,
     "animations": {
         "idle": {
-            "oncomplete": "keepLastFrame",
             "rate": 20,
-            "loopable": false,
+            "loopable": true,
             "frames": [29, 30, 31, 32, 33, 34, 35, 36]
         }
     },        
