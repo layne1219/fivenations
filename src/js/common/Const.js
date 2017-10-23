@@ -50,13 +50,13 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
 
 export const GUI_BUTTON = {
     spritesheet: {
-        id: 'button_sprite_sheet',
-        url: 'gui/button_sprite_sheet.png'
+        id: 'gui',
+        url: 'gui/GUI_elements.png',
     },
     frames: {
-        over: 2,
-        out: 1,
-        down: 0
+        over: 197,
+        out: 196,
+        down: 197
     },
     style: {
         font: '11px BerlinSansFB-Reg',
@@ -69,8 +69,8 @@ export const GUI_BUTTON = {
 
 export const GUI_CLOSE_BUTTON = {
     spritesheet: {
-        id: 'close_button',
-        url: 'gui/close_button.png',
+        id: 'gui',
+        url: 'gui/GUI_elements.png',
     },
     frames: {
         over: 0,
@@ -81,8 +81,18 @@ export const GUI_CLOSE_BUTTON = {
 
 export const GUI_POPUP = {
     spritesheet: {
-        id: 'popup',
-        url: 'gui/popups.png',
+        id: 'gui',
+        url: 'gui/GUI_elements.png',
     },
-    padding: 10    
+    frames: {
+        background: 199
+    },
+    style: {
+        font: '16px BerlinSansFB-Reg',
+        fill: '#FFFFFF',
+        boundsAlignH: 'center',
+        wordWrap: true, 
+        align: 'center'
+    },
+    padding: 45    
 }

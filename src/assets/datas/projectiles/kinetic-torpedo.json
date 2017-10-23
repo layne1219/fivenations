@@ -9,7 +9,7 @@
             "oncomplete": "keepLastFrame",
             "rate": 20,
             "loopable": false,
-            "frames": [15, 16, 17, 18, 19]
+            "frames": [21, 22, 23, 24, 25, 26, 27, 28]
         }
     },    
     "events": {

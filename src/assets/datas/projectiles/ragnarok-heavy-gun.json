@@ -4,7 +4,14 @@
     "size": "xsm",
     "ttl": 750,
     "followTarget": false,
-    "customFrame": 20,    
+    "animations": {
+        "idle": {
+            "oncomplete": "keepLastFrame",
+            "rate": 20,
+            "loopable": false,
+            "frames": [29, 30, 31, 32, 33, 34, 35, 36]
+        }
+    },        
     "events": {
         "remove": {
             "effects": ["blow-2"]

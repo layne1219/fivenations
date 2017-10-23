@@ -234,12 +234,6 @@ Game.prototype = {
             }.bind(this));
 
         // -----------------------------------------------------------------------
-        //                              Scriptbox
-        // -----------------------------------------------------------------------
-        this.scriptbox = Scriptbox.getInstance();
-        this.scriptbox.run(script || 'default', this);
-
-        // -----------------------------------------------------------------------
         //                              GUI
         // -----------------------------------------------------------------------
         // Set up the GUI object 
@@ -249,6 +243,12 @@ Game.prototype = {
             .setUserPointer(this.userPointer)
             .setPlayerManager(this.playerManager)
             .getInstance(true);
+
+        // -----------------------------------------------------------------------
+        //                              Scriptbox
+        // -----------------------------------------------------------------------
+        this.scriptbox = Scriptbox.getInstance();
+        this.scriptbox.run(script || 'default', this);
 
         // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
@@ -280,14 +280,16 @@ Game.prototype = {
         // Rendering the map
         this.map.update(this.entityManager);
 
-        // updating entity attributes according to the time elapsed
-        this.entityManager.update(authoritative, this.game.time.elapsedMS);
+        if (this.paused !== true) {
+            // updating entity attributes according to the time elapsed
+            this.entityManager.update(authoritative, this.game.time.elapsedMS);
 
-        // updates effects
-        this.effectManager.update(authoritative);
+            // updates effects
+            this.effectManager.update(authoritative);
 
-        // collision handling
-        this.collisionManager.update(authoritative);
+            // collision handling
+            this.collisionManager.update(authoritative);
+        }
 
         // Rendering GUI elements
         this.GUI.update();

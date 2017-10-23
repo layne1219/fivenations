@@ -30,6 +30,7 @@ function setName(config){
 function setTeamInformation(config){
     this.team = config.team || 1;
     this.user = config.user || false;
+    this.independent = config.independent || false;
 }
 
 function setResources(config){
@@ -134,6 +135,10 @@ Player.prototype = {
 
     isAuthorised: function() {
         return this.authorised;
+    },
+
+    isIndependent: function() {
+        return this.independent;
     }
 
 };

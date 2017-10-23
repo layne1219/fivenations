@@ -202,7 +202,9 @@ function Entity(config) {
     this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
 
     // color indicator sprite
-    this.colorIndicator = gui.addColorIndicator(this);
+    if (!this.player.isIndependent()) {
+        this.colorIndicator = gui.addColorIndicator(this);
+    }
 
 }
 
@@ -551,7 +553,7 @@ Entity.prototype = {
     },
 
     isHover: function() {
-        return this.sprite.hover;
+        return this.sprite.input.pointerOver();
     },
 
     isInside: function(obj) {

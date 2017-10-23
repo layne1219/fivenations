@@ -197,7 +197,6 @@ EntityManager.prototype = {
      * @return {void}
      */
     updateQuadTree: function() {
-        if (!this.quadTree) throw 'QuadTree has not been implemented!';
         this.quadTree.clear();
         for (var i = entities.length - 1; i >= 0; i -= 1) {
             this.quadTree.insert( entities[i].getSprite() );

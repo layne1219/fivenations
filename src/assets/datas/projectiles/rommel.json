@@ -4,7 +4,7 @@
     "size": "xsm",
     "ttl": 75,
     "followTarget": false,
-    "customFrame": 14,    
+    "customFrame": 20,    
     "events": {
         "remove": {
             "effects": ["flash-orange-2", "blow-1"]

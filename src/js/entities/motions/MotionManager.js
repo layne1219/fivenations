@@ -265,8 +265,9 @@ MotionManager.prototype = {
             this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
         }
 
-        this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
-
+        if (this.rotation.maxAngleCount > 0) {
+            this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
+        }
     },
 
     /**
@@ -320,6 +321,7 @@ MotionManager.prototype = {
         var targetSprite = targetEntity.getSprite();
         var targetAngle = Math.atan2(targetSprite.y - sprite.y, targetSprite.x - sprite.x);
         var targetAngleCode = this.getTargetAngleCodeByTargetAngle(targetAngle);
+        if (this.rotation.maxAngleCount < 2) return true;
         return this.rotation.currentAngleCode === targetAngleCode;
     },
 

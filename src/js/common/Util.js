@@ -108,7 +108,7 @@ export default {
      * @return {Function} Function that checks if the given callback is due to be triggered
      */
     interval: function(callback, rate, ctx) {
-        var counter = 0;
+        var counter = rate || 0;
         return function(){
             counter +=1;
             if (counter > rate){

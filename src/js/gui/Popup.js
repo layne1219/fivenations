@@ -13,9 +13,17 @@ class Popup extends Phaser.Group {
      */
     constructor(config){
         super(ns.game.game);
+
+        this.config = config || {};
+
         this.initBasicComponents(config);
         this.initConfirmButton(config);
         this.initCloseButton(config);
+        this.setCoordinates(config);
+
+        if (this.config.pauseGame) {
+            ns.game.paused = true;
+        }
     }
 
     /**
@@ -28,11 +36,12 @@ class Popup extends Phaser.Group {
         const { text } = config;
 
         this.background = phaserGame.add.sprite(0, 0, id);
+        this.background.frame = GUI_POPUP.frames.background;
         this.background.anchor.set(0.5);
 
         this.text = phaserGame.add.text(0, 0, text, {
             ...GUI_POPUP.style,
-            wordWrapWidth: this.background.width,
+            wordWrapWidth: this.background.width - GUI_POPUP.padding,
         });
         this.text.anchor.set(0.5);
 
@@ -46,9 +55,9 @@ class Popup extends Phaser.Group {
      * @param {object} config - Configuration object 
      */
     initConfirmButton(config) {
-        const { text, onClick } = config;
+        const { buttonLabel, onClick } = config;
         this.button = new Button({
-            text,
+            buttonLabel,
             onClick
         });
         this.button.x = 0;
@@ -77,6 +86,15 @@ class Popup extends Phaser.Group {
         this.closeButton.y = -this.background.height / 2 + this.closeButton.height / 2 + GUI_POPUP.padding;
         
         this.add(this.closeButton);
+    }
+
+    setCoordinates({ x, y }) {
+        const cX = x || ns.window.width / 2;
+        const cY = y || ns.window.height / 2;
+        this.x = cX;
+        this.y = cY;
+        this.fixedToCamera = true;
+        this.cameraOffset.setTo(cX, cY);
     }    
 
     /**
@@ -93,6 +111,9 @@ class Popup extends Phaser.Group {
      */
     show() {
         this.visible = true;
+        if (this.config.pauseGame) {
+            ns.game.paused = true;
+        }        
     }
 
     /**
@@ -100,6 +121,9 @@ class Popup extends Phaser.Group {
      */
     hide() {
         this.visible = false;
+        if (this.config.pauseGame) {
+            ns.game.paused = false;
+        }        
     }
     
 }

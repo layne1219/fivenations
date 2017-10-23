@@ -103,6 +103,7 @@ var singleton = {
      * @return {boolean}
      */
     isPlayerHostileToPlayer: function(a, b) {
+        if (a.isIndependent() || b.isIndependent()) return false;
         return a.getTeam() !== b.getTeam();
     },
     
