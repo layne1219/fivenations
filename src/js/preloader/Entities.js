@@ -171,7 +171,7 @@ ns.entities = ns.entities || {
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build13.json',
         dataURL: PATH_ASSETS_DATA + 'fed/fusionreactor.json'
     },
-
+/*
     // ----------------------------------------------------------------------------
     // ATHRAELS
     // ----------------------------------------------------------------------------
@@ -920,7 +920,7 @@ ns.entities = ns.entities || {
         spriteURL: PATH_ASSETS_IMG + 'zho/zho_build14.png',
         atlasURL: PATH_ASSETS_IMG + 'zho/zho_build14.json',
         dataURL: PATH_ASSETS_DATA + 'zho/seed.json'
-    },
+    },*/
 
     // ----------------------------------------------------------------------------
     // ASTEROIDS
