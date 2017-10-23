@@ -5,7 +5,7 @@ var ns = window.fivenations;
 var guid = 0;
 
 function Weapon(data) {
-    this.data = Object.assign(data, {});
+    this.data = Object.assign({}, data);
     this.ready = true;
     this.guid = guid;
     this.level = 0;

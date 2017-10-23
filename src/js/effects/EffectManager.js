@@ -33,7 +33,7 @@ class EffectManager {
         const sprite = phaserGame.add.sprite(0, 0, config.id);
         
         // fetching the DataObject instance from the preloaded JSON file
-        if (localStorage && localStorage.getItem(config.id)) {
+        if (window.editor && localStorage && localStorage.getItem(config.id)) {
             dataSource = JSON.parse(localStorage.getItem(config.id));
         } else {
             dataSource = phaserGame.cache.getJSON(config.id);

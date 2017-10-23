@@ -10,7 +10,7 @@ function getDimensionsBySize(size) {
 
 function DataObject(json) {
 
-    var data = Object.assign(json, {});
+    var data = Object.assign({}, json);
 
     // setting up custom gameplay related data attributes
     data.maxhull = data.hull;
