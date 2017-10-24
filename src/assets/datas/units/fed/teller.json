@@ -1,32 +1,191 @@
 {
-	"id": "teller",
-	"name": "Teller",
-	"type": "Special Cruiser",
-	"hull": 200,
-	"shield": 50,
-	"armor": 0,
-	"power": 0, 
-	"hangar": 0,
-	"speed": 35,
-	"maneuverability": 15,
-	"vision": 50,
-	"weapons": [ 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 200,
-	"silicium": 200,
-	"energy": 200,
-	"uranium": 0,
-	"space": 8,
-	"buildingTime": 25,
-	"directions": 32,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "sm",
-	"events": {
-		"remove": {
-			"effects": ["destruction-medium"],
-			"minWrecks": 3,
-			"maxWrecks": 5,
-			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
-		}
-	} 
+  "id": "teller",
+  "name": "Teller",
+  "type": "Special Cruiser",
+  "hull": 150,
+  "shield": 100,
+  "armor": 1,
+  "power": 0,
+  "hangar": 0,
+  "speed": 40,
+  "maneuverability": 15,
+  "vision": 50,
+  "weapons": [
+    19,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 100,
+  "silicium": 200,
+  "energy": 250,
+  "uranium": 0,
+  "space": 8,
+  "buildingTime": 30,
+  "directions": 32,
+  "animFrame": 1,
+  "animType": 0,
+  "size": "sm",
+  "sizeOffset": {
+	"w": 27,
+	"h": 27
+  },
+  "selectionOffset": {
+	"x": 0,
+	"y": -15
+  },
+  "initialPoints": [
+   { 
+     "x": 0,
+     "y": 28 
+   },
+   { 
+     "x": -8,
+     "y": 25 
+   },
+   { 
+     "x": -13,
+     "y": 23 
+   },
+   { 
+     "x": -17,
+     "y": 23 
+   },
+   { 
+     "x": -22,
+     "y": 21 
+   },
+   { 
+     "x": -26,
+     "y": 18 
+   },
+      { 
+     "x": -32,
+     "y": 16 
+   },
+      { 
+     "x": -33,
+     "y": 14 
+   },
+      { 
+     "x": -35,
+     "y": 9 
+   },
+      { 
+     "x": -36,
+     "y": 6 
+   },
+      { 
+     "x": -35,
+     "y": 0 
+   },
+      { 
+     "x": -33,
+     "y": -4 
+   },
+      { 
+     "x": -28,
+     "y": -6 
+   },
+      { 
+     "x": -23,
+     "y": -11 
+   },
+      { 
+     "x": -17,
+     "y": -12 
+   },
+      { 
+     "x": -11,
+     "y": -13 
+   },
+    { 
+     "x": 0,
+     "y": -18 
+   },
+   { 
+     "x": 8,
+     "y": -13 
+   },
+   { 
+     "x": 14,
+     "y": -10 
+   },
+      { 
+     "x": 20,
+     "y": -8 
+   },
+      { 
+     "x": 24,
+     "y": -5 
+   },
+      { 
+     "x": 28,
+     "y": -1 
+   },
+      { 
+     "x": 34,
+     "y": 0 
+   },
+      { 
+     "x": 34,
+     "y": 5 
+   },
+      { 
+     "x": 36,
+     "y": 10 
+   },
+      { 
+     "x": 26,
+     "y": 13 
+   },
+      { 
+     "x": 21,
+     "y": 17 
+   },
+      { 
+     "x": 19,
+     "y": 20 
+   },
+   { 
+     "x": 16,
+     "y": 22 
+   },
+      { 
+     "x": 10,
+     "y": 22 
+   },
+      { 
+     "x": 7,
+     "y": 27 
+   },
+      { 
+     "x": 4,
+     "y": 27 
+   }  
+  ],  
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-medium"
+      ],
+      "minWrecks": 3,
+      "maxWrecks": 5,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  }
 }

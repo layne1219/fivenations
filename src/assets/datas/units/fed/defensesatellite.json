@@ -20,13 +20,13 @@
     "buildingTime": 6,
     "directions": 0,
     "animFrame": 1,
-    "animType": ["idle"],
+    "animType": ["idle-forever"],
     "size": "s",
     "animations": {
-        "idle": {
+        "idle-forever": {
             "rate": 20,
             "loopable": true,
-            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+            "frames": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
         }
     },
     "events": {

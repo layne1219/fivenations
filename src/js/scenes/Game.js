@@ -183,6 +183,20 @@ Game.prototype = {
 
         }.bind(this));
 
+        // @TODO test code delete it
+        this.userPointer.on('rightbutton/down', () => {
+            if (!window.editorMode) return;
+            var coords = this.userPointer.getRealCoords();
+            
+            this.eventEmitter.synced.entities.add({
+                id: window.currEntityId || 'hurricane',
+                team: window.currEntityTeam || 1,
+                x: coords.x || (50 + Math.random() * 700),
+                y: coords.y || (50 + Math.random() * 700)
+            });
+            console.log(window.currEntityId, coords.x, coords.y);          
+        });
+
         // If the user pointer isn't over the GUI area, nor any entities
         this.userPointer.on('leftbutton/down/disselect', function() {
             this.entityManager.unselectAll();
@@ -220,12 +234,6 @@ Game.prototype = {
             }.bind(this));
 
         // -----------------------------------------------------------------------
-        //                              Scriptbox
-        // -----------------------------------------------------------------------
-        this.scriptbox = Scriptbox.getInstance();
-        this.scriptbox.run(script || 'default', this);
-
-        // -----------------------------------------------------------------------
         //                              GUI
         // -----------------------------------------------------------------------
         // Set up the GUI object 
@@ -235,6 +243,12 @@ Game.prototype = {
             .setUserPointer(this.userPointer)
             .setPlayerManager(this.playerManager)
             .getInstance(true);
+
+        // -----------------------------------------------------------------------
+        //                              Scriptbox
+        // -----------------------------------------------------------------------
+        this.scriptbox = Scriptbox.getInstance();
+        this.scriptbox.run(script || 'default', this);
 
         // -----------------------------------------------------------------------
         //                              GUI.ActivityManager
@@ -266,14 +280,16 @@ Game.prototype = {
         // Rendering the map
         this.map.update(this.entityManager);
 
-        // updating entity attributes according to the time elapsed
-        this.entityManager.update(authoritative, this.game.time.elapsedMS);
+        if (this.paused !== true) {
+            // updating entity attributes according to the time elapsed
+            this.entityManager.update(authoritative, this.game.time.elapsedMS);
 
-        // updates effects
-        this.effectManager.update(authoritative);
+            // updates effects
+            this.effectManager.update(authoritative);
 
-        // collision handling
-        this.collisionManager.update(authoritative);
+            // collision handling
+            this.collisionManager.update(authoritative);
+        }
 
         // Rendering GUI elements
         this.GUI.update();
@@ -286,8 +302,6 @@ Game.prototype = {
 
         this.game.time.advancedTiming = true;
         this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
-
-        this.game.time.desiredFps = this.game.time.suggestedFps;
     }
 
 };

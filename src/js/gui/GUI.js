@@ -7,6 +7,8 @@ import Minimap from './Minimap';
 import ControlPanel from './ControlPanel';
 import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
+import Popup from './Popup';
+import Button from './Button';
 
 // Frame rate for the click animations
 const CLICK_ANIM_FRAMERATE = 20;
@@ -172,7 +174,7 @@ GUI.prototype = {
     },
 
     /**
-     * Linking the StatusDisplay object to a Entity
+     * Links the StatusDisplay object to a Entity
      * @param {Entity} entity 
      */
     addStatusDisplay: function(entity) {
@@ -180,6 +182,30 @@ GUI.prototype = {
         statusDisplay.appendTo(entity);
         return statusDisplay;
     },
+
+    /**
+     * Adds a Basic GUI Popup to the GUI graphics group
+     * @param {object} config - configuration object to instantiate the Popup
+     */
+    addPopup: function(config = {}) {
+        const popup = new Popup(config);
+        group.add(popup);
+        return popup;
+    },
+
+    /**
+     * Adds a Basic Button to the GUI graphics group
+     * @param {object} config - configuration object to instantiate the Button
+     */
+    addButton: function(config = {}) {
+        const { x, y } = config;
+        const button = new Button(config);    
+        button.x = x || 0;
+        button.y = y || 0;
+        group.add(button);
+
+        return button;
+    },    
 
     /**
      * Return a boolean value declaring whether the primary input is however the panel

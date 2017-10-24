@@ -47,3 +47,52 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
     width: 51,
     height: 51
 };
+
+export const GUI_BUTTON = {
+    spritesheet: {
+        id: 'gui',
+        url: 'gui/GUI_elements.png',
+    },
+    frames: {
+        over: 197,
+        out: 196,
+        down: 197
+    },
+    style: {
+        font: '11px BerlinSansFB-Reg',
+        fill: '#FFFFFF',
+        boundsAlignH: 'center',
+        wordWrap: true, 
+        align: 'center'
+    }
+};
+
+export const GUI_CLOSE_BUTTON = {
+    spritesheet: {
+        id: 'gui',
+        url: 'gui/GUI_elements.png',
+    },
+    frames: {
+        over: 0,
+        out: 0,
+        down: 0,
+    }
+};
+
+export const GUI_POPUP = {
+    spritesheet: {
+        id: 'gui',
+        url: 'gui/GUI_elements.png',
+    },
+    frames: {
+        background: 199
+    },
+    style: {
+        font: '16px BerlinSansFB-Reg',
+        fill: '#FFFFFF',
+        boundsAlignH: 'center',
+        wordWrap: true, 
+        align: 'center'
+    },
+    padding: 45    
+}

@@ -1,12 +1,13 @@
 const PUBLIC_URL = process.env.PUBLIC_URL;
-const PATH_ASSETS = `${PUBLIC_URL}/assets/images`;
+const PATH_ASSETS = `${PUBLIC_URL}/assets/images/gui`;
 
 function Boot() {}
 
 Boot.prototype = {
     preload: function() {
         this.load.crossOrigin = 'anonymous';
-        this.load.image('preloader', `${PATH_ASSETS}/preloader.gif`);
+        this.load.image('preloader-background', `${PATH_ASSETS}/preload_background.jpg`);
+        this.load.image('preloader-bar', `${PATH_ASSETS}/preload_bar.png`);
     },
 
     create: function() {

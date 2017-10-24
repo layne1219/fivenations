@@ -21,8 +21,7 @@
 	"directions": 1,
 	"animFrame": 1,
 	"animType": ["idle-forever"],
-	"size": "xl",
-	"animationOffset": 2,	
+	"size": "xl",	
     "animations": {
         "idle-forever": {
             "rate": 13,

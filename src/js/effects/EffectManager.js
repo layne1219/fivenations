@@ -33,7 +33,7 @@ class EffectManager {
         const sprite = phaserGame.add.sprite(0, 0, config.id);
         
         // fetching the DataObject instance from the preloaded JSON file
-        if (localStorage && localStorage.getItem(config.id)) {
+        if (window.editor && localStorage && localStorage.getItem(config.id)) {
             dataSource = JSON.parse(localStorage.getItem(config.id));
         } else {
             dataSource = phaserGame.cache.getJSON(config.id);
@@ -122,12 +122,25 @@ class EffectManager {
         // executes defined functionality in the data object
         const initEventConfig = dataObject.getEvent('create');
 
-        if (initEventConfig && initEventConfig.execute) {
-            const exec = initEventConfig.execute;
-            const target = exec.target === 'self' ? effect : null; 
-            const func = this[exec.command] && this[exec.command].bind(this);
+        if (initEventConfig) {
 
-            if (func) func(target); 
+            const effects = initEventConfig.effects || [];
+
+            effects.forEach(effectId => {
+                this.add({
+                    id: effectId,
+                    x: sprite.x,
+                    y: sprite.y
+                });
+            });            
+
+            if (initEventConfig.execute) {
+                const exec = initEventConfig.execute;
+                const target = exec.target === 'self' ? effect : null; 
+                const func = this[exec.command] && this[exec.command].bind(this);
+
+                if (func) func(target); 
+            }
         }
 
         // pushes it to the local effect collection 

@@ -9,7 +9,7 @@ export default {
      * @return {void}
      */
     load: preloader =>  {
-        preloader.load.image('starfield', `${PATH_ASSETS}/starfield/starfield.jpg`);
+        preloader.load.image('starfield', `${PATH_ASSETS}/starfield/starfield.png`);
         preloader.load.atlasJSONHash('starfield.clouds.bg.type-1', `${PATH_ASSETS}/starfield/background_clouds_type01.png`, `${PATH_ASSETS}/starfield/background_clouds_type01.json`);
         preloader.load.atlasJSONHash('starfield.clouds.bg.type-2', `${PATH_ASSETS}/starfield/background_clouds_type02.png`, `${PATH_ASSETS}/starfield/background_clouds_type02.json`);
         preloader.load.atlasJSONHash('starfield.planets.type-1', `${PATH_ASSETS}/starfield/background_planets01.png`, `${PATH_ASSETS}/starfield/background_planets01.json`);

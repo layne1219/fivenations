@@ -80,6 +80,7 @@ function createIconSprite({container, phaserGame, width, height, frame}) {
         },
 
         hide: function() {
+            last = null;
             bmd.clear();
         },
 

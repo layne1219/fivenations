@@ -9,6 +9,7 @@ import Util from '../../common/Util';
 function Attack(entity) {
     Activity.call(this);
     this.entity = entity;
+    this.motionManager = entity.getMotionManager();
     this._firstExecution = true;
 
     this.onTargetEntityRemove = function() {
@@ -45,11 +46,20 @@ Attack.prototype.update = function() {
 
     if (!this.target.isTargetable()) {
         this.kill();
+        return;
     }
 
     if (!this.isTargetInRange()) {
         this.entity.getInRange(this.target);
-    } else if (!this.isEntityFacingTarget()) {
+        return;
+    }
+
+    if (this.motionManager.isMoving()) {
+        this.entity.stop();
+        return;
+    } 
+
+    if (!this.isEntityFacingTarget()) {
         this.entity.rotateToTarget(this.target);
     }
 
@@ -92,9 +102,7 @@ Attack.prototype.isTargetInRange = function() {
  * @return {boolean}
  */
 Attack.prototype.isEntityFacingTarget = function() {
-    return this.entity
-        .getMotionManager()
-        .isEntityFacingTargetEntity(this.target);
+    return this.motionManager.isEntityFacingTargetEntity(this.target);
 };
 
 export default Attack;

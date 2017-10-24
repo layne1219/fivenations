@@ -5,6 +5,9 @@ import Wreckages from '../preloader/Wreckages';
 import Effects from '../preloader/Effects';
 import Projectiles from '../preloader/Projectiles';
 
+let background;
+let bar;
+
 /**
  * Private function to set up all the assets needs to be loaded before the game starts
  * @param {object} [preloader] Preloader object defined below
@@ -27,12 +30,17 @@ function Preloader() {
 }
 
 Preloader.prototype = {
+
     /**
      * @return {void}
      */
     preload: function() {
-        const preloaderSprite = this.add.sprite(this.game.width * 0.5 - 110, this.game.height * 0.5 - 10, 'preloader');
-        this.load.setPreloadSprite(preloaderSprite);
+
+        background = this.game.add.sprite(0, 0, 'preloader-background');
+        background.fixedToCamera = true;
+
+        bar = this.add.sprite(326, 632, 'preloader-bar');
+        this.load.setPreloadSprite(bar);
 
         // setting up the callback one the preloading is completed
         this.load.onLoadComplete.addOnce(function() {
@@ -56,7 +64,7 @@ Preloader.prototype = {
      */
     update: function() {
         if (this.ready) {
-            this.game.state.start('menu');
+            this.game.state.start('game');
         }
     }
 

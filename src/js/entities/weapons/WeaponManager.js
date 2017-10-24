@@ -18,7 +18,7 @@ function createWeaponById(id) {
             cache[id] = weaponsJSON[i];
         }
     }
-    if (localStorage && localStorage.getItem(id)) {
+    if (window.editor && localStorage && localStorage.getItem(id)) {
         dataSource = JSON.parse(localStorage.getItem(id));
     } else {
         dataSource = cache[id];

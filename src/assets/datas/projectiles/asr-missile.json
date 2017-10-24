@@ -4,7 +4,14 @@
     "size": "xsm",
     "ttl": 450,
     "followTarget": true,
-    "customFrame": 21,
+    "animations": {
+        "idle": {
+            "oncomplete": "keepLastFrame",
+            "rate": 20,
+            "loopable": false,
+            "frames": [45, 46, 47, 48, 49, 50, 51, 52]
+        }
+    },
     "events": {
         "remove": {
             "effects": ["blow-2"]
@@ -13,5 +20,9 @@
             "damageTarget": true,
             "removeEffect": true
         }        
-    }
+    },
+    "trails": {
+        "rate": 20,
+        "effect": "smoke-trail-2"
+    }    
 }

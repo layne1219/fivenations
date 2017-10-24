@@ -3,7 +3,7 @@
   "description": "",
   "readme": "",
   "repository": "",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2",
@@ -12,8 +12,9 @@
   "devDependencies": {
     "babel-eslint": "^7.2.2",
     "babel-loader": "^6.4.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.16.0",
+    "babel-preset-env": "^1.6.0",
     "babel-register": "^6.18.0",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
@@ -44,8 +45,8 @@
     "build-standalone": "npm run lint && ./scripts/build-standalone.sh",
     "dev": "npm run lint && ./scripts/dev.sh",
     "lint": "eslint src/js/**/*.js",
-    "start-server": "forever server-runner.js",
-    "stop-server": "forever stopall",
+    "start-server": "forever start server-runner.js",
+    "stop-server": "forever stop server-runner.js",
     "test": "mocha --delay --require babel-core/register test/phantomjs/**/*.spec.js"
   }
 }

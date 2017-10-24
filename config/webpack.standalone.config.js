@@ -9,13 +9,23 @@ const bundleName = `fivenations.${version}.js`;
 const plugins = defaultConfig.plugins;
 plugins.push(
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  // This helps ensure the builds are consistent if source hasn't changed:
+  new webpack.optimize.OccurrenceOrderPlugin(),
+  // Minify the code.
   new webpack.optimize.UglifyJsPlugin({
     drop_console: true,
-    minimize: true,
+    compress: {
+      screw_ie8: true, 
+      warnings: false
+    },
+    mangle: {
+      screw_ie8: true
+    },
     output: {
-      comments: false
+      comments: false,
+      screw_ie8: true
     }
-  })
+  })  
 );
 
 plugins.push(
