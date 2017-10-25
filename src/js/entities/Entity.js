@@ -26,6 +26,8 @@ const extendSprite = function(entity, sprite, dataObject) {
 
     const origWidth = dataObject.getWidth();
     const origHeight = dataObject.getHeight();
+    const damageWidth = dataObject.getDamageWidth();
+    const damageHeight = dataObject.getDamageHeight();
 
     // actiavting the ARCADE physics on the sprite object
     entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -51,7 +53,7 @@ const extendSprite = function(entity, sprite, dataObject) {
 
     // reducing the hitArea according to the one specified in the realated DataObject
     sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-    sprite.body.setSize(origWidth, origHeight, 0, 0);
+    sprite.body.setSize(damageWidth, damageHeight, origWidth / 2, origHeight / 2);
 
     sprite._parent = entity;
 

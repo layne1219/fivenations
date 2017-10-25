@@ -1,27 +1,26 @@
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
 
-var ns = window.fivenations;
-var guid = 0;
+const ns = window.fivenations;
+let guid = 0;
 
-function Weapon(data) {
-    this.data = Object.assign({}, data);
-    this.ready = true;
-    this.guid = guid;
-    this.level = 0;
-    guid += 1;
+class Weapon {
 
-    this.onTargetEntityRemove = function() {
-        this.clearTargetEntity();
-    }.bind(this);
-}
+    constructor(data) {
 
-Weapon.prototype = {
+        this.data = Object.assign({}, data);
+        this.ready = true;
+        this.guid = guid;
+        this.level = 0;
+        guid += 1;
 
-    targetEntity: null,
-    manager: null,
+        this.onTargetEntityRemove = function() {
+            this.clearTargetEntity();
+        }.bind(this);
 
-    update: function() {
+    }
+
+    update() {
         if (this.isReady()) {
             if (this.hasTargetEntity()) {
                 if (this.isReleasable()) {
@@ -33,18 +32,18 @@ Weapon.prototype = {
         } else {
             this.recharge();
         }
-    },
+    }
 
-    recharge: function() {
+    recharge() {
         if (this.freezeTime > 0) {
             this.freezeTime -= 1;
         } else {
             this.freezeTime = 0;
             this.ready = true;
         }
-    },
+    }
 
-    scan: function() {
+    scan() {
         // if the weapon has a target already
         if (this.targetEntity) return;
 
@@ -79,24 +78,30 @@ Weapon.prototype = {
                 }
             }
         }
-    },
+    }
 
-    release: function() {
+    release() {
         if (this.targetEntity) {
             this.fire(this.targetEntity);
         }
-    },
+    }
 
-    fire: function(targetEntity) {
+    fire(targetEntity) {
 
-        var targetSprite = targetEntity.getSprite();
-        var sprite = this.entity.getSprite();
-        var distance = Util.distanceBetweenSprites(sprite, targetSprite);
+        const targetSprite = targetEntity.getSprite();
+        const dataObject = entity.getDataObject();
+        const projectileOffset = dataObject.getProjectileOffset();
+        const sprite = this.entity.getSprite();
+        const distance = Util.distanceBetweenSprites(sprite, targetSprite);
 
         if (distance <= this.getRange()) {
 
-            var rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
-            var velocity = this.data.velocity;
+            const rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
+            const velocity = this.data.velocity;
+            const offsetX = projectileOffset.x || 0;
+            const offsetY = projectileOffset.y || 0;
+            const x = sprite.x + offsetX;
+            const y = sprite.y + offsetY;
 
             if (!velocity) {
                 velocity = this.data.acceleration || this.data.maxVelocity;
@@ -105,36 +110,36 @@ Weapon.prototype = {
             EventEmitter.getInstance().synced.effects.add({
                 id: this.data.effect,
                 emitter: this,
-                x: sprite.x + Util.rnd(0, 16) - 8,
-                y: sprite.y + Util.rnd(0, 16) - 8,
-                rotation: rotation,
-                velocity: velocity,
                 maxVelocity: this.data.maxVelocity,
                 acceleration: this.data.acceleration
+                rotation,
+                velocity,
+                x,
+                y
             });
 
             this.freeze(this.data.cooldown);
         }
 
-    },        
+    }
 
-    activate: function() {
+    activate() {
         this.ready = true;
-    },
+    }
 
-    freeze: function(time) {
+    freeze(time) {
         this.ready = false;
         this.freezeTime = time || 0;
-    },
+    }
 
-    setManager: function(manager) {
+    setManager(manager) {
         if (!manager) throw 'Invalid WeaponManager is passed!';
         this.manager = manager;
         this.entity = manager.getEntity();
         this.unconditionalRelease = this.entity.getDataObject().isFighter() || this.isSelfContained();
-    },
+    }
 
-    setTargetEntity: function(entity) {
+    setTargetEntity(entity) {
         
         if (this.targetEntity) {
             this.targetEntity.off('remove', this.onTargetEntityRemove);
@@ -142,73 +147,73 @@ Weapon.prototype = {
 
         this.targetEntity = entity;
         this.targetEntity.on('remove', this.onTargetEntityRemove);
-    },
+    }
 
-    clearTargetEntity: function() {
+    clearTargetEntity() {
         this.targetEntity = null;
-    },
+    }
 
-    getId: function() {
+    getId() {
         return this.data.id;
-    },
+    }
 
-    getGUID: function() {
+    getGUID() {
         return this.guid;
-    },
+    }
 
-    getManager: function() {
+    getManager() {
         return this.manager;
-    },   
+    }
 
-    getName: function() {
+    getName() {
         return this.data.name;
-    },
+    }
 
-    getDamage: function() {
+    getDamage() {
         return this.data.damage;
-    },
+    }
 
-    getDamageShield: function() {
+    getDamageShield() {
         return this.data.damage_shield;
-    },
+    }
 
-    getRange: function() {
+    getRange() {
         return this.data.range;         
-    },
+    }
 
-    getCurrentLevel: function() {
+    getCurrentLevel() {
         return this.level;
-    },
+    }
 
-    getUpgradeLevel: function() {
+    getUpgradeLevel() {
         return this.data.upgrade_level;
-    },
+    }
 
-    getTargetEntity: function() {
+    getTargetEntity() {
         return this.targetEntity;
-    },
+    }
 
-    getTargetTypes: function() {
+    getTargetTypes() {
         return this.data.targetTypes;
-    },
+    }
 
-    getEffect: function() {
+    getEffect() {
         return this.data.effect;
-    },
+    }
 
-    toJSON: function() {
+    toJSON() {
         return JSON.stringify(this.data, null, '  ');
-    },
+    }
 
-    isSelfContained: function() {
+    isSelfContained() {
         return this.data.self_contained;  
-    },
+    }
 
-    isReady: function() {
+    isReady() {
         return this.ready;
-    },
+    }
 
-    isReleasable: function() {
+    isReleasable() {
         if (this.unconditionalRelease) return true;
         
         // if the entity stands still
@@ -222,23 +227,23 @@ Weapon.prototype = {
         }
 
         return true;
-    },
+    }
 
-    isOffensive: function() {
+    isOffensive() {
         return this.getDamage() > 0 || this.getDamageShield() > 0;
-    },
+    }
 
-    hasFriendlyFire: function() {
+    hasFriendlyFire() {
         return this.data.friendly_fire;
-    },
+    }
 
-    hasTargetEntity: function() {
+    hasTargetEntity() {
         return this.targetEntity;
-    },
+    }
 
-    requiresEntityToFaceTarget: function() {
+    requiresEntityToFaceTarget() {
         return this.data.requires_entity_to_face_target;
-    },
+    }
 
 }
 
