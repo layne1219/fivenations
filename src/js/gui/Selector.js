@@ -46,11 +46,10 @@ export default class Selector {
 
     appendTo(entity) {
 
+        const selectionOffset = entity.getDataObject().getSelectionOffset();
+        const offsetX = selectionOffset.x || 0;
+        const offsetY = selectionOffset.y || 0;
         let groupName;
-
-        if (!entity || 'function' !== typeof entity.getSprite) {
-            throw 'First parameter must be an instance of Entity!';
-        }
 
         entity.on('select', this.show.bind(this));
         entity.on('unselect', this.hide.bind(this));
@@ -64,8 +63,8 @@ export default class Selector {
         // the sprite is not a child of the entity for various overlapping issues
         // therefore it needs to follow it upon every tick 
         this.sprite.update = function() {
-            this.x = entity.getSprite().x;
-            this.y = entity.getSprite().y;
+            this.x = entity.getSprite().x - offsetX;
+            this.y = entity.getSprite().y - offsetY;
         };
 
         this.parent = entity;

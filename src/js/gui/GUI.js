@@ -148,6 +148,9 @@ GUI.prototype = {
      * @param {Entity} entity 
      */
     addSelector: function(entity) {
+        if (!entity) {
+            throw 'First parameter must be an instance of Entity!';
+        }
         const selector = new Selector(phaserGame);
         selector.appendTo(entity);
         return selector;
