@@ -25,6 +25,14 @@ export const ENTITY_SIZES = {
     }        
 };
 
+// GUI sizes for entities
+export const ENTITY_GUI_SIZE = {
+    'big': [100, 149],
+    'extrabig': [150, 999],
+    'medium': [50, 99],
+    'small': [0, 49]
+};
+
 // helper constants for entity related functionalities 
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
 export const MAX_SELECTABLE_UNITS = 22;

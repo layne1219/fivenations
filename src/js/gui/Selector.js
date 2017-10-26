@@ -1,5 +1,5 @@
 import Graphics from '../common/Graphics';
-import EntitySizes from './EntitySizes';
+import { ENTITY_GUI_SIZES } from '../common/Const';
 import Util from '../common/Util';
 
 const SELECT_ANIM_FRAME_RATE = 25;
@@ -122,8 +122,8 @@ export default class Selector {
 
         if (!this.size) {
 
-            Object.keys(EntitySizes).forEach(function(size) {
-                if (Util.between(Math.max(this.width, this.height), EntitySizes[size][0], EntitySizes[size][1])) {
+            Object.keys(ENTITY_GUI_SIZES).forEach(function(size) {
+                if (Util.between(Math.max(this.width, this.height), ENTITY_GUI_SIZES[size][0], ENTITY_GUI_SIZES[size][1])) {
                     this.size = size;
                 }
             }, this);
