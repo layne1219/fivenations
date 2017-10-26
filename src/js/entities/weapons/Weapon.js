@@ -97,11 +97,11 @@ class Weapon {
         if (distance <= this.getRange()) {
 
             const rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
-            const velocity = this.data.velocity;
             const offsetX = projectileOffset.x || 0;
             const offsetY = projectileOffset.y || 0;
             const x = sprite.x + offsetX;
             const y = sprite.y + offsetY;
+            let velocity = this.data.velocity;
 
             if (!velocity) {
                 velocity = this.data.acceleration || this.data.maxVelocity;
@@ -111,7 +111,7 @@ class Weapon {
                 id: this.data.effect,
                 emitter: this,
                 maxVelocity: this.data.maxVelocity,
-                acceleration: this.data.acceleration
+                acceleration: this.data.acceleration,
                 rotation,
                 velocity,
                 x,
