@@ -77,7 +77,8 @@ EntityManager.prototype = {
             guid: config.guid,
             entityManager: this,
             sprite: sprite,
-            dataObject: dataObject
+            dataObject: dataObject,
+            createdAt: config.createdAt
         });
 
         // setting the coordinates if not ommitted 

@@ -144,7 +144,7 @@ class MainAttributeGroup extends Phaser.Group {
         const dataObject = entity.getDataObject();
         const maxShield = dataObject.getMaxShield();
         const maxPower = dataObject.getMaxPower();
-        const maxHanger = dataObject.getMaxHangar();
+        const maxHangar = dataObject.getMaxHangar();
 
         this.iconSprite.show(entity);
 

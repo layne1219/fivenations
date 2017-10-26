@@ -160,6 +160,9 @@ function Entity(config) {
 
     const gui = GUI.getInstance();
 
+    // timestamp of creation to syncronize events across remote clients
+    this.createdAt = config.createdAt;
+
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
 
@@ -707,14 +710,26 @@ Entity.prototype = {
 
     /**
      * Returns the closest entity that is in hostile relation to the one triggered the function call
-     * @return {object} entity
+     * @return {object} Entity
      */
     getClosestHostileEntityInRange: function() {
         return this.closestHostileEntity;
     },
 
+    /**
+     * Returns the closest entity that is in alliance with the current entity
+     * @return {object} Entity
+     */
     getClosestAllyEntityInRange: function() {
         return this.closestAllyEntity;
+    },
+
+    /**
+     * Returns the timestamp of when the entity was generated
+     * @return {integer} 
+     */
+    getCreationTime: function() {
+        return this.createdAt;
     }
 
 };
