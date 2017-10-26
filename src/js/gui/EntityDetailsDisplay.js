@@ -169,6 +169,8 @@ class MainAttributeGroup extends Phaser.Group {
 
             this.shieldElm.text = shieldTitle + shieldValue + shieldMaxValue;
             this.shieldElm.addColor('#475D86', shieldTitle.length);
+        } else {
+            this.shieldElm.text = '';
         }
 
         // Armor
@@ -186,6 +188,8 @@ class MainAttributeGroup extends Phaser.Group {
 
             this.powerElm.text = powerTitle + powerValue + powerMaxValue;
             this.powerElm.addColor('#FFFFFF', powerTitle.length);
+        } else {
+            this.powerElm.text = '';
         }
 
         // Hangar
@@ -196,6 +200,8 @@ class MainAttributeGroup extends Phaser.Group {
 
             this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;
             this.hangarElm.addColor('#FFFFFF', hangarTitle.length);
+        } else {
+            this.hangarElm.text = '';
         }
 
     }

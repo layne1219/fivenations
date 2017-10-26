@@ -53,7 +53,7 @@ const extendSprite = function(entity, sprite, dataObject) {
 
     // reducing the hitArea according to the one specified in the realated DataObject
     sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-    sprite.body.setSize(damageWidth, damageHeight, origWidth / 2, origHeight / 2);
+    sprite.body.setSize(damageWidth, damageHeight, 0, 0);
 
     sprite._parent = entity;
 
@@ -240,11 +240,9 @@ Entity.prototype = {
      * @return {void} 
      */
     update: function(authoritative) {
-
         this.activityManager.update();
         this.motionManager.update();
         this.weaponManager.update(authoritative);
-
     },
 
     /**

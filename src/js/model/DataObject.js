@@ -23,8 +23,8 @@ function getDamageArea(data) {
         return getDimensionsBySize(data);
     }
     return {
-        width: damageArea.w,
-        height: damageArea.h
+        width: damageArea.w * 2,
+        height: damageArea.h * 2
     };
 }
 

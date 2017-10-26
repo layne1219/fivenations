@@ -26,7 +26,7 @@ export const ENTITY_SIZES = {
 };
 
 // GUI sizes for entities
-export const ENTITY_GUI_SIZE = {
+export const ENTITY_GUI_SIZES = {
     'big': [100, 149],
     'extrabig': [150, 999],
     'medium': [50, 99],

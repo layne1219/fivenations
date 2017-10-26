@@ -89,7 +89,7 @@ class Weapon {
     fire(targetEntity) {
 
         const targetSprite = targetEntity.getSprite();
-        const dataObject = entity.getDataObject();
+        const dataObject = this.entity.getDataObject();
         const projectileOffset = dataObject.getProjectileOffset();
         const sprite = this.entity.getSprite();
         const distance = Util.distanceBetweenSprites(sprite, targetSprite);
