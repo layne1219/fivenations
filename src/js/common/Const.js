@@ -56,6 +56,9 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
     height: 51
 };
 
+// Weapon constants
+export const WEAPON_INSTANCE_DELAY = 50;
+
 export const GUI_BUTTON = {
     spritesheet: {
         id: 'gui',

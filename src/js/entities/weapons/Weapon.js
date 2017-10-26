@@ -1,5 +1,6 @@
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
+import { WEAPON_INSTANCE_DELAY } from '../../common/Const';
 
 const ns = window.fivenations;
 let guid = 0;
@@ -12,6 +13,9 @@ class Weapon {
         this.ready = true;
         this.guid = guid;
         this.level = 0;
+        this.instanceDelay = data.instanceDelay || WEAPON_INSTANCE_DELAY;
+        this.instanceDelayCounter = 0;
+
         guid += 1;
 
         this.onTargetEntityRemove = function() {
@@ -31,6 +35,7 @@ class Weapon {
             }
         } else {
             this.recharge();
+            this.reduceInstanceDelay();
         }
     }
 
@@ -40,6 +45,13 @@ class Weapon {
         } else {
             this.freezeTime = 0;
             this.ready = true;
+        }
+    }
+
+    reduceInstanceDelay() {
+        if (this.instanceDelay === 0) return;
+        if (this.instanceDelayCounter > 0) {
+            this.instanceDelayCounter -= 1;
         }
     }
 
@@ -210,7 +222,7 @@ class Weapon {
     }
 
     isReady() {
-        return this.ready;
+        return this.ready && this.instanceDelayCounter === 0;
     }
 
     isReleasable() {
