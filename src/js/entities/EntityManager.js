@@ -25,8 +25,6 @@ function EntityManager() {
     this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
 
     this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
-
-    this.kickstart = true;
 }
 
 EntityManager.prototype = {
