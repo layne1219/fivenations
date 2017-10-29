@@ -1,6 +1,5 @@
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
-import { WEAPON_INSTANCE_DELAY } from '../../common/Const';
 
 const ns = window.fivenations;
 let guid = 0;
@@ -13,9 +12,6 @@ class Weapon {
         this.ready = true;
         this.guid = guid;
         this.level = 0;
-        this.instanceDelay = data.instanceDelay || 0;
-        this.instanceDelayCounter = this.instanceDelay;
-
         guid += 1;
 
         this.onTargetEntityRemove = function() {
@@ -54,6 +50,7 @@ class Weapon {
     reduceInstanceDelay() {
         if (this.instanceDelayCounter > 0) {
             this.instanceDelayCounter -= 1;
+            console.log(this.instanceDelayCounter);
         }
     }
 
@@ -147,6 +144,11 @@ class Weapon {
         this.instanceDelayCounter = this.instanceDelay;
     }
 
+    increaseCooldown(value) {
+        if (!this.data.cooldown) return;
+        this.data.cooldown += value;
+    }
+
     setManager(manager) {
         if (!manager) throw 'Invalid WeaponManager is passed!';
         this.manager = manager;
@@ -162,6 +164,11 @@ class Weapon {
 
         this.targetEntity = entity;
         this.targetEntity.on('remove', this.onTargetEntityRemove);
+    }
+
+    setInstanceDelay(delay) {
+        this.instanceDelay = delay || 0;
+        this.instanceDelayCounter = delay;        
     }
 
     clearTargetEntity() {
@@ -216,6 +223,10 @@ class Weapon {
         return this.data.effect;
     }
 
+    getInstanceDelay() {
+        return this.data.instanceDelay;
+    }
+
     toJSON() {
         return JSON.stringify(this.data, null, '  ');
     }
@@ -241,8 +252,6 @@ class Weapon {
                         .isEntityFacingTargetEntity(this.targetEntity);
         }
 
-        if ()
-
         return true;
     }
 
@@ -259,7 +268,7 @@ class Weapon {
     }
 
     hasNoInstanceDelay() {
-        return this.instanceDelay === 0 || this.instanceDelayCounter === 0;
+        return !this.instanceDelay || this.instanceDelayCounter === 0;
     }
 
     requiresEntityToFaceTarget() {
