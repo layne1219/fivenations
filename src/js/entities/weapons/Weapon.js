@@ -13,8 +13,8 @@ class Weapon {
         this.ready = true;
         this.guid = guid;
         this.level = 0;
-        this.instanceDelay = data.instanceDelay || WEAPON_INSTANCE_DELAY;
-        this.instanceDelayCounter = 0;
+        this.instanceDelay = data.instanceDelay || 0;
+        this.instanceDelayCounter = this.instanceDelay;
 
         guid += 1;
 
@@ -28,14 +28,17 @@ class Weapon {
         if (this.isReady()) {
             if (this.hasTargetEntity()) {
                 if (this.isReleasable()) {
-                    this.release();
+                    if (this.hasNoInstanceDelay()){
+                        this.release();
+                    } else {
+                        this.reduceInstanceDelay();
+                    }
                 }
             } else {
                 this.scan();
             }
         } else {
             this.recharge();
-            this.reduceInstanceDelay();
         }
     }
 
@@ -49,7 +52,6 @@ class Weapon {
     }
 
     reduceInstanceDelay() {
-        if (this.instanceDelay === 0) return;
         if (this.instanceDelayCounter > 0) {
             this.instanceDelayCounter -= 1;
         }
@@ -142,6 +144,7 @@ class Weapon {
     freeze(time) {
         this.ready = false;
         this.freezeTime = time || 0;
+        this.instanceDelayCounter = this.instanceDelay;
     }
 
     setManager(manager) {
@@ -222,7 +225,7 @@ class Weapon {
     }
 
     isReady() {
-        return this.ready && this.instanceDelayCounter === 0;
+        return this.ready;
     }
 
     isReleasable() {
@@ -238,6 +241,8 @@ class Weapon {
                         .isEntityFacingTargetEntity(this.targetEntity);
         }
 
+        if ()
+
         return true;
     }
 
@@ -251,6 +256,10 @@ class Weapon {
 
     hasTargetEntity() {
         return this.targetEntity;
+    }
+
+    hasNoInstanceDelay() {
+        return this.instanceDelay === 0 || this.instanceDelayCounter === 0;
     }
 
     requiresEntityToFaceTarget() {
