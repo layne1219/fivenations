@@ -162,6 +162,7 @@ function Entity(config) {
 
     // timestamp of creation to syncronize events across remote clients
     this.createdAt = config.createdAt;
+    this.lastShieldUpdate = this.createdAt;
 
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
@@ -236,13 +237,34 @@ Entity.prototype = {
     },
 
     /**
-     * Rendering the entity
+     * Updates the entity's state 
      * @return {void} 
      */
     update: function(authoritative) {
+        // self-contained modules
         this.activityManager.update();
         this.motionManager.update();
         this.weaponManager.update(authoritative);
+
+        // local behaviour 
+        this.updateShield();
+    },
+
+    /**
+     * Updates the entity's shield at regular intervals (synced)
+     */
+    updateShield() {
+        const timeElapsedSinceLastUpdate = this.game.time.time - this.lastShieldUpdate;
+        // update the entity's shield by one unit at every second
+        if (timeElapsedSinceLastUpdate > Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) {
+            let expectedTick = Math.floor(timeElapsedSinceLastUpdate / Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) || 0;
+            // if there is more execution to be triggered we update the shield accordingly
+            while (expectedTick) {
+                this.dataObject.restoreShield(1);
+                expectedTick -= 1;
+            }
+            this.lastShieldUpdate = this.game.time.time;
+        }
     },
 
     /**

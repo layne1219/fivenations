@@ -36,6 +36,8 @@ export const ENTITY_GUI_SIZES = {
 // helper constants for entity related functionalities 
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
 export const MAX_SELECTABLE_UNITS = 22;
+export const SHIELD_CHARGE_RATE_IN_MILLISECONDS = 2000;
+export const SHIELD_ACTIVITY_TRESHOLD = 10;
 export const ANIMATION_IDLE_FOREVER = 'idle-forever';
 
 // Offset for all entity animations when the icons are bundled

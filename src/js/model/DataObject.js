@@ -70,6 +70,10 @@ function DataObject(json) {
             data.shield = Math.max(data.shield - value, 0);
         },
 
+        restoreShield: function(value) {
+            data.shield = Math.min(data.maxshield, data.shield + value);
+        },
+
         setTeam: function(team) {
             data.team = team;
         },
