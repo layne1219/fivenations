@@ -50,7 +50,6 @@ class Weapon {
     reduceInstanceDelay() {
         if (this.instanceDelayCounter > 0) {
             this.instanceDelayCounter -= 1;
-            console.log(this.instanceDelayCounter);
         }
     }
 
