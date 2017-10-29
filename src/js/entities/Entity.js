@@ -53,7 +53,12 @@ const extendSprite = function(entity, sprite, dataObject) {
 
     // reducing the hitArea according to the one specified in the realated DataObject
     sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-    sprite.body.setSize(damageWidth, damageHeight, 0, 0);
+        
+    // save helper data for faster updates for any subsequent calculation with damage area
+    sprite._damageWidth = damageWidth;
+    sprite._damageHeight = damageHeight;
+    sprite._damageWidthWithShield = damageWidth * 1.5;
+    sprite._damageHeightWithShield = damageHeight * 1.5;
 
     sprite._parent = entity;
 
@@ -162,7 +167,7 @@ function Entity(config) {
 
     // timestamp of creation to syncronize events across remote clients
     this.createdAt = config.createdAt;
-    this.lastShieldUpdate = this.createdAt;
+    this._lastShieldUpdate = this.createdAt;
 
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
@@ -212,6 +217,8 @@ function Entity(config) {
         this.colorIndicator = gui.addColorIndicator(this);
     }
 
+    // initialise collision area
+    this.updateDamageArea();
 }
 
 Entity.prototype = {
@@ -246,7 +253,7 @@ Entity.prototype = {
         this.motionManager.update();
         this.weaponManager.update(authoritative);
 
-        // local behaviour 
+        // local behaviour
         this.updateShield();
     },
 
@@ -254,7 +261,10 @@ Entity.prototype = {
      * Updates the entity's shield at regular intervals (synced)
      */
     updateShield() {
-        const timeElapsedSinceLastUpdate = this.game.time.time - this.lastShieldUpdate;
+        const timeElapsedSinceLastUpdate = this.game.time.time - this._lastShieldUpdate;
+        
+        if (this.dataObject.getMaxShield() === 0) return;
+
         // update the entity's shield by one unit at every second
         if (timeElapsedSinceLastUpdate > Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) {
             let expectedTick = Math.floor(timeElapsedSinceLastUpdate / Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) || 0;
@@ -263,8 +273,27 @@ Entity.prototype = {
                 this.dataObject.restoreShield(1);
                 expectedTick -= 1;
             }
-            this.lastShieldUpdate = this.game.time.time;
+            this._lastShieldUpdate = this.game.time.time;
+
+            this.updateDamageArea();
         }
+    },
+
+    /** 
+     * updates the collision area of the entity according to whether or not
+     * it has shield 
+     */
+    updateDamageArea() {
+        const shield = this.dataObject.getShield(); 
+        if (this._lastShieldValue === shield) return;
+
+        if (this.dataObject.getShield() < shield) {
+            this.sprite.body.setSize(this.sprite.damageWidth, this.sprite.damageHeight, 0, 0);
+        } else {
+            this.sprite.body.setSize(this.sprite._damageWidthWithShield, this.sprite.damageHeightWithShield, 0, 0);
+        }
+
+        this._lastShieldValue = shield;
     },
 
     /**
@@ -412,6 +441,7 @@ Entity.prototype = {
      */
     damage: function(params) {
         this.dataObject.damage(params);
+        this.updateDamageArea();
 
         if (this.dataObject.getHull() <= 0) {
             this.entityManager.remove(this);
