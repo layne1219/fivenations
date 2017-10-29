@@ -57,8 +57,8 @@ const extendSprite = function(entity, sprite, dataObject) {
     // save helper data for faster updates for any subsequent calculation with damage area
     sprite._damageWidth = damageWidth;
     sprite._damageHeight = damageHeight;
-    sprite._damageWidthWithShield = damageWidth * 1.5;
-    sprite._damageHeightWithShield = damageHeight * 1.5;
+    sprite._damageWidthWithShield = Math.round(damageWidth * 1.5);
+    sprite._damageHeightWithShield = Math.round(damageHeight * 1.5);
 
     sprite._parent = entity;
 
@@ -255,6 +255,7 @@ Entity.prototype = {
 
         // local behaviour
         this.updateShield();
+
     },
 
     /**
@@ -287,10 +288,10 @@ Entity.prototype = {
         const shield = this.dataObject.getShield(); 
         if (this._lastShieldValue === shield) return;
 
-        if (this.dataObject.getShield() < shield) {
-            this.sprite.body.setSize(this.sprite.damageWidth, this.sprite.damageHeight, 0, 0);
+        if (shield < Const.SHIELD_ACTIVITY_TRESHOLD) {
+            this.sprite.body.setSize(this.sprite._damageWidth, this.sprite._damageHeight, 0, 0);
         } else {
-            this.sprite.body.setSize(this.sprite._damageWidthWithShield, this.sprite.damageHeightWithShield, 0, 0);
+            this.sprite.body.setSize(this.sprite._damageWidthWithShield, this.sprite._damageHeightWithShield, 0, 0);
         }
 
         this._lastShieldValue = shield;
