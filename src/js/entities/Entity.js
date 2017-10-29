@@ -26,6 +26,8 @@ const extendSprite = function(entity, sprite, dataObject) {
 
     const origWidth = dataObject.getWidth();
     const origHeight = dataObject.getHeight();
+    const damageWidth = dataObject.getDamageWidth();
+    const damageHeight = dataObject.getDamageHeight();
 
     // actiavting the ARCADE physics on the sprite object
     entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -51,7 +53,12 @@ const extendSprite = function(entity, sprite, dataObject) {
 
     // reducing the hitArea according to the one specified in the realated DataObject
     sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
-    sprite.body.setSize(origWidth, origHeight, 0, 0);
+        
+    // save helper data for faster updates for any subsequent calculation with damage area
+    sprite._damageWidth = damageWidth;
+    sprite._damageHeight = damageHeight;
+    sprite._damageWidthWithShield = Math.round(damageWidth * 1.5);
+    sprite._damageHeightWithShield = Math.round(damageHeight * 1.5);
 
     sprite._parent = entity;
 
@@ -158,6 +165,10 @@ function Entity(config) {
 
     const gui = GUI.getInstance();
 
+    // timestamp of creation to syncronize events across remote clients
+    this.createdAt = config.createdAt;
+    this._lastShieldUpdate = this.createdAt;
+
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
 
@@ -206,6 +217,8 @@ function Entity(config) {
         this.colorIndicator = gui.addColorIndicator(this);
     }
 
+    // initialise collision area
+    this.updateDamageArea();
 }
 
 Entity.prototype = {
@@ -231,15 +244,57 @@ Entity.prototype = {
     },
 
     /**
-     * Rendering the entity
+     * Updates the entity's state 
      * @return {void} 
      */
     update: function(authoritative) {
-
+        // self-contained modules
         this.activityManager.update();
         this.motionManager.update();
         this.weaponManager.update(authoritative);
 
+        // local behaviour
+        this.updateShield();
+
+    },
+
+    /**
+     * Updates the entity's shield at regular intervals (synced)
+     */
+    updateShield() {
+        const timeElapsedSinceLastUpdate = this.game.time.time - this._lastShieldUpdate;
+        
+        if (this.dataObject.getMaxShield() === 0) return;
+
+        // update the entity's shield by one unit at every second
+        if (timeElapsedSinceLastUpdate > Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) {
+            let expectedTick = Math.floor(timeElapsedSinceLastUpdate / Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) || 0;
+            // if there is more execution to be triggered we update the shield accordingly
+            while (expectedTick) {
+                this.dataObject.restoreShield(1);
+                expectedTick -= 1;
+            }
+            this._lastShieldUpdate = this.game.time.time;
+
+            this.updateDamageArea();
+        }
+    },
+
+    /** 
+     * updates the collision area of the entity according to whether or not
+     * it has shield 
+     */
+    updateDamageArea() {
+        const shield = this.dataObject.getShield(); 
+        if (this._lastShieldValue === shield) return;
+
+        if (shield < Const.SHIELD_ACTIVITY_TRESHOLD) {
+            this.sprite.body.setSize(this.sprite._damageWidth, this.sprite._damageHeight, 0, 0);
+        } else {
+            this.sprite.body.setSize(this.sprite._damageWidthWithShield, this.sprite._damageHeightWithShield, 0, 0);
+        }
+
+        this._lastShieldValue = shield;
     },
 
     /**
@@ -387,6 +442,7 @@ Entity.prototype = {
      */
     damage: function(params) {
         this.dataObject.damage(params);
+        this.updateDamageArea();
 
         if (this.dataObject.getHull() <= 0) {
             this.entityManager.remove(this);
@@ -705,14 +761,26 @@ Entity.prototype = {
 
     /**
      * Returns the closest entity that is in hostile relation to the one triggered the function call
-     * @return {object} entity
+     * @return {object} Entity
      */
     getClosestHostileEntityInRange: function() {
         return this.closestHostileEntity;
     },
 
+    /**
+     * Returns the closest entity that is in alliance with the current entity
+     * @return {object} Entity
+     */
     getClosestAllyEntityInRange: function() {
         return this.closestAllyEntity;
+    },
+
+    /**
+     * Returns the timestamp of when the entity was generated
+     * @return {integer} 
+     */
+    getCreationTime: function() {
+        return this.createdAt;
     }
 
 };

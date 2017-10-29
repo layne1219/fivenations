@@ -29,7 +29,7 @@ export default class StatusDisplay {
 
         // Shield if there is any
         if (entity.getDataObject().getMaxShield() > 0) {
-            this.shieldBar = new StatusBar({ color: '0x475D86', width, phaserGame });
+            this.shieldBar = new StatusBar({ color: '0x0000FF', width, phaserGame });
             this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
             this.shieldBar.getGroup().y = -entity.getDataObject().getHeight();
             this.group.add(this.shieldBar.getGroup());

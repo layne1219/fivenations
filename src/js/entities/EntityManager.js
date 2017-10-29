@@ -25,8 +25,6 @@ function EntityManager() {
     this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
 
     this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
-
-    this.kickstart = true;
 }
 
 EntityManager.prototype = {
@@ -77,7 +75,8 @@ EntityManager.prototype = {
             guid: config.guid,
             entityManager: this,
             sprite: sprite,
-            dataObject: dataObject
+            dataObject: dataObject,
+            createdAt: config.createdAt
         });
 
         // setting the coordinates if not ommitted 

@@ -1,5 +1,5 @@
 import Graphics from '../common/Graphics';
-import EntitySizes from './EntitySizes';
+import { ENTITY_GUI_SIZES } from '../common/Const';
 import Util from '../common/Util';
 
 const SELECT_ANIM_FRAME_RATE = 25;
@@ -46,11 +46,10 @@ export default class Selector {
 
     appendTo(entity) {
 
+        const selectionOffset = entity.getDataObject().getSelectionOffset();
+        const offsetX = selectionOffset.x || 0;
+        const offsetY = selectionOffset.y || 0;
         let groupName;
-
-        if (!entity || 'function' !== typeof entity.getSprite) {
-            throw 'First parameter must be an instance of Entity!';
-        }
 
         entity.on('select', this.show.bind(this));
         entity.on('unselect', this.hide.bind(this));
@@ -64,8 +63,8 @@ export default class Selector {
         // the sprite is not a child of the entity for various overlapping issues
         // therefore it needs to follow it upon every tick 
         this.sprite.update = function() {
-            this.x = entity.getSprite().x;
-            this.y = entity.getSprite().y;
+            this.x = entity.getSprite().x - offsetX;
+            this.y = entity.getSprite().y - offsetY;
         };
 
         this.parent = entity;
@@ -123,8 +122,8 @@ export default class Selector {
 
         if (!this.size) {
 
-            Object.keys(EntitySizes).forEach(function(size) {
-                if (Util.between(Math.max(this.width, this.height), EntitySizes[size][0], EntitySizes[size][1])) {
+            Object.keys(ENTITY_GUI_SIZES).forEach(function(size) {
+                if (Util.between(Math.max(this.width, this.height), ENTITY_GUI_SIZES[size][0], ENTITY_GUI_SIZES[size][1])) {
                     this.size = size;
                 }
             }, this);

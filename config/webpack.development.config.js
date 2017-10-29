@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const defaultConfig = require('./webpack.default.config.js');
 const plugins = defaultConfig.plugins;
@@ -15,11 +16,15 @@ plugins.push(
     })
 );
 
+plugins.push(
+    new DashboardPlugin()
+);
+
 module.exports = Object.assign(defaultConfig, {
     output: {
         path: paths.appBuild + '/js/',
         publicPath: '/js/',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     devtool: 'source-map',
     watch: true,

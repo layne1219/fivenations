@@ -2,6 +2,7 @@ const weaponsJSON = require('../../../assets/datas/common/weapons.json');
 
 import Weapon from './Weapon';
 import Util from '../../common/Util';
+import { WEAPON_INSTANCE_DELAY } from '../../common/Const';
 
 var cache = {};
 
@@ -53,16 +54,37 @@ WeaponManager.prototype = {
      */
     initWeapons: function() {
 
+        const ids = {}; 
         this.weapons = [];
 
-        this.entity.getDataObject().getWeapons().forEach(function(id){
+        this.entity
+            .getDataObject()
+            .getWeapons()
+            .forEach(id => {
 
-            if (!id) return;
-            var weapon = createWeaponById(id);
-            weapon.setManager(this);
-            this.weapons.push(weapon);
+                if (!id) return;
 
-        }.bind(this));
+                const weapon = createWeaponById(id);
+                
+                if (!ids[id]) ids[id] = [];
+                ids[id].push(weapon);
+
+                if (ids[id].length > 1) {
+                    const instanceDelay = weapon.getInstanceDelay() || WEAPON_INSTANCE_DELAY;
+                    const calculatedInstanceDelay = (ids[id].length - 1) * instanceDelay;
+                    // shift release time with instance delay
+                    weapon.setInstanceDelay(calculatedInstanceDelay);
+                    // shift cooldown according to the number of identical weapons
+                    ids[id].forEach(weaponToAdjust => {
+                        if (weaponToAdjust === weapon) return;
+                        weaponToAdjust.increaseCooldown(instanceDelay);
+                    });
+                }
+
+                weapon.setManager(this);
+                this.weapons.push(weapon);
+
+            });
 
     },
 

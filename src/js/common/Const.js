@@ -25,9 +25,19 @@ export const ENTITY_SIZES = {
     }        
 };
 
+// GUI sizes for entities
+export const ENTITY_GUI_SIZES = {
+    'big': [100, 149],
+    'extrabig': [150, 999],
+    'medium': [50, 99],
+    'small': [0, 49]
+};
+
 // helper constants for entity related functionalities 
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
 export const MAX_SELECTABLE_UNITS = 22;
+export const SHIELD_CHARGE_RATE_IN_MILLISECONDS = 2000;
+export const SHIELD_ACTIVITY_TRESHOLD = 10;
 export const ANIMATION_IDLE_FOREVER = 'idle-forever';
 
 // Offset for all entity animations when the icons are bundled
@@ -47,6 +57,9 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
     width: 51,
     height: 51
 };
+
+// Weapon constants
+export const WEAPON_INSTANCE_DELAY = 10;
 
 export const GUI_BUTTON = {
     spritesheet: {

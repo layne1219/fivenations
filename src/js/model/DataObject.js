@@ -3,9 +3,29 @@ import {
     ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED 
 } from '../common/Const';
 
-function getDimensionsBySize(size) {
+/**
+ * Returns the dimensions of the given entity model
+ * @param {object} data - attributes of given entity model
+ */
+function getDimensionsBySize(data) {
+    const size = data.size;
     if (!size || !ENTITY_SIZES[size]) return ENTITY_SIZES.m;
     return ENTITY_SIZES[size];
+}
+
+/**
+ * Returns the damage area of the given entity model
+ * @param {object} data - attributes of given entity model
+ */
+function getDamageArea(data) {
+    const damageArea = data.sizeOffset;
+    if (!damageArea) {
+        return getDimensionsBySize(data);
+    }
+    return {
+        width: damageArea.w * 2,
+        height: damageArea.h * 2
+    };
 }
 
 function DataObject(json) {
@@ -20,7 +40,8 @@ function DataObject(json) {
     data.team = 1;
 
     // entity dimensions
-    data.dimensions = getDimensionsBySize(data.size);
+    data.dimensions = getDimensionsBySize(data);
+    data.damageArea = getDamageArea(data);
 
     // for providing privacy for the data variables we have to create a closure here so as not to
     // publish any data variable held by the entity
@@ -47,6 +68,10 @@ function DataObject(json) {
 
         damageShield: function(value) {
             data.shield = Math.max(data.shield - value, 0);
+        },
+
+        restoreShield: function(value) {
+            data.shield = Math.min(data.maxshield, data.shield + value);
         },
 
         setTeam: function(team) {
@@ -173,6 +198,14 @@ function DataObject(json) {
             return data.dimensions.height;
         },
 
+        getDamageWidth: function() {
+            return data.damageArea.width;
+        },
+
+        getDamageHeight: function() {
+            return data.damageArea.height;
+        },
+
         getVariances: function() {
             return data.variances || [];
         },
@@ -247,7 +280,15 @@ function DataObject(json) {
                 if (blackList.indexOf(key) !== -1) return undefined;
                 return value;
             }, '  ');
-        }
+        },
+
+        getProjectileOffset: function() {
+            return data.initialPoints || {};
+        },
+
+        getSelectionOffset: function() {
+            return data.selectionOffset || {};
+        },
 
     };
 }

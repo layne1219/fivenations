@@ -39,7 +39,7 @@ Preloader.prototype = {
         background = this.game.add.sprite(0, 0, 'preloader-background');
         background.fixedToCamera = true;
 
-        bar = this.add.sprite(326, 632, 'preloader-bar');
+        bar = this.add.sprite(326, 633, 'preloader-bar');
         this.load.setPreloadSprite(bar);
 
         // setting up the callback one the preloading is completed

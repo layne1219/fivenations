@@ -264,6 +264,7 @@ Game.prototype = {
         //                                EventBus
         // -----------------------------------------------------------------------
         this.eventBusExecuter = EventBusExecuter.getInstance();
+        this.eventBusExecuter.reset();
 
         // -----------------------------------------------------------------------
         //                                QuadTree

@@ -1,5 +1,8 @@
 import Graphics from '../common/Graphics';
-import EntitySizes from './EntitySizes';
+import { 
+    ENTITY_GUI_SIZES, 
+    SHIELD_ACTIVITY_TRESHOLD 
+} from '../common/Const';
 import Util from '../common/Util';
 
 const ANIM_FRAME_RATE = 25;
@@ -55,7 +58,7 @@ export default class EnergyShield {
     }
 
     onDamage() {
-        if (this.parent.getDataObject().getShield() > 0) {
+        if (this.parent.getDataObject().getShield() >= SHIELD_ACTIVITY_TRESHOLD) {
             this.show();
         }
     }
@@ -81,8 +84,8 @@ export default class EnergyShield {
 
         if (!this.size) {
 
-            Object.keys(EntitySizes).forEach(function(size) {
-                if (Util.between(Math.max(width, height), EntitySizes[size][0], EntitySizes[size][1])) {
+            Object.keys(ENTITY_GUI_SIZES).forEach(function(size) {
+                if (Util.between(Math.max(width, height), ENTITY_GUI_SIZES[size][0], ENTITY_GUI_SIZES[size][1])) {
                     if (size === 'extrabig') {
                         this.size = 'big';
                     } else {

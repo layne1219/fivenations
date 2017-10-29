@@ -311,6 +311,7 @@ function createEntityEventAPI(entityManager) {
     $.add = function(config) {
         if (!config) return;
         if (!config.guid) config.guid = Util.getGUID();
+        if (!config.createdAt) config.createdAt = new Date().getTime();
         EventBus.getInstance().add({
             id: 'entity/create',
             data: config

@@ -141,11 +141,10 @@ class MainAttributeGroup extends Phaser.Group {
      */
     updateContent(entity) {
 
-        var dataObject = entity.getDataObject();
-
-        if (!dataObject) {
-            throw 'Invalid DataObject has been passed!';
-        }
+        const dataObject = entity.getDataObject();
+        const maxShield = dataObject.getMaxShield();
+        const maxPower = dataObject.getMaxPower();
+        const maxHangar = dataObject.getMaxHangar();
 
         this.iconSprite.show(entity);
 
@@ -163,12 +162,16 @@ class MainAttributeGroup extends Phaser.Group {
         this.hullElm.addColor(hullColor, hullTitle.length);
 
         // Shield
-        const shieldTitle = 'Shield: ';
-        const shieldValue = dataObject.getShield();
-        const shieldMaxValue = '/' + dataObject.getMaxShield();
+        if (maxShield > 0) {
+            const shieldTitle = 'Shield: ';
+            const shieldValue = dataObject.getShield();
+            const shieldMaxValue = '/' + maxShield;
 
-        this.shieldElm.text = shieldTitle + shieldValue + shieldMaxValue;
-        this.shieldElm.addColor('#475D86', shieldTitle.length);
+            this.shieldElm.text = shieldTitle + shieldValue + shieldMaxValue;
+            this.shieldElm.addColor('#475D86', shieldTitle.length);
+        } else {
+            this.shieldElm.text = '';
+        }
 
         // Armor
         const armorTitle = 'Armor: ';
@@ -178,20 +181,28 @@ class MainAttributeGroup extends Phaser.Group {
         this.armorElm.addColor('#FFFFFF', armorTitle.length);
 
         // Power
-        const powerTitle = 'Power: ';
-        const powerValue = dataObject.getPower();
-        const powerMaxValue = '/' + dataObject.getMaxPower();
+        if (maxPower > 0) {
+            const powerTitle = 'Power: ';
+            const powerValue = dataObject.getPower();
+            const powerMaxValue = '/' + maxPower;
 
-        this.powerElm.text = powerTitle + powerValue + powerMaxValue;
-        this.powerElm.addColor('#FFFFFF', powerTitle.length);
+            this.powerElm.text = powerTitle + powerValue + powerMaxValue;
+            this.powerElm.addColor('#FFFFFF', powerTitle.length);
+        } else {
+            this.powerElm.text = '';
+        }
 
         // Hangar
-        const hangarTitle = 'Hangar: ';
-        const hangarValue = entity.getNumberOfDockerEntities();
-        const hangarMaxValue = '/' + dataObject.getMaxHangar();
+        if (maxHangar > 0) {
+            const hangarTitle = 'Hangar: ';
+            const hangarValue = entity.getNumberOfDockerEntities();
+            const hangarMaxValue = '/' + maxHangar;
 
-        this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;
-        this.hangarElm.addColor('#FFFFFF', hangarTitle.length);
+            this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;
+            this.hangarElm.addColor('#FFFFFF', hangarTitle.length);
+        } else {
+            this.hangarElm.text = '';
+        }
 
     }
 
