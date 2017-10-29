@@ -1,5 +1,8 @@
 import Graphics from '../common/Graphics';
-import { ENTITY_GUI_SIZES } from '../common/Const';
+import { 
+    ENTITY_GUI_SIZES, 
+    SHIELD_ACTIVITY_TRESHOLD 
+} from '../common/Const';
 import Util from '../common/Util';
 
 const ANIM_FRAME_RATE = 25;
@@ -55,7 +58,7 @@ export default class EnergyShield {
     }
 
     onDamage() {
-        if (this.parent.getDataObject().getShield() > 0) {
+        if (this.parent.getDataObject().getShield() >= SHIELD_ACTIVITY_TRESHOLD) {
             this.show();
         }
     }
