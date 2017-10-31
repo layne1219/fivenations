@@ -382,7 +382,15 @@ MotionManager.prototype = {
             calculatedAngle = 360 - Math.abs(calculatedAngle);
         }
         return (Math.floor(calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;
-    },        
+    }, 
+
+    /**
+     * Returns the current angle code that scretches from 0 to MaxAngleCount
+     * @return {integer} code of the current angle code
+     */
+    getCurrentAngleCode: function() {
+        return this.rotation.currentAngleCode;
+    }
 
 };
 

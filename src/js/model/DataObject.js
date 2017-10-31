@@ -238,6 +238,10 @@ function DataObject(json) {
             return animation.length;
         },
 
+        hasJetEngine: function() {
+            return data.hasJetEngine;
+        },
+
         getEvents: function() {
             return data.events;
         },

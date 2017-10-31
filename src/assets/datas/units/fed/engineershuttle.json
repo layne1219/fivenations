@@ -36,6 +36,7 @@
       "mining",
       "building"
    ],
+   "hasJetEngine": false,
    "size":"xsm",
    "sizeOffset":{  
       "w":15,

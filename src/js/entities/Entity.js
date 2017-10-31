@@ -10,6 +10,7 @@ import GUIActivityManager from '../gui/ActivityManager';
 import UserKeyboard from '../gui/UserKeyboard';  
 import UserPointer from '../gui/UserPointer';  
 import Util from '../common/Util';
+import Graphics from '../common/Graphics';
 import * as Const from '../common/Const'; 
 
 const ns = window.fivenations;
@@ -24,10 +25,18 @@ const ns = window.fivenations;
  */
 const extendSprite = function(entity, sprite, dataObject) {
 
+    // dimensions
     const origWidth = dataObject.getWidth();
     const origHeight = dataObject.getHeight();
     const damageWidth = dataObject.getDamageWidth();
     const damageHeight = dataObject.getDamageHeight();
+
+    // rendering group name
+    const groupName = dataObject.isBuilding() ? Const.GROUP_ENTITIES_BUILDINGS : Const.GROUP_ENTITIES;
+
+    // choosing the group for entities so that other elements will be obscured by them
+    // it's kind of applying zIndex on entities
+    const group = Graphics.getInstance().getGroup(groupName);
 
     // actiavting the ARCADE physics on the sprite object
     entity.game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -61,6 +70,9 @@ const extendSprite = function(entity, sprite, dataObject) {
     sprite._damageHeightWithShield = Math.round(damageHeight * 1.5);
 
     sprite._parent = entity;
+
+    group.add(sprite);
+    sprite._group = group;
 
     return sprite;
 };
@@ -219,6 +231,11 @@ function Entity(config) {
 
     // initialise collision area
     this.updateDamageArea();
+
+    // add jet engine sprite
+    if (this.dataObject.hasJetEngine()) {
+        this.jetEngine = gui.addJetEngine(this);
+    }
 }
 
 Entity.prototype = {
@@ -307,6 +324,7 @@ Entity.prototype = {
         const move = new ActivityManager.Move(this);
         move.setCoords({x: targetX, y: targetY});
         this.activityManager.add(move);
+        this.eventDispatcher.dispatch('move', this);
     },
 
     /**
