@@ -324,7 +324,6 @@ Entity.prototype = {
         const move = new ActivityManager.Move(this);
         move.setCoords({x: targetX, y: targetY});
         this.activityManager.add(move);
-        this.eventDispatcher.dispatch('move', this);
     },
 
     /**
@@ -334,7 +333,6 @@ Entity.prototype = {
     stop: function() {
         const stop = new ActivityManager.Stop(this);
         this.activityManager.add(stop);
-        this.eventDispatcher.dispatch('stop', this);
     },
 
     /**
@@ -616,7 +614,15 @@ Entity.prototype = {
      */
     setClosestAllyEntityInRange: function(entity) {
         this.closestAllyEntity = entity;
-    },        
+    },
+
+    /**
+     * Fires the given event against the entity
+     * @param {string} event - event id to be fired
+     */
+    dispatch(event) {
+        this.eventDispatcher.dispatch(event);
+    },      
 
     hasSlowManeuverability: function() {
         return this.getDataObject().getManeuverability() < Const.SLOW_MANOUVERABAILITY_TRESHOLD;

@@ -80,6 +80,7 @@ var effects = {
             if (motionManager.isEntityArrivedAtDestination) {
                 motionManager.isEntityStoppedAtDestination = true;
             }
+            motionManager.getEntity().dispatch('stop');
             return false;
         }
 
@@ -116,6 +117,16 @@ var effects = {
         // rotating with default speed until the entity arrives at the target angle 
         motionManager.rotation.angularVelocity = motionManager.rotation.maxAngularVelocity;
         return motionManager.rotation.currentAngleCode !== motionManager.rotation.targetAngleCode;
+    },
+
+    /**
+     * Triggers any logic that needs to be executed when the movement starts
+     * @param {object} motionManager
+     * @return {boolean} returns false if the effect is no longer appropriate
+     */
+    startMovement: function(motionManager) {
+        motionManager.getEntity().dispatch('move');
+        return false;
     },
 
     /**

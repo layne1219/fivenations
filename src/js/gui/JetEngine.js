@@ -64,7 +64,8 @@ export default class JetEngine {
 
         sprite.visible = false;
         sprite.anchor.setTo(0.5, 0.5);
-        sprite.alpha = ALPHA_OFFSET[id];
+        sprite._alpha = ALPHA_OFFSET[id];
+        sprite.alpha = sprite._alpha;
         
         // the sprite is not a child of the entity for various overlapping issues
         // therefore it needs to follow it upon every tick 
@@ -84,13 +85,15 @@ export default class JetEngine {
             this.tween = this.parent.game
                 .add
                 .tween(this.sprite)
-                .to({ alpha: 1 }, 100, Phaser.Easing.Linear.In, true)
+                .to({ alpha: 1 }, 100, Phaser.Easing.Bounce.Out, true)
                 .loop();
+            this.tween.start();
         }
     }
 
     hide() {
-        this.tween.stop();
+        if (this.tween) this.tween.stop();
+        this.sprite.alpha = this.sprite._alpha;
         this.sprite.visible = false;
     }
 

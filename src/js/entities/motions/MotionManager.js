@@ -127,6 +127,7 @@ MotionManager.prototype = {
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
         }
 
+        this.effectManager.addEffect(Effects.get('startMovement'));
         this.effectManager.addEffect(Effects.get('accelerateToTarget'));
         this.effectManager.addEffect(Effects.get('moveToTarget'));
         this.effectManager.addEffect(Effects.get('stopping'));
