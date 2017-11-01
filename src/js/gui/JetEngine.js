@@ -71,8 +71,9 @@ export default class JetEngine {
         // therefore it needs to follow it upon every tick 
         sprite.update = function() {
             const angleCode = entity.getMotionManager().getCurrentAngleCode();
-            this.x = entity.getSprite().x;
-            this.y = entity.getSprite().y;
+            const sprite = entity.getSprite();
+            this.x = sprite.x;
+            this.y = sprite.y + sprite.anchor.y;
             this.frame = frames[angleCode];
         };        
 
