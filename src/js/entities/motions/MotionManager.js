@@ -59,6 +59,7 @@ function createRotationObject(entity) {
     return {
         realManeuverSystem: hasRealManeuverSystem,
         targetAngleCode: 0,
+        currentAngle: Phaser.Math.degToRad(0),
         currentAngleCode: 0,
         maxAngleCount: dataObject.getDirections(),
         angularVelocity: 0,
@@ -261,16 +262,15 @@ MotionManager.prototype = {
 
             const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
             const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
-            const step = this.rotation.angularVelocity * this.game.time.physicsElapsed;
+            const step = this.game.time.physicsElapsed;
 
-            if (Math.abs(a - b) < step * 2) {
+            if (Math.abs(a - b) > step * 2) {
 
                 this.rotation.angularDirection = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a - b>= -360) ? 1 : -1;
                 this.movement.currentAngle += this.rotation.angularDirection * step;
             } else {
                 this.movement.currentAngle = this.movement.targetAngle;
             }
-
 
         } else {
 
