@@ -242,6 +242,10 @@ function DataObject(json) {
             return data.hasJetEngine;
         },
 
+        hasRealManeuverSystem: function() {
+            return data.realManeuverSystem || false;
+        },
+
         getEvents: function() {
             return data.events;
         },

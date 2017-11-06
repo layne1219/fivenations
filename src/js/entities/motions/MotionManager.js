@@ -52,14 +52,18 @@ function createMovementObject(entity) {
  * @return {object} prototype of rotation related helper variables
  */
 function createRotationObject(entity) {
-    var dataObject = entity.getDataObject();
+    const dataObject = entity.getDataObject();
+    const hasRealManeuverSystem = dataObject.hasRealManeuverSystem();
+    let maneuverability = dataObject.getManeuverability();
+        
     return {
+        realManeuverSystem: hasRealManeuverSystem,
         targetAngleCode: 0,
         currentAngleCode: 0,
         maxAngleCount: dataObject.getDirections(),
         angularVelocity: 0,
         angularVelocityHelper: 0,
-        maxAngularVelocity: dataObject.getManeuverability(),
+        maxAngularVelocity: maneuverability,
         framePadding: dataObject.getAnimFrame() || 1
     };        
 }
@@ -122,7 +126,7 @@ MotionManager.prototype = {
             this.effectManager.addEffect(Effects.get('resetMovement'));
         }
 
-        if (!this.isEntityFacingTarget()) {
+        if (!this.hasRealManeuverSystem() && !this.isEntityFacingTarget()) {
             this.effectManager.addEffect(Effects.get('stopAnimation'));
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
         }
@@ -253,22 +257,44 @@ MotionManager.prototype = {
             return;
         }
 
-        this.movement.currentAngle = this.movement.targetAngle;
-        this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
+        if (this.hasRealManeuverSystem()) {
 
-        this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
-        if (this.rotation.angularVelocityHelper > 1) {
-            this.rotation.angularVelocityHelper = 0;
-            if (this.rotation.currentAngleCode + this.rotation.angularDirection < 0) {
-                this.rotation.currentAngleCode = this.rotation.maxAngleCount;
+            const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
+            const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
+            const step = this.rotation.angularVelocity * this.game.time.physicsElapsed;
+
+            if (Math.abs(a - b) < step * 2) {
+
+                this.rotation.angularDirection = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a - b>= -360) ? 1 : -1;
+                this.movement.currentAngle += this.rotation.angularDirection * step;
+            } else {
+                this.movement.currentAngle = this.movement.targetAngle;
             }
-            this.rotation.currentAngleCode += this.rotation.angularDirection;
-            this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
+
+
+        } else {
+
+            this.movement.currentAngle = this.movement.targetAngle;
+            this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
+
+            this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
+            if (this.rotation.angularVelocityHelper > 1) {
+                this.rotation.angularVelocityHelper = 0;
+                if (this.rotation.currentAngleCode + this.rotation.angularDirection < 0) {
+                    this.rotation.currentAngleCode = this.rotation.maxAngleCount;
+                }
+                this.rotation.currentAngleCode += this.rotation.angularDirection;
+                this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
+            }
+
+            if (this.rotation.maxAngleCount > 0) {
+                this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
+            }
+
         }
 
-        if (this.rotation.maxAngleCount > 0) {
-            this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
-        }
+
+
     },
 
     /**
@@ -349,6 +375,14 @@ MotionManager.prototype = {
      */
     isMoving: function() {
         return this.movement.velocity > 0;        
+    },
+
+    /**
+     * Returns whether the entity has the real maneuver system activated
+     * @returns {boolean}
+     */
+    hasRealManeuverSystem: function() {
+        return this.rotation.realManeuverSystem;
     },
 
     /**

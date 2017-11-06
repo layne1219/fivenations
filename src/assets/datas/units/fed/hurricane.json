@@ -9,6 +9,7 @@
    "hangar":0,
    "speed":150,
    "maneuverability":50,
+   "realManeuverSystem": true,
    "vision":35,
    "weapons":[  
       1,
