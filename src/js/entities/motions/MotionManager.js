@@ -262,7 +262,7 @@ MotionManager.prototype = {
 
             const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
             const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
-            const step = this.game.time.physicsElapsed;
+            const step = this.rotation.maxAngularVelocity / 8 * this.game.time.physicsElapsed;
 
             if (Math.abs(a - b) > step * 2) {
 
@@ -270,6 +270,14 @@ MotionManager.prototype = {
                 this.movement.currentAngle += this.rotation.angularDirection * step;
             } else {
                 this.movement.currentAngle = this.movement.targetAngle;
+            }
+
+            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
+            this.rotation.targetAngleCode = this.getAngleCodeByAngle(this.movement.targetAngle);
+            this.rotation.currentAngleCode = this.getAngleCodeByAngle(this.movement.currentAngle);
+
+            if (this.rotation.maxAngleCount > 0) {
+                this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
             }
 
         } else {
@@ -347,7 +355,7 @@ MotionManager.prototype = {
         var sprite = this.entity.getSprite();
         var targetSprite = targetEntity.getSprite();
         var targetAngle = Math.atan2(targetSprite.y - sprite.y, targetSprite.x - sprite.x);
-        var targetAngleCode = this.getTargetAngleCodeByTargetAngle(targetAngle);
+        var targetAngleCode = this.getAngleCodeByAngle(targetAngle);
         if (this.rotation.maxAngleCount < 2) return true;
         return this.rotation.currentAngleCode === targetAngleCode;
     },
@@ -406,7 +414,7 @@ MotionManager.prototype = {
      * @oaram {float} targetAngle
      * @return {integer}
      */
-    getTargetAngleCodeByTargetAngle: function(targetAngle) {
+    getAngleCodeByAngle: function(targetAngle) {
         var rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
         var calculatedAngle;
 
