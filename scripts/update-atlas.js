@@ -220,3 +220,31 @@ files.forEach(file => {
 
 });
 
+/**
+
+var ids = {
+	'fed01': {name: 'hurricane', frames: []},
+	'fed02': {name: 'orce', frames: []},
+	'fed03': {name: 'hailstorm', frames: []},
+	'fed04': {name: 'stgeorge', frames: []},
+	'fed05': {name: 'avenger', frames: []},
+	'fed06': {name: 'avenger2', frames: []},
+	'fed07': {name: 'icarus', frames: []},
+	'fed09': {name: 'kutuzov', frames: []},
+	'fed10': {name: 'pasteur', frames: []},
+	'fed11': {name: 'dresda', frames: []},
+	'fed12': {name: 'crow', frames: []},
+	'fed13': {name: 'teller', frames: []},
+	'fed14': {name: 'nuclearmissile', frames: []}
+};
+json.frames.forEach((v, idx) => {
+	var id = v.filename.substring(0, 5);
+	ids[id].frames.push(idx);
+});
+Object.keys(ids).forEach(id => {
+	const v = ids[id];
+	console.log(`${v.name}: [${v.frames.join(', ')}]`);
+})
+
+**/
+

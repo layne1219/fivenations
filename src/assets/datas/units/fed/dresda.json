@@ -34,6 +34,7 @@
    "animFrame":1,
    "animType":0,
    "size":"m",
+   "hasJetEngine": true,
    "sizeOffset":{  
       "w":40,
       "h":40

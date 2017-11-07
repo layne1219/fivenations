@@ -33,6 +33,11 @@ export const ENTITY_GUI_SIZES = {
     'small': [0, 49]
 };
 
+// group IDs
+export const GROUP_EFFECTS = 'effects';
+export const GROUP_ENTITIES = 'entities';
+export const GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
+
 // helper constants for entity related functionalities 
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
 export const MAX_SELECTABLE_UNITS = 22;
@@ -60,6 +65,8 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
 
 // Weapon constants
 export const WEAPON_INSTANCE_DELAY = 10;
+export const WEAPON_ACCURACY_SPREAD_IN_DEGREES = 60;
+export const WEAPON_ACCURACY_SPREAD_IN_RADIAN = Phaser.Math.degToRad(WEAPON_ACCURACY_SPREAD_IN_DEGREES);
 
 export const GUI_BUTTON = {
     spritesheet: {

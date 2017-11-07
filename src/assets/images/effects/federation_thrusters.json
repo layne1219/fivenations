@@ -1,0 +1,3324 @@
+{"frames": [
+
+{
+	"filename": "fed01_thruster_00000.png",
+	"frame": {"x":1834,"y":1717,"w":21,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":139,"y":130,"w":21,"h":21},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00001.png",
+	"frame": {"x":1929,"y":1610,"w":20,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":145,"y":132,"w":20,"h":20},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00002.png",
+	"frame": {"x":1823,"y":2041,"w":32,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":143,"y":129,"w":32,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00003.png",
+	"frame": {"x":466,"y":877,"w":40,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":142,"y":128,"w":40,"h":38},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00004.png",
+	"frame": {"x":1220,"y":1864,"w":49,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":126,"w":49,"h":48},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00005.png",
+	"frame": {"x":1984,"y":973,"w":47,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":130,"w":47,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00006.png",
+	"frame": {"x":1955,"y":1984,"w":52,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":130,"w":52,"h":52},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00007.png",
+	"frame": {"x":1912,"y":2039,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":129,"y":133,"w":50,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00008.png",
+	"frame": {"x":1889,"y":2091,"w":42,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":128,"y":138,"w":42,"h":41},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00009.png",
+	"frame": {"x":508,"y":877,"w":40,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":124,"y":139,"w":40,"h":38},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00010.png",
+	"frame": {"x":1907,"y":2134,"w":41,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":136,"w":41,"h":40},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00011.png",
+	"frame": {"x":1032,"y":1867,"w":46,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":130,"w":46,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00012.png",
+	"frame": {"x":1835,"y":2081,"w":52,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":124,"w":52,"h":52},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00013.png",
+	"frame": {"x":1950,"y":2141,"w":47,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":123,"w":47,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00014.png",
+	"frame": {"x":1996,"y":2313,"w":35,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":127,"w":35,"h":34},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed01_thruster_00015.png",
+	"frame": {"x":501,"y":447,"w":19,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":134,"y":132,"w":19,"h":19},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00000.png",
+	"frame": {"x":1935,"y":2703,"w":38,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":130,"y":125,"w":38,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00001.png",
+	"frame": {"x":1580,"y":1239,"w":38,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":124,"w":38,"h":27},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00002.png",
+	"frame": {"x":1941,"y":2235,"w":35,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":145,"y":124,"w":35,"h":32},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00003.png",
+	"frame": {"x":1173,"y":1867,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":143,"y":121,"w":45,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00004.png",
+	"frame": {"x":1977,"y":1028,"w":54,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":140,"y":119,"w":54,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00005.png",
+	"frame": {"x":1977,"y":1204,"w":54,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":125,"w":54,"h":54},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00006.png",
+	"frame": {"x":1739,"y":1855,"w":64,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":129,"y":125,"w":64,"h":61},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00007.png",
+	"frame": {"x":1805,"y":1866,"w":62,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":130,"w":62,"h":56},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00008.png",
+	"frame": {"x":604,"y":2687,"w":56,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":136,"w":56,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00009.png",
+	"frame": {"x":1738,"y":1810,"w":52,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":116,"y":136,"w":52,"h":43},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00010.png",
+	"frame": {"x":1914,"y":1932,"w":53,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":111,"y":131,"w":53,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00011.png",
+	"frame": {"x":1977,"y":1088,"w":54,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":106,"y":124,"w":54,"h":56},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00012.png",
+	"frame": {"x":1797,"y":1740,"w":59,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":102,"y":117,"w":59,"h":62},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00013.png",
+	"frame": {"x":1867,"y":1804,"w":57,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":104,"y":114,"w":57,"h":59},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00014.png",
+	"frame": {"x":1950,"y":2190,"w":47,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":119,"w":47,"h":43},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed02_thruster_00015.png",
+	"frame": {"x":1539,"y":1239,"w":39,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":124,"w":39,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00000.png",
+	"frame": {"x":590,"y":877,"w":48,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":95,"w":48,"h":37},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00001.png",
+	"frame": {"x":964,"y":1282,"w":49,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":95,"w":49,"h":39},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00002.png",
+	"frame": {"x":1736,"y":1697,"w":50,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":96,"w":50,"h":41},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00003.png",
+	"frame": {"x":1858,"y":1743,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":148,"y":90,"w":62,"h":59},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00004.png",
+	"frame": {"x":1955,"y":1769,"w":76,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":87,"w":76,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00005.png",
+	"frame": {"x":1557,"y":2284,"w":100,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":80,"w":100,"h":101},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00006.png",
+	"frame": {"x":1329,"y":1259,"w":129,"h":129},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":134,"y":71,"w":129,"h":129},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00007.png",
+	"frame": {"x":1197,"y":794,"w":151,"h":152},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":66,"w":151,"h":152},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00008.png",
+	"frame": {"x":670,"y":1727,"w":171,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":116,"y":62,"w":171,"h":173},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00009.png",
+	"frame": {"x":843,"y":1725,"w":187,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":107,"y":61,"w":187,"h":188},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00010.png",
+	"frame": {"x":1446,"y":426,"w":205,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":95,"y":59,"w":205,"h":205},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00011.png",
+	"frame": {"x":251,"y":702,"w":213,"h":213},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":86,"y":60,"w":213,"h":213},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00012.png",
+	"frame": {"x":1823,"y":1,"w":207,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":82,"y":68,"w":207,"h":207},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00013.png",
+	"frame": {"x":205,"y":1534,"w":204,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":76,"y":74,"w":204,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00014.png",
+	"frame": {"x":806,"y":2289,"w":192,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":83,"w":192,"h":191},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00015.png",
+	"frame": {"x":959,"y":2109,"w":178,"h":177},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":92,"w":178,"h":177},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00016.png",
+	"frame": {"x":508,"y":1737,"w":160,"h":158},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":69,"y":102,"w":160,"h":158},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00017.png",
+	"frame": {"x":1346,"y":633,"w":156,"h":155},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":61,"y":103,"w":156,"h":155},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00018.png",
+	"frame": {"x":192,"y":1739,"w":161,"h":160},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":99,"w":161,"h":160},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00019.png",
+	"frame": {"x":1030,"y":638,"w":165,"h":165},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":93,"w":165,"h":165},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00020.png",
+	"frame": {"x":646,"y":658,"w":175,"h":175},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":25,"y":84,"w":175,"h":175},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00021.png",
+	"frame": {"x":970,"y":1915,"w":191,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":71,"w":191,"h":191},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00022.png",
+	"frame": {"x":376,"y":1900,"w":197,"h":197},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":62,"w":197,"h":197},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00023.png",
+	"frame": {"x":207,"y":2109,"w":200,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":52,"w":200,"h":205},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00024.png",
+	"frame": {"x":1033,"y":427,"w":199,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":45,"w":199,"h":206},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00025.png",
+	"frame": {"x":416,"y":2297,"w":194,"h":195},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":44,"w":194,"h":195},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00026.png",
+	"frame": {"x":1262,"y":2465,"w":172,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":49,"w":172,"h":173},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00027.png",
+	"frame": {"x":1366,"y":1673,"w":139,"h":140},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":60,"w":139,"h":140},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00028.png",
+	"frame": {"x":1908,"y":809,"w":112,"h":112},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":55,"y":68,"w":112,"h":112},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00029.png",
+	"frame": {"x":1565,"y":2387,"w":92,"h":90},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":75,"w":92,"h":90},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00030.png",
+	"frame": {"x":1858,"y":1680,"w":65,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":97,"y":86,"w":65,"h":61},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed03_thruster_00031.png",
+	"frame": {"x":662,"y":2687,"w":54,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":111,"y":92,"w":54,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00000.png",
+	"frame": {"x":2027,"y":301,"w":4,"h":4},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":96,"w":4,"h":4},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00001.png",
+	"frame": {"x":1893,"y":2703,"w":40,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":96,"w":40,"h":14},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00002.png",
+	"frame": {"x":263,"y":2522,"w":50,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":160,"y":92,"w":50,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00003.png",
+	"frame": {"x":1857,"y":2039,"w":53,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":171,"y":92,"w":53,"h":40},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00004.png",
+	"frame": {"x":1739,"y":1918,"w":56,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":182,"y":94,"w":56,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00005.png",
+	"frame": {"x":1663,"y":2571,"w":68,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":186,"y":93,"w":68,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00006.png",
+	"frame": {"x":1735,"y":2073,"w":98,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":176,"y":87,"w":98,"h":99},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00007.png",
+	"frame": {"x":1121,"y":1392,"w":128,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":163,"y":79,"w":128,"h":131},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00008.png",
+	"frame": {"x":355,"y":1739,"w":151,"h":159},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":149,"y":74,"w":151,"h":159},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00009.png",
+	"frame": {"x":1839,"y":624,"w":165,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":71,"w":165,"h":183},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00010.png",
+	"frame": {"x":612,"y":1325,"w":178,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":71,"w":178,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00011.png",
+	"frame": {"x":501,"y":234,"w":191,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":74,"w":191,"h":211},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00012.png",
+	"frame": {"x":1,"y":2127,"w":204,"h":214},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":96,"y":80,"w":204,"h":214},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00013.png",
+	"frame": {"x":748,"y":1,"w":214,"h":211},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":85,"y":87,"w":214,"h":211},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00014.png",
+	"frame": {"x":251,"y":917,"w":207,"h":202},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":76,"y":96,"w":207,"h":202},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00015.png",
+	"frame": {"x":575,"y":1902,"w":198,"h":192},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":104,"w":198,"h":192},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00016.png",
+	"frame": {"x":158,"y":2557,"w":184,"h":178},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":112,"w":184,"h":178},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00017.png",
+	"frame": {"x":1162,"y":2287,"w":182,"h":176},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":112,"w":182,"h":176},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00018.png",
+	"frame": {"x":1015,"y":1217,"w":179,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":111,"w":179,"h":173},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00019.png",
+	"frame": {"x":775,"y":2109,"w":182,"h":178},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":104,"w":182,"h":178},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00020.png",
+	"frame": {"x":911,"y":2482,"w":189,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":92,"w":189,"h":189},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00021.png",
+	"frame": {"x":639,"y":1121,"w":185,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":79,"w":185,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00022.png",
+	"frame": {"x":1332,"y":215,"w":180,"h":209},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":66,"w":180,"h":209},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00023.png",
+	"frame": {"x":646,"y":447,"w":176,"h":209},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":57,"w":176,"h":209},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00024.png",
+	"frame": {"x":409,"y":2099,"w":167,"h":196},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":55,"w":167,"h":196},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00025.png",
+	"frame": {"x":1102,"y":2472,"w":158,"h":177},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":55,"w":158,"h":177},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00026.png",
+	"frame": {"x":1504,"y":633,"w":147,"h":148},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":61,"w":147,"h":148},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00027.png",
+	"frame": {"x":1315,"y":2177,"w":105,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":74,"w":105,"h":105},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00028.png",
+	"frame": {"x":1733,"y":2567,"w":72,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":85,"w":72,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00029.png",
+	"frame": {"x":545,"y":2687,"w":57,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":92,"w":57,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00030.png",
+	"frame": {"x":210,"y":2522,"w":51,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":87,"y":93,"w":51,"h":32},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed04_thruster_00031.png",
+	"frame": {"x":1869,"y":2719,"w":40,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":96,"w":40,"h":14},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00000.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00001.png",
+	"frame": {"x":988,"y":1323,"w":25,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":89,"w":25,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00002.png",
+	"frame": {"x":1933,"y":2091,"w":29,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":166,"y":89,"w":29,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00003.png",
+	"frame": {"x":1999,"y":2207,"w":32,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":178,"y":93,"w":32,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00004.png",
+	"frame": {"x":1955,"y":2485,"w":33,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":189,"y":99,"w":33,"h":31},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00005.png",
+	"frame": {"x":1955,"y":2449,"w":34,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":198,"y":105,"w":34,"h":34},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00006.png",
+	"frame": {"x":1805,"y":1804,"w":60,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":192,"y":102,"w":60,"h":60},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00007.png",
+	"frame": {"x":1279,"y":1864,"w":81,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":185,"y":101,"w":81,"h":81},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00008.png",
+	"frame": {"x":1762,"y":918,"w":103,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":175,"y":99,"w":103,"h":104},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00009.png",
+	"frame": {"x":1700,"y":1269,"w":116,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":167,"y":102,"w":116,"h":116},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00010.png",
+	"frame": {"x":1345,"y":1102,"w":136,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":152,"y":101,"w":136,"h":137},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00011.png",
+	"frame": {"x":1199,"y":948,"w":151,"h":152},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":102,"w":151,"h":152},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00012.png",
+	"frame": {"x":1197,"y":1695,"w":167,"h":167},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":101,"w":167,"h":167},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00013.png",
+	"frame": {"x":1653,"y":624,"w":184,"h":183},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":99,"w":184,"h":183},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00014.png",
+	"frame": {"x":578,"y":2096,"w":195,"h":194},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":80,"y":98,"w":195,"h":194},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00015.png",
+	"frame": {"x":613,"y":1526,"w":200,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":98,"w":200,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00016.png",
+	"frame": {"x":411,"y":1534,"w":200,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":98,"w":200,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00017.png",
+	"frame": {"x":815,"y":1525,"w":199,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":35,"y":99,"w":199,"h":198},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00018.png",
+	"frame": {"x":775,"y":1915,"w":193,"h":192},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":99,"w":193,"h":192},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00019.png",
+	"frame": {"x":718,"y":2487,"w":191,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":96,"w":191,"h":190},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00020.png",
+	"frame": {"x":821,"y":843,"w":187,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":92,"w":187,"h":186},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00021.png",
+	"frame": {"x":1139,"y":2108,"w":174,"h":177},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":90,"w":174,"h":177},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00022.png",
+	"frame": {"x":1032,"y":1697,"w":163,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":86,"w":163,"h":168},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00023.png",
+	"frame": {"x":1350,"y":790,"w":151,"h":155},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":84,"w":151,"h":155},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00024.png",
+	"frame": {"x":1366,"y":1815,"w":140,"h":140},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":82,"w":140,"h":140},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00025.png",
+	"frame": {"x":1580,"y":1269,"w":118,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":83,"w":118,"h":118},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00026.png",
+	"frame": {"x":1855,"y":2270,"w":92,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":86,"w":92,"h":93},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00027.png",
+	"frame": {"x":1898,"y":2228,"w":41,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":103,"w":41,"h":39},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00028.png",
+	"frame": {"x":1996,"y":2239,"w":35,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":98,"w":35,"h":35},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00029.png",
+	"frame": {"x":1999,"y":2141,"w":32,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":88,"y":93,"w":32,"h":31},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00030.png",
+	"frame": {"x":1994,"y":2444,"w":29,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":103,"y":89,"w":29,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed05_thruster_00031.png",
+	"frame": {"x":1925,"y":1718,"w":26,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":89,"w":26,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00000.png",
+	"frame": {"x":315,"y":2522,"w":27,"h":24},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":86,"w":27,"h":24},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00001.png",
+	"frame": {"x":1788,"y":2041,"w":33,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":150,"y":85,"w":33,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00002.png",
+	"frame": {"x":1118,"y":805,"w":36,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":164,"y":86,"w":36,"h":34},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00003.png",
+	"frame": {"x":1928,"y":1891,"w":40,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":176,"y":89,"w":40,"h":39},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00004.png",
+	"frame": {"x":1951,"y":2408,"w":41,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":187,"y":95,"w":41,"h":39},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00005.png",
+	"frame": {"x":1980,"y":1373,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":193,"y":97,"w":51,"h":51},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00006.png",
+	"frame": {"x":1705,"y":2178,"w":94,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":178,"y":86,"w":94,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00007.png",
+	"frame": {"x":1508,"y":1858,"w":113,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":173,"y":86,"w":113,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00008.png",
+	"frame": {"x":988,"y":1392,"w":131,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":165,"y":87,"w":131,"h":131},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00009.png",
+	"frame": {"x":1352,"y":947,"w":148,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":152,"y":87,"w":148,"h":151},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00010.png",
+	"frame": {"x":1016,"y":1525,"w":162,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":138,"y":87,"w":162,"h":170},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00011.png",
+	"frame": {"x":467,"y":691,"w":177,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":123,"y":89,"w":177,"h":184},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00012.png",
+	"frame": {"x":792,"y":1324,"w":194,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":106,"y":89,"w":194,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00013.png",
+	"frame": {"x":235,"y":1121,"w":206,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":90,"y":92,"w":206,"h":205},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00014.png",
+	"frame": {"x":1609,"y":1,"w":212,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":93,"w":212,"h":207},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00015.png",
+	"frame": {"x":1391,"y":1,"w":216,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":94,"w":216,"h":206},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00016.png",
+	"frame": {"x":1514,"y":210,"w":213,"h":204},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":43,"y":96,"w":213,"h":204},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00017.png",
+	"frame": {"x":1729,"y":210,"w":211,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":97,"w":211,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00018.png",
+	"frame": {"x":1234,"y":426,"w":210,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":95,"w":210,"h":205},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00019.png",
+	"frame": {"x":210,"y":2316,"w":204,"h":204},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":93,"w":204,"h":204},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00020.png",
+	"frame": {"x":443,"y":1121,"w":194,"h":202},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":88,"w":194,"h":202},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00021.png",
+	"frame": {"x":427,"y":1328,"w":183,"h":201},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":81,"w":183,"h":201},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00022.png",
+	"frame": {"x":545,"y":2494,"w":171,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":77,"w":171,"h":191},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00023.png",
+	"frame": {"x":1010,"y":843,"w":163,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":70,"w":163,"h":186},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00024.png",
+	"frame": {"x":665,"y":835,"w":154,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":68,"w":154,"h":171},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00025.png",
+	"frame": {"x":1197,"y":635,"w":147,"h":157},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":65,"w":147,"h":157},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00026.png",
+	"frame": {"x":1196,"y":1259,"w":131,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":68,"w":131,"h":131},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00027.png",
+	"frame": {"x":1346,"y":2391,"w":71,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":88,"w":71,"h":71},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00028.png",
+	"frame": {"x":1980,"y":1426,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":90,"w":51,"h":51},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00029.png",
+	"frame": {"x":1949,"y":2269,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":78,"y":87,"w":45,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00030.png",
+	"frame": {"x":1996,"y":2276,"w":35,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":98,"y":86,"w":35,"h":35},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed06_thruster_00031.png",
+	"frame": {"x":1970,"y":2615,"w":32,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":85,"w":32,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00000.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00001.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00002.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00003.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00004.png",
+	"frame": {"x":615,"y":217,"w":16,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":186,"y":120,"w":16,"h":15},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00005.png",
+	"frame": {"x":1991,"y":2474,"w":29,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":184,"y":120,"w":29,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00006.png",
+	"frame": {"x":1128,"y":1867,"w":43,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":180,"y":115,"w":43,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00007.png",
+	"frame": {"x":1688,"y":1971,"w":98,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":95,"w":98,"h":100},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00008.png",
+	"frame": {"x":1180,"y":1525,"w":166,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":118,"y":67,"w":166,"h":168},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00009.png",
+	"frame": {"x":1015,"y":1031,"w":182,"h":184},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":66,"w":182,"h":184},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00010.png",
+	"frame": {"x":612,"y":2292,"w":192,"h":193},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":101,"y":68,"w":192,"h":193},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00011.png",
+	"frame": {"x":1653,"y":416,"w":206,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":89,"y":67,"w":206,"h":206},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00012.png",
+	"frame": {"x":1178,"y":1,"w":211,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":80,"y":69,"w":211,"h":212},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00013.png",
+	"frame": {"x":694,"y":217,"w":211,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":74,"w":211,"h":210},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00014.png",
+	"frame": {"x":907,"y":215,"w":211,"h":210},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":77,"w":211,"h":210},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00015.png",
+	"frame": {"x":1120,"y":215,"w":210,"h":209},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":79,"w":210,"h":209},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00016.png",
+	"frame": {"x":220,"y":1328,"w":205,"h":204},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":82,"w":205,"h":204},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00017.png",
+	"frame": {"x":460,"y":917,"w":203,"h":202},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":83,"w":203,"h":202},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00018.png",
+	"frame": {"x":824,"y":638,"w":204,"h":203},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":80,"w":204,"h":203},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00019.png",
+	"frame": {"x":824,"y":429,"w":207,"h":207},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":75,"w":207,"h":207},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00020.png",
+	"frame": {"x":533,"y":1,"w":213,"h":214},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":68,"w":213,"h":214},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00021.png",
+	"frame": {"x":964,"y":1,"w":212,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":64,"w":212,"h":212},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00022.png",
+	"frame": {"x":1,"y":2343,"w":207,"h":212},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":58,"w":207,"h":212},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00023.png",
+	"frame": {"x":344,"y":2522,"w":199,"h":204},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":56,"w":199,"h":204},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00024.png",
+	"frame": {"x":826,"y":1031,"w":187,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":57,"w":187,"h":188},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00025.png",
+	"frame": {"x":1483,"y":1100,"w":135,"h":137},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":76,"w":135,"h":137},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00026.png",
+	"frame": {"x":1788,"y":1623,"w":68,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":104,"w":68,"h":69},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00027.png",
+	"frame": {"x":1922,"y":1743,"w":31,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":84,"y":118,"w":31,"h":32},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00028.png",
+	"frame": {"x":894,"y":2679,"w":15,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":97,"y":120,"w":15,"h":14},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00029.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00030.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed07_thruster_00031.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00000.png",
+	"frame": {"x":988,"y":1347,"w":25,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":80,"w":25,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00001.png",
+	"frame": {"x":1922,"y":1777,"w":28,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":153,"y":80,"w":28,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00002.png",
+	"frame": {"x":1994,"y":2413,"w":30,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":82,"w":30,"h":29},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00003.png",
+	"frame": {"x":1156,"y":805,"w":36,"h":35},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":181,"y":85,"w":36,"h":35},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00004.png",
+	"frame": {"x":1984,"y":923,"w":47,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":188,"y":86,"w":47,"h":48},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00005.png",
+	"frame": {"x":1888,"y":2549,"w":75,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":184,"y":82,"w":75,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00006.png",
+	"frame": {"x":1529,"y":2082,"w":103,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":177,"y":78,"w":103,"h":102},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00007.png",
+	"frame": {"x":1251,"y":1392,"w":131,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":167,"y":74,"w":131,"h":131},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00008.png",
+	"frame": {"x":1199,"y":1102,"w":144,"h":155},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":156,"y":72,"w":144,"h":155},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00009.png",
+	"frame": {"x":1000,"y":2288,"w":160,"h":182},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":140,"y":69,"w":160,"h":182},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00010.png",
+	"frame": {"x":197,"y":1901,"w":177,"h":206},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":123,"y":67,"w":177,"h":206},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00011.png",
+	"frame": {"x":1,"y":1901,"w":194,"h":224},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":106,"y":67,"w":194,"h":224},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00012.png",
+	"frame": {"x":253,"y":468,"w":212,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":88,"y":68,"w":212,"h":232},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00013.png",
+	"frame": {"x":268,"y":234,"w":231,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":69,"y":68,"w":231,"h":232},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00014.png",
+	"frame": {"x":1,"y":468,"w":250,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":68,"w":250,"h":232},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00015.png",
+	"frame": {"x":268,"y":1,"w":263,"h":231},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":69,"w":263,"h":231},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00016.png",
+	"frame": {"x":1,"y":235,"w":265,"h":231},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":69,"w":265,"h":231},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00017.png",
+	"frame": {"x":1,"y":1,"w":265,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":68,"w":265,"h":232},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00018.png",
+	"frame": {"x":1,"y":702,"w":248,"h":234},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":66,"w":248,"h":234},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00019.png",
+	"frame": {"x":1,"y":938,"w":232,"h":236},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":64,"w":232,"h":236},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00020.png",
+	"frame": {"x":1,"y":1176,"w":217,"h":240},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":60,"w":217,"h":240},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00021.png",
+	"frame": {"x":1,"y":1418,"w":202,"h":244},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":56,"w":202,"h":244},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00022.png",
+	"frame": {"x":1,"y":1664,"w":189,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":52,"w":189,"h":235},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00023.png",
+	"frame": {"x":467,"y":468,"w":177,"h":221},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":49,"w":177,"h":221},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00024.png",
+	"frame": {"x":1861,"y":415,"w":167,"h":205},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":47,"w":167,"h":205},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00025.png",
+	"frame": {"x":1,"y":2557,"w":155,"h":179},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":50,"w":155,"h":179},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00026.png",
+	"frame": {"x":1348,"y":1525,"w":143,"h":146},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":56,"w":143,"h":146},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00027.png",
+	"frame": {"x":1623,"y":1510,"w":113,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":63,"w":113,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00028.png",
+	"frame": {"x":1893,"y":2626,"w":75,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":73,"w":75,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00029.png",
+	"frame": {"x":1788,"y":1694,"w":44,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":77,"y":81,"w":44,"h":44},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00030.png",
+	"frame": {"x":1955,"y":2518,"w":31,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":82,"w":31,"h":29},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed09_thruster_00031.png",
+	"frame": {"x":1925,"y":1691,"w":28,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":117,"y":80,"w":28,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00000.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00001.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00002.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00003.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00004.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00005.png",
+	"frame": {"x":1345,"y":1241,"w":19,"h":16},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":176,"y":128,"w":19,"h":16},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00006.png",
+	"frame": {"x":1970,"y":2647,"w":31,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":174,"y":126,"w":31,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00007.png",
+	"frame": {"x":1315,"y":2030,"w":36,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":173,"y":128,"w":36,"h":37},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00008.png",
+	"frame": {"x":1845,"y":1984,"w":53,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":165,"y":125,"w":53,"h":53},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00009.png",
+	"frame": {"x":911,"y":2673,"w":62,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":159,"y":125,"w":62,"h":63},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00010.png",
+	"frame": {"x":1419,"y":2391,"w":71,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":152,"y":126,"w":71,"h":71},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00011.png",
+	"frame": {"x":1436,"y":2559,"w":78,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":127,"w":78,"h":78},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00012.png",
+	"frame": {"x":1103,"y":2651,"w":83,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":136,"y":129,"w":83,"h":83},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00013.png",
+	"frame": {"x":1467,"y":2639,"w":91,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":127,"w":91,"h":92},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00014.png",
+	"frame": {"x":1370,"y":2640,"w":95,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":117,"y":128,"w":95,"h":95},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00015.png",
+	"frame": {"x":1760,"y":2370,"w":93,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":131,"w":93,"h":92},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00016.png",
+	"frame": {"x":1272,"y":2640,"w":96,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":101,"y":130,"w":96,"h":95},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00017.png",
+	"frame": {"x":1659,"y":2383,"w":92,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":95,"y":131,"w":92,"h":92},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00018.png",
+	"frame": {"x":1422,"y":2187,"w":95,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":86,"y":128,"w":95,"h":95},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00019.png",
+	"frame": {"x":1855,"y":2365,"w":94,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":127,"w":94,"h":93},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00020.png",
+	"frame": {"x":1612,"y":2479,"w":91,"h":90},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":125,"w":91,"h":90},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00021.png",
+	"frame": {"x":1705,"y":2477,"w":87,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":122,"w":87,"h":88},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00022.png",
+	"frame": {"x":1866,"y":2460,"w":87,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":67,"y":118,"w":87,"h":87},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00023.png",
+	"frame": {"x":1516,"y":2559,"w":78,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":69,"y":118,"w":78,"h":78},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00024.png",
+	"frame": {"x":1163,"y":2032,"w":74,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":115,"w":74,"h":74},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00025.png",
+	"frame": {"x":1858,"y":1925,"w":54,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":80,"y":119,"w":54,"h":54},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00026.png",
+	"frame": {"x":1835,"y":2135,"w":36,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":91,"y":123,"w":36,"h":37},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00027.png",
+	"frame": {"x":533,"y":217,"w":19,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":103,"y":128,"w":19,"h":15},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00028.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00029.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00030.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed10_thruster_00031.png",
+	"frame": {"x":578,"y":2292,"w":3,"h":3},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00000.png",
+	"frame": {"x":1391,"y":209,"w":5,"h":4},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":173,"y":114,"w":5,"h":4},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00001.png",
+	"frame": {"x":1384,"y":1513,"w":57,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":112,"w":57,"h":10},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00002.png",
+	"frame": {"x":447,"y":2494,"w":57,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":111,"w":57,"h":21},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00003.png",
+	"frame": {"x":1483,"y":1239,"w":54,"h":28},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":152,"y":106,"w":54,"h":28},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00004.png",
+	"frame": {"x":1068,"y":805,"w":48,"h":34},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":161,"y":106,"w":48,"h":34},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00005.png",
+	"frame": {"x":506,"y":2494,"w":28,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":107,"w":28,"h":25},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00006.png",
+	"frame": {"x":964,"y":1221,"w":49,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":177,"y":109,"w":49,"h":59},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00007.png",
+	"frame": {"x":1736,"y":1625,"w":50,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":180,"y":112,"w":50,"h":70},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00008.png",
+	"frame": {"x":1980,"y":1532,"w":46,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":183,"y":116,"w":46,"h":76},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00009.png",
+	"frame": {"x":1743,"y":2638,"w":68,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":171,"y":117,"w":68,"h":87},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00010.png",
+	"frame": {"x":1519,"y":2187,"w":87,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":158,"y":120,"w":87,"h":95},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00011.png",
+	"frame": {"x":1584,"y":1973,"w":102,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":145,"y":123,"w":102,"h":101},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00012.png",
+	"frame": {"x":1867,"y":923,"w":115,"h":103},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":127,"w":115,"h":103},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00013.png",
+	"frame": {"x":1779,"y":809,"w":127,"h":106},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":117,"y":130,"w":127,"h":106},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00014.png",
+	"frame": {"x":1643,"y":809,"w":134,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":104,"y":133,"w":134,"h":107},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00015.png",
+	"frame": {"x":1504,"y":783,"w":137,"h":103},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":91,"y":137,"w":137,"h":103},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00016.png",
+	"frame": {"x":665,"y":1008,"w":140,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":138,"w":140,"h":102},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00017.png",
+	"frame": {"x":826,"y":1221,"w":136,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":138,"w":136,"h":101},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00018.png",
+	"frame": {"x":1503,"y":888,"w":131,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":136,"w":131,"h":101},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00019.png",
+	"frame": {"x":1636,"y":918,"w":124,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":131,"w":124,"h":104},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00020.png",
+	"frame": {"x":1502,"y":991,"w":118,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":125,"w":118,"h":107},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00021.png",
+	"frame": {"x":1744,"y":1141,"w":114,"h":112},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":118,"w":114,"h":112},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00022.png",
+	"frame": {"x":1738,"y":1508,"w":105,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":111,"w":105,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00023.png",
+	"frame": {"x":1935,"y":1261,"w":94,"h":110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":106,"w":94,"h":110},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00024.png",
+	"frame": {"x":1942,"y":301,"w":83,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":103,"w":83,"h":102},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00025.png",
+	"frame": {"x":1794,"y":2464,"w":70,"h":88},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":102,"w":70,"h":88},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00026.png",
+	"frame": {"x":1738,"y":1740,"w":57,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":69,"y":105,"w":57,"h":68},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00027.png",
+	"frame": {"x":1965,"y":2549,"w":30,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":101,"y":104,"w":30,"h":31},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00028.png",
+	"frame": {"x":1834,"y":1694,"w":22,"h":21},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":115,"y":105,"w":22,"h":21},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00029.png",
+	"frame": {"x":596,"y":217,"w":17,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":130,"y":106,"w":17,"h":15},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00030.png",
+	"frame": {"x":1813,"y":2719,"w":54,"h":17},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":100,"y":111,"w":54,"h":17},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed11_thruster_00031.png",
+	"frame": {"x":1984,"y":1022,"w":5,"h":4},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":161,"y":112,"w":5,"h":4},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00000.png",
+	"frame": {"x":416,"y":2494,"w":29,"h":26},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":127,"w":29,"h":26},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00001.png",
+	"frame": {"x":1994,"y":2381,"w":30,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":140,"y":126,"w":30,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00002.png",
+	"frame": {"x":1999,"y":2174,"w":32,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":127,"w":32,"h":31},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00003.png",
+	"frame": {"x":550,"y":877,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":127,"w":38,"h":38},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00004.png",
+	"frame": {"x":1964,"y":2092,"w":48,"h":47},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":139,"y":126,"w":48,"h":47},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00005.png",
+	"frame": {"x":1869,"y":1865,"w":57,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":124,"w":57,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00006.png",
+	"frame": {"x":1970,"y":1846,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":128,"y":125,"w":61,"h":61},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00007.png",
+	"frame": {"x":1970,"y":1909,"w":61,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":124,"y":127,"w":61,"h":61},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00008.png",
+	"frame": {"x":836,"y":2679,"w":56,"h":57},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":129,"w":56,"h":57},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00009.png",
+	"frame": {"x":1788,"y":1984,"w":55,"h":55},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":116,"y":130,"w":55,"h":55},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00010.png",
+	"frame": {"x":1900,"y":1984,"w":53,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":129,"w":53,"h":53},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00011.png",
+	"frame": {"x":1797,"y":1924,"w":59,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":107,"y":124,"w":59,"h":58},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00012.png",
+	"frame": {"x":718,"y":2679,"w":57,"h":57},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":107,"y":121,"w":57,"h":57},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00013.png",
+	"frame": {"x":1964,"y":2038,"w":52,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":120,"w":52,"h":52},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00014.png",
+	"frame": {"x":1030,"y":805,"w":36,"h":36},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":125,"w":36,"h":36},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed12_thruster_00015.png",
+	"frame": {"x":1996,"y":2349,"w":31,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":128,"y":126,"w":31,"h":30},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00000.png",
+	"frame": {"x":1474,"y":1957,"w":19,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":140,"y":109,"w":19,"h":14},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00001.png",
+	"frame": {"x":554,"y":217,"w":19,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":150,"y":109,"w":19,"h":15},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00002.png",
+	"frame": {"x":640,"y":877,"w":23,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":158,"y":108,"w":23,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00003.png",
+	"frame": {"x":2006,"y":622,"w":25,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":166,"y":111,"w":25,"h":22},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00004.png",
+	"frame": {"x":1873,"y":2135,"w":32,"h":37},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":170,"y":111,"w":32,"h":37},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00005.png",
+	"frame": {"x":1928,"y":1846,"w":40,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":172,"y":114,"w":40,"h":43},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00006.png",
+	"frame": {"x":1977,"y":1146,"w":54,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":113,"w":54,"h":56},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00007.png",
+	"frame": {"x":975,"y":2673,"w":62,"h":63},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":168,"y":116,"w":62,"h":63},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00008.png",
+	"frame": {"x":1807,"y":2554,"w":79,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":160,"y":113,"w":79,"h":81},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00009.png",
+	"frame": {"x":1942,"y":210,"w":89,"h":89},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":154,"y":115,"w":89,"h":89},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00010.png",
+	"frame": {"x":1453,"y":2284,"w":102,"h":103},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":144,"y":114,"w":102,"h":103},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00011.png",
+	"frame": {"x":1744,"y":1024,"w":114,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":113,"w":114,"h":115},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00012.png",
+	"frame": {"x":1460,"y":1269,"w":118,"h":119},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":116,"w":118,"h":119},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00013.png",
+	"frame": {"x":1384,"y":1390,"w":121,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":116,"y":119,"w":121,"h":121},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00014.png",
+	"frame": {"x":1622,"y":1024,"w":120,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":108,"y":122,"w":120,"h":121},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00015.png",
+	"frame": {"x":1620,"y":1147,"w":119,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":124,"w":119,"h":120},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00016.png",
+	"frame": {"x":1507,"y":1626,"w":113,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":92,"y":128,"w":113,"h":114},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00017.png",
+	"frame": {"x":1747,"y":1387,"w":115,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":82,"y":126,"w":115,"h":116},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00018.png",
+	"frame": {"x":1163,"y":1915,"w":114,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":125,"w":114,"h":115},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00019.png",
+	"frame": {"x":1622,"y":1626,"w":112,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":123,"w":112,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00020.png",
+	"frame": {"x":1864,"y":1378,"w":114,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":118,"w":114,"h":115},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00021.png",
+	"frame": {"x":1508,"y":1742,"w":113,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":114,"w":113,"h":114},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00022.png",
+	"frame": {"x":1623,"y":1741,"w":113,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":109,"w":113,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00023.png",
+	"frame": {"x":1362,"y":1957,"w":110,"h":110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":104,"w":110,"h":110},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00024.png",
+	"frame": {"x":1634,"y":2076,"w":99,"h":100},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":103,"w":99,"h":100},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00025.png",
+	"frame": {"x":1760,"y":2274,"w":93,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":53,"y":100,"w":93,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00026.png",
+	"frame": {"x":1813,"y":2637,"w":78,"h":80},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":101,"w":78,"h":80},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00027.png",
+	"frame": {"x":1596,"y":2571,"w":65,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":102,"w":65,"h":66},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00028.png",
+	"frame": {"x":1951,"y":2363,"w":41,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":92,"y":108,"w":41,"h":43},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00029.png",
+	"frame": {"x":1965,"y":2582,"w":31,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":105,"y":107,"w":31,"h":31},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00030.png",
+	"frame": {"x":694,"y":429,"w":23,"h":16},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":118,"y":111,"w":23,"h":16},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed13_thruster_00031.png",
+	"frame": {"x":575,"y":217,"w":19,"h":15},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":129,"y":109,"w":19,"h":15},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00000.png",
+	"frame": {"x":1080,"y":1867,"w":46,"h":46},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":126,"y":109,"w":46,"h":46},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00001.png",
+	"frame": {"x":1949,"y":2316,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":132,"y":109,"w":45,"h":45},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00002.png",
+	"frame": {"x":1898,"y":2176,"w":50,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":108,"w":50,"h":50},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00003.png",
+	"frame": {"x":777,"y":2679,"w":57,"h":57},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":137,"y":106,"w":57,"h":57},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00004.png",
+	"frame": {"x":1858,"y":1610,"w":69,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":135,"y":103,"w":69,"h":68},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00005.png",
+	"frame": {"x":1951,"y":1610,"w":80,"h":79},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":133,"y":100,"w":80,"h":79},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00006.png",
+	"frame": {"x":1560,"y":2639,"w":91,"h":91},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":130,"y":97,"w":91,"h":91},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00007.png",
+	"frame": {"x":1659,"y":2283,"w":99,"h":98},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":127,"y":97,"w":99,"h":98},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00008.png",
+	"frame": {"x":1346,"y":2284,"w":105,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":125,"y":97,"w":105,"h":105},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00009.png",
+	"frame": {"x":1860,"y":1028,"w":115,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":119,"y":96,"w":115,"h":114},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00010.png",
+	"frame": {"x":1860,"y":1144,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":118,"y":99,"w":115,"h":115},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00011.png",
+	"frame": {"x":1627,"y":1389,"w":118,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":114,"y":101,"w":118,"h":117},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00012.png",
+	"frame": {"x":1864,"y":1495,"w":114,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":106,"w":114,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00013.png",
+	"frame": {"x":1315,"y":2069,"w":106,"h":106},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":112,"w":106,"h":106},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00014.png",
+	"frame": {"x":1436,"y":2464,"w":94,"h":93},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":120,"w":94,"h":93},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00015.png",
+	"frame": {"x":1188,"y":2651,"w":82,"h":82},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":126,"w":82,"h":82},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00016.png",
+	"frame": {"x":1955,"y":1691,"w":76,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":111,"y":130,"w":76,"h":76},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00017.png",
+	"frame": {"x":1492,"y":2389,"w":71,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":108,"y":132,"w":71,"h":71},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00018.png",
+	"frame": {"x":1239,"y":2032,"w":74,"h":74},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":101,"y":129,"w":74,"h":74},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00019.png",
+	"frame": {"x":1279,"y":1947,"w":81,"h":81},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":93,"y":124,"w":81,"h":81},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00020.png",
+	"frame": {"x":1653,"y":2642,"w":88,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":85,"y":119,"w":88,"h":87},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00021.png",
+	"frame": {"x":1801,"y":2174,"w":95,"h":94},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":78,"y":113,"w":95,"h":94},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00022.png",
+	"frame": {"x":1423,"y":2082,"w":104,"h":103},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":105,"w":104,"h":103},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00023.png",
+	"frame": {"x":1507,"y":1510,"w":114,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":96,"w":114,"h":114},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00024.png",
+	"frame": {"x":1623,"y":1856,"w":114,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":93,"w":114,"h":113},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00025.png",
+	"frame": {"x":1507,"y":1390,"w":118,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":87,"w":118,"h":118},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00026.png",
+	"frame": {"x":1818,"y":1261,"w":115,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":85,"w":115,"h":115},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00027.png",
+	"frame": {"x":1474,"y":1973,"w":108,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":86,"w":108,"h":107},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00028.png",
+	"frame": {"x":1608,"y":2186,"w":95,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":81,"y":89,"w":95,"h":95},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00029.png",
+	"frame": {"x":1532,"y":2479,"w":78,"h":77},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":94,"y":96,"w":78,"h":77},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00030.png",
+	"frame": {"x":1039,"y":2673,"w":62,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":107,"y":102,"w":62,"h":62},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed14_thruster_00031.png",
+	"frame": {"x":1980,"y":1479,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":118,"y":107,"w":51,"h":51},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "federation_thrusters.png",
+	"format": "RGBA8888",
+	"size": {"w":2032,"h":2737},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b6b86565b802f2a8f96c2303ca179e20:b861e6d62739f8c43f05e41cb00ede3f:5e6866f3aedd404512f6fb4e47b79425$"
+}
+}

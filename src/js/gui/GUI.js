@@ -1,5 +1,6 @@
 import Selector from './Selector';
 import EnergyShield from './EnergyShield';
+import JetEngine from './JetEngine';
 import ColorIndicator from './ColorIndicator';
 import StatusDisplay from './StatusDisplay';
 import Panel from './Panel';
@@ -164,6 +165,16 @@ GUI.prototype = {
         const energyShield = new EnergyShield(phaserGame);
         energyShield.appendTo(entity);
         return energyShield;
+    },
+
+    /**
+     * Links the given entity to a new JetEngine instance
+     * @param {object} entity Instance of Eneity 
+     */
+    addJetEngine: function(entity) {
+        const jetEngine = new JetEngine(phaserGame);
+        jetEngine.appendTo(entity);
+        return jetEngine;
     },
 
     /**

@@ -23,7 +23,7 @@ var effects = {
         motionManager.movement.targetInitialDistance = distance;
         motionManager.movement.targetDragTreshold = Math.min(motionManager.movement.maxTargetDragTreshold, distance / 2);
         motionManager.movement.targetAngle = Math.atan2(motionManager.movement.targetY - motionManager.sprite.y, motionManager.movement.targetX - motionManager.sprite.x);
-        motionManager.rotation.targetAngleCode = motionManager.getTargetAngleCodeByTargetAngle(motionManager.movement.targetAngle);
+        motionManager.rotation.targetAngleCode = motionManager.getAngleCodeByAngle(motionManager.movement.targetAngle);
 
         if (motionManager.rotation.maxAngleCount === 1) {
             motionManager.movement.currentAngle = motionManager.movement.targetAngle;
@@ -80,6 +80,7 @@ var effects = {
             if (motionManager.isEntityArrivedAtDestination) {
                 motionManager.isEntityStoppedAtDestination = true;
             }
+            motionManager.getEntity().dispatch('stop');
             return false;
         }
 
@@ -116,6 +117,16 @@ var effects = {
         // rotating with default speed until the entity arrives at the target angle 
         motionManager.rotation.angularVelocity = motionManager.rotation.maxAngularVelocity;
         return motionManager.rotation.currentAngleCode !== motionManager.rotation.targetAngleCode;
+    },
+
+    /**
+     * Triggers any logic that needs to be executed when the movement starts
+     * @param {object} motionManager
+     * @return {boolean} returns false if the effect is no longer appropriate
+     */
+    startMovement: function(motionManager) {
+        motionManager.getEntity().dispatch('move');
+        return false;
     },
 
     /**

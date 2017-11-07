@@ -1,5 +1,6 @@
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
+import { WEAPON_ACCURACY_SPREAD_IN_RADIAN } from '../../common/Const';
 
 const ns = window.fivenations;
 let guid = 0;
@@ -106,7 +107,10 @@ class Weapon {
 
         if (distance <= this.getRange()) {
 
-            const rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
+            const accuracy = this.data.accuracy || 100;
+            const spreadMax = WEAPON_ACCURACY_SPREAD_IN_RADIAN * (1 - accuracy / 100);
+            const spread = Math.random() * spreadMax - spreadMax / 2;
+            const rotation =  ns.game.game.physics.arcade.angleBetween(sprite, targetSprite) + spread;
             const offsetX = projectileOffset.x || 0;
             const offsetY = projectileOffset.y || 0;
             const x = sprite.x + offsetX;
@@ -200,6 +204,10 @@ class Weapon {
 
     getRange() {
         return this.data.range;         
+    }
+
+    getAccuracy() {
+        return this.data.accuracy;
     }
 
     getCurrentLevel() {

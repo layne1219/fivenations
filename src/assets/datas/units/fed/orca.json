@@ -33,6 +33,7 @@
    "directions":16,
    "animFrame":1,
    "animType":0,
+   "hasJetEngine": true,
    "size":"sm",
    "sizeOffset":{  
       "w":20,

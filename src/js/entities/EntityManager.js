@@ -3,10 +3,11 @@ import Entity from './Entity';
 import DataObject from '../model/DataObject';
 import QuadTree from '../common/QuadTree';
 import Util from '../common/Util';
-
-var GROUP_EFFECTS = 'effects';
-var GROUP_ENTITIES = 'entities';
-var GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
+import {
+    GROUP_EFFECTS,
+    GROUP_ENTITIES,
+    GROUP_ENTITIES_BUILDINGS
+} from '../common/Const';
 
 var ns = window.fivenations;
 
@@ -60,13 +61,6 @@ EntityManager.prototype = {
 
         const dataObject = new DataObject(dataSource);
 
-        // rendering group name
-        const groupName = dataObject.isBuilding() ? GROUP_ENTITIES_BUILDINGS : GROUP_ENTITIES;
-
-        // choosing the group for entities so that other elements will be obscured by them
-        // it's kind of applying zIndex on entities
-        const group = Graphics.getInstance().getGroup(groupName);
-
         // passing the team Id from the config param object
         dataObject.setTeam(team);
 
@@ -84,9 +78,6 @@ EntityManager.prototype = {
             sprite.x = config.x || 0;
             sprite.y = config.y || 0;
         }
-
-        group.add(sprite);
-        sprite._group = group;
 
         entities.push(entity);
     },

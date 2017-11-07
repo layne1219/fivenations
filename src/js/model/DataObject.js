@@ -238,6 +238,14 @@ function DataObject(json) {
             return animation.length;
         },
 
+        hasJetEngine: function() {
+            return data.hasJetEngine;
+        },
+
+        hasRealManeuverSystem: function() {
+            return data.realManeuverSystem || false;
+        },
+
         getEvents: function() {
             return data.events;
         },

@@ -52,14 +52,19 @@ function createMovementObject(entity) {
  * @return {object} prototype of rotation related helper variables
  */
 function createRotationObject(entity) {
-    var dataObject = entity.getDataObject();
+    const dataObject = entity.getDataObject();
+    const hasRealManeuverSystem = dataObject.hasRealManeuverSystem();
+    let maneuverability = dataObject.getManeuverability();
+        
     return {
+        realManeuverSystem: hasRealManeuverSystem,
         targetAngleCode: 0,
+        currentAngle: Phaser.Math.degToRad(0),
         currentAngleCode: 0,
         maxAngleCount: dataObject.getDirections(),
         angularVelocity: 0,
         angularVelocityHelper: 0,
-        maxAngularVelocity: dataObject.getManeuverability(),
+        maxAngularVelocity: maneuverability,
         framePadding: dataObject.getAnimFrame() || 1
     };        
 }
@@ -122,11 +127,12 @@ MotionManager.prototype = {
             this.effectManager.addEffect(Effects.get('resetMovement'));
         }
 
-        if (!this.isEntityFacingTarget()) {
+        if (!this.hasRealManeuverSystem() && !this.isEntityFacingTarget()) {
             this.effectManager.addEffect(Effects.get('stopAnimation'));
             this.effectManager.addEffect(Effects.get('rotateToTarget'));
         }
 
+        this.effectManager.addEffect(Effects.get('startMovement'));
         this.effectManager.addEffect(Effects.get('accelerateToTarget'));
         this.effectManager.addEffect(Effects.get('moveToTarget'));
         this.effectManager.addEffect(Effects.get('stopping'));
@@ -252,22 +258,51 @@ MotionManager.prototype = {
             return;
         }
 
-        this.movement.currentAngle = this.movement.targetAngle;
-        this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
+        if (this.hasRealManeuverSystem()) {
 
-        this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
-        if (this.rotation.angularVelocityHelper > 1) {
-            this.rotation.angularVelocityHelper = 0;
-            if (this.rotation.currentAngleCode + this.rotation.angularDirection < 0) {
-                this.rotation.currentAngleCode = this.rotation.maxAngleCount;
+            const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
+            const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
+            const step = this.rotation.maxAngularVelocity / 8 * this.game.time.physicsElapsed;
+
+            if (Math.abs(a - b) > step * 2) {
+
+                this.rotation.angularDirection = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a - b>= -360) ? 1 : -1;
+                this.movement.currentAngle += this.rotation.angularDirection * step;
+            } else {
+                this.movement.currentAngle = this.movement.targetAngle;
             }
-            this.rotation.currentAngleCode += this.rotation.angularDirection;
-            this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
+
+            this.movement.targetAngle = Math.atan2(this.movement.targetY - this.sprite.y, this.movement.targetX - this.sprite.x);
+            this.rotation.targetAngleCode = this.getAngleCodeByAngle(this.movement.targetAngle);
+            this.rotation.currentAngleCode = this.getAngleCodeByAngle(this.movement.currentAngle);
+
+            if (this.rotation.maxAngleCount > 0) {
+                this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
+            }
+
+        } else {
+
+            this.movement.currentAngle = this.movement.targetAngle;
+            this.rotation.angularDirection = this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
+
+            this.rotation.angularVelocityHelper += this.rotation.angularVelocity * this.game.time.physicsElapsed;
+            if (this.rotation.angularVelocityHelper > 1) {
+                this.rotation.angularVelocityHelper = 0;
+                if (this.rotation.currentAngleCode + this.rotation.angularDirection < 0) {
+                    this.rotation.currentAngleCode = this.rotation.maxAngleCount;
+                }
+                this.rotation.currentAngleCode += this.rotation.angularDirection;
+                this.rotation.currentAngleCode %= this.rotation.maxAngleCount;
+            }
+
+            if (this.rotation.maxAngleCount > 0) {
+                this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
+            }
+
         }
 
-        if (this.rotation.maxAngleCount > 0) {
-            this.sprite.frame = this.rotationFrames[this.rotation.currentAngleCode];
-        }
+
+
     },
 
     /**
@@ -320,7 +355,7 @@ MotionManager.prototype = {
         var sprite = this.entity.getSprite();
         var targetSprite = targetEntity.getSprite();
         var targetAngle = Math.atan2(targetSprite.y - sprite.y, targetSprite.x - sprite.x);
-        var targetAngleCode = this.getTargetAngleCodeByTargetAngle(targetAngle);
+        var targetAngleCode = this.getAngleCodeByAngle(targetAngle);
         if (this.rotation.maxAngleCount < 2) return true;
         return this.rotation.currentAngleCode === targetAngleCode;
     },
@@ -351,6 +386,14 @@ MotionManager.prototype = {
     },
 
     /**
+     * Returns whether the entity has the real maneuver system activated
+     * @returns {boolean}
+     */
+    hasRealManeuverSystem: function() {
+        return this.rotation.realManeuverSystem;
+    },
+
+    /**
      * Returns the current angle code determined by the updateRotation method
      * @returns {integer} current angle code that usually goes from 0 to 15
      */
@@ -371,7 +414,7 @@ MotionManager.prototype = {
      * @oaram {float} targetAngle
      * @return {integer}
      */
-    getTargetAngleCodeByTargetAngle: function(targetAngle) {
+    getAngleCodeByAngle: function(targetAngle) {
         var rotationOffset = Math.floor(this.rotation.maxAngleCount * 0.75);
         var calculatedAngle;
 
@@ -382,7 +425,15 @@ MotionManager.prototype = {
             calculatedAngle = 360 - Math.abs(calculatedAngle);
         }
         return (Math.floor(calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) % this.rotation.maxAngleCount;
-    },        
+    }, 
+
+    /**
+     * Returns the current angle code that scretches from 0 to MaxAngleCount
+     * @return {integer} code of the current angle code
+     */
+    getCurrentAngleCode: function() {
+        return this.rotation.currentAngleCode;
+    }
 
 };
 
