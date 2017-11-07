@@ -262,7 +262,7 @@ MotionManager.prototype = {
 
             const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
             const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
-            const step = this.rotation.maxAngularVelocity / 8 * this.game.time.physicsElapsed;
+            const step = this.rotation.maxAngularVelocity / 10 * this.game.time.physicsElapsed;
 
             if (Math.abs(a - b) > step * 2) {
 
