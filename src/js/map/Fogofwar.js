@@ -4,8 +4,8 @@ function create(map) {
 
     if (!map) throw 'Invalid Map instance!';
 
-    var tiles = Util.matrix(map.getWidth(), map.getHeight()),
-        tileWidth = map.getWidth();
+    const tiles = Util.matrix(map.getWidth(), map.getHeight());
+    const tileWidth = map.getWidth();
 
     return {
 
@@ -45,9 +45,9 @@ function create(map) {
         },
 
         update: function(entityManager) {
-            entityManager.entities(':user').forEach(function(entity){
-                this.visitTilesByEntityVisibility(entity);
-            }.bind(this));
+            entityManager
+                .entities(':user')
+                .forEach(entity => this.visitTilesByEntityVisibility(entity));
         }            
 
     };

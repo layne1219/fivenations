@@ -1,19 +1,29 @@
+import Graphics from '../common/Graphics';
+import { GROUP_FOGOFWAR } from '../common/Const';
+
 const ns = window.fivenations;
 
-function create(map) {
+class FogOfWarRenderer {
 
-    if (!map) throw 'Invalid Map instance!';
+  constructor(map) {
 
-    var width = Math.floor(ns.window.width / map.getTileWidth());
-    var height = Math.floor(ns.window.height / map.getTileHeight());
+    this.initBitMapData(map);
+    this.map = map;
 
-    return {
-        width: width,
-        height: height
-    };
+  }
+
+  initBitMapData(map) {
+    const width = ns.window.width;
+    const height = ns.window.height;
+    const group = Graphics.getInstance().getGroup(GROUP_FOGOFWAR);
+
+    this.bmd = phaserGame.add.bitmapData(width, height);
+    this.body = this.bmd.addToWorld(0, 0);
+
+    group.add(body);
+  }
 
 }
 
-export default {
-    create
-};
+export { FogOfWarRenderer };
+export default FogOfWarRenderer;
