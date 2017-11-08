@@ -1,6 +1,6 @@
 # Five Nations [![Build Status](https://travis-ci.org/vbence86/fivenations.svg?branch=master)](https://travis-ci.org/vbence86/fivenations) [![Build Status](https://semaphoreci.com/api/v1/vbence86/fivenations/branches/master/badge.svg)](https://semaphoreci.com/vbence86/fivenations) [![Coverage Status](https://coveralls.io/repos/github/vbence86/fivenations/badge.svg?branch=master)](https://coveralls.io/github/vbence86/fivenations?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/935f2ebf03654b0a9537d4cc7c4bcd1f)](https://www.codacy.com/app/vbence86/fivenations?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vbence86/fivenations&amp;utm_campaign=Badge_Grade) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Gitter](https://img.shields.io/gitter/room/fivenations/Lobby.svg?maxAge=2592000)](https://img.shields.io/gitter/room/fivenations/Lobby)
 
-![22117990_1607994859243526_942310130_o](https://user-images.githubusercontent.com/6104164/31121917-4958cb6c-a83a-11e7-82bc-ec837fb4257d.png)
+![ezgif com-gif-maker 1](https://user-images.githubusercontent.com/6104164/32551083-9db99ed6-c48f-11e7-979f-e43a11a52f40.gif)
 
 ## About the game
 Five Nations is a sci-fi strategy game that takes place in the far future and follows the events of a galactic battle between five distinct species. The gameplay intentionally resembles traditional real-time strategy elements with introducing modern game elements.
