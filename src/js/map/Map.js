@@ -1,5 +1,5 @@
 import Starfield from '../starfield/Starfield';
-import Fogofwar from './Fogofwar';
+import FogOfWar from './FogOfWar';
 import Util from '../common/Util';
 
 const FOG_OF_WAR_REFRESH_RATE = 50;
@@ -15,7 +15,7 @@ let width = MIN_WIDTH * TILE_WIDTH;
 let height = MIN_HEIGHT * TILE_HEIGHT;
 
 let starfield;
-let fogofwar;
+let fogOfWar;
 
 function Map(game) {
     this.initGame(game);
@@ -30,7 +30,7 @@ Map.prototype = {
 
     update: function(entityManager) {
         if (starfield) starfield.update();
-        if (fogofwar) fogofwar.update(entityManager);
+        if (fogOfWar) fogOfWar.update(entityManager);
     },
 
     initGame: function(_game) {
@@ -46,8 +46,8 @@ Map.prototype = {
 
     initLayers: function() {
         starfield = new Starfield(this);
-        fogofwar = Fogofwar.create(this);
-        fogofwar.update = Util.interval(fogofwar.update, FOG_OF_WAR_REFRESH_RATE, fogofwar);
+        fogOfWar = new FogOfWar(this);
+        fogOfWar.update = Util.interval(fogOfWar.update, FOG_OF_WAR_REFRESH_RATE, fogOfWar);
     },
 
     scrollTo: function(x, y) {
@@ -100,8 +100,8 @@ Map.prototype = {
         return TILE_HEIGHT;
     },
 
-    getFogofwar: function() {
-        return fogofwar;
+    getFogOfWar: function() {
+        return fogOfWar;
     },
 
     getGame: function() {
