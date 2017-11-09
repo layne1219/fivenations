@@ -36,11 +36,11 @@ class FogOfWarRenderer {
 
     initMask() {
         const tileSize = this.tileSize;
-        const maskSize = this.tileSize * 2;
+        const maskSize = this.tileSize * 4;
         this.mask = this.game.add.bitmapData(maskSize, maskSize);
         this.mask.clear();
 
-        const grd = this.mask.context.createRadialGradient(maskSize / 2, maskSize / 2, tileSize / 2, maskSize / 2, maskSize / 2, maskSize / 2);
+        const grd = this.mask.context.createRadialGradient(maskSize / 2, maskSize / 2, tileSize * 0.75, maskSize / 2, maskSize / 2, maskSize / 2);
         grd.addColorStop(0, 'rgba(0, 0, 0, 1)');
         grd.addColorStop(1, 'rgba(0, 0, 0, 0)');
         this.mask.context.fillStyle = grd;
@@ -65,12 +65,14 @@ class FogOfWarRenderer {
         this.clear();
         this.bmd.blendDestinationOut();
 
-        const matrix = this.getVisibleChunk(); 
+        const matrix = this.getVisibleChunk();
+        const maskSize = this.mask.width;
+        const maskOffset = maskSize / 2; 
 
         for (let i = 0; i < matrix.length; i += 1) {
             for (let j = 0; j < matrix[i].length; j += 1) {
                 if (matrix[i][j]) {
-                    this.bmd.draw(this.mask, j * this.tileSize, i * this.tileSize);
+                    this.bmd.draw(this.mask, j * this.tileSize - maskOffset, i * this.tileSize - maskOffset);
                 }
             }
         }

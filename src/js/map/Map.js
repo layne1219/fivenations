@@ -1,5 +1,6 @@
 import Starfield from '../starfield/Starfield';
 import FogOfWar from './FogOfWar';
+import FogOfWarRenderer from './FogOfWarRenderer';
 import Util from '../common/Util';
 
 const FOG_OF_WAR_REFRESH_RATE = 50;
@@ -16,6 +17,8 @@ let height = MIN_HEIGHT * TILE_HEIGHT;
 
 let starfield;
 let fogOfWar;
+let fogOfWarRenderer;
+let fogOfWarDirty = false;
 
 function Map(game) {
     this.initGame(game);
@@ -30,7 +33,13 @@ Map.prototype = {
 
     update: function(entityManager) {
         if (starfield) starfield.update();
-        if (fogOfWar) fogOfWar.update(entityManager);
+        if (fogOfWar) { 
+            fogOfWar.optimizedUpdate(entityManager);
+            if (fogOfWarDirty) {
+                fogOfWarRenderer.update();
+                fogOfWarDirty = false;
+            }
+        }
     },
 
     initGame: function(_game) {
@@ -45,35 +54,47 @@ Map.prototype = {
     },
 
     initLayers: function() {
+        // initializes the separate layers
         starfield = new Starfield(this);
         fogOfWar = new FogOfWar(this);
-        fogOfWar.update = Util.interval(fogOfWar.update, FOG_OF_WAR_REFRESH_RATE, fogOfWar);
+        fogOfWarRenderer = new FogOfWarRenderer(fogOfWar);
+
+        // generates a function for updating the FogOfWar fields
+        // only at the given regular intervals so that to save CPU time
+        fogOfWar.optimizedUpdate = Util.interval(entityManager => {
+            fogOfWar.update(entityManager);
+            fogOfWarDirty = true;
+        }, FOG_OF_WAR_REFRESH_RATE, fogOfWar);
     },
 
     scrollTo: function(x, y) {
         game.camera.x = x;
         game.camera.y = y;
+        fogOfWarDirty = true;
     },
 
     scrollToTile: function(x, y) {
-        game.camera.x = x * TILE_WIDTH;
-        game.camera.y = y * TILE_HEIGHT;
+        this.scrollTo(x * TILE_WIDTH, y * TILE_HEIGHT);
     },
 
     scrollLeft: function(extent) {
         game.camera.x -= extent || SCROLL_SPEED;
+        fogOfWarDirty = true;
     },
 
     scrollRight: function(extent) {
         game.camera.x += extent || SCROLL_SPEED;
+        fogOfWarDirty = true;
     },
 
     scrollUp: function(extent) {
         game.camera.y -= extent || SCROLL_SPEED;
+        fogOfWarDirty = true;
     },
 
     scrollDown: function(extent) {
         game.camera.y += extent || SCROLL_SPEED;
+        fogOfWarDirty = true;
     },
 
     getScreenWidth: function() {

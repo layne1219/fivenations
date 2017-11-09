@@ -766,8 +766,9 @@ class Entity {
 
     getTile(map) {
         const sprite = this.getSprite();
-        const x = Math.floor(sprite.x / map.getTileWidth());
-        const y = Math.floor(sprite.y / map.getTileHeight());
+        const tileSize = map.getTileWidth();
+        const x = Math.floor(sprite.x / tileSize);
+        const y = Math.floor(sprite.y / tileSize);
         return [x, y];
     }
 

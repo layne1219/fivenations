@@ -1,21 +1,15 @@
 import Util from '../common/Util';
-import FogOfWarRenderer from './FogOfWarRenderer';
 
 class FogOfWar {
 
     constructor(map) {
         this.initMatrix(map);
-        this.initRenderer();
     }
 
     initMatrix(map) {
         this.tiles = Util.matrix(map.getWidth(), map.getHeight());
         this.tileWidth = map.getTileWidth();
         this.map = map;
-    }
-
-    initRenderer() {
-        this.renderer = new FogOfWarRenderer(this);
     }
 
     visit(x, y) {
@@ -26,7 +20,7 @@ class FogOfWar {
     }
 
     visitTilesByEntityVisibility(entity) {
-        var vision = entity.getDataObject().getVision();
+        var vision = entity.getDataObject().getVision() * 7;
         var tileVision = Math.max(Math.round(vision / this.tileWidth), 1);
         var tile = entity.getTile(this.map);
 
@@ -35,7 +29,7 @@ class FogOfWar {
         } else {
             for (var i = 0; i < tileVision; i += 1) {
                 for (var j = 0; j < tileVision; j += 1) {
-                    this.visit(tile[0] - Math.floor(i / 2) + i, tile[0] - Math.floor(j / 2) + j);
+                    this.visit(tile[0] - Math.floor(tileVision / 2) + i, tile[1] - Math.floor(tileVision / 2) + j);
                 }
             }                   
         }
@@ -53,10 +47,6 @@ class FogOfWar {
         entityManager
             .entities(':user')
             .forEach(entity => this.visitTilesByEntityVisibility(entity));
-        
-        if (this.renderer) {
-            this.renderer.update();
-        }
     }
 
     getMatrix() {
@@ -89,8 +79,5 @@ class FogOfWar {
 
 }
 
-export {
-    FogOfWar,
-    FogOfWarRenderer
-};
+export { FogOfWar };
 export default FogOfWar;
