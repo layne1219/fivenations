@@ -76,6 +76,8 @@ class FogOfWarRenderer {
                 }
             }
         }
+
+        this.bmd.dirty = true;
     }
 
     clear() {

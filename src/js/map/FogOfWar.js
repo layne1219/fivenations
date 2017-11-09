@@ -1,4 +1,5 @@
 import Util from '../common/Util';
+import FogOfWarMasks from './FogOfWarMasks';
 
 class FogOfWar {
 
@@ -20,19 +21,18 @@ class FogOfWar {
     }
 
     visitTilesByEntityVisibility(entity) {
-        var vision = entity.getDataObject().getVision() * 7;
-        var tileVision = Math.max(Math.round(vision / this.tileWidth), 1);
+        var vision = Math.max(entity.getDataObject().getVision(), 1);
+        var mask = FogOfWarMasks.getMaskBySize(vision);
+        var offset = Math.floor(mask.length / 2);
         var tile = entity.getTile(this.map);
 
-        if (tileVision === 1) {
-            this.visit(tile[0], tile[1]);
-        } else {
-            for (var i = 0; i < tileVision; i += 1) {
-                for (var j = 0; j < tileVision; j += 1) {
-                    this.visit(tile[0] - Math.floor(tileVision / 2) + i, tile[1] - Math.floor(tileVision / 2) + j);
+        for (var i = 0; i < mask.length; i += 1) {
+            for (var j = 0; j < mask[i].length; j += 1) {
+                if (mask[i][j]) {
+                    this.visit(tile[0] - offset + j, tile[1] - offset + i);
                 }
-            }                   
-        }
+            }
+        }                   
     }
 
     isVisible(x, y) {

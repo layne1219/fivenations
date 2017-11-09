@@ -10,7 +10,7 @@
    "speed":150,
    "maneuverability":50,
    "realManeuverSystem": true,
-   "vision":35,
+   "vision": 3,
    "weapons":[  
       1,
       0,
