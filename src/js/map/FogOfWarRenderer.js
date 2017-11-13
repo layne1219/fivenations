@@ -6,13 +6,13 @@ const ns = window.fivenations;
 class FogOfWarRenderer {
 
     constructor(fogOfWar) {
-        this.initGame(fogOfWar);
-        this.initFogOfWar(fogOfWar);
+        this.linkGame(fogOfWar);
+        this.addFogOfWar(fogOfWar);
         this.initBitMapData();
         this.initMask();
     }
 
-    initGame(fogOfWar) {
+    linkGame(fogOfWar) {
         const map = fogOfWar.getMap();
         this.game = map.getGame();
     }
@@ -29,14 +29,14 @@ class FogOfWarRenderer {
         group.add(this.body);
     }
 
-    initFogOfWar(fogOfWar) {
+    addFogOfWar(fogOfWar) {
         this.fogOfWar = fogOfWar;
         this.tileSize = fogOfWar.getMap().getTileWidth();
     }
 
     initMask() {
         const tileSize = this.tileSize;
-        const maskSize = this.tileSize * 4;
+        const maskSize = this.tileSize * 6;
         this.mask = this.game.add.bitmapData(maskSize, maskSize);
         this.mask.clear();
 
@@ -65,6 +65,8 @@ class FogOfWarRenderer {
         this.clear();
         this.bmd.blendDestinationOut();
 
+        const cameraOffsetX = this.game.camera.x % this.tileSize;
+        const cameraOffsetY = this.game.camera.y % this.tileSize;
         const matrix = this.getVisibleChunk();
         const maskSize = this.mask.width;
         const maskOffset = maskSize / 2; 
@@ -72,7 +74,7 @@ class FogOfWarRenderer {
         for (let i = 0; i < matrix.length; i += 1) {
             for (let j = 0; j < matrix[i].length; j += 1) {
                 if (matrix[i][j]) {
-                    this.bmd.draw(this.mask, j * this.tileSize - maskOffset, i * this.tileSize - maskOffset);
+                    this.bmd.draw(this.mask, j * this.tileSize - maskOffset - cameraOffsetX, i * this.tileSize - maskOffset - cameraOffsetY);
                 }
             }
         }

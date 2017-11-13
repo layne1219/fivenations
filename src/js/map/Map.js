@@ -3,7 +3,7 @@ import FogOfWar from './FogOfWar';
 import FogOfWarRenderer from './FogOfWarRenderer';
 import Util from '../common/Util';
 
-const FOG_OF_WAR_REFRESH_RATE = 50;
+const FOG_OF_WAR_REFRESH_RATE = 5;
 
 const MIN_WIDTH = 32;
 const MIN_HEIGHT = 32;
