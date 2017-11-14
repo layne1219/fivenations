@@ -187,6 +187,26 @@ export default class Minimap {
     }
 
     /**
+     * Updates Minimap with the visible tiles of the FogOfWar layer
+     */
+    updateFogOfWar() {
+        const color = 'rgba(255, 255, 255, 0.25)';
+        const tileWidth = 40;
+        const tiles = this.map.getFogOfWar().getMatrix();
+        for (let i = tiles.length - 1; i >= 0; i--) {
+            for (let j = tiles[i].length - 1; j >= 0; j--) {
+                if (tiles[j][i]) {
+                    const x = i * tileWidth / MINIMIZED_WIDTH;
+                    const y = j * tileWidth / MINIMIZED_HEIGHT;
+                    this.graphics.beginFill(color);
+                    this.graphics.drawRect(x, y, w, h);
+                    this.graphics.endFill();                    
+                }
+            }
+        }
+    }
+
+    /**
      * Returning the Phaser.Graphics object being used
      * @return {Phaser.Graphics} 
      */
