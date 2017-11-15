@@ -148,6 +148,7 @@ export default class Minimap {
      */
     update() {
         this.reset();
+        this.updateFogOfWar();
         this.updateEntities();
         this.updateCamera();
     }
@@ -194,14 +195,14 @@ export default class Minimap {
      */
     updateFogOfWar() {
         const tiles = this.map.getFogOfWar().getMatrix();
-        const cache = this.cache.fogOfWar;
-        if (!cache.fogOfWar) {
-            cache.fogOfWar = {};
-            cache.fogOfWar.color = 'rgba(255, 255, 255, 0.25)';
-            cache.fogOfWar.mapWidth = tiles.length - 1;
-            cache.fogOfWar.mapHeight = tiles[0].length - 1;
-            cache.fogOfWar.tileWidthOnMinimap = MINIMIZED_WIDTH / cache.mapWidth;
-            cache.fogOfWar.tileHeightOnMinimap = MINIMIZED_HEIGHT / cache.mapHeight;
+        let cache = this.cache.fogOfWar;
+        if (!cache) {
+            this.cache.fogOfWar = cache = {};
+            cache.color = '0x001A45';
+            cache.mapWidth = tiles.length - 1;
+            cache.mapHeight = tiles[0].length - 1;
+            cache.tileWidthOnMinimap = MINIMIZED_WIDTH / cache.mapWidth;
+            cache.tileHeightOnMinimap = MINIMIZED_HEIGHT / cache.mapHeight;
         }
         for (let i = tiles.length - 1; i >= 0; i -= 1) {
             for (let j = tiles[i].length - 1; j >= 0; j -= 1) {
