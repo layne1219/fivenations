@@ -24,6 +24,9 @@ export default class Minimap {
         this.map = map;
         this.entityManager = entityManager;
 
+        // cache to optimaze rendering
+        this.cache = {};
+
         // calculating the ratio
         this.ratio = {
             x: MINIMIZED_WIDTH / this.map.getScreenWidth(),
@@ -190,16 +193,23 @@ export default class Minimap {
      * Updates Minimap with the visible tiles of the FogOfWar layer
      */
     updateFogOfWar() {
-        const color = 'rgba(255, 255, 255, 0.25)';
-        const tileWidth = 40;
         const tiles = this.map.getFogOfWar().getMatrix();
-        for (let i = tiles.length - 1; i >= 0; i--) {
-            for (let j = tiles[i].length - 1; j >= 0; j--) {
+        const cache = this.cache.fogOfWar;
+        if (!cache.fogOfWar) {
+            cache.fogOfWar = {};
+            cache.fogOfWar.color = 'rgba(255, 255, 255, 0.25)';
+            cache.fogOfWar.mapWidth = tiles.length - 1;
+            cache.fogOfWar.mapHeight = tiles[0].length - 1;
+            cache.fogOfWar.tileWidthOnMinimap = MINIMIZED_WIDTH / cache.mapWidth;
+            cache.fogOfWar.tileHeightOnMinimap = MINIMIZED_HEIGHT / cache.mapHeight;
+        }
+        for (let i = tiles.length - 1; i >= 0; i -= 1) {
+            for (let j = tiles[i].length - 1; j >= 0; j -= 1) {
                 if (tiles[j][i]) {
-                    const x = i * tileWidth / MINIMIZED_WIDTH;
-                    const y = j * tileWidth / MINIMIZED_HEIGHT;
-                    this.graphics.beginFill(color);
-                    this.graphics.drawRect(x, y, w, h);
+                    const x = i / cache.mapWidth * MINIMIZED_WIDTH;
+                    const y = j / cache.mapHeight * MINIMIZED_HEIGHT;
+                    this.graphics.beginFill(cache.color);
+                    this.graphics.drawRect(x, y, cache.tileWidthOnMinimap, cache.tileHeightOnMinimap);
                     this.graphics.endFill();                    
                 }
             }
