@@ -1,5 +1,6 @@
 {
     "id": "smoke-trail-1",
+    "targetGraphicsGroup": "projectiles",
     "animType": ["idle"],
     "size": "xsm",
     "animations": {

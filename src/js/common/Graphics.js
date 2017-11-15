@@ -16,7 +16,8 @@ function createGraphicsInstance() {
             'entities',
             'energy-shields',
             'effects',                
-            'prior-gui-elements'
+            'prior-gui-elements',
+            'fogofwar'
         ];
 
     groupNames.forEach(function(name) {

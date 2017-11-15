@@ -37,6 +37,7 @@ export const ENTITY_GUI_SIZES = {
 export const GROUP_EFFECTS = 'effects';
 export const GROUP_ENTITIES = 'entities';
 export const GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
+export const GROUP_FOGOFWAR = 'fogofwar';
 
 // helper constants for entity related functionalities 
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
