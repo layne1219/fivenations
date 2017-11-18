@@ -1,4 +1,4 @@
-Please employ to following template as the base structure of Pull Requests for **AlloyEditor** (liferay/alloy-editor) project. Pull Requests not incorporating the sections below will be regarded as unsatisfying and rejected. 
+Please employ to following template as the base structure of Pull Requests for **Five Nations** (vbence86/fivenations) project. Pull Requests not incorporating the sections below will be regarded as unsatisfying and rejected. 
 
 ## Prelude
 Preliminary history of the issue related to this very Pull Request. Share any information that could ease the understanding of why this issue exists and what measures have been administered to address it.
