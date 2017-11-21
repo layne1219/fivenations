@@ -1,32 +1,127 @@
 {
-	"id": "hurricane",
-	"name": "Hurricane",
-	"type": "Fighter",
-	"hull": 40,
-	"shield": 0,
-	"armor": 0,
-	"power": 0, 
-	"hangar": 0,
-	"speed": 50,
-	"maneuverability": 50,
-	"vision": 35,
-	"weapons": [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 40,
-	"silicium": 5,
-	"energy": 25,
-	"uranium": 0,
-	"space": 1,
-	"buildingTime": 4,
-	"directions": 16,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "xsm",
-	"events": {
-		"remove": {
-			"effects": ["destruction-small"],
-			"minWrecks": 0,
-			"maxWrecks": 0,
-			"wrecks": []
-		}
-	}
+  "id": "hurricane",
+  "name": "Hurricane",
+  "type": "Fighter",
+  "hull": 40,
+  "shield": 0,
+  "armor": 0,
+  "power": 0,
+  "hangar": 0,
+  "speed": 150,
+  "maneuverability": 50,
+  "realManeuverSystem": true,
+  "vision": 2,
+  "weapons": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 50,
+  "silicium": 0,
+  "energy": 20,
+  "uranium": 0,
+  "space": 1,
+  "buildingTime": 4,
+  "directions": 16,
+  "animFrame": 1,
+  "animType": 0,
+  "hasJetEngine": true,
+  "size": "xsm",
+  "sizeOffset": {
+    "w": 15,
+    "h": 15
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -9
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 5
+    },
+    {
+      "x": -6,
+      "y": 6
+    },
+    {
+      "x": -9,
+      "y": 3
+    },
+    {
+      "x": -11,
+      "y": 0
+    },
+    {
+      "x": -13,
+      "y": -1
+    },
+    {
+      "x": -13,
+      "y": -5
+    },
+    {
+      "x": -10,
+      "y": -7
+    },
+    {
+      "x": -6,
+      "y": -9
+    },
+    {
+      "x": 0,
+      "y": -9
+    },
+    {
+      "x": 4,
+      "y": -8
+    },
+    {
+      "x": 7,
+      "y": -7
+    },
+    {
+      "x": 8,
+      "y": -5
+    },
+    {
+      "x": 10,
+      "y": -3
+    },
+    {
+      "x": 10,
+      "y": 2
+    },
+    {
+      "x": 9,
+      "y": 5
+    },
+    {
+      "x": 5,
+      "y": 5
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-small"
+      ],
+      "minWrecks": 0,
+      "maxWrecks": 0,
+      "wrecks": []
+    }
+  },
+  "damageArea": {
+    "width": 30,
+    "height": 30
+  }
 }

@@ -1,32 +1,189 @@
 {
-	"id": "nuclearmissile",
-	"name": "Nuclear Missile",
-	"type": "Special",
-	"hull": 25,
-	"shield": 0,
-	"armor": 0,
-	"power": 0, 
-	"hangar": 0,
-	"speed": 75,
-	"maneuverability": 25,
-	"vision": 10,
-	"weapons": [ 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 10,
-	"silicium": 10,
-	"energy": 250,
-	"uranium": 80,
-	"space": 0,
-	"buildingTime": 15,
-	"directions": 32,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "xsm",
-	"events": {
-		"remove": {
-			"effects": ["destruction-bio-big"],
-			"minWrecks": 0,
-			"maxWrecks": 0,
-			"wrecks": []
-		}
-	} 
+  "id": "nuclearmissile",
+  "name": "Nuclear Missile",
+  "type": "Special",
+  "hull": 25,
+  "shield": 0,
+  "armor": 0,
+  "power": 0,
+  "hangar": 0,
+  "speed": 200,
+  "maneuverability": 25,
+  "vision": 0,
+  "weapons": [
+    20,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 0,
+  "silicium": 0,
+  "energy": 250,
+  "uranium": 80,
+  "space": 0,
+  "buildingTime": 20,
+  "directions": 32,
+  "animFrame": 1,
+  "animType": 0,
+  "size": "xsm",
+  "sizeOffset": {
+    "w": 13,
+    "h": 13
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": 0
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-small"
+      ],
+      "minWrecks": 0,
+      "maxWrecks": 0,
+      "wrecks": []
+    }
+  },
+  "damageArea": {
+    "width": 26,
+    "height": 26
+  }
 }

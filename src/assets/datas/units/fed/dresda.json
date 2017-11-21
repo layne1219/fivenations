@@ -1,32 +1,196 @@
 {
-	"id": "dresda",
-	"name": "Dresda",
-	"type": "Carrier",
-	"hull": 900,
-	"shield": 300,
-	"armor": 4,
-	"power": 0, 
-	"hangar": 15,
-	"speed": 20,
-	"maneuverability": 15,
-	"vision": 70,
-	"weapons": [ 7, 7, 5, 16, 0, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 1000,
-	"silicium": 500,
-	"energy": 1000,
-	"uranium": 25,
-	"space": 25,
-	"buildingTime": 50,
-	"directions": 32,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "m",
-	"events": {
-		"remove": {
-			"effects": ["destruction-big"],
-			"minWrecks": 5,
-			"maxWrecks": 10,
-			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
-		}
-	} 
+  "id": "dresda",
+  "name": "Dresda",
+  "type": "Carrier",
+  "hull": 700,
+  "shield": 300,
+  "armor": 4,
+  "power": 0,
+  "hangar": 15,
+  "speed": 35,
+  "maneuverability": 15,
+  "vision": 7,
+  "weapons": [
+    7,
+    7,
+    5,
+    16,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 750,
+  "silicium": 250,
+  "energy": 500,
+  "uranium": 50,
+  "space": 25,
+  "buildingTime": 40,
+  "directions": 32,
+  "animFrame": 1,
+  "animType": 0,
+  "size": "m",
+  "hasJetEngine": true,
+  "sizeOffset": {
+    "w": 40,
+    "h": 40
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -20
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 35
+    },
+    {
+      "x": -11,
+      "y": 34
+    },
+    {
+      "x": -19,
+      "y": 32
+    },
+    {
+      "x": -26,
+      "y": 32
+    },
+    {
+      "x": -32,
+      "y": 30
+    },
+    {
+      "x": -40,
+      "y": 25
+    },
+    {
+      "x": -42,
+      "y": 22
+    },
+    {
+      "x": -45,
+      "y": 16
+    },
+    {
+      "x": -45,
+      "y": 13
+    },
+    {
+      "x": -44,
+      "y": 7
+    },
+    {
+      "x": -45,
+      "y": 0
+    },
+    {
+      "x": -41,
+      "y": -8
+    },
+    {
+      "x": -34,
+      "y": -13
+    },
+    {
+      "x": -28,
+      "y": -18
+    },
+    {
+      "x": -22,
+      "y": -20
+    },
+    {
+      "x": -11,
+      "y": -23
+    },
+    {
+      "x": -2,
+      "y": -23
+    },
+    {
+      "x": 11,
+      "y": -21
+    },
+    {
+      "x": 20,
+      "y": -18
+    },
+    {
+      "x": 28,
+      "y": -13
+    },
+    {
+      "x": 35,
+      "y": -10
+    },
+    {
+      "x": 39,
+      "y": -5
+    },
+    {
+      "x": 42,
+      "y": -3
+    },
+    {
+      "x": 44,
+      "y": 5
+    },
+    {
+      "x": 44,
+      "y": 10
+    },
+    {
+      "x": 43,
+      "y": 15
+    },
+    {
+      "x": 39,
+      "y": 22
+    },
+    {
+      "x": 36,
+      "y": 25
+    },
+    {
+      "x": 33,
+      "y": 30
+    },
+    {
+      "x": 27,
+      "y": 34
+    },
+    {
+      "x": 18,
+      "y": 36
+    },
+    {
+      "x": 9,
+      "y": 38
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-big"
+      ],
+      "minWrecks": 5,
+      "maxWrecks": 10,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  },
+  "damageArea": {
+    "width": 80,
+    "height": 80
+  }
 }
