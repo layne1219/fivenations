@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {  
    "id":"orca",
    "name":"Orca",
@@ -125,4 +126,62 @@
          ]
       }
    }
+=======
+{
+  "id": "orca",
+  "name": "Orca",
+  "type": "Destroyer",
+  "hull": 120,
+  "shield": 60,
+  "armor": 1,
+  "power": 0,
+  "hangar": 0,
+  "speed": 60,
+  "maneuverability": 40,
+  "vision": 4,
+  "weapons": [
+    1,
+    1,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 200,
+  "silicium": 0,
+  "energy": 100,
+  "uranium": 0,
+  "space": 4,
+  "buildingTime": 12,
+  "directions": 16,
+  "animFrame": 1,
+  "animType": 0,
+  "size": "sm",
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-medium"
+      ],
+      "minWrecks": 2,
+      "maxWrecks": 3,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  },
+  "damageArea": {
+    "width": 50,
+    "height": 50
+  }
+>>>>>>> origin/0.25.1
 }

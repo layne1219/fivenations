@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {  
    "id":"engineershuttle",
    "name":"Engineer Shuttle",
@@ -124,4 +125,134 @@
          ]
       }
    }
+=======
+{
+  "id": "engineershuttle",
+  "name": "Engineer Shuttle",
+  "type": "Worker",
+  "hull": 50,
+  "shield": 0,
+  "armor": 0,
+  "power": 0,
+  "hangar": 0,
+  "speed": 100,
+  "maneuverability": 35,
+  "vision": 2,
+  "weapons": [
+    10,
+    11,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 50,
+  "silicium": 0,
+  "energy": 50,
+  "uranium": 0,
+  "space": 2,
+  "buildingTime": 8,
+  "directions": 16,
+  "animFrame": 3,
+  "animType": [
+    "mining",
+    "building"
+  ],
+  "hasJetEngine": false,
+  "size": "xsm",
+  "sizeOffset": {
+    "w": 15,
+    "g": 15
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -2
+  },
+  "initialPoints": [
+    {
+      "x": -4,
+      "y": 5
+    },
+    {
+      "x": -8,
+      "y": 4
+    },
+    {
+      "x": -11,
+      "y": 3
+    },
+    {
+      "x": -15,
+      "y": 0
+    },
+    {
+      "x": -17,
+      "y": -5
+    },
+    {
+      "x": -16,
+      "y": -11
+    },
+    {
+      "x": -15,
+      "y": -15
+    },
+    {
+      "x": -9,
+      "y": -18
+    },
+    {
+      "x": -4,
+      "y": -20
+    },
+    {
+      "x": 6,
+      "y": -19
+    },
+    {
+      "x": 9,
+      "y": -15
+    },
+    {
+      "x": 10,
+      "y": -14
+    },
+    {
+      "x": 12,
+      "y": -12
+    },
+    {
+      "x": 10,
+      "y": 0
+    },
+    {
+      "x": 8,
+      "y": 4
+    },
+    {
+      "x": 5,
+      "y": 5
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-small"
+      ],
+      "minWrecks": 0,
+      "maxWrecks": 0,
+      "wrecks": []
+    }
+  },
+  "damageArea": {
+    "width": 30,
+    "height": null
+  }
+>>>>>>> origin/0.25.1
 }
