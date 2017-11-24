@@ -6,6 +6,7 @@
     "frames": [
         32, 33, 34, 35, 36, 37, 38, 39
     ],
+    "persistOrienationFromEmitter": true,
     "events": {
         "remove": {
             "effects": ["destruction-big"]
