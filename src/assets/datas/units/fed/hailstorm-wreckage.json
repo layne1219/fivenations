@@ -1,0 +1,14 @@
+{
+    "id": "hailstorm-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        0, 1, 2, 3, 4, 5, 6, 7
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-medium"]
+        }
+    }
+}

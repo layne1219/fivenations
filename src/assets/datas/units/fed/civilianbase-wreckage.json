@@ -1,0 +1,14 @@
+{
+    "id": "civilianbase-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 66,
+    "frames": [
+        66
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

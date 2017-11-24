@@ -1,0 +1,14 @@
+{
+    "id": "merchantport-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 70,
+    "frames": [
+        70
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

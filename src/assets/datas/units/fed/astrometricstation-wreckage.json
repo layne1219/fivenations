@@ -1,0 +1,14 @@
+{
+    "id": "astrometricstation-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 72,
+    "frames": [
+        72
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "id": "commandcenter-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 64,
+    "frames": [
+        64
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "id": "shipfactory-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 68,
+    "frames": [
+        68
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

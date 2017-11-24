@@ -1,0 +1,14 @@
+{
+    "id": "pasteur-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        40, 41, 42, 43, 44, 45, 46, 47
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

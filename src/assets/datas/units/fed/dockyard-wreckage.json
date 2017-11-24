@@ -1,0 +1,14 @@
+{
+    "id": "dockyard-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 69,
+    "frames": [
+        69
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

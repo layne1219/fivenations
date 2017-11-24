@@ -1,0 +1,14 @@
+{
+    "id": "fusionreactor-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 75,
+    "frames": [
+        75
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

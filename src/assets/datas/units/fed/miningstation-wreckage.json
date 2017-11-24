@@ -1,0 +1,14 @@
+{
+    "id": "miningstation-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 65,
+    "frames": [
+        65
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

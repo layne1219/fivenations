@@ -1,0 +1,14 @@
+{
+    "id": "kutuzov-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        32, 33, 34, 35, 36, 37, 38, 39
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

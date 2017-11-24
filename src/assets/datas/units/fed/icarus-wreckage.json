@@ -1,0 +1,14 @@
+{
+    "id": "icarus-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        24, 25, 26, 27, 28, 29, 30, 31
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

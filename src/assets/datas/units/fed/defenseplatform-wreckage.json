@@ -1,0 +1,14 @@
+{
+    "id": "defenseplatform-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 74,
+    "frames": [
+        74
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

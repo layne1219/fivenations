@@ -1,0 +1,14 @@
+{
+    "id": "stgeorge-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        8, 9, 10, 11, 12, 13, 14, 15
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

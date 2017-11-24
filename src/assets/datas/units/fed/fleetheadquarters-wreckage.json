@@ -1,0 +1,14 @@
+{
+    "id": "fleetheadquarters-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 73,
+    "frames": [
+        73
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

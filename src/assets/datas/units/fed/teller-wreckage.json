@@ -1,0 +1,14 @@
+{
+    "id": "teller-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        56, 57, 58, 59, 60, 61, 62, 63
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

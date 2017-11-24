@@ -1,0 +1,14 @@
+{
+    "id": "researchcenter-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 71,
+    "frames": [
+        71
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

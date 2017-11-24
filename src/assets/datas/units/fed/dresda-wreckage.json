@@ -1,0 +1,14 @@
+{
+    "id": "dresda-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 0,
+    "frames": [
+        48, 49, 50, 51, 52, 53, 54, 55
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}
