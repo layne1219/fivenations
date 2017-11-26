@@ -27,30 +27,60 @@ ns.entities = ns.entities || {
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit03.json',
         dataURL: PATH_ASSETS_DATA + 'fed/hailstorm.json'
     },
+    'hailstorm-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/hailstorm-wreckage.json'
+    },    
     stgeorge: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit04.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit04.json',
         dataURL: PATH_ASSETS_DATA + 'fed/stgeorge.json'
     },
+    'stgeorge-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/stgeorge-wreckage.json'
+    },     
     avenger: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit05.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit05.json',
         dataURL: PATH_ASSETS_DATA + 'fed/avenger.json'
     },
+    'avenger-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/avenger-wreckage.json'
+    },     
     avenger2: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit06.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit06.json',
         dataURL: PATH_ASSETS_DATA + 'fed/avenger2.json'
     },
+    'avenger2-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/avenger2-wreckage.json'
+    },    
     icarus: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit07.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit07.json',
         dataURL: PATH_ASSETS_DATA + 'fed/icarus.json'
     },
+    'icarus-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/icarus-wreckage.json'
+    },    
     engineershuttle: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit08.png',
@@ -63,18 +93,36 @@ ns.entities = ns.entities || {
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit09.json',
         dataURL: PATH_ASSETS_DATA + 'fed/kutuzov.json'
     },
+    'kutuzov-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/kutuzov-wreckage.json'
+    },    
     pasteur: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit10.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit10.json',
         dataURL: PATH_ASSETS_DATA + 'fed/pasteur.json'
     },
+    'pasteur-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/pasteur-wreckage.json'
+    },    
     dresda: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit11.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit11.json',
         dataURL: PATH_ASSETS_DATA + 'fed/dresda.json'
     },
+    'dresda-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/dresda-wreckage.json'
+    },    
     crow: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit12.png',
@@ -83,10 +131,16 @@ ns.entities = ns.entities || {
     },
     teller: {
         preloading: true,
-        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit13.png',
-        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unit13.json',
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
         dataURL: PATH_ASSETS_DATA + 'fed/teller.json'
     },
+    'teller-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/teller-wreckage.json'
+    },    
     nuclearmissile: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_unit14.png',

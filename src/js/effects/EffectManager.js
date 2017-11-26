@@ -269,14 +269,16 @@ class EffectManager {
                 this.add({
                     id: effectId,
                     x: sprite.x,
-                    y: sprite.y
+                    y: sprite.y,
+                    emitter: entity
                 });
             } else {
                 eventData.effects.forEach(effectId => {
                     this.add({
                         id: effectId,
                         x: sprite.x,
-                        y: sprite.y
+                        y: sprite.y,
+                        emitter: entity
                     });
                 });
             }

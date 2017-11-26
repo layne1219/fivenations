@@ -2,7 +2,7 @@
     "id": "avenger-wreckage",
     "size": "m",
     "ttl": 500,
-    "customFrame": 0,
+    "customFrame": 16,
     "frames": [
         16, 17, 18, 19, 20, 21, 22, 23
     ],
