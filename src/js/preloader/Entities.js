@@ -153,60 +153,120 @@ ns.entities = ns.entities || {
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build01.json',
         dataURL: PATH_ASSETS_DATA + 'fed/commandcenter.json'
     },
+    'commandcenter-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/commandcenter-wreckage.json'
+    },    
     miningstation: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build02.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build02.json',
         dataURL: PATH_ASSETS_DATA + 'fed/miningstation.json'
     },
+    'miningstation-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/miningstation-wreckage.json'
+    },    
     civilianbase: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build03.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build03.json',
         dataURL: PATH_ASSETS_DATA + 'fed/civilianbase.json'
     },
+    'civilianbase-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/civilianbase-wreckage.json'
+    },    
     solarstation: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build04.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build04.json',
         dataURL: PATH_ASSETS_DATA + 'fed/solarstation.json'
     },
+    'solarstation-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/solarstation-wreckage.json'
+    },    
     shipfactory: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build05.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build05.json',
         dataURL: PATH_ASSETS_DATA + 'fed/shipfactory.json'
     },
+    'shipfactory-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/shipfactory-wreckage.json'
+    },       
     dockyard: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build06.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build06.json',
         dataURL: PATH_ASSETS_DATA + 'fed/dockyard.json'
     },
+    'dockyard-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/dockyard-wreckage.json'
+    },    
     merchantport: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build07.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build07.json',
         dataURL: PATH_ASSETS_DATA + 'fed/merchantport.json'
     },
+    'merchantport-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/merchantport-wreckage.json'
+    },    
     researchcenter: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build08.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build08.json',
         dataURL: PATH_ASSETS_DATA + 'fed/researchcenter.json'
     },
+    'researchcenter-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/researchcenter-wreckage.json'
+    },    
     astrometricstation: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build09.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build09.json',
         dataURL: PATH_ASSETS_DATA + 'fed/astrometricstation.json'
     },
+    'astrometricstation-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/astrometricstation-wreckage.json'
+    },    
     fleetheadquarters: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build10.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build10.json',
         dataURL: PATH_ASSETS_DATA + 'fed/fleetheadquarters.json'
     },
+    'fleetheadquarters-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/fleetheadquarters-wreckage.json'
+    },    
     defensesatellite: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build11.png',
@@ -219,12 +279,24 @@ ns.entities = ns.entities || {
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build12.json',
         dataURL: PATH_ASSETS_DATA + 'fed/defenseplatform.json'
     },
+    'defenseplatform-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/defenseplatform-wreckage.json'
+    },    
     fusionreactor: {
         preloading: true,
         spriteURL: PATH_ASSETS_IMG + 'fed/fed_build13.png',
         atlasURL: PATH_ASSETS_IMG + 'fed/fed_build13.json',
         dataURL: PATH_ASSETS_DATA + 'fed/fusionreactor.json'
     },
+    'fusionreactor-wreckage': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.png',
+        atlasURL: PATH_ASSETS_IMG + 'fed/fed_unitandbuilding_wreckages.json',
+        dataURL: PATH_ASSETS_DATA + 'fed/fusionreactor-wreckage.json'
+    },    
 /*
     // ----------------------------------------------------------------------------
     // ATHRAELS
