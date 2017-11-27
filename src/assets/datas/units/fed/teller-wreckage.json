@@ -1,13 +1,24 @@
 {
     "id": "teller-wreckage",
     "size": "m",
-    "ttl": 500,
+    "ttl": 250,
     "customFrame": 0,
     "frames": [
         56, 57, 58, 59, 60, 61, 62, 63
     ],
     "persistOrienationFromEmitter": true,
     "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
         "remove": {
             "effects": ["destruction-medium"]
         }

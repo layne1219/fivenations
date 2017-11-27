@@ -1,13 +1,24 @@
 {
     "id": "stgeorge-wreckage",
     "size": "m",
-    "ttl": 500,
+    "ttl": 400,
     "customFrame": 0,
     "frames": [
         8, 9, 10, 11, 12, 13, 14, 15
     ],
     "persistOrienationFromEmitter": true,
     "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
         "remove": {
             "effects": ["destruction-big"]
         }
