@@ -126,7 +126,10 @@ function registerRemoveEventToAnimation(effect, animation) {
 }
 
 function setTTL(config) {
-    this.ttl = config.dataObject.getTTL();
+    // removes the possibility of referencing instead of 
+    // copying the value 
+    this.ttl = 0;
+    this.ttl += config.dataObject.getTTL();
 }
 
 /**

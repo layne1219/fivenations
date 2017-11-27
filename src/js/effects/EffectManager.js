@@ -42,7 +42,7 @@ class EffectManager {
 
         // adding the freshly created effect to the main array
         const effect = new Effect({
-            guid: config.guid,
+            guid: config.guid || Util.getGUID(),
             emitter: config.emitter,
             manager: this,
             sprite: sprite,
@@ -152,22 +152,10 @@ class EffectManager {
      * @param {object} effect Effect instance
      */
     remove(effect) {
-        for (var i = effects.length - 1; i >= 0; i -= 1) {
-            if (effect === effects[i]) {
-                this.removeByIndex(i);
-            }
-        }
+        if (!effect) return;
+        effect.remove();
+        effects = effects.filter(val => val !== effect);
         effect = null;
-    }
-
-    /**
-     * Removes effect with the given index from the private collection
-     * @param {integer} idx index of the effect in the effect queue
-     */        
-    removeByIndex(idx) {
-        if (!effects[idx]) return;
-        effects[idx].remove();
-        effects.splice(idx, 1);
     }
 
     /**
