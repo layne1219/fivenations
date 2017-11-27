@@ -25,6 +25,8 @@ function setManager(config) {
  */
 function setDataObject(config) {
     this.dataObject = config.dataObject;
+    this.trails = this.dataObject.getTrails();
+    this.idle = this.dataObject.getEvent('idle');
 }
 
 /**
@@ -126,10 +128,7 @@ function registerRemoveEventToAnimation(effect, animation) {
 }
 
 function setTTL(config) {
-    // removes the possibility of referencing instead of 
-    // copying the value 
-    this.ttl = 0;
-    this.ttl += config.dataObject.getTTL();
+    this.ttl = config.dataObject.getTTL();
 }
 
 /**
@@ -184,25 +183,50 @@ Effect.prototype = {
     },
 
     hasTrails: function() {
-        if (!this.trails) {
-            this.trails = this.dataObject.getTrails();
-        }
         return !!this.trails;
     },
 
     getTrailsRate: function() {
-        if (!this.trails) {
-            this.trails = this.dataObject.getTrails();
-        }
         return this.trails.rate;
     },
 
     getTrailsEffect: function() {
-        if (!this.trails) {
-            this.trails = this.dataObject.getTrails();
-        }
         return this.trails.effect;
-    } 
+    },
+
+    hasIdle: function() {
+        return !!this.idle;
+    },
+
+    getIdleEffects: function() {
+        return this.idle.effects;
+    },
+
+    shouldIdleEffectsGetRandomized: function() {
+        return this.idle.randomExecution;
+    },
+
+    getIdleRandomRate: function() {
+        return this.idle.randomRate;
+    },
+
+    getIdleEffectOffset: function() {
+        const offset = {};
+        const offsetAttrs = ['offsetX', 'offsetY'];
+        offsetAttrs.map(val => {
+            if (this.idle[val]) {
+                if (this.idle[val].length) {
+                    offset[val] = Util.rnd(this.idle[val][0], this.idle[val][1] * 2)
+                } else {
+                    offset[val] = this.idle[val];
+                }
+            }
+        });
+        return {
+            x: offset.offsetX,
+            y: offset.offsetY
+        };
+    }
 
 }
 

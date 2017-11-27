@@ -177,12 +177,9 @@ class EffectManager {
             if (authoritative && this.isEffectExpired(effects[i])) {
                 EventEmitter.getInstance().synced.effects(effects[i]).remove();
             } else {
-                if (effects[i].willFollowTarget()) {
-                    this.followTarget(effects[i]);
-                }
-                if (effects[i].hasTrails()) {
-                    this.emitTrails(effects[i]);
-                }
+                this.followTarget(effects[i]);
+                this.emitTrails(effects[i]);
+                this.idle(effects[i]);
             }
         }
 
@@ -297,18 +294,17 @@ class EffectManager {
      * @return {void}
      */
     followTarget(effect) {
-        var targetEntity = effect.getTargetEntity();
-        var rotation;
-        var sprite;
-        var targetSprite;
-        var point;
+        if (!effect.willFollowTarget()) return;
+
+        const targetEntity = effect.getTargetEntity();
+        let rotation;
+        let sprite;
+        let targetSprite;
+        let point;
         
         if (!targetEntity) {
-
             effect.ttl = 0;
-
         } else {
-        
             sprite = effect.getSprite();
             targetSprite = targetEntity.getSprite();
 
@@ -317,9 +313,7 @@ class EffectManager {
             
             sprite.body.velocity = point;
             sprite.rotation = rotation;
-
         }
-
     }
 
     /**
@@ -328,6 +322,8 @@ class EffectManager {
      * @return {void}
      */
     emitTrails(effect) {
+        if (!effect.hasTrails()) return;
+
         if (effect.ttl % effect.getTrailsRate() === 0) {
             this.add({
                 id: effect.getTrailsEffect(),
@@ -337,6 +333,32 @@ class EffectManager {
         }
     }
 
+    /**
+     * executes the pre-defined idle actions
+     * @param  {object} effect Effect entity
+     * @return {void}
+     */
+    idle(effect) {
+        if (!effect.hasIdle()) return;
+
+        const randomize = effect.shouldIdleEffectsGetRandomized();
+
+        if (randomize) {
+            const odds = Math.floor(Math.random() * effect.getIdleRandomRate());
+            if (odds === 0) {
+                const effects = effect.getIdleEffects();
+                const idx = Util.rnd(0, effects.length - 1);
+                const offset = effect.getIdleEffectOffset();
+
+                this.add({
+                    id: effects[idx],
+                    x: effect.getSprite().x + offset.x,
+                    y: effect.getSprite().y + offset.y
+                });         
+            }
+        }
+
+    }
 
     /**
      * makes the effects flash and disappear quickly
