@@ -176,6 +176,7 @@
   "events": {
     "remove": {
       "effects": [
+        "avenger2-wreckage",
         "destruction-big"
       ],
       "minWrecks": 5,

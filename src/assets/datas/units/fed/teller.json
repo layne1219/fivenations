@@ -176,6 +176,7 @@
   "events": {
     "remove": {
       "effects": [
+        "teller-wreckage",
         "destruction-medium"
       ],
       "minWrecks": 3,

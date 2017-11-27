@@ -176,6 +176,7 @@
   "events": {
     "remove": {
       "effects": [
+        "dresda-wreckage",
         "destruction-big"
       ],
       "minWrecks": 5,

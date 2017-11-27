@@ -176,6 +176,7 @@
   "events": {
     "remove": {
       "effects": [
+        "pasteur-wreckage",
         "destruction-medium"
       ],
       "minWrecks": 3,

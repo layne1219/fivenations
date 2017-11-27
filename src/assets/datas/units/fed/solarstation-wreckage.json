@@ -1,0 +1,14 @@
+{
+    "id": "solarstation-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 67,
+    "frames": [
+        67
+    ],
+    "events": {
+        "remove": {
+            "effects": ["destruction-small"]
+        }
+    }
+}

@@ -9,7 +9,7 @@
     "persistOrienationFromEmitter": true,
     "events": {
         "remove": {
-            "effects": ["destruction-big"]
+            "effects": ["destruction-medium"]
         }
     }
 }

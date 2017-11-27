@@ -31,7 +31,10 @@
     },
     "events": {
 		"remove": {
-			"effects": ["destruction-big"],
+			"effects": [
+                "miningstation-wreckage",
+                "destruction-big"
+            ],
 			"minWrecks": 10,
 			"maxWrecks": 15,
 			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]

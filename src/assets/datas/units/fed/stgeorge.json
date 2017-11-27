@@ -177,6 +177,7 @@
   "events": {
     "remove": {
       "effects": [
+        "stgeorge-wreckage",
         "destruction-big"
       ],
       "minWrecks": 5,
