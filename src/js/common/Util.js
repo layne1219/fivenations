@@ -165,7 +165,22 @@ export default {
 
         return Math.sqrt(dx * dx + dy * dy);
 
-    },        
+    },
+
+    /**
+     * Measures the distance between the given sprites
+     * @param {object} source first entity
+     * @param {object} target second entity
+     * @return {integer} distance in pixels 
+     */
+    distanceBetweenEntityAndCoords: function (source, target) {
+
+        var dx = source.sprite.x - target.x;
+        var dy = source.sprite.y - target.y;
+
+        return Math.sqrt(dx * dx + dy * dy);
+
+    },            
 
     // Eventlistener object
     EventDispatcher: (function() {
