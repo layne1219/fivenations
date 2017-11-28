@@ -40,7 +40,7 @@
   "size": "xsm",
   "sizeOffset": {
     "w": 15,
-    "g": 15
+    "h": 15
   },
   "selectionOffset": {
     "x": 0,
@@ -121,9 +121,5 @@
       "maxWrecks": 0,
       "wrecks": []
     }
-  },
-  "damageArea": {
-    "width": 30,
-    "height": null
   }
 }

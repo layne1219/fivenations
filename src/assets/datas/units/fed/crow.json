@@ -118,9 +118,5 @@
       "maxWrecks": 0,
       "wrecks": []
     }
-  },
-  "damageArea": {
-    "width": 30,
-    "height": 30
   }
 }
