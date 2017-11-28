@@ -39,6 +39,7 @@ function createMovementObject(entity) {
     return {
         velocity: 0,
         acceleration: 0,
+        currentAngle: Phaser.Math.degToRad(90),        
         maxVelocity: dataObject.getSpeed(),
         maxAcceleration: dataObject.getSpeed(),
         maxTargetDragTreshold: dataObject.getSpeed()
@@ -59,7 +60,6 @@ function createRotationObject(entity) {
     return {
         realManeuverSystem: hasRealManeuverSystem,
         targetAngleCode: 0,
-        currentAngle: Phaser.Math.degToRad(0),
         currentAngleCode: 0,
         maxAngleCount: dataObject.getDirections(),
         angularVelocity: 0,
@@ -433,7 +433,25 @@ MotionManager.prototype = {
      */
     getCurrentAngleCode: function() {
         return this.rotation.currentAngleCode;
-    }
+    },
+
+    /**
+     * Returns the current orientation of the entity in radian
+     * @return {integer} orientation of the entity in radian
+     */
+    getCurrentAngleInRad: function() {
+        return this.movement.currentAngle;        
+    },
+
+    /**
+     * Returns the current orientation of the entity in degree
+     * @return {integer} orientation of the entity in degree
+     */
+    getCurrentAngleInDeg: function() {
+        return (Phaser.Math.radToDeg(this.getCurrentAngleInRad()) + 270) % 360;        
+    },
+
+
 
 };
 

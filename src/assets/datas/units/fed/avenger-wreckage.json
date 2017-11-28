@@ -1,0 +1,26 @@
+{
+    "id": "avenger-wreckage",
+    "size": "m",
+    "ttl": 300,
+    "customFrame": 16,
+    "frames": [
+        16, 17, 18, 19, 20, 21, 22, 23
+    ],
+    "persistOrienationFromEmitter": true,
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-medium"]
+        }
+    }
+}

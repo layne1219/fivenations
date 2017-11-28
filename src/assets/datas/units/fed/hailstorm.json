@@ -1,192 +1,193 @@
-{  
-   "id":"hailstorm",
-   "name":"Hailstorm",
-   "type":"Cruiser",
-   "hull":400,
-   "shield":250,
-   "armor":3,
-   "power":0,
-   "hangar":4,
-   "speed":50,
-   "maneuverability":15,
-   "vision":100,
-   "weapons":[  
-      3,
-      3,
-      3,
-      3,
-      4,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-   ],
-   "titanium":500,
-   "silicium":150,
-   "energy":300,
-   "uranium":0,
-   "space":12,
-   "buildingTime":35,
-   "directions":32,
-   "animFrame":1,
-   "animType":0,
-   "hasJetEngine": true,   
-   "size":"m",
-   "sizeOffset":{  
-      "w":35,
-      "h":35
-   },
-   "selectionOffset":{  
-      "x":0,
-      "y":-15
-   },
-   "initialPoints":[  
-      {  
-         "x":0,
-         "y":0
-      },
-      {  
-         "x":-3,
-         "y":0
-      },
-      {  
-         "x":-7,
-         "y":0
-      },
-      {  
-         "x":-5,
-         "y":-7
-      },
-      {  
-         "x":-5,
-         "y":-9
-      },
-      {  
-         "x":-5,
-         "y":-10
-      },
-      {  
-         "x":-5,
-         "y":-9
-      },
-      {  
-         "x":-3,
-         "y":-9
-      },
-      {  
-         "x":-4,
-         "y":-9
-      },
-      {  
-         "x":-4,
-         "y":-8
-      },
-      {  
-         "x":-3,
-         "y":-9
-      },
-      {  
-         "x":-3,
-         "y":-9
-      },
-      {  
-         "x":-3,
-         "y":-10
-      },
-      {  
-         "x":-2,
-         "y":-9
-      },
-      {  
-         "x":-3,
-         "y":-11
-      },
-      {  
-         "x":-2,
-         "y":-10
-      },
-      {  
-         "x":0,
-         "y":-12
-      },
-      {  
-         "x":2,
-         "y":-12
-      },
-      {  
-         "x":0,
-         "y":-11
-      },
-      {  
-         "x":0,
-         "y":-10
-      },
-      {  
-         "x":0,
-         "y":-10
-      },
-      {  
-         "x":0,
-         "y":-10
-      },
-      {  
-         "x":-2,
-         "y":-10
-      },
-      {  
-         "x":-3,
-         "y":-12
-      },
-      {  
-         "x":2,
-         "y":-10
-      },
-      {  
-         "x":2,
-         "y":-10
-      },
-      {  
-         "x":2,
-         "y":-10
-      },
-      {  
-         "x":6,
-         "y":-10
-      },
-      {  
-         "x":5,
-         "y":-7
-      },
-      {  
-         "x":3,
-         "y":-8
-      },
-      {  
-         "x":0,
-         "y":-9
-      },
-      {  
-         "x":1,
-         "y":-9
-      }
-   ],
-   "events":{  
-      "remove":{  
-         "effects":[  
-            "destruction-medium"
-         ],
-         "minWrecks":5,
-         "maxWrecks":6,
-         "wrecks":[  
-            "fed-wreck-1",
-            "fed-wreck-2",
-            "fed-wreck-3",
-            "fed-wreck-4",
-            "fed-wreck-5"
-         ]
-      }
-   }
+{
+  "id": "hailstorm",
+  "name": "Hailstorm",
+  "type": "Cruiser",
+  "hull": 400,
+  "shield": 250,
+  "armor": 3,
+  "power": 0,
+  "hangar": 4,
+  "speed": 50,
+  "maneuverability": 15,
+  "vision": 9,
+  "weapons": [
+    3,
+    3,
+    3,
+    3,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 500,
+  "silicium": 150,
+  "energy": 300,
+  "uranium": 0,
+  "space": 12,
+  "buildingTime": 35,
+  "directions": 32,
+  "animFrame": 1,
+  "animType": 0,
+  "hasJetEngine": true,
+  "size": "m",
+  "sizeOffset": {
+    "w": 35,
+    "h": 35
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -15
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": -3,
+      "y": 0
+    },
+    {
+      "x": -7,
+      "y": 0
+    },
+    {
+      "x": -5,
+      "y": -7
+    },
+    {
+      "x": -5,
+      "y": -9
+    },
+    {
+      "x": -5,
+      "y": -10
+    },
+    {
+      "x": -5,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -4,
+      "y": -9
+    },
+    {
+      "x": -4,
+      "y": -8
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -10
+    },
+    {
+      "x": -2,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -11
+    },
+    {
+      "x": -2,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -12
+    },
+    {
+      "x": 2,
+      "y": -12
+    },
+    {
+      "x": 0,
+      "y": -11
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": -2,
+      "y": -10
+    },
+    {
+      "x": -3,
+      "y": -12
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 6,
+      "y": -10
+    },
+    {
+      "x": 5,
+      "y": -7
+    },
+    {
+      "x": 3,
+      "y": -8
+    },
+    {
+      "x": 0,
+      "y": -9
+    },
+    {
+      "x": 1,
+      "y": -9
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "hailstorm-wreckage",
+        "destruction-medium"
+      ],
+      "minWrecks": 5,
+      "maxWrecks": 6,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  }
 }

@@ -1,0 +1,25 @@
+{
+    "id": "civilianbase-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 66,
+    "frames": [
+        66
+    ],
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-medium"]
+        }
+    }
+}

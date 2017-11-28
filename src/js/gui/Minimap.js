@@ -158,19 +158,26 @@ export default class Minimap {
      * @return {void}
      */
     updateEntities() {
-        this.entityManager.entities(':not(hibernated)').forEach(function(entity) {
-            const x = entity.getSprite().x / this.map.getScreenWidth() * MINIMIZED_WIDTH;
-            const y = entity.getSprite().y / this.map.getScreenHeight() * MINIMIZED_HEIGHT;
-            const w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * MINIMIZED_WIDTH);
-            const h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * MINIMIZED_HEIGHT);
-            const colors = this.playerManager.getColors();
-            const color = colors[entity.getDataObject().getTeam() - 1];
+        const fogOfWar = this.map.getFogOfWar();
+        this.entityManager
+            .entities(':not(hibernated)')
+            .filter(entity => {
+                const coords = entity.getTile(this.map);
+                return fogOfWar.isVisible(coords[0], coords[1]);
+            })
+            .forEach(entity => {
+                const x = entity.getSprite().x / this.map.getScreenWidth() * MINIMIZED_WIDTH;
+                const y = entity.getSprite().y / this.map.getScreenHeight() * MINIMIZED_HEIGHT;
+                const w = Math.max(1, entity.getDataObject().getWidth() / this.map.getScreenWidth() * MINIMIZED_WIDTH);
+                const h = Math.max(1, entity.getDataObject().getHeight() / this.map.getScreenHeight() * MINIMIZED_HEIGHT);
+                const colors = this.playerManager.getColors();
+                const color = colors[entity.getDataObject().getTeam() - 1];
 
-            this.graphics.beginFill(color);
-            this.graphics.drawRect(x, y, w, h);
-            this.graphics.endFill();
+                this.graphics.beginFill(color);
+                this.graphics.drawRect(x, y, w, h);
+                this.graphics.endFill();
 
-        }.bind(this));
+            });
     }
 
     /**

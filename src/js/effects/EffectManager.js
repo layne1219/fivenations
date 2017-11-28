@@ -42,7 +42,7 @@ class EffectManager {
 
         // adding the freshly created effect to the main array
         const effect = new Effect({
-            guid: config.guid,
+            guid: config.guid || Util.getGUID(),
             emitter: config.emitter,
             manager: this,
             sprite: sprite,
@@ -152,22 +152,10 @@ class EffectManager {
      * @param {object} effect Effect instance
      */
     remove(effect) {
-        for (var i = effects.length - 1; i >= 0; i -= 1) {
-            if (effect === effects[i]) {
-                this.removeByIndex(i);
-            }
-        }
+        if (!effect) return;
+        effect.remove();
+        effects = effects.filter(val => val !== effect);
         effect = null;
-    }
-
-    /**
-     * Removes effect with the given index from the private collection
-     * @param {integer} idx index of the effect in the effect queue
-     */        
-    removeByIndex(idx) {
-        if (!effects[idx]) return;
-        effects[idx].remove();
-        effects.splice(idx, 1);
     }
 
     /**
@@ -189,12 +177,9 @@ class EffectManager {
             if (authoritative && this.isEffectExpired(effects[i])) {
                 EventEmitter.getInstance().synced.effects(effects[i]).remove();
             } else {
-                if (effects[i].willFollowTarget()) {
-                    this.followTarget(effects[i]);
-                }
-                if (effects[i].hasTrails()) {
-                    this.emitTrails(effects[i]);
-                }
+                this.followTarget(effects[i]);
+                this.emitTrails(effects[i]);
+                this.idle(effects[i]);
             }
         }
 
@@ -269,14 +254,16 @@ class EffectManager {
                 this.add({
                     id: effectId,
                     x: sprite.x,
-                    y: sprite.y
+                    y: sprite.y,
+                    emitter: entity
                 });
             } else {
                 eventData.effects.forEach(effectId => {
                     this.add({
                         id: effectId,
                         x: sprite.x,
-                        y: sprite.y
+                        y: sprite.y,
+                        emitter: entity
                     });
                 });
             }
@@ -307,18 +294,17 @@ class EffectManager {
      * @return {void}
      */
     followTarget(effect) {
-        var targetEntity = effect.getTargetEntity();
-        var rotation;
-        var sprite;
-        var targetSprite;
-        var point;
+        if (!effect.willFollowTarget()) return;
+
+        const targetEntity = effect.getTargetEntity();
+        let rotation;
+        let sprite;
+        let targetSprite;
+        let point;
         
         if (!targetEntity) {
-
             effect.ttl = 0;
-
         } else {
-        
             sprite = effect.getSprite();
             targetSprite = targetEntity.getSprite();
 
@@ -327,9 +313,7 @@ class EffectManager {
             
             sprite.body.velocity = point;
             sprite.rotation = rotation;
-
         }
-
     }
 
     /**
@@ -338,6 +322,8 @@ class EffectManager {
      * @return {void}
      */
     emitTrails(effect) {
+        if (!effect.hasTrails()) return;
+
         if (effect.ttl % effect.getTrailsRate() === 0) {
             this.add({
                 id: effect.getTrailsEffect(),
@@ -347,6 +333,32 @@ class EffectManager {
         }
     }
 
+    /**
+     * executes the pre-defined idle actions
+     * @param  {object} effect Effect entity
+     * @return {void}
+     */
+    idle(effect) {
+        if (!effect.hasIdle()) return;
+
+        const randomize = effect.shouldIdleEffectsGetRandomized();
+
+        if (randomize) {
+            const odds = Math.floor(Math.random() * effect.getIdleRandomRate());
+            if (odds === 0) {
+                const effects = effect.getIdleEffects();
+                const idx = Util.rnd(0, effects.length - 1);
+                const offset = effect.getIdleEffectOffset();
+
+                this.add({
+                    id: effects[idx],
+                    x: effect.getSprite().x + offset.x,
+                    y: effect.getSprite().y + offset.y
+                });         
+            }
+        }
+
+    }
 
     /**
      * makes the effects flash and disappear quickly

@@ -1,192 +1,193 @@
-{  
-   "id":"pasteur",
-   "name":"Pasteur",
-   "type":"Special Cruiser",
-   "hull":150,
-   "shield":100,
-   "armor":1,
-   "power":250,
-   "hangar":0,
-   "speed":50,
-   "maneuverability":25,
-   "vision":50,
-   "weapons":[  
-      13,
-      14,
-      15,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-   ],
-   "titanium":100,
-   "silicium":150,
-   "energy":350,
-   "uranium":0,
-   "space":8,
-   "buildingTime":20,
-   "directions":32,
-   "animFrame":1,
-   "animType":0,
-   "hasJetEngine": true,
-   "size":"sm",
-   "sizeOffset":{  
-      "w":27,
-      "h":27
-   },
-   "selectionOffset":{  
-      "x":0,
-      "y":-15
-   },
-   "initialPoints":[  
-      {  
-         "x":0,
-         "y":28
-      },
-      {  
-         "x":-10,
-         "y":27
-      },
-      {  
-         "x":-17,
-         "y":26
-      },
-      {  
-         "x":-24,
-         "y":24
-      },
-      {  
-         "x":-31,
-         "y":20
-      },
-      {  
-         "x":-35,
-         "y":16
-      },
-      {  
-         "x":-38,
-         "y":12
-      },
-      {  
-         "x":-41,
-         "y":7
-      },
-      {  
-         "x":-42,
-         "y":1
-      },
-      {  
-         "x":-41,
-         "y":-4
-      },
-      {  
-         "x":-39,
-         "y":-9
-      },
-      {  
-         "x":-34,
-         "y":-14
-      },
-      {  
-         "x":-29,
-         "y":-18
-      },
-      {  
-         "x":-23,
-         "y":-20
-      },
-      {  
-         "x":-16,
-         "y":-23
-      },
-      {  
-         "x":-9,
-         "y":-24
-      },
-      {  
-         "x":0,
-         "y":-25
-      },
-      {  
-         "x":10,
-         "y":-23
-      },
-      {  
-         "x":14,
-         "y":-21
-      },
-      {  
-         "x":23,
-         "y":-18
-      },
-      {  
-         "x":26,
-         "y":-15
-      },
-      {  
-         "x":29,
-         "y":-13
-      },
-      {  
-         "x":35,
-         "y":-8
-      },
-      {  
-         "x":40,
-         "y":4
-      },
-      {  
-         "x":41,
-         "y":0
-      },
-      {  
-         "x":40,
-         "y":8
-      },
-      {  
-         "x":38,
-         "y":12
-      },
-      {  
-         "x":34,
-         "y":17
-      },
-      {  
-         "x":28,
-         "y":20
-      },
-      {  
-         "x":23,
-         "y":24
-      },
-      {  
-         "x":16,
-         "y":26
-      },
-      {  
-         "x":8,
-         "y":27
-      }
-   ],
-   "events":{  
-      "remove":{  
-         "effects":[  
-            "destruction-medium"
-         ],
-         "minWrecks":3,
-         "maxWrecks":5,
-         "wrecks":[  
-            "fed-wreck-1",
-            "fed-wreck-2",
-            "fed-wreck-3",
-            "fed-wreck-4",
-            "fed-wreck-5"
-         ]
-      }
-   }
+{
+  "id": "pasteur",
+  "name": "Pasteur",
+  "type": "Special Cruiser",
+  "hull": 150,
+  "shield": 100,
+  "armor": 1,
+  "power": 250,
+  "hangar": 0,
+  "speed": 50,
+  "maneuverability": 25,
+  "vision": 5,
+  "weapons": [
+    13,
+    14,
+    15,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 100,
+  "silicium": 150,
+  "energy": 350,
+  "uranium": 0,
+  "space": 8,
+  "buildingTime": 20,
+  "directions": 32,
+  "animFrame": 1,
+  "animType": 0,
+  "hasJetEngine": true,
+  "size": "sm",
+  "sizeOffset": {
+    "w": 27,
+    "h": 27
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -15
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 28
+    },
+    {
+      "x": -10,
+      "y": 27
+    },
+    {
+      "x": -17,
+      "y": 26
+    },
+    {
+      "x": -24,
+      "y": 24
+    },
+    {
+      "x": -31,
+      "y": 20
+    },
+    {
+      "x": -35,
+      "y": 16
+    },
+    {
+      "x": -38,
+      "y": 12
+    },
+    {
+      "x": -41,
+      "y": 7
+    },
+    {
+      "x": -42,
+      "y": 1
+    },
+    {
+      "x": -41,
+      "y": -4
+    },
+    {
+      "x": -39,
+      "y": -9
+    },
+    {
+      "x": -34,
+      "y": -14
+    },
+    {
+      "x": -29,
+      "y": -18
+    },
+    {
+      "x": -23,
+      "y": -20
+    },
+    {
+      "x": -16,
+      "y": -23
+    },
+    {
+      "x": -9,
+      "y": -24
+    },
+    {
+      "x": 0,
+      "y": -25
+    },
+    {
+      "x": 10,
+      "y": -23
+    },
+    {
+      "x": 14,
+      "y": -21
+    },
+    {
+      "x": 23,
+      "y": -18
+    },
+    {
+      "x": 26,
+      "y": -15
+    },
+    {
+      "x": 29,
+      "y": -13
+    },
+    {
+      "x": 35,
+      "y": -8
+    },
+    {
+      "x": 40,
+      "y": 4
+    },
+    {
+      "x": 41,
+      "y": 0
+    },
+    {
+      "x": 40,
+      "y": 8
+    },
+    {
+      "x": 38,
+      "y": 12
+    },
+    {
+      "x": 34,
+      "y": 17
+    },
+    {
+      "x": 28,
+      "y": 20
+    },
+    {
+      "x": 23,
+      "y": 24
+    },
+    {
+      "x": 16,
+      "y": 26
+    },
+    {
+      "x": 8,
+      "y": 27
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "pasteur-wreckage",
+        "destruction-medium"
+      ],
+      "minWrecks": 3,
+      "maxWrecks": 5,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  }
 }

@@ -31,7 +31,10 @@
     },
     "events": {
 		"remove": {
-			"effects": ["destruction-medium"],
+			"effects": [
+                "astrometricstation-wreckage",
+                "destruction-medium"
+            ],
 			"minWrecks": 5,
 			"maxWrecks": 10,
 			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]

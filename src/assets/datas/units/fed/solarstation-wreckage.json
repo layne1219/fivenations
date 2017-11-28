@@ -1,0 +1,25 @@
+{
+    "id": "solarstation-wreckage",
+    "size": "m",
+    "ttl": 200,
+    "customFrame": 67,
+    "frames": [
+        67
+    ],
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-small"]
+        }
+    }
+}

@@ -298,6 +298,14 @@ function DataObject(json) {
             return data.selectionOffset || {};
         },
 
+        doesPersistOrienationFromEmitter: function() {
+            return data.persistOrienationFromEmitter;
+        },
+
+        getFrames: function() {
+            return data.frames;
+        }
+
     };
 }
 

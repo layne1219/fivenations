@@ -1,128 +1,128 @@
-{  
-   "id":"orca",
-   "name":"Orca",
-   "type":"Destroyer",
-   "hull":120,
-   "shield":60,
-   "armor":1,
-   "power":0,
-   "hangar":0,
-   "speed":60,
-   "maneuverability":40,
-   "vision":50,
-   "weapons":[  
-      1,
-      1,
-      1,
-      2,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-   ],
-   "titanium":180,
-   "silicium":0,
-   "energy":100,
-   "uranium":0,
-   "space":4,
-   "buildingTime":12,
-   "directions":16,
-   "animFrame":1,
-   "animType":0,
-   "hasJetEngine": true,
-   "size":"sm",
-   "sizeOffset":{  
-      "w":20,
-      "h":20
-   },
-   "selectionOffset":{  
-      "x":0,
-      "y":-12
-   },
-   "initialPoints":[  
-      {  
-         "x":0,
-         "y":15
-      },
-      {  
-         "x":-9,
-         "y":15
-      },
-      {  
-         "x":-14,
-         "y":13
-      },
-      {  
-         "x":-17,
-         "y":9
-      },
-      {  
-         "x":-17,
-         "y":6
-      },
-      {  
-         "x":-17,
-         "y":1
-      },
-      {  
-         "x":-14,
-         "y":-5
-      },
-      {  
-         "x":-9,
-         "y":-8
-      },
-      {  
-         "x":0,
-         "y":-13
-      },
-      {  
-         "x":8,
-         "y":-7
-      },
-      {  
-         "x":12,
-         "y":-5
-      },
-      {  
-         "x":16,
-         "y":0
-      },
-      {  
-         "x":17,
-         "y":5
-      },
-      {  
-         "x":15,
-         "y":10
-      },
-      {  
-         "x":10,
-         "y":13
-      },
-      {  
-         "x":6,
-         "y":16
-      }
-   ],
-   "events":{  
-      "remove":{  
-         "effects":[  
-            "destruction-medium"
-         ],
-         "minWrecks":2,
-         "maxWrecks":3,
-         "wrecks":[  
-            "fed-wreck-1",
-            "fed-wreck-2",
-            "fed-wreck-3",
-            "fed-wreck-4",
-            "fed-wreck-5"
-         ]
-      }
-   }
+{
+  "id": "orca",
+  "name": "Orca",
+  "type": "Destroyer",
+  "hull": 120,
+  "shield": 60,
+  "armor": 1,
+  "power": 0,
+  "hangar": 0,
+  "speed": 60,
+  "maneuverability": 40,
+  "vision": 4,
+  "weapons": [
+    1,
+    1,
+    1,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 200,
+  "silicium": 0,
+  "energy": 100,
+  "uranium": 0,
+  "space": 4,
+  "buildingTime": 12,
+  "directions": 16,
+  "animFrame": 1,
+  "animType": 0,
+  "hasJetEngine": true,
+  "size": "sm",   
+  "sizeOffset":{  
+    "w":20,
+    "h":20
+  },
+  "selectionOffset":{  
+    "x":0,
+    "y":-12
+  },
+  "initialPoints":[  
+    {  
+       "x":0,
+       "y":15
+    },
+    {  
+       "x":-9,
+       "y":15
+    },
+    {  
+       "x":-14,
+       "y":13
+    },
+    {  
+       "x":-17,
+       "y":9
+    },
+    {  
+       "x":-17,
+       "y":6
+    },
+    {  
+       "x":-17,
+       "y":1
+    },
+    {  
+       "x":-14,
+       "y":-5
+    },
+    {  
+       "x":-9,
+       "y":-8
+    },
+    {  
+       "x":0,
+       "y":-13
+    },
+    {  
+       "x":8,
+       "y":-7
+    },
+    {  
+       "x":12,
+       "y":-5
+    },
+    {  
+       "x":16,
+       "y":0
+    },
+    {  
+       "x":17,
+       "y":5
+    },
+    {  
+       "x":15,
+       "y":10
+    },
+    {  
+       "x":10,
+       "y":13
+    },
+    {  
+       "x":6,
+       "y":16
+    }
+  ],  
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-medium"
+      ],
+      "minWrecks": 2,
+      "maxWrecks": 3,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  }
 }

@@ -25,7 +25,7 @@ PlanetAreaGenerator.prototype.createPlanet = function() {
 
 PlanetAreaGenerator.prototype.createClouds = function() {
     var generator = new CloudGenerator(this.deepSpaceLayer);
-    generator.generate();
+    generator.generate(0.25);
     generator.getSpaceObjects().forEach(function(obj){
         this.addSpaceObject(obj);
     }.bind(this));

@@ -1,4 +1,5 @@
 import Util from '../common/Util';
+import Entity from '../entities/Entity';
 
 const DEFAULT_ANIM_NAME = 'idle';
 
@@ -24,6 +25,8 @@ function setManager(config) {
  */
 function setDataObject(config) {
     this.dataObject = config.dataObject;
+    this.trails = this.dataObject.getTrails();
+    this.idle = this.dataObject.getEvent('idle');
 }
 
 /**
@@ -33,10 +36,11 @@ function setDataObject(config) {
 function setEmitter(config) {
     if (config.emitter) {
         this.emitter = config.emitter;
-        this.targetEntity = this.emitter.getTargetEntity();
-        this.targetEntity.on('remove', function() {
-            this.targetEntity = null;
-        }.bind(this));
+        if (this.emitter instanceof Effect) {
+            this.targetEntity = this.emitter.getTargetEntity();
+            if (!this.targetEntity) return;
+            this.targetEntity.on('remove', () => this.targetEntity = null);
+        }
     }
 }
 
@@ -51,29 +55,33 @@ function setSprite(config) {
     var dataObject= config.dataObject;
 
     this.sprite = config.sprite;
-
-    game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-
-    // Set up the Phaser.Sprite object
     this.sprite.anchor.setTo(0.5, 0.5);
-
-    // coords
     this.sprite.x = 0;
     this.sprite.y = 0;
+    game.physics.enable(this.sprite, Phaser.Physics.ARCADE);    
 
-    // reducing the hitArea according the one specified in the realated DataObject
+    // reduces the hitArea according the one specified in the realated DataObject
     this.sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
 
-    // set frame if the effect has multiple variances
+    // sets frame if the effect has multiple variances
     var variances = dataObject.getVariances();
     if (variances.length) {
         this.sprite.frame = variances[Util.rnd(0, variances.length - 1)];
     }
 
-    // set custom frame if it's configured in the DO
+    // sets custom frame if it's configured in the DO
     var customFrame = dataObject.getCustomFrame();
     if (customFrame !== undefined) {
         this.sprite.frame = customFrame;
+    }
+
+    if (dataObject.doesPersistOrienationFromEmitter() && this.emitter instanceof Entity) {
+        const angle = this.emitter.getMotionManager().getCurrentAngleInDeg();
+        const frames = dataObject.getFrames();
+        const numberOfFrames = frames.length;
+        const ratio = angle / 360;
+        const idx = Math.round(numberOfFrames * ratio);
+        this.sprite.frame = frames[idx];
     }
 
     this.sprite._parent = this;    
@@ -132,8 +140,8 @@ function Effect(config) {
     setGUID.call(this, config);
     setManager.call(this, config);
     setDataObject.call(this, config);
-    setSprite.call(this, config);
-    setEmitter.call(this, config); 
+    setEmitter.call(this, config);    
+    setSprite.call(this, config); 
     setAnimations.call(this, config);
     setTTL.call(this, config);       
 }
@@ -175,25 +183,50 @@ Effect.prototype = {
     },
 
     hasTrails: function() {
-        if (!this.trails) {
-            this.trails = this.dataObject.getTrails();
-        }
         return !!this.trails;
     },
 
     getTrailsRate: function() {
-        if (!this.trails) {
-            this.trails = this.dataObject.getTrails();
-        }
         return this.trails.rate;
     },
 
     getTrailsEffect: function() {
-        if (!this.trails) {
-            this.trails = this.dataObject.getTrails();
-        }
         return this.trails.effect;
-    } 
+    },
+
+    hasIdle: function() {
+        return !!this.idle;
+    },
+
+    getIdleEffects: function() {
+        return this.idle.effects;
+    },
+
+    shouldIdleEffectsGetRandomized: function() {
+        return this.idle.randomExecution;
+    },
+
+    getIdleRandomRate: function() {
+        return this.idle.randomRate;
+    },
+
+    getIdleEffectOffset: function() {
+        const offset = {};
+        const offsetAttrs = ['offsetX', 'offsetY'];
+        offsetAttrs.map(val => {
+            if (this.idle[val]) {
+                if (this.idle[val].length) {
+                    offset[val] = Util.rnd(this.idle[val][0], this.idle[val][1] * 2)
+                } else {
+                    offset[val] = this.idle[val];
+                }
+            }
+        });
+        return {
+            x: offset.offsetX,
+            y: offset.offsetY
+        };
+    }
 
 }
 

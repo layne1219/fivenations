@@ -34,6 +34,9 @@ Game.prototype = {
 
         this.signals = Signals.create();
 
+        // disables Phaser from pausing the game when it loses focus
+        this.stage.disableVisibilityChange = false;
+
         // -----------------------------------------------------------------------
         //                                  Graphics
         // -----------------------------------------------------------------------
