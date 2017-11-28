@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const paths = require('./paths.js');
+const version = require('../package.json').version;
 
 module.exports = {
   entry: {
@@ -14,6 +15,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'PUBLIC_URL': JSON.stringify(paths.publicUrl),
+        'VERSION': JSON.stringiy(version)
       }
     })
   ],
