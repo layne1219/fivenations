@@ -1,23 +1,40 @@
 import Activity from './Activity';
 import Util from '../../common/Util';
 
+const dogFightDistanceTreshold = 100;
 const dogFightCoords = [
     {
         x: -0.5,
+        y: -0.4
+    },
+    {
+        x: 0.6,
+        y: 0
+    },
+    {
+        x: -0.2,
+        y: 0.4
+    },
+    {
+        x: -0.6,
+        y: 0
+    },    
+    {
+        x: -0.2,
         y: -0.5
     },
     {
         x: 0.5,
-        y: -0.5
+        y: -0.4
     },
     {
         x: 0.5,
-        y: 0.5
+        y: 0.4
     },
     {
         x: -0.5,
-        y: 0.5
-    }
+        y: 0.4
+    }   
 ];
 
 class Attack extends Activity {
@@ -32,9 +49,10 @@ class Attack extends Activity {
         this.entity = entity;
         this.motionManager = entity.getMotionManager();
         this._firstExecution = true;
-        this._dogFight = this.entity.getDataObject().isFighter();
-        this._dogFightCoordIdx = 0;
 
+        // Helper variables for the DogFight logic
+        this._dogFight = this.entity.getDataObject().isFighter();
+ 
         this.onTargetEntityRemove = () => this.kill();
     }
 
@@ -52,7 +70,10 @@ class Attack extends Activity {
         if (this._firstExecution && this.isTargetInRange()) {
             this._firstExecution = false;
             this.entity.stop();
-        }        
+        }
+
+        // -1 means that there is no selected DogFight coordinate just yet
+        this._dogFightCoordIdx = -1;
 
     }
 
@@ -72,8 +93,25 @@ class Attack extends Activity {
             return;
         }
 
+        // DogFight logic makes entities to select coordinates
+        // around their target entity and move their while the 
+        // Attack activity is being executed
         if (this.isDogFightEnabled()) {
-
+            
+            // _dogFightCoordIdx === -1 indicates the first execution of
+            // the logic whilst we assign a coordinate to the entity
+            // straightaway
+            if (this._dogFightCoordIdx === -1) {
+                this.moveToNextDogFightCoordinate()
+            } else {
+                
+                // otherwise we wait until the coordinate is approached and
+                // then assign it
+                const distanceToTargetCoords = Util.distanceBetweenEntityAndCoords(this.entity, this._dogFightCoords);
+                if (distanceToTargetCoords < dogFightDistanceTreshold) {
+                    this.moveToNextDogFightCoordinate()
+                }
+            }
 
         } else {
 
@@ -148,6 +186,54 @@ class Attack extends Activity {
      */
     isDogFightEnabled() {
         return this._dogFight;
+    }
+
+
+    /**
+     * Determines and returns the next DogFight coordinate around 
+     * the target entity.
+     * @return {object} object containing {x, y} coordinates
+     */
+    getNextDogFightCoordinate() {
+        const targetSprite = this.target.getSprite();
+        let offset;
+
+        if (this._dogFightCoordIdx === -1) {
+            // uses creation time to simulate randomness
+            this._dogFightCoordIdx = this.entity.getCreationTime();
+        } else {
+            this._dogFightCoordIdx += 1;
+        }
+
+        this._dogFightCoordIdx %= dogFightCoords.length;
+        offset = dogFightCoords[this._dogFightCoordIdx];
+
+        return {
+            x: targetSprite.x + targetSprite.width * offset.x,
+            y: targetSprite.y + targetSprite.height * offset.y
+        };
+    }
+
+    moveToNextDogFightCoordinate() {
+        this._dogFightCoords = this.getNextDogFightCoordinate();
+        this.entity.getMotionManager().moveTo(this);
+    }
+
+    /**
+     *  Returns the current target DogFight coordinates
+     * @return {object} {x, y}
+     */
+    getCurrentDogFightCoords() {
+        return this._dogFightCoords;
+    }
+
+    /**
+     * Returns the coordinates to which the entity is heading. It is only
+     * used if the entity executes the DogFight logic while attacking
+     * @return {object} {x, y}
+     */
+    getCoords() {
+        return this._dogFightCoords;
     }
 
 }
