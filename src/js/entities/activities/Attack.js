@@ -1,4 +1,6 @@
 import Activity from './Activity';
+import PlayerManager from '../players/PlayerManager';
+import EventEmitter from './EventEmitter'
 import Util from '../../common/Util';
 
 const dogFightDistanceTreshold = 100;
@@ -52,6 +54,8 @@ class Attack extends Activity {
 
         // Helper variables for the DogFight logic
         this._dogFight = this.entity.getDataObject().isFighter();
+        // -1 means that there is no selected DogFight coordinate just yet
+        this._dogFightCoordIdx = -1;        
  
         this.onTargetEntityRemove = () => this.kill();
     }
@@ -72,14 +76,14 @@ class Attack extends Activity {
             this.entity.stop();
         }
 
-        // -1 means that there is no selected DogFight coordinate just yet
-        this._dogFightCoordIdx = -1;
+        // executes the undock activity against all docked entities
+        // and makes them attack the current target 
+        this.releaseDockedEntities();
 
     }
 
     /**
      * Updates the activity on every tick  
-     * @return {[void]}
      */
     update() {
 
@@ -214,9 +218,34 @@ class Attack extends Activity {
         };
     }
 
+    /**
+     * Makes the entity move to the next dog fight coordinates
+     */
     moveToNextDogFightCoordinate() {
         this._dogFightCoords = this.getNextDogFightCoordinate();
         this.entity.getMotionManager().moveTo(this);
+    }
+
+    /**
+     * Releases all docked entities and make them attack the current
+     * target Entity. It emits an entity/undock universal event and 
+     * subsequently the entity/attack
+     */
+    releaseDockedEntities() {
+        const dockedEntities = this.entity.getDockedEntities();
+        const authorised = PlayerManager
+            .getInstance()
+            .getUser()
+            .isAuthorised();
+
+        if (!authorised || !dockedEntities || !dockedEntities.length) return;
+
+        EventEmitter
+            .getInstance()
+            .synced
+            .entities(dockedEntities)
+            .undock()
+            .attack({ targetEntity: this.target });
     }
 
     /**
