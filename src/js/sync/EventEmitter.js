@@ -284,7 +284,8 @@ function createEntityEventAPI(entityManager) {
                 EventBus.getInstance().add({
                     id: 'entity/undock',
                     targets: entities,
-                    resetActivityQueue: resetActivityQueue
+                    resetActivityQueue: resetActivityQueue,
+                    rnd: Math.random()
                 });
 
                 return this;

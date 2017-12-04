@@ -1,6 +1,4 @@
 import Event from './Event';
-import PlayerManager from '../players/PlayerManager';
-import EventEmitter from './EventEmitter';
 import Util from '../common/Util';
 
 const ns = window.fivenations;
@@ -24,13 +22,13 @@ Undock.prototype.execute = function(options) {
     if (!options.targets) {
         return;
     }
+    // recieves the random factor from the authorised client
+    const rnd = options.rnd;
+
     options.targets.forEach(function(id) {
-        var entity = ns.game.entityManager.entities(id);
-        var undockedEntities;
-        var authorised = PlayerManager
-            .getInstance()
-            .getUser()
-            .isAuthorised();
+        const entity = ns.game.entityManager.entities(id);
+        const sprite = entity.getSprite();
+        let undockedEntities;
 
         if (options.resetActivityQueue) {
             entity.reset();
@@ -38,21 +36,22 @@ Undock.prototype.execute = function(options) {
 
         undockedEntities = entity.undock();
         
-        // if the player is authorised we'll have to emit
-        // further events 
-        if (authorised && undockedEntities) {
-            EventEmitter
-                .getInstance()
-                .synced
-                .entities(undockedEntities)
-                .place({
-                    x: entity.getSprite().x,
-                    y: entity.getSprite().y
-                })
-                .move({
-                    x: entity.getSprite().x + Util.rnd(1, RANDOM_DISTANCE_FROM_DOCKER) - RANDOM_DISTANCE_FROM_DOCKER / 2,
-                    y: entity.getSprite().y + Util.rnd(1, RANDOM_DISTANCE_FROM_DOCKER) - RANDOM_DISTANCE_FROM_DOCKER / 2,
+        if (undockedEntities) {
+            undockedEntities.map(dockedEntity => {
+                const dockedSprite = dockedEntity.getSprite();
+                dockedSprite.x = sprite.x;
+                dockedSprite.y = sprite.y;
+                return dockedEntity;
+
+            }).forEach(dockedEntity => {
+                const dockedSprite = dockedEntity.getSprite();
+                const randomX = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                const randomY = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                dockedEntity.moveTo({
+                    x: dockedSprite.x + randomX,
+                    y: dockedSprite.y + randomY
                 });
+            });
         }
     });
 };
