@@ -1,6 +1,6 @@
 import Activity from './Activity';
-import PlayerManager from '../players/PlayerManager';
-import EventEmitter from './EventEmitter'
+import PlayerManager from '../../players/PlayerManager';
+import EventEmitter from '../../sync/EventEmitter'
 import Util from '../../common/Util';
 
 const dogFightDistanceTreshold = 100;
@@ -245,12 +245,11 @@ class Attack extends Activity {
             .synced
             .entities(dockedEntities)
             .undock()
-            .attack({ targetEntity: this.target });
+            .attack({ targetEntity: this.target })
             .dock({ 
                 targetEntity: this.entity,
                 resetActivityQueue: true
-            }
-        });
+            });
     }
 
     /**

@@ -1,5 +1,4 @@
 import Event from './Event';
-import Util from '../common/Util';
 
 const ns = window.fivenations;
 const RANDOM_DISTANCE_FROM_DOCKER = 200; 
@@ -23,7 +22,7 @@ Undock.prototype.execute = function(options) {
         return;
     }
     // recieves the random factor from the authorised client
-    const rnd = options.rnd;
+    const rnd = options.data && options.data.rnd || 0;
 
     options.targets.forEach(function(id) {
         const entityToUndock = ns.game.entityManager.entities(id);
@@ -46,10 +45,10 @@ Undock.prototype.execute = function(options) {
                 const dockedSprite = entity.getSprite();
                 const randomX = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
                 const randomY = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
-                entity.moveTo({
-                    x: dockedSprite.x + randomX,
-                    y: dockedSprite.y + randomY
-                });
+                entity.moveTo(
+                    dockedSprite.x + randomX,
+                    dockedSprite.y + randomY
+                );
             });
         }
     });
