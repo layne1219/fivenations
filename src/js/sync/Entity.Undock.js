@@ -26,28 +26,27 @@ Undock.prototype.execute = function(options) {
     const rnd = options.rnd;
 
     options.targets.forEach(function(id) {
-        const entity = ns.game.entityManager.entities(id);
-        const sprite = entity.getSprite();
+        const entityToUndock = ns.game.entityManager.entities(id);
+        const sprite = entityToUndock.getSprite();
         let undockedEntities;
 
         if (options.resetActivityQueue) {
-            entity.reset();
+            entityToUndock.reset();
         }
 
-        undockedEntities = entity.undock();
+        undockedEntities = entityToUndock.undock();
         
         if (undockedEntities) {
-            undockedEntities.map(dockedEntity => {
-                const dockedSprite = dockedEntity.getSprite();
+            undockedEntities.map(entity => {
+                const dockedSprite = entity.getSprite();
                 dockedSprite.x = sprite.x;
                 dockedSprite.y = sprite.y;
-                return dockedEntity;
-
-            }).forEach(dockedEntity => {
-                const dockedSprite = dockedEntity.getSprite();
+                return entity;
+            }).forEach(entity => {
+                const dockedSprite = entity.getSprite();
                 const randomX = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
                 const randomY = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
-                dockedEntity.moveTo({
+                entity.moveTo({
                     x: dockedSprite.x + randomX,
                     y: dockedSprite.y + randomY
                 });

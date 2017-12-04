@@ -246,6 +246,11 @@ class Attack extends Activity {
             .entities(dockedEntities)
             .undock()
             .attack({ targetEntity: this.target });
+            .dock({ 
+                targetEntity: this.entity,
+                resetActivityQueue: true
+            }
+        });
     }
 
     /**

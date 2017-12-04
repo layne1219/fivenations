@@ -273,7 +273,7 @@ function createEntityEventAPI(entityManager) {
                 return this;
             },
             /**
-             * Undocks entities fromt the specified entity
+             * Undocks entities from the specified entity
              * @return {void}
              * @chainable
              */
