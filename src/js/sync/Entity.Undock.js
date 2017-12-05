@@ -41,10 +41,10 @@ Undock.prototype.execute = function(options) {
                 dockedSprite.x = sprite.x;
                 dockedSprite.y = sprite.y;
                 return entity;
-            }).forEach(entity => {
+            }).forEach((entity, idx) => {
                 const dockedSprite = entity.getSprite();
-                const randomX = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
-                const randomY = rnd * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                const randomX = rnd[idx] * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                const randomY = rnd[idx] * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
                 entity.moveTo(
                     dockedSprite.x + randomX,
                     dockedSprite.y + randomY
