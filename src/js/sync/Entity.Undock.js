@@ -1,7 +1,7 @@
 import Event from './Event';
 
 const ns = window.fivenations;
-const RANDOM_DISTANCE_FROM_DOCKER = 200; 
+const RANDOM_DISTANCE_FROM_DOCKER = 300; 
 
 function Undock() {
     var args = [].slice.call(arguments);
@@ -22,11 +22,13 @@ Undock.prototype.execute = function(options) {
         return;
     }
     // recieves the random factor from the authorised client
-    const rnd = options.data && options.data.rnd || 0;
+    if (!options.data) options.data = {};
+    const rnd = [].concat(options.data.rnd);
 
-    options.targets.forEach(function(id) {
+    options.targets.forEach((id, idx) => {
         const entityToUndock = ns.game.entityManager.entities(id);
         const sprite = entityToUndock.getSprite();
+        const randomFactors = rnd[idx];
         let undockedEntities;
 
         if (options.resetActivityQueue) {
@@ -42,9 +44,10 @@ Undock.prototype.execute = function(options) {
                 dockedSprite.y = sprite.y;
                 return entity;
             }).forEach((entity, idx) => {
+                const randomFactor = randomFactors[idx] || 0;
                 const dockedSprite = entity.getSprite();
-                const randomX = rnd[idx] * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
-                const randomY = rnd[idx] * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                const randomX = randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                const randomY = randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
                 entity.moveTo(
                     dockedSprite.x + randomX,
                     dockedSprite.y + randomY

@@ -279,13 +279,20 @@ function createEntityEventAPI(entityManager) {
              */
             undock: function(options) {
 
-                var resetActivityQueue = options && options.resetActivityQueue || false;
+                const resetActivityQueue = options && options.resetActivityQueue || false;
 
                 EventBus.getInstance().add({
                     id: 'entity/undock',
                     targets: entities,
                     data: {
-                        rnd: entities.map(entity => Math.random());
+                        rnd: entities.map(entity => {
+                            const dockCapacity = entity.getDataObject().getMaxHangar();
+                            const randomFactors = [];
+                            for (let i = dockCapacity - 1; i >= 0; i--) {
+                                randomFactors.push(Math.random());
+                            }
+                            return randomFactors;
+                        })
                     },
                     resetActivityQueue: resetActivityQueue,
                 });
