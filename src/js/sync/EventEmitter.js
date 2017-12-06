@@ -288,7 +288,7 @@ function createEntityEventAPI(entityManager) {
                         rnd: entities.map(entity => {
                             const dockCapacity = entity.getDataObject().getMaxHangar();
                             const randomFactors = [];
-                            for (let i = dockCapacity - 1; i >= 0; i--) {
+                            for (let i = dockCapacity - 1; i >= 0; i -= 1) {
                                 randomFactors.push(Math.random());
                             }
                             return randomFactors;
