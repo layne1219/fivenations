@@ -3,7 +3,7 @@
 ![ezgif com-gif-maker 1](https://user-images.githubusercontent.com/6104164/32551083-9db99ed6-c48f-11e7-979f-e43a11a52f40.gif)
 
 ## About the game
-Five Nations is a sci-fi strategy game that takes place in the far future and follows the events of a galactic battle between five distinct species. The gameplay intentionally resembles traditional real-time strategy elements with introducing modern game elements.
+Five Nations is a sci-fi strategy game that takes place in the far future and follows the events of a galactic battle between five distinct species. The gameplay utilizes traditional real-time strategy elements with introducing modern features.
 
 ## Five Nations on Social Media
 [![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3]
@@ -23,7 +23,7 @@ Five Nations is an open source HTML5 game that uses cutting-edge  technologies s
 Since this is an open source project all form of contribution and feedback are welcomed. We are hiring!
 
 1. Fork the project
-2. Pick up an Issue
+2. Pick up an Issue with `help wanted` label
 3. Create a branch named `feature/{issue-number}`
 4. Apply your changes against this branch
 5. Create a Pull Request to the upstream project
