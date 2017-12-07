@@ -271,7 +271,6 @@ class Entity {
 
         // local behaviour
         this.updateShield();
-
     }
 
     /**

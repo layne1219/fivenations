@@ -1,5 +1,6 @@
 import Util from '../common/Util';
 import Entity from '../entities/Entity';
+import Weapon from '../entities/weapons/Weapon';
 
 const DEFAULT_ANIM_NAME = 'idle';
 
@@ -36,7 +37,7 @@ function setDataObject(config) {
 function setEmitter(config) {
     if (config.emitter) {
         this.emitter = config.emitter;
-        if (this.emitter instanceof Effect) {
+        if (this.emitter instanceof Effect || this.emitter instanceof Weapon) {
             this.targetEntity = this.emitter.getTargetEntity();
             if (!this.targetEntity) return;
             this.targetEntity.on('remove', () => this.targetEntity = null);
@@ -62,6 +63,7 @@ function setSprite(config) {
 
     // reduces the hitArea according the one specified in the realated DataObject
     this.sprite.hitArea = new Phaser.Rectangle(dataObject.getWidth() / -2, dataObject.getHeight() / -2, dataObject.getWidth(), dataObject.getHeight());
+    this.sprite.body.setSize(dataObject.getWidth(), dataObject.getHeight(), 0, 0);
 
     // sets frame if the effect has multiple variances
     var variances = dataObject.getVariances();
@@ -123,7 +125,7 @@ function setAnimations(config) {
  */
 function registerRemoveEventToAnimation(effect, animation) {
     animation.onComplete.add(function() {
-        effect.remove();
+        effect.getManager().remove(effect);
     });
 }
 
@@ -226,6 +228,10 @@ Effect.prototype = {
             x: offset.offsetX,
             y: offset.offsetY
         };
+    },
+
+    getManager() {
+        return this.manager;
     }
 
 }

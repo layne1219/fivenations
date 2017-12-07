@@ -62,11 +62,6 @@ class EffectManager {
             sprite.angle = config.angle;
         }
 
-        // Activates physics engine if required
-        if (config.velocity || config.acceleration) {
-            phaserGame.physics.enable(sprite, Phaser.Physics.ARCADE);
-        }
-
         // sets up velocity 
         if (config.velocity) {
 
@@ -153,9 +148,13 @@ class EffectManager {
      */
     remove(effect) {
         if (!effect) return;
+        for (var i = effects.length - 1; i >= 0; i -= 1) {
+            if (effect === effects[i]) {
+                effects.splice(i, 1);
+            }
+        }
         effect.remove();
-        effects = effects.filter(val => val !== effect);
-        effect = null;
+        effect = null;        
     }
 
     /**
