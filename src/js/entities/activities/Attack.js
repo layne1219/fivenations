@@ -6,35 +6,19 @@ import Util from '../../common/Util';
 const dogFightDistanceTreshold = 100;
 const dogFightCoords = [
     {
-        x: -0.5,
+        x: -0.4,
         y: -0.4
     },
     {
-        x: 0.6,
-        y: 0
-    },
-    {
-        x: -0.2,
-        y: 0.4
-    },
-    {
-        x: -0.6,
-        y: 0
-    },    
-    {
-        x: -0.2,
-        y: -0.5
-    },
-    {
-        x: 0.5,
+        x: 0.4,
         y: -0.4
     },
     {
-        x: 0.5,
+        x: 0.4,
         y: 0.4
     },
     {
-        x: -0.5,
+        x: -0.4,
         y: 0.4
     }   
 ];
@@ -192,6 +176,13 @@ class Attack extends Activity {
         return this._dogFight;
     }
 
+    /**
+     * Makes the entity move to the next dog fight coordinates
+     */
+    moveToNextDogFightCoordinate() {
+        this._dogFightCoords = this.getNextDogFightCoordinate();
+        this.entity.getMotionManager().moveTo(this);
+    }
 
     /**
      * Determines and returns the next DogFight coordinate around 
@@ -216,15 +207,7 @@ class Attack extends Activity {
             x: targetSprite.x + targetSprite.width * offset.x,
             y: targetSprite.y + targetSprite.height * offset.y
         };
-    }
-
-    /**
-     * Makes the entity move to the next dog fight coordinates
-     */
-    moveToNextDogFightCoordinate() {
-        this._dogFightCoords = this.getNextDogFightCoordinate();
-        this.entity.getMotionManager().moveTo(this);
-    }
+    }    
 
     /**
      * Releases all docked entities and make them attack the current
@@ -237,19 +220,21 @@ class Attack extends Activity {
             .getInstance()
             .getUser()
             .isAuthorised();
+        const emitter = EventEmitter.getInstance().synced.entities;
 
         if (!authorised || !dockedEntities || !dockedEntities.length) return;
 
-        EventEmitter
-            .getInstance()
-            .synced
-            .entities(dockedEntities)
-            .undock()
-            .attack({ targetEntity: this.target })
-            .dock({ 
-                targetEntity: this.entity,
-                resetActivityQueue: true
+        emitter(this.entity).undock();
+        emitter(dockedEntities)
+            .attack({ 
+                targetEntity: this.target,
+                addAsLast: true 
             });
+            /*.dock({ 
+                targetEntity: this.entity,
+                addAsLast: true,
+                resetActivityQueue: true
+            });*/
     }
 
     /**
