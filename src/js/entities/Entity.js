@@ -389,8 +389,8 @@ class Entity {
      */
     getToDock(targetEntity, addAsLast) {
         const getToDock = new ActivityManager.GetToDock(this);
-        getToDock.setTarget(targetEntity, addAsLast);
-        this.activityManager.add(getToDock);
+        getToDock.setTarget(targetEntity);
+        this.activityManager.add(getToDock, addAsLast);
     }        
 
     /**
