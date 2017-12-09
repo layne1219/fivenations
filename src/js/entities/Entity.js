@@ -383,24 +383,26 @@ class Entity {
 
     /**
      * Registers a GetToDock activity with the given entity set as target
-     * @param  {object} targetEntity [Entity] 
+     * @param  {object} targetEntity
+     * @param {boolean} addAsLast - Registers the activity as the last to excecute
      * @return {void}
      */
-    getToDock(targetEntity) {
+    getToDock(targetEntity, addAsLast) {
         const getToDock = new ActivityManager.GetToDock(this);
-        getToDock.setTarget(targetEntity);
+        getToDock.setTarget(targetEntity, addAsLast);
         this.activityManager.add(getToDock);
     }        
 
     /**
      * Registers a Attack activity with the given entity set as target
-     * @param  {object} targetEntity [Entity] 
+     * @param {object} targetEntity 
+     * @param {boolean} addAsLast - Registers the activity as the last to excecute
      * @return {void}
      */
-    attack(targetEntity) {
+    attack(targetEntity, addAsLast) {
         const attack = new ActivityManager.Attack(this);
         attack.setTarget(targetEntity);
-        this.activityManager.add(attack);
+        this.activityManager.add(attack, addAsLast);
         this.weaponManager.setTargetEntity(targetEntity);
     }
 

@@ -41,6 +41,7 @@ class Attack extends Activity {
         // -1 means that there is no selected DogFight coordinate just yet
         this._dogFightCoordIdx = -1;        
  
+        // gracefully cleans up the activity when the target is removed
         this.onTargetEntityRemove = () => this.kill();
     }
 
@@ -230,11 +231,11 @@ class Attack extends Activity {
                 targetEntity: this.target,
                 addAsLast: true 
             });
-            /*.dock({ 
+            .getToDock({ 
                 targetEntity: this.entity,
                 addAsLast: true,
                 resetActivityQueue: true
-            });*/
+            });
     }
 
     /**
