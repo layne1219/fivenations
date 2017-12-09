@@ -431,6 +431,7 @@ class Entity {
             this.docker = [];
         }
         targetEntity.unselect();
+        targetEntity.reset();
         this.docker.push(targetEntity);
     }
 

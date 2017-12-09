@@ -205,7 +205,8 @@ function createEntityEventAPI(entityManager) {
                     id: 'entity/attack',
                     targets: entities,
                     data: {
-                        targetEntity: targetEntity.getGUID()
+                        targetEntity: targetEntity.getGUID(),
+                        addAsLast: options.addAsLast
                     },
                     resetActivityQueue: options.resetActivityQueue
                 });
@@ -245,7 +246,8 @@ function createEntityEventAPI(entityManager) {
                     id: 'entity/getToDock',
                     targets: entities,
                     data: {
-                        targetEntity: targetEntity.getGUID()
+                        targetEntity: targetEntity.getGUID(),
+                        addAsLast: options.addAsLast
                     },
                     resetActivityQueue: options.resetActivityQueue
                 });

@@ -230,11 +230,10 @@ class Attack extends Activity {
             .attack({ 
                 targetEntity: this.target,
                 addAsLast: true 
-            });
+            })
             .getToDock({ 
                 targetEntity: this.entity,
                 addAsLast: true,
-                resetActivityQueue: true
             });
     }
 
