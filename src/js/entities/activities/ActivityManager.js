@@ -18,9 +18,11 @@ function ActivityManager(entity) {
 
         /**
          * Adds the given activity to the activity queue
-         * @param {object} Activity [An instance that inherits from Activity]
+         * @param {object} Activity - An instance that inherits from Activity
+         * @param {boolean} addAsLast - Adds the given Activity as the last element 
+         * of the activity list if true 
          */
-        add: function(activity) {
+        add: function(activity, addAsLast) {
             var l = activities.length,
                 currentIdx = l - 1;
             if (!activity instanceof Activity) {
@@ -32,11 +34,17 @@ function ActivityManager(entity) {
                     this.removeByIndex(currentIdx);
                 }
             }
-            activities.push(activity);
+            // the naming must be confusing but the excecution order of
+            // the collection is inverted
+            if (addAsLast) {
+                activities.unshift(activity);
+            } else {
+                activities.push(activity);
+            }
             activity.setManager(this);
-            // @TODO review this dependency 
-            // activities.push needs to go first here since the "activate" function might have 
-            // dependency on the activity queue
+            // activity.activate() function can refer to elements in the
+            // activity queue therefore this must be excecuted after
+            // this activity is added to the activities collection
             activity.activate();
         },
 
