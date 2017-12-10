@@ -54,10 +54,10 @@ class FogOfWarRenderer {
         const offsetVertical = Math.floor(this.game.camera.y / this.tileSize);
 
         return this.fogOfWar.getMatrixChunk({
-            x: offsetHoriztal,
-            y: offsetVertical,
-            width: visibleMatrixWidth,
-            height: visibleMatrixHeight
+            x: offsetHoriztal - 1,
+            y: offsetVertical - 1,
+            width: visibleMatrixWidth + 1,
+            height: visibleMatrixHeight + 1
         });
     }
 
@@ -74,7 +74,9 @@ class FogOfWarRenderer {
         for (let i = 0; i < matrix.length; i += 1) {
             for (let j = 0; j < matrix[i].length; j += 1) {
                 if (matrix[i][j]) {
-                    this.bmd.draw(this.mask, j * this.tileSize - maskOffset - cameraOffsetX, i * this.tileSize - maskOffset - cameraOffsetY);
+                    // offset to render one line of tiles off screen
+                    // so as to display the gradient transition  
+                    this.bmd.draw(this.mask, (j - 1) * this.tileSize - maskOffset - cameraOffsetX, (i - 1) * this.tileSize - maskOffset - cameraOffsetY);
                 }
             }
         }

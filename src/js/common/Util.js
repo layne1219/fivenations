@@ -180,7 +180,22 @@ export default {
 
         return Math.sqrt(dx * dx + dy * dy);
 
-    },            
+    },
+
+    /**
+     * Deep clones the given parameter
+     * @param {mixed} o
+     * @return {mixed} cloned version of o
+     */
+    deepClone: function(o) {
+       var output, v, key;
+       output = Array.isArray(o) ? [] : {};
+       for (key in o) {
+           v = o[key];
+           output[key] = (typeof v === "object") ? copy(v) : v;
+       }
+       return output;
+    },         
 
     // Eventlistener object
     EventDispatcher: (function() {
