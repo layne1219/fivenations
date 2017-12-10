@@ -187,12 +187,12 @@ export default {
      * @param {mixed} o
      * @return {mixed} cloned version of o
      */
-    deepClone: function(o) {
+    deepClone: function deepClone(o) {
        var output, v, key;
        output = Array.isArray(o) ? [] : {};
        for (key in o) {
            v = o[key];
-           output[key] = (typeof v === "object") ? copy(v) : v;
+           output[key] = (typeof v === "object") ? deepClone(v) : v;
        }
        return output;
     },         
