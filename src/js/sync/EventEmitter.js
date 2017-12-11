@@ -205,7 +205,8 @@ function createEntityEventAPI(entityManager) {
                     id: 'entity/attack',
                     targets: entities,
                     data: {
-                        targetEntity: targetEntity.getGUID()
+                        targetEntity: targetEntity.getGUID(),
+                        addAsLast: options.addAsLast
                     },
                     resetActivityQueue: options.resetActivityQueue
                 });
@@ -245,7 +246,8 @@ function createEntityEventAPI(entityManager) {
                     id: 'entity/getToDock',
                     targets: entities,
                     data: {
-                        targetEntity: targetEntity.getGUID()
+                        targetEntity: targetEntity.getGUID(),
+                        addAsLast: options.addAsLast
                     },
                     resetActivityQueue: options.resetActivityQueue
                 });
@@ -273,18 +275,28 @@ function createEntityEventAPI(entityManager) {
                 return this;
             },
             /**
-             * Undocks entities fromt the specified entity
+             * Undocks entities from the specified entity
              * @return {void}
              * @chainable
              */
             undock: function(options) {
 
-                var resetActivityQueue = options && options.resetActivityQueue || false;
+                const resetActivityQueue = options && options.resetActivityQueue || false;
 
                 EventBus.getInstance().add({
                     id: 'entity/undock',
                     targets: entities,
-                    resetActivityQueue: resetActivityQueue
+                    data: {
+                        rnd: entities.map(entity => {
+                            const dockCapacity = entity.getDataObject().getMaxHangar();
+                            const randomFactors = [];
+                            for (let i = dockCapacity - 1; i >= 0; i -= 1) {
+                                randomFactors.push(Math.random());
+                            }
+                            return randomFactors;
+                        })
+                    },
+                    resetActivityQueue: resetActivityQueue,
                 });
 
                 return this;

@@ -165,7 +165,39 @@ export default {
 
         return Math.sqrt(dx * dx + dy * dy);
 
-    },        
+    },
+
+    /**
+     * Measures the distance between the given sprites
+     * @param {object} source first entity
+     * @param {object} target second entity
+     * @return {integer} distance in pixels 
+     */
+    distanceBetweenEntityAndCoords: function (source, target) {
+
+        var dx = source.sprite.x - target.x;
+        var dy = source.sprite.y - target.y;
+
+        return Math.sqrt(dx * dx + dy * dy);
+
+    },
+
+    /**
+     * Deep clones the given parameter
+     * @param {mixed} o
+     * @return {mixed} cloned version of o
+     */
+    deepClone: function deepClone(o) {
+        var output, v, key;
+        output = Array.isArray(o) ? [] : {};
+        for (key in o) {
+            if (Object.prototype.hasOwnProperty.call(o, key)) {
+                v = o[key];
+                output[key] = (typeof v === 'object') ? deepClone(v) : v;
+            }
+        }
+        return output;
+    },         
 
     // Eventlistener object
     EventDispatcher: (function() {

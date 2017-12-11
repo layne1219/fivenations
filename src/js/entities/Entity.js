@@ -64,10 +64,10 @@ const extendSprite = function(entity, sprite, dataObject) {
     sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
         
     // save helper data for faster updates for any subsequent calculation with damage area
-    sprite._damageWidth = damageWidth;
-    sprite._damageHeight = damageHeight;
-    sprite._damageWidthWithShield = Math.round(damageWidth * 1.5);
-    sprite._damageHeightWithShield = Math.round(damageHeight * 1.5);
+    sprite._damageWidth = damageWidth * 0.5;
+    sprite._damageHeight = damageHeight * 0.5;
+    sprite._damageWidthWithShield = Math.round(damageWidth);
+    sprite._damageHeightWithShield = Math.round(damageHeight);
 
     sprite._parent = entity;
 
@@ -271,7 +271,6 @@ class Entity {
 
         // local behaviour
         this.updateShield();
-
     }
 
     /**
@@ -384,24 +383,26 @@ class Entity {
 
     /**
      * Registers a GetToDock activity with the given entity set as target
-     * @param  {object} targetEntity [Entity] 
+     * @param  {object} targetEntity
+     * @param {boolean} addAsLast - Registers the activity as the last to excecute
      * @return {void}
      */
-    getToDock(targetEntity) {
+    getToDock(targetEntity, addAsLast) {
         const getToDock = new ActivityManager.GetToDock(this);
         getToDock.setTarget(targetEntity);
-        this.activityManager.add(getToDock);
+        this.activityManager.add(getToDock, addAsLast);
     }        
 
     /**
      * Registers a Attack activity with the given entity set as target
-     * @param  {object} targetEntity [Entity] 
+     * @param {object} targetEntity 
+     * @param {boolean} addAsLast - Registers the activity as the last to excecute
      * @return {void}
      */
-    attack(targetEntity) {
+    attack(targetEntity, addAsLast) {
         const attack = new ActivityManager.Attack(this);
         attack.setTarget(targetEntity);
-        this.activityManager.add(attack);
+        this.activityManager.add(attack, addAsLast);
         this.weaponManager.setTargetEntity(targetEntity);
     }
 
@@ -430,6 +431,7 @@ class Entity {
             this.docker = [];
         }
         targetEntity.unselect();
+        targetEntity.reset();
         this.docker.push(targetEntity);
     }
 

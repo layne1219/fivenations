@@ -52,7 +52,7 @@ GetToDock.prototype.update = function() {
 GetToDock.prototype.setTarget = function(entity) {
     GetInRange.prototype.setTarget.call(this, entity);
     // for optimisation 
-    this.range = entity.getDataObject().getWidth() / 2;
+    this.range = entity.getDataObject().getWidth();
 }
 
 /**

@@ -1,10 +1,7 @@
 import Event from './Event';
-import PlayerManager from '../players/PlayerManager';
-import EventEmitter from './EventEmitter';
-import Util from '../common/Util';
 
 const ns = window.fivenations;
-const RANDOM_DISTANCE_FROM_DOCKER = 200; 
+const RANDOM_DISTANCE_FROM_DOCKER = 300; 
 
 function Undock() {
     var args = [].slice.call(arguments);
@@ -24,35 +21,38 @@ Undock.prototype.execute = function(options) {
     if (!options.targets) {
         return;
     }
-    options.targets.forEach(function(id) {
-        var entity = ns.game.entityManager.entities(id);
-        var undockedEntities;
-        var authorised = PlayerManager
-            .getInstance()
-            .getUser()
-            .isAuthorised();
+    // recieves the random factor from the authorised client
+    if (!options.data) options.data = {};
+    const rnd = [].concat(options.data.rnd);
+
+    options.targets.forEach((id, idx) => {
+        const entityToUndock = ns.game.entityManager.entities(id);
+        const sprite = entityToUndock.getSprite();
+        const randomFactors = rnd[idx];
+        let undockedEntities;
 
         if (options.resetActivityQueue) {
-            entity.reset();
+            entityToUndock.reset();
         }
 
-        undockedEntities = entity.undock();
+        undockedEntities = entityToUndock.undock();
         
-        // if the player is authorised we'll have to emit
-        // further events 
-        if (authorised && undockedEntities) {
-            EventEmitter
-                .getInstance()
-                .synced
-                .entities(undockedEntities)
-                .place({
-                    x: entity.getSprite().x,
-                    y: entity.getSprite().y
-                })
-                .move({
-                    x: entity.getSprite().x + Util.rnd(1, RANDOM_DISTANCE_FROM_DOCKER) - RANDOM_DISTANCE_FROM_DOCKER / 2,
-                    y: entity.getSprite().y + Util.rnd(1, RANDOM_DISTANCE_FROM_DOCKER) - RANDOM_DISTANCE_FROM_DOCKER / 2,
-                });
+        if (undockedEntities) {
+            undockedEntities.map(entity => {
+                const dockedSprite = entity.getSprite();
+                dockedSprite.x = sprite.x;
+                dockedSprite.y = sprite.y;
+                return entity;
+            }).forEach((entity, idx) => {
+                const randomFactor = randomFactors[idx] || 0;
+                const dockedSprite = entity.getSprite();
+                const randomX = randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                const randomY = randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
+                entity.moveTo(
+                    dockedSprite.x + randomX,
+                    dockedSprite.y + randomY
+                );
+            });
         }
     });
 };

@@ -19,13 +19,14 @@ GetToDock.prototype.execute = function(options) {
     if (!options.targets || !options.data) {
         return;
     }
+    const addAsLast = options.data.addAsLast || false;
     options.targets.forEach(function(id) {
         var targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
         var entity = ns.game.entityManager.entities(id);
         if (options.resetActivityQueue) {
             entity.reset();
         }
-        entity.getToDock(targetEntity);
+        entity.getToDock(targetEntity, addAsLast);
     });
 };
 

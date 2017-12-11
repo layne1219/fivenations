@@ -1,642 +1,642 @@
-{"frames": {
+{"frames": [
 
-"destruction_ship_big_00000.png":
 {
-	"frame": {"x":223,"y":370,"w":9,"h":9},
+	"filename": "destruction_ship_big_00000.png",
+	"frame": {"x":1580,"y":649,"w":218,"h":110},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":123,"y":127,"w":9,"h":9},
+	"spriteSourceSize": {"x":20,"y":69,"w":218,"h":110},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00001.png":
 {
-	"frame": {"x":1242,"y":691,"w":31,"h":31},
+	"filename": "destruction_ship_big_00001.png",
+	"frame": {"x":1362,"y":655,"w":216,"h":116},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":111,"y":116,"w":31,"h":31},
+	"spriteSourceSize": {"x":21,"y":65,"w":216,"h":116},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00002.png":
 {
-	"frame": {"x":1190,"y":691,"w":50,"h":46},
+	"filename": "destruction_ship_big_00002.png",
+	"frame": {"x":1596,"y":1,"w":220,"h":122},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":102,"y":109,"w":50,"h":46},
+	"spriteSourceSize": {"x":19,"y":61,"w":220,"h":122},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00003.png":
 {
-	"frame": {"x":1732,"y":143,"w":62,"h":54},
+	"filename": "destruction_ship_big_00003.png",
+	"frame": {"x":1376,"y":1,"w":218,"h":126},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":96,"y":106,"w":62,"h":54},
+	"spriteSourceSize": {"x":19,"y":59,"w":218,"h":126},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00004.png":
 {
-	"frame": {"x":1685,"y":791,"w":72,"h":61},
+	"filename": "destruction_ship_big_00004.png",
+	"frame": {"x":1138,"y":657,"w":222,"h":131},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":91,"y":103,"w":72,"h":61},
+	"spriteSourceSize": {"x":18,"y":56,"w":222,"h":131},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00005.png":
 {
-	"frame": {"x":1682,"y":391,"w":82,"h":67},
+	"filename": "destruction_ship_big_00005.png",
+	"frame": {"x":914,"y":660,"w":222,"h":133},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":101,"w":82,"h":67},
+	"spriteSourceSize": {"x":18,"y":56,"w":222,"h":133},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00006.png":
 {
-	"frame": {"x":1692,"y":460,"w":95,"h":77},
+	"filename": "destruction_ship_big_00006.png",
+	"frame": {"x":688,"y":661,"w":224,"h":136},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":80,"y":97,"w":95,"h":77},
+	"spriteSourceSize": {"x":17,"y":55,"w":224,"h":136},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00007.png":
 {
-	"frame": {"x":1685,"y":707,"w":105,"h":82},
+	"filename": "destruction_ship_big_00007.png",
+	"frame": {"x":1150,"y":1,"w":224,"h":139},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":75,"y":95,"w":105,"h":82},
+	"spriteSourceSize": {"x":17,"y":54,"w":224,"h":139},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00008.png":
 {
-	"frame": {"x":1682,"y":301,"w":113,"h":88},
+	"filename": "destruction_ship_big_00008.png",
+	"frame": {"x":462,"y":491,"w":224,"h":145},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":71,"y":93,"w":113,"h":88},
+	"spriteSourceSize": {"x":16,"y":52,"w":224,"h":145},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00009.png":
 {
-	"frame": {"x":1,"y":926,"w":121,"h":93},
+	"filename": "destruction_ship_big_00009.png",
+	"frame": {"x":234,"y":491,"w":226,"h":151},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":91,"w":121,"h":93},
+	"spriteSourceSize": {"x":16,"y":49,"w":226,"h":151},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00010.png":
 {
-	"frame": {"x":124,"y":926,"w":121,"h":93},
+	"filename": "destruction_ship_big_00010.png",
+	"frame": {"x":1,"y":1,"w":231,"h":159},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":91,"w":121,"h":93},
+	"spriteSourceSize": {"x":12,"y":45,"w":231,"h":159},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00011.png":
 {
-	"frame": {"x":370,"y":919,"w":121,"h":96},
+	"filename": "destruction_ship_big_00011.png",
+	"frame": {"x":1,"y":162,"w":231,"h":159},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":88,"w":121,"h":96},
+	"spriteSourceSize": {"x":12,"y":45,"w":231,"h":159},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00012.png":
 {
-	"frame": {"x":247,"y":919,"w":121,"h":101},
+	"filename": "destruction_ship_big_00012.png",
+	"frame": {"x":1,"y":323,"w":231,"h":159},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":83,"w":121,"h":101},
+	"spriteSourceSize": {"x":12,"y":45,"w":231,"h":159},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00013.png":
 {
-	"frame": {"x":1582,"y":856,"w":121,"h":103},
+	"filename": "destruction_ship_big_00013.png",
+	"frame": {"x":1,"y":484,"w":231,"h":159},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":81,"w":121,"h":103},
+	"spriteSourceSize": {"x":12,"y":45,"w":231,"h":159},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00014.png":
 {
-	"frame": {"x":1660,"y":601,"w":121,"h":104},
+	"filename": "destruction_ship_big_00014.png",
+	"frame": {"x":1,"y":645,"w":230,"h":158},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":80,"w":121,"h":104},
+	"spriteSourceSize": {"x":12,"y":46,"w":230,"h":158},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00015.png":
 {
-	"frame": {"x":1202,"y":904,"w":121,"h":105},
+	"filename": "destruction_ship_big_00015.png",
+	"frame": {"x":1,"y":805,"w":229,"h":158},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":79,"w":121,"h":105},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":158},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00016.png":
 {
-	"frame": {"x":1079,"y":904,"w":121,"h":110},
+	"filename": "destruction_ship_big_00016.png",
+	"frame": {"x":1,"y":965,"w":229,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":77,"w":121,"h":110},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00017.png":
 {
-	"frame": {"x":956,"y":906,"w":121,"h":112},
+	"filename": "destruction_ship_big_00017.png",
+	"frame": {"x":232,"y":969,"w":229,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":76,"w":121,"h":112},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00018.png":
 {
-	"frame": {"x":833,"y":906,"w":121,"h":113},
+	"filename": "destruction_ship_big_00018.png",
+	"frame": {"x":233,"y":645,"w":229,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":76,"w":121,"h":113},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00019.png":
 {
-	"frame": {"x":1562,"y":737,"w":121,"h":117},
+	"filename": "destruction_ship_big_00019.png",
+	"frame": {"x":456,"y":804,"w":229,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":74,"w":121,"h":117},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00020.png":
 {
-	"frame": {"x":1459,"y":877,"w":121,"h":123},
+	"filename": "destruction_ship_big_00020.png",
+	"frame": {"x":463,"y":963,"w":229,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":67,"y":71,"w":121,"h":123},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00021.png":
 {
-	"frame": {"x":1555,"y":301,"w":125,"h":125},
+	"filename": "destruction_ship_big_00021.png",
+	"frame": {"x":234,"y":1,"w":229,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":65,"y":70,"w":125,"h":125},
+	"spriteSourceSize": {"x":13,"y":46,"w":229,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00022.png":
 {
-	"frame": {"x":1325,"y":891,"w":132,"h":127},
+	"filename": "destruction_ship_big_00022.png",
+	"frame": {"x":234,"y":332,"w":228,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":61,"y":70,"w":132,"h":127},
+	"spriteSourceSize": {"x":13,"y":46,"w":228,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00023.png":
 {
-	"frame": {"x":1521,"y":605,"w":137,"h":130},
+	"filename": "destruction_ship_big_00023.png",
+	"frame": {"x":465,"y":1,"w":228,"h":156},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":59,"y":69,"w":137,"h":130},
+	"spriteSourceSize": {"x":13,"y":47,"w":228,"h":156},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00024.png":
 {
-	"frame": {"x":1373,"y":605,"w":146,"h":132},
+	"filename": "destruction_ship_big_00024.png",
+	"frame": {"x":464,"y":330,"w":227,"h":156},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":55,"y":68,"w":146,"h":132},
+	"spriteSourceSize": {"x":14,"y":47,"w":227,"h":156},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00025.png":
 {
-	"frame": {"x":1538,"y":465,"w":152,"h":134},
+	"filename": "destruction_ship_big_00025.png",
+	"frame": {"x":695,"y":1,"w":227,"h":155},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":52,"y":67,"w":152,"h":134},
+	"spriteSourceSize": {"x":14,"y":47,"w":227,"h":155},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00026.png":
 {
-	"frame": {"x":1403,"y":739,"w":157,"h":136},
+	"filename": "destruction_ship_big_00026.png",
+	"frame": {"x":687,"y":799,"w":227,"h":155},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":50,"y":66,"w":157,"h":136},
+	"spriteSourceSize": {"x":14,"y":47,"w":227,"h":155},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00027.png":
 {
-	"frame": {"x":1373,"y":465,"w":163,"h":138},
+	"filename": "destruction_ship_big_00027.png",
+	"frame": {"x":693,"y":330,"w":227,"h":155},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":47,"y":66,"w":163,"h":138},
+	"spriteSourceSize": {"x":14,"y":47,"w":227,"h":155},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00028.png":
 {
-	"frame": {"x":1574,"y":1,"w":173,"h":140},
+	"filename": "destruction_ship_big_00028.png",
+	"frame": {"x":924,"y":1,"w":224,"h":155},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":41,"y":63,"w":173,"h":140},
+	"spriteSourceSize": {"x":17,"y":46,"w":224,"h":155},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00029.png":
 {
-	"frame": {"x":1553,"y":154,"w":177,"h":145},
+	"filename": "destruction_ship_big_00029.png",
+	"frame": {"x":922,"y":327,"w":223,"h":155},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":39,"y":60,"w":177,"h":145},
+	"spriteSourceSize": {"x":17,"y":46,"w":223,"h":155},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00030.png":
 {
-	"frame": {"x":1220,"y":739,"w":181,"h":150},
+	"filename": "destruction_ship_big_00030.png",
+	"frame": {"x":916,"y":795,"w":223,"h":156},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":36,"y":58,"w":181,"h":150},
+	"spriteSourceSize": {"x":17,"y":46,"w":223,"h":156},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00031.png":
 {
-	"frame": {"x":1021,"y":1,"w":187,"h":155},
+	"filename": "destruction_ship_big_00031.png",
+	"frame": {"x":464,"y":638,"w":222,"h":159},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":56,"w":187,"h":155},
+	"spriteSourceSize": {"x":18,"y":46,"w":222,"h":159},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00032.png":
 {
-	"frame": {"x":842,"y":743,"w":193,"h":161},
+	"filename": "destruction_ship_big_00032.png",
+	"frame": {"x":232,"y":805,"w":222,"h":162},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":30,"y":55,"w":193,"h":161},
+	"spriteSourceSize": {"x":18,"y":46,"w":222,"h":162},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00033.png":
 {
-	"frame": {"x":638,"y":743,"w":202,"h":161},
+	"filename": "destruction_ship_big_00033.png",
+	"frame": {"x":1557,"y":302,"w":211,"h":163},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":28,"y":55,"w":202,"h":161},
+	"spriteSourceSize": {"x":23,"y":47,"w":211,"h":163},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00034.png":
 {
-	"frame": {"x":428,"y":743,"w":208,"h":165},
+	"filename": "destruction_ship_big_00034.png",
+	"frame": {"x":1528,"y":482,"w":211,"h":165},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":54,"w":208,"h":165},
+	"spriteSourceSize": {"x":23,"y":48,"w":211,"h":165},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00035.png":
 {
-	"frame": {"x":216,"y":751,"w":210,"h":166},
+	"filename": "destruction_ship_big_00035.png",
+	"frame": {"x":1344,"y":314,"w":211,"h":166},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":21,"y":54,"w":210,"h":166},
+	"spriteSourceSize": {"x":23,"y":48,"w":211,"h":166},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00036.png":
 {
-	"frame": {"x":1,"y":751,"w":213,"h":173},
+	"filename": "destruction_ship_big_00036.png",
+	"frame": {"x":875,"y":158,"w":212,"h":167},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":18,"y":51,"w":213,"h":173},
+	"spriteSourceSize": {"x":22,"y":48,"w":212,"h":167},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00037.png":
 {
-	"frame": {"x":223,"y":193,"w":216,"h":175},
+	"filename": "destruction_ship_big_00037.png",
+	"frame": {"x":1089,"y":158,"w":212,"h":167},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":49,"w":216,"h":175},
+	"spriteSourceSize": {"x":22,"y":48,"w":212,"h":167},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00038.png":
 {
-	"frame": {"x":218,"y":381,"w":218,"h":178},
+	"filename": "destruction_ship_big_00038.png",
+	"frame": {"x":447,"y":160,"w":213,"h":168},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":16,"y":46,"w":218,"h":178},
+	"spriteSourceSize": {"x":21,"y":47,"w":213,"h":168},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00039.png":
 {
-	"frame": {"x":1,"y":568,"w":218,"h":181},
+	"filename": "destruction_ship_big_00039.png",
+	"frame": {"x":662,"y":159,"w":211,"h":169},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":16,"y":44,"w":218,"h":181},
+	"spriteSourceSize": {"x":20,"y":47,"w":211,"h":169},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00040.png":
 {
-	"frame": {"x":1,"y":193,"w":220,"h":186},
+	"filename": "destruction_ship_big_00040.png",
+	"frame": {"x":1118,"y":953,"w":211,"h":168},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":15,"y":40,"w":220,"h":186},
+	"spriteSourceSize": {"x":20,"y":48,"w":211,"h":168},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00041.png":
 {
-	"frame": {"x":1,"y":1,"w":223,"h":190},
+	"filename": "destruction_ship_big_00041.png",
+	"frame": {"x":1331,"y":953,"w":208,"h":169},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":14,"y":39,"w":223,"h":190},
+	"spriteSourceSize": {"x":23,"y":48,"w":208,"h":169},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00042.png":
 {
-	"frame": {"x":1,"y":381,"w":215,"h":185},
+	"filename": "destruction_ship_big_00042.png",
+	"frame": {"x":1541,"y":953,"w":208,"h":169},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":22,"y":46,"w":215,"h":185},
+	"spriteSourceSize": {"x":23,"y":48,"w":208,"h":169},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00043.png":
 {
-	"frame": {"x":440,"y":1,"w":214,"h":175},
+	"filename": "destruction_ship_big_00043.png",
+	"frame": {"x":906,"y":956,"w":210,"h":169},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":23,"y":51,"w":214,"h":175},
+	"spriteSourceSize": {"x":22,"y":49,"w":210,"h":169},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00044.png":
 {
-	"frame": {"x":226,"y":1,"w":212,"h":177},
+	"filename": "destruction_ship_big_00044.png",
+	"frame": {"x":694,"y":956,"w":210,"h":170},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":27,"y":50,"w":212,"h":177},
+	"spriteSourceSize": {"x":22,"y":49,"w":210,"h":170},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00045.png":
 {
-	"frame": {"x":221,"y":561,"w":205,"h":178},
+	"filename": "destruction_ship_big_00045.png",
+	"frame": {"x":1109,"y":484,"w":207,"h":171},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":28,"y":49,"w":205,"h":178},
+	"spriteSourceSize": {"x":21,"y":48,"w":207,"h":171},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00046.png":
 {
-	"frame": {"x":428,"y":561,"w":198,"h":180},
+	"filename": "destruction_ship_big_00046.png",
+	"frame": {"x":1513,"y":129,"w":206,"h":171},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":31,"y":48,"w":198,"h":180},
+	"spriteSourceSize": {"x":22,"y":48,"w":206,"h":171},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00047.png":
 {
-	"frame": {"x":1189,"y":158,"w":180,"h":180},
+	"filename": "destruction_ship_big_00047.png",
+	"frame": {"x":899,"y":487,"w":208,"h":171},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":48,"w":180,"h":180},
+	"spriteSourceSize": {"x":21,"y":47,"w":208,"h":171},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00048.png":
 {
-	"frame": {"x":1003,"y":349,"w":183,"h":182},
+	"filename": "destruction_ship_big_00048.png",
+	"frame": {"x":688,"y":488,"w":209,"h":171},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":45,"w":183,"h":182},
+	"spriteSourceSize": {"x":20,"y":47,"w":209,"h":171},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00049.png":
 {
-	"frame": {"x":1188,"y":349,"w":183,"h":182},
+	"filename": "destruction_ship_big_00049.png",
+	"frame": {"x":234,"y":160,"w":211,"h":170},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":44,"w":183,"h":182},
+	"spriteSourceSize": {"x":20,"y":48,"w":211,"h":170},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00050.png":
 {
-	"frame": {"x":1003,"y":165,"w":184,"h":182},
+	"filename": "destruction_ship_big_00050.png",
+	"frame": {"x":1318,"y":483,"w":208,"h":170},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":44,"w":184,"h":182},
+	"spriteSourceSize": {"x":23,"y":48,"w":208,"h":170},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00051.png":
 {
-	"frame": {"x":817,"y":169,"w":184,"h":184},
+	"filename": "destruction_ship_big_00051.png",
+	"frame": {"x":1303,"y":142,"w":208,"h":170},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":43,"w":184,"h":184},
+	"spriteSourceSize": {"x":23,"y":48,"w":208,"h":170},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00052.png":
 {
-	"frame": {"x":630,"y":178,"w":185,"h":186},
+	"filename": "destruction_ship_big_00052.png",
+	"frame": {"x":1551,"y":773,"w":209,"h":168},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":42,"w":185,"h":186},
+	"spriteSourceSize": {"x":23,"y":49,"w":209,"h":168},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00053.png":
 {
-	"frame": {"x":816,"y":366,"w":185,"h":186},
+	"filename": "destruction_ship_big_00053.png",
+	"frame": {"x":1751,"y":943,"w":204,"h":166},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":42,"w":185,"h":186},
+	"spriteSourceSize": {"x":23,"y":51,"w":204,"h":166},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00054.png":
 {
-	"frame": {"x":628,"y":556,"w":185,"h":185},
+	"filename": "destruction_ship_big_00054.png",
+	"frame": {"x":1141,"y":790,"w":203,"h":161},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":44,"w":185,"h":185},
+	"spriteSourceSize": {"x":23,"y":55,"w":203,"h":161},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00055.png":
 {
-	"frame": {"x":815,"y":556,"w":185,"h":185},
+	"filename": "destruction_ship_big_00055.png",
+	"frame": {"x":1346,"y":790,"w":203,"h":161},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":44,"w":185,"h":185},
+	"spriteSourceSize": {"x":23,"y":55,"w":203,"h":161},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00056.png":
 {
-	"frame": {"x":441,"y":178,"w":187,"h":187},
+	"filename": "destruction_ship_big_00056.png",
+	"frame": {"x":1741,"y":467,"w":199,"h":160},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":31,"y":43,"w":187,"h":187},
+	"spriteSourceSize": {"x":23,"y":56,"w":199,"h":160},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00057.png":
 {
-	"frame": {"x":438,"y":370,"w":187,"h":188},
+	"filename": "destruction_ship_big_00057.png",
+	"frame": {"x":1721,"y":125,"w":198,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":31,"y":42,"w":187,"h":188},
+	"spriteSourceSize": {"x":24,"y":58,"w":198,"h":157},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00058.png":
 {
-	"frame": {"x":627,"y":367,"w":187,"h":187},
+	"filename": "destruction_ship_big_00058.png",
+	"frame": {"x":1147,"y":327,"w":195,"h":154},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":31,"y":41,"w":187,"h":187},
+	"spriteSourceSize": {"x":26,"y":61,"w":195,"h":154},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00059.png":
 {
-	"frame": {"x":1002,"y":554,"w":186,"h":184},
+	"filename": "destruction_ship_big_00059.png",
+	"frame": {"x":1762,"y":761,"w":194,"h":154},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":32,"y":40,"w":186,"h":184},
+	"spriteSourceSize": {"x":27,"y":61,"w":194,"h":154},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00060.png":
 {
-	"frame": {"x":656,"y":1,"w":180,"h":166},
+	"filename": "destruction_ship_big_00060.png",
+	"frame": {"x":1770,"y":284,"w":172,"h":148},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":39,"y":39,"w":180,"h":166},
+	"spriteSourceSize": {"x":31,"y":63,"w":172,"h":148},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00061.png":
 {
-	"frame": {"x":1371,"y":154,"w":180,"h":161},
+	"filename": "destruction_ship_big_00061.png",
+	"frame": {"x":1818,"y":1,"w":52,"h":58},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":39,"y":40,"w":180,"h":161},
+	"spriteSourceSize": {"x":100,"y":99,"w":52,"h":58},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00062.png":
 {
-	"frame": {"x":1037,"y":740,"w":181,"h":162},
+	"filename": "destruction_ship_big_00062.png",
+	"frame": {"x":1818,"y":61,"w":52,"h":58},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":39,"y":39,"w":181,"h":162},
+	"spriteSourceSize": {"x":100,"y":99,"w":52,"h":58},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00063.png":
 {
-	"frame": {"x":838,"y":1,"w":181,"h":162},
+	"filename": "destruction_ship_big_00063.png",
+	"frame": {"x":1872,"y":1,"w":51,"h":56},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":39,"y":39,"w":181,"h":162},
+	"spriteSourceSize": {"x":100,"y":100,"w":51,"h":56},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00064.png":
 {
-	"frame": {"x":1190,"y":533,"w":181,"h":156},
+	"filename": "destruction_ship_big_00064.png",
+	"frame": {"x":1872,"y":59,"w":51,"h":56},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":39,"y":43,"w":181,"h":156},
+	"spriteSourceSize": {"x":100,"y":100,"w":51,"h":56},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00065.png":
 {
-	"frame": {"x":1210,"y":1,"w":180,"h":151},
+	"filename": "destruction_ship_big_00065.png",
+	"frame": {"x":1800,"y":629,"w":50,"h":55},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":40,"y":44,"w":180,"h":151},
+	"spriteSourceSize": {"x":101,"y":100,"w":50,"h":55},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00066.png":
 {
-	"frame": {"x":1392,"y":1,"w":180,"h":151},
+	"filename": "destruction_ship_big_00066.png",
+	"frame": {"x":1800,"y":686,"w":49,"h":54},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":40,"y":44,"w":180,"h":151},
+	"spriteSourceSize": {"x":101,"y":101,"w":49,"h":54},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00067.png":
 {
-	"frame": {"x":1373,"y":317,"w":180,"h":146},
+	"filename": "destruction_ship_big_00067.png",
+	"frame": {"x":1851,"y":686,"w":48,"h":52},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":40,"y":49,"w":180,"h":146},
+	"spriteSourceSize": {"x":102,"y":102,"w":48,"h":52},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00068.png":
 {
-	"frame": {"x":493,"y":910,"w":168,"h":105},
+	"filename": "destruction_ship_big_00068.png",
+	"frame": {"x":1852,"y":629,"w":45,"h":48},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":51,"y":89,"w":168,"h":105},
+	"spriteSourceSize": {"x":103,"y":104,"w":45,"h":48},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"destruction_ship_big_00069.png":
 {
-	"frame": {"x":663,"y":906,"w":168,"h":105},
+	"filename": "destruction_ship_big_00069.png",
+	"frame": {"x":456,"y":963,"w":3,"h":3},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":51,"y":89,"w":168,"h":105},
+	"spriteSourceSize": {"x":0,"y":0,"w":3,"h":3},
 	"sourceSize": {"w":250,"h":250},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "effect_destruction_big.png",
 	"format": "RGBA8888",
-	"size": {"w":1796,"h":1021},
+	"size": {"w":1957,"h":1127},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6198a79e3a7c70babbd14e9d79e024d2:847b07058649cb6075bd880421fdd4fc:5b6465924218c98aab97d6affe5afd6b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8453d1271dc0c873af5bfd749ceec73e:29b1e56f5bf12e687026f8a1f9872465:5b6465924218c98aab97d6affe5afd6b$"
 }
 }
