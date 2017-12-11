@@ -19,8 +19,8 @@ function createCollisionManager() {
         update: function(authoritative) {
 
             if (authoritative) {
-                phaserGame.physics.arcade.overlap(effectGroup, entityGroup, collisionHandler);
-                phaserGame.physics.arcade.overlap(effectGroup, entityBuildingGroup, collisionHandler);
+                phaserGame.physics.arcade.overlap(effectGroup, entityGroup, null, collisionHandler);
+                phaserGame.physics.arcade.overlap(effectGroup, entityBuildingGroup, null, collisionHandler);
             }
 
         }
@@ -65,6 +65,11 @@ function collisionHandler(effectSprite, entitySprite) {
     if (collisionEvent.damageTarget) {
         eventEmitter.synced.entities(entity).damage({ weapon: weapon });
     }
+
+    // we don't need the arcade collision logic to separate the 
+    // colliding objects. For more information see: 
+    // https://phaser.io/docs/2.6.2/Phaser.Physics.Arcade.html#overlap
+    return false;
 
 }   
 

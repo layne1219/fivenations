@@ -64,10 +64,10 @@ const extendSprite = function(entity, sprite, dataObject) {
     sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
         
     // save helper data for faster updates for any subsequent calculation with damage area
-    sprite._damageWidth = damageWidth;
-    sprite._damageHeight = damageHeight;
-    sprite._damageWidthWithShield = Math.round(damageWidth * 1.5);
-    sprite._damageHeightWithShield = Math.round(damageHeight * 1.5);
+    sprite._damageWidth = damageWidth * 0.5;
+    sprite._damageHeight = damageHeight * 0.5;
+    sprite._damageWidthWithShield = Math.round(damageWidth);
+    sprite._damageHeightWithShield = Math.round(damageHeight);
 
     sprite._parent = entity;
 

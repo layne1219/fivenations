@@ -188,13 +188,15 @@ export default {
      * @return {mixed} cloned version of o
      */
     deepClone: function deepClone(o) {
-       var output, v, key;
-       output = Array.isArray(o) ? [] : {};
-       for (key in o) {
-           v = o[key];
-           output[key] = (typeof v === "object") ? deepClone(v) : v;
-       }
-       return output;
+        var output, v, key;
+        output = Array.isArray(o) ? [] : {};
+        for (key in o) {
+            if (Object.prototype.hasOwnProperty.call(o, key)) {
+                v = o[key];
+                output[key] = (typeof v === 'object') ? deepClone(v) : v;
+            }
+        }
+        return output;
     },         
 
     // Eventlistener object
