@@ -3,7 +3,7 @@
   "description": "",
   "readme": "",
   "repository": "",
-  "version": "0.39.0",
+  "version": "0.40.0",
   "dependencies": {
     "express": "^4.14.0",
     "forever": "^0.15.2",
