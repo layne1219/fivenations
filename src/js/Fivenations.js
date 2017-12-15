@@ -24,6 +24,10 @@ function exposeGameAttributes(params) {
     };
 }
 
+function exposeCurrentVersion() {
+    ns.version = process.env.VERSION;
+}
+
 function initPhaserGame(params) {
     const { width, height, canvasElmId } = params;
     game = new Phaser.Game(width || DEFAULT_CANVAS_WIDTH, height || DEFAULT_CANVAS_HEIGHT, Phaser.AUTO, canvasElmId);
@@ -41,6 +45,7 @@ export default class App extends Util.EventDispatcher {
     constructor(params) {
         super();
         exposeGameAttributes(params);
+        exposeCurrentVersion();
         initPhaserGame(params);
         initScenes();
     }
