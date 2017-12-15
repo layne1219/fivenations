@@ -1,0 +1,282 @@
+{"frames": [
+
+{
+	"filename": "cloud_wormhole_00000.png",
+	"frame": {"x":1,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00001.png",
+	"frame": {"x":320,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00002.png",
+	"frame": {"x":639,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00003.png",
+	"frame": {"x":958,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00004.png",
+	"frame": {"x":1277,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00005.png",
+	"frame": {"x":1596,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00006.png",
+	"frame": {"x":1,"y":238,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00007.png",
+	"frame": {"x":320,"y":238,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00008.png",
+	"frame": {"x":639,"y":238,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00009.png",
+	"frame": {"x":958,"y":238,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00010.png",
+	"frame": {"x":1277,"y":238,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00011.png",
+	"frame": {"x":1596,"y":238,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00012.png",
+	"frame": {"x":1,"y":475,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00013.png",
+	"frame": {"x":320,"y":475,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00014.png",
+	"frame": {"x":639,"y":475,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00015.png",
+	"frame": {"x":958,"y":475,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00016.png",
+	"frame": {"x":1277,"y":475,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00017.png",
+	"frame": {"x":1596,"y":475,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00018.png",
+	"frame": {"x":1,"y":712,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00019.png",
+	"frame": {"x":320,"y":712,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00020.png",
+	"frame": {"x":639,"y":712,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00021.png",
+	"frame": {"x":958,"y":712,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00022.png",
+	"frame": {"x":1277,"y":712,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00023.png",
+	"frame": {"x":1596,"y":712,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00024.png",
+	"frame": {"x":1,"y":949,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00025.png",
+	"frame": {"x":320,"y":949,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00026.png",
+	"frame": {"x":639,"y":949,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00027.png",
+	"frame": {"x":958,"y":949,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00028.png",
+	"frame": {"x":1277,"y":949,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "cloud_wormhole_00029.png",
+	"frame": {"x":1,"y":1,"w":317,"h":235},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":91,"w":317,"h":235},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "effect_wormhole.png",
+	"format": "RGBA8888",
+	"size": {"w":1914,"h":1185},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1a60313a41ab7b05c0c8a8d24bf20581:d378b1287fae2061749934f8e5d2d215:ff34ec61e90f335f006177e1d0c1b326$"
+}
+}
