@@ -1,642 +1,282 @@
-{"frames": {
+{"frames": [
 
-"cloud_blackhole_00000.png":
 {
-	"frame": {"x":1,"y":1,"w":185,"h":141},
+	"filename": "cloud_blackhole_00000.png",
+	"frame": {"x":342,"y":550,"w":334,"h":277},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":185,"h":141},
+	"spriteSourceSize": {"x":34,"y":63,"w":334,"h":277},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00001.png":
 {
-	"frame": {"x":931,"y":1,"w":185,"h":142},
+	"filename": "cloud_blackhole_00001.png",
+	"frame": {"x":675,"y":1114,"w":328,"h":283},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":185,"h":142},
+	"spriteSourceSize": {"x":39,"y":63,"w":328,"h":283},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00002.png":
 {
-	"frame": {"x":1118,"y":1,"w":184,"h":142},
+	"filename": "cloud_blackhole_00002.png",
+	"frame": {"x":335,"y":1111,"w":338,"h":281},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":184,"h":142},
+	"spriteSourceSize": {"x":35,"y":63,"w":338,"h":281},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00003.png":
 {
-	"frame": {"x":1304,"y":1,"w":183,"h":142},
+	"filename": "cloud_blackhole_00003.png",
+	"frame": {"x":1017,"y":554,"w":347,"h":277},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":183,"h":142},
+	"spriteSourceSize": {"x":33,"y":63,"w":347,"h":277},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00004.png":
 {
-	"frame": {"x":188,"y":1,"w":183,"h":141},
+	"filename": "cloud_blackhole_00004.png",
+	"frame": {"x":1696,"y":1,"w":344,"h":274},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":183,"h":141},
+	"spriteSourceSize": {"x":30,"y":63,"w":344,"h":274},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00005.png":
 {
-	"frame": {"x":373,"y":1,"w":184,"h":141},
+	"filename": "cloud_blackhole_00005.png",
+	"frame": {"x":1697,"y":835,"w":341,"h":280},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":184,"h":141},
+	"spriteSourceSize": {"x":34,"y":63,"w":341,"h":280},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00006.png":
 {
-	"frame": {"x":1482,"y":145,"w":184,"h":143},
+	"filename": "cloud_blackhole_00006.png",
+	"frame": {"x":682,"y":831,"w":331,"h":281},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":184,"h":143},
+	"spriteSourceSize": {"x":39,"y":63,"w":331,"h":281},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00007.png":
 {
-	"frame": {"x":1668,"y":145,"w":186,"h":143},
+	"filename": "cloud_blackhole_00007.png",
+	"frame": {"x":1,"y":828,"w":337,"h":279},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":186,"h":143},
+	"spriteSourceSize": {"x":39,"y":63,"w":337,"h":279},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00008.png":
 {
-	"frame": {"x":1489,"y":1,"w":187,"h":142},
+	"filename": "cloud_blackhole_00008.png",
+	"frame": {"x":1,"y":550,"w":339,"h":276},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":126,"w":187,"h":142},
+	"spriteSourceSize": {"x":39,"y":63,"w":339,"h":276},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00009.png":
 {
-	"frame": {"x":1,"y":288,"w":186,"h":143},
+	"filename": "cloud_blackhole_00009.png",
+	"frame": {"x":1015,"y":833,"w":338,"h":279},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":186,"h":143},
+	"spriteSourceSize": {"x":39,"y":63,"w":338,"h":279},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00010.png":
 {
-	"frame": {"x":189,"y":288,"w":188,"h":143},
+	"filename": "cloud_blackhole_00010.png",
+	"frame": {"x":1,"y":1109,"w":332,"h":282},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":188,"h":143},
+	"spriteSourceSize": {"x":39,"y":63,"w":332,"h":282},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00011.png":
 {
-	"frame": {"x":379,"y":288,"w":189,"h":143},
+	"filename": "cloud_blackhole_00011.png",
+	"frame": {"x":1342,"y":1115,"w":336,"h":284},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":189,"h":143},
+	"spriteSourceSize": {"x":36,"y":63,"w":336,"h":284},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00012.png":
 {
-	"frame": {"x":1678,"y":1,"w":189,"h":142},
+	"filename": "cloud_blackhole_00012.png",
+	"frame": {"x":1366,"y":554,"w":341,"h":278},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":189,"h":142},
+	"spriteSourceSize": {"x":37,"y":63,"w":341,"h":278},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00013.png":
 {
-	"frame": {"x":570,"y":288,"w":189,"h":143},
+	"filename": "cloud_blackhole_00013.png",
+	"frame": {"x":682,"y":275,"w":337,"h":275},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":189,"h":143},
+	"spriteSourceSize": {"x":39,"y":63,"w":337,"h":275},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00014.png":
 {
-	"frame": {"x":761,"y":289,"w":189,"h":143},
+	"filename": "cloud_blackhole_00014.png",
+	"frame": {"x":1,"y":274,"w":336,"h":274},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":189,"h":143},
+	"spriteSourceSize": {"x":38,"y":63,"w":336,"h":274},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00015.png":
 {
-	"frame": {"x":952,"y":289,"w":189,"h":143},
+	"filename": "cloud_blackhole_00015.png",
+	"frame": {"x":1021,"y":276,"w":339,"h":275},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":189,"h":143},
+	"spriteSourceSize": {"x":35,"y":63,"w":339,"h":275},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00016.png":
 {
-	"frame": {"x":558,"y":433,"w":188,"h":144},
+	"filename": "cloud_blackhole_00016.png",
+	"frame": {"x":685,"y":1,"w":336,"h":272},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":188,"h":144},
+	"spriteSourceSize": {"x":39,"y":63,"w":336,"h":272},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00017.png":
 {
-	"frame": {"x":1308,"y":435,"w":188,"h":145},
+	"filename": "cloud_blackhole_00017.png",
+	"frame": {"x":339,"y":274,"w":341,"h":274},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":188,"h":145},
+	"spriteSourceSize": {"x":39,"y":63,"w":341,"h":274},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00018.png":
 {
-	"frame": {"x":571,"y":728,"w":189,"h":147},
+	"filename": "cloud_blackhole_00018.png",
+	"frame": {"x":340,"y":831,"w":340,"h":278},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":189,"h":147},
+	"spriteSourceSize": {"x":39,"y":63,"w":340,"h":278},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00019.png":
 {
-	"frame": {"x":751,"y":580,"w":188,"h":146},
+	"filename": "cloud_blackhole_00019.png",
+	"frame": {"x":1362,"y":277,"w":339,"h":275},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":146},
+	"spriteSourceSize": {"x":33,"y":63,"w":339,"h":275},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00020.png":
 {
-	"frame": {"x":941,"y":580,"w":188,"h":146},
+	"filename": "cloud_blackhole_00020.png",
+	"frame": {"x":1,"y":1,"w":341,"h":271},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":146},
+	"spriteSourceSize": {"x":30,"y":63,"w":341,"h":271},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00021.png":
 {
-	"frame": {"x":762,"y":728,"w":188,"h":147},
+	"filename": "cloud_blackhole_00021.png",
+	"frame": {"x":678,"y":552,"w":337,"h":277},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":147},
+	"spriteSourceSize": {"x":34,"y":63,"w":337,"h":277},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00022.png":
 {
-	"frame": {"x":952,"y":730,"w":188,"h":147},
+	"filename": "cloud_blackhole_00022.png",
+	"frame": {"x":1709,"y":554,"w":334,"h":279},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":147},
+	"spriteSourceSize": {"x":37,"y":63,"w":334,"h":279},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00023.png":
 {
-	"frame": {"x":1142,"y":730,"w":187,"h":147},
+	"filename": "cloud_blackhole_00023.png",
+	"frame": {"x":1023,"y":1,"w":328,"h":273},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":187,"h":147},
+	"spriteSourceSize": {"x":39,"y":63,"w":328,"h":273},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00024.png":
 {
-	"frame": {"x":1331,"y":730,"w":186,"h":147},
+	"filename": "cloud_blackhole_00024.png",
+	"frame": {"x":344,"y":1,"w":339,"h":271},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":108,"y":123,"w":186,"h":147},
+	"spriteSourceSize": {"x":33,"y":63,"w":339,"h":271},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00025.png":
 {
-	"frame": {"x":1519,"y":730,"w":185,"h":147},
+	"filename": "cloud_blackhole_00025.png",
+	"frame": {"x":1353,"y":1,"w":341,"h":273},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":108,"y":123,"w":185,"h":147},
+	"spriteSourceSize": {"x":34,"y":63,"w":341,"h":273},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00026.png":
 {
-	"frame": {"x":1131,"y":582,"w":185,"h":146},
+	"filename": "cloud_blackhole_00026.png",
+	"frame": {"x":1005,"y":1114,"w":335,"h":283},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":185,"h":146},
+	"spriteSourceSize": {"x":35,"y":63,"w":335,"h":283},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00027.png":
 {
-	"frame": {"x":1498,"y":435,"w":184,"h":145},
+	"filename": "cloud_blackhole_00027.png",
+	"frame": {"x":1680,"y":1117,"w":330,"h":284},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":184,"h":145},
+	"spriteSourceSize": {"x":39,"y":63,"w":330,"h":284},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00028.png":
 {
-	"frame": {"x":748,"y":434,"w":184,"h":144},
+	"filename": "cloud_blackhole_00028.png",
+	"frame": {"x":1355,"y":834,"w":340,"h":279},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":184,"h":144},
+	"spriteSourceSize": {"x":35,"y":63,"w":340,"h":279},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"cloud_blackhole_00029.png":
 {
-	"frame": {"x":1684,"y":435,"w":185,"h":145},
+	"filename": "cloud_blackhole_00029.png",
+	"frame": {"x":1703,"y":277,"w":342,"h":275},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":185,"h":145},
+	"spriteSourceSize": {"x":33,"y":63,"w":342,"h":275},
 	"sourceSize": {"w":400,"h":400},
 	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00030.png":
-{
-	"frame": {"x":1,"y":578,"w":185,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":185,"h":145},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00031.png":
-{
-	"frame": {"x":1318,"y":582,"w":186,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":186,"h":146},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00032.png":
-{
-	"frame": {"x":188,"y":578,"w":185,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":185,"h":145},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00033.png":
-{
-	"frame": {"x":934,"y":434,"w":184,"h":144},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":124,"w":184,"h":144},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00034.png":
-{
-	"frame": {"x":1143,"y":289,"w":183,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":183,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00035.png":
-{
-	"frame": {"x":1328,"y":290,"w":183,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":183,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00036.png":
-{
-	"frame": {"x":1513,"y":290,"w":183,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":183,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00037.png":
-{
-	"frame": {"x":1698,"y":290,"w":182,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":182,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00038.png":
-{
-	"frame": {"x":1,"y":433,"w":182,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":182,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00039.png":
-{
-	"frame": {"x":1,"y":144,"w":182,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":182,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00040.png":
-{
-	"frame": {"x":559,"y":1,"w":183,"h":141},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":126,"w":183,"h":141},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00041.png":
-{
-	"frame": {"x":185,"y":144,"w":183,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":126,"w":183,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00042.png":
-{
-	"frame": {"x":370,"y":144,"w":182,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":126,"w":182,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00043.png":
-{
-	"frame": {"x":554,"y":144,"w":182,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":182,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00044.png":
-{
-	"frame": {"x":738,"y":144,"w":183,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":183,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00045.png":
-{
-	"frame": {"x":923,"y":145,"w":185,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":185,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00046.png":
-{
-	"frame": {"x":1110,"y":145,"w":185,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":127,"w":185,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00047.png":
-{
-	"frame": {"x":1120,"y":434,"w":186,"h":144},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":125,"w":186,"h":144},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00048.png":
-{
-	"frame": {"x":1506,"y":582,"w":187,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":187,"h":146},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00049.png":
-{
-	"frame": {"x":1706,"y":730,"w":186,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":186,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00050.png":
-{
-	"frame": {"x":1,"y":873,"w":188,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":188,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00051.png":
-{
-	"frame": {"x":191,"y":874,"w":189,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":189,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00052.png":
-{
-	"frame": {"x":382,"y":877,"w":189,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":189,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00053.png":
-{
-	"frame": {"x":573,"y":877,"w":189,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":189,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00054.png":
-{
-	"frame": {"x":764,"y":879,"w":189,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":106,"y":123,"w":189,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00055.png":
-{
-	"frame": {"x":955,"y":879,"w":188,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00056.png":
-{
-	"frame": {"x":1695,"y":582,"w":188,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":146},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00057.png":
-{
-	"frame": {"x":1,"y":725,"w":188,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":146},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00058.png":
-{
-	"frame": {"x":191,"y":726,"w":189,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":189,"h":146},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00059.png":
-{
-	"frame": {"x":1145,"y":879,"w":188,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00060.png":
-{
-	"frame": {"x":1335,"y":879,"w":188,"h":147},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":147},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00061.png":
-{
-	"frame": {"x":1525,"y":879,"w":188,"h":148},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":148},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00062.png":
-{
-	"frame": {"x":1715,"y":879,"w":188,"h":148},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":123,"w":188,"h":148},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00063.png":
-{
-	"frame": {"x":382,"y":727,"w":187,"h":146},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":124,"w":187,"h":146},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00064.png":
-{
-	"frame": {"x":375,"y":579,"w":186,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":108,"y":125,"w":186,"h":145},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00065.png":
-{
-	"frame": {"x":563,"y":580,"w":186,"h":145},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":125,"w":186,"h":145},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00066.png":
-{
-	"frame": {"x":185,"y":433,"w":185,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":185,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00067.png":
-{
-	"frame": {"x":372,"y":433,"w":184,"h":143},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":184,"h":143},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00068.png":
-{
-	"frame": {"x":1297,"y":145,"w":183,"h":142},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":183,"h":142},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"cloud_blackhole_00069.png":
-{
-	"frame": {"x":744,"y":1,"w":185,"h":141},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":126,"w":185,"h":141},
-	"sourceSize": {"w":400,"h":400},
-	"pivot": {"x":0.5,"y":0.5}
-}},
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "effect_blackhole.png",
 	"format": "RGBA8888",
-	"size": {"w":1904,"h":1028},
+	"size": {"w":2046,"h":1402},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:772ea6f51331da8aeee25357a6e1e0d0:8e5b9f1b6b2d862a106531e6f80310a8:eee0f22785f592e2b1623da86596b0ec$"
+	"smartupdate": "$TexturePacker:SmartUpdate:685e273e360e3e76280289151a760cfe:506824f9418353cef5a88943c1ee5511:eee0f22785f592e2b1623da86596b0ec$"
 }
 }
