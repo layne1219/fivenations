@@ -5,6 +5,7 @@
   "repository": "",
   "version": "0.40.0",
   "dependencies": {
+    "easystarjs": "^0.4.1",
     "express": "^4.14.0",
     "forever": "^0.15.2",
     "webpack-s3-plugin": "^1.0.0-rc.0"
