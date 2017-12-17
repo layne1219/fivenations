@@ -266,7 +266,9 @@ MotionManager.prototype = {
 
             if (Math.abs(a - b) > step * 2) {
 
-                this.rotation.angularDirection = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a - b>= -360) ? 1 : -1;
+                if (!this.rotation.angularDirection) {
+                    this.rotation.angularDirection = (a - b >= 0 && a - b <= 180) || (a - b <=-180 && a - b>= -360) ? 1 : -1;
+                }
                 this.movement.currentAngle += this.rotation.angularDirection * step;
             } else {
                 this.movement.currentAngle = this.movement.targetAngle;
