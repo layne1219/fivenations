@@ -24,6 +24,7 @@ var effects = {
         motionManager.movement.targetDragTreshold = Math.min(motionManager.movement.maxTargetDragTreshold, distance / 2);
         motionManager.movement.targetAngle = Math.atan2(motionManager.movement.targetY - motionManager.sprite.y, motionManager.movement.targetX - motionManager.sprite.x);
         motionManager.rotation.targetAngleCode = motionManager.getAngleCodeByAngle(motionManager.movement.targetAngle);
+        motionManager.rotation.angularDirection = 0; // to be determend in MotionManager
 
         if (motionManager.rotation.maxAngleCount === 1) {
             motionManager.movement.currentAngle = motionManager.movement.targetAngle;

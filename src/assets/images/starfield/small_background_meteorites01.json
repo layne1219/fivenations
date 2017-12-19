@@ -1,0 +1,300 @@
+{"frames": [
+
+{
+	"filename": "small_meteorites01_00000.png",
+	"frame": {"x":1,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00001.png",
+	"frame": {"x":245,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00002.png",
+	"frame": {"x":977,"y":403,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00003.png",
+	"frame": {"x":1221,"y":403,"w":243,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":56,"w":243,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00004.png",
+	"frame": {"x":1466,"y":403,"w":243,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":56,"w":243,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00005.png",
+	"frame": {"x":489,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00006.png",
+	"frame": {"x":733,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00007.png",
+	"frame": {"x":977,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00008.png",
+	"frame": {"x":1221,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00009.png",
+	"frame": {"x":1711,"y":403,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00010.png",
+	"frame": {"x":1,"y":604,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00011.png",
+	"frame": {"x":1465,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00012.png",
+	"frame": {"x":1709,"y":1,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00013.png",
+	"frame": {"x":245,"y":604,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00014.png",
+	"frame": {"x":489,"y":604,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00015.png",
+	"frame": {"x":1,"y":202,"w":243,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":57,"w":243,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00016.png",
+	"frame": {"x":246,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00017.png",
+	"frame": {"x":490,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00018.png",
+	"frame": {"x":734,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00019.png",
+	"frame": {"x":977,"y":605,"w":243,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":56,"w":243,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00020.png",
+	"frame": {"x":733,"y":604,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00021.png",
+	"frame": {"x":1222,"y":605,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00022.png",
+	"frame": {"x":1466,"y":605,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00023.png",
+	"frame": {"x":978,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00024.png",
+	"frame": {"x":1222,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00025.png",
+	"frame": {"x":1466,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00026.png",
+	"frame": {"x":1710,"y":202,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00027.png",
+	"frame": {"x":1,"y":403,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00028.png",
+	"frame": {"x":1710,"y":605,"w":242,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":56,"w":242,"h":200},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00029.png",
+	"frame": {"x":245,"y":403,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00030.png",
+	"frame": {"x":489,"y":403,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "small_meteorites01_00031.png",
+	"frame": {"x":733,"y":403,"w":242,"h":199},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":57,"w":242,"h":199},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "small_background_meteorites01.png",
+	"format": "RGBA8888",
+	"size": {"w":1954,"h":806},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:292fbaa5c5846bea2d5dcd32cc75840c:c8b7cf407699c22456b2fdb0b3a0e39a:f1841b1ca335e5d20167df17a10459e4$"
+}
+}
