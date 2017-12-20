@@ -1,23 +1,39 @@
 {
-    "id": "kinetic-torpedo",
-    "targetGraphicsGroup": "projectiles",
-    "size": "xsm",
-    "ttl": 750,
-    "followTarget": false,
-    "animations": {
-        "idle": {
-            "rate": 20,
-            "loopable": true,
-            "frames": [21, 22, 23, 24, 25, 26, 27, 28]
-        }
-    },    
-    "events": {
-        "remove": {
-            "effects": ["blow-2"]
-        },
-        "collision": {
-            "damageTarget": true,
-            "removeEffect": true
-        }        
+  "id": "kinetic-torpedo",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 750,
+  "followTarget": false,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
     }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-red"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true
+    }
+  }
 }
