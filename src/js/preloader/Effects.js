@@ -426,6 +426,69 @@ ns.effects = Object.assign(ns.effects || {}, {
         dataURL: PATH_ASSETS_DATA + 'flash-white-8.json'
     },
 
+    'muzzleflash-bigcannon': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_bigcannon.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_bigcannon.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-blue': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_blue.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_blue.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-electric': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_electric.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_electric.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-green': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_green.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_green.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-phlegm': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_phlegm.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_phlegm.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-purple': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_purple.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_purple.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-red': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_red.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_red.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-spore': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_spore.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_spore.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    },
+
+    'muzzleflash-yellow': {
+        preloading: true,
+        spriteURL: PATH_ASSETS_IMG +  'muzzleflash_yellow.png',
+        atlasURL: PATH_ASSETS_IMG + 'muzzleflash_yellow.json',
+        dataURL: PATH_ASSETS_DATA + 'muzzleflash.json'
+    }
+
 });
 
 export default {
