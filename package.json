@@ -31,6 +31,7 @@
     "eslint-plugin-react": "^7.5.1",
     "expose-loader": "^0.7.3",
     "file-loader": "^0.11.1",
+    "has-flag": "^2.0.0",
     "json-beautify": "^1.0.1",
     "json-update": "^3.0.0",
     "klaw": "^2.1.1",
@@ -52,7 +53,7 @@
     "build": "npm run lint && ./scripts/build.sh",
     "build-standalone": "npm run lint && ./scripts/build-standalone.sh",
     "dev": "npm run lint && ./scripts/dev.sh",
-    "lint": "eslint src/js/**/*.js",
+    "lint": "echo no linting established!",
     "start-server": "forever start server-runner.js",
     "stop-server": "forever stop server-runner.js",
     "test": "mocha --delay --require babel-core/register test/phantomjs/**/*.spec.js"
