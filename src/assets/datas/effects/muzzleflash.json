@@ -1,5 +1,6 @@
 {
-    "id": "muzzleflash-bigcannon",
+    "id": "muzzleflash",
+    "targetGraphicsGroup": "projectiles",
     "animType": ["idle"],
     "size": "xsm",
     "animations": {

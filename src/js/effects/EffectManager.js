@@ -2,6 +2,7 @@ import Util from '../common/Util';
 import Graphics from '../common/Graphics';
 import DataObject from '../model/DataObject';
 import EventEmitter from '../sync/EventEmitter';
+import Weapon from '../entities/weapons/Weapon';
 import Effect from './Effect';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
@@ -119,13 +120,28 @@ class EffectManager {
 
         if (initEventConfig) {
 
+            let offsetX = 0;
+            let offsetY = 0;
+
+            // calculates the offset according to the weapon's parent entity
+            const emitter = effect.getEmitter();
+            if (emitter instanceof Weapon) {
+                const emitterDataObject = emitter
+                    .getManager()
+                    .getEntity()
+                    .getDataObject();
+                const projectileOffset = emitterDataObject && emitterDataObject.getProjectileOffset() || {};
+                offsetX = projectileOffset.x || 0;
+                offsetY = projectileOffset.y || 0;
+            }
+
             const effects = initEventConfig.effects || [];
 
             effects.forEach(effectId => {
                 this.add({
                     id: effectId,
-                    x: sprite.x,
-                    y: sprite.y
+                    x: sprite.x + offsetX,
+                    y: sprite.y + offsetY
                 });
             });            
 
