@@ -53,7 +53,7 @@
     "build": "npm run lint && ./scripts/build.sh",
     "build-standalone": "npm run lint && ./scripts/build-standalone.sh",
     "dev": "npm run lint && ./scripts/dev.sh",
-    "lint": "echo no linting established!",
+    "lint": "eslint src/js/**/*.js",
     "format": "prettier-eslint --write src/**/*.js",
     "start-server": "forever start server-runner.js",
     "stop-server": "forever stop server-runner.js",
