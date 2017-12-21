@@ -1,23 +1,39 @@
 {
-    "id": "ragnarok-heavy-gun",
-    "targetGraphicsGroup": "projectiles",
-    "size": "xsm",
-    "ttl": 750,
-    "followTarget": false,
-    "animations": {
-        "idle": {
-            "rate": 20,
-            "loopable": true,
-            "frames": [29, 30, 31, 32, 33, 34, 35, 36]
-        }
-    },        
-    "events": {
-        "remove": {
-            "effects": ["blow-2"]
-        },
-        "collision": {
-            "damageTarget": true,
-            "removeEffect": true
-        }        
+  "id": "ragnarok-heavy-gun",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 750,
+  "followTarget": false,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
     }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-bigcannon"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true
+    }
+  }
 }

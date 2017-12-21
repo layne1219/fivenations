@@ -1,26 +1,36 @@
 {
-    "id": "laser-beam-1",
-    "targetGraphicsGroup": "projectiles",
-    "size": "xsm",
-    "ttl": 50,
-    "animations": {
-        "idle": {
-            "oncomplete": "keepLastFrame",
-            "rate": 20,
-            "loopable": false,
-            "frames": [0, 1, 2, 3]
-        }
-    },    
-    "events": {
-        "create": {
-            "effects": ["flash-orange-2"]
-        },        
-        "remove": {
-            "effects": ["flash-blue-2","blow-1"]
-        },
-        "collision": {
-            "damageTarget": true,
-            "removeEffect": true
-        }
+  "id": "laser-beam-1",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 50,
+  "animations": {
+    "idle": {
+      "oncomplete": "keepLastFrame",
+      "rate": 20,
+      "loopable": false,
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ]
     }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-red"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "flash-blue-2",
+        "blow-1"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true
+    }
+  }
 }
