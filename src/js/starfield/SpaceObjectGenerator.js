@@ -1,28 +1,23 @@
 function SpaceObjectGenerator(deepSpaceLayer) {
-    this.deepSpaceLayer = deepSpaceLayer;
-    this.objects = [];
+  this.deepSpaceLayer = deepSpaceLayer;
+  this.objects = [];
 }
 
 SpaceObjectGenerator.prototype = {
-    
-    generate: function() {
-        // no-op, merely defined to be overwritten 
-    },
+  generate() {
+    // no-op, merely defined to be overwritten
+  },
 
-    addSpaceObject: function(obj) {
-        if (!obj) throw 'Invalid SpaceObject was given!';
-        this.objects.push(obj);
-    },
+  addSpaceObject(obj) {
+    if (!obj) throw 'Invalid SpaceObject was given!';
+    this.objects.push(obj);
+  },
 
-    getSpaceObjects: function() {
+  getSpaceObjects() {
+    this.objects.sort((a, b) => b.z - a.z);
 
-        this.objects.sort(function(a, b) {
-            return b.z - a.z;
-        });
-
-        return this.objects;
-    }
-
+    return this.objects;
+  },
 };
 
 export default SpaceObjectGenerator;

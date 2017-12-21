@@ -1,9 +1,10 @@
 import Event from './Event';
+
 const ns = window.fivenations;
 
 function Place() {
-    var args = [].slice.call(arguments);
-    Event.apply(this, args);
+  const args = [].slice.call(arguments);
+  Event.apply(this, args);
 }
 
 Place.prototype = Object.create(Event.prototype);
@@ -24,22 +25,22 @@ Place.prototype.constructor = Place;
  * 	]
  * }
  */
-Place.prototype.execute = function(options) {
-    if (!options.targets || !options.data) {
-        return;
-    }
-    options.targets.forEach(function(id) {
-        var entity = ns.game.entityManager.entities(id);
-        var sprite = entity.getSprite();
-        var x = options.data.x;
-        var y = options.data.y;
+Place.prototype.execute = function (options) {
+  if (!options.targets || !options.data) {
+    return;
+  }
+  options.targets.forEach((id) => {
+    const entity = ns.game.entityManager.entities(id);
+    const sprite = entity.getSprite();
+    const x = options.data.x;
+    const y = options.data.y;
 
-        entity.reset();  
-        entity.getMotionManager().reset();  
+    entity.reset();
+    entity.getMotionManager().reset();
 
-        sprite.x = x;
-        sprite.y = y;
-    });
+    sprite.x = x;
+    sprite.y = y;
+  });
 };
 
 export default Place;

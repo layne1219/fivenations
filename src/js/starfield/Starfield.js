@@ -2,37 +2,33 @@ import DeepSpaceLayer from './DeepSpaceLayer';
 import Background from './Background';
 
 function Starfield(map) {
-    initialise.call(this, map);
+  initialise.call(this, map);
 }
 
 function initialise(map) {
-    this.initLayers();
-    this.createBackground(map);
-    this.createDeepSpaceObjects(map);
+  this.initLayers();
+  this.createBackground(map);
+  this.createDeepSpaceObjects(map);
 }
 
 Starfield.prototype = {
+  initLayers() {
+    this.layers = [];
+  },
 
-    initLayers: function() {
-        this.layers = [];
-    },
+  createBackground(map) {
+    this.layers.push(new Background(map));
+  },
 
-    createBackground: function(map) {
-        this.layers.push(new Background(map));
-    },        
+  createDeepSpaceObjects(map) {
+    this.layers.push(new DeepSpaceLayer(map));
+  },
 
-    createDeepSpaceObjects: function(map) {
-        this.layers.push(new DeepSpaceLayer(map));
-    },
-
-    update: function() {
-
-        this.layers.forEach(function(layer) {
-            layer.update();
-        });
-
-    }
-
+  update() {
+    this.layers.forEach((layer) => {
+      layer.update();
+    });
+  },
 };
 
 export default Starfield;

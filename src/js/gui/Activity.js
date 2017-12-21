@@ -1,25 +1,23 @@
 function Activity(activityManager) {
-    this.activityManager = activityManager;
+  this.activityManager = activityManager;
 }
 
 Activity.prototype = {
+  activate() {
+    this.active = true;
+  },
 
-    activate: function() {
-        this.active = true;
-    },
+  deactivate() {
+    this.active = false;
+  },
 
-    deactivate: function() {
-        this.active = false;
-    },
+  isActive() {
+    return this.active;
+  },
 
-    isActive: function() {
-        return this.active;
-    },
-
-    getActivityManager: function() {
-        return this.activityManager;
-    }
-
+  getActivityManager() {
+    return this.activityManager;
+  },
 };
 
 export default Activity;

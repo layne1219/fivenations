@@ -1,16 +1,14 @@
-define('Game.Signals', function() {
+define('Game.Signals', () => {
+  function create() {
+    const exports = {};
 
-    function create() {
-        var exports = {};
+    exports.onResourcesUpdate = new Phaser.Signal();
+    exports.onPlayerResourcesUpdate = new Phaser.Signal();
 
-        exports.onResourcesUpdate = new Phaser.Signal();
-        exports.onPlayerResourcesUpdate = new Phaser.Signal();
+    return exports;
+  }
 
-        return exports;
-    }
-
-    return {
-        create: create
-    };
-
+  return {
+    create,
+  };
 });
