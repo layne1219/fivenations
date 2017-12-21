@@ -41,6 +41,7 @@
     "phantom": "^4.0.2",
     "phaser-shim": "^2.4.8",
     "postcss-loader": "^1.3.3",
+    "prettier-eslint": "^8.5.0",
     "sass-loader": "^6.0.3",
     "script-loader": "^0.7.0",
     "style-loader": "^0.16.1",
@@ -49,13 +50,14 @@
     "webpack-dashboard": "^1.0.0"
   },
   "scripts": {
-    "update": "git checkout master && git pull",
     "build": "npm run lint && ./scripts/build.sh",
     "build-standalone": "npm run lint && ./scripts/build-standalone.sh",
     "dev": "npm run lint && ./scripts/dev.sh",
     "lint": "echo no linting established!",
+    "format": "prettier-eslint --write src/**/*.js",
     "start-server": "forever start server-runner.js",
     "stop-server": "forever stop server-runner.js",
+    "update": "git checkout master && git pull",
     "test": "mocha --delay --require babel-core/register test/phantomjs/**/*.spec.js"
   }
 }
