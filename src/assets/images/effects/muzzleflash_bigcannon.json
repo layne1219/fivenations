@@ -1,92 +1,92 @@
 {"frames": [
 
 {
-	"filename": "muzzleflash_bigcannon00000.png",
-	"frame": {"x":451,"y":40,"w":19,"h":13},
+	"filename": "muzzleflash_cannon_00000.png",
+	"frame": {"x":157,"y":69,"w":72,"h":53},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":56,"y":50,"w":19,"h":13},
+	"spriteSourceSize": {"x":25,"y":36,"w":72,"h":53},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00001.png",
-	"frame": {"x":451,"y":1,"w":39,"h":37},
+	"filename": "muzzleflash_cannon_00001.png",
+	"frame": {"x":1,"y":69,"w":76,"h":58},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":41,"y":40,"w":39,"h":37},
+	"spriteSourceSize": {"x":23,"y":34,"w":76,"h":58},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00002.png",
-	"frame": {"x":342,"y":1,"w":46,"h":45},
+	"filename": "muzzleflash_cannon_00002.png",
+	"frame": {"x":267,"y":1,"w":82,"h":62},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":38,"y":36,"w":46,"h":45},
+	"spriteSourceSize": {"x":20,"y":32,"w":82,"h":62},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00003.png",
-	"frame": {"x":171,"y":1,"w":50,"h":49},
+	"filename": "muzzleflash_cannon_00003.png",
+	"frame": {"x":314,"y":65,"w":82,"h":62},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":36,"y":34,"w":50,"h":49},
+	"spriteSourceSize": {"x":20,"y":32,"w":82,"h":62},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00004.png",
-	"frame": {"x":59,"y":1,"w":54,"h":52},
+	"filename": "muzzleflash_cannon_00004.png",
+	"frame": {"x":351,"y":1,"w":80,"h":60},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"spriteSourceSize": {"x":21,"y":33,"w":80,"h":60},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00005.png",
-	"frame": {"x":115,"y":1,"w":54,"h":52},
+	"filename": "muzzleflash_cannon_00005.png",
+	"frame": {"x":79,"y":69,"w":76,"h":57},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":33,"w":54,"h":52},
+	"spriteSourceSize": {"x":25,"y":37,"w":76,"h":57},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00006.png",
-	"frame": {"x":1,"y":1,"w":56,"h":52},
+	"filename": "muzzleflash_cannon_00006.png",
+	"frame": {"x":231,"y":66,"w":81,"h":60},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":34,"y":33,"w":56,"h":52},
+	"spriteSourceSize": {"x":23,"y":36,"w":81,"h":60},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00007.png",
-	"frame": {"x":223,"y":1,"w":58,"h":48},
+	"filename": "muzzleflash_cannon_00007.png",
+	"frame": {"x":181,"y":1,"w":84,"h":63},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":36,"y":35,"w":58,"h":48},
+	"spriteSourceSize": {"x":22,"y":35,"w":84,"h":63},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00008.png",
-	"frame": {"x":283,"y":1,"w":57,"h":47},
+	"filename": "muzzleflash_cannon_00008.png",
+	"frame": {"x":92,"y":1,"w":87,"h":66},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":36,"y":34,"w":57,"h":47},
+	"spriteSourceSize": {"x":21,"y":33,"w":87,"h":66},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "muzzleflash_bigcannon00009.png",
-	"frame": {"x":390,"y":1,"w":59,"h":42},
+	"filename": "muzzleflash_cannon_00009.png",
+	"frame": {"x":1,"y":1,"w":89,"h":66},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":36,"y":39,"w":59,"h":42},
+	"spriteSourceSize": {"x":20,"y":32,"w":89,"h":66},
 	"sourceSize": {"w":120,"h":120},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -95,8 +95,8 @@
 	"version": "1.0",
 	"image": "muzzleflash_bigcannon.png",
 	"format": "RGBA8888",
-	"size": {"w":491,"h":54},
+	"size": {"w":432,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:ae4da7ba12078ffc0ee91ad79e71cbfe:6d524e7f08caae7b4dec407c3e4dbb2d:1256237fea878cd017a46c3082823ebf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d2746e66a80c88edd579910e9a202c27:f39f0a8545cee29614b2e09139a06954:1256237fea878cd017a46c3082823ebf$"
 }
 }
