@@ -1,3 +1,5 @@
+/* eslint no-cond-assign: 0 */
+/* eslint no-continue: 0 */
 import EventBus from './EventBus';
 import EventFactory from './EventFactory';
 import EventEmitter from './EventEmitter';
@@ -27,7 +29,7 @@ function createEventExecuter() {
           });
           emitter.local.dispatch(evt.id);
         } catch (ex) {
-          console.debug(ex);
+          // @TODO catch these errors for further assessment
         }
       }
     },

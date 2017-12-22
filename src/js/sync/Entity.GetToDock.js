@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function GetToDock() {
-  const args = [].slice.call(arguments);
+function GetToDock(...args) {
   Event.apply(this, args);
 }
 
@@ -16,7 +16,7 @@ GetToDock.prototype.constructor = GetToDock;
  * @return {void}
  * @example
  */
-GetToDock.prototype.execute = function (options) {
+GetToDock.prototype.execute = (options) => {
   if (!options.targets || !options.data) {
     return;
   }

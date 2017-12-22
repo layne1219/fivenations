@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityStop() {
-  const args = [].slice.call(arguments);
+function EntityStop(...args) {
   Event.apply(this, args);
 }
 
@@ -21,7 +21,7 @@ EntityStop.prototype.constructor = EntityStop;
  *  targets: [124, 84],
  * }
  */
-EntityStop.prototype.execute = function (options) {
+EntityStop.prototype.execute = (options) => {
   if (!options.targets) {
     return;
   }

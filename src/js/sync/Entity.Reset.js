@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityReset() {
-  const args = [].slice.call(arguments);
+function EntityReset(...args) {
   Event.apply(this, args);
 }
 
@@ -13,7 +13,7 @@ EntityReset.prototype.constructor = EntityReset;
 /**
  * Executes the event against the specified entity
  */
-EntityReset.prototype.execute = function (options) {
+EntityReset.prototype.execute = (options) => {
   if (!options.targets) {
     return;
   }

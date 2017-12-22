@@ -11,17 +11,18 @@ const TILE_WIDTH = 40;
 const TILE_HEIGHT = 40;
 const SCROLL_SPEED = 10;
 
-let game;
 let width = MIN_WIDTH * TILE_WIDTH;
 let height = MIN_HEIGHT * TILE_HEIGHT;
+
+let game;
 
 let starfield;
 let fogOfWar;
 let fogOfWarRenderer;
 let fogOfWarDirty = false;
 
-function Map(game) {
-  this.initGame(game);
+function Map(_game) {
+  this.initGame(_game);
 }
 
 Map.prototype = {
@@ -47,8 +48,7 @@ Map.prototype = {
   },
 
   setSize(config) {
-    width = config.width;
-    height = config.height;
+    { width, height } = config;
     game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
   },
 

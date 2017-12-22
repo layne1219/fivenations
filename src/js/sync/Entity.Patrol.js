@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityPatrol() {
-  const args = [].slice.call(arguments);
+function EntityPatrol(...args) {
   Event.apply(this, args);
 }
 
@@ -14,22 +14,12 @@ EntityPatrol.prototype.constructor = EntityPatrol;
  * No-op function to be overwritten in the child objects
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
- * @example
- * Expected Data format:
- * {
- *  id: 'entity/patrol'
- *  targets: [124, 84],
- *  data: [
- *      {x: 156, y:367}
- *  ]
- * }
  */
-EntityPatrol.prototype.execute = function (options) {
+EntityPatrol.prototype.execute = (options) => {
   if (!options.targets || !options.data) {
     return;
   }
-  let x = options.data.x,
-    y = options.data.y;
+  const { x, y } = options.data;
 
   options.targets.forEach((id) => {
     const entity = ns.game.entityManager.entities(id);

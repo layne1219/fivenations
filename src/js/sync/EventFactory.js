@@ -49,10 +49,10 @@ function createEventFactory() {
   return {
     getEventObjectById(id) {
       if (!id) {
-        throw 'ID has not been passed to fetch the Event!';
+        throw new Error('ID has not been passed to fetch the Event!');
       }
       if (!events[id]) {
-        throw 'There is no event registered to the given ID!';
+        throw new Error('There is no event registered to the given ID!');
       }
       return events[id];
     },

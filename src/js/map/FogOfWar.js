@@ -4,22 +4,22 @@ import FogOfWarMasks from './FogOfWarMasks';
 const FAKE_ROW = [];
 const FAKE_VALUE = 0;
 
+function addFakeRows(map) {
+  for (let i = map.getWidth() - 1; i >= 0; i -= 1) {
+    FAKE_ROW.push(FAKE_VALUE);
+  }
+}
+
 class FogOfWar {
   constructor(map) {
     this.initMatrix(map);
-    this.initFakeRow(map);
+    addFakeRows(map);
   }
 
   initMatrix(map) {
     this.tiles = Util.matrix(map.getWidth(), map.getHeight());
     this.tileWidth = map.getTileWidth();
     this.map = map;
-  }
-
-  initFakeRow(map) {
-    for (let i = map.getWidth() - 1; i >= 0; i -= 1) {
-      FAKE_ROW.push(FAKE_VALUE);
-    }
   }
 
   visit(x, y) {
@@ -38,7 +38,7 @@ class FogOfWar {
     for (let i = 0; i < mask.length; i += 1) {
       for (let j = 0; j < mask[i].length; j += 1) {
         if (mask[i][j]) {
-          this.visit(tile[0] - offset + j, tile[1] - offset + i);
+          this.visit(-offset + tile[0] + j, -offset + tile[1] + i);
         }
       }
     }
@@ -92,5 +92,4 @@ class FogOfWar {
   }
 }
 
-export { FogOfWar };
 export default FogOfWar;

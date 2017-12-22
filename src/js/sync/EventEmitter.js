@@ -45,18 +45,18 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       move(options) {
-        let entityNumber = entities.length,
-          rnd = entityNumber === 1 ? 0 : entityNumber * 4,
-          data = (function () {
-            const data = [];
-            for (let i = entityNumber - 1; i >= 0; i -= 1) {
-              data.push({
-                x: options.x - rnd / 2 + Util.rnd(0, rnd),
-                y: options.y - rnd / 2 + Util.rnd(0, rnd),
-              });
-            }
-            return data;
-          }());
+        const entityNumber = entities.length;
+        const rnd = entityNumber === 1 ? 0 : entityNumber * 4;
+        const data = (() => {
+          const coords = [];
+          for (let i = entityNumber - 1; i >= 0; i -= 1) {
+            coords.push({
+              x: options.x - rnd / 2 + Util.rnd(0, rnd),
+              y: options.y - rnd / 2 + Util.rnd(0, rnd),
+            });
+          }
+          return coords;
+        })();
 
         EventBus.getInstance().add({
           id: 'entity/move',
@@ -74,7 +74,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       follow(options) {
-        const targetEntity = options.targetEntity;
+        const { targetEntity } = options;
 
         EventBus.getInstance().add({
           id: 'entity/follow',
@@ -150,7 +150,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       fire(options) {
-        const targetEntity = options.targetEntity;
+        const { targetEntity } = options;
         const weaponGUIDs = [];
         let weaponCount = 0;
 
@@ -184,7 +184,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       attack(options) {
-        const targetEntity = options.targetEntity;
+        const { targetEntity } = options;
 
         EventBus.getInstance().add({
           id: 'entity/attack',
@@ -204,7 +204,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       damage(options) {
-        const weapon = options.weapon;
+        const { weapon } = options;
 
         EventBus.getInstance().add({
           id: 'entity/damage',
@@ -223,7 +223,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       getToDock(options) {
-        const targetEntity = options.targetEntity;
+        const { targetEntity } = options;
 
         EventBus.getInstance().add({
           id: 'entity/getToDock',
@@ -243,7 +243,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       dock(options) {
-        const targetEntity = options.targetEntity;
+        const { targetEntity } = options;
 
         EventBus.getInstance().add({
           id: 'entity/dock',
@@ -300,7 +300,7 @@ function createEntityEventAPI(entityManager) {
    * Emits an entity/create event
    * @param {[type]} config [description]
    */
-  $.add = function (config) {
+  $.add = (config) => {
     if (!config) return;
     if (!config.guid) config.guid = Util.getGUID();
     if (!config.createdAt) config.createdAt = new Date().getTime();
@@ -360,7 +360,7 @@ function createPlayerEventAPI(playerManager) {
    * Emits an player/create event
    * @param {object} config configuration object for the player
    */
-  $.add = function (config) {
+  $.add = (config) => {
     if (!config) return;
     if (!config.guid) config.guid = Util.getGUID();
     EventBus.getInstance().add({
@@ -417,7 +417,7 @@ function createEffectEventAPI(effectManager) {
    * Emits an effect/create event
    * @param {object} config configuration object for the effect
    */
-  $.add = function (config) {
+  $.add = (config) => {
     if (!config) return;
     if (!config.guid) config.guid = Util.getGUID();
     EventBus.getInstance().add({
@@ -443,7 +443,7 @@ function createEmitter(config) {
 export default {
   getInstance() {
     if (!singleton) {
-      throw 'The instance needs to be created through "create"!';
+      throw new Error('The instance needs to be created through "create"!');
     }
     return singleton;
   },

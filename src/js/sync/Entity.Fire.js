@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityFire() {
-  const args = [].slice.call(arguments);
+function EntityFire(...args) {
   Event.apply(this, args);
 }
 
@@ -15,22 +15,19 @@ EntityFire.prototype.constructor = EntityFire;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EntityFire.prototype.execute = function (options) {
+EntityFire.prototype.execute = (options) => {
   if (!options.targets || !options.data) {
     return;
   }
-  let entity;
-  let targetEntity;
-  let weapons;
 
   options.targets.forEach((id, idx) => {
-    entity = ns.game.entityManager.entities(id);
-    targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
+    const entity = ns.game.entityManager.entities(id);
+    const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
 
     if (!entity || !targetEntity) return;
     if (!options.data.weaponGUIDs[idx]) return;
 
-    weapons = entity
+    const weapons = entity
       .getWeaponManager()
       .getWeapons()
       .filter((weapon) => {

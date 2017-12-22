@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function Dock() {
-  const args = [].slice.call(arguments);
+function Dock(...args) {
   Event.apply(this, args);
 }
 
@@ -14,9 +14,8 @@ Dock.prototype.constructor = Dock;
  * No-op function to be overwritten in the child objects
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
- * @example
  */
-Dock.prototype.execute = function (options) {
+Dock.prototype.execute = (options) => {
   if (!options.targets || !options.data) {
     return;
   }

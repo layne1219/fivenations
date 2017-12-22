@@ -1,10 +1,10 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 const RANDOM_DISTANCE_FROM_DOCKER = 300;
 
-function Undock() {
-  const args = [].slice.call(arguments);
+function Undock(...args) {
   Event.apply(this, args);
 }
 
@@ -17,7 +17,7 @@ Undock.prototype.constructor = Undock;
  * @return {void}
  * @example
  */
-Undock.prototype.execute = function (options) {
+Undock.prototype.execute = (options) => {
   if (!options.targets) {
     return;
   }
@@ -29,13 +29,12 @@ Undock.prototype.execute = function (options) {
     const entityToUndock = ns.game.entityManager.entities(id);
     const sprite = entityToUndock.getSprite();
     const randomFactors = rnd[idx];
-    let undockedEntities;
 
     if (options.resetActivityQueue) {
       entityToUndock.reset();
     }
 
-    undockedEntities = entityToUndock.undock();
+    const undockedEntities = entityToUndock.undock();
 
     if (undockedEntities) {
       undockedEntities
@@ -45,8 +44,8 @@ Undock.prototype.execute = function (options) {
           dockedSprite.y = sprite.y;
           return entity;
         })
-        .forEach((entity, idx) => {
-          const randomFactor = randomFactors[idx] || 0;
+        .forEach((entity, index) => {
+          const randomFactor = randomFactors[index] || 0;
           const dockedSprite = entity.getSprite();
           const randomX =
             randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;

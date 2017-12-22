@@ -1,3 +1,4 @@
+/* global window */
 import Graphics from '../common/Graphics';
 import { GROUP_FOGOFWAR } from '../common/Const';
 
@@ -34,7 +35,6 @@ class FogOfWarRenderer {
   }
 
   initMask() {
-    const tileSize = this.tileSize;
     const maskSize = this.tileSize * 6;
     this.mask = this.game.add.bitmapData(maskSize, maskSize);
     this.mask.clear();
@@ -42,7 +42,7 @@ class FogOfWarRenderer {
     const grd = this.mask.context.createRadialGradient(
       maskSize / 2,
       maskSize / 2,
-      tileSize * 0.75,
+      this.tileSize * 0.75,
       maskSize / 2,
       maskSize / 2,
       maskSize / 2,
@@ -102,5 +102,4 @@ class FogOfWarRenderer {
   }
 }
 
-export { FogOfWarRenderer };
 export default FogOfWarRenderer;

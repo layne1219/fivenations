@@ -1,10 +1,10 @@
+/* global window */
 import Event from './Event';
 import PlayerManager from '../players/PlayerManager';
 
 const ns = window.fivenations;
 
-function PlayerResourceAlter() {
-  const args = [].slice.call(arguments);
+function PlayerResourceAlter(...args) {
   Event.apply(this, args);
 }
 
@@ -15,9 +15,10 @@ PlayerResourceAlter.prototype.constructor = PlayerResourceAlter;
  * No-op function to be overwritten in the child objects
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
+ * @throws {object}
  */
-PlayerResourceAlter.prototype.execute = function (options) {
-  if (!options.data || !options.data.guid) throw 'Invalid data attribute!';
+PlayerResourceAlter.prototype.execute = (options) => {
+  if (!options.data || !options.data.guid) throw new Error('Invalid data attribute!');
 
   const player = PlayerManager.getInstance().getPlayerByGUID(options.data.guid);
 

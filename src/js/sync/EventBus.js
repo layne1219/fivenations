@@ -28,7 +28,7 @@ function createEventBus() {
       }
     },
 
-    remove() {
+    remove(event) {
       for (let i = queue.length - 1; i >= 0; i -= 1) {
         if (queue[i].uid === event.uid) {
           queue.slice(i, 1);
@@ -38,7 +38,7 @@ function createEventBus() {
     },
 
     reset() {
-      queue.splice(0, queue, length);
+      queue.splice(0, queue.length);
     },
   };
 }

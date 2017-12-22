@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityRemove() {
-  const args = [].slice.call(arguments);
+function EntityRemove(...args) {
   Event.apply(this, args);
 }
 
@@ -15,7 +15,7 @@ EntityRemove.prototype.constructor = EntityRemove;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EntityRemove.prototype.execute = function (options) {
+EntityRemove.prototype.execute = (options) => {
   if (!options.targets) {
     return;
   }

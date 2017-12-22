@@ -1,41 +1,38 @@
 function Activity() {}
 
 Activity.prototype = {
+  active: false,
+  initialised: false,
+  manager: null,
 
-    active: false,
-    initialised: false,
-    manager: null,
+  update() {},
 
-    update: function() {
-    },
+  activate() {
+    this.active = true;
+  },
 
-    activate: function() {
-        this.active = true;
-    },
+  deactivate() {
+    this.active = false;
+  },
 
-    deactivate: function() {
-        this.active = false;
-    },
+  kill() {
+    this.manager.remove(this);
+  },
 
-    kill: function() {
-        this.manager.remove(this);
-    },
-
-    setManager: function(manager) {
-        if (!manager) {
-            throw 'The passed Activity Manager object is invalid!';
-        }
-        this.manager = manager;
-    },
-
-    isActivated: function() {
-        return this.active;
-    },
-
-    getManager: function() {
-        return this.manager;
+  setManager(manager) {
+    if (!manager) {
+      throw 'The passed Activity Manager object is invalid!';
     }
+    this.manager = manager;
+  },
 
+  isActivated() {
+    return this.active;
+  },
+
+  getManager() {
+    return this.manager;
+  },
 };
 
 export default Activity;

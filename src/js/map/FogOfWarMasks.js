@@ -4185,5 +4185,4 @@ const FogOfWarMasks = {
   },
 };
 
-export { FogOfWarMasks };
 export default FogOfWarMasks;
