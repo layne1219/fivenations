@@ -487,6 +487,18 @@ ns.effects = Object.assign(ns.effects || {}, {
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_yellow.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
+   'muzzleflash-cannon': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}muzzleflash_cannon.png`,
+    atlasURL: `${PATH_ASSETS_IMG}muzzleflash_cannon.json`,
+    dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
+  },
+   'muzzleflash-greencannon': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}muzzleflash_green_cannon.png`,
+    atlasURL: `${PATH_ASSETS_IMG}muzzleflash_green_cannon.json`,
+    dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
+  },  
 });
 
 export default {
