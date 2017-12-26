@@ -1,3 +1,4 @@
+/* global Phaser */
 import ControlPage from './ControlPage';
 import CancelPage from './CancelPage';
 import EventEmitter from '../sync/EventEmitter';
@@ -18,9 +19,9 @@ export default class ControlPanel extends Phaser.Group {
 
     // we are creating two pages for all the possible controls
     this.controlPanelPages = [
-      this.add(new ControlPage(this.entityManager)), // main page for the major control buttons
-      this.add(new ControlPage(this.entityManager)), // a sub page for extended controls like constructions
-      this.add(new CancelPage(this.entityManager)), // a page for cancelling the selected activity
+      this.add(new ControlPage(this.entityManager)),
+      this.add(new ControlPage(this.entityManager)),
+      this.add(new CancelPage(this.entityManager)),
     ];
     // make the first page visible
     this.selectMainPage();
@@ -73,7 +74,7 @@ export default class ControlPanel extends Phaser.Group {
    */
   appendTo(panel, x, y) {
     if (!panel) {
-      throw 'Invalid Phaser.Sprite object!';
+      throw new Error('Invalid Phaser.Sprite object!');
     }
 
     this.x = x;

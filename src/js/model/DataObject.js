@@ -5,7 +5,7 @@ import { ENTITY_SIZES, ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../com
  * @param {object} data - attributes of given entity model
  */
 function getDimensionsBySize(data) {
-  const size = data.size;
+  const { size } = data;
   if (!size || !ENTITY_SIZES[size]) return ENTITY_SIZES.m;
   return ENTITY_SIZES[size];
 }
@@ -214,7 +214,7 @@ function DataObject(json) {
     },
 
     getAnimationByKey(key) {
-      if (!data.animations) return;
+      if (!data.animations) return null;
       return data.animations[key];
     },
 
@@ -246,7 +246,7 @@ function DataObject(json) {
     },
 
     getEvent(evt) {
-      if (!evt || !data.events) return;
+      if (!evt || !data.events) return null;
       return data.events[evt];
     },
 

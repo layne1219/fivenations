@@ -47,14 +47,6 @@ let resourceDisplay;
 // reference to a Phaser.Sprite object that displays the click animation
 let clickAnim;
 
-function GUI() {
-  initPhaserGroup();
-  initClickAnimations();
-
-  // initialise the panel according to which element it should conceal
-  initGUIDisplayElements();
-}
-
 function initPhaserGroup() {
   group = phaserGame.add.group();
   phaserGame.world.bringToTop(group);
@@ -72,10 +64,10 @@ function initClickAnimations() {
 
   ['click-move', 'click-enemy', 'click-friendly'].forEach((animation) => {
     anim = clickAnim.animations.add(animation, clickAnimations[animation]);
-    anim.onStart.add(function () {
+    anim.onStart.add(() => {
       this.visible = true;
     }, clickAnim);
-    anim.onComplete.add(function () {
+    anim.onComplete.add(() => {
       this.visible = false;
     }, clickAnim);
   });
@@ -111,6 +103,14 @@ function initGUIDisplayElements() {
   resourceDisplay.appendTo(panel, 425, 88);
 }
 
+function GUI() {
+  initPhaserGroup();
+  initClickAnimations();
+
+  // initialise the panel according to which element it should conceal
+  initGUIDisplayElements();
+}
+
 GUI.prototype = {
   /**
    * Placing and triggering the click animation onto the game area
@@ -119,10 +119,7 @@ GUI.prototype = {
    * @param  {integer} anim
    * @return {void}
    */
-  putClickAnim(x, y, anim) {
-    if (undefined === anim) {
-      anim = 'click-move';
-    }
+  putClickAnim(x, y, anim = 'click-move') {
     clickAnim.x = x;
     clickAnim.y = y;
     clickAnim.animations.stop(null, true);
@@ -149,7 +146,7 @@ GUI.prototype = {
    */
   addSelector(entity) {
     if (!entity) {
-      throw 'First parameter must be an instance of Entity!';
+      throw new Error('First parameter must be an instance of Entity!');
     }
     const selector = new Selector(phaserGame);
     selector.appendTo(entity);
@@ -285,7 +282,7 @@ export default {
    */
   getInstance(forceNewInstance) {
     if (!phaserGame) {
-      throw 'Invoke setGame first to pass the Phaser Game entity!';
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
     if (!singleton || forceNewInstance) {
       singleton = new GUI();

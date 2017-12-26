@@ -1,3 +1,4 @@
+/* global window, Phaser */
 const SPRITE_KEY = 'gui';
 const SPRITE_FRAME = 64;
 const PANEL_HEIGHT = 222;
@@ -18,7 +19,7 @@ export default class Panel extends Phaser.Image {
    */
   appendTo(parent) {
     if (!parent) {
-      throw 'Invalid Phaser element object!';
+      throw new Error('Invalid Phaser element object!');
     }
     parent.add(this);
   }

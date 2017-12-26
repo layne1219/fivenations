@@ -23,14 +23,14 @@ buttonLogics[abilitiesJSON.undock] = UndockButtonLogic;
 export default {
   getLogicByControlButton(controlButton) {
     if (!controlButton) {
-      return;
+      throw new Error('invalid ControlButton!');
     }
     return this.getLogicById(controlButton.getId());
   },
 
   getLogicById(id) {
     if (!buttonLogics[id]) {
-      throw 'There is no ButtonLogic registered to the given Id';
+      throw new Error('There is no ButtonLogic registered to the given Id');
     }
     return buttonLogics[id];
   },

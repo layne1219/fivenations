@@ -1,5 +1,6 @@
+/* global window */
 const ns = window.fivenations;
-const PUBLIC_URL = process.env.PUBLIC_URL;
+const { PUBLIC_URL } = process.env;
 const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/projectiles`;
 const PATH_ASSETS_IMG = `${PUBLIC_URL}/assets/images/projectiles`;
 

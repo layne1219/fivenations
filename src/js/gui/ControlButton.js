@@ -1,3 +1,4 @@
+/* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
 
 const PADDING_ONCLICK = 2;
@@ -32,7 +33,7 @@ ControlButton.prototype.constructor = ControlButton;
  * Adding the Sprite object to the Game stage
  * @return {void}
  */
-ControlButton.prototype.init = function (entityManager) {
+ControlButton.prototype.init = (entityManager) => {
   ns.game.add.existing(this);
   this.inputEnabled = true;
   this.entityManager = entityManager;
@@ -42,7 +43,7 @@ ControlButton.prototype.init = function (entityManager) {
  * Adding all the default event listeners
  * @return {[void]}
  */
-ControlButton.prototype.addEventListeners = function () {
+ControlButton.prototype.addEventListeners = () => {
   this.events.onInputDown.add(() => {
     this.y += PADDING_ONCLICK;
     this.alpha = TRANSPARENCY_ONLICK;
@@ -57,7 +58,7 @@ ControlButton.prototype.addEventListeners = function () {
  * Add event listeners to the ControlButton
  * @param {[type]} button [description]
  */
-ControlButton.prototype.addBehaviour = function () {
+ControlButton.prototype.addBehaviour = () => {
   this.events.onInputUp.add(() => {
     this.activate();
     if (ns.gui.selectedControlButton) {
@@ -71,11 +72,11 @@ ControlButton.prototype.addBehaviour = function () {
  * Execute the logic corresponding to the control button being clicked
  * @return {[void]}
  */
-ControlButton.prototype.activate = function () {
-  let buttonLogic = ControlButtonCollection.getLogicByControlButton(this),
-    // reference to ControlPanel needs to be evaluated in run time
-    controlPage = this.getControlPage(),
-    controlPanel = controlPage.getControlPanel();
+ControlButton.prototype.activate = () => {
+  const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
+  // reference to ControlPanel needs to be evaluated in run time
+  const controlPage = this.getControlPage();
+  const controlPanel = controlPage.getControlPanel();
   if (typeof buttonLogic.activate === 'function') {
     buttonLogic.activate(this.entityManager, controlPanel);
   }
@@ -86,10 +87,10 @@ ControlButton.prototype.activate = function () {
  * No-op function for inheritance
  * @return {[void]}
  */
-ControlButton.prototype.deactivate = function () {
-  let buttonLogic = ControlButtonCollection.getLogicByControlButton(this),
-    controlPage = this.getControlPage(),
-    controlPanel = controlPage.getControlPanel();
+ControlButton.prototype.deactivate = () => {
+  const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
+  const controlPage = this.getControlPage();
+  const controlPanel = controlPage.getControlPanel();
   if (typeof buttonLogic.deactivate === 'function') {
     buttonLogic.deactivate(this.entityManager, controlPanel);
   }
@@ -100,8 +101,9 @@ ControlButton.prototype.deactivate = function () {
  * Setting the ID of the button which determines what the click callback will do
  * @return {void}
  */
-ControlButton.prototype.setId = function (id) {
-  this.frame = this.id = id;
+ControlButton.prototype.setId = (id) => {
+  this.frame = id;
+  this.id = id;
   return this;
 };
 
@@ -110,7 +112,7 @@ ControlButton.prototype.setId = function (id) {
  * @param {[type]} x [horizontal padding on the control page]
  * @param {[type]} y [vertical padding on the control page]
  */
-ControlButton.prototype.setCoords = function (x, y) {
+ControlButton.prototype.setCoords = (x, y) => {
   this.x = x;
   this.y = y;
   return this;
@@ -118,19 +120,15 @@ ControlButton.prototype.setCoords = function (x, y) {
 
 /**
  * Obtaining the Id the button is set up to
- * @return {[Integer]}	Ability Identifier the button represent
+ * @return {[Integer]} Ability Identifier the button represent
  */
-ControlButton.prototype.getId = function () {
-  return this.id;
-};
+ControlButton.prototype.getId = () => this.id;
 
 /**
  * return the control page which takes in the target control button
  * we need this reference to switch between pages from the button logic's scope
  * @return {[object]} [GUI.ControlPage]
  */
-ControlButton.prototype.getControlPage = function () {
-  return this.parent;
-};
+ControlButton.prototype.getControlPage = () => this.parent;
 
 export default ControlButton;

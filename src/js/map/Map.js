@@ -1,3 +1,4 @@
+/* eslint prefer-destructuring: 0 */
 import Starfield from '../starfield/Starfield';
 import FogOfWar from './FogOfWar';
 import FogOfWarRenderer from './FogOfWarRenderer';

@@ -1,3 +1,4 @@
+/* global window, Phaser */
 import { GUI_CLOSE_BUTTON } from '../common/Const';
 
 const ns = window.fivenations;
@@ -31,5 +32,4 @@ class CloseButton extends Phaser.Group {
   }
 }
 
-export { CloseButton };
 export default CloseButton;

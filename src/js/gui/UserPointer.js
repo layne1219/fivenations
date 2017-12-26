@@ -1,108 +1,109 @@
+/* global Phaser */
+/* eslint class-methods-use-this: 0 */
 import Util from '../common/Util';
 
 let phaserGame;
-let dispatcher;
-let multiselector;
 let singleton;
 
-function UserPointer() {
-  init.call(this);
-  registerEventListeners.call(this);
-}
+class UserPointer {
+  constructor() {
+    this.init();
+    this.registerEventListeners();
+  }
 
-function init() {
-  dispatcher = new Util.EventDispatcher();
-  multiselector = new Phaser.Rectangle(0, 0, 0, 0);
-  multiselector.active = false;
-}
+  init() {
+    this.dispatcher = new Util.EventDispatcher();
+    this.multiselector = new Phaser.Rectangle(0, 0, 0, 0);
+    this.multiselector.active = false;
+  }
 
-function registerEventListeners() {
-  // Releasing either of the mouse buttons
-  phaserGame.input.onUp.add(() => {
-    dispatcher.dispatch('up');
+  registerEventListeners() {
+    // Releasing either of the mouse buttons
+    phaserGame.input.onUp.add(() => {
+      this.dispatcher.dispatch('up');
 
-    if (multiselector.active) {
-      if (multiselector.width > 0 || multiselector.height > 0) {
-        dispatcher.dispatch('multiselector/up', multiselector);
+      if (this.multiselector.active) {
+        if (this.multiselector.width > 0 || this.multiselector.height > 0) {
+          this.dispatcher.dispatch('this.multiselector/up', this.multiselector);
+        }
+
+        this.multiselector.active = false;
+        this.multiselector.x = 0;
+        this.multiselector.y = 0;
+        this.multiselector.width = 0;
+        this.multiselector.height = 0;
+      }
+    });
+
+    // Pressing either of the mouse buttons
+    phaserGame.input.onDown.add(() => {
+      // left mouse button
+      if (phaserGame.input.mousePointer.leftButton.isDown) {
+        this.dispatcher.dispatch('leftbutton/down', this);
+
+        this.multiselector.active = true;
+        this.multiselector.x = phaserGame.camera.x + phaserGame.input.mousePointer.x;
+        this.multiselector.y = phaserGame.camera.y + phaserGame.input.mousePointer.y;
+        this.multiselector.width = 0;
+        this.multiselector.height = 0;
+      } else if (phaserGame.input.mousePointer.rightButton.isDown) {
+        // right mouse button
+        this.dispatcher.dispatch('rightbutton/down', this);
       }
 
-      multiselector.active = false;
-      multiselector.x = 0;
-      multiselector.y = 0;
-      multiselector.width = 0;
-      multiselector.height = 0;
-    }
-  }, this);
+      // invoking all the registred functions for the the unified event
+      this.dispatcher.dispatch('down');
+    });
+  }
 
-  // Pressing either of the mouse buttons
-  phaserGame.input.onDown.add(function () {
-    // left mouse button
-    if (phaserGame.input.mousePointer.leftButton.isDown) {
-      dispatcher.dispatch('leftbutton/down', this);
-
-      multiselector.active = true;
-      multiselector.x = phaserGame.camera.x + phaserGame.input.mousePointer.x;
-      multiselector.y = phaserGame.camera.y + phaserGame.input.mousePointer.y;
-      multiselector.width = 0;
-      multiselector.height = 0;
-    } else if (phaserGame.input.mousePointer.rightButton.isDown) {
-      // right mouse button
-      dispatcher.dispatch('rightbutton/down', this);
-    }
-
-    // invoking all the registred functions for the the unified event
-    dispatcher.dispatch('down');
-  }, this);
-}
-
-UserPointer.prototype = {
   on(event, callback) {
-    dispatcher.addEventListener(event, callback);
-  },
+    this.dispatcher.addEventListener(event, callback);
+  }
 
   remove(event, callback) {
-    dispatcher.removeEventListener(event, callback);
-  },
+    this.dispatcher.removeEventListener(event, callback);
+  }
 
-  dispatch() {
-    const args = [].slice.call(arguments);
-    dispatcher.dispatch(...args);
-  },
+  dispatch(...args) {
+    this.dispatcher.dispatch.apply(this, args);
+  }
 
   stopMultiselection() {
-    multiselector.active = 0;
-    multiselector.width = 0;
-    multiselector.height = 0;
-  },
+    this.multiselector.active = 0;
+    this.multiselector.width = 0;
+    this.multiselector.height = 0;
+  }
 
   update() {
-    phaserGame.debug.geom(multiselector, '#0fffff', false);
+    phaserGame.debug.geom(this.multiselector, '#0fffff', false);
 
     if (phaserGame.input.mousePointer.leftButton.isDown) {
-      dispatcher.dispatch('leftbutton/move', this);
+      this.dispatcher.dispatch('leftbutton/move', this);
     }
 
-    if (phaserGame.input.mousePointer.leftButton.isDown && multiselector.active) {
-      if (phaserGame.camera.x + phaserGame.input.mousePointer.x < multiselector.x) {
+    if (phaserGame.input.mousePointer.leftButton.isDown && this.multiselector.active) {
+      if (phaserGame.camera.x + phaserGame.input.mousePointer.x < this.multiselector.x) {
         this.stopMultiselection();
         return;
       }
-      if (phaserGame.camera.y + phaserGame.input.mousePointer.y < multiselector.y) {
+      if (phaserGame.camera.y + phaserGame.input.mousePointer.y < this.multiselector.y) {
         this.stopMultiselection();
         return;
       }
-      multiselector.width = Math.abs(multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));
-      multiselector.height = Math.abs(multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));
+      this.multiselector.width =
+        Math.abs(this.multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));
+      this.multiselector.height =
+        Math.abs(this.multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));
     }
-  },
+  }
 
   isLeftButtonDown() {
     return phaserGame.input.mousePointer.leftButton.isDown;
-  },
+  }
 
   isRightButtonDown() {
     return phaserGame.input.mousePointer.rightButton.isDown;
-  },
+  }
 
   /**
    * Returning whether the mouse pointer is over the passed Phaser.Game.Sprite object
@@ -115,7 +116,7 @@ UserPointer.prototype = {
     }
     if (
       phaserGame.camera.x + phaserGame.input.mousePointer.x >
-      sprite.x - sprite.offsetX + sprite.width
+      sprite.x - (sprite.offsetX + sprite.width)
     ) {
       return false;
     }
@@ -124,20 +125,20 @@ UserPointer.prototype = {
     }
     if (
       phaserGame.camera.y + phaserGame.input.mousePointer.y >
-      sprite.y - sprite.offsetY + sprite.height
+      sprite.y - (sprite.offsetY + sprite.height)
     ) {
       return false;
     }
     return true;
-  },
+  }
 
   getRealCoords() {
     return {
       x: phaserGame.camera.x + phaserGame.input.mousePointer.x,
       y: phaserGame.camera.y + phaserGame.input.mousePointer.y,
     };
-  },
-};
+  }
+}
 
 export default {
   /**
@@ -155,7 +156,7 @@ export default {
    */
   getInstance(forceNewInstance) {
     if (!phaserGame) {
-      throw 'Invoke setGame first to pass the Phaser Game entity!';
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
     if (!singleton || forceNewInstance) {
       singleton = new UserPointer();

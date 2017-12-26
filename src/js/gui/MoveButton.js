@@ -1,3 +1,4 @@
+/* global window */
 import EventEmitter from '../sync/EventEmitter';
 import SelectCoords from './SelectCoords';
 import ActivityManager from './ActivityManager';

@@ -1,3 +1,4 @@
+/* global window, Phaser */
 import ControlButton from './ControlButton';
 
 const COLUMNS = 5;
@@ -9,9 +10,10 @@ const ns = window.fivenations;
 const BUTTON_NUMBER = ROWS * COLUMNS;
 
 /**
- * Constructing an a ControlPanelPage that consists the clickable command buttons
- * @param {object} [entityManager] [sinleton like object that can be used to quiery all the entities]
- * @return {object} [ControlPanelPage]
+ * Constructing an a ControlPanelPage that consists the clickable
+ * command buttons
+ * @param {object} entityManager
+ * @return {object} ControlPanelPage
  */
 function ControlPanelPage(entityManager) {
   // applying the inherited constructor function
@@ -29,7 +31,7 @@ ControlPanelPage.prototype.constructor = ControlPanelPage;
  * Setting up the table of command buttons
  * @return {void}
  */
-ControlPanelPage.prototype.init = function (entityManager) {
+ControlPanelPage.prototype.init = (entityManager) => {
   this.buttons = [];
   this.entityManager = entityManager;
 
@@ -40,12 +42,11 @@ ControlPanelPage.prototype.init = function (entityManager) {
  * Createing the ControlButtons and moving them to their right position
  * @return {[void]}
  */
-ControlPanelPage.prototype.populate = function () {
-  let button,
-    i,
-    x,
-    y;
-  for (i = 0; i < BUTTON_NUMBER; i += 1) {
+ControlPanelPage.prototype.populate = () => {
+  let button;
+  let x;
+  let y;
+  for (let i = 0; i < BUTTON_NUMBER; i += 1) {
     x = (i % COLUMNS) * (ICON_WIDTH + MARGIN);
     y = Math.floor(i / COLUMNS) * (ICON_HEIGHT + MARGIN);
 
@@ -61,7 +62,7 @@ ControlPanelPage.prototype.populate = function () {
  * @param  {[integer]} id [Id of the button]
  * @return {[object]} [GUI.ControlButton]
  */
-ControlPanelPage.prototype.createControlButton = function (id) {
+ControlPanelPage.prototype.createControlButton = (id) => {
   const button = new ControlButton(this.entityManager);
   if (id) {
     button.setId(id);
@@ -74,9 +75,9 @@ ControlPanelPage.prototype.createControlButton = function (id) {
  * @param {[object]} GUI.ControlButton [attaching the ControlButton to the Phaser group layer]
  * @param {[void]}
  */
-ControlPanelPage.prototype.addControlButton = function (controlButton) {
+ControlPanelPage.prototype.addControlButton = (controlButton) => {
   if (!controlButton) {
-    throw 'Invalid ControlButton instance was passed as the first parameter!';
+    throw new Error('Invalid ControlButton instance was passed as the first parameter!');
   }
   this.buttons.push(this.add(controlButton));
 };
@@ -86,12 +87,11 @@ ControlPanelPage.prototype.addControlButton = function (controlButton) {
  * @param  {[Array]} entities [Array of Entity instances]
  * @return {[void]}
  */
-ControlPanelPage.prototype.update = function (entities) {
-  let abilities;
+ControlPanelPage.prototype.update = (entities) => {
   if (!entities) {
     return;
   }
-  abilities = this.parent.entityManager.getMergedAbilities(entities);
+  const abilities = this.parent.entityManager.getMergedAbilities(entities);
   this.buttons.forEach((button, idx) => {
     if (!abilities[idx]) {
       button.visible = false;
@@ -107,8 +107,6 @@ ControlPanelPage.prototype.update = function (entities) {
  * we need this reference to switch between pages from the button logic's scope
  * @return {[object]} [GUI.ControlPanel]
  */
-ControlPanelPage.prototype.getControlPanel = function () {
-  return this.parent;
-};
+ControlPanelPage.prototype.getControlPanel = () => this.parent;
 
 export default ControlPanelPage;

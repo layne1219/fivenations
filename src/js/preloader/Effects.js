@@ -1,5 +1,6 @@
+/* global window */
 const ns = window.fivenations;
-const PUBLIC_URL = process.env.PUBLIC_URL;
+const { PUBLIC_URL } = process.env;
 const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/effects/`;
 const PATH_ASSETS_IMG = `${PUBLIC_URL}/assets/images/effects/`;
 
@@ -473,37 +474,36 @@ ns.effects = Object.assign(ns.effects || {}, {
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_red.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
-
   'muzzleflash-spore': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_spore.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_spore.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
-
   'muzzleflash-yellow': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_yellow.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_yellow.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
-   'muzzleflash-cannon': {
+  'muzzleflash-cannon': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_cannon.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_cannon.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
-   'muzzleflash-greencannon': {
+  'muzzleflash-greencannon': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_green_cannon.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_green_cannon.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
-  },  
+  },
 });
 
 export default {
   /**
-   * Loading all the correspondant resources for the effects listed in the private *effects* object
+   * Loading all the correspondant resources for the effects listed
+   * in the private *effects* object
    * @param {object} [preloader] Preloader object defined below
    * @return {void}
    */

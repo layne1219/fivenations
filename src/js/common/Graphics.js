@@ -2,22 +2,22 @@ let phaserGame;
 let singleton;
 
 function createGraphicsInstance() {
-  let groups = {},
-    // layers ordered as follows
-    groupNames = [
-      'starfield',
-      'color-indicators',
-      'selectors-buildings',
-      'entities-buildings',
-      'energy-shields-buildings',
-      'selectors',
-      'projectiles',
-      'entities',
-      'energy-shields',
-      'effects',
-      'prior-gui-elements',
-      'fogofwar',
-    ];
+  const groups = {};
+  // layers ordered as follows
+  const groupNames = [
+    'starfield',
+    'color-indicators',
+    'selectors-buildings',
+    'entities-buildings',
+    'energy-shields-buildings',
+    'selectors',
+    'projectiles',
+    'entities',
+    'energy-shields',
+    'effects',
+    'prior-gui-elements',
+    'fogofwar',
+  ];
 
   groupNames.forEach((name) => {
     groups[name] = phaserGame.add.group();
@@ -26,10 +26,10 @@ function createGraphicsInstance() {
   return {
     getGroup(id) {
       if (!id) {
-        throw 'Invalid Id to retrieve a group!';
+        throw new Error('Invalid Id to retrieve a group!');
       }
       if (!groups[id]) {
-        throw 'The group cannot be identified through the passed id!';
+        throw new Error('The group cannot be identified through the passed id!');
       }
       return groups[id];
     },
@@ -48,7 +48,7 @@ export default {
    */
   getInstance(forceNewInstance) {
     if (!phaserGame) {
-      throw 'Invoke setGame first to pass the Phaser Game entity!';
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
     if (!singleton || forceNewInstance) {
       singleton = createGraphicsInstance();

@@ -1,3 +1,4 @@
+/* global window, Phaser */
 import { GUI_POPUP } from '../common/Const';
 import Button from './Button';
 import CloseButton from './CloseButton';
@@ -61,7 +62,7 @@ class Popup extends Phaser.Group {
       onClick,
     });
     this.button.x = 0;
-    this.button.y = this.background.height / 2 - this.button.height / 2 - GUI_POPUP.padding;
+    this.button.y = (this.background.height / 2) - (this.button.height / 2) - GUI_POPUP.padding;
 
     this.add(this.button);
   }
@@ -82,9 +83,10 @@ class Popup extends Phaser.Group {
     this.closeButton = new CloseButton({
       onClick: onClose,
     });
-    this.closeButton.x = this.background.width / 2 - this.closeButton.width / 2 - GUI_POPUP.padding;
+    this.closeButton.x =
+      (this.background.width / 2) - (this.closeButton.width / 2) - GUI_POPUP.padding;
     this.closeButton.y =
-      -this.background.height / 2 + this.closeButton.height / 2 + GUI_POPUP.padding;
+      (this.background.height / -2) + (this.closeButton.height / 2) + GUI_POPUP.padding;
 
     this.add(this.closeButton);
   }
@@ -128,5 +130,4 @@ class Popup extends Phaser.Group {
   }
 }
 
-export { Popup };
 export default Popup;

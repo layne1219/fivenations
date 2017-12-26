@@ -2,39 +2,37 @@ import Util from '../common/Util';
 import Activity from './Activity';
 import UserPointer from './UserPointer';
 
-function SelectCoords() {
-  const args = [].slice.call(arguments);
+function SelectCoords(...args) {
   Activity.apply(this, args);
-
   this.init();
 }
 
 SelectCoords.prototype = Object.create(Activity.prototype);
 SelectCoords.prototype.constructor = SelectCoords;
 
-SelectCoords.prototype.init = function () {
+SelectCoords.prototype.init = () => {
   this.dispatcher = new Util.EventDispatcher();
 };
 
-SelectCoords.prototype.activate = function () {
+SelectCoords.prototype.activate = () => {
   Activity.prototype.activate.call(this);
 
-  this.callback = function (mousePointer) {
+  this.callback = (mousePointer) => {
     this.dispatcher.dispatch('select', mousePointer);
     setTimeout(() => {
       this.getActivityManager().cancel();
     }, 10);
-  }.bind(this);
+  };
 
   UserPointer.getInstance().on('leftbutton/down/activity', this.callback);
 };
 
-SelectCoords.prototype.deactivate = function () {
+SelectCoords.prototype.deactivate = () => {
   Activity.prototype.deactivate.call(this);
   UserPointer.getInstance().remove('leftbutton/down/activity', this.callback);
 };
 
-SelectCoords.prototype.on = function (event, callback) {
+SelectCoords.prototype.on = (event, callback) => {
   this.dispatcher.addEventListener(event, callback);
 };
 

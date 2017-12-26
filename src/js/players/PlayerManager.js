@@ -28,7 +28,7 @@ const singleton = {
    * @return {void}
    */
   addPlayer(config) {
-    if (!config) throw 'Invalid configuration for constructing a Player instance!';
+    if (!config) throw new Error('Invalid configuration for constructing a Player instance!');
     players.push(new Player(config));
   },
 
@@ -58,12 +58,13 @@ const singleton = {
    * @return {object} Player instance
    */
   getPlayerByGUID(guid) {
-    if (!guid) throw 'First parameter must be a valid guid!';
+    if (!guid) throw new Error('First parameter must be a valid guid!');
     for (let i = players.length - 1; i >= 0; i -= 1) {
       if (players[i].getGUID() === guid) {
         return players[i];
       }
     }
+    return null;
   },
 
   /**
@@ -71,12 +72,13 @@ const singleton = {
    * @return {object} Player instance
    */
   getPlayerByTeam(team) {
-    if (!team) throw 'First parameter must be a valid Team Id!';
+    if (!team) throw new Error('First parameter must be a valid Team Id!');
     for (let i = players.length - 1; i >= 0; i -= 1) {
       if (players[i].getTeam() === team) {
         return players[i];
       }
     }
+    return null;
   },
 
   /**

@@ -8,12 +8,10 @@ export default class ColorIndicator {
   }
 
   appendTo(entity) {
-    let groupName;
-
     this.sprite = this.createSpriteByParent(entity);
 
     // Add the selection to the appropriate graphics group as per its type
-    groupName = 'color-indicators';
+    const groupName = 'color-indicators';
     Graphics.getInstance()
       .getGroup(groupName)
       .add(this.sprite);
@@ -24,7 +22,7 @@ export default class ColorIndicator {
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.sprite.update = function () {
+    this.sprite.update = () => {
       this.x = entity.getSprite().x;
       this.y = entity.getSprite().y;
     };
@@ -35,7 +33,7 @@ export default class ColorIndicator {
   createSpriteByParent(entity) {
     const team = entity.getPlayer().getTeam();
     const width = entity.getDataObject().getWidth();
-    const ratio = width / SPRITE_WIDTH * 1.75;
+    const ratio = (width / SPRITE_WIDTH) * 1.75;
     const sprite = this.game.add.image(0, 0, 'color-indicator');
 
     sprite.visible = true;

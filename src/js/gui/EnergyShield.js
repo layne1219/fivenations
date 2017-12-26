@@ -38,12 +38,10 @@ export default class EnergyShield {
   }
 
   appendTo(entity) {
-    let groupName;
-
     this.sprite = this.createSpriteByParent(entity);
 
     // Add the selection to the appropriate graphics group as per its type
-    groupName = entity.getDataObject().isBuilding() ? 'energy-shields-buildings' : 'energy-shields';
+    const groupName = entity.getDataObject().isBuilding() ? 'energy-shields-buildings' : 'energy-shields';
     Graphics.getInstance()
       .getGroup(groupName)
       .add(this.sprite);
@@ -53,7 +51,7 @@ export default class EnergyShield {
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.sprite.update = function () {
+    this.sprite.update = () => {
       this.x = entity.getSprite().x;
       this.y = entity.getSprite().y;
     };
@@ -101,7 +99,7 @@ export default class EnergyShield {
 
   getSize(width, height) {
     if (!this.size) {
-      Object.keys(ENTITY_GUI_SIZES).forEach(function (size) {
+      Object.keys(ENTITY_GUI_SIZES).forEach((size) => {
         if (
           Util.between(
             Math.max(width, height),
@@ -115,7 +113,7 @@ export default class EnergyShield {
             this.size = size;
           }
         }
-      }, this);
+      });
     }
 
     return this.size;

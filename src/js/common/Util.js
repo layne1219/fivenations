@@ -1,4 +1,5 @@
 /* eslint no-bitwise: [0] */
+/* eslint no-param-reassign: 0 */
 export default {
   /**
    * Randomize a number between the passed range
@@ -30,7 +31,8 @@ export default {
   },
 
   /**
-   * calculateStepTo - Mesasuring how many steps it takes to arrive at the target number by increasing
+   * calculateStepTo - Mesasuring how many steps it takes to arrive at
+   * the target number by increasing
    * the current index with step
    * @param  {integer} start
    * @param  {integer} target
@@ -75,8 +77,8 @@ export default {
    */
   getGUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-      let r = (Math.random() * 16) | 0,
-        v = c === 'x' ? r : (r & 0x3) | 0x8;
+      const r = (Math.random() * 16) | 0;
+      const v = c === 'x' ? r : (r & 0x3) | 0x8;
       return v.toString(16);
     });
   },
@@ -108,11 +110,11 @@ export default {
    */
   interval(callback, rate, ctx) {
     let counter = rate || 0;
-    return function () {
+    return (...args) => {
       counter += 1;
       if (counter > rate) {
         counter = 0;
-        callback.apply(ctx || null, Array.prototype.slice.call(arguments));
+        callback.apply(ctx || null, args);
       }
     };
   },
@@ -125,12 +127,12 @@ export default {
    * @return {Function} Function that checks if the given callback is due to be triggered
    */
   intervalMilliseconds(callback, milliseconds, ctx) {
-    let last = new Date().getTime(),
-      now;
-    return function () {
+    let last = new Date().getTime();
+    let now;
+    return (...args) => {
       now = new Date().getTime();
       if (now - last > milliseconds) {
-        callback.apply(ctx || null, Array.prototype.slice.call(arguments));
+        callback.apply(ctx || null, args);
       }
       last = now;
     };
@@ -146,7 +148,7 @@ export default {
     const dx = source.sprite.x - target.sprite.x;
     const dy = source.sprite.y - target.sprite.y;
 
-    return Math.sqrt(dx * dx + dy * dy);
+    return Math.sqrt((dx * dx) + (dy * dy));
   },
 
   /**
@@ -159,7 +161,7 @@ export default {
     const dx = source.x - target.x;
     const dy = source.y - target.y;
 
-    return Math.sqrt(dx * dx + dy * dy);
+    return Math.sqrt((dx * dx) + (dy * dy));
   },
 
   /**
@@ -172,7 +174,7 @@ export default {
     const dx = source.sprite.x - target.x;
     const dy = source.sprite.y - target.y;
 
-    return Math.sqrt(dx * dx + dy * dy);
+    return Math.sqrt((dx * dx) + (dy * dy));
   },
 
   /**
@@ -181,16 +183,11 @@ export default {
    * @return {mixed} cloned version of o
    */
   deepClone: function deepClone(o) {
-    let output,
-      v,
-      key;
-    output = Array.isArray(o) ? [] : {};
-    for (key in o) {
-      if (Object.prototype.hasOwnProperty.call(o, key)) {
-        v = o[key];
-        output[key] = typeof v === 'object' ? deepClone(v) : v;
-      }
-    }
+    const output = Array.isArray(o) ? [] : {};
+    Object.keys(o).forEach(key => {
+      let v = o[key];
+      output[key] = typeof v === 'object' ? deepClone(v) : v;
+    });
     return output;
   },
 
@@ -232,7 +229,7 @@ export default {
         }
       }
     };
-    EventDispatcher.prototype.reset = function () {
+    EventDispatcher.prototype.reset = () => {
       this.events = {};
     };
 

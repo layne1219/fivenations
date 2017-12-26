@@ -1,3 +1,4 @@
+/* global Phaser, define */
 define('Game.Signals', () => {
   function create() {
     const exports = {};

@@ -1,11 +1,12 @@
-const abilitiesJSON = require('../../assets/datas/common/abilities.json');
-
 import ControlPage from './ControlPage';
+
+const abilitiesJSON = require('../../assets/datas/common/abilities.json');
 
 /**
  * Constructing an a custom CommandPage that consists solely one cancel button
- * @param {object} [entityManager] [sinleton like object that can be used to quiery all the entities]
- * @return {object} [ControlPanelPage]
+ * @param {object} entityManager - singleton like object that can be used to
+ * quiery all the entities]
+ * @return {object} ControlPanelPage
  */
 function CancelPage(entityManager) {
   // applying the inherited constructor function
@@ -20,10 +21,8 @@ CancelPage.prototype.constructor = CancelPage;
  * Setting up the table of command buttons
  * @return {void}
  */
-CancelPage.prototype.populate = function () {
-  let button;
-
-  button = this.createControlButton(abilitiesJSON.cancel);
+CancelPage.prototype.populate = () => {
+  const button = this.createControlButton(abilitiesJSON.cancel);
   button.setCoords(0, 0);
 
   this.addControlButton(button);
@@ -33,8 +32,6 @@ CancelPage.prototype.populate = function () {
  * Override the original function with a no-op
  * @return {[void]}
  */
-CancelPage.prototype.update = function () {
-  /* no-op */
-};
+CancelPage.prototype.update = () => undefined;
 
 export default CancelPage;

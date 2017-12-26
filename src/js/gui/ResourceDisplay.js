@@ -1,3 +1,4 @@
+/* global window, Phaser */
 const ns = window.fivenations;
 const style = {
   font: '11px BerlinSansFB-Reg',
@@ -11,21 +12,15 @@ class ResourceGroup extends Phaser.Group {
     this.initTextComponents(config, phaserGame);
   }
 
-  initTextComponents(config, phaserGame) {
-    if (!config) config = {};
+  initTextComponents(config = {}, phaserGame) {
     this.textGroup = this.add(phaserGame.add.text(config.x || 0, config.y || 0, '', style));
     this.textGroup.setTextBounds(0, 0, 60, 15);
   }
 
-  updateContent(values) {
-    let current,
-      max;
-    if (!values) values = {};
+  updateContent(values = {}) {
+    const { current, max } = values;
 
-    current = values.current || 0;
-    max = values.max;
-
-    this.textGroup.text = current;
+    this.textGroup.text = current || 0;
     if (max) {
       this.textGroup.text += `/${max}`;
     }
@@ -91,7 +86,7 @@ export default class ResourceDisplay extends Phaser.Group {
    */
   appendTo(panel, x, y) {
     if (!panel) {
-      throw 'Invalid Phaser.Sprite object!';
+      throw new Error('Invalid Phaser.Sprite object!');
     }
 
     this.x = x;

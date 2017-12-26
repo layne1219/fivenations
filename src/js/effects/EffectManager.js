@@ -1,3 +1,6 @@
+/* global window, Phaser, localStorage */
+/* eslint no-underscore-dangle: 0 */
+/* eslint class-methods-use-this: 0 */
 import Util from '../common/Util';
 import Graphics from '../common/Graphics';
 import DataObject from '../model/DataObject';
@@ -15,7 +18,7 @@ let singleton;
 class EffectManager {
   constructor() {
     if (!phaserGame) {
-      throw 'Invoke setGame first to pass the Phaser Game entity!';
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
   }
 
@@ -25,8 +28,6 @@ class EffectManager {
    */
   add(config) {
     let point;
-    let group;
-    let groupName;
     let dataSource;
 
     const sprite = phaserGame.add.sprite(0, 0, config.id);
@@ -102,8 +103,8 @@ class EffectManager {
     }
 
     // adds sprite to the appropriate graphics group
-    groupName = dataObject.getTargetGraphicsGroup() || DEFAULT_GRAPHICS_GROUP;
-    group = Graphics.getInstance().getGroup(groupName);
+    const groupName = dataObject.getTargetGraphicsGroup() || DEFAULT_GRAPHICS_GROUP;
+    const group = Graphics.getInstance().getGroup(groupName);
     sprite._group = group;
     group.add(sprite);
 
@@ -132,9 +133,9 @@ class EffectManager {
         offsetY = projectileOffset.y || 0;
       }
 
-      const effects = initEventConfig.effects || [];
+      const initEffects = initEventConfig.effects || [];
 
-      effects.forEach((effectId) => {
+      initEffects.forEach((effectId) => {
         this.add({
           id: effectId,
           x: sprite.x + offsetX,
@@ -167,6 +168,7 @@ class EffectManager {
       }
     }
     effect.remove();
+    // eslint-disable-next-line no-param-reassign
     effect = null;
   }
 
@@ -250,7 +252,6 @@ class EffectManager {
     if (!entity || !entity.getDataObject) return;
 
     let effectId;
-    let sprite;
     let minWrecks;
     let maxWrecks;
     let i;
@@ -258,7 +259,7 @@ class EffectManager {
 
     if (!eventData) return;
 
-    sprite = entity.getSprite();
+    const sprite = entity.getSprite();
 
     if (eventData.effects && eventData.effects.length) {
       if (eventData.randomize) {
@@ -270,12 +271,12 @@ class EffectManager {
           emitter: entity,
         });
       } else {
-        eventData.effects.forEach((effectId) => {
+        eventData.effects.forEach((id) => {
           this.add({
-            id: effectId,
             x: sprite.x,
             y: sprite.y,
             emitter: entity,
+            id,
           });
         });
       }
@@ -288,8 +289,8 @@ class EffectManager {
         effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
         this.add({
           id: effectId,
-          x: sprite.x + Util.rnd(0, 30) - 15,
-          y: sprite.y + Util.rnd(0, 30) - 15,
+          x: (sprite.x + Util.rnd(0, 30)) - 15,
+          y: (sprite.y + Util.rnd(0, 30)) - 15,
           velocity: {
             x: (Math.random() - 0.5) * Util.rnd(75, 100),
             y: (Math.random() - 0.5) * Util.rnd(75, 100),
@@ -342,8 +343,8 @@ class EffectManager {
     if (effect.ttl % effect.getTrailsRate() === 0) {
       this.add({
         id: effect.getTrailsEffect(),
-        x: effect.getSprite().x + Util.rnd(0, 10) - 5,
-        y: effect.getSprite().y + Util.rnd(0, 10) - 5,
+        x: (effect.getSprite().x + Util.rnd(0, 10)) - 5,
+        y: (effect.getSprite().y + Util.rnd(0, 10)) - 5,
       });
     }
   }
@@ -361,12 +362,12 @@ class EffectManager {
     if (randomize) {
       const odds = Math.floor(Math.random() * effect.getIdleRandomRate());
       if (odds === 0) {
-        const effects = effect.getIdleEffects();
-        const idx = Util.rnd(0, effects.length - 1);
+        const idleEffects = effect.getIdleEffects();
+        const idx = Util.rnd(0, idleEffects.length - 1);
         const offset = effect.getIdleEffectOffset();
 
         this.add({
-          id: effects[idx],
+          id: idleEffects[idx],
           x: effect.getSprite().x + offset.x,
           y: effect.getSprite().y + offset.y,
         });
@@ -388,9 +389,7 @@ class EffectManager {
     const flashTween = phaserGame.add
       .tween(sprite)
       .to({ alpha: 1 }, 200, Phaser.Easing.Bounce.InOut, true, 0, 0, true);
-    flashTween.onComplete.add(function () {
-      this.remove(effect);
-    }, this);
+    flashTween.onComplete.add(() => this.remove(effect));
   }
 }
 
@@ -410,7 +409,7 @@ export default {
    */
   getInstance(forceNewInstance) {
     if (!phaserGame) {
-      throw 'Invoke setGame first to pass the Phaser Game entity!';
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
     if (!singleton || forceNewInstance) {
       singleton = new EffectManager();

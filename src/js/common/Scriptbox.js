@@ -1,3 +1,4 @@
+/* eslint class-methods-use-this: 0 */
 const scripts = {};
 let singleton;
 
@@ -6,10 +7,9 @@ class Scriptbox {
     scripts[key] = script;
   }
 
-  run(key) {
+  run(key, ...args) {
     if (!scripts[key]) return;
-    const params = [].slice.call(arguments, 1);
-    scripts[key].apply(null, params);
+    scripts[key].apply(null, args);
   }
 
   has(key) {

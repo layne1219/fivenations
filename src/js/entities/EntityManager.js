@@ -1,3 +1,5 @@
+/* global window, localStorage */
+/* eslint no-underscore-dangle: 0 */
 import Graphics from '../common/Graphics';
 import Entity from './Entity';
 import DataObject from '../model/DataObject';
@@ -12,9 +14,56 @@ let singleton;
 
 const entities = [];
 
+/**
+ * Creates a function that can be used to filter entities
+ * @param {array} entities Array of entities the can be filtered further
+ * @return {function}
+ */
+function createSelector(targetEntities) {
+  /**
+   * returns array of entities with the exposing the activity API against them
+   * @param {mixed}
+   * @return {array} [Array of entities]
+   */
+  return function $(filter) {
+    let targets;
+
+    if (typeof filter === 'function') {
+      targets = targetEntities.filter(filter);
+    } else if (typeof filter === 'string') {
+      if (filter === ':selected') {
+        targets = targetEntities.filter(entity => entity.isSelected());
+      } else if (filter === ':not(hibernated)') {
+        targets = targetEntities.filter(entity => !entity.isHibernated());
+      } else if (filter === ':user') {
+        targets = targetEntities.filter(entity => entity.isEntityControlledByUser());
+      } else if (filter === ':user:selected') {
+        targets = targetEntities.filter(entity =>
+          entity.isEntityControlledByUser() && entity.isSelected());
+      } else if (filter === ':user:selected:not(building)') {
+        targets = targetEntities.filter((entity) => {
+          if (!entity.isEntityControlledByUser()) return false;
+          if (!entity.isSelected()) return false;
+          if (entity.getDataObject().isBuilding()) return false;
+          return true;
+        });
+      } else {
+        targets = targetEntities.filter(entity => entity.getGUID() === filter);
+        return targets[0];
+      }
+    } else if (typeof filter === 'object') {
+      targets = filter;
+    } else {
+      targets = targetEntities;
+    }
+
+    return [].concat.call(targets);
+  };
+}
+
 function EntityManager() {
   if (!phaserGame) {
-    throw 'Invoke setGame first to pass the Phaser Game entity!';
+    throw new Error('Invoke setGame first to pass the Phaser Game entity!');
   }
 
   this.entityGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES);
@@ -31,14 +80,13 @@ EntityManager.prototype = {
    */
   add(config) {
     if (!config) {
-      throw 'Invalid configuration object passed as a parameter!';
+      throw new Error('Invalid configuration object passed as a parameter!');
     }
 
     if (Object.keys(ns.entities).indexOf(config.id) === -1) {
-      throw 'The requrested entity is not registered!';
+      throw new Error('The requrested entity is not registered!');
     }
 
-    let entity;
     let dataSource;
 
     const team = config.team || 1;
@@ -59,7 +107,7 @@ EntityManager.prototype = {
     dataObject.setTeam(team);
 
     // adding the freshly created entity to the main array
-    entity = new Entity({
+    const entity = new Entity({
       guid: config.guid,
       entityManager: this,
       sprite,
@@ -87,6 +135,7 @@ EntityManager.prototype = {
       }
     }
     entity.remove();
+    // eslint-disable-next-line no-param-reassign
     entity = null;
     // when an entity is removed we've got to refresh the quad tree
     this.updateEntityDistances();
@@ -153,7 +202,7 @@ EntityManager.prototype = {
    * @return {void}
    */
   createQuadTree(map) {
-    if (!map) throw 'Invalid Map instance has been passed!';
+    if (!map) throw new Error('Invalid Map instance has been passed!');
 
     this.quadTree = new QuadTree({
       x: 0,
@@ -192,17 +241,17 @@ EntityManager.prototype = {
    * @return {void}
    */
   setClosestEntities(entity) {
-    if (!entity) throw 'Invalid Entity instance is passed!';
+    if (!entity) throw new Error('Invalid Entity instance is passed!');
 
-    const entities = this.getEntitiesInRange(entity);
+    const closests = this.getEntitiesInRange(entity);
     let closestEnemy = null;
     let closestAlly = null;
 
-    for (let i = entities.length - 1; i >= 0; i -= 1) {
-      if (!closestEnemy && entities[i].isEnemy(entity)) {
-        closestEnemy = entities[i];
+    for (let i = closests.length - 1; i >= 0; i -= 1) {
+      if (!closestEnemy && closests[i].isEnemy(entity)) {
+        closestEnemy = closests[i];
       } else if (!closestAlly) {
-        closestAlly = entities[i];
+        closestAlly = closests[i];
       }
       if (closestEnemy && closestAlly) break;
     }
@@ -245,33 +294,29 @@ EntityManager.prototype = {
 
   /**
    * returns the subsection of the attributes of the given entities
-   * @param  {array} entities - Array of the given entities
+   * @param  {array} targetEntities - Array of the given entities
    * @return {object} consolidated object of attributes
    */
-  getMergedAbilities(entities) {
-    let abilities,
-      next,
-      subsection = function (next) {
-        return function (val) {
-          return (
-            next
-              .getAbilityManager()
-              .getAbilities()
-              .indexOf(val) !== -1
-          );
-        };
-      };
+  getMergedAbilities(targetEntities) {
+    const subsection = ability => val => ability
+      .getAbilityManager()
+      .getAbilities()
+      .indexOf(val) !== -1;
 
-    if (!entities || !entities.length) {
+    let abilities;
+    let next;
+
+    if (!targetEntities || !targetEntities.length) {
       return [];
     }
 
-    abilities = entities
+    abilities = targetEntities
       .shift()
       .getAbilityManager()
       .getAbilities();
 
-    while ((next = entities.shift())) {
+    // eslint-disable-next-line no-cond-assign
+    while ((next = targetEntities.shift())) {
       abilities = abilities.filter(subsection(next));
     }
 
@@ -289,59 +334,13 @@ EntityManager.prototype = {
   /**
    * Creates a selector function with the given entities.
    * This selector function can be used to filter down entities through a specified API.
-   * @param {Array} entities - array of entity instances
+   * @param {object} targetEntities - array of entity instances
    * @return {function}
    */
-  getSelector(entities) {
-    return createSelector(entities);
+  getSelector(targetEntities) {
+    return createSelector(targetEntities);
   },
 };
-
-/**
- * Creates a function that can be used to filter entities
- * @param {array} entities Array of entities the can be filtered further
- * @return {function}
- */
-function createSelector(entities) {
-  /**
-   * returns array of entities with the exposing the activity API against them
-   * @param  {mixed} filter [callback to filter entities | Array of Entities | Entity]
-   * @return {array} [Array of entities]
-   */
-  return function $(filter) {
-    let targets;
-
-    if (typeof filter === 'function') {
-      targets = entities.filter(filter);
-    } else if (typeof filter === 'string') {
-      if (filter === ':selected') {
-        targets = entities.filter(entity => entity.isSelected());
-      } else if (filter === ':not(hibernated)') {
-        targets = entities.filter(entity => !entity.isHibernated());
-      } else if (filter === ':user') {
-        targets = entities.filter(entity => entity.isEntityControlledByUser());
-      } else if (filter === ':user:selected') {
-        targets = entities.filter(entity => entity.isEntityControlledByUser() && entity.isSelected());
-      } else if (filter === ':user:selected:not(building)') {
-        targets = entities.filter((entity) => {
-          if (!entity.isEntityControlledByUser()) return false;
-          if (!entity.isSelected()) return false;
-          if (entity.getDataObject().isBuilding()) return false;
-          return true;
-        });
-      } else {
-        targets = entities.filter(entity => entity.getGUID() === filter);
-        return targets[0];
-      }
-    } else if (typeof filter === 'object') {
-      targets = filter;
-    } else {
-      targets = entities;
-    }
-
-    return [].concat.call(targets);
-  };
-}
 
 export default {
   /**
@@ -359,7 +358,7 @@ export default {
    */
   getInstance(forceNewInstance) {
     if (!phaserGame) {
-      throw 'Invoke setGame first to pass the Phaser Game entity!';
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
     if (!singleton || forceNewInstance) {
       singleton = new EntityManager();

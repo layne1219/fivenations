@@ -1,3 +1,4 @@
+/* global Phaser */
 import Graphics from '../common/Graphics';
 import { GROUP_ENTITIES } from '../common/Const';
 
@@ -394,16 +395,16 @@ export default class JetEngine {
 
     sprite.visible = false;
     sprite.anchor.setTo(0.5, 0.5);
-    sprite._alpha = ALPHA_OFFSET[id];
-    sprite.alpha = sprite._alpha;
+    sprite.alphaDefault = ALPHA_OFFSET[id];
+    sprite.alpha = sprite.alphaDefault;
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    sprite.update = function () {
+    sprite.update = () => {
       const angleCode = entity.getMotionManager().getCurrentAngleCode();
-      const sprite = entity.getSprite();
-      this.x = sprite.x;
-      this.y = sprite.y + sprite.anchor.y;
+      const entitySprite = entity.getSprite();
+      this.x = entitySprite.x;
+      this.y = entitySprite.y + entitySprite.anchor.y;
       this.frame = frames[angleCode];
     };
 
@@ -423,7 +424,7 @@ export default class JetEngine {
 
   hide() {
     if (this.tween) this.tween.stop();
-    this.sprite.alpha = this.sprite._alpha;
+    this.sprite.alpha = this.sprite.alphaDefault;
     this.sprite.visible = false;
   }
 

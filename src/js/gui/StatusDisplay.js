@@ -22,29 +22,27 @@ export default class StatusDisplay {
    * @return {[void]}
    */
   appendTo(entity) {
-    let width;
-    width = Math.max(entity.getDataObject().getWidth(), entity.getDataObject().getHeight());
+    const height = entity.getDataObject().getHeight();
+    const width = Math.max(entity.getDataObject().getWidth(), height);
 
     // Shield if there is any
     if (entity.getDataObject().getMaxShield() > 0) {
       this.shieldBar = new StatusBar({ color: '0x0000FF', width, phaserGame });
       this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
-      this.shieldBar.getGroup().y = -entity.getDataObject().getHeight();
+      this.shieldBar.getGroup().y = -height;
       this.group.add(this.shieldBar.getGroup());
     }
     // Health
     this.healthBar = new StatusBar({ width, phaserGame });
     this.healthBar.getGroup().x = this.healthBar.getGroup().width / -2;
-    this.healthBar.getGroup().y =
-      -entity.getDataObject().getHeight() + this.group.children.length * 6;
+    this.healthBar.getGroup().y = -height + (this.group.children.length * 6);
     this.group.add(this.healthBar.getGroup());
 
     // Power if there is any
     if (entity.getDataObject().getMaxPower() > 0) {
       this.powerBar = new StatusBar({ color: '0xFF00FF', width, phaserGame });
       this.powerBar.getGroup().x = this.powerBar.getGroup().width / -2;
-      this.powerBar.getGroup().y =
-        -entity.getDataObject().getHeight() + this.group.children.length * 6;
+      this.powerBar.getGroup().y = -height + (this.group.children.length * 6);
       this.group.add(this.powerBar.getGroup());
     }
 
@@ -55,7 +53,7 @@ export default class StatusDisplay {
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.group.update = function () {
+    this.group.update = () => {
       this.x = entity.getSprite().x;
       this.y = entity.getSprite().y;
     };
@@ -69,8 +67,8 @@ export default class StatusDisplay {
    * @return {[void]}
    */
   update() {
-    let dataObject = this.parent.getDataObject(),
-      ratio;
+    const dataObject = this.parent.getDataObject();
+    let ratio;
 
     if (this.healthBar) {
       ratio = dataObject.getHull() / dataObject.getMaxHull();

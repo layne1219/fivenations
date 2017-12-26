@@ -1,6 +1,5 @@
-/**
- * Entity constanst
- */
+
+/* global Phaser */
 // size categories for entities
 export const ENTITY_SIZES = {
   xsm: {
@@ -67,7 +66,8 @@ export const ENTITY_ICON_SMALL_DIMENSIONS = {
 // Weapon constants
 export const WEAPON_INSTANCE_DELAY = 10;
 export const WEAPON_ACCURACY_SPREAD_IN_DEGREES = 60;
-export const WEAPON_ACCURACY_SPREAD_IN_RADIAN = Phaser.Math.degToRad(WEAPON_ACCURACY_SPREAD_IN_DEGREES);
+export const WEAPON_ACCURACY_SPREAD_IN_RADIAN =
+  Phaser.Math.degToRad(WEAPON_ACCURACY_SPREAD_IN_DEGREES);
 
 export const GUI_BUTTON = {
   spritesheet: {

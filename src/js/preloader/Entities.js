@@ -1,5 +1,6 @@
+/* global window */
 const ns = window.fivenations;
-const PUBLIC_URL = process.env.PUBLIC_URL;
+const { PUBLIC_URL } = process.env;
 const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/units/`;
 const PATH_ASSETS_IMG = `${PUBLIC_URL}/assets/images/units/`;
 
@@ -1210,7 +1211,8 @@ ns.entities = ns.entities || {
 
 export default {
   /**
-   * Loading all the correspondant resources for the entities listed in the private *entities* object
+   * Loading all the correspondant resources for the entities listed
+   * in the private *entities* object
    * @param {object} [preloader] Preloader object defined below
    * @return {void}
    */

@@ -44,7 +44,6 @@ export default class Selector {
     const selectionOffset = entity.getDataObject().getSelectionOffset();
     const offsetX = selectionOffset.x || 0;
     const offsetY = selectionOffset.y || 0;
-    let groupName;
 
     entity.on('select', this.show.bind(this));
     entity.on('unselect', this.hide.bind(this));
@@ -52,14 +51,14 @@ export default class Selector {
     entity.on('remove', this.remove.bind(this));
 
     // Add the selection to the appropriate graphics group as per its type
-    groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
+    const groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
     Graphics.getInstance()
       .getGroup(groupName)
       .add(this.sprite);
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.sprite.update = function () {
+    this.sprite.update = () => {
       this.x = entity.getSprite().x - offsetX;
       this.y = entity.getSprite().y - offsetY;
     };
@@ -101,23 +100,23 @@ export default class Selector {
   }
 
   getAnimationName(animType) {
-    const relationship = (function (selector) {
-      if (selector.parent.isEntityControlledByUser()) {
+    const relationship = (() => {
+      if (this.parent.isEntityControlledByUser()) {
         return '-';
       }
       return '-enemy-';
-    }(this));
+    })();
     const animationName = animType + relationship + this.getSize();
     return animationName;
   }
 
   getSize() {
     if (!this.parent) {
-      throw 'There is no Entity attached to this Selector instance!';
+      throw new Error('There is no Entity attached to this Selector instance!');
     }
 
     if (!this.size) {
-      Object.keys(ENTITY_GUI_SIZES).forEach(function (size) {
+      Object.keys(ENTITY_GUI_SIZES).forEach((size) => {
         if (
           Util.between(
             Math.max(this.width, this.height),
@@ -127,7 +126,7 @@ export default class Selector {
         ) {
           this.size = size;
         }
-      }, this);
+      });
     }
 
     return this.size;

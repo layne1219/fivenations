@@ -1,3 +1,5 @@
+/* global Phaser */
+/* eslint class-methods-use-this: 0 */
 import EventEmitter from '../sync/EventEmitter';
 import Util from '../common/Util';
 import {
@@ -26,26 +28,6 @@ const text = {
   defaultFont: '11px BerlinSansFB-Reg',
   color: '#77C7D2',
 };
-
-function createIcon({ container, phaserGame }) {
-  return createIconSprite({
-    width: ENTITY_ICON_DIMENSIONS.width,
-    height: ENTITY_ICON_DIMENSIONS.height,
-    frame: ENTITY_ICON,
-    container,
-    phaserGame,
-  });
-}
-
-function createSmallIcon({ container, phaserGame }) {
-  return createIconSprite({
-    width: ENTITY_ICON_SMALL_DIMENSIONS.width,
-    height: ENTITY_ICON_SMALL_DIMENSIONS.height,
-    frame: ENTITY_ICON_SMALL,
-    container,
-    phaserGame,
-  });
-}
 
 /**
  * Returns a map of icons with keys set as the sprite key of the icons
@@ -90,6 +72,26 @@ function createIconSprite({
       image.events.onInputDown.add(callback, ctx);
     },
   };
+}
+
+function createIcon({ container, phaserGame }) {
+  return createIconSprite({
+    width: ENTITY_ICON_DIMENSIONS.width,
+    height: ENTITY_ICON_DIMENSIONS.height,
+    frame: ENTITY_ICON,
+    container,
+    phaserGame,
+  });
+}
+
+function createSmallIcon({ container, phaserGame }) {
+  return createIconSprite({
+    width: ENTITY_ICON_SMALL_DIMENSIONS.width,
+    height: ENTITY_ICON_SMALL_DIMENSIONS.height,
+    frame: ENTITY_ICON_SMALL,
+    container,
+    phaserGame,
+  });
 }
 
 class MainAttributeGroup extends Phaser.Group {
@@ -210,27 +212,9 @@ class WeaponGroup extends Phaser.Group {
   }
 
   initWeaponText(phaserGame) {
-    let weaponText,
-      i,
-      x,
-      y;
-
-    this.weaponTexts = [];
-
-    for (i = 0; i < weaponNumber; i += 1) {
-      x = text.marginLeft + Math.floor(i / 8) * 100;
-      y = text.marginTop + (i % 8 + 1) * 11;
-      weaponText = this.add(phaserGame.add.text(x, y, '', {
-        font: text.defaultFont,
-        fill: text.color,
-      }));
-      weaponText.inputEnabled = true;
-      weaponText.events.onInputOver.add(over, this);
-      weaponText.events.onInputOut.add(out, this);
-      weaponText.events.onInputDown.add(click, this);
-
-      this.weaponTexts.push(weaponText);
-    }
+    let weaponText;
+    let x;
+    let y;
 
     function over(item) {
       this.dispatcher.dispatch('over', item);
@@ -244,6 +228,23 @@ class WeaponGroup extends Phaser.Group {
 
     function click(item) {
       this.dispatcher.dispatch('click', item);
+    }
+
+    this.weaponTexts = [];
+
+    for (let i = 0; i < weaponNumber; i += 1) {
+      x = text.marginLeft + (Math.floor(i / 8) * 100);
+      y = text.marginTop + (((i % 8) + 1) * 11);
+      weaponText = this.add(phaserGame.add.text(x, y, '', {
+        font: text.defaultFont,
+        fill: text.color,
+      }));
+      weaponText.inputEnabled = true;
+      weaponText.events.onInputOver.add(over, this);
+      weaponText.events.onInputOut.add(out, this);
+      weaponText.events.onInputDown.add(click, this);
+
+      this.weaponTexts.push(weaponText);
     }
   }
 
@@ -268,7 +269,7 @@ class WeaponGroup extends Phaser.Group {
    */
   updateContent(entity) {
     if (!entity) {
-      throw 'Invalid Entity instance has been passed!';
+      throw new Error('Invalid Entity instance has been passed!');
     }
 
     for (let i = weaponNumber - 1; i >= 0; i -= 1) {
@@ -339,7 +340,6 @@ class WeaponGroupPopup extends Phaser.Group {
   updateContent(weapon) {
     let title;
     let value;
-    let upgradedValue;
     let output;
 
     // Name
@@ -352,7 +352,7 @@ class WeaponGroupPopup extends Phaser.Group {
     // Damage to Hull
     title = 'DMG to Hull: ';
     value = weapon.getDamage();
-    upgradedValue = weapon.getCurrentLevel() * weapon.getUpgradeLevel();
+    const upgradedValue = weapon.getCurrentLevel() * weapon.getUpgradeLevel();
 
     output = (value && ` + ${upgradedValue}`) || '';
 
@@ -390,29 +390,23 @@ class MultiselectionGroup extends Phaser.Group {
     this.healthBar = [];
     this.shieldBar = [];
 
-    for (let i = columns * rows - 1; i >= 0; i -= 1) {
+    for (let i = (columns * rows) - 1; i >= 0; i -= 1) {
       const x = (i % columns) * (iconWidth + margin);
       const y = Math.floor(i / columns) * (iconHeight + margin);
 
       // Icons
       this.icons[i] = createSmallIcon({ container: this, phaserGame });
       this.icons[i].move(x, y);
-      this.icons[i].click(
-        (idx =>
-          function () {
-            entityManager.unselectAll(this.entities[idx]);
-          })(i),
-        this,
-      );
+      this.icons[i].click(() => entityManager.unselectAll(this.entities[i]));
 
       // StatusBars
       this.healthBar[i] = this.add(phaserGame.add.graphics(
         x + statusBarMargin,
-        y + iconHeight - statusBarHeight - statusBarMargin,
+        (y + iconHeight) - statusBarHeight - statusBarMargin,
       ));
       this.shieldBar[i] = this.add(phaserGame.add.graphics(
         x + statusBarMargin,
-        y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1,
+        (y + iconHeight) - (statusBarHeight * 2) - statusBarMargin - 1,
       ));
     }
   }
@@ -423,14 +417,13 @@ class MultiselectionGroup extends Phaser.Group {
    * @return {void}
    */
   updateContent(entities) {
-    let dataObject,
-      i;
+    let dataObject;
 
     if (!entities) {
-      throw 'Invalid Array of Entity instances has been passed!';
+      throw new Error('Invalid Array of Entity instances has been passed!');
     }
 
-    for (i = this.icons.length - 1; i >= 0; i -= 1) {
+    for (let i = this.icons.length - 1; i >= 0; i -= 1) {
       // if the slot needs to be shown
       if (i < entities.length && entities[i]) {
         dataObject = entities[i].getDataObject();
@@ -460,7 +453,7 @@ class MultiselectionGroup extends Phaser.Group {
     graphics.visible = true;
     graphics.clear();
     graphics.beginFill(color || Util.getColorFromRatio(ratio));
-    graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - statusBarMargin * 2, statusBarHeight);
+    graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - (statusBarMargin * 2), statusBarHeight);
     graphics.endFill();
   }
 }
@@ -489,27 +482,21 @@ export default class EntityDetailsDisplay {
   }
 
   createAttributeGroup(x, y, phaserGame) {
-    let container;
-    let mainAttributeGroup;
-    let weaponGroup;
-    let weaponGroupPopup;
+    const container = phaserGame.add.group();
 
-    container = phaserGame.add.group();
-
-    mainAttributeGroup = new MainAttributeGroup(phaserGame);
+    const mainAttributeGroup = new MainAttributeGroup(phaserGame);
     mainAttributeGroup.x = x;
     mainAttributeGroup.y = y;
 
-    weaponGroup = new WeaponGroup(phaserGame);
+    const weaponGroup = new WeaponGroup(phaserGame);
     weaponGroup.x = x + 100;
     weaponGroup.y = y - 10;
 
-    weaponGroupPopup = new WeaponGroupPopup(phaserGame);
-
+    const weaponGroupPopup = new WeaponGroupPopup(phaserGame);
     weaponGroup.add(weaponGroupPopup);
     weaponGroup.on('over', (item) => {
       weaponGroupPopup.x = item.x + weaponPopupPaddingX;
-      weaponGroupPopup.y = item.y - weaponGroupPopup.height + weaponPopupPaddingY;
+      weaponGroupPopup.y = (item.y - weaponGroupPopup.height) + weaponPopupPaddingY;
       weaponGroupPopup.visible = true;
       weaponGroupPopup.updateContent(item.weapon);
     });
@@ -542,7 +529,7 @@ export default class EntityDetailsDisplay {
    */
   appendTo(panel, x, y) {
     if (!panel) {
-      throw 'Invalid Phaser.Sprite object!';
+      throw new Error('Invalid Phaser.Sprite object!');
     }
 
     this.group.x = x;

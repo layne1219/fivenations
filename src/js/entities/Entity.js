@@ -1,3 +1,5 @@
+/* global window, Phaser */
+/* eslint no-underscore-dangle: 0 */
 import PlayerManager from '../players/PlayerManager';
 import EventEmitter from '../sync/EventEmitter';
 import ActivityManager from '../entities/activities/ActivityManager';
@@ -16,14 +18,114 @@ import * as Const from '../common/Const';
 const ns = window.fivenations;
 
 /**
+ * Registers animations sequences against the given sprite object if there is any
+ * specified in the DO
+ * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
+ * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
+ * @return {void}
+ */
+const extendSpriteWithAnimations = (sprite, dataObject) => {
+  const animations = dataObject.getAnimations();
+  const anmationOffset = dataObject.getAnimationOffset();
+  sprite.frame = anmationOffset;
+  if (!animations || typeof animations !== 'object') return;
+  Object.keys(animations).forEach((key) => {
+    const data = animations[key];
+    if (data.length) {
+      data.forEach((animationData, idx) => {
+        const frames = animationData.frames.map(v => v + anmationOffset);
+        sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);
+      });
+    } else {
+      const frames = data.frames.map(v => v + anmationOffset);
+      sprite.animations.add(key, frames, data.rate, data.loopable);
+    }
+    // if the animation is called `idle-forever` it is started straightaway
+    if (key === Const.ANIMATION_IDLE_FOREVER) {
+      sprite.animations.play(key);
+    }
+  });
+};
+
+/**
+ * Extending the given sprite with event listeners
+ * @param {object} entity - Entity object that owns the [sprite] Phaser.Sprite
+ * instance
+ * @param {object} sprite - Phaser.Sprite object to which the extended
+ * properties and child elements will be linked
+ * @param {object} dataObject - DataObject instance containing all the
+ * informations about the entity being instantiated
+ * @return {object}
+ */
+const extendSpriteWithEventListeners = (entity, sprite, dataObject) => {
+  // input events registered on the sprite object
+  sprite.events.onInputDown.add(() => {
+    let now;
+
+    if (GUIActivityManager.getInstance().hasActiveSelection()) {
+      return;
+    }
+
+    if (UserPointer.getInstance().isLeftButtonDown()) {
+      // If the user holds SHIFT we will extend the number of selected entities
+      if (!UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
+        this.entityManager.unselectAll();
+      }
+      this.select();
+
+      now = new Date().getTime();
+      if (now - this.lastClickTime < 500) {
+        this.entityManager
+          .entities()
+          .filter((targetEntitity) => {
+            // If the targetEntitity is off screen we need to exclude
+            if (!Util.between(
+              targetEntitity.getSprite().x - this.game.camera.x,
+              0,
+              ns.window.width,
+            )) {
+              return false;
+            }
+            if (!Util.between(
+              targetEntitity.getSprite().y - this.game.camera.y,
+              0,
+              ns.window.height,
+            )) {
+              return false;
+            }
+            // we need to include only the indentical entities
+            return targetEntitity.getDataObject().getId() === dataObject.getId();
+          })
+          .forEach((targetEntitity) => {
+            targetEntitity.select();
+          });
+      }
+
+      // this needs to be attached to the individual sprite instance
+      this.lastClickTime = now;
+    }
+  }, entity);
+
+  sprite.events.onInputOut.add(() => {
+    sprite.hover = false;
+  }, this);
+
+  sprite.events.onInputOver.add(() => {
+    sprite.hover = true;
+  }, this);
+};
+
+/**
  * Initialising the Phaser.Sprite object with all the additional child elements
  * such as selector and property bars
- * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
- * @param {[object]} [sprite] Phaser.Sprite object to which the extended properties and child elements will be linked
- * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
- * @return {[object]}
+ * @param {object} entity - Entity object that owns the Phaser.Sprite
+ * @param {object} [sprite] Phaser.Sprite object to which the extended properties
+ * and child elements will be linked
+ * @param {object} [dataObject] [DataObject instance containing all the
+ * informations about the entity being instantiated]
+ * @return {object}
  */
-const extendSprite = function (entity, sprite, dataObject) {
+const extendSprite = (entity, sprite, dataObject) => {
   // dimensions
   const origWidth = dataObject.getWidth();
   const origHeight = dataObject.getHeight();
@@ -74,93 +176,6 @@ const extendSprite = function (entity, sprite, dataObject) {
   sprite._group = group;
 
   return sprite;
-};
-
-/**
- * Registers animations sequences against the given sprite object if there is any specified in the DO
- * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
- * @param  {object} dataObject [DataObject instance that may contain animation sequences defined]
- * @return {void}
- */
-const extendSpriteWithAnimations = function (sprite, dataObject) {
-  const animations = dataObject.getAnimations();
-  const anmationOffset = dataObject.getAnimationOffset();
-  sprite.frame = anmationOffset;
-  if (!animations || typeof animations !== 'object') return;
-  Object.keys(animations).forEach((key) => {
-    const data = animations[key];
-    if (data.length) {
-      data.forEach((animationData, idx) => {
-        const frames = animationData.frames.map(v => v + anmationOffset);
-        sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);
-      });
-    } else {
-      const frames = data.frames.map(v => v + anmationOffset);
-      sprite.animations.add(key, frames, data.rate, data.loopable);
-    }
-    // if the animation is called `idle-forever` it is started straightaway
-    if (key === Const.ANIMATION_IDLE_FOREVER) {
-      sprite.animations.play(key);
-    }
-  });
-};
-
-/**
- * Extending the given sprite with event listeners
- * @param {[object]} [entity] [Entity object that owns the [sprite] Phaser.Sprite instance]
- * @param {[object]} sprite Phaser.Sprite object to which the extended properties and child elements will be linked
- * @param {[object]} [dataObject] [DataObject instance containing all the informations about the entity being instantiated]
- * @return {[object]}
- */
-const extendSpriteWithEventListeners = function (entity, sprite, dataObject) {
-  // input events registered on the sprite object
-  sprite.events.onInputDown.add(function () {
-    const game = this.game;
-    let now;
-
-    if (GUIActivityManager.getInstance().hasActiveSelection()) {
-      return;
-    }
-
-    if (UserPointer.getInstance().isLeftButtonDown()) {
-      // If the user holds SHIFT we will extend the number of selected entities
-      if (!UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
-        this.entityManager.unselectAll();
-      }
-      this.select();
-
-      now = new Date().getTime();
-      if (now - this.lastClickTime < 500) {
-        this.entityManager
-          .entities()
-          .filter((entity) => {
-            // If the entity is off screen we need to exclude
-            if (!Util.between(entity.getSprite().x - game.camera.x, 0, ns.window.width)) {
-              return false;
-            }
-            if (!Util.between(entity.getSprite().y - game.camera.y, 0, ns.window.height)) {
-              return false;
-            }
-            // we need to include only the indentical entities
-            return entity.getDataObject().getId() === dataObject.getId();
-          })
-          .forEach((entity) => {
-            entity.select();
-          });
-      }
-
-      // this needs to be attached to the individual sprite instance
-      this.lastClickTime = now;
-    }
-  }, entity);
-
-  sprite.events.onInputOut.add(() => {
-    sprite.hover = false;
-  }, this);
-
-  sprite.events.onInputOver.add(() => {
-    sprite.hover = true;
-  }, this);
 };
 
 class Entity {
@@ -447,7 +462,7 @@ class Entity {
    * @return {void}
    */
   undock() {
-    if (this.docker === undefined) return;
+    if (this.docker === undefined) return null;
 
     const entitiesToRelease = [];
 
@@ -608,7 +623,8 @@ class Entity {
 
   /**
    * Sets the given entity as the closest hostile entity in attack range of this entity
-   * @param {object} entity Closest entity that is in a hostile relation with the one initiated the call
+   * @param {object} entity Closest entity that is in a hostile relation with the one
+   * initiated the call
    * return {object} Entity
    */
   setClosestHostileEntityInRange(entity) {
@@ -645,16 +661,16 @@ class Entity {
   }
 
   isInside(obj) {
-    if (this.sprite.x + this.getDataObject().getWidth() / 2 < obj.x) {
+    if (this.sprite.x + (this.getDataObject().getWidth() / 2) < obj.x) {
       return false;
     }
-    if (this.sprite.x - this.getDataObject().getWidth() / 2 > obj.x + obj.width) {
+    if (this.sprite.x - (this.getDataObject().getWidth() / 2) > obj.x + obj.width) {
       return false;
     }
-    if (this.sprite.y + this.getDataObject().getHeight() / 2 < obj.y) {
+    if (this.sprite.y + (this.getDataObject().getHeight() / 2) < obj.y) {
       return false;
     }
-    if (this.sprite.y - this.getDataObject().getHeight() / 2 > obj.y + obj.height) {
+    if (this.sprite.y - (this.getDataObject().getHeight() / 2) > obj.y + obj.height) {
       return false;
     }
     return true;

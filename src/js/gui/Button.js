@@ -1,3 +1,4 @@
+/* global window, Phaser */
 import { GUI_BUTTON } from '../common/Const';
 
 const ns = window.fivenations;
@@ -74,5 +75,4 @@ class Button extends Phaser.Group {
   }
 }
 
-export { Button };
 export default Button;

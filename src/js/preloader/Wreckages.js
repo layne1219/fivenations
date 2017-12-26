@@ -1,5 +1,6 @@
+/* global window */
 const ns = window.fivenations;
-const PUBLIC_URL = process.env.PUBLIC_URL;
+const { PUBLIC_URL } = process.env;
 const PATH_ASSETS_DATA_UNITS = `${PUBLIC_URL}/assets/datas/units`;
 const PATH_ASSETS_IMG_UNITS = `${PUBLIC_URL}/assets/images/units`;
 
@@ -21,7 +22,8 @@ ns.effects = ns.effects || {};
 
 export default {
   /**
-   * Loading all the correspondant resources for the wreckages listed in the private *wreckages* object
+   * Loads all the correspondant resources for the wreckages listed in the private
+   * wreckages object
    * @param {object} [preloader] Preloader object defined below
    * @return {void}
    */

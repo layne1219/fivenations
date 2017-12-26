@@ -9,11 +9,7 @@ const backgroundFrames = {
 };
 
 export default class StatusBar {
-  constructor({ phaserGame, width, color }) {
-    if (undefined === width) {
-      width = 1;
-    }
-
+  constructor({ phaserGame, width = 1, color }) {
     // wrapper for the background sprite and the dynamic graphics object
     this.group = phaserGame.add.group();
 
@@ -49,11 +45,11 @@ export default class StatusBar {
 
   getSize(width) {
     if (!this.size) {
-      Object.keys(ENTITY_GUI_SIZES).forEach(function (size) {
+      Object.keys(ENTITY_GUI_SIZES).forEach((size) => {
         if (Util.between(width, ENTITY_GUI_SIZES[size][0], ENTITY_GUI_SIZES[size][1])) {
           this.size = size;
         }
-      }, this);
+      });
     }
 
     return this.size;
