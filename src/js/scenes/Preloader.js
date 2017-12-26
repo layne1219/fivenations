@@ -41,7 +41,7 @@ Preloader.prototype = {
     this.load.setPreloadSprite(bar);
 
     // setting up the callback one the preloading is completed
-    this.load.onLoadComplete.addOnce(function () {
+    this.load.onLoadComplete.addOnce(() => {
       this.ready = true;
     }, this);
 

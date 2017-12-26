@@ -1,3 +1,4 @@
+/* global window */
 import Graphics from '../common/Graphics';
 import PlanetAreaGenerator from './PlanetAreaGenerator';
 
@@ -16,23 +17,21 @@ DeepSpaceLayer.prototype = {
   spaceObjects: [],
 
   setMap(map) {
-    if (!map) throw 'Map instance must be passed as first parameter!';
+    if (!map) throw new Error('Map instance must be passed as first parameter!');
     this.map = map;
   },
 
   setGame(game) {
-    if (!game) throw 'Phaser.Game instance must be passed as first parameter!';
+    if (!game) throw new Error('Phaser.Game instance must be passed as first parameter!');
     this.game = game;
   },
 
   createTexture() {
-    const width = ns.window.width;
-    const height = ns.window.height;
-    let container;
+    const { width, height } = ns.window;
 
     this.texture = this.game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
 
-    container = this.game.add.image(0, 0, this.texture);
+    const container = this.game.add.image(0, 0, this.texture);
     container.fixedToCamera = true;
 
     Graphics.getInstance()
@@ -53,7 +52,7 @@ DeepSpaceLayer.prototype = {
 
   createSpaceObjects(savedData) {
     if (savedData) {
-      const SpaceObjectLoader = function () {};
+      const SpaceObjectLoader = () => {};
       this.loadSpaceObjects(new SpaceObjectLoader(this, savedData));
     } else {
       this.generateSpaceObjects(new PlanetAreaGenerator(this));
@@ -62,13 +61,13 @@ DeepSpaceLayer.prototype = {
   },
 
   generateSpaceObjects(generator) {
-    if (!generator) throw 'Invalid generator instance!';
+    if (!generator) throw new Error('Invalid generator instance!');
     generator.generate();
     this.spaceObjects = generator.getSpaceObjects();
   },
 
   loadSpaceObjects(loader) {
-    if (!loader) throw 'Invalid loader instance!';
+    if (!loader) throw new Error('Invalid loader instance!');
     loader.load();
     this.spaceObjects = loader.getSpaceObjects();
   },
@@ -78,9 +77,7 @@ DeepSpaceLayer.prototype = {
   },
 
   update() {
-    let i,
-      l;
-    for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
+    for (let i = 0, l = this.spaceObjects.length; i < l; i += 1) {
       this.spaceObjects[i].update(this.texture, this.game, i === 0);
     }
   },

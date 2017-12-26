@@ -1,4 +1,5 @@
-const PUBLIC_URL = process.env.PUBLIC_URL;
+/* global Phaser */
+const { PUBLIC_URL } = process.env;
 const PATH_ASSETS = `${PUBLIC_URL}/assets/images/gui`;
 
 function Boot() {}
@@ -12,7 +13,7 @@ Boot.prototype = {
 
   create() {
     // preventing the context menu to appear when the user clicks with the right mouse button
-    this.game.canvas.oncontextmenu = function (e) {
+    this.game.canvas.oncontextmenu = (e) => {
       e.preventDefault();
     };
 

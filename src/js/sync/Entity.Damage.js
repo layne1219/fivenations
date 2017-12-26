@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityDamage() {
-  const args = [].slice.call(arguments);
+function EntityDamage(...args) {
   Event.apply(this, args);
 }
 
@@ -16,7 +16,7 @@ EntityDamage.prototype.constructor = EntityDamage;
  * @return {void}
  * @example
  */
-EntityDamage.prototype.execute = function (options) {
+EntityDamage.prototype.execute = (options) => {
   if (!options.targets || !options.data) {
     return;
   }

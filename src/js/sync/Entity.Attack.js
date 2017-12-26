@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityAttack() {
-  const args = [].slice.call(arguments);
+function EntityAttack(...args) {
   Event.apply(this, args);
 }
 
@@ -16,7 +16,7 @@ EntityAttack.prototype.constructor = EntityAttack;
  * @return {void}
  * @example
  */
-EntityAttack.prototype.execute = function (options) {
+EntityAttack.prototype.execute = (options) => {
   if (!options.targets || !options.data) {
     return;
   }

@@ -1,3 +1,4 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
@@ -8,8 +9,7 @@ function removeEffectByGUID(guid) {
   ns.game.effectManager.remove(effect);
 }
 
-function EffectRemove() {
-  const args = [].slice.call(arguments);
+function EffectRemove(...args) {
   Event.apply(this, args);
 }
 
@@ -21,7 +21,7 @@ EffectRemove.prototype.constructor = EffectRemove;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EffectRemove.prototype.execute = function (options) {
+EffectRemove.prototype.execute = (options) => {
   if (!options.targets) {
     return;
   }

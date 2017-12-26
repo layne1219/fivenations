@@ -48,7 +48,8 @@ Map.prototype = {
   },
 
   setSize(config) {
-    { width, height } = config;
+    width = config.width;
+    height = config.height;
     game.world.setBounds(0, 0, this.getScreenWidth(), this.getScreenHeight());
   },
 

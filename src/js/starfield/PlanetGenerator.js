@@ -1,3 +1,4 @@
+/* global window */
 import SpaceObject from './SpaceObject';
 import SpaceObjectGenerator from './SpaceObjectGenerator';
 import Util from '../common/Util';
@@ -11,20 +12,19 @@ function PlanetGenerator(deepSpaceLayer) {
 PlanetGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
 PlanetGenerator.prototype.constructor = PlanetGenerator;
 
-PlanetGenerator.prototype.generate = function (numberOfPlanets) {
+PlanetGenerator.prototype.generate = (numberOfPlanets) => {
   SpaceObjectGenerator.prototype.generate.call(this);
 
   this.createPlanet(numberOfPlanets);
 };
 
-PlanetGenerator.prototype.createPlanet = function (numberOfPlanets) {
-  if (!numberOfPlanets) numberOfPlanets = 1;
+PlanetGenerator.prototype.createPlanet = (numberOfPlanets = 1) => {
   for (let i = 0; i < numberOfPlanets; i += 1) {
     this.createRandomizedPlanet();
   }
 };
 
-PlanetGenerator.prototype.createRandomizedPlanet = function () {
+PlanetGenerator.prototype.createRandomizedPlanet = () => {
   const NUMBER_OF_TYPES = 2;
   const NUMBER_OF_FRAMES = 10;
   const screenWidth = ns.window.width;

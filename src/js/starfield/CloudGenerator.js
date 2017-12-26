@@ -11,21 +11,19 @@ function CloudGenerator(deepSpaceLayer) {
 CloudGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
 CloudGenerator.prototype.constructor = CloudGenerator;
 
-CloudGenerator.prototype.generate = function (density) {
+CloudGenerator.prototype.generate = (density) => {
   SpaceObjectGenerator.prototype.generate.call(this);
   this.createClouds(density);
 };
 
-CloudGenerator.prototype.createClouds = function (density) {
-  if (!density) density = 1;
+CloudGenerator.prototype.createClouds = (density = 1) => {
   const max = Math.floor(MAX_NUMBER_OF_CLOUDS * density);
   for (let i = 0; i < max; i += 1) {
     this.createRandomizedCloud();
   }
 };
 
-CloudGenerator.prototype.createRandomizedCloud = function () {
-  let cloud;
+CloudGenerator.prototype.createRandomizedCloud = () => {
   const map = this.deepSpaceLayer.getMap();
   const sprites = this.deepSpaceLayer.getSprites();
   const NUMBER_OF_TYPES = 2;
@@ -38,7 +36,7 @@ CloudGenerator.prototype.createRandomizedCloud = function () {
   const frame = Util.rnd(0, NUMBER_OF_FRAMES - 1);
   const scale = Util.rnd(75, 125) / 100;
 
-  cloud = new SpaceObject(sprite)
+  const cloud = new SpaceObject(sprite)
     .setX(x)
     .setY(y)
     .setZ(z)

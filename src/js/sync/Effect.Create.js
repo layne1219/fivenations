@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EffectCreate() {
-  const args = [].slice.call(arguments);
+function EffectCreate(...args) {
   Event.apply(this, args);
 }
 
@@ -15,14 +15,12 @@ EffectCreate.prototype.constructor = EffectCreate;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EffectCreate.prototype.execute = function (options) {
-  let config;
-
+EffectCreate.prototype.execute = (options) => {
   if (!options.data) {
     return;
   }
 
-  config = options.data;
+  const config = options.data;
   ns.game.effectManager.add(config);
 };
 

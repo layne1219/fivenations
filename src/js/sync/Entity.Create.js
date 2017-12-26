@@ -1,9 +1,9 @@
+/* global window */
 import Event from './Event';
 
 const ns = window.fivenations;
 
-function EntityCreate() {
-  const args = [].slice.call(arguments);
+function EntityCreate(...args) {
   Event.apply(this, args);
 }
 
@@ -15,14 +15,11 @@ EntityCreate.prototype.constructor = EntityCreate;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EntityCreate.prototype.execute = function (options) {
-  let config;
-
+EntityCreate.prototype.execute = (options) => {
   if (!options.data) {
     return;
   }
-
-  config = options.data;
+  const config = options.data;
   ns.game.entityManager.add(config);
 };
 

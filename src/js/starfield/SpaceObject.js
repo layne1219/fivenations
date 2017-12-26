@@ -36,8 +36,8 @@ SpaceObject.prototype = {
     }
     texture.renderXY(
       this.sprite,
-      this.x - game.camera.x * this.z,
-      this.y - game.camera.y * this.z,
+      this.x - (game.camera.x * this.z),
+      this.y - (game.camera.y * this.z),
       !!clearLayer,
     );
   },

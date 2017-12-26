@@ -51,8 +51,8 @@ function createEntityEventAPI(entityManager) {
           const coords = [];
           for (let i = entityNumber - 1; i >= 0; i -= 1) {
             coords.push({
-              x: options.x - rnd / 2 + Util.rnd(0, rnd),
-              y: options.y - rnd / 2 + Util.rnd(0, rnd),
+              x: (options.x - (rnd / 2)) + Util.rnd(0, rnd),
+              y: (options.y - (rnd / 2)) + Util.rnd(0, rnd),
             });
           }
           return coords;

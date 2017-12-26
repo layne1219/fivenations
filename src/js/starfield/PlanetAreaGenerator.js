@@ -9,13 +9,13 @@ function PlanetAreaGenerator(deepSpaceLayer) {
 PlanetAreaGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
 PlanetAreaGenerator.prototype.constructor = PlanetAreaGenerator;
 
-PlanetAreaGenerator.prototype.generate = function () {
+PlanetAreaGenerator.prototype.generate = () => {
   SpaceObjectGenerator.prototype.generate.call(this);
   this.createPlanet();
   this.createClouds();
 };
 
-PlanetAreaGenerator.prototype.createPlanet = function () {
+PlanetAreaGenerator.prototype.createPlanet = () => {
   const generator = new PlanetGenerator(this.deepSpaceLayer);
   generator.generate();
   generator.getSpaceObjects().forEach((obj) => {
@@ -23,7 +23,7 @@ PlanetAreaGenerator.prototype.createPlanet = function () {
   });
 };
 
-PlanetAreaGenerator.prototype.createClouds = function () {
+PlanetAreaGenerator.prototype.createClouds = () => {
   const generator = new CloudGenerator(this.deepSpaceLayer);
   generator.generate(0.25);
   generator.getSpaceObjects().forEach((obj) => {

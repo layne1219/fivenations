@@ -1,3 +1,4 @@
+/* global window, Phaser */
 import EasyStar from 'easystarjs';
 import Signals from '../common/Signals';
 import Graphics from '../common/Graphics';
@@ -15,16 +16,13 @@ import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
 
 const ns = window.fivenations;
-let script;
 let authoritative = false;
 
 function Game() {}
 
 Game.prototype = {
-  init(params) {
-    if (params) {
-      script = params.script;
-    }
+  init(params = {}) {
+    this.script = params.script;
   },
 
   create() {
@@ -94,20 +92,19 @@ Game.prototype = {
     // Right Mouse Button to send units to a position
     this.userPointer.on('rightbutton/down', () => {
       // @TODO refactor this function as it has become too complex and long
-
       const coords = this.userPointer.getRealCoords();
       let resetActivityQueue = true;
       let targetEntity;
-      let entitiesHovering;
 
-      // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
+      // If the user is hovering the mouse pointer above the GUI, the selection
+      // must remain untouched
       if (GUI.getInstance().isHover()) {
         this.userPointer.dispatch('rightbutton/down/gui');
         return;
       }
 
       // checks whether the user hovers an entity
-      entitiesHovering = this.entityManager.entities().filter((entity) => {
+      const entitiesHovering = this.entityManager.entities().filter((entity) => {
         if (entity.isHover()) {
           targetEntity = entity;
           return true;
@@ -152,7 +149,8 @@ Game.prototype = {
 
     // Unselecting units when clicking over an area with no entities underneath
     this.userPointer.on('leftbutton/down', (mousePointer) => {
-      // If the user is hovering the mouse pointer above the GUI, the selection must remain untouched
+      // If the user is hovering the mouse pointer above the GUI, the selection must
+      // remain untouched
       if (GUI.getInstance().isHover()) {
         this.userPointer.dispatch('leftbutton/down/gui');
         return;
@@ -176,10 +174,10 @@ Game.prototype = {
       this.eventEmitter.synced.entities.add({
         id: window.currEntityId || 'hurricane',
         team: window.currEntityTeam || 1,
-        x: coords.x || 50 + Math.random() * 700,
-        y: coords.y || 50 + Math.random() * 700,
+        x: coords.x || (50 + (Math.random() * 700)),
+        y: coords.y || (50 + (Math.random() * 700)),
       });
-      console.log(window.currEntityId, coords.x, coords.y);
+      // console.log(window.currEntityId, coords.x, coords.y);
     });
 
     // If the user pointer isn't over the GUI area, nor any entities
@@ -230,7 +228,7 @@ Game.prototype = {
     //                              Scriptbox
     // -----------------------------------------------------------------------
     this.scriptbox = Scriptbox.getInstance();
-    this.scriptbox.run(script || 'default', this);
+    this.scriptbox.run(this.script || 'default', this);
 
     // -----------------------------------------------------------------------
     //                              GUI.ActivityManager

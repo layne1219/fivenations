@@ -9,7 +9,7 @@ SpaceObjectGenerator.prototype = {
   },
 
   addSpaceObject(obj) {
-    if (!obj) throw 'Invalid SpaceObject was given!';
+    if (!obj) throw new Error('Invalid SpaceObject was given!');
     this.objects.push(obj);
   },
 
