@@ -148,7 +148,7 @@ export default {
     const dx = source.sprite.x - target.sprite.x;
     const dy = source.sprite.y - target.sprite.y;
 
-    return Math.sqrt((dx * dx) + (dy * dy));
+    return Math.sqrt(dx * dx + dy * dy);
   },
 
   /**
@@ -161,7 +161,7 @@ export default {
     const dx = source.x - target.x;
     const dy = source.y - target.y;
 
-    return Math.sqrt((dx * dx) + (dy * dy));
+    return Math.sqrt(dx * dx + dy * dy);
   },
 
   /**
@@ -174,7 +174,7 @@ export default {
     const dx = source.sprite.x - target.x;
     const dy = source.sprite.y - target.y;
 
-    return Math.sqrt((dx * dx) + (dy * dy));
+    return Math.sqrt(dx * dx + dy * dy);
   },
 
   /**
@@ -184,29 +184,29 @@ export default {
    */
   deepClone: function deepClone(o) {
     const output = Array.isArray(o) ? [] : {};
-    Object.keys(o).forEach(key => {
-      let v = o[key];
+    Object.keys(o).forEach((key) => {
+      const v = o[key];
       output[key] = typeof v === 'object' ? deepClone(v) : v;
     });
     return output;
   },
 
   // Eventlistener object
-  EventDispatcher: (function () {
-    // Inharitable event dispatcher object
+  EventDispatcher: (() => {
+    // Inheritable event dispatcher object
     function EventDispatcher() {
       this.events = {};
     }
 
     EventDispatcher.prototype.events = {};
-    EventDispatcher.prototype.addEventListener = function (type, listener) {
+    EventDispatcher.prototype.addEventListener = (type, listener) => {
       if (!this.events[type]) {
         this.events[type] = [];
       }
       this.events[type].push(listener);
       return this;
     };
-    EventDispatcher.prototype.removeEventListener = function (type, listener) {
+    EventDispatcher.prototype.removeEventListener = (type, listener) => {
       if (!this.events[type]) {
         return this;
       }
@@ -217,22 +217,22 @@ export default {
       this.events[type].splice(index, 1);
       return this;
     };
-    EventDispatcher.prototype.dispatch = function (type, event) {
+    EventDispatcher.prototype.dispatch = (type, event) => {
       if (!this.events[type]) {
         return;
       }
-      for (const i in this.events[type]) {
+      Object.keys(this.events[type]).forEach((i) => {
         if (typeof this.events[type][i] === 'function') {
           this.events[type][i](event);
         } else if (typeof this.events[type][i] === 'object') {
           this.events[type][i][1].call(this.events[type][i][0], event);
         }
-      }
+      });
     };
     EventDispatcher.prototype.reset = () => {
       this.events = {};
     };
 
     return EventDispatcher;
-  }()),
+  })(),
 };
