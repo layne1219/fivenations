@@ -35,7 +35,10 @@ GetInRange.prototype.update = function () {
     return;
   }
 
-  if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
+  if (
+    this.coords.x === this.target.getSprite().x &&
+    this.coords.y === this.target.getSprite().y
+  ) {
   } else {
     this.moveTowardsTarget();
   }

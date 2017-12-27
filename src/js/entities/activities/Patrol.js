@@ -38,7 +38,10 @@ var calculateDistance = function () {
  * @return {void}
  */
 var createMoveActivity = function () {
-  if (this.dest.distance < MIN_DISTANCE_TO_TARGET && this.currentTarget === 'dest') {
+  if (
+    this.dest.distance < MIN_DISTANCE_TO_TARGET &&
+    this.currentTarget === 'dest'
+  ) {
     this.entity.moveTo(this.start.x, this.start.y);
     this.currentTarget = 'start';
   } else {

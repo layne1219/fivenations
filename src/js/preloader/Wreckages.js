@@ -33,7 +33,11 @@ export default {
         return;
       }
 
-      preloader.load.atlasJSONHash(key, ns.effects[key].spriteURL, ns.effects[key].atlasURL);
+      preloader.load.atlasJSONHash(
+        key,
+        ns.effects[key].spriteURL,
+        ns.effects[key].atlasURL,
+      );
       preloader.load.json(key, ns.effects[key].dataURL);
     }, preloader);
   },

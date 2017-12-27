@@ -51,14 +51,16 @@ export default class Selector {
     entity.on('remove', this.remove.bind(this));
 
     // Add the selection to the appropriate graphics group as per its type
-    const groupName = entity.getDataObject().isBuilding() ? 'selectors-buildings' : 'selectors';
+    const groupName = entity.getDataObject().isBuilding()
+      ? 'selectors-buildings'
+      : 'selectors';
     Graphics.getInstance()
       .getGroup(groupName)
       .add(this.sprite);
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.sprite.update = () => {
+    this.sprite.update = function update() {
       this.x = entity.getSprite().x - offsetX;
       this.y = entity.getSprite().y - offsetY;
     };

@@ -7,7 +7,10 @@ function Boot() {}
 Boot.prototype = {
   preload() {
     this.load.crossOrigin = 'anonymous';
-    this.load.image('preloader-background', `${PATH_ASSETS}/preload_background.jpg`);
+    this.load.image(
+      'preloader-background',
+      `${PATH_ASSETS}/preload_background.jpg`,
+    );
     this.load.image('preloader-bar', `${PATH_ASSETS}/preload_bar.png`);
   },
 

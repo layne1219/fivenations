@@ -52,7 +52,9 @@ class FogOfWar {
   }
 
   update(entityManager) {
-    entityManager.entities(':user').forEach(entity => this.visitTilesByEntityVisibility(entity));
+    entityManager
+      .entities(':user')
+      .forEach(entity => this.visitTilesByEntityVisibility(entity));
   }
 
   getMatrix() {
@@ -79,7 +81,8 @@ class FogOfWar {
       tmpArray.map(row => row.unshift(FAKE_VALUE));
     }
     return tmpArray
-      .map(rows => rows.filter((column, idx) => idx >= chunk.x && idx < chunk.x + chunk.width))
+      .map(rows =>
+        rows.filter((column, idx) => idx >= chunk.x && idx < chunk.x + chunk.width))
       .filter((rows, idx) => idx >= chunk.y && idx < chunk.y + chunk.height);
   }
 

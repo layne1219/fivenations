@@ -211,7 +211,8 @@ MotionManager.prototype = {
       this.movement.targetX,
       this.movement.targetY,
     );
-    this.movement.distanceInverse = this.movement.targetInitialDistance - this.movement.distance;
+    this.movement.distanceInverse =
+      this.movement.targetInitialDistance - this.movement.distance;
     this.movement.distanceFromOrigin = this.game.physics.arcade.distanceToXY(
       this.sprite,
       this.movement.originX,
@@ -219,7 +220,8 @@ MotionManager.prototype = {
     );
 
     if (this.movement.acceleration) {
-      this.movement.velocity += this.movement.acceleration * this.game.time.physicsElapsed;
+      this.movement.velocity +=
+        this.movement.acceleration * this.game.time.physicsElapsed;
     } else if (this.movement.drag) {
       this.movement.drag *= this.game.time.physicsElapsed;
       if (this.movement.velocity - this.movement.drag > 0) {
@@ -237,8 +239,10 @@ MotionManager.prototype = {
       this.movement.velocity = -this.movement.maxVelocity;
     }
 
-    this.sprite.body.velocity.x = Math.cos(this.movement.currentAngle) * this.movement.velocity;
-    this.sprite.body.velocity.y = Math.sin(this.movement.currentAngle) * this.movement.velocity;
+    this.sprite.body.velocity.x =
+      Math.cos(this.movement.currentAngle) * this.movement.velocity;
+    this.sprite.body.velocity.y =
+      Math.sin(this.movement.currentAngle) * this.movement.velocity;
   },
 
   /**
@@ -261,12 +265,15 @@ MotionManager.prototype = {
     if (this.hasRealManeuverSystem()) {
       const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
       const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
-      const step = this.rotation.maxAngularVelocity / 10 * this.game.time.physicsElapsed;
+      const step =
+        this.rotation.maxAngularVelocity / 10 * this.game.time.physicsElapsed;
 
       if (Math.abs(a - b) > step * 2) {
         if (!this.rotation.angularDirection) {
           this.rotation.angularDirection =
-            (a - b >= 0 && a - b <= 180) || (a - b <= -180 && a - b >= -360) ? 1 : -1;
+            (a - b >= 0 && a - b <= 180) || (a - b <= -180 && a - b >= -360)
+              ? 1
+              : -1;
         }
         this.movement.currentAngle += this.rotation.angularDirection * step;
       } else {
@@ -286,13 +293,18 @@ MotionManager.prototype = {
     } else {
       this.movement.currentAngle = this.movement.targetAngle;
       this.rotation.angularDirection =
-        this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight ? -1 : 1;
+        this.rotation.stepNumberToLeft < this.rotation.stepNumberToRight
+          ? -1
+          : 1;
 
       this.rotation.angularVelocityHelper +=
         this.rotation.angularVelocity * this.game.time.physicsElapsed;
       if (this.rotation.angularVelocityHelper > 1) {
         this.rotation.angularVelocityHelper = 0;
-        if (this.rotation.currentAngleCode + this.rotation.angularDirection < 0) {
+        if (
+          this.rotation.currentAngleCode + this.rotation.angularDirection <
+          0
+        ) {
           this.rotation.currentAngleCode = this.rotation.maxAngleCount;
         }
         this.rotation.currentAngleCode += this.rotation.angularDirection;
@@ -357,7 +369,10 @@ MotionManager.prototype = {
   isEntityFacingTargetEntity(targetEntity) {
     const sprite = this.entity.getSprite();
     const targetSprite = targetEntity.getSprite();
-    const targetAngle = Math.atan2(targetSprite.y - sprite.y, targetSprite.x - sprite.x);
+    const targetAngle = Math.atan2(
+      targetSprite.y - sprite.y,
+      targetSprite.x - sprite.x,
+    );
     const targetAngleCode = this.getAngleCodeByAngle(targetAngle);
     if (this.rotation.maxAngleCount < 2) return true;
     return this.rotation.currentAngleCode === targetAngleCode;
@@ -377,7 +392,11 @@ MotionManager.prototype = {
    * @return {boolean}
    */
   isRequiredToStopBeforeFurtherAction() {
-    return this.isMoving() && !this.isEntityFacingTarget() && this.entity.hasSlowManeuverability();
+    return (
+      this.isMoving() &&
+      !this.isEntityFacingTarget() &&
+      this.entity.hasSlowManeuverability()
+    );
   },
 
   /**
@@ -428,7 +447,8 @@ MotionManager.prototype = {
       calculatedAngle = 360 - Math.abs(calculatedAngle);
     }
     return (
-      (Math.floor(calculatedAngle / (360 / this.rotation.maxAngleCount)) + rotationOffset) %
+      (Math.floor(calculatedAngle / (360 / this.rotation.maxAngleCount)) +
+        rotationOffset) %
       this.rotation.maxAngleCount
     );
   },

@@ -44,7 +44,13 @@ export default class Minimap {
   setLeftButtonListeners() {
     // making the minimap area clickable
     this.userPointer.on('leftbutton/move', (userPointer) => {
-      const coords = this.getMouseCoords(userPointer, this.map, this.panel, this.graphics, true);
+      const coords = this.getMouseCoords(
+        userPointer,
+        this.map,
+        this.panel,
+        this.graphics,
+        true,
+      );
 
       // if getMouseCoords returns with false then the coordinates are not legit
       if (!coords) {
@@ -58,7 +64,12 @@ export default class Minimap {
   setRightButtonListeners() {
     // making the minimap area clickable
     this.userPointer.on('rightbutton/down', (userPointer) => {
-      const coords = this.getMouseCoords(userPointer, this.map, this.panel, this.graphics);
+      const coords = this.getMouseCoords(
+        userPointer,
+        this.map,
+        this.panel,
+        this.graphics,
+      );
 
       // if getMouseCoords returns with false then the coordinates are not legit
       if (!coords) {
@@ -162,15 +173,21 @@ export default class Minimap {
         return fogOfWar.isVisible(coords[0], coords[1]);
       })
       .forEach((entity) => {
-        const x = entity.getSprite().x / this.map.getScreenWidth() * MINIMIZED_WIDTH;
-        const y = entity.getSprite().y / this.map.getScreenHeight() * MINIMIZED_HEIGHT;
+        const x =
+          entity.getSprite().x / this.map.getScreenWidth() * MINIMIZED_WIDTH;
+        const y =
+          entity.getSprite().y / this.map.getScreenHeight() * MINIMIZED_HEIGHT;
         const w = Math.max(
           1,
-          entity.getDataObject().getWidth() / this.map.getScreenWidth() * MINIMIZED_WIDTH,
+          entity.getDataObject().getWidth() /
+            this.map.getScreenWidth() *
+            MINIMIZED_WIDTH,
         );
         const h = Math.max(
           1,
-          entity.getDataObject().getHeight() / this.map.getScreenHeight() * MINIMIZED_HEIGHT,
+          entity.getDataObject().getHeight() /
+            this.map.getScreenHeight() *
+            MINIMIZED_HEIGHT,
         );
         const colors = this.playerManager.getColors();
         const color = colors[entity.getDataObject().getTeam() - 1];
@@ -226,7 +243,12 @@ export default class Minimap {
           const x = i / cache.mapWidth * MINIMIZED_WIDTH;
           const y = j / cache.mapHeight * MINIMIZED_HEIGHT;
           this.graphics.beginFill(cache.color);
-          this.graphics.drawRect(x, y, cache.tileWidthOnMinimap, cache.tileHeightOnMinimap);
+          this.graphics.drawRect(
+            x,
+            y,
+            cache.tileWidthOnMinimap,
+            cache.tileHeightOnMinimap,
+          );
           this.graphics.endFill();
         }
       }

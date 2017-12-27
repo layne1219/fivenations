@@ -154,7 +154,10 @@ class MainAttributeGroup extends Phaser.Group {
     const hullTitle = 'Hull: ';
     const hullValue = dataObject.getHull();
     const hullMaxValue = `/${dataObject.getMaxHull()}`;
-    const hullColor = Util.getColorFromRatio(dataObject.getHull() / dataObject.getMaxHull(), 'hex');
+    const hullColor = Util.getColorFromRatio(
+      dataObject.getHull() / dataObject.getMaxHull(),
+      'hex',
+    );
 
     this.hullElm.text = hullTitle + hullValue + hullMaxValue;
     this.hullElm.addColor(hullColor, hullTitle.length);
@@ -358,7 +361,10 @@ class WeaponGroupPopup extends Phaser.Group {
 
     this.hullElm.text = title + value + output;
     this.hullElm.addColor('#00FF00', title.length);
-    this.hullElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
+    this.hullElm.addColor(
+      '#FFFFFF',
+      title.length + value.toString().length + 1,
+    );
 
     // Damage to Shield
     title = 'DMG to Shield: ';
@@ -367,7 +373,10 @@ class WeaponGroupPopup extends Phaser.Group {
 
     this.shieldElm.text = title + value + output;
     this.shieldElm.addColor('#475D86', title.length);
-    this.shieldElm.addColor('#FFFFFF', title.length + value.toString().length + 1);
+    this.shieldElm.addColor(
+      '#FFFFFF',
+      title.length + value.toString().length + 1,
+    );
 
     // Range
     title = 'Range: ';
@@ -432,7 +441,10 @@ class MultiselectionGroup extends Phaser.Group {
 
         this.icons[i].show(entities[i]);
 
-        this.renderBar(this.healthBar[i], dataObject.getHull() / dataObject.getMaxHull());
+        this.renderBar(
+          this.healthBar[i],
+          dataObject.getHull() / dataObject.getMaxHull(),
+        );
         if (dataObject.getMaxShield() > 0) {
           this.renderBar(
             this.shieldBar[i],
@@ -453,7 +465,12 @@ class MultiselectionGroup extends Phaser.Group {
     graphics.visible = true;
     graphics.clear();
     graphics.beginFill(color || Util.getColorFromRatio(ratio));
-    graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - statusBarMargin * 2, statusBarHeight);
+    graphics.drawRect(
+      0,
+      0,
+      Math.floor(iconWidth * ratio) - statusBarMargin * 2,
+      statusBarHeight,
+    );
     graphics.endFill();
   }
 }
@@ -475,7 +492,12 @@ export default class EntityDetailsDisplay {
     this.attributeGroup = this.createAttributeGroup(0, 0, phaserGame);
 
     // setting up the group for the icons showing up when it comes to multiselection
-    this.multiselectionGroup = this.createMultiselectionGroup(0, 5, phaserGame, this.entityManager);
+    this.multiselectionGroup = this.createMultiselectionGroup(
+      0,
+      5,
+      phaserGame,
+      this.entityManager,
+    );
 
     this.group.add(this.attributeGroup);
     this.group.add(this.multiselectionGroup);
@@ -496,7 +518,8 @@ export default class EntityDetailsDisplay {
     weaponGroup.add(weaponGroupPopup);
     weaponGroup.on('over', (item) => {
       weaponGroupPopup.x = item.x + weaponPopupPaddingX;
-      weaponGroupPopup.y = item.y - weaponGroupPopup.height + weaponPopupPaddingY;
+      weaponGroupPopup.y =
+        item.y - weaponGroupPopup.height + weaponPopupPaddingY;
       weaponGroupPopup.visible = true;
       weaponGroupPopup.updateContent(item.weapon);
     });
@@ -504,7 +527,10 @@ export default class EntityDetailsDisplay {
       weaponGroupPopup.visible = false;
     });
     weaponGroup.on('click', (item) => {
-      EventEmitter.getInstance().local.dispatch('gui/weapon/click', item.weapon);
+      EventEmitter.getInstance().local.dispatch(
+        'gui/weapon/click',
+        item.weapon,
+      );
     });
 
     container.add(mainAttributeGroup);

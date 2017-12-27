@@ -68,7 +68,10 @@ const effects = {
    */
   moveToTarget(motionManager) {
     motionManager.movement.acceleration = 0;
-    if (motionManager.movement.distance > motionManager.movement.targetDragTreshold) {
+    if (
+      motionManager.movement.distance >
+      motionManager.movement.targetDragTreshold
+    ) {
       return true;
     }
     motionManager.isEntityArrivedAtDestination = true;
@@ -80,9 +83,11 @@ const effects = {
    * @return {boolean} returning false when the effect is no longer must be applied on the entity
    */
   accelerateToTarget(motionManager) {
-    motionManager.movement.acceleration = motionManager.movement.maxAcceleration;
+    motionManager.movement.acceleration =
+      motionManager.movement.maxAcceleration;
     return (
-      motionManager.movement.distanceInverse < motionManager.movement.targetDragTreshold &&
+      motionManager.movement.distanceInverse <
+        motionManager.movement.targetDragTreshold &&
       motionManager.movement.velocity < motionManager.movement.maxVelocity
     );
   },
@@ -92,10 +97,12 @@ const effects = {
    * @return {boolean} returning false when the effect is no longer must be applied on the entity
    */
   stopping(motionManager) {
-    motionManager.movement.acceleration = -motionManager.movement.maxAcceleration;
+    motionManager.movement.acceleration = -motionManager.movement
+      .maxAcceleration;
     if (
       motionManager.movement.distance > 0 &&
-      motionManager.movement.distanceFromOrigin < motionManager.movement.targetInitialDistance &&
+      motionManager.movement.distanceFromOrigin <
+        motionManager.movement.targetInitialDistance &&
       motionManager.movement.velocity > 0
     ) {
       return true;
@@ -128,14 +135,19 @@ const effects = {
     // if the entity is already accrelerating than it doesn't have to stop for rotating
     if (motionManager.movement.velocity > 0) {
       // it also can rotate with a lot higher speed to mimic flying units in Blizzard's Starcraft
-      motionManager.rotation.angularVelocity = motionManager.rotation.maxAngularVelocity * 1.5;
+      motionManager.rotation.angularVelocity =
+        motionManager.rotation.maxAngularVelocity * 1.5;
       // jumping to the next effect
       return false;
     }
 
     // rotating with default speed until the entity arrives at the target angle
-    motionManager.rotation.angularVelocity = motionManager.rotation.maxAngularVelocity;
-    return motionManager.rotation.currentAngleCode !== motionManager.rotation.targetAngleCode;
+    motionManager.rotation.angularVelocity =
+      motionManager.rotation.maxAngularVelocity;
+    return (
+      motionManager.rotation.currentAngleCode !==
+      motionManager.rotation.targetAngleCode
+    );
   },
 
   /**
@@ -172,7 +184,8 @@ const effects = {
    */
   levitating(motionManager) {
     motionManager.sprite.anchor.y =
-      motionManager.levitation.defaultAnchorY + Math.sin(motionManager.levitation.time / 50) / 100;
+      motionManager.levitation.defaultAnchorY +
+      Math.sin(motionManager.levitation.time / 50) / 100;
     motionManager.levitation.time += 1;
     return true;
   },
@@ -186,7 +199,9 @@ export default {
    * @return {function} function that represents the requested effect
    */
   get(name) {
-    if (!name || !effects[name]) throw 'No effect is registered with the given name!';
+    if (!name || !effects[name]) {
+      throw 'No effect is registered with the given name!';
+    }
     return effects[name];
   },
 };

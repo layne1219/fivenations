@@ -62,7 +62,10 @@ export default class ControlPanel extends Phaser.Group {
    */
   setEventListeners() {
     const emitter = EventEmitter.getInstance();
-    emitter.local.addEventListener('gui/selection/change', this.update.bind(this));
+    emitter.local.addEventListener(
+      'gui/selection/change',
+      this.update.bind(this),
+    );
   }
 
   /**

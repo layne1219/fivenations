@@ -28,7 +28,9 @@ const singleton = {
    * @return {void}
    */
   addPlayer(config) {
-    if (!config) throw new Error('Invalid configuration for constructing a Player instance!');
+    if (!config) {
+      throw new Error('Invalid configuration for constructing a Player instance!');
+    }
     players.push(new Player(config));
   },
 

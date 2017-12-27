@@ -28,7 +28,9 @@ function collisionHandler(effectSprite, entitySprite) {
   if (entity.isHibernated()) return false;
 
   // effect cannot collide with friendly entities unless the friendly fire is on
-  if (!getEmitterEntity.isEnemy(entity) && !weapon.hasFriendlyFire()) return false;
+  if (!getEmitterEntity.isEnemy(entity) && !weapon.hasFriendlyFire()) {
+    return false;
+  }
 
   const collisionEvent = effect.getDataObject().getEvent('collision');
   const eventEmitter = EventEmitter.getInstance();
@@ -61,8 +63,18 @@ function createCollisionManager() {
   return {
     update(authoritative) {
       if (authoritative) {
-        phaserGame.physics.arcade.overlap(effectGroup, entityGroup, null, collisionHandler);
-        phaserGame.physics.arcade.overlap(effectGroup, entityBuildingGroup, null, collisionHandler);
+        phaserGame.physics.arcade.overlap(
+          effectGroup,
+          entityGroup,
+          null,
+          collisionHandler,
+        );
+        phaserGame.physics.arcade.overlap(
+          effectGroup,
+          entityBuildingGroup,
+          null,
+          collisionHandler,
+        );
       }
     },
   };

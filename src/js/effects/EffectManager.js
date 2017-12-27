@@ -65,11 +65,20 @@ class EffectManager {
     // sets up velocity
     if (config.velocity) {
       if (config.rotation !== undefined) {
-        point = phaserGame.physics.arcade.velocityFromRotation(config.rotation, config.velocity);
+        point = phaserGame.physics.arcade.velocityFromRotation(
+          config.rotation,
+          config.velocity,
+        );
       } else if (config.angle !== undefined) {
-        point = phaserGame.physics.arcade.velocityFromAngle(config.angle, config.velocity);
+        point = phaserGame.physics.arcade.velocityFromAngle(
+          config.angle,
+          config.velocity,
+        );
       } else if (config.velocity.x || config.velocity.y) {
-        point = new Phaser.Point(config.velocity.x || 0, config.velocity.y || 0);
+        point = new Phaser.Point(
+          config.velocity.x || 0,
+          config.velocity.y || 0,
+        );
       }
 
       if (point) {
@@ -88,9 +97,15 @@ class EffectManager {
           config.acceleration,
         );
       } else if (config.angle !== undefined) {
-        point = phaserGame.physics.arcade.accelerationFromAngle(config.angle, config.acceleration);
+        point = phaserGame.physics.arcade.accelerationFromAngle(
+          config.angle,
+          config.acceleration,
+        );
       } else if (config.acceleration.x || config.acceleration.y) {
-        point = new Phaser.Point(config.acceleration.x || 0, config.acceleration.y || 0);
+        point = new Phaser.Point(
+          config.acceleration.x || 0,
+          config.acceleration.y || 0,
+        );
       }
 
       if (point) {
@@ -103,7 +118,8 @@ class EffectManager {
     }
 
     // adds sprite to the appropriate graphics group
-    const groupName = dataObject.getTargetGraphicsGroup() || DEFAULT_GRAPHICS_GROUP;
+    const groupName =
+      dataObject.getTargetGraphicsGroup() || DEFAULT_GRAPHICS_GROUP;
     const group = Graphics.getInstance().getGroup(groupName);
     sprite._group = group;
     group.add(sprite);

@@ -99,7 +99,8 @@ class Weapon {
       const accuracy = this.data.accuracy || 100;
       const spreadMax = WEAPON_ACCURACY_SPREAD_IN_RADIAN * (1 - accuracy / 100);
       const spread = Math.random() * spreadMax - spreadMax / 2;
-      const rotation = ns.game.game.physics.arcade.angleBetween(sprite, targetSprite) + spread;
+      const rotation =
+        ns.game.game.physics.arcade.angleBetween(sprite, targetSprite) + spread;
       const offsetX = projectileOffset.x || 0;
       const offsetY = projectileOffset.y || 0;
       const x = sprite.x + offsetX;
@@ -144,7 +145,8 @@ class Weapon {
     if (!manager) throw 'Invalid WeaponManager is passed!';
     this.manager = manager;
     this.entity = manager.getEntity();
-    this.unconditionalRelease = this.entity.getDataObject().isFighter() || this.isSelfContained();
+    this.unconditionalRelease =
+      this.entity.getDataObject().isFighter() || this.isSelfContained();
   }
 
   setTargetEntity(entity) {
@@ -241,7 +243,9 @@ class Weapon {
 
     // if the entity doesn't face target entity
     if (this.requiresEntityToFaceTarget()) {
-      return this.entity.getMotionManager().isEntityFacingTargetEntity(this.targetEntity);
+      return this.entity
+        .getMotionManager()
+        .isEntityFacingTargetEntity(this.targetEntity);
     }
 
     return true;

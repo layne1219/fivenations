@@ -17,19 +17,27 @@ DeepSpaceLayer.prototype = {
   spaceObjects: [],
 
   setMap(map) {
-    if (!map) throw new Error('Map instance must be passed as first parameter!');
+    if (!map) {
+      throw new Error('Map instance must be passed as first parameter!');
+    }
     this.map = map;
   },
 
   setGame(game) {
-    if (!game) throw new Error('Phaser.Game instance must be passed as first parameter!');
+    if (!game) {
+      throw new Error('Phaser.Game instance must be passed as first parameter!');
+    }
     this.game = game;
   },
 
   createTexture() {
     const { width, height } = ns.window;
 
-    this.texture = this.game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
+    this.texture = this.game.add.renderTexture(
+      width,
+      height,
+      'Starfield.Stars.Texture',
+    );
 
     const container = this.game.add.image(0, 0, this.texture);
     container.fixedToCamera = true;

@@ -26,7 +26,16 @@ class CloseButton extends Phaser.Group {
     const { id } = GUI_CLOSE_BUTTON.spritesheet;
     const { over, out, down } = GUI_CLOSE_BUTTON.frames;
 
-    this.sprite = phaserGame.add.button(0, 0, id, onClick, this, over, out, down);
+    this.sprite = phaserGame.add.button(
+      0,
+      0,
+      id,
+      onClick,
+      this,
+      over,
+      out,
+      down,
+    );
     this.sprite.anchor.set(0.5);
     this.add(this.sprite);
   }

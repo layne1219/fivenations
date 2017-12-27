@@ -18,7 +18,9 @@ PlayerResourceAlter.prototype.constructor = PlayerResourceAlter;
  * @throws {object}
  */
 PlayerResourceAlter.prototype.execute = (options) => {
-  if (!options.data || !options.data.guid) throw new Error('Invalid data attribute!');
+  if (!options.data || !options.data.guid) {
+    throw new Error('Invalid data attribute!');
+  }
 
   const player = PlayerManager.getInstance().getPlayerByGUID(options.data.guid);
 

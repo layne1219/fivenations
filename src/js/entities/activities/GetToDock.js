@@ -36,7 +36,10 @@ GetToDock.prototype.update = function () {
   }
 
   // checks whether the target has moved sinec the last check
-  if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
+  if (
+    this.coords.x === this.target.getSprite().x &&
+    this.coords.y === this.target.getSprite().y
+  ) {
   } else {
     this.moveTowardsTarget();
   }

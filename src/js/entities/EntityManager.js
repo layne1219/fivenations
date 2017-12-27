@@ -5,7 +5,11 @@ import Entity from './Entity';
 import DataObject from '../model/DataObject';
 import QuadTree from '../common/QuadTree';
 import Util from '../common/Util';
-import { GROUP_EFFECTS, GROUP_ENTITIES, GROUP_ENTITIES_BUILDINGS } from '../common/Const';
+import {
+  GROUP_EFFECTS,
+  GROUP_ENTITIES,
+  GROUP_ENTITIES_BUILDINGS,
+} from '../common/Const';
 
 const ns = window.fivenations;
 
@@ -36,7 +40,8 @@ function createSelector(targetEntities) {
       } else if (filter === ':not(hibernated)') {
         targets = targetEntities.filter(entity => !entity.isHibernated());
       } else if (filter === ':user') {
-        targets = targetEntities.filter(entity => entity.isEntityControlledByUser());
+        targets = targetEntities.filter(entity =>
+          entity.isEntityControlledByUser());
       } else if (filter === ':user:selected') {
         targets = targetEntities.filter(entity => entity.isEntityControlledByUser() && entity.isSelected());
       } else if (filter === ':user:selected:not(building)') {
@@ -69,7 +74,11 @@ function EntityManager() {
   this.entityBuildingGroup = Graphics.getInstance().getGroup(GROUP_ENTITIES_BUILDINGS);
   this.effectGroup = Graphics.getInstance().getGroup(GROUP_EFFECTS);
 
-  this.updateEntityDistancesOptimised = Util.interval(this.updateEntityDistances, 100, this);
+  this.updateEntityDistancesOptimised = Util.interval(
+    this.updateEntityDistances,
+    100,
+    this,
+  );
 }
 
 EntityManager.prototype = {
@@ -269,7 +278,10 @@ EntityManager.prototype = {
     const sprite = entity.getSprite();
     const candidates = this.quadTree.retrieve(sprite);
     return candidates
-      .map(candidate => [Util.distanceBetweenSprites(sprite, candidate), candidate])
+      .map(candidate => [
+        Util.distanceBetweenSprites(sprite, candidate),
+        candidate,
+      ])
       .filter((data) => {
         if (data[1] === sprite) return false;
         if (data[1]._parent.isHibernated()) return false;

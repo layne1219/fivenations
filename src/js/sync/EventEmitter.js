@@ -262,7 +262,8 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       undock(options) {
-        const resetActivityQueue = (options && options.resetActivityQueue) || false;
+        const resetActivityQueue =
+          (options && options.resetActivityQueue) || false;
 
         EventBus.getInstance().add({
           id: 'entity/undock',

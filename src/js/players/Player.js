@@ -112,7 +112,8 @@ class Player {
 
   getCurrentEntityNumber() {
     const { entityManager } = ns.game;
-    return entityManager.entities(entity => entity.isEntityControlledByUser(this)).length;
+    return entityManager.entities(entity =>
+      entity.isEntityControlledByUser(this)).length;
   }
 
   getGUID() {

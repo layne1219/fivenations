@@ -23,7 +23,10 @@ Follow.prototype.update = function () {
   if (!this.target) {
     return;
   }
-  if (this.coords.x === this.target.getSprite().x && this.coords.y === this.target.getSprite().y) {
+  if (
+    this.coords.x === this.target.getSprite().x &&
+    this.coords.y === this.target.getSprite().y
+  ) {
     return;
   }
   this.moveTowardsTarget();

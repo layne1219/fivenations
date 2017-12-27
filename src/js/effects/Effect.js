@@ -96,7 +96,12 @@ class Effect {
       dataObject.getWidth(),
       dataObject.getHeight(),
     );
-    this.sprite.body.setSize(dataObject.getWidth(), dataObject.getHeight(), 0, 0);
+    this.sprite.body.setSize(
+      dataObject.getWidth(),
+      dataObject.getHeight(),
+      0,
+      0,
+    );
 
     // sets frame if the effect has multiple variances
     const variances = dataObject.getVariances();
@@ -110,7 +115,10 @@ class Effect {
       this.sprite.frame = customFrame;
     }
 
-    if (dataObject.doesPersistOrienationFromEmitter() && this.emitter instanceof Entity) {
+    if (
+      dataObject.doesPersistOrienationFromEmitter() &&
+      this.emitter instanceof Entity
+    ) {
       const angle = this.emitter.getMotionManager().getCurrentAngleInDeg();
       const frames = dataObject.getFrames();
       const numberOfFrames = frames.length;
@@ -134,7 +142,12 @@ class Effect {
     if (!animations || typeof animations !== 'object') return;
     Object.keys(animations).forEach((key) => {
       const data = animations[key];
-      const animation = this.sprite.animations.add(key, data.frames, data.rate, data.loopable);
+      const animation = this.sprite.animations.add(
+        key,
+        data.frames,
+        data.rate,
+        data.loopable,
+      );
 
       if (data.oncomplete === 'remove') {
         registerRemoveEventToAnimation(this, animation);

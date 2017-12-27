@@ -1,4 +1,7 @@
-import { ENTITY_SIZES, ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED } from '../common/Const';
+import {
+  ENTITY_SIZES,
+  ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED,
+} from '../common/Const';
 
 /**
  * Returns the dimensions of the given entity model
@@ -271,7 +274,14 @@ function DataObject(json) {
     },
 
     toJSON() {
-      const blackList = ['maxhangar', 'maxpower', 'maxshield', 'maxhull', 'dimensions', 'team'];
+      const blackList = [
+        'maxhangar',
+        'maxpower',
+        'maxshield',
+        'maxhull',
+        'dimensions',
+        'team',
+      ];
       return JSON.stringify(
         data,
         (key, value) => {

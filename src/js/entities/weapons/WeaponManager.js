@@ -67,7 +67,8 @@ WeaponManager.prototype = {
         ids[id].push(weapon);
 
         if (ids[id].length > 1) {
-          const instanceDelay = weapon.getInstanceDelay() || WEAPON_INSTANCE_DELAY;
+          const instanceDelay =
+            weapon.getInstanceDelay() || WEAPON_INSTANCE_DELAY;
           const calculatedInstanceDelay = (ids[id].length - 1) * instanceDelay;
           // shift release time with instance delay
           weapon.setInstanceDelay(calculatedInstanceDelay);

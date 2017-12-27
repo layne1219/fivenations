@@ -71,7 +71,11 @@ export default {
       }
 
       if (!loaded[ns.effects[key].spriteURL]) {
-        preloader.load.atlasJSONHash(key, ns.effects[key].spriteURL, ns.effects[key].atlasURL);
+        preloader.load.atlasJSONHash(
+          key,
+          ns.effects[key].spriteURL,
+          ns.effects[key].atlasURL,
+        );
       }
 
       if (!loaded[ns.effects[key].dataURL]) {

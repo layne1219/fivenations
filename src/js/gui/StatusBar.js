@@ -46,7 +46,13 @@ export default class StatusBar {
   getSize(width) {
     if (!this.size) {
       Object.keys(ENTITY_GUI_SIZES).forEach((size) => {
-        if (Util.between(width, ENTITY_GUI_SIZES[size][0], ENTITY_GUI_SIZES[size][1])) {
+        if (
+          Util.between(
+            width,
+            ENTITY_GUI_SIZES[size][0],
+            ENTITY_GUI_SIZES[size][1],
+          )
+        ) {
           this.size = size;
         }
       });
