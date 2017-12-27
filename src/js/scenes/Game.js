@@ -121,7 +121,10 @@ Game.prototype = {
 
         // if the entity is hostile we should trigger the attack short hand
         if (
-          this.playerManager.isEntityHostileToPlayer(targetEntity, this.playerManager.getUser())
+          this.playerManager.isEntityHostileToPlayer(
+            targetEntity,
+            this.playerManager.getUser(),
+          )
         ) {
           selectedEntities.attack({
             targetEntity,
@@ -161,7 +164,10 @@ Game.prototype = {
         return;
       }
 
-      if (this.entityManager.entities().filter(entity => entity.isHover()).length === 0) {
+      if (
+        this.entityManager.entities().filter(entity => entity.isHover())
+          .length === 0
+      ) {
         this.userPointer.dispatch('leftbutton/down/disselect');
       }
     });
@@ -225,6 +231,13 @@ Game.prototype = {
       .getInstance(true);
 
     // -----------------------------------------------------------------------
+    //                                EventBus
+    // -----------------------------------------------------------------------
+    // !!! IMPORTANT TO HAVE THE EVENTBUS RESET BEFORE SCRIPTBOX !!!
+    this.eventBusExecuter = EventBusExecuter.getInstance();
+    this.eventBusExecuter.reset();
+
+    // -----------------------------------------------------------------------
     //                              Scriptbox
     // -----------------------------------------------------------------------
     this.scriptbox = Scriptbox.getInstance();
@@ -239,12 +252,6 @@ Game.prototype = {
     //                              Physic engine
     // -----------------------------------------------------------------------
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    // -----------------------------------------------------------------------
-    //                                EventBus
-    // -----------------------------------------------------------------------
-    this.eventBusExecuter = EventBusExecuter.getInstance();
-    this.eventBusExecuter.reset();
 
     // -----------------------------------------------------------------------
     //                                QuadTree

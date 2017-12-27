@@ -34,7 +34,12 @@ const extendSpriteWithAnimations = (sprite, dataObject) => {
     if (data.length) {
       data.forEach((animationData, idx) => {
         const frames = animationData.frames.map(v => v + anmationOffset);
-        sprite.animations.add(key + idx, frames, animationData.rate, animationData.loopable);
+        sprite.animations.add(
+          key + idx,
+          frames,
+          animationData.rate,
+          animationData.loopable,
+        );
       });
     } else {
       const frames = data.frames.map(v => v + anmationOffset);
@@ -59,7 +64,7 @@ const extendSpriteWithAnimations = (sprite, dataObject) => {
  */
 const extendSpriteWithEventListeners = (entity, sprite, dataObject) => {
   // input events registered on the sprite object
-  sprite.events.onInputDown.add(() => {
+  sprite.events.onInputDown.add(function onInputDown() {
     let now;
 
     if (GUIActivityManager.getInstance().hasActiveSelection()) {
@@ -80,17 +85,27 @@ const extendSpriteWithEventListeners = (entity, sprite, dataObject) => {
           .filter((targetEntitity) => {
             // If the targetEntitity is off screen we need to exclude
             if (
-              !Util.between(targetEntitity.getSprite().x - this.game.camera.x, 0, ns.window.width)
+              !Util.between(
+                targetEntitity.getSprite().x - this.game.camera.x,
+                0,
+                ns.window.width,
+              )
             ) {
               return false;
             }
             if (
-              !Util.between(targetEntitity.getSprite().y - this.game.camera.y, 0, ns.window.height)
+              !Util.between(
+                targetEntitity.getSprite().y - this.game.camera.y,
+                0,
+                ns.window.height,
+              )
             ) {
               return false;
             }
             // we need to include only the indentical entities
-            return targetEntitity.getDataObject().getId() === dataObject.getId();
+            return (
+              targetEntitity.getDataObject().getId() === dataObject.getId()
+            );
           })
           .forEach((targetEntitity) => {
             targetEntitity.select();
@@ -104,11 +119,11 @@ const extendSpriteWithEventListeners = (entity, sprite, dataObject) => {
 
   sprite.events.onInputOut.add(() => {
     sprite.hover = false;
-  }, this);
+  });
 
   sprite.events.onInputOver.add(() => {
     sprite.hover = true;
-  }, this);
+  });
 };
 
 /**
@@ -129,7 +144,9 @@ const extendSprite = (entity, sprite, dataObject) => {
   const damageHeight = dataObject.getDamageHeight();
 
   // rendering group name
-  const groupName = dataObject.isBuilding() ? Const.GROUP_ENTITIES_BUILDINGS : Const.GROUP_ENTITIES;
+  const groupName = dataObject.isBuilding()
+    ? Const.GROUP_ENTITIES_BUILDINGS
+    : Const.GROUP_ENTITIES;
 
   // choosing the group for entities so that other elements will be obscured by them
   // it's kind of applying zIndex on entities
@@ -158,7 +175,12 @@ const extendSprite = (entity, sprite, dataObject) => {
   sprite.y = 0;
 
   // reducing the hitArea according to the one specified in the realated DataObject
-  sprite.hitArea = new Phaser.Rectangle(origWidth / -2, origHeight / -2, origWidth, origHeight);
+  sprite.hitArea = new Phaser.Rectangle(
+    origWidth / -2,
+    origHeight / -2,
+    origWidth,
+    origHeight,
+  );
 
   // save helper data for faster updates for any subsequent calculation with damage area
   sprite._damageWidth = damageWidth * 0.5;
@@ -289,7 +311,8 @@ class Entity {
    * Updates the entity's shield at regular intervals (synced)
    */
   updateShield() {
-    const timeElapsedSinceLastUpdate = this.game.time.time - this._lastShieldUpdate;
+    const timeElapsedSinceLastUpdate =
+      this.game.time.time - this._lastShieldUpdate;
 
     if (this.dataObject.getMaxShield() === 0) return;
 
@@ -317,7 +340,12 @@ class Entity {
     if (this._lastShieldValue === shield) return;
 
     if (shield < Const.SHIELD_ACTIVITY_TRESHOLD) {
-      this.sprite.body.setSize(this.sprite._damageWidth, this.sprite._damageHeight, 0, 0);
+      this.sprite.body.setSize(
+        this.sprite._damageWidth,
+        this.sprite._damageHeight,
+        0,
+        0,
+      );
     } else {
       this.sprite.body.setSize(
         this.sprite._damageWidthWithShield,
@@ -564,7 +592,11 @@ class Entity {
   stopAnimation() {
     if (!this.sprite.animations.currentAnim) return;
     // idle-forever animation cannot be stopped
-    if (this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER) return;
+    if (
+      this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER
+    ) {
+      return;
+    }
     this.sprite.animations.stop(null, true);
   }
 
@@ -575,7 +607,10 @@ class Entity {
   select() {
     if (this.isHibernated()) return;
 
-    if (this.entityManager.entities(':selected').length < Const.MAX_SELECTABLE_UNITS) {
+    if (
+      this.entityManager.entities(':selected').length <
+      Const.MAX_SELECTABLE_UNITS
+    ) {
       this.selected = true;
       this.eventDispatcher.dispatch('select');
       EventEmitter.getInstance().local.dispatch('gui/selection/change');
@@ -645,7 +680,10 @@ class Entity {
   }
 
   hasSlowManeuverability() {
-    return this.getDataObject().getManeuverability() < Const.SLOW_MANOUVERABAILITY_TRESHOLD;
+    return (
+      this.getDataObject().getManeuverability() <
+      Const.SLOW_MANOUVERABAILITY_TRESHOLD
+    );
   }
 
   isSelected() {
@@ -660,13 +698,19 @@ class Entity {
     if (this.sprite.x + this.getDataObject().getWidth() / 2 < obj.x) {
       return false;
     }
-    if (this.sprite.x - this.getDataObject().getWidth() / 2 > obj.x + obj.width) {
+    if (
+      this.sprite.x - this.getDataObject().getWidth() / 2 >
+      obj.x + obj.width
+    ) {
       return false;
     }
     if (this.sprite.y + this.getDataObject().getHeight() / 2 < obj.y) {
       return false;
     }
-    if (this.sprite.y - this.getDataObject().getHeight() / 2 > obj.y + obj.height) {
+    if (
+      this.sprite.y - this.getDataObject().getHeight() / 2 >
+      obj.y + obj.height
+    ) {
       return false;
     }
     return true;

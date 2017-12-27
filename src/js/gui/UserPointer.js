@@ -42,8 +42,10 @@ class UserPointer {
         this.dispatcher.dispatch('leftbutton/down', this);
 
         this.multiselector.active = true;
-        this.multiselector.x = phaserGame.camera.x + phaserGame.input.mousePointer.x;
-        this.multiselector.y = phaserGame.camera.y + phaserGame.input.mousePointer.y;
+        this.multiselector.x =
+          phaserGame.camera.x + phaserGame.input.mousePointer.x;
+        this.multiselector.y =
+          phaserGame.camera.y + phaserGame.input.mousePointer.y;
         this.multiselector.width = 0;
         this.multiselector.height = 0;
       } else if (phaserGame.input.mousePointer.rightButton.isDown) {
@@ -65,7 +67,7 @@ class UserPointer {
   }
 
   dispatch(...args) {
-    this.dispatcher.dispatch.apply(this, args);
+    this.dispatcher.dispatch(...args);
   }
 
   stopMultiselection() {
@@ -81,17 +83,28 @@ class UserPointer {
       this.dispatcher.dispatch('leftbutton/move', this);
     }
 
-    if (phaserGame.input.mousePointer.leftButton.isDown && this.multiselector.active) {
-      if (phaserGame.camera.x + phaserGame.input.mousePointer.x < this.multiselector.x) {
+    if (
+      phaserGame.input.mousePointer.leftButton.isDown &&
+      this.multiselector.active
+    ) {
+      if (
+        phaserGame.camera.x + phaserGame.input.mousePointer.x <
+        this.multiselector.x
+      ) {
         this.stopMultiselection();
         return;
       }
-      if (phaserGame.camera.y + phaserGame.input.mousePointer.y < this.multiselector.y) {
+      if (
+        phaserGame.camera.y + phaserGame.input.mousePointer.y <
+        this.multiselector.y
+      ) {
         this.stopMultiselection();
         return;
       }
-      this.multiselector.width = Math.abs(this.multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));
-      this.multiselector.height = Math.abs(this.multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));
+      this.multiselector.width = Math.abs(this.multiselector.x -
+          (phaserGame.camera.x + phaserGame.input.mousePointer.x));
+      this.multiselector.height = Math.abs(this.multiselector.y -
+          (phaserGame.camera.y + phaserGame.input.mousePointer.y));
     }
   }
 
@@ -109,7 +122,10 @@ class UserPointer {
    * @return {Boolean} [returns true if the mouse pointer is over the target item]
    */
   isHover(sprite) {
-    if (phaserGame.camera.x + phaserGame.input.mousePointer.x < sprite.x - sprite.offsetX) {
+    if (
+      phaserGame.camera.x + phaserGame.input.mousePointer.x <
+      sprite.x - sprite.offsetX
+    ) {
       return false;
     }
     if (
@@ -118,7 +134,10 @@ class UserPointer {
     ) {
       return false;
     }
-    if (phaserGame.camera.y + phaserGame.input.mousePointer.y < sprite.y - sprite.offsetY) {
+    if (
+      phaserGame.camera.y + phaserGame.input.mousePointer.y <
+      sprite.y - sprite.offsetY
+    ) {
       return false;
     }
     if (

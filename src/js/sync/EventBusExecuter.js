@@ -21,6 +21,7 @@ function createEventExecuter() {
           continue;
         }
         try {
+          console.debug(`Executing: ${evt.id}`, evt);
           evtObj = factory.getEventObjectById(evt.id);
           evtObj.execute({
             targets: evt.targets,
@@ -30,6 +31,7 @@ function createEventExecuter() {
           emitter.local.dispatch(evt.id);
         } catch (ex) {
           // @TODO catch these errors for further assessment
+          throw new Error(ex);
         }
       }
     },
