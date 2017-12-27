@@ -84,8 +84,8 @@ class FogOfWarRenderer {
           // so as to display the gradient transition
           this.bmd.draw(
             this.mask,
-            ((j - 1) * this.tileSize) - maskOffset - cameraOffsetX,
-            ((i - 1) * this.tileSize) - maskOffset - cameraOffsetY,
+            (j - 1) * this.tileSize - maskOffset - cameraOffsetX,
+            (i - 1) * this.tileSize - maskOffset - cameraOffsetY,
           );
         }
       }

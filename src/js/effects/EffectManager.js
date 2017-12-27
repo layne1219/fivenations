@@ -289,8 +289,8 @@ class EffectManager {
         effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
         this.add({
           id: effectId,
-          x: (sprite.x + Util.rnd(0, 30)) - 15,
-          y: (sprite.y + Util.rnd(0, 30)) - 15,
+          x: sprite.x + Util.rnd(0, 30) - 15,
+          y: sprite.y + Util.rnd(0, 30) - 15,
           velocity: {
             x: (Math.random() - 0.5) * Util.rnd(75, 100),
             y: (Math.random() - 0.5) * Util.rnd(75, 100),
@@ -343,8 +343,8 @@ class EffectManager {
     if (effect.ttl % effect.getTrailsRate() === 0) {
       this.add({
         id: effect.getTrailsEffect(),
-        x: (effect.getSprite().x + Util.rnd(0, 10)) - 5,
-        y: (effect.getSprite().y + Util.rnd(0, 10)) - 5,
+        x: effect.getSprite().x + Util.rnd(0, 10) - 5,
+        y: effect.getSprite().y + Util.rnd(0, 10) - 5,
       });
     }
   }

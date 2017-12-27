@@ -38,8 +38,7 @@ function createSelector(targetEntities) {
       } else if (filter === ':user') {
         targets = targetEntities.filter(entity => entity.isEntityControlledByUser());
       } else if (filter === ':user:selected') {
-        targets = targetEntities.filter(entity =>
-          entity.isEntityControlledByUser() && entity.isSelected());
+        targets = targetEntities.filter(entity => entity.isEntityControlledByUser() && entity.isSelected());
       } else if (filter === ':user:selected:not(building)') {
         targets = targetEntities.filter((entity) => {
           if (!entity.isEntityControlledByUser()) return false;
@@ -298,10 +297,11 @@ EntityManager.prototype = {
    * @return {object} consolidated object of attributes
    */
   getMergedAbilities(targetEntities) {
-    const subsection = ability => val => ability
-      .getAbilityManager()
-      .getAbilities()
-      .indexOf(val) !== -1;
+    const subsection = ability => val =>
+      ability
+        .getAbilityManager()
+        .getAbilities()
+        .indexOf(val) !== -1;
 
     let abilities;
     let next;

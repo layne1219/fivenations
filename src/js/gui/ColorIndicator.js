@@ -33,7 +33,7 @@ export default class ColorIndicator {
   createSpriteByParent(entity) {
     const team = entity.getPlayer().getTeam();
     const width = entity.getDataObject().getWidth();
-    const ratio = (width / SPRITE_WIDTH) * 1.75;
+    const ratio = width / SPRITE_WIDTH * 1.75;
     const sprite = this.game.add.image(0, 0, 'color-indicator');
 
     sprite.visible = true;

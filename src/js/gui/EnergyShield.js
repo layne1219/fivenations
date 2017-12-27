@@ -41,7 +41,9 @@ export default class EnergyShield {
     this.sprite = this.createSpriteByParent(entity);
 
     // Add the selection to the appropriate graphics group as per its type
-    const groupName = entity.getDataObject().isBuilding() ? 'energy-shields-buildings' : 'energy-shields';
+    const groupName = entity.getDataObject().isBuilding()
+      ? 'energy-shields-buildings'
+      : 'energy-shields';
     Graphics.getInstance()
       .getGroup(groupName)
       .add(this.sprite);

@@ -79,18 +79,14 @@ const extendSpriteWithEventListeners = (entity, sprite, dataObject) => {
           .entities()
           .filter((targetEntitity) => {
             // If the targetEntitity is off screen we need to exclude
-            if (!Util.between(
-              targetEntitity.getSprite().x - this.game.camera.x,
-              0,
-              ns.window.width,
-            )) {
+            if (
+              !Util.between(targetEntitity.getSprite().x - this.game.camera.x, 0, ns.window.width)
+            ) {
               return false;
             }
-            if (!Util.between(
-              targetEntitity.getSprite().y - this.game.camera.y,
-              0,
-              ns.window.height,
-            )) {
+            if (
+              !Util.between(targetEntitity.getSprite().y - this.game.camera.y, 0, ns.window.height)
+            ) {
               return false;
             }
             // we need to include only the indentical entities
@@ -661,16 +657,16 @@ class Entity {
   }
 
   isInside(obj) {
-    if (this.sprite.x + (this.getDataObject().getWidth() / 2) < obj.x) {
+    if (this.sprite.x + this.getDataObject().getWidth() / 2 < obj.x) {
       return false;
     }
-    if (this.sprite.x - (this.getDataObject().getWidth() / 2) > obj.x + obj.width) {
+    if (this.sprite.x - this.getDataObject().getWidth() / 2 > obj.x + obj.width) {
       return false;
     }
-    if (this.sprite.y + (this.getDataObject().getHeight() / 2) < obj.y) {
+    if (this.sprite.y + this.getDataObject().getHeight() / 2 < obj.y) {
       return false;
     }
-    if (this.sprite.y - (this.getDataObject().getHeight() / 2) > obj.y + obj.height) {
+    if (this.sprite.y - this.getDataObject().getHeight() / 2 > obj.y + obj.height) {
       return false;
     }
     return true;

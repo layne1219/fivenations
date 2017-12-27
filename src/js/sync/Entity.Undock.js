@@ -48,9 +48,9 @@ Undock.prototype.execute = (options) => {
           const randomFactor = randomFactors[index] || 0;
           const dockedSprite = entity.getSprite();
           const randomX =
-            (randomFactor * RANDOM_DISTANCE_FROM_DOCKER) - (RANDOM_DISTANCE_FROM_DOCKER / 2);
+            randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
           const randomY =
-            (randomFactor * RANDOM_DISTANCE_FROM_DOCKER) - (RANDOM_DISTANCE_FROM_DOCKER / 2);
+            randomFactor * RANDOM_DISTANCE_FROM_DOCKER - RANDOM_DISTANCE_FROM_DOCKER / 2;
           entity.moveTo(dockedSprite.x + randomX, dockedSprite.y + randomY);
         });
     }

@@ -174,8 +174,8 @@ Game.prototype = {
       this.eventEmitter.synced.entities.add({
         id: window.currEntityId || 'hurricane',
         team: window.currEntityTeam || 1,
-        x: coords.x || (50 + (Math.random() * 700)),
-        y: coords.y || (50 + (Math.random() * 700)),
+        x: coords.x || 50 + Math.random() * 700,
+        y: coords.y || 50 + Math.random() * 700,
       });
       // console.log(window.currEntityId, coords.x, coords.y);
     });

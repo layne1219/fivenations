@@ -90,10 +90,8 @@ class UserPointer {
         this.stopMultiselection();
         return;
       }
-      this.multiselector.width =
-        Math.abs(this.multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));
-      this.multiselector.height =
-        Math.abs(this.multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));
+      this.multiselector.width = Math.abs(this.multiselector.x - (phaserGame.camera.x + phaserGame.input.mousePointer.x));
+      this.multiselector.height = Math.abs(this.multiselector.y - (phaserGame.camera.y + phaserGame.input.mousePointer.y));
     }
   }
 

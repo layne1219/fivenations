@@ -233,8 +233,8 @@ class WeaponGroup extends Phaser.Group {
     this.weaponTexts = [];
 
     for (let i = 0; i < weaponNumber; i += 1) {
-      x = text.marginLeft + (Math.floor(i / 8) * 100);
-      y = text.marginTop + (((i % 8) + 1) * 11);
+      x = text.marginLeft + Math.floor(i / 8) * 100;
+      y = text.marginTop + (i % 8 + 1) * 11;
       weaponText = this.add(phaserGame.add.text(x, y, '', {
         font: text.defaultFont,
         fill: text.color,
@@ -390,7 +390,7 @@ class MultiselectionGroup extends Phaser.Group {
     this.healthBar = [];
     this.shieldBar = [];
 
-    for (let i = (columns * rows) - 1; i >= 0; i -= 1) {
+    for (let i = columns * rows - 1; i >= 0; i -= 1) {
       const x = (i % columns) * (iconWidth + margin);
       const y = Math.floor(i / columns) * (iconHeight + margin);
 
@@ -402,11 +402,11 @@ class MultiselectionGroup extends Phaser.Group {
       // StatusBars
       this.healthBar[i] = this.add(phaserGame.add.graphics(
         x + statusBarMargin,
-        (y + iconHeight) - statusBarHeight - statusBarMargin,
+        y + iconHeight - statusBarHeight - statusBarMargin,
       ));
       this.shieldBar[i] = this.add(phaserGame.add.graphics(
         x + statusBarMargin,
-        (y + iconHeight) - (statusBarHeight * 2) - statusBarMargin - 1,
+        y + iconHeight - statusBarHeight * 2 - statusBarMargin - 1,
       ));
     }
   }
@@ -453,7 +453,7 @@ class MultiselectionGroup extends Phaser.Group {
     graphics.visible = true;
     graphics.clear();
     graphics.beginFill(color || Util.getColorFromRatio(ratio));
-    graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - (statusBarMargin * 2), statusBarHeight);
+    graphics.drawRect(0, 0, Math.floor(iconWidth * ratio) - statusBarMargin * 2, statusBarHeight);
     graphics.endFill();
   }
 }
@@ -496,7 +496,7 @@ export default class EntityDetailsDisplay {
     weaponGroup.add(weaponGroupPopup);
     weaponGroup.on('over', (item) => {
       weaponGroupPopup.x = item.x + weaponPopupPaddingX;
-      weaponGroupPopup.y = (item.y - weaponGroupPopup.height) + weaponPopupPaddingY;
+      weaponGroupPopup.y = item.y - weaponGroupPopup.height + weaponPopupPaddingY;
       weaponGroupPopup.visible = true;
       weaponGroupPopup.updateContent(item.weapon);
     });

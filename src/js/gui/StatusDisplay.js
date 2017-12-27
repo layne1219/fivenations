@@ -35,14 +35,14 @@ export default class StatusDisplay {
     // Health
     this.healthBar = new StatusBar({ width, phaserGame });
     this.healthBar.getGroup().x = this.healthBar.getGroup().width / -2;
-    this.healthBar.getGroup().y = -height + (this.group.children.length * 6);
+    this.healthBar.getGroup().y = -height + this.group.children.length * 6;
     this.group.add(this.healthBar.getGroup());
 
     // Power if there is any
     if (entity.getDataObject().getMaxPower() > 0) {
       this.powerBar = new StatusBar({ color: '0xFF00FF', width, phaserGame });
       this.powerBar.getGroup().x = this.powerBar.getGroup().width / -2;
-      this.powerBar.getGroup().y = -height + (this.group.children.length * 6);
+      this.powerBar.getGroup().y = -height + this.group.children.length * 6;
       this.group.add(this.powerBar.getGroup());
     }
 
