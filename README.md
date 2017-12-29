@@ -1,4 +1,4 @@
-# Five Nations [![Build Status](https://travis-ci.org/vbence86/fivenations.svg?branch=master)](https://travis-ci.org/vbence86/fivenations) [![Build Status](https://semaphoreci.com/api/v1/vbence86/fivenations/branches/master/badge.svg)](https://semaphoreci.com/vbence86/fivenations) [![Coverage Status](https://coveralls.io/repos/github/vbence86/fivenations/badge.svg?branch=master)](https://coveralls.io/github/vbence86/fivenations?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/935f2ebf03654b0a9537d4cc7c4bcd1f)](https://www.codacy.com/app/vbence86/fivenations?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vbence86/fivenations&amp;utm_campaign=Badge_Grade) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Gitter](https://img.shields.io/gitter/room/fivenations/Lobby.svg?maxAge=2592000)](https://img.shields.io/gitter/room/fivenations/Lobby)
+# Five Nations [![Build Status](https://travis-ci.org/vbence86/fivenations.svg?branch=master)](https://travis-ci.org/vbence86/fivenations) [![Build Status](https://semaphoreci.com/api/v1/vbence86/fivenations/branches/master/badge.svg)](https://semaphoreci.com/vbence86/fivenations) [![Coverage Status](https://coveralls.io/repos/github/vbence86/fivenations/badge.svg?branch=master)](https://coveralls.io/github/vbence86/fivenations?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/935f2ebf03654b0a9537d4cc7c4bcd1f)](https://www.codacy.com/app/vbence86/fivenations?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vbence86/fivenations&amp;utm_campaign=Badge_Grade) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Gitter](https://img.shields.io/gitter/room/fivenations/Lobby.svg?maxAge=2592000)](https://gitter.im/fivenations/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 
 ![ezgif com-gif-maker 1](https://user-images.githubusercontent.com/6104164/32551083-9db99ed6-c48f-11e7-979f-e43a11a52f40.gif)
 
@@ -23,10 +23,14 @@ Five Nations is an open source HTML5 game that uses cutting-edge  technologies s
 Since this is an open source project all form of contribution and feedback are welcomed. We are hiring!
 
 1. Fork the project
-2. Pick up an Issue with `help wanted` label
-3. Create a branch named `feature/{issue-number}`
-4. Apply your changes against this branch
-5. Create a Pull Request to the upstream project
+2. Checkout the current version in development: **0.41.0**
+  Branch name: `feature/0.41`
+3. Pick up an Issue with `good first issue` or `help wanted` label
+4. Create a branch named `feature/{issue-number}`
+5. Apply your changes against this branch
+  When commiting, use the `#{issue-number}` as prefix (e.g.: `git commit -m"#300 Update functionality of ..."`)
+6. Create a Pull Request to the upstream project
+7. Set back and have a beer :)
 
 #### Install
 ```bash
