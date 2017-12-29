@@ -111,20 +111,7 @@ class CollisionMap {
    * @return {array} two dimensional array of the requested chunk
    */
   getMatrixChunk(chunk) {
-    const tmpArray = Util.deepClone(this.tiles);
-    if (chunk.y === -1) {
-      tmpArray.unshift(FAKE_ROW);
-    }
-    if (chunk.height >= tmpArray.length) {
-      tmpArray.push(FAKE_ROW);
-    }
-    if (chunk.width >= tmpArray[0].length) {
-      tmpArray.map(row => row.push(FAKE_VALUE));
-    }
-    if (chunk.x === -1) {
-      tmpArray.map(row => row.unshift(FAKE_VALUE));
-    }
-    return tmpArray
+    return this.tiles
       .map(rows =>
         rows.filter((column, idx) => idx >= chunk.x && idx < chunk.x + chunk.width))
       .filter((rows, idx) => idx >= chunk.y && idx < chunk.y + chunk.height);
