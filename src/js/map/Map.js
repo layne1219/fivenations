@@ -2,9 +2,16 @@
 import Starfield from '../starfield/Starfield';
 import FogOfWar from './FogOfWar';
 import FogOfWarRenderer from './FogOfWarRenderer';
+import CollisionMap from './CollisionMap';
 import Util from '../common/Util';
 
+// refresh rate skipped execution per tick
 const FOG_OF_WAR_REFRESH_RATE = 5;
+
+// refresh rate skipped execution per tick
+// Entities are not moving rapidly so we won't have to update
+// the collision map obsessively
+const COLLISION_MAP_REFRESH_RATE = 50;
 
 const MIN_WIDTH = 32;
 const MIN_HEIGHT = 32;
@@ -20,6 +27,7 @@ let game;
 let starfield;
 let fogOfWar;
 let fogOfWarRenderer;
+let collisionMap;
 let fogOfWarDirty = false;
 
 function Map(_game) {
@@ -41,6 +49,9 @@ Map.prototype = {
         fogOfWarDirty = false;
       }
     }
+    if (collisionMap) {
+      collisionMap.optimizedUpdate(entityManager);
+    }
   },
 
   initGame(_game) {
@@ -59,9 +70,10 @@ Map.prototype = {
     starfield = new Starfield(this);
     fogOfWar = new FogOfWar(this);
     fogOfWarRenderer = new FogOfWarRenderer(fogOfWar);
+    collisionMap = new CollisionMap(this);
 
     // generates a function for updating the FogOfWar fields
-    // only at the given regular intervals so that to save CPU time
+    // only at the given regular intervals so that to improve performance
     fogOfWar.optimizedUpdate = Util.interval(
       (entityManager) => {
         fogOfWar.update(entityManager);
@@ -69,6 +81,16 @@ Map.prototype = {
       },
       FOG_OF_WAR_REFRESH_RATE,
       fogOfWar,
+    );
+
+    // generates a function for updating the CollisionMap tiles
+    // only at the given regular intervals so that to improve performance
+    collisionMap.optimizedUpdate = Util.interval(
+      (entityManager) => {
+        collisionMap.update(entityManager);
+      },
+      COLLISION_MAP_REFRESH_RATE,
+      collisionMap,
     );
   },
 

@@ -58,18 +58,20 @@ class CollisionMap {
    * @param {object} entity - Entity instance
    */
   visitTilesByEntity(entity) {
+    // it's important to execute getPreviousTile first
+    const previousTile = entity.getPreviousTile(this.map);
     const tile = entity.getTile(this.map);
-    this.visit(tile[0], tile[1]);
-  }
 
-  /**
-   * Unsets the tile identified by the given entity location as
-   * occupied and therefore it is goint to be empty again
-   * @param {object} entity - Entity instance
-   */
-  unvisitTilesByEntity(entity) {
-    const tile = entity.getTile(this.map);
-    this.visit(tile[0], tile[1]);
+    if (!previousTile) {
+      this.visit(tile[0], tile[1]);
+      return;
+    }
+
+    const sameCoords = previousTile.every((v, idx) => tile[idx] === v);
+    if (!sameCoords) {
+      this.unvisit(previousTile[0], previousTile[1]);
+      this.visit(tile[0], tile[1]);
+    }
   }
 
   /**
