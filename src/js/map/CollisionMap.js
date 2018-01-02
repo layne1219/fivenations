@@ -12,6 +12,7 @@ class CollisionMap {
    */
   constructor(map) {
     this.initMatrix(map);
+    this.initEventDispatcher();
   }
 
   /**
@@ -22,6 +23,13 @@ class CollisionMap {
   initMatrix(map) {
     this.tiles = Util.matrix(map.getWidth(), map.getHeight());
     this.map = map;
+  }
+
+  /**
+   * Creates a local event dispatcher
+   */
+  initEventDispatcher() {
+    this.dispatcher = new Util.EventDispatcher();
   }
 
   /**
@@ -71,21 +79,8 @@ class CollisionMap {
     if (!sameCoords) {
       this.unvisit(previousTile[0], previousTile[1]);
       this.visit(tile[0], tile[1]);
+      this.setDirtFlag(true);
     }
-  }
-
-  /**
-   * Fetches a tile identified by the given coordinats and
-   * returns whether it is occupied or not
-   * @param {number} x - horizontal offset
-   * @param {number} y - vertical offset
-   * @return {boolean} true if the tile is occupied
-   */
-  isOccupied(x, y) {
-    if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
-      return this.tiles[y][x];
-    }
-    return false;
   }
 
   /**
@@ -94,9 +89,34 @@ class CollisionMap {
    * @param {object} EntityManager - instance of EntityManager
    */
   update(entityManager) {
+    this.setDirtFlag(false);
+
     entityManager
       .entities(':not(hibernated)')
       .forEach(entity => this.visitTilesByEntity(entity));
+
+    // if the map has been altered since the last check
+    // we execute all the registered listeners
+    if (this.isDirty()) {
+      this.dispatcher.dispatch('change', this.tiles);
+    }
+  }
+
+  /**
+   * Sets whether the map has changed since the last check
+   * @param {boolean}
+   */
+  setDirtyFlag(flag) {
+    this.dirty = flag;
+  }
+
+  /**
+   * Registers external listeners against local events
+   * @param {string} event
+   * @param {function} listener
+   */
+  on(event, listener) {
+    this.dispatcher.addEventListener(event, listener);
   }
 
   /**
@@ -125,6 +145,29 @@ class CollisionMap {
    */
   getMap() {
     return this.map;
+  }
+
+  /**
+   * Returns true if any of the tiles has been changed since the
+   * last check
+   * @return {boolean}
+   */
+  isDirty() {
+    return this.dirty;
+  }
+
+  /**
+   * Fetches a tile identified by the given coordinats and
+   * returns whether it is occupied or not
+   * @param {number} x - horizontal offset
+   * @param {number} y - vertical offset
+   * @return {boolean} true if the tile is occupied
+   */
+  isOccupied(x, y) {
+    if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
+      return this.tiles[y][x];
+    }
+    return false;
   }
 }
 

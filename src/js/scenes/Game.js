@@ -266,6 +266,12 @@ Game.prototype = {
     // avoids easyStar to hold up the main thread by limiting the number of
     // calculations per iteration
     this.easyStar.setIterationsPerCalculation(1000);
+    this.easyStar.setGrid(this.map.getCollisionMap());
+    this.easystar.setAcceptableTiles([0]);
+    // refresh the grid when the collision map changes
+    this.map.getCollisionMap().on('change', (map) => {
+      this.easyStar.setGrid(map);
+    });
   },
 
   update() {
