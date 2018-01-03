@@ -16,6 +16,16 @@ Five Nations is a sci-fi strategy game that takes place in the far future and fo
 [2]: http://www.facebook.com/fivenationsthegame
 [3]: http://www.instagram.com/fivenationsthegame
 
+## Five Nations at Conferences
+[![alt text][4.1]][4] [![alt text][5.1]][5] 
+
+[4.1]: https://pbs.twimg.com/media/DSpGPrbW4AAIXGu.jpg
+
+[5.1]: https://www.berlinbalticnordic.net/wp-content/uploads/2017/12/WhiteNightsPrague.jpg
+
+[4]: https://gamedev.ee/
+[5]: https://wnconf.com/en
+
 ## About the project
 Five Nations is an open source HTML5 game that uses cutting-edge  technologies such as ES2015+, Babel, Webpack etc. The project is built on top of Phaser Community Edition and employs P2 physics engine. We employ modern CI flow with Jenkins, TravisCI and Docker. 
 
