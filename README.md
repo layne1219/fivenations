@@ -32,6 +32,7 @@ Five Nations is an open source HTML5 game that uses cutting-edge  technologies s
 ## Contributing
 Since this is an open source project all form of contribution and feedback are welcomed. We are hiring!
 
+0. Join us on **Gitter** https://gitter.im/fivenations/Lobby (so that we could answer any of your technical questions)
 1. Fork the project
 2. Checkout the current version in development: **0.41.0** (branch name: `feature/0.41`)
   
