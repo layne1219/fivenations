@@ -58,7 +58,7 @@ Once the preloading process is ready, you'll see a blank screen with the GUI act
 
 ##### Add new entity to the game stage
 ``` 
-addEntitity(entityName: string, playerId: number, ?(x: number), ?(y: number)); 
+addEntity(entityName: string, playerId: number, ?(x: number), ?(y: number)); 
 // example
 addEntity('hurricane', 1, 150, 180);
 ```
