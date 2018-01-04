@@ -52,3 +52,15 @@ yarn
 ```
 yarn run dev
 ```
+#### Game 
+Once the preloading process is ready, you'll see a blank screen with the GUI activated. In order to populate the game scene with entities you'll have to use the console to execute API commands that are expose to the global scope. 
+
+##### Add new entity to the game stage
+``` 
+addEntitity(entityName: string, playerId: number, ?(x: number), ?(y: number)); 
+// example
+addEntity('hurricane', 1, 150, 180);
+```
+Available entity Ids:
+`hurricane`, `orca`, `hailstorm`, `avenger`, `avenger2`, etc. 
+(for all entity ids check `/src/assets/data/units/` subfolder)
