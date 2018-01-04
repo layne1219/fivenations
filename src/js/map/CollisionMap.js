@@ -79,7 +79,7 @@ class CollisionMap {
     if (!sameCoords) {
       this.unvisit(previousTile[0], previousTile[1]);
       this.visit(tile[0], tile[1]);
-      this.setDirtFlag(true);
+      this.setDirtyFlag(true);
     }
   }
 
@@ -89,7 +89,7 @@ class CollisionMap {
    * @param {object} EntityManager - instance of EntityManager
    */
   update(entityManager) {
-    this.setDirtFlag(false);
+    this.setDirtyFlag(false);
 
     entityManager
       .entities(':not(hibernated)')
