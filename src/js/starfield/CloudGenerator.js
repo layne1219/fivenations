@@ -6,7 +6,7 @@ const MAX_NUMBER_OF_CLOUDS = 100;
 
 class CloudGenerator extends SpaceObjectGenerator {
   generate(density) {
-    SpaceObjectGenerator.prototype.generate.call(this);
+    super.generate();
     this.createClouds(density);
   }
 
