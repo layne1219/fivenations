@@ -26,14 +26,14 @@ const ns = window.fivenations;
  */
 const extendSpriteWithAnimations = (sprite, dataObject) => {
   const animations = dataObject.getAnimations();
-  const anmationOffset = dataObject.getAnimationOffset();
-  sprite.frame = anmationOffset;
+  const animationOffset = dataObject.getAnimationOffset();
+  sprite.frame = animationOffset;
   if (!animations || typeof animations !== 'object') return;
   Object.keys(animations).forEach((key) => {
     const data = animations[key];
     if (data.length) {
       data.forEach((animationData, idx) => {
-        const frames = animationData.frames.map(v => v + anmationOffset);
+        const frames = animationData.frames.map(v => v + animationOffset);
         sprite.animations.add(
           key + idx,
           frames,
@@ -42,7 +42,7 @@ const extendSpriteWithAnimations = (sprite, dataObject) => {
         );
       });
     } else {
-      const frames = data.frames.map(v => v + anmationOffset);
+      const frames = data.frames.map(v => v + animationOffset);
       sprite.animations.add(key, frames, data.rate, data.loopable);
     }
     // if the animation is called `idle-forever` it is started straightaway

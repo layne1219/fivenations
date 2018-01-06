@@ -2,22 +2,26 @@ import DeepSpaceLayer from './DeepSpaceLayer';
 import Background from './Background';
 
 class Starfield {
-  constructor(map) {
+  constructor(map, config = {}) {
     this.initLayers();
-    this.createBackground(map);
-    this.createDeepSpaceObjects(map);
+    this.createBackground(map, config.backgroundTile);
+    this.createDeepSpaceObjects(map, config.starfieldGenerator);
   }
 
   initLayers() {
     this.layers = [];
   }
 
-  createBackground(map) {
-    this.layers.push(new Background(map));
+  createBackground(map, backgroundTile) {
+    this.layers.push(new Background(map, backgroundTile));
   }
 
-  createDeepSpaceObjects(map) {
-    this.layers.push(new DeepSpaceLayer(map));
+  createDeepSpaceObjects(map, generator) {
+    this.layers.push(new DeepSpaceLayer(map, generator));
+  }
+
+  resetLayers() {
+    this.layers.splice();
   }
 
   update() {

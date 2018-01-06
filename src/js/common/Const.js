@@ -37,6 +37,9 @@ export const GROUP_ENTITIES = 'entities';
 export const GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
 export const GROUP_FOGOFWAR = 'fogofwar';
 
+// Starfield
+export const DEFAULT_STARFIELD_BACKGROUND_TILE = 'starfield-1';
+
 // helper constants for entity related functionalities
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
 export const MAX_SELECTABLE_UNITS = 22;

@@ -8,7 +8,11 @@ export default {
    * @return {void}
    */
   load: (preloader) => {
-    preloader.load.image('starfield', `${PATH_ASSETS}/starfield/starfield.png`);
+    preloader.load.image(
+      'starfield',
+      `${PATH_ASSETS}/starfield/starfield-1.png`,
+    );
+
     preloader.load.atlasJSONHash(
       'starfield.clouds.bg.type-1',
       `${PATH_ASSETS}/starfield/background_clouds_type01.png`,
@@ -117,6 +121,12 @@ export default {
       'starfield.smallmeteorites.type-3',
       `${PATH_ASSETS}/starfield/small_background_meteorites03.png`,
       `${PATH_ASSETS}/starfield/small_background_meteorites03.json`,
+    );
+
+    preloader.load.atlasJSONHash(
+      'starfield.shootingstart',
+      `${PATH_ASSETS}/starfield/background_shootingstart.png`,
+      `${PATH_ASSETS}/starfield/background_shootingstart.json`,
     );
   },
 };
