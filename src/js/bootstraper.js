@@ -21,17 +21,6 @@ import Scriptbox from './common/Scriptbox';
 // entry
 App.Scriptbox = Scriptbox;
 
-// Starfield
-// ---------
-// Starfield must be configurable from a ScriptBox entry in
-// order to provide abaility for 3rd party consumer code
-// to specify the Starfield objects
-App.Starfield = {};
-// Any custom generator must inherit from SpaceObjectGenerator
-App.Starfield.SpaceObjectGenerator = SpaceObjectGenerator;
-// Predefined generators
-App.Starfield.PlaneAreaGenerator = PlaneAreaGenerator;
-
 // Global scope
 // ------------------------------------------------------------
 // Exponses the Application to the global scope so that

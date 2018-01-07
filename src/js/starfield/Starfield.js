@@ -1,3 +1,6 @@
+import SpaceObject from './SpaceObject';
+import SpaceObjectGenerator from './SpaceObjectGenerator';
+import PlanetAreaGenerator from './PlanetAreaGenerator';
 import DeepSpaceLayer from './DeepSpaceLayer';
 import Background from './Background';
 
@@ -30,5 +33,9 @@ class Starfield {
     });
   }
 }
+
+Starfield.SpaceObject = SpaceObject;
+Starfield.SpaceObjectGenerator = SpaceObjectGenerator;
+Starfield.PlanetAreaGenerator = PlanetAreaGenerator;
 
 export default Starfield;

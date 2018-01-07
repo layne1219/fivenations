@@ -7,7 +7,6 @@ const ns = window.fivenations;
 
 class PlanetGenerator extends SpaceObjectGenerator {
   generate(numberOfPlanets) {
-    super.generate();
     this.createPlanet(numberOfPlanets);
   }
 

@@ -69,7 +69,9 @@ class DeepSpaceLayer {
   }
 
   generateSpaceObjects(Generator) {
-    if (!Generator) throw new Error('Invalid generator class!');
+    if (!Generator) {
+      throw new Error('The given generator is invalid!');
+    }
     const generatorInstance = new Generator(this);
     generatorInstance.generate();
     this.spaceObjects = generatorInstance.getSpaceObjects();

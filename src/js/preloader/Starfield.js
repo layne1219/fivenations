@@ -9,7 +9,7 @@ export default {
    */
   load: (preloader) => {
     preloader.load.image(
-      'starfield',
+      'starfield-1',
       `${PATH_ASSETS}/starfield/starfield-1.png`,
     );
 
@@ -125,8 +125,8 @@ export default {
 
     preloader.load.atlasJSONHash(
       'starfield.shootingstart',
-      `${PATH_ASSETS}/starfield/background_shootingstart.png`,
-      `${PATH_ASSETS}/starfield/background_shootingstart.json`,
+      `${PATH_ASSETS}/starfield/background_shootingstar.png`,
+      `${PATH_ASSETS}/starfield/background_shootingstar.json`,
     );
   },
 };

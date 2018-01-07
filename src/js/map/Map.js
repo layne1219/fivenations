@@ -34,6 +34,16 @@ let fogOfWarDirty = false;
 class Map {
   constructor(_game) {
     this.initGame(_game);
+    this.exposeStarfield();
+  }
+
+  initGame(_game) {
+    game = _game;
+    game.stage.backgroundColor = '#000';
+  }
+
+  exposeStarfield() {
+    this.Starfield = Starfield;
   }
 
   new(config) {
@@ -49,7 +59,7 @@ class Map {
 
   initLayers(config) {
     // initializes the separate layers
-    starfield = new Starfield(this, (config.starfield = {}));
+    starfield = new Starfield(this, config.starfield);
     fogOfWar = new FogOfWar(this);
     fogOfWarRenderer = new FogOfWarRenderer(fogOfWar);
     collisionMap = new CollisionMap(this);
@@ -88,11 +98,6 @@ class Map {
     if (collisionMap) {
       collisionMap.optimizedUpdate(entityManager);
     }
-  }
-
-  initGame(_game) {
-    game = _game;
-    game.stage.backgroundColor = '#000';
   }
 
   scrollTo(x, y) {

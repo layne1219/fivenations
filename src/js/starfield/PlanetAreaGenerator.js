@@ -4,7 +4,6 @@ import SpaceObjectGenerator from './SpaceObjectGenerator';
 
 class PlanetAreaGenerator extends SpaceObjectGenerator {
   generate() {
-    super.generate();
     this.createPlanet();
     this.createClouds();
   }

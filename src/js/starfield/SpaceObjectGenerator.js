@@ -11,7 +11,6 @@ class SpaceObjectGenerator {
 
   getSpaceObjects() {
     this.objects.sort((a, b) => b.z - a.z);
-
     return this.objects;
   }
 

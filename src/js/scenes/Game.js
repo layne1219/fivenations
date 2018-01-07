@@ -44,7 +44,9 @@ Game.prototype = {
     // -----------------------------------------------------------------------
     //                                  Map
     // -----------------------------------------------------------------------
-    // Generate a Map
+    // Creates a singleton reference, but the map hasn't been
+    // specified yet. It is supposed to be populated from a
+    // ScriptBox entry when the game scene is activated
     this.map = new Map(this.game);
 
     // -----------------------------------------------------------------------
