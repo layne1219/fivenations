@@ -1,5 +1,8 @@
-/* global window */
+/* global window, Phaser */
 /* eslint class-methods-use-this: 0 */
+import UserKeyboard from './UserKeyboard';
+import EventEmitter from '../sync/EventEmitter';
+
 const ns = window.fivenations;
 const MINIMIZED_WIDTH = 160;
 const MINIMIZED_HEIGHT = 160;
@@ -70,18 +73,23 @@ export default class Minimap {
         this.panel,
         this.graphics,
       );
+      let resetActivityQueue = true;
 
       // if getMouseCoords returns with false then the coordinates are not legit
       if (!coords) {
         return;
       }
 
-      this.entityManager
-        .entities(':user:selected')
-        .reset()
+      if (UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
+        resetActivityQueue = false;
+      }
+
+      EventEmitter.getInstance()
+        .synced.entities(':user:selected')
         .move({
           x: coords.x,
           y: coords.y,
+          resetActivityQueue,
         });
     });
   }
