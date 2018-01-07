@@ -241,7 +241,7 @@ class Entity {
     this.statusDisplay = gui.addStatusDisplay(this);
 
     // energy shield animation
-    this.energyShield = gui.addEnergyShield(this);
+    this.energyShield = this.entityManager.addEnergyShield(this);
 
     // ActivityManager
     this.activityManager = new ActivityManager(this);
@@ -268,7 +268,7 @@ class Entity {
 
     // add jet engine sprite
     if (this.dataObject.hasJetEngine()) {
-      this.jetEngine = gui.addJetEngine(this);
+      this.jetEngine = this.entityManager.addJetEngine(this);
     }
   }
 

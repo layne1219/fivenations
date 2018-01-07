@@ -3,6 +3,8 @@
 import Graphics from '../common/Graphics';
 import Entity from './Entity';
 import DataObject from '../model/DataObject';
+import EnergyShield from './misc/EnergyShield';
+import JetEngine from './misc/JetEngine';
 import QuadTree from '../common/QuadTree';
 import Util from '../common/Util';
 import {
@@ -266,6 +268,26 @@ EntityManager.prototype = {
 
     entity.setClosestHostileEntityInRange(closestEnemy);
     entity.setClosestAllyEntityInRange(closestAlly);
+  },
+
+  /**
+   * Links the given entity to a new EnergyShield instance
+   * @param {object} entity Instance of Eneity
+   */
+  addEnergyShield(entity) {
+    const energyShield = new EnergyShield(phaserGame);
+    energyShield.appendTo(entity);
+    return energyShield;
+  },
+
+  /**
+   * Links the given entity to a new JetEngine instance
+   * @param {object} entity Instance of Eneity
+   */
+  addJetEngine(entity) {
+    const jetEngine = new JetEngine(phaserGame);
+    jetEngine.appendTo(entity);
+    return jetEngine;
   },
 
   /**

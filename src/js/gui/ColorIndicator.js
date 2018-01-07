@@ -22,7 +22,7 @@ export default class ColorIndicator {
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.sprite.update = () => {
+    this.sprite.update = function update() {
       this.x = entity.getSprite().x;
       this.y = entity.getSprite().y;
     };
