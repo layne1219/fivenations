@@ -34,14 +34,12 @@ Since this is an open source project all form of contribution and feedback are w
 
 0. Join us on **Gitter** https://gitter.im/fivenations/Lobby (so that we could answer any of your technical questions)
 1. Fork the project
-2. Checkout the current version in development: **0.41.0** (branch name: `feature/0.41`)
-  
-3. Pick up an Issue with `good first issue` or `help wanted` label
-4. Create a branch named `feature/{issue-number}`
-5. Apply your changes against this branch (when commiting a change, apply the `#{issue-number}` as prefix to your commit message. `git commit -m"#300 Update functionality of ..."`)
+2. Pick up an Issue with `good first issue` or `help wanted` label
+3. Create a branch named `feature/{issue-number}`
+4. Apply your changes against this branch (when commiting a change, apply the `#{issue-number}` as prefix to your commit message. `git commit -m"#300 Update functionality of ..."`)
    
-6. Create a Pull Request to the upstream project
-7. Set back and have a beer :)
+5. Create a Pull Request to the upstream `master`
+6. Set back and have a beer :)
 
 #### Install
 ```bash
