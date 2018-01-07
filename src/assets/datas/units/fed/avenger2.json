@@ -24,8 +24,8 @@
     0,
     0
   ],
-  "titanium": 1000,
-  "silicium": 300,
+  "titanium": 800,
+  "silicium": 500,
   "energy": 700,
   "uranium": 100,
   "space": 30,
@@ -176,7 +176,7 @@
   "events": {
     "remove": {
       "effects": [
-        "avenger2-wreckage",
+        "avenger-wreckage",
         "destruction-big"
       ],
       "minWrecks": 5,
@@ -189,5 +189,9 @@
         "fed-wreck-5"
       ]
     }
+  },
+  "damageArea": {
+    "width": 90,
+    "height": 90
   }
 }

@@ -1,105 +1,111 @@
+/* global window */
+/* eslint class-methods-use-this: 0 */
 import Graphics from '../common/Graphics';
-import PlanetAreaGenerator from './PlanetAreaGenerator';
 
 const ns = window.fivenations;
 let sprites;
 
-function DeepSpaceLayer(map) {
+class DeepSpaceLayer {
+  constructor(map, generator) {
     this.setMap(map);
     this.setGame(map.getGame());
     this.createTexture();
+    this.createContainer();
+    this.addContainerToStarfieldGroup();
     this.createSprites();
-    this.createSpaceObjects();
-}
+    this.createSpaceObjects(generator);
+  }
 
-DeepSpaceLayer.prototype = {
-
-    spaceObjects: [],
-
-    setMap: function(map) {
-        if (!map) throw 'Map instance must be passed as first parameter!';
-        this.map = map;
-    },
-
-    setGame: function(game) {
-        if (!game) throw 'Phaser.Game instance must be passed as first parameter!';
-        this.game = game;
-    },
-
-    createTexture: function() {
-        const width = ns.window.width;
-        const height = ns.window.height;
-        let container;
-                
-        this.texture = this.game.add.renderTexture(width, height, 'Starfield.Stars.Texture');
-
-        container = this.game.add.image(0, 0, this.texture);
-        container.fixedToCamera = true;
-
-        Graphics
-            .getInstance()
-            .getGroup('starfield')
-            .add(container);
-    },
-
-    createSprites: function() {
-        if (sprites) return;
-        sprites = {
-            cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
-            cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
-            meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
-            planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
-            planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2')
-        };
-    },
-
-    createSpaceObjects: function(savedData) {
-        if (savedData) {
-            var SpaceObjectLoader = function() {};
-            this.loadSpaceObjects(new SpaceObjectLoader(this, savedData));
-        } else {
-            this.generateSpaceObjects(new PlanetAreaGenerator(this));
-        }
-        this.sortSpaceObjects();
-    },
-
-    generateSpaceObjects: function(generator) {
-        if (!generator) throw 'Invalid generator instance!';
-        generator.generate();
-        this.spaceObjects = generator.getSpaceObjects();
-    },
-
-    loadSpaceObjects: function(loader) {
-        if (!loader) throw 'Invalid loader instance!';
-        loader.load();
-        this.spaceObjects = loader.getSpaceObjects();
-    },
-
-    sortSpaceObjects: function() {
-        this.spaceObjects.sort(function(a, b){
-            return a.z - b.z;
-        });
-    },
-
-    update: function() {
-        var i, l;
-        for (i = 0, l = this.spaceObjects.length; i < l; i += 1) {
-            this.spaceObjects[i].update(this.texture, this.game, i === 0);
-        }
-    },
-
-    getGame: function() {
-        return this.game;
-    },
-
-    getMap: function() {
-        return this.map;
-    },
-
-    getSprites: function() {
-        return sprites;
+  setMap(map) {
+    if (!map) {
+      throw new Error('Map instance must be passed as first parameter!');
     }
+    this.map = map;
+  }
 
+  setGame(game) {
+    if (!game) {
+      throw new Error('Phaser.Game instance must be passed as first parameter!');
+    }
+    this.game = game;
+  }
+
+  createTexture() {
+    const { width, height } = ns.window;
+
+    this.texture = this.game.add.renderTexture(
+      width,
+      height,
+      'Starfield.Stars.Texture',
+    );
+  }
+
+  createContainer() {
+    this.container = this.game.add.image(0, 0, this.texture);
+    this.container.fixedToCamera = true;
+  }
+
+  addContainerToStarfieldGroup() {
+    this.group = Graphics.getInstance().getGroup('starfield');
+    this.group.add(this.container);
+  }
+
+  createSprites() {
+    if (sprites) return;
+    sprites = {
+      cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
+      cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
+      meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
+      planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
+      planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2'),
+    };
+  }
+
+  createSpaceObjects(generatorClass) {
+    this.spaceObjects = [];
+    if (!generatorClass) return;
+    this.generateSpaceObjects(generatorClass);
+    this.sortSpaceObjects();
+  }
+
+  generateSpaceObjects(Generator) {
+    if (!Generator) {
+      throw new Error('The given generator is invalid!');
+    }
+    const generatorInstance = new Generator(this);
+    generatorInstance.generate();
+    this.spaceObjects = generatorInstance.getSpaceObjects();
+  }
+
+  sortSpaceObjects() {
+    this.spaceObjects.sort((a, b) => a.z - b.z);
+  }
+
+  update() {
+    for (let i = 0, l = this.spaceObjects.length; i < l; i += 1) {
+      this.spaceObjects[i].update(this.texture, this.game, i === 0);
+    }
+  }
+
+  remove() {
+    while (this.spaceObjects.length) {
+      const spaceObject = this.spaceObjects.pop();
+      spaceObject.remove();
+    }
+    this.group.remove(this.container);
+  }
+
+  getGame() {
+    return this.game;
+  }
+
+  getMap() {
+    return this.map;
+  }
+
+  getSprites() {
+    return sprites;
+  }
 }
 
 export default DeepSpaceLayer;

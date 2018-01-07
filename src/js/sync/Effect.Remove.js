@@ -1,15 +1,16 @@
+/* global window */
 import Event from './Event';
+
 const ns = window.fivenations;
 
 function removeEffectByGUID(guid) {
-    var effect = ns.game.effectManager.getEffectByGUID(guid);
-    if (!effect) return;
-    ns.game.effectManager.remove(effect);       
+  const effect = ns.game.effectManager.getEffectByGUID(guid);
+  if (!effect) return;
+  ns.game.effectManager.remove(effect);
 }
 
-function EffectRemove() {
-    var args = [].slice.call(arguments);
-    Event.apply(this, args);
+function EffectRemove(...args) {
+  Event.apply(this, args);
 }
 
 EffectRemove.prototype = Object.create(Event.prototype);
@@ -20,13 +21,13 @@ EffectRemove.prototype.constructor = EffectRemove;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EffectRemove.prototype.execute = function(options) {
-    if (!options.targets) {
-        return;
-    }
-    options.targets.forEach(function(guid) {
-        removeEffectByGUID(guid);
-    });        
+EffectRemove.prototype.execute = (options) => {
+  if (!options.targets) {
+    return;
+  }
+  options.targets.forEach((guid) => {
+    removeEffectByGUID(guid);
+  });
 };
 
 export default EffectRemove;

@@ -14,60 +14,54 @@ let bar;
  * @return {void}
  */
 function loadResources(preloader) {
-    GUI.load(preloader);
-    Starfield.load(preloader);
-    Entities.load(preloader);
-    Wreckages.load(preloader);
-    Effects.load(preloader);
-    Projectiles.load(preloader);
+  GUI.load(preloader);
+  Starfield.load(preloader);
+  Entities.load(preloader);
+  Wreckages.load(preloader);
+  Effects.load(preloader);
+  Projectiles.load(preloader);
 }
 
 /**
  * Preloader object used for asyncroniously download assets for the game
  */
 function Preloader() {
-    this.ready = false;
+  this.ready = false;
 }
 
 Preloader.prototype = {
+  /**
+   * @return {void}
+   */
+  preload() {
+    background = this.game.add.sprite(0, 0, 'preloader-background');
+    background.fixedToCamera = true;
 
-    /**
-     * @return {void}
-     */
-    preload: function() {
+    bar = this.add.sprite(326, 633, 'preloader-bar');
+    this.load.setPreloadSprite(bar);
 
-        background = this.game.add.sprite(0, 0, 'preloader-background');
-        background.fixedToCamera = true;
+    // setting up the callback one the preloading is completed
+    this.load.onLoadComplete.addOnce(() => {
+      this.ready = true;
+    }, this);
 
-        bar = this.add.sprite(326, 633, 'preloader-bar');
-        this.load.setPreloadSprite(bar);
+    // line up all the reasources waiting for being preloaded
+    loadResources(this);
+  },
 
-        // setting up the callback one the preloading is completed
-        this.load.onLoadComplete.addOnce(function() {
-            this.ready = true;
-        }, this);
+  /**
+   * @return {void}
+   */
+  create() {},
 
-        // line up all the reasources waiting for being preloaded
-        loadResources(this);
-
-    },
-
-    /**
-     * @return {void}
-     */
-    create: function() {
-
-    },
-
-    /**
-     * @return {void}
-     */
-    update: function() {
-        if (this.ready) {
-            this.game.state.start('game');
-        }
+  /**
+   * @return {void}
+   */
+  update() {
+    if (this.ready) {
+      this.game.state.start('game');
     }
-
+  },
 };
 
 export default Preloader;

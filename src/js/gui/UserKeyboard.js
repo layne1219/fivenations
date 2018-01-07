@@ -1,3 +1,5 @@
+/* global Phaser */
+/* eslint class-methods-use-this: 0 */
 import Util from '../common/Util';
 
 let dispatcher;
@@ -5,72 +7,69 @@ let cursors;
 let phaserGame;
 let singleton;
 
-function UserKeyboard() {
-    init.call(this);
-    registerEventListeners.call(this);
-}
+class UserKeyboard {
+  constructor() {
+    this.init();
+    this.registerEventListeners();
+  }
 
-function init() {
+  init() {
     dispatcher = new Util.EventDispatcher();
     cursors = phaserGame.input.keyboard.createCursorKeys();
-}
+  }
 
-function registerEventListeners() {
-
+  registerEventListeners() {
     // Delete
-    var keyDelete = phaserGame.input.keyboard.addKey(Phaser.Keyboard.DELETE);
-    keyDelete.onDown.add(function(){ dispatcher.dispatch('key/delete'); });
+    const keyDelete = phaserGame.input.keyboard.addKey(Phaser.Keyboard.DELETE);
+    keyDelete.onDown.add(() => {
+      dispatcher.dispatch('key/delete');
+    });
+  }
 
-}
+  update() {
+    this.listenToCursorKeys();
+  }
 
-function listenToCursorKeys() {
+  listenToCursorKeys() {
     if (cursors.up.isDown) {
-        dispatcher.dispatch('cursor/up');
+      dispatcher.dispatch('cursor/up');
     } else if (cursors.down.isDown) {
-        dispatcher.dispatch('cursor/down');
+      dispatcher.dispatch('cursor/down');
     }
 
     if (cursors.left.isDown) {
-        dispatcher.dispatch('cursor/left');
+      dispatcher.dispatch('cursor/left');
     } else if (cursors.right.isDown) {
-        dispatcher.dispatch('cursor/right');
+      dispatcher.dispatch('cursor/right');
     }
+  }
+
+  reset() {
+    dispatcher.reset();
+  }
+
+  on(event, callback) {
+    dispatcher.addEventListener(event, callback);
+    return this;
+  }
+
+  isDown(keyCode) {
+    return phaserGame.input.keyboard.isDown(keyCode);
+  }
 }
 
-UserKeyboard.prototype = {
-
-    on: function(event, callback) {
-        dispatcher.addEventListener(event, callback);
-        return this;
-    },
-
-    isDown: function(keyCode) {
-        return phaserGame.input.keyboard.isDown(keyCode);
-    },
-
-    update: function() {
-        listenToCursorKeys();
-    },
-
-    reset: function() {
-        dispatcher.reset();
-    }
-};
-
 export default {
+  setGame(game) {
+    phaserGame = game;
+  },
 
-    setGame: function(game) {
-        phaserGame = game;
-    },
-
-    getInstance: function(forceNewInstance) {
-        if (!phaserGame) {
-            throw 'Invoke setGame first to pass the Phaser Game entity!';
-        }
-        if (!singleton || forceNewInstance) {
-            singleton = new UserKeyboard();
-        }
-        return singleton;
+  getInstance(forceNewInstance) {
+    if (!phaserGame) {
+      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
-
+    if (!singleton || forceNewInstance) {
+      singleton = new UserKeyboard();
+    }
+    return singleton;
+  },
 };

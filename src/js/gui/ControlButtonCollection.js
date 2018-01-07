@@ -6,8 +6,9 @@ import AttackButtonLogic from './AttackButton';
 import FollowButtonLogic from './FollowButton';
 import DockButtonLogic from './DockButton';
 import UndockButtonLogic from './UndockButton';
-    
+
 const abilitiesJSON = require('../../assets/datas/common/abilities.json');
+
 const buttonLogics = {};
 
 buttonLogics[abilitiesJSON.stop] = StopButtonLogic;
@@ -20,19 +21,17 @@ buttonLogics[abilitiesJSON.dock] = DockButtonLogic;
 buttonLogics[abilitiesJSON.undock] = UndockButtonLogic;
 
 export default {
-
-    getLogicByControlButton: function(controlButton) {
-        if (!controlButton) {
-            return;
-        }
-        return this.getLogicById(controlButton.getId());
-    },
-
-    getLogicById: function(id) {
-        if (!buttonLogics[id]) {
-            throw 'There is no ButtonLogic registered to the given Id';
-        }
-        return buttonLogics[id];
+  getLogicByControlButton(controlButton) {
+    if (!controlButton) {
+      throw new Error('invalid ControlButton!');
     }
+    return this.getLogicById(controlButton.getId());
+  },
 
+  getLogicById(id) {
+    if (!buttonLogics[id]) {
+      throw new Error('There is no ButtonLogic registered to the given Id');
+    }
+    return buttonLogics[id];
+  },
 };

@@ -4,27 +4,27 @@ import Weapon from './Weapon';
 import Util from '../../common/Util';
 import { WEAPON_INSTANCE_DELAY } from '../../common/Const';
 
-var cache = {};
+const cache = {};
 
 /**
  * Returns a weapon object by the given Id
- * @param  {integer} id 
+ * @param  {integer} id
  * @return {object} object with attributes of the weapon
  */
 function createWeaponById(id) {
-    let dataSource;
-    if (!cache[id]) {
-        for (var i = weaponsJSON.length - 1; i >= 0; i -= 1) {
-            if (weaponsJSON[i].id !== id) continue;
-            cache[id] = weaponsJSON[i];
-        }
+  let dataSource;
+  if (!cache[id]) {
+    for (let i = weaponsJSON.length - 1; i >= 0; i -= 1) {
+      if (weaponsJSON[i].id !== id) continue;
+      cache[id] = weaponsJSON[i];
     }
-    if (window.editor && localStorage && localStorage.getItem(id)) {
-        dataSource = JSON.parse(localStorage.getItem(id));
-    } else {
-        dataSource = cache[id];
-    }    
-    return new Weapon(dataSource);
+  }
+  if (window.editor && localStorage && localStorage.getItem(id)) {
+    dataSource = JSON.parse(localStorage.getItem(id));
+  } else {
+    dataSource = cache[id];
+  }
+  return new Weapon(dataSource);
 }
 
 /**
@@ -32,215 +32,205 @@ function createWeaponById(id) {
  * @param {[object]} entity [The target entity whose attributes will be tested]
  */
 function WeaponManager(entity) {
-    this.init(entity);
-    this.initWeapons();
+  this.init(entity);
+  this.initWeapons();
 }
 
 WeaponManager.prototype = {
+  /**
+   * Initialising the helper variables of the manager instance
+   * @param  {[object]} entity [Entity instance]
+   * @return {[void]}
+   */
+  init(entity) {
+    this.entity = entity;
+  },
 
-    /**
-     * Initialising the helper variables of the manager instance 
-     * @param  {[object]} entity [Entity instance]
-     * @return {[void]}
-     */
-    init: function(entity) {
-        this.entity = entity;
-    },
+  /**
+   * Initialises the weapon objects according to the DataObject instance
+   * attached to the given entity
+   * @return {void}
+   */
+  initWeapons() {
+    const ids = {};
+    this.weapons = [];
 
-    /**
-     * Initialises the weapon objects according to the DataObject instance
-     * attached to the given entity
-     * @return {void}
-     */
-    initWeapons: function() {
+    this.entity
+      .getDataObject()
+      .getWeapons()
+      .forEach((id) => {
+        if (!id) return;
 
-        const ids = {}; 
-        this.weapons = [];
+        const weapon = createWeaponById(id);
 
-        this.entity
-            .getDataObject()
-            .getWeapons()
-            .forEach(id => {
+        if (!ids[id]) ids[id] = [];
+        ids[id].push(weapon);
 
-                if (!id) return;
-
-                const weapon = createWeaponById(id);
-                
-                if (!ids[id]) ids[id] = [];
-                ids[id].push(weapon);
-
-                if (ids[id].length > 1) {
-                    const instanceDelay = weapon.getInstanceDelay() || WEAPON_INSTANCE_DELAY;
-                    const calculatedInstanceDelay = (ids[id].length - 1) * instanceDelay;
-                    // shift release time with instance delay
-                    weapon.setInstanceDelay(calculatedInstanceDelay);
-                    // shift cooldown according to the number of identical weapons
-                    ids[id].forEach(weaponToAdjust => {
-                        if (weaponToAdjust === weapon) return;
-                        weaponToAdjust.increaseCooldown(instanceDelay);
-                    });
-                }
-
-                weapon.setManager(this);
-                this.weapons.push(weapon);
-
-            });
-
-    },
-
-    /**
-     * updates weapons on every tick if needed
-     * @param {boolean} authoritative Determines whether the user is authoritative or not
-     * @return {void}
-     */
-    update: function(authoritative) {
-        // non authoritative players don't need to exectue these'
-        if (!authoritative) return;
-
-        this.weapons.forEach(function(weapon) {
-            weapon.update();
-        });
-    },
-
-    /**
-     * Resets the targets of the weapons
-     * @return {void}
-     **/
-    clearTargetEntity: function() {
-        this.weapons.forEach(function(weapon) {
-            weapon.clearTargetEntity();
-        });
-        this.targetEntityWillBeSet = false;
-    },
-
-    /**
-     * Sets the target for all the weapon to the given entity
-     * @param {object} targetEntity Entity instance 
-     * @return {void}
-     */
-    setTargetEntity: function(targetEntity) {
-        this.weapons.filter(function(weapon) {
-            return !weapon.isSelfContained();
-        })
-        .forEach(function(weapon) {
-            weapon.setTargetEntity(targetEntity);
-        });
-    },
-
-    /**
-     * Returns a boolean that indicates whether the entity has a target entity
-     * @return {boolean}
-     */
-    hasTargetEntity: function() {
-        for (var i = 0, l = this.weapons.length - 1; i < l; i += 1) {
-            if (this.weapons[i].isSelfContained()) continue;
-            if (this.weapons[i].getTargetEntity()) return true;
+        if (ids[id].length > 1) {
+          const instanceDelay =
+            weapon.getInstanceDelay() || WEAPON_INSTANCE_DELAY;
+          const calculatedInstanceDelay = (ids[id].length - 1) * instanceDelay;
+          // shift release time with instance delay
+          weapon.setInstanceDelay(calculatedInstanceDelay);
+          // shift cooldown according to the number of identical weapons
+          ids[id].forEach((weaponToAdjust) => {
+            if (weaponToAdjust === weapon) return;
+            weaponToAdjust.increaseCooldown(instanceDelay);
+          });
         }
-        return false;
-    },
 
-    /**
-     * Returning an array of IDs each of representing a weapon
-     * @return {array} A collection of weapons the entity is in a possesion of
-     */
-    getWeapons: function() {
-        return this.weapons;
-    },
+        weapon.setManager(this);
+        this.weapons.push(weapon);
+      });
+  },
 
-    /**
-     * Returns the entity possessing this very instance
-     * @return {object} an entity instance
-     */
-    getEntity: function() {
-        return this.entity;
-    },
+  /**
+   * updates weapons on every tick if needed
+   * @param {boolean} authoritative Determines whether the user is authoritative or not
+   * @return {void}
+   */
+  update(authoritative) {
+    // non authoritative players don't need to exectue these'
+    if (!authoritative) return;
 
-    /**
-     * Returns an array of weapon instances that can execute their attached fire logic
-     * with relation to the given target entity
-     * @param {object} target Entity instance
-     * @return {array} list of weapon instances the can fire the target
-     */
-    getWeaponsCanFireEntity: function(target) {
-        if (!target) return [];
-        var distance = Util.distanceBetween(this.entity, target);
-        return this.weapons.filter(function(weapon) {
-            return weapon.isReady() && weapon.getRange() >= distance;
-        });
-    },
+    this.weapons.forEach((weapon) => {
+      weapon.update();
+    });
+  },
 
-    /**
-     * Returns the range the entity must close on the target
-     * in order to make all weapons able to fire
-     * @return {integer} the calcualted range in pixels 
-     */
-    getMinRange: function() {
-        if (!this.minRange) {
-            this.minRange = this.weapons.reduce(function(min, weapon) {
-                var range;
-                // self contained weapons don't participate in this calculations
-                if (weapon.isSelfContained()) return min;
+  /**
+   * Resets the targets of the weapons
+   * @return {void}
+   * */
+  clearTargetEntity() {
+    this.weapons.forEach((weapon) => {
+      weapon.clearTargetEntity();
+    });
+    this.targetEntityWillBeSet = false;
+  },
 
-                if (!weapon.isOffensive()) return min;
+  /**
+   * Sets the target for all the weapon to the given entity
+   * @param {object} targetEntity Entity instance
+   * @return {void}
+   */
+  setTargetEntity(targetEntity) {
+    this.weapons.filter(weapon => !weapon.isSelfContained()).forEach((weapon) => {
+      weapon.setTargetEntity(targetEntity);
+    });
+  },
 
-                range = weapon.getRange();
-                if (range < min) return range;
+  /**
+   * Returns a boolean that indicates whether the entity has a target entity
+   * @return {boolean}
+   */
+  hasTargetEntity() {
+    for (let i = 0, l = this.weapons.length - 1; i < l; i += 1) {
+      if (this.weapons[i].isSelfContained()) continue;
+      if (this.weapons[i].getTargetEntity()) return true;
+    }
+    return false;
+  },
 
-                return min; 
-            }, 9999);
+  /**
+   * Returning an array of IDs each of representing a weapon
+   * @return {array} A collection of weapons the entity is in a possesion of
+   */
+  getWeapons() {
+    return this.weapons;
+  },
+
+  /**
+   * Returns the entity possessing this very instance
+   * @return {object} an entity instance
+   */
+  getEntity() {
+    return this.entity;
+  },
+
+  /**
+   * Returns an array of weapon instances that can execute their attached fire logic
+   * with relation to the given target entity
+   * @param {object} target Entity instance
+   * @return {array} list of weapon instances the can fire the target
+   */
+  getWeaponsCanFireEntity(target) {
+    if (!target) return [];
+    const distance = Util.distanceBetween(this.entity, target);
+    return this.weapons.filter(weapon => weapon.isReady() && weapon.getRange() >= distance);
+  },
+
+  /**
+   * Returns the range the entity must close on the target
+   * in order to make all weapons able to fire
+   * @return {integer} the calcualted range in pixels
+   */
+  getMinRange() {
+    if (!this.minRange) {
+      this.minRange = this.weapons.reduce((min, weapon) => {
+        let range;
+        // self contained weapons don't participate in this calculations
+        if (weapon.isSelfContained()) return min;
+
+        if (!weapon.isOffensive()) return min;
+
+        range = weapon.getRange();
+        if (range < min) return range;
+
+        return min;
+      }, 9999);
+    }
+    return this.minRange;
+  },
+
+  /**
+   * Returns the range the entity must close on the target
+   * in order to make all weapons able to fire
+   * @return {integer} the calcualted range in pixels
+   */
+  getMaxRange() {
+    if (!this.maxRange) {
+      this.maxRange = this.weapons.reduce((max, weapon) => {
+        const range = weapon.getRange();
+        if (range > max) return range;
+        return max;
+      }, 0);
+    }
+    return this.maxRange;
+  },
+
+  /**
+   * Returns whether the entity has any sort of weapon that can damage a hostile enemy
+   * @return {boolean}
+   */
+  hasOffensiveWeapon() {
+    if (this.hasOffensiveWeapon === undefined) {
+      for (let i = this.weapons.length - 1; i >= 0; i -= 1) {
+        if (this.weapons[i].isOffensive()) {
+          this.hasOffensiveWeapon = true;
+          break;
         }
-        return this.minRange;
-    },
+      }
+    }
+    return this.hasOffensiveWeapon;
+  },
 
-    /**
-     * Returns the range the entity must close on the target
-     * in order to make all weapons able to fire
-     * @return {integer} the calcualted range in pixels 
-     */
-    getMaxRange: function() {
-        if (!this.maxRange) {
-            this.maxRange = this.weapons.reduce(function(max, weapon) {
-                var range = weapon.getRange();
-                if (range > max) return range;
-                return max; 
-            }, 0);
-        }
-        return this.maxRange;
-    },
-
-    /**
-     * Returns whether the entity has any sort of weapon that can damage a hostile enemy
-     * @return {boolean} 
-     */
-    hasOffensiveWeapon: function() {
-        if (this.hasOffensiveWeapon === undefined) {
-            for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
-                if (this.weapons[i].isOffensive()) {
-                    this.hasOffensiveWeapon = true;
-                    break;
-                }
-            }
-        }
-        return this.hasOffensiveWeapon;
-    },
-
-    /**
-     * Returns whether the entity has any weapon with the given id
-     * @return {Boolean}
-     */
-    hasWeapon: function(id) {
-        if (!id) return false;
-        for (var i = this.weapons.length - 1; i >= 0; i -= 1) {
-            if (this.weapons[i].getId() === id) {
-                return true;
-            }
-        }
-        return false;
-    }        
+  /**
+   * Returns whether the entity has any weapon with the given id
+   * @return {Boolean}
+   */
+  hasWeapon(id) {
+    if (!id) return false;
+    for (let i = this.weapons.length - 1; i >= 0; i -= 1) {
+      if (this.weapons[i].getId() === id) {
+        return true;
+      }
+    }
+    return false;
+  },
 };
 
 // exposes Constant like ID variables
 WeaponManager.WEAPON_DOCK = 6;
 
 export default WeaponManager;
-

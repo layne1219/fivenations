@@ -1,9 +1,10 @@
+/* global window */
 import Event from './Event';
+
 const ns = window.fivenations;
 
-function EntityDamage() {
-    var args = [].slice.call(arguments);
-    Event.apply(this, args);
+function EntityDamage(...args) {
+  Event.apply(this, args);
 }
 
 EntityDamage.prototype = Object.create(Event.prototype);
@@ -15,17 +16,17 @@ EntityDamage.prototype.constructor = EntityDamage;
  * @return {void}
  * @example
  */
-EntityDamage.prototype.execute = function(options) {
-    if (!options.targets || !options.data) {
-        return;
-    }
-    options.targets.forEach(function(id) {
-        var entity = ns.game.entityManager.entities(id);
-        
-        if (!entity) return;
+EntityDamage.prototype.execute = (options) => {
+  if (!options.targets || !options.data) {
+    return;
+  }
+  options.targets.forEach((id) => {
+    const entity = ns.game.entityManager.entities(id);
 
-        entity.damage(options.data);
-    });
+    if (!entity) return;
+
+    entity.damage(options.data);
+  });
 };
 
 export default EntityDamage;

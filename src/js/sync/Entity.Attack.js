@@ -1,9 +1,10 @@
+/* global window */
 import Event from './Event';
+
 const ns = window.fivenations;
 
-function EntityAttack() {
-    var args = [].slice.call(arguments);
-    Event.apply(this, args);
+function EntityAttack(...args) {
+  Event.apply(this, args);
 }
 
 EntityAttack.prototype = Object.create(Event.prototype);
@@ -15,19 +16,19 @@ EntityAttack.prototype.constructor = EntityAttack;
  * @return {void}
  * @example
  */
-EntityAttack.prototype.execute = function(options) {
-    if (!options.targets || !options.data) {
-        return;
+EntityAttack.prototype.execute = (options) => {
+  if (!options.targets || !options.data) {
+    return;
+  }
+  const addAsLast = options.data.addAsLast || false;
+  options.targets.forEach((id) => {
+    const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
+    const entity = ns.game.entityManager.entities(id);
+    if (options.resetActivityQueue) {
+      entity.reset();
     }
-    const addAsLast = options.data.addAsLast || false;
-    options.targets.forEach(function(id) {
-        var targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
-        var entity = ns.game.entityManager.entities(id);
-        if (options.resetActivityQueue) {
-            entity.reset();    
-        }
-        entity.attack(targetEntity, addAsLast);
-    });
+    entity.attack(targetEntity, addAsLast);
+  });
 };
 
 export default EntityAttack;

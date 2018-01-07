@@ -2,8 +2,8 @@
   "id": "stgeorge",
   "name": "St. George",
   "type": "Carrier",
-  "hull": 1000,
-  "shield": 500,
+  "hull": 1200,
+  "shield": 600,
   "armor": 5,
   "power": 0,
   "hangar": 30,
@@ -36,7 +36,6 @@
   "hasJetEngine": true,
   "size": "l",
   "sizeOffset": {
-
     "w": 45,
     "h": 45
   },
@@ -190,5 +189,9 @@
         "fed-wreck-5"
       ]
     }
+  },
+  "damageArea": {
+    "width": 90,
+    "height": 90
   }
 }

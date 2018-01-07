@@ -12,8 +12,8 @@
   "vision": 2,
   "weapons": [
     1,
+    1,
     9,
-    0,
     0,
     0,
     0,
@@ -189,5 +189,9 @@
         "fed-wreck-5"
       ]
     }
+  },
+  "damageArea": {
+    "width": 70,
+    "height": 70
   }
 }

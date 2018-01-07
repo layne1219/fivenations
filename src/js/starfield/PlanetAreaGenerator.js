@@ -2,33 +2,27 @@ import CloudGenerator from './CloudGenerator';
 import PlanetGenerator from './PlanetGenerator';
 import SpaceObjectGenerator from './SpaceObjectGenerator';
 
-function PlanetAreaGenerator(deepSpaceLayer) {
-    SpaceObjectGenerator.call(this, deepSpaceLayer);
-}
-
-PlanetAreaGenerator.prototype = Object.create(SpaceObjectGenerator.prototype);
-PlanetAreaGenerator.prototype.constructor = PlanetAreaGenerator;
-
-PlanetAreaGenerator.prototype.generate = function() {
-    SpaceObjectGenerator.prototype.generate.call(this);
+class PlanetAreaGenerator extends SpaceObjectGenerator {
+  generate() {
     this.createPlanet();
     this.createClouds();
-}
+  }
 
-PlanetAreaGenerator.prototype.createPlanet = function() {
-    var generator = new PlanetGenerator(this.deepSpaceLayer);
+  createPlanet() {
+    const generator = new PlanetGenerator(this.deepSpaceLayer);
     generator.generate();
-    generator.getSpaceObjects().forEach(function(obj){
-        this.addSpaceObject(obj);
-    }.bind(this));
-};
+    generator.getSpaceObjects().forEach((obj) => {
+      this.addSpaceObject(obj);
+    });
+  }
 
-PlanetAreaGenerator.prototype.createClouds = function() {
-    var generator = new CloudGenerator(this.deepSpaceLayer);
+  createClouds() {
+    const generator = new CloudGenerator(this.deepSpaceLayer);
     generator.generate(0.25);
-    generator.getSpaceObjects().forEach(function(obj){
-        this.addSpaceObject(obj);
-    }.bind(this));
+    generator.getSpaceObjects().forEach((obj) => {
+      this.addSpaceObject(obj);
+    });
+  }
 }
 
 export default PlanetAreaGenerator;

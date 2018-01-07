@@ -3,59 +3,56 @@ import Graphics from '../common/Graphics';
 const SPRITE_WIDTH = 234;
 
 export default class ColorIndicator {
+  constructor(phaserGame) {
+    this.game = phaserGame;
+  }
 
-    constructor(phaserGame) {
-        this.game = phaserGame; 
-    }    
+  appendTo(entity) {
+    this.sprite = this.createSpriteByParent(entity);
 
-    appendTo(entity) {
+    // Add the selection to the appropriate graphics group as per its type
+    const groupName = 'color-indicators';
+    Graphics.getInstance()
+      .getGroup(groupName)
+      .add(this.sprite);
 
-        var groupName;
+    entity.on('remove', this.remove.bind(this));
+    entity.on('hibernate', this.hide.bind(this));
+    entity.on('reactivated', this.show.bind(this));
 
-        this.sprite = this.createSpriteByParent(entity);
+    // the sprite is not a child of the entity for various overlapping issues
+    // therefore it needs to follow it upon every tick
+    this.sprite.update = function update() {
+      this.x = entity.getSprite().x;
+      this.y = entity.getSprite().y;
+    };
 
-        // Add the selection to the appropriate graphics group as per its type
-        groupName = 'color-indicators';
-        Graphics.getInstance().getGroup(groupName).add(this.sprite);
+    this.parent = entity;
+  }
 
-        entity.on('remove', this.remove.bind(this));
-        entity.on('hibernate', this.hide.bind(this));
-        entity.on('reactivated', this.show.bind(this));
+  createSpriteByParent(entity) {
+    const team = entity.getPlayer().getTeam();
+    const width = entity.getDataObject().getWidth();
+    const ratio = width / SPRITE_WIDTH * 1.75;
+    const sprite = this.game.add.image(0, 0, 'color-indicator');
 
-        // the sprite is not a child of the entity for various overlapping issues
-        // therefore it needs to follow it upon every tick 
-        this.sprite.update = function() {
-            this.x = entity.getSprite().x;
-            this.y = entity.getSprite().y;
-        };
+    sprite.visible = true;
+    sprite.anchor.setTo(0.5, 0.5);
+    sprite.scale.setTo(ratio, ratio);
+    sprite.frame = team - 1;
 
-        this.parent = entity;
-    }
+    return sprite;
+  }
 
-    createSpriteByParent(entity) {
-        const team = entity.getPlayer().getTeam();
-        const width = entity.getDataObject().getWidth();
-        const ratio = width / SPRITE_WIDTH * 1.75;
-        const sprite = this.game.add.image(0, 0, 'color-indicator');
+  show() {
+    this.sprite.visible = true;
+  }
 
-        sprite.visible = true;
-        sprite.anchor.setTo(0.5, 0.5);
-        sprite.scale.setTo(ratio, ratio);
-        sprite.frame = team - 1;
-        
-        return sprite;
-    }
+  hide() {
+    this.sprite.visible = false;
+  }
 
-    show() {
-        this.sprite.visible = true;
-    }
-
-    hide() {
-        this.sprite.visible = false;
-    }
-
-    remove() {
-        this.sprite.destroy(true);
-    }
-
+  remove() {
+    this.sprite.destroy(true);
+  }
 }

@@ -1,9 +1,10 @@
+/* global window */
 import Event from './Event';
+
 const ns = window.fivenations;
 
-function EntityFire() {
-    var args = [].slice.call(arguments);
-    Event.apply(this, args);
+function EntityFire(...args) {
+  Event.apply(this, args);
 }
 
 EntityFire.prototype = Object.create(Event.prototype);
@@ -14,37 +15,36 @@ EntityFire.prototype.constructor = EntityFire;
  * @param {object} [options] [extendable object that presents event details]
  * @return {void}
  */
-EntityFire.prototype.execute = function(options) {
-    if (!options.targets || !options.data) {
-        return;
-    }
-    var entity;
-    var targetEntity;
-    var weapons;
+EntityFire.prototype.execute = (options) => {
+  if (!options.targets || !options.data) {
+    return;
+  }
 
-    options.targets.forEach(function(id, idx) {
-        entity = ns.game.entityManager.entities(id);
-        targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
-        
-        if (!entity || !targetEntity) return;
-        if (!options.data.weaponGUIDs[idx]) return;
+  options.targets.forEach((id, idx) => {
+    const entity = ns.game.entityManager.entities(id);
+    const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
 
-        weapons = entity.getWeaponManager().getWeapons().filter(function(weapon) {
-            for (var i = options.data.weaponGUIDs[idx].length - 1; i >= 0; i -= 1) {
-                if (options.data.weaponGUIDs[idx][i] === weapon.getGUID()) {
-                    return true;
-                }   
-            }
-            return false;
-        });
+    if (!entity || !targetEntity) return;
+    if (!options.data.weaponGUIDs[idx]) return;
 
-        if (options.resetActivityQueue) {
-            entity.reset();    
+    const weapons = entity
+      .getWeaponManager()
+      .getWeapons()
+      .filter((weapon) => {
+        for (let i = options.data.weaponGUIDs[idx].length - 1; i >= 0; i -= 1) {
+          if (options.data.weaponGUIDs[idx][i] === weapon.getGUID()) {
+            return true;
+          }
         }
+        return false;
+      });
 
-        entity.fire(targetEntity, weapons);
+    if (options.resetActivityQueue) {
+      entity.reset();
+    }
 
-    }); 
+    entity.fire(targetEntity, weapons);
+  });
 };
 
 export default EntityFire;

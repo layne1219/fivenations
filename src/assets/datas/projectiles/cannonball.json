@@ -1,22 +1,38 @@
 {
-    "id": "cannonball",
-    "targetGraphicsGroup": "projectiles",
-    "size": "xsm",
-    "ttl": 200,
-    "animations": {
-        "idle": {
-            "rate": 20,
-            "loopable": true,
-            "frames": [4, 5, 6, 7, 8, 9, 10, 11]
-        }
-    },    
-    "events": {
-        "remove": {
-            "effects": ["blow-2"]
-        },
-        "collision": {
-            "damageTarget": true,
-            "removeEffect": true
-        }        
+  "id": "cannonball",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 200,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
     }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-yellow"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true
+    }
+  }
 }

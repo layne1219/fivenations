@@ -1,134 +1,124 @@
 import Player from './Player';
+import { PLAYER_MANAGER_COLORS } from '../common/Const';
 
-var colors = [
-    '0x08A2EA',
-    '0x10B308',
-    '0xF28209',
-    '0xBA10D9',
-    '0xD40F0F',
-    '0xF8F8F9',
-    '0xE5C410',
-    '0x65615D'
-];
+let players = [];
 
-var players = [];
+const singleton = {
+  /**
+   * Resets the collection of active players
+   * @return {void}
+   */
+  reset() {
+    players = [];
+  },
 
-var singleton = {
-
-    /**
-     * Resets the collection of active players 
-     * @return {void}
-     */
-    reset: function() {
-        players = [];
-    },
-
-    /**
-     * adds a new player to the collective according to the given configurations
-     * @param {object} config Configuration object 
-     * @return {void}
-     */
-    addPlayer: function(config) {
-        if (!config) throw 'Invalid configuration for constructing a Player instance!';
-        players.push(new Player(config));
-    },
-
-    /**
-     * returns an array of the registered players 
-     * @return {array}
-     */
-    getPlayers: function() {
-        return players;
-    },
-
-    /**
-     * returns the player that is controlled by the current user
-     * @return {object} Player instance
-     */
-    getUser: function() {
-        for (var i = players.length - 1; i >= 0; i -= 1) {
-            if (players[i].isControlledByUser()) {
-                return players[i];
-            }
-        }
-        return false;
-    },
-
-    /**
-     * returns a player by the given guid
-     * @return {object} Player instance
-     */
-    getPlayerByGUID: function(guid) {
-        if (!guid) throw 'First parameter must be a valid guid!';
-        for (var i = players.length - 1; i >= 0; i -= 1) {
-            if (players[i].getGUID() === guid) {
-                return players[i];
-            }
-        }
-    },
-
-    /**
-     * returns a player by the given team number
-     * @return {object} Player instance
-     */
-    getPlayerByTeam: function(team) {
-        if (!team) throw 'First parameter must be a valid Team Id!';
-        for (var i = players.length - 1; i >= 0; i -= 1) {
-            if (players[i].getTeam() === team) {
-                return players[i];
-            }
-        }
-    },                    
-
-    /**
-     * returns the number of active players
-     * @return {integer}
-     */
-    getPlayersNumber: function() {
-        return players.length;
-    },
-
-    /**
-     * Returns the collection of color codes for players
-     * @return {array}
-     */
-    getColors: function() {
-        return colors;
-    },
-
-    /**
-     * Returns whether the given players are hostile to each other
-     * @param {object} Player instance
-     * @param {boject} Player instance
-     * @return {boolean}
-     */
-    isPlayerHostileToPlayer: function(a, b) {
-        if (a.isIndependent() || b.isIndependent()) return false;
-        return a.getTeam() !== b.getTeam();
-    },
-    
-    /**
-     * Returns whether the given players are hostile to each other
-     * @param {object} Entity instance
-     * @param {boject} Player instance
-     * @return {boolean}
-     */
-    isEntityHostileToPlayer: function(entity, player) {
-        return this.isPlayerHostileToPlayer(player, entity.getPlayer())
+  /**
+   * adds a new player to the collective according to the given configurations
+   * @param {object} config Configuration object
+   * @return {void}
+   */
+  addPlayer(config) {
+    if (!config) {
+      throw new Error('Invalid configuration for constructing a Player instance!');
     }
+    players.push(new Player(config));
+  },
 
+  /**
+   * returns an array of the registered players
+   * @return {array}
+   */
+  getPlayers() {
+    return players;
+  },
+
+  /**
+   * returns the player that is controlled by the current user
+   * @return {object} Player instance
+   */
+  getUser() {
+    for (let i = players.length - 1; i >= 0; i -= 1) {
+      if (players[i].isControlledByUser()) {
+        return players[i];
+      }
+    }
+    return false;
+  },
+
+  /**
+   * returns a player by the given guid
+   * @return {object} Player instance
+   */
+  getPlayerByGUID(guid) {
+    if (!guid) throw new Error('First parameter must be a valid guid!');
+    for (let i = players.length - 1; i >= 0; i -= 1) {
+      if (players[i].getGUID() === guid) {
+        return players[i];
+      }
+    }
+    return null;
+  },
+
+  /**
+   * returns a player by the given team number
+   * @return {object} Player instance
+   */
+  getPlayerByTeam(team) {
+    if (!team) throw new Error('First parameter must be a valid Team Id!');
+    for (let i = players.length - 1; i >= 0; i -= 1) {
+      if (players[i].getTeam() === team) {
+        return players[i];
+      }
+    }
+    return null;
+  },
+
+  /**
+   * returns the number of active players
+   * @return {integer}
+   */
+  getPlayersNumber() {
+    return players.length;
+  },
+
+  /**
+   * Returns the collection of color codes for players
+   * @return {array}
+   */
+  getColors() {
+    return PLAYER_MANAGER_COLORS;
+  },
+
+  /**
+   * Returns whether the given players are hostile to each other
+   * @param {object} Player instance
+   * @param {boject} Player instance
+   * @return {boolean}
+   */
+  isPlayerHostileToPlayer(a, b) {
+    if (a.isIndependent() || b.isIndependent()) return false;
+    return a.getTeam() !== b.getTeam();
+  },
+
+  /**
+   * Returns whether the given players are hostile to each other
+   * @param {object} Entity instance
+   * @param {boject} Player instance
+   * @return {boolean}
+   */
+  isEntityHostileToPlayer(entity, player) {
+    return this.isPlayerHostileToPlayer(player, entity.getPlayer());
+  },
 };
 
 export default {
-
-    /**
-     * Returns singleton instance of PlayerManager
-     * @param  {boolean} reset
-     * @return {object}
-     */
-    getInstance: function(reset) {
-        if (reset) singleton.reset();
-        return singleton;
-    }
-
+  /**
+   * Returns singleton instance of PlayerManager
+   * @param  {boolean} reset
+   * @return {object}
+   */
+  getInstance(reset) {
+    if (reset) singleton.reset();
+    return singleton;
+  },
 };

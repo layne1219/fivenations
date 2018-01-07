@@ -13,10 +13,10 @@ function resolveApp(relativePath) {
 module.exports = {
   appBuild: resolveApp('build'),
   appLib: resolveApp('lib'),
-  appIndexJs: resolveApp('src/js/browser-connector.js'),
+  appIndexJs: resolveApp('src/js/bootstraper.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),
   appNodeModules: resolveApp('node_modules'),
-  publicUrl: process.env.S3_PUBLIC_URL || ''
+  publicUrl: process.env.S3_PUBLIC_URL || '',
 };
