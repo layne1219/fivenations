@@ -4,6 +4,7 @@ import Entities from '../preloader/Entities';
 import Wreckages from '../preloader/Wreckages';
 import Effects from '../preloader/Effects';
 import Projectiles from '../preloader/Projectiles';
+import Audio from '../preloader/Audio';
 
 let background;
 let bar;
@@ -20,6 +21,7 @@ function loadResources(preloader) {
   Wreckages.load(preloader);
   Effects.load(preloader);
   Projectiles.load(preloader);
+  Audio.load(preloader);
 }
 
 /**
