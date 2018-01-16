@@ -3,6 +3,8 @@ import { DEFAULT_FONT, DEFAULT_TOOLTIP_PADDING } from '../common/Const';
 
 const ns = window.fivenations;
 const phaserGameFromGlobalScope = ns.game.game;
+// reference for a tooltip instance that can be reused
+let tooltip;
 
 /**
  * Generic Tooltip implementation that can be used in conjuntion with
@@ -71,13 +73,22 @@ class Tooltip extends Phaser.Group {
  */
 function Tooltipify(options, phaserGame = phaserGameFromGlobalScope) {
   const { target, label } = options;
-  const tooltip = new Tooltip(phaserGame);
+  // lazy instantiation
+  if (!tooltip) {
+    tooltip = new Tooltip(phaserGame);
+  }
   target.add(tooltip);
   target.on('over', (item) => {
+    const labelValue = typeof label === 'function' ? label() : label;
+
+    if (!item.visible) return;
+    if (!labelValue.toString().length) return;
+
     tooltip.x = item.x + DEFAULT_TOOLTIP_PADDING.x;
     tooltip.y = item.y - tooltip.height + DEFAULT_TOOLTIP_PADDING.y;
     tooltip.visible = true;
-    tooltip.updateContent(label);
+
+    tooltip.updateContent(labelValue);
   });
   target.on('out', () => {
     tooltip.visible = false;
