@@ -1,5 +1,6 @@
 /* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
+import { Tooltipify } from './Tooltip';
 
 const PADDING_ONCLICK = 2;
 const TRANSPARENCY_ONLICK = 0.75;
@@ -9,7 +10,7 @@ const ns = window.fivenations;
 
 class ControlButton extends Phaser.Sprite {
   /**
-   * Constructing an a ControlPanelPage that consists the clickable command buttons
+   * Returns an a ControlPanelPage that consists the clickable command buttons
    * @return {object} [ControlPanelPage]
    */
   constructor(entityManager) {
@@ -23,11 +24,13 @@ class ControlButton extends Phaser.Sprite {
 
     // activating custom behaviour upon click
     this.addBehaviour();
+
+    // Attach Tooltip to the button
+    this.addTooltip();
   }
 
   /**
-   * Adding the Sprite object to the Game stage
-   * @return {void}
+   * Adds the Sprite object to the Game stage
    */
   init(entityManager) {
     ns.game.add.existing(this);
@@ -36,8 +39,7 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * Adding all the default event listeners
-   * @return {[void]}
+   * Adds all the default event listeners
    */
   addEventListeners() {
     this.events.onInputDown.add(() => {
@@ -51,8 +53,7 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * Add event listeners to the ControlButton
-   * @param {[type]} button [description]
+   * Adds event listeners to the ControlButton
    */
   addBehaviour() {
     this.events.onInputUp.add(() => {
@@ -65,8 +66,17 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * Execute the logic corresponding to the control button being clicked
-   * @return {[void]}
+   * Attaches a Tooltip instance to the button
+   */
+  addTooltip() {
+    Tooltipify({
+      target: this,
+      label: () => this.getId(),
+    });
+  }
+
+  /**
+   * Executes the logic corresponding to the control button being clicked
    */
   activate() {
     const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
@@ -81,7 +91,6 @@ class ControlButton extends Phaser.Sprite {
 
   /**
    * No-op function for inheritance
-   * @return {[void]}
    */
   deactivate() {
     const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
@@ -95,7 +104,6 @@ class ControlButton extends Phaser.Sprite {
 
   /**
    * Setting the ID of the button which determines what the click callback will do
-   * @return {void}
    */
   setId(id) {
     this.frame = id;
@@ -105,8 +113,8 @@ class ControlButton extends Phaser.Sprite {
 
   /**
    * Set the coordinates of the sprite instance
-   * @param {[type]} x [horizontal padding on the control page]
-   * @param {[type]} y [vertical padding on the control page]
+   * @param {number} x [horizontal padding on the control page]
+   * @param {number} y [vertical padding on the control page]
    */
   setCoords(x, y) {
     this.x = x;

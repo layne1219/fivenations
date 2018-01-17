@@ -36,6 +36,8 @@ export const GROUP_EFFECTS = 'effects';
 export const GROUP_ENTITIES = 'entities';
 export const GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
 export const GROUP_FOGOFWAR = 'fogofwar';
+export const GROUP_GUI = 'gui';
+export const GROUP_TOOLTIPS = 'tooltips';
 
 // Starfield
 export const DEFAULT_STARFIELD_BACKGROUND_TILE = 'starfield-1';
@@ -78,8 +80,8 @@ export const DEFAULT_FONT = {
 
 // Tooltip default padding coordinates
 export const DEFAULT_TOOLTIP_PADDING = {
-  x: 20,
-  y: 5,
+  x: 10,
+  y: -20,
 };
 
 // Generic GUI Button

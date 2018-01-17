@@ -44,7 +44,7 @@ class AudioManager {
         marker,
         data.start,
         data.duration,
-        data.volume,
+        data.volume || 1,
         data.loop,
       );
     });
@@ -68,9 +68,10 @@ class AudioManager {
    * @param {object} options - details of event dispatching
    */
   bindListener(emitter, event, options) {
-    const defaultCallback = () => this.playAudioSprite(options);
+    const defaultCallback = audioManager =>
+      audioManager.playAudioSprite(options);
     const callback = options.callback || defaultCallback;
-    emitter.addEventListeners(event, callback.bind(this));
+    emitter.addEventListeners(event, callback.bind(null, this));
   }
 
   /**
@@ -79,9 +80,9 @@ class AudioManager {
    * @param {object} options - details of the playback
    */
   playAudioSprite(options) {
-    const { key, marker } = options;
-    if (!audioSprites[key]) return;
-    audioSprites[key].play(marker);
+    const { sprite, marker } = options;
+    if (!audioSprites[sprite]) return;
+    audioSprites[sprite].play(marker);
   }
 }
 

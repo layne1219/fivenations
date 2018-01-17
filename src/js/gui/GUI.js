@@ -1,3 +1,5 @@
+import Graphics from '../common/Graphics';
+import { GROUP_GUI } from '../common/Const';
 import Selector from './Selector';
 import ColorIndicator from './ColorIndicator';
 import StatusDisplay from './StatusDisplay';
@@ -62,8 +64,7 @@ let resourceDisplay;
 let clickAnim;
 
 function initPhaserGroup() {
-  group = phaserGame.add.group();
-  phaserGame.world.bringToTop(group);
+  group = Graphics.getInstance().getGroup(GROUP_GUI);
 }
 
 /**

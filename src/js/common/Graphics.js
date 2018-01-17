@@ -17,6 +17,8 @@ function createGraphicsInstance() {
     'effects',
     'prior-gui-elements',
     'fogofwar',
+    'gui',
+    'tooltips',
   ];
 
   groupNames.forEach((name) => {

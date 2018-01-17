@@ -1,8 +1,15 @@
 /* global window, Phaser */
-import { DEFAULT_FONT, DEFAULT_TOOLTIP_PADDING } from '../common/Const';
+import Graphics from '../common/Graphics';
+import {
+  DEFAULT_FONT,
+  DEFAULT_TOOLTIP_PADDING,
+  GROUP_TOOLTIPS,
+} from '../common/Const';
 
 const ns = window.fivenations;
-const phaserGameFromGlobalScope = ns.game.game;
+
+// reference for a tooltip instance that can be reused
+let tooltip;
 
 /**
  * Generic Tooltip implementation that can be used in conjuntion with
@@ -36,7 +43,7 @@ class Tooltip extends Phaser.Group {
    */
   initBackgroundSprite(phaserGame) {
     this.background = phaserGame.add.sprite(0, 0, 'gui');
-    this.background.frame = 'XXXgui_descriptionpopup_small.png';
+    this.background.frameName = 'XXXgui_descriptionpopup_small.png';
     this.add(this.background);
   }
 
@@ -44,7 +51,7 @@ class Tooltip extends Phaser.Group {
    * Adds the Text element to the Group
    * @param {object} phaserGame - Phaser.Game instance
    */
-  initTextComponents(phaserGame) {
+  initTextComponent(phaserGame) {
     const marginLeft = 20;
     const marginTop = 15;
 
@@ -64,22 +71,45 @@ class Tooltip extends Phaser.Group {
 }
 
 /**
+ * Creates a Tooltip object and adds it to the Tooltip Graphics Group
+ * @param {object} phaserGame - Phaser.Game object
+ */
+function createTooltip(phaserGame) {
+  const group = Graphics.getInstance().getGroup(GROUP_TOOLTIPS);
+  tooltip = new Tooltip(phaserGame);
+  group.add(tooltip);
+  return tooltip;
+}
+
+/**
  * Attaches tooltip popup to an excisting element on a Phaser stage
  * @param {object} options - object param to specify the behaviour of the tooltip
- * @param {object} phaserGame - if omitted it uses the Phaser.Game object
+ * @param {object} phaserGame - Phaser.Game object
  * through global access
  */
-function Tooltipify(options, phaserGame = phaserGameFromGlobalScope) {
+function Tooltipify(options, phaserGame = ns.game.game) {
   const { target, label } = options;
-  const tooltip = new Tooltip(phaserGame);
-  target.add(tooltip);
-  target.on('over', (item) => {
-    tooltip.x = item.x + DEFAULT_TOOLTIP_PADDING.x;
-    tooltip.y = item.y - tooltip.height + DEFAULT_TOOLTIP_PADDING.y;
+  // lazy instantiation
+  if (!tooltip) {
+    tooltip = createTooltip(phaserGame);
+  }
+  target.events.onInputOver.add((item) => {
+    const labelValue = typeof label === 'function' ? label() : label;
+    const maxOffsetX = ns.window.width - tooltip.width;
+    const maxOffsetY = ns.window.height - tooltip.height;
+    const x = item.world.x + DEFAULT_TOOLTIP_PADDING.x;
+    const y = item.world.y + DEFAULT_TOOLTIP_PADDING.y;
+
+    if (!item.visible) return;
+    if (!labelValue) return;
+
+    tooltip.x = Math.max(Math.min(x, maxOffsetX), 0);
+    tooltip.y = Math.max(Math.min(y, maxOffsetY), 0);
     tooltip.visible = true;
-    tooltip.updateContent(label);
+
+    tooltip.updateContent(labelValue);
   });
-  target.on('out', () => {
+  target.events.onInputOut.add(() => {
     tooltip.visible = false;
   });
 }

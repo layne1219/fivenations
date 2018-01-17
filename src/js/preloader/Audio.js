@@ -1,4 +1,4 @@
-import { Sprites, Preloaded } from '../audio/Sprites';
+import { Sprites, PreloadedSprites } from '../audio/Sprites';
 
 const { PUBLIC_URL } = process.env;
 
@@ -8,7 +8,7 @@ export default {
    * @param {object} preloader - Phaser Preloader object
    */
   load(preloader) {
-    Object.keys(Preloaded).forEach((key) => {
+    PreloadedSprites.forEach((key) => {
       preloader.load.audio(key, `${PUBLIC_URL}/${Sprites[key].asset}`);
     });
   },
