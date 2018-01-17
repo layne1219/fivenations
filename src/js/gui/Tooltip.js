@@ -1,5 +1,10 @@
 /* global window, Phaser */
-import { DEFAULT_FONT, DEFAULT_TOOLTIP_PADDING } from '../common/Const';
+import Graphics from '../common/Graphics';
+import {
+  DEFAULT_FONT,
+  DEFAULT_TOOLTIP_PADDING,
+  GROUP_TOOLTIPS,
+} from '../common/Const';
 
 const ns = window.fivenations;
 const phaserGameFromGlobalScope = ns.game.game;

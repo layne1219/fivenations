@@ -1,5 +1,5 @@
 import Graphics from '../common/Graphics';
-import { GROUP_GUI } from '../Const';
+import { GROUP_GUI } from '../common/Const';
 import Selector from './Selector';
 import ColorIndicator from './ColorIndicator';
 import StatusDisplay from './StatusDisplay';
