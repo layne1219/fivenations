@@ -80,8 +80,8 @@ export const DEFAULT_FONT = {
 
 // Tooltip default padding coordinates
 export const DEFAULT_TOOLTIP_PADDING = {
-  x: 20,
-  y: 5,
+  x: 10,
+  y: -20,
 };
 
 // Generic GUI Button

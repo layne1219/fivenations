@@ -43,7 +43,7 @@ class Tooltip extends Phaser.Group {
    */
   initBackgroundSprite(phaserGame) {
     this.background = phaserGame.add.sprite(0, 0, 'gui');
-    this.background.frame = 'XXXgui_descriptionpopup_small.png';
+    this.background.frameName = 'XXXgui_descriptionpopup_small.png';
     this.add(this.background);
   }
 
@@ -95,12 +95,16 @@ function Tooltipify(options, phaserGame = ns.game.game) {
   }
   target.events.onInputOver.add((item) => {
     const labelValue = typeof label === 'function' ? label() : label;
+    const maxOffsetX = ns.window.width - tooltip.width;
+    const maxOffsetY = ns.window.height - tooltip.height;
+    const x = item.world.x + DEFAULT_TOOLTIP_PADDING.x;
+    const y = item.world.y + DEFAULT_TOOLTIP_PADDING.y;
 
     if (!item.visible) return;
-    if (!labelValue.toString().length) return;
+    if (!labelValue) return;
 
-    tooltip.x = item.x + DEFAULT_TOOLTIP_PADDING.x;
-    tooltip.y = item.y - tooltip.height + DEFAULT_TOOLTIP_PADDING.y;
+    tooltip.x = Math.max(Math.min(x, maxOffsetX), 0);
+    tooltip.y = Math.max(Math.min(y, maxOffsetY), 0);
     tooltip.visible = true;
 
     tooltip.updateContent(labelValue);
