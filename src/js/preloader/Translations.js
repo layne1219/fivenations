@@ -9,7 +9,7 @@ export default {
    */
   load(preloader) {
     SUPPORTED_LOCALES.forEach((key) => {
-      preloader.load.json(key, `${PUBLIC_URL}/translations/${key}.json`);
+      preloader.load.json(key, `${PUBLIC_URL}/assets/translations/${key}.json`);
     });
   },
 };

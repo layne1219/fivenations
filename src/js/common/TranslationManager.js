@@ -12,13 +12,36 @@ let singleton;
  */
 class TranslationManager {
   /**
-   * Loads all translations from Preloder cache
+   * Loads all translations and sets the locale
    */
   constructor() {
+    this.loadLanguageFragments();
+    this.initLocale();
+  }
+
+  /**
+   * Loads all translation fragments from Preloder cache
+   */
+  loadLanguageFragments() {
     this.fragments = {};
     SUPPORTED_LOCALES.forEach((locale) => {
       this.fragments[locale] = phaserGame.cache.getJSON(locale);
     });
+  }
+
+  /**
+   * Fetches the current locale from the browser settings. If it
+   * cannot be found in the supported locales collection it automatically
+   * falls back to the default locale
+   */
+  initLocale() {
+    currentLocale =
+      navigator.languages && navigator.languages.length
+        ? navigator.languages[0]
+        : navigator.language;
+    if (SUPPORTED_LOCALES.every(v => currentLocale !== v)) {
+      currentLocale = DEFAUT_LOCALE;
+    }
   }
 
   /**
@@ -28,7 +51,7 @@ class TranslationManager {
    */
   translate(key) {
     if (!key) return '';
-    return this.fragments[currentLocale][key] || 'Missing Translation';
+    return this.fragments[currentLocale][key] || key;
   }
 
   /**
@@ -36,15 +59,6 @@ class TranslationManager {
    * @return {string} locale
    */
   getLocale() {
-    if (!currentLocale) {
-      currentLocale =
-        navigator.languages && navigator.languages.length
-          ? navigator.languages[0]
-          : navigator.language;
-      if (SUPPORTED_LOCALES.every(v => currentLocale !== v)) {
-        currentLocale = DEFAUT_LOCALE;
-      }
-    }
     return currentLocale;
   }
 }

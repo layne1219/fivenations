@@ -34,4 +34,15 @@ export default {
     }
     return buttonLogics[id];
   },
+
+  getTranslationKeyById(id) {
+    const prefix = 'abilities.';
+    const keys = Object.keys(abilitiesJSON);
+    for (let i = 0, l = keys.length; i < l; i += 1) {
+      if (abilitiesJSON[keys[i]] === id) {
+        return `${prefix}${keys[i]}`;
+      }
+    }
+    return '';
+  },
 };

@@ -106,6 +106,11 @@ export const DEFAULT_TOOLTIP_PADDING = {
   y: -20,
 };
 
+export const TOOLTIPS_DIMENSIONS = {
+  width: 139,
+  height: 39,
+};
+
 // Generic GUI Button
 export const GUI_BUTTON = {
   spritesheet: {

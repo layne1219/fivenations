@@ -3,6 +3,7 @@ import Graphics from '../common/Graphics';
 import {
   DEFAULT_FONT,
   DEFAULT_TOOLTIP_PADDING,
+  TOOLTIPS_DIMENSIONS,
   GROUP_TOOLTIPS,
 } from '../common/Const';
 
@@ -24,10 +25,17 @@ class Tooltip extends Phaser.Group {
    */
   constructor(phaserGame) {
     super(phaserGame);
-
+    this.setFixedToTheCamera();
     this.setDefaultVisiblity();
     this.initBackgroundSprite(phaserGame);
     this.initTextComponent(phaserGame);
+  }
+
+  /**
+   * Sets the this Phaser.Group fixed to the Camera
+   */
+  setFixedToTheCamera() {
+    this.fixedToCamera = true;
   }
 
   /**
@@ -52,13 +60,19 @@ class Tooltip extends Phaser.Group {
    * @param {object} phaserGame - Phaser.Game instance
    */
   initTextComponent(phaserGame) {
-    const marginLeft = 20;
-    const marginTop = 15;
-
-    this.label = this.add(phaserGame.add.text(marginLeft, marginTop, '', {
+    this.label = this.add(phaserGame.add.text(0, 0, '', {
       font: DEFAULT_FONT.font,
       fill: DEFAULT_FONT.color,
+      boundsAlignH: 'center',
+      boundsAlignV: 'middle',
     }));
+
+    this.label.setTextBounds(
+      0,
+      3,
+      TOOLTIPS_DIMENSIONS.width,
+      TOOLTIPS_DIMENSIONS.height,
+    );
   }
 
   /**
@@ -97,14 +111,17 @@ function Tooltipify(options, phaserGame = ns.game.game) {
     const labelValue = typeof label === 'function' ? label() : label;
     const maxOffsetX = ns.window.width - tooltip.width;
     const maxOffsetY = ns.window.height - tooltip.height;
-    const x = item.world.x + DEFAULT_TOOLTIP_PADDING.x;
-    const y = item.world.y + DEFAULT_TOOLTIP_PADDING.y;
+    const x = item.worldPosition.x + DEFAULT_TOOLTIP_PADDING.x;
+    const y = item.worldPosition.y + DEFAULT_TOOLTIP_PADDING.y;
+    const onScreenX = Math.max(Math.min(x, maxOffsetX), 0);
+    const onScreenY = Math.max(Math.min(y, maxOffsetY), 0);
 
     if (!item.visible) return;
     if (!labelValue) return;
 
-    tooltip.x = Math.max(Math.min(x, maxOffsetX), 0);
-    tooltip.y = Math.max(Math.min(y, maxOffsetY), 0);
+    tooltip.cameraOffset.setTo(onScreenX, onScreenY);
+    tooltip.x = onScreenX;
+    tooltip.y = onScreenY;
     tooltip.visible = true;
 
     tooltip.updateContent(labelValue);
