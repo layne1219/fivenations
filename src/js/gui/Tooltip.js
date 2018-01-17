@@ -7,7 +7,7 @@ import {
 } from '../common/Const';
 
 const ns = window.fivenations;
-const phaserGameFromGlobalScope = ns.game.game;
+
 // reference for a tooltip instance that can be reused
 let tooltip;
 
@@ -51,7 +51,7 @@ class Tooltip extends Phaser.Group {
    * Adds the Text element to the Group
    * @param {object} phaserGame - Phaser.Game instance
    */
-  initTextComponents(phaserGame) {
+  initTextComponent(phaserGame) {
     const marginLeft = 20;
     const marginTop = 15;
 
@@ -72,9 +72,9 @@ class Tooltip extends Phaser.Group {
 
 /**
  * Creates a Tooltip object and adds it to the Tooltip Graphics Group
- * @param {object} phaserGame - if omitted it uses the Phaser.Game object
+ * @param {object} phaserGame - Phaser.Game object
  */
-function createTooltip(phaserGame = phaserGameFromGlobalScope) {
+function createTooltip(phaserGame) {
   const group = Graphics.getInstance().getGroup(GROUP_TOOLTIPS);
   tooltip = new Tooltip(phaserGame);
   group.add(tooltip);
@@ -84,16 +84,16 @@ function createTooltip(phaserGame = phaserGameFromGlobalScope) {
 /**
  * Attaches tooltip popup to an excisting element on a Phaser stage
  * @param {object} options - object param to specify the behaviour of the tooltip
- * @param {object} phaserGame - if omitted it uses the Phaser.Game object
+ * @param {object} phaserGame - Phaser.Game object
  * through global access
  */
-function Tooltipify(options, phaserGame = phaserGameFromGlobalScope) {
+function Tooltipify(options, phaserGame = ns.game.game) {
   const { target, label } = options;
   // lazy instantiation
   if (!tooltip) {
-    createTooltip(phaserGame);
+    tooltip = createTooltip(phaserGame);
   }
-  target.on('over', (item) => {
+  target.events.onInputOver.add((item) => {
     const labelValue = typeof label === 'function' ? label() : label;
 
     if (!item.visible) return;
@@ -105,7 +105,7 @@ function Tooltipify(options, phaserGame = phaserGameFromGlobalScope) {
 
     tooltip.updateContent(labelValue);
   });
-  target.on('out', () => {
+  target.events.onInputOut.add(() => {
     tooltip.visible = false;
   });
 }
