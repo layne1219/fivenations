@@ -1,4 +1,17 @@
 /* global Phaser */
+
+/* ============================================================== */
+/* ===                        TRANSLATIONS                    === */
+/* ============================================================== */
+// Supported Locales
+export const SUPPORTED_LOCALES = ['en_US', 'en_GB'];
+
+// Default Local
+export const DEFAUT_LOCALE = SUPPORTED_LOCALES[0];
+
+/* ============================================================== */
+/* ===                           ENTITIES                     === */
+/* ============================================================== */
 // size categories for entities
 export const ENTITY_SIZES = {
   xsm: {
@@ -31,17 +44,6 @@ export const ENTITY_GUI_SIZES = {
   small: [0, 49],
 };
 
-// group IDs
-export const GROUP_EFFECTS = 'effects';
-export const GROUP_ENTITIES = 'entities';
-export const GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
-export const GROUP_FOGOFWAR = 'fogofwar';
-export const GROUP_GUI = 'gui';
-export const GROUP_TOOLTIPS = 'tooltips';
-
-// Starfield
-export const DEFAULT_STARFIELD_BACKGROUND_TILE = 'starfield-1';
-
 // helper constants for entity related functionalities
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
 export const MAX_SELECTABLE_UNITS = 22;
@@ -72,7 +74,27 @@ export const WEAPON_INSTANCE_DELAY = 10;
 export const WEAPON_ACCURACY_SPREAD_IN_DEGREES = 60;
 export const WEAPON_ACCURACY_SPREAD_IN_RADIAN = Phaser.Math.degToRad(WEAPON_ACCURACY_SPREAD_IN_DEGREES);
 
-// GUI
+/* ============================================================== */
+/* ===                     GRAPHICS GROUPS                    === */
+/* ============================================================== */
+// group IDs
+export const GROUP_EFFECTS = 'effects';
+export const GROUP_ENTITIES = 'entities';
+export const GROUP_ENTITIES_BUILDINGS = 'entities-buildings';
+export const GROUP_FOGOFWAR = 'fogofwar';
+export const GROUP_GUI = 'gui';
+export const GROUP_TOOLTIPS = 'tooltips';
+
+/* ============================================================== */
+/* ===                         STARFIELD                      === */
+/* ============================================================== */
+// Background tile
+export const DEFAULT_STARFIELD_BACKGROUND_TILE = 'starfield-1';
+
+/* ============================================================== */
+/* ===                            GUI                         === */
+/* ============================================================== */
+// Font
 export const DEFAULT_FONT = {
   font: '11px BerlinSansFB-Reg',
   color: '#77C7D2',
@@ -134,6 +156,10 @@ export const GUI_POPUP = {
   padding: 45,
 };
 
+/* ============================================================== */
+/* ===                         PLAYERS                        === */
+/* ============================================================== */
+// Colours
 export const PLAYER_MANAGER_COLORS = [
   '0x08A2EA',
   '0x10B308',
