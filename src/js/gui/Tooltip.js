@@ -66,6 +66,17 @@ class Tooltip extends Phaser.Group {
 }
 
 /**
+ * Creates a Tooltip object and adds it to the Tooltip Graphics Group
+ * @param {object} phaserGame - if omitted it uses the Phaser.Game object
+ */
+function createTooltip(phaserGame = phaserGameFromGlobalScope) {
+  const group = Graphics.getInstance().getGroup(GROUP_TOOLTIPS);
+  tooltip = new Tooltip(phaserGame);
+  group.add(tooltip);
+  return tooltip;
+}
+
+/**
  * Attaches tooltip popup to an excisting element on a Phaser stage
  * @param {object} options - object param to specify the behaviour of the tooltip
  * @param {object} phaserGame - if omitted it uses the Phaser.Game object
@@ -75,9 +86,8 @@ function Tooltipify(options, phaserGame = phaserGameFromGlobalScope) {
   const { target, label } = options;
   // lazy instantiation
   if (!tooltip) {
-    tooltip = new Tooltip(phaserGame);
+    createTooltip(phaserGame);
   }
-  target.add(tooltip);
   target.on('over', (item) => {
     const labelValue = typeof label === 'function' ? label() : label;
 
