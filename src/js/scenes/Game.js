@@ -8,6 +8,7 @@ import PlayerManager from '../players/PlayerManager';
 import EntityManager from '../entities/EntityManager';
 import EffectManager from '../effects/EffectManager';
 import CollisionManager from '../common/CollisionManager';
+import TranslationManager from '../common/TranslationManager';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserPointer from '../gui/UserPointer';
@@ -71,6 +72,12 @@ Game.prototype = {
     // -----------------------------------------------------------------------
     CollisionManager.setGame(this.game);
     this.collisionManager = CollisionManager.getInstance();
+
+    // -----------------------------------------------------------------------
+    //                            TranslationManager
+    // -----------------------------------------------------------------------
+    TranslationManager.setGame(this.game);
+    this.translationManager = TranslationManager.getInstance();
 
     // -----------------------------------------------------------------------
     //                              EventEmitter

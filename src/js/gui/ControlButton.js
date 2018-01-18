@@ -1,5 +1,6 @@
 /* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
+import TranslationManager from '../common/TranslationManager';
 import { Tooltipify } from './Tooltip';
 
 const PADDING_ONCLICK = 2;
@@ -71,7 +72,7 @@ class ControlButton extends Phaser.Sprite {
   addTooltip() {
     Tooltipify({
       target: this,
-      label: () => this.getId(),
+      label: () => this.tooltipLabel,
     });
   }
 
@@ -103,12 +104,32 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * Setting the ID of the button which determines what the click callback will do
+   * Sets or occasionally resets the frame, activity callback and
+   * tooltip label accoding to the given id
+   * @param {number} id
    */
   setId(id) {
-    this.frame = id;
     this.id = id;
+    this.setButtonFrame(id);
+    this.setTranslatedTooltipLabel(id);
     return this;
+  }
+
+  /**
+   * Sets the attached sprite's frame to the given id
+   * @param {number} id
+   */
+  setButtonFrame(id) {
+    this.frame = id;
+  }
+
+  /**
+   * Determines the translation for the Tooltip
+   * @param {number} id
+   */
+  setTranslatedTooltipLabel(id) {
+    const translationLabel = ControlButtonCollection.getTranslationKeyById(id);
+    this.tooltipLabel = TranslationManager.getInstance().translate(translationLabel);
   }
 
   /**
