@@ -165,6 +165,10 @@ class Map {
   getGame() {
     return game;
   }
+
+  getStarfield() {
+    return starfield;
+  }
 }
 
 export default Map;

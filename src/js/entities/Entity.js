@@ -876,6 +876,19 @@ class Entity {
   getCreationTime() {
     return this.createdAt;
   }
+
+  /**
+   * Returns the horizontal and vertical offset of the particles
+   * emitted by the entity so that they appear on the right
+   * position according to the current heading of the entity object
+   * @return {object} - {x, y}
+   */
+  getProjectileOffsetByHeading() {
+    const projectileOffset = this.dataObject.getProjectileOffset();
+    if (!projectileOffset.length) return projectileOffset;
+    const angleCode = this.motionManager.getCurrentAngleCode();
+    return projectileOffset[angleCode] || {};
+  }
 }
 
 export default Entity;
