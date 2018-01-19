@@ -139,12 +139,9 @@ class EffectManager {
       // calculates the offset according to the weapon's parent entity
       const emitter = effect.getEmitter();
       if (emitter instanceof Weapon) {
-        const emitterDataObject = emitter
-          .getManager()
-          .getEntity()
-          .getDataObject();
+        const emitterEntity = emitter.getManager().getEntity();
         const projectileOffset =
-          (emitterDataObject && emitterDataObject.getProjectileOffset()) || {};
+          (emitterEntity && emitterEntity.getProjectileOffsetByHeading()) || {};
         offsetX = projectileOffset.x || 0;
         offsetY = projectileOffset.y || 0;
       }
