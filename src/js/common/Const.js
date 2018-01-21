@@ -1,4 +1,12 @@
-/* global Phaser */
+/* global Phaser, window */
+const ns = window.fivenations;
+
+/* ============================================================== */
+/* ===                           CANVAS                       === */
+/* ============================================================== */
+// Canvas
+const DEFAULT_CANVAS_WIDTH = 1024;
+const DEFAULT_CANVAS_HEIGHT = 768;
 
 /* ============================================================== */
 /* ===                        TRANSLATIONS                    === */
@@ -159,6 +167,14 @@ export const GUI_POPUP = {
     align: 'center',
   },
   padding: 45,
+};
+
+// Notification Bar
+export const NOTIFICATION_PANEL = {
+  x: 0,
+  y: 400,
+  width: DEFAULT_CANVAS_WIDTH,
+  height: 50,
 };
 
 /* ============================================================== */
