@@ -1,25 +1,24 @@
-/* global Phaser, window */
-const ns = window.fivenations;
+// global Phaser */
 
-/* ============================================================== */
-/* ===                           CANVAS                       === */
-/* ============================================================== */
+// ==============================================================
+// ===                           CANVAS                       ===
+// ==============================================================
 // Canvas
-const DEFAULT_CANVAS_WIDTH = 1024;
-const DEFAULT_CANVAS_HEIGHT = 768;
+export const DEFAULT_CANVAS_WIDTH = 1024;
+export const DEFAULT_CANVAS_HEIGHT = 768;
 
-/* ============================================================== */
-/* ===                        TRANSLATIONS                    === */
-/* ============================================================== */
+// ==============================================================
+// ===                        TRANSLATIONS                    ===
+// ==============================================================
 // Supported Locales
 export const SUPPORTED_LOCALES = ['en_US', 'en_GB'];
 
 // Default Local
 export const DEFAUT_LOCALE = SUPPORTED_LOCALES[0];
 
-/* ============================================================== */
-/* ===                           ENTITIES                     === */
-/* ============================================================== */
+// ==============================================================
+// ===                           ENTITIES                     ===
+// ==============================================================
 // size categories for entities
 export const ENTITY_SIZES = {
   xsm: {
@@ -82,9 +81,9 @@ export const WEAPON_INSTANCE_DELAY = 10;
 export const WEAPON_ACCURACY_SPREAD_IN_DEGREES = 60;
 export const WEAPON_ACCURACY_SPREAD_IN_RADIAN = Phaser.Math.degToRad(WEAPON_ACCURACY_SPREAD_IN_DEGREES);
 
-/* ============================================================== */
-/* ===                     GRAPHICS GROUPS                    === */
-/* ============================================================== */
+// ==============================================================
+// ===                     GRAPHICS GROUPS                    ===
+// ==============================================================
 // group IDs
 export const GROUP_EFFECTS = 'effects';
 export const GROUP_ENTITIES = 'entities';
@@ -93,15 +92,15 @@ export const GROUP_FOGOFWAR = 'fogofwar';
 export const GROUP_GUI = 'gui';
 export const GROUP_TOOLTIPS = 'tooltips';
 
-/* ============================================================== */
-/* ===                         STARFIELD                      === */
-/* ============================================================== */
+// ==============================================================
+// ===                         STARFIELD                      ===
+// ==============================================================
 // Background tile
 export const DEFAULT_STARFIELD_BACKGROUND_TILE = 'starfield-1';
 
-/* ============================================================== */
-/* ===                            GUI                         === */
-/* ============================================================== */
+// ==============================================================
+// ===                            GUI                         ===
+// ==============================================================
 // Font
 export const DEFAULT_FONT = {
   font: '11px BerlinSansFB-Reg',
@@ -172,14 +171,43 @@ export const GUI_POPUP = {
 // Notification Bar
 export const NOTIFICATION_PANEL = {
   x: 0,
-  y: 400,
+  // offset from Panel
+  y: -100,
   width: DEFAULT_CANVAS_WIDTH,
-  height: 50,
+  height: Math.round(DEFAULT_CANVAS_HEIGHT / 10),
+  fadeAnimationDuration: 500,
+  displayTime: 3000,
 };
 
-/* ============================================================== */
-/* ===                         PLAYERS                        === */
-/* ============================================================== */
+// Click anination
+export const CLICK_ANIMATIONS = {
+  frameRate: 20,
+  animations: {
+    'click-move': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    'click-enemy': [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+    'click-friendly': [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+    ],
+  },
+};
+
+// ==============================================================
+// ===                         PLAYERS                        ===
+// ==============================================================
 // Colours
 export const PLAYER_MANAGER_COLORS = [
   '0x08A2EA',

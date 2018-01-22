@@ -1,11 +1,5 @@
-/* global window, Phaser */
-import Graphics from '../common/Graphics';
-import { DEFAULT_FONT, NOTIFICATION_PANEL, GROUP_GUI } from '../common/Const';
-
-const ns = window.fivenations;
-
-// reference for a notification singleton instance that can be reused
-let singleton;
+/* global Phaser */
+import { DEFAULT_FONT, NOTIFICATION_PANEL } from '../common/Const';
 
 /**
  * Notification bar implementation that can be used to display
@@ -19,17 +13,9 @@ class NotificationBar extends Phaser.Group {
    */
   constructor(phaserGame) {
     super(phaserGame);
-    this.setFixedToTheCamera();
     this.setDefaultVisiblity();
-    this.initBackground(phaserGame);
-    this.initTextComponent(phaserGame);
-  }
-
-  /**
-   * Sets the this Phaser.Group fixed to the Camera
-   */
-  setFixedToTheCamera() {
-    this.fixedToCamera = true;
+    this.initBackground();
+    this.initTextComponent();
   }
 
   /**
@@ -41,10 +27,9 @@ class NotificationBar extends Phaser.Group {
 
   /**
    * Adds the semi transparent background to the Group
-   * @param {object} phaserGame - Phaser.Game instance
    */
-  initBackground(phaserGame) {
-    const graphics = phaserGame.add.graphics(0, 0);
+  initBackground() {
+    const graphics = this.game.add.graphics(0, 0);
     const { width, height } = NOTIFICATION_PANEL;
     const color = 0x000000;
     graphics.beginFill(color);
@@ -55,10 +40,9 @@ class NotificationBar extends Phaser.Group {
 
   /**
    * Adds the Text element to the Group
-   * @param {object} phaserGame - Phaser.Game instance
    */
-  initTextComponent(phaserGame) {
-    this.label = this.add(phaserGame.add.text(0, 0, '', {
+  initTextComponent() {
+    this.label = this.add(this.game.add.text(0, 0, '', {
       font: DEFAULT_FONT.font,
       fill: DEFAULT_FONT.color,
       boundsAlignH: 'center',
@@ -74,50 +58,76 @@ class NotificationBar extends Phaser.Group {
   }
 
   /**
+   * Attaches the Notification Bar to the given group
+   * @param {object} group
+   * @param {number} x - Horizontal offset from the parent's anchor point
+   * @param {number} y - Vertical offset from the parent's anchor point
+   */
+  appendTo(object, x, y) {
+    if (!object) {
+      throw new Error('Invalid Phaser.Sprite object!');
+    }
+    object.addChild(this);
+    this.x = x;
+    this.y = y;
+  }
+
+  /**
    * Updates the label of the NotificationBar according to the given string
    * @param {string} text
    */
   updateContent(text) {
     this.label.text = text;
   }
-}
-
-/**
- * Creates a NotificationBar object and adds it to the NotificationBar Graphics Group
- * @param {object} phaserGame - Phaser.Game object
- */
-function createNotificationBar(phaserGame) {
-  const group = Graphics.getInstance().getGroup(GROUP_GUI);
-  const onScreenX = 0;
-  const onScreenY = NOTIFICATION_PANEL.offsetY;
-  const notification = new NotificationBar(phaserGame);
-  notification.cameraOffset.setTo(onScreenX, onScreenY);
-  notification.x = onScreenX;
-  notification.y = onScreenY;
-  group.add(notification);
-  return notification;
-}
-
-export default {
-  /**
-   * sets the global Phaser.Game instance
-   * @param {void}
-   */
-  setGame(game) {
-    phaserGame = game;
-  },
 
   /**
-   * returns singleton instance of the manager object
-   * @return {object} Singleton instance of NotificationBar
+   * Displays Notification Bar with the fadeIn Tween
+   * @param {string} text - Text to be shown on the bar
    */
-  getInstance() {
-    if (!phaserGame) {
-      throw new Error('Invoke setGame first to pass the Phaser Game entity!');
+  show(text) {
+    this.updateContent(text);
+    this.visible = true;
+    // when invoked more than once simultaniously we just update
+    // the text on the bar and resets the timer
+    if (!this.showAnim) {
+      this.alpha = 0;
+      this.showAnim = this.game.add
+        .tween(this)
+        .to(
+          { alpha: 1 },
+          NOTIFICATION_PANEL.fadeAnimationDuration,
+          'Linear',
+          true,
+        );
     }
-    if (!singleton) {
-      singleton = new NotificationBar(phaserGame);
+    if (this.timer) {
+      clearTimeout(this.timer);
     }
-    return singleton;
-  },
-};
+    this.timer = setTimeout(() => this.hide(), NOTIFICATION_PANEL.displayTime);
+  }
+
+  /**
+   * Makes Notification Bar disapear with a Fade Out Tween
+   */
+  hide() {
+    // guard against multiple calls simultaniously
+    if (this.hideAnim) return;
+    this.hideAnim = this.game.add
+      .tween(this)
+      .to(
+        { alpha: 0 },
+        NOTIFICATION_PANEL.fadeAnimationDuration,
+        'Linear',
+        true,
+      );
+
+    this.hideAnim.onComplete.addOnce(() => {
+      this.hideAnim = null;
+      this.showAnim = null;
+      this.timer = null;
+      this.visible = false;
+    });
+  }
+}
+
+export default NotificationBar;

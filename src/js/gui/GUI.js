@@ -1,5 +1,9 @@
 import Graphics from '../common/Graphics';
-import { GROUP_GUI } from '../common/Const';
+import {
+  GROUP_GUI,
+  NOTIFICATION_PANEL,
+  CLICK_ANIMATIONS,
+} from '../common/Const';
 import Selector from './Selector';
 import ColorIndicator from './ColorIndicator';
 import StatusDisplay from './StatusDisplay';
@@ -8,32 +12,9 @@ import Minimap from './Minimap';
 import ControlPanel from './ControlPanel';
 import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
+import NotificationBar from './NotificationBar';
 import Popup from './Popup';
 import Button from './Button';
-
-// Frame rate for the click animations
-const CLICK_ANIM_FRAMERATE = 20;
-const clickAnimations = {
-  'click-move': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-  'click-enemy': [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
-  'click-friendly': [
-    30,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
-    40,
-    41,
-    42,
-    43,
-    44,
-  ],
-};
 
 let phaserGame;
 let entityManager;
@@ -60,6 +41,9 @@ let controlPanel;
 // reference to the ResourceDisplay object
 let resourceDisplay;
 
+// reference notification bar
+let notificationBar;
+
 // reference to a Phaser.Sprite object that displays the click animation
 let clickAnim;
 
@@ -78,7 +62,10 @@ function initClickAnimations() {
   clickAnim.anchor.setTo(0.5, 0.5);
 
   ['click-move', 'click-enemy', 'click-friendly'].forEach((animation) => {
-    anim = clickAnim.animations.add(animation, clickAnimations[animation]);
+    anim = clickAnim.animations.add(
+      animation,
+      CLICK_ANIMATIONS.animations[animation],
+    );
     anim.onStart.add(() => {
       clickAnim.visible = true;
     });
@@ -95,7 +82,7 @@ function initGUIDisplayElements() {
   panel = new Panel(phaserGame);
   panel.appendTo(group);
 
-  // Setting up the Minimap and attacing to the Panel
+  // Sets up the Minimap and attches it to the Panel
   minimap = new Minimap({
     phaserGame,
     map,
@@ -105,7 +92,7 @@ function initGUIDisplayElements() {
   });
   minimap.appendTo(panel, 0, 61);
 
-  // Setting up the EntityDetailsDisplay and linking it to the Panel
+  // Sets up the EntityDetailsDisplay and links it to the Panel
   entityDetailsDisplay = new EntityDetailsDisplay({
     entityManager,
     phaserGame,
@@ -119,6 +106,10 @@ function initGUIDisplayElements() {
   // Resource display
   resourceDisplay = new ResourceDisplay({ playerManager, phaserGame });
   resourceDisplay.appendTo(panel, 425, 88);
+
+  // Notification Bar
+  notificationBar = new NotificationBar(phaserGame);
+  notificationBar.appendTo(panel, NOTIFICATION_PANEL.x, NOTIFICATION_PANEL.y);
 }
 
 function GUI() {
@@ -141,7 +132,7 @@ GUI.prototype = {
     clickAnim.x = x;
     clickAnim.y = y;
     clickAnim.animations.stop(null, true);
-    clickAnim.play(anim, CLICK_ANIM_FRAMERATE);
+    clickAnim.play(anim, CLICK_ANIMATIONS.frameRate);
   },
 
   /**
@@ -213,6 +204,14 @@ GUI.prototype = {
     group.add(button);
 
     return button;
+  },
+
+  /**
+   * Shows notification bar with the given text
+   * @param {string} text - The text to be displayed
+   */
+  showNotification(text) {
+    notificationBar.show(text);
   },
 
   /**
