@@ -2,6 +2,7 @@ import '../scss/main.scss';
 
 import 'phaser-shim';
 import './globals';
+import { DEFAULT_CANVAS_WIDTH, DEFAULT_CANVAS_HEIGHT } from './common/Const';
 import Util from './common/Util';
 import Boot from './scenes/Boot';
 import Preloader from './scenes/Preloader';
@@ -9,9 +10,6 @@ import Menu from './scenes/Menu';
 import Game from './scenes/Game';
 
 const ns = window.fivenations;
-
-const DEFAULT_CANVAS_WIDTH = 1024;
-const DEFAULT_CANVAS_HEIGHT = 768;
 
 let game;
 
