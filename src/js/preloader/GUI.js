@@ -14,19 +14,9 @@ export default {
       `${PATH_ASSETS}/gui/GUI_element.json`,
     );
     preloader.load.atlasJSONHash(
-      'energy-shield-big',
-      `${PATH_ASSETS}/effects/effect_shield_big.png`,
-      `${PATH_ASSETS}/effects/effect_shield_big.json`,
-    );
-    preloader.load.atlasJSONHash(
-      'energy-shield-medium',
-      `${PATH_ASSETS}/effects/effect_shield_medium.png`,
-      `${PATH_ASSETS}/effects/effect_shield_medium.json`,
-    );
-    preloader.load.atlasJSONHash(
-      'energy-shield-small',
-      `${PATH_ASSETS}/effects/effect_shield_sm.png`,
-      `${PATH_ASSETS}/effects/effect_shield_sm.json`,
+      'energy-shield',
+      `${PATH_ASSETS}/effects/effect_shield.png`,
+      `${PATH_ASSETS}/effects/effect_shield.json`,
     );
     preloader.load.atlasJSONHash(
       'federation-thrusters',

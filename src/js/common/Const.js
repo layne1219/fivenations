@@ -81,6 +81,39 @@ export const WEAPON_INSTANCE_DELAY = 10;
 export const WEAPON_ACCURACY_SPREAD_IN_DEGREES = 60;
 export const WEAPON_ACCURACY_SPREAD_IN_RADIAN = Phaser.Math.degToRad(WEAPON_ACCURACY_SPREAD_IN_DEGREES);
 
+// Energy shield
+export const ENERGY_SHIELD = {
+  width: 197,
+  height: 197,
+  sprite: 'energy-shield',
+  animation: {
+    frames: [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+    ],
+    rate: 25,
+  },
+};
+
 // ==============================================================
 // ===                     GRAPHICS GROUPS                    ===
 // ==============================================================
