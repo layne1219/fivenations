@@ -1,60 +1,14 @@
-import Graphics from '../../common/Graphics';
-import { ENTITY_GUI_SIZES, SHIELD_ACTIVITY_TRESHOLD } from '../../common/Const';
 import Util from '../../common/Util';
+import Graphics from '../../common/Graphics';
+import {
+  ENTITY_GUI_SIZES,
+  SHIELD_ACTIVITY_TRESHOLD,
+  ENERGY_SHIELD,
+} from '../../common/Const';
 
-const ANIM_FRAME_RATE = 25;
 const ANIM_ID = 'damage';
-const animations = {
-  'energy-shield-big': [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-  ],
-  'energy-shield-medium': [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-  ],
-  'energy-shield-small': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-};
 
-export default class EnergyShield {
+class EnergyShield {
   constructor(phaserGame) {
     this.game = phaserGame;
   }
@@ -86,13 +40,14 @@ export default class EnergyShield {
   createSpriteByParent(parent) {
     const width = parent.getDataObject().getWidth();
     const height = parent.getDataObject().getHeight();
-    const size = this.getSize(width, height);
-    const spriteName = `energy-shield-${size}`;
-    const sprite = this.game.add.image(0, 0, spriteName);
+    const sprite = this.game.add.image(0, 0, ENERGY_SHIELD.sprite);
+    const ratio =
+      width / ENERGY_SHIELD.width * ENERGY_SHIELD.relativeRatioToEntity;
     sprite.visible = false;
     sprite.anchor.setTo(0.5, 0.5);
+    sprite.scale.setTo(ratio, ratio);
 
-    const anim = sprite.animations.add(ANIM_ID, animations[spriteName]);
+    const anim = sprite.animations.add(ANIM_ID, ENERGY_SHIELD.animation.frames);
     anim.onComplete.add(this.animationCompleted, this);
 
     return sprite;
@@ -106,7 +61,7 @@ export default class EnergyShield {
 
   show() {
     this.sprite.visible = true;
-    this.sprite.play(ANIM_ID, ANIM_FRAME_RATE);
+    this.sprite.play(ANIM_ID, ENERGY_SHIELD.animation.rate);
   }
 
   hide() {
@@ -120,26 +75,6 @@ export default class EnergyShield {
   animationCompleted() {
     this.hide();
   }
-
-  getSize(width, height) {
-    if (!this.size) {
-      Object.keys(ENTITY_GUI_SIZES).forEach((size) => {
-        if (
-          Util.between(
-            Math.max(width, height),
-            ENTITY_GUI_SIZES[size][0],
-            ENTITY_GUI_SIZES[size][1],
-          )
-        ) {
-          if (size === 'extrabig') {
-            this.size = 'big';
-          } else {
-            this.size = size;
-          }
-        }
-      });
-    }
-
-    return this.size;
-  }
 }
+
+export default EnergyShield;
