@@ -41,7 +41,8 @@ class EnergyShield {
     const width = parent.getDataObject().getWidth();
     const height = parent.getDataObject().getHeight();
     const sprite = this.game.add.image(0, 0, ENERGY_SHIELD.sprite);
-    const ratio = width / ENERGY_SHIELD.width;
+    const ratio =
+      width / ENERGY_SHIELD.width * ENERGY_SHIELD.relativeRatioToEntity;
     sprite.visible = false;
     sprite.anchor.setTo(0.5, 0.5);
     sprite.scale.setTo(ratio, ratio);

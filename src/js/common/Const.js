@@ -83,6 +83,7 @@ export const WEAPON_ACCURACY_SPREAD_IN_RADIAN = Phaser.Math.degToRad(WEAPON_ACCU
 
 // Energy shield
 export const ENERGY_SHIELD = {
+  relativeRatioToEntity: 1.3,
   width: 197,
   height: 197,
   sprite: 'energy-shield',
