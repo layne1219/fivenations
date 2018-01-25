@@ -8,26 +8,21 @@ import Foreground from './Foreground';
 
 class Starfield {
   constructor(map, config = {}) {
-    this.initLayers();
     this.createBackground(map, config.backgroundTile);
     this.createDeepSpaceObjects(map, config.starfieldGenerator);
     this.createForegroundObjects(map, config.foregroundGenerator);
   }
 
-  initLayers() {
-    this.layers = [];
-  }
-
   createBackground(map, backgroundTile) {
-    this.layers.push(new Background(map, backgroundTile));
+    this.background = new Background(map, backgroundTile);
   }
 
   createDeepSpaceObjects(map, generator) {
-    this.layers.push(new DeepSpaceLayer(map, generator));
+    this.deepSpaceLayer = new DeepSpaceLayer(map, generator);
   }
 
   createForegroundObjects(map, generator) {
-    this.layers.push(new Foreground(map, generator));
+    this.foreground = new Foreground(map, generator);
   }
 
   resetLayers() {
@@ -36,9 +31,21 @@ class Starfield {
   }
 
   update() {
-    this.layers.forEach((layer) => {
-      layer.update();
-    });
+    this.background.update();
+    this.deepSpaceLayer.update();
+    this.foreground.update();
+  }
+
+  getBackground() {
+    return this.background;
+  }
+
+  getDeepSpaceLayer() {
+    return this.deepSpaceLayer;
+  }
+
+  getForeground() {
+    return this.foreground;
   }
 }
 
