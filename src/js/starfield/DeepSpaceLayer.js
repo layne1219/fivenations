@@ -3,7 +3,7 @@
 import Graphics from '../common/Graphics';
 
 const ns = window.fivenations;
-let sprites = {};
+const sprites = {};
 
 class DeepSpaceLayer {
   constructor(map, generator) {
@@ -12,7 +12,6 @@ class DeepSpaceLayer {
     this.createTexture();
     this.createContainer();
     this.addContainerToStarfieldGroup();
-    this.createSprites();
     this.createSpaceObjects(generator);
   }
 
@@ -50,39 +49,20 @@ class DeepSpaceLayer {
     this.group.add(this.container);
   }
 
-  createSprites() {
-    if (sprites) return;
-    const make = this.game.make;
-    sprites = {
-      // Clouds
-      cloud1: make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
-      cloud2: make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
-
-      // Meteorites
-      meteorites: make.sprite(0, 0, 'starfield.meteorites'),
-      smallmeteorites1: make.sprite(0, 0, 'starfield.smallmeteorites.type-1'),
-      smallmeteorites2: make.sprite(0, 0, 'starfield.smallmeteorites.type-2'),
-      smallmeteorites3: make.sprite(0, 0, 'starfield.smallmeteorites.type-3'),
-
-      // Planets
-      planet1: make.sprite(0, 0, 'starfield.planets.type-1'),
-      planet2: make.sprite(0, 0, 'starfield.planets.type-2'),
-      smallplanets1: make.sprite(0, 0, 'starfield.smallplanets.type-1'),
-
-      // Galaxies
-      galaxy1: make.sprite(0, 0, 'starfield.galaxy.type-1'),
-      galaxy2: make.sprite(0, 0, 'starfield.galaxy.type-2'),
-      galaxy3: make.sprite(0, 0, 'starfield.galaxy.type-3'),
-      galaxy4: make.sprite(0, 0, 'starfield.galaxy.type-4'),
-      galaxy5: make.sprite(0, 0, 'starfield.galaxy.type-5'),
-      galaxy6: make.sprite(0, 0, 'starfield.galaxy.type-6'),
-      galaxy7: make.sprite(0, 0, 'starfield.galaxy.type-7'),
-      galaxy8: make.sprite(0, 0, 'starfield.galaxy.type-8'),
-      galaxy9: make.sprite(0, 0, 'starfield.galaxy.type-9'),
-      galaxy10: make.sprite(0, 0, 'starfield.galaxy.type-10'),
-      galaxy11: make.sprite(0, 0, 'starfield.galaxy.type-11'),
-      galaxy12: make.sprite(0, 0, 'starfield.galaxy.type-12'),
-    };
+  /**
+   * Fetches the sprite by the given id. If it doesn't exists yet it
+   * creates it and stores it in the local cache
+   * @param {string} id
+   * @return {object} Phaser.Sprite
+   */
+  getSprite(id) {
+    if (!id) {
+      throw new Error('Invalid id was given the fetch SpaceOjbect sprite!');
+    }
+    if (!sprites[id]) {
+      sprites[id] = this.game.make.sprite(0, 0, id);
+    }
+    return sprites[id];
   }
 
   createSpaceObjects(generatorClass) {
@@ -126,6 +106,7 @@ class DeepSpaceLayer {
       throw new Error();
     }
     this.spaceObjects.push(spaceObject);
+    this.sortSpaceObjects();
   }
 
   getGame() {
