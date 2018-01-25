@@ -3,7 +3,7 @@
 import Graphics from '../common/Graphics';
 
 const ns = window.fivenations;
-let sprites;
+let sprites = {};
 
 class DeepSpaceLayer {
   constructor(map, generator) {

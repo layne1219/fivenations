@@ -1,0 +1,6 @@
+{
+	"id": "planet16",
+	"name": "Planet",
+	"sprite": "starfield.planets.type-2",
+	"customFrame": 5
+}

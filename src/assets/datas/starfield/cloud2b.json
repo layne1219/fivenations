@@ -1,6 +1,6 @@
 {
-	"id": "cloud2a",
+	"id": "cloud2b",
 	"name": "Interstellar Cloud",
 	"sprite": "starfield.clouds.bg.type-2",
-	"customFrame": 0
+	"customFrame": 1
 }
