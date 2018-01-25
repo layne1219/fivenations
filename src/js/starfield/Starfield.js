@@ -1,6 +1,7 @@
 import SpaceObject from './SpaceObject';
 import SpaceObjectGenerator from './SpaceObjectGenerator';
 import PlanetAreaGenerator from './PlanetAreaGenerator';
+import ForegroundCloudGenerator from './ForegroundCloudGenerator';
 import DeepSpaceLayer from './DeepSpaceLayer';
 import Background from './Background';
 import Foreground from './Foreground';
@@ -10,7 +11,7 @@ class Starfield {
     this.initLayers();
     this.createBackground(map, config.backgroundTile);
     this.createDeepSpaceObjects(map, config.starfieldGenerator);
-    this.createForegoundObjects(map, config.foregroundGenerator);
+    this.createForegroundObjects(map, config.foregroundGenerator);
   }
 
   initLayers() {
@@ -44,5 +45,6 @@ class Starfield {
 Starfield.SpaceObject = SpaceObject;
 Starfield.SpaceObjectGenerator = SpaceObjectGenerator;
 Starfield.PlanetAreaGenerator = PlanetAreaGenerator;
+Starfield.ForegroundCloudGenerator = ForegroundCloudGenerator;
 
 export default Starfield;
