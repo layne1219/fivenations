@@ -1,4 +1,5 @@
 const { PUBLIC_URL } = process.env;
+const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/starfield/`;
 const PATH_ASSETS = `${PUBLIC_URL}/assets/images`;
 
 export default {
@@ -11,6 +12,31 @@ export default {
     preloader.load.image(
       'starfield-1',
       `${PATH_ASSETS}/starfield/starfield-1.png`,
+    );
+
+    preloader.load.image(
+      'starfield-2',
+      `${PATH_ASSETS}/starfield/starfield-2.png`,
+    );
+
+    preloader.load.image(
+      'starfield-3',
+      `${PATH_ASSETS}/starfield/starfield-3.png`,
+    );
+
+    preloader.load.image(
+      'starfield-4',
+      `${PATH_ASSETS}/starfield/starfield-4.png`,
+    );
+
+    preloader.load.image(
+      'starfield-5',
+      `${PATH_ASSETS}/starfield/starfield-5.png`,
+    );
+
+    preloader.load.image(
+      'starfield-6',
+      `${PATH_ASSETS}/starfield/starfield-6.png`,
     );
 
     preloader.load.atlasJSONHash(
