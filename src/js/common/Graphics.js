@@ -16,6 +16,7 @@ function createGraphicsInstance() {
     'energy-shields',
     'effects',
     'prior-gui-elements',
+    'starfield-foreground',
     'fogofwar',
     'gui',
     'tooltips',
