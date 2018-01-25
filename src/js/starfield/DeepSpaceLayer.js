@@ -52,51 +52,36 @@ class DeepSpaceLayer {
 
   createSprites() {
     if (sprites) return;
+    const make = this.game.make;
     sprites = {
       // Clouds
-      cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
-      cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
+      cloud1: make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
+      cloud2: make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
 
       // Meteorites
-      meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
-      smallmeteorites1: this.game.make.sprite(
-        0,
-        0,
-        'starfield.smallmeteorites.type-1',
-      ),
-      smallmeteorites2: this.game.make.sprite(
-        0,
-        0,
-        'starfield.smallmeteorites.type-2',
-      ),
-      smallmeteorites3: this.game.make.sprite(
-        0,
-        0,
-        'starfield.smallmeteorites.type-3',
-      ),
+      meteorites: make.sprite(0, 0, 'starfield.meteorites'),
+      smallmeteorites1: make.sprite(0, 0, 'starfield.smallmeteorites.type-1'),
+      smallmeteorites2: make.sprite(0, 0, 'starfield.smallmeteorites.type-2'),
+      smallmeteorites3: make.sprite(0, 0, 'starfield.smallmeteorites.type-3'),
 
       // Planets
-      planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
-      planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2'),
-      smallplanets1: this.game.make.sprite(
-        0,
-        0,
-        'starfield.smallplanets.type-1',
-      ),
+      planet1: make.sprite(0, 0, 'starfield.planets.type-1'),
+      planet2: make.sprite(0, 0, 'starfield.planets.type-2'),
+      smallplanets1: make.sprite(0, 0, 'starfield.smallplanets.type-1'),
 
       // Galaxies
-      galaxy1: this.game.make.sprite(0, 0, 'starfield.galaxy.type-1'),
-      galaxy2: this.game.make.sprite(0, 0, 'starfield.galaxy.type-2'),
-      galaxy3: this.game.make.sprite(0, 0, 'starfield.galaxy.type-3'),
-      galaxy4: this.game.make.sprite(0, 0, 'starfield.galaxy.type-4'),
-      galaxy5: this.game.make.sprite(0, 0, 'starfield.galaxy.type-5'),
-      galaxy6: this.game.make.sprite(0, 0, 'starfield.galaxy.type-6'),
-      galaxy7: this.game.make.sprite(0, 0, 'starfield.galaxy.type-7'),
-      galaxy8: this.game.make.sprite(0, 0, 'starfield.galaxy.type-8'),
-      galaxy9: this.game.make.sprite(0, 0, 'starfield.galaxy.type-9'),
-      galaxy10: this.game.make.sprite(0, 0, 'starfield.galaxy.type-10'),
-      galaxy11: this.game.make.sprite(0, 0, 'starfield.galaxy.type-11'),
-      galaxy12: this.game.make.sprite(0, 0, 'starfield.galaxy.type-12'),
+      galaxy1: make.sprite(0, 0, 'starfield.galaxy.type-1'),
+      galaxy2: make.sprite(0, 0, 'starfield.galaxy.type-2'),
+      galaxy3: make.sprite(0, 0, 'starfield.galaxy.type-3'),
+      galaxy4: make.sprite(0, 0, 'starfield.galaxy.type-4'),
+      galaxy5: make.sprite(0, 0, 'starfield.galaxy.type-5'),
+      galaxy6: make.sprite(0, 0, 'starfield.galaxy.type-6'),
+      galaxy7: make.sprite(0, 0, 'starfield.galaxy.type-7'),
+      galaxy8: make.sprite(0, 0, 'starfield.galaxy.type-8'),
+      galaxy9: make.sprite(0, 0, 'starfield.galaxy.type-9'),
+      galaxy10: make.sprite(0, 0, 'starfield.galaxy.type-10'),
+      galaxy11: make.sprite(0, 0, 'starfield.galaxy.type-11'),
+      galaxy12: make.sprite(0, 0, 'starfield.galaxy.type-12'),
     };
   }
 
