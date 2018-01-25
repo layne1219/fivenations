@@ -168,6 +168,7 @@
       var app = new FiveNations({ canvasElmId: 'fivenations-game' });
       var scriptBox = FiveNations.Scriptbox.getInstance();
       scriptBox.add('default', function(game) {
+        var Starfield = game.map.Starfield;
 
         window.addEntity = function(id, team, x, y) {
           game.eventEmitter.synced.entities.add({
@@ -178,13 +179,13 @@
           });
         };
 
-        var Starfield = game.map.Starfield;
         game.map.new({
           width: 96,
           height: 96,
           starfield: {
             backgroundTile: 'starfield-1',
-            starfieldGenerator: Starfield.PlanetAreaGenerator
+            starfieldGenerator: Starfield.PlanetAreaGenerator,
+            foregroundGenerator: Starfield.ForegroundCloudGenerator,
           }
         });
 

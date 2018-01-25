@@ -5,13 +5,12 @@ import Graphics from '../common/Graphics';
 const ns = window.fivenations;
 let sprites;
 
-class DeepSpaceLayer {
+class Foreground {
   constructor(map, generator) {
     this.setMap(map);
     this.setGame(map.getGame());
     this.createTexture();
     this.createContainer();
-    this.addContainerToStarfieldGroup();
     this.createSprites();
     this.createSpaceObjects(generator);
   }
@@ -43,21 +42,23 @@ class DeepSpaceLayer {
   createContainer() {
     this.container = this.game.add.image(0, 0, this.texture);
     this.container.fixedToCamera = true;
-  }
-
-  addContainerToStarfieldGroup() {
-    this.group = Graphics.getInstance().getGroup('starfield');
+    this.group = Graphics.getInstance().getGroup('starfield-foreground');
     this.group.add(this.container);
   }
 
   createSprites() {
     if (sprites) return;
     sprites = {
-      cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
-      cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
-      meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
-      planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
-      planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2'),
+      cloud1: this.game.make.sprite(
+        0,
+        0,
+        'starfield.foregound.foreground.type-1',
+      ),
+      cloud2: this.game.make.sprite(
+        0,
+        0,
+        'starfield.foregound.foreground.type-2',
+      ),
     };
   }
 
@@ -106,4 +107,4 @@ class DeepSpaceLayer {
   }
 }
 
-export default DeepSpaceLayer;
+export default Foreground;
