@@ -1,14 +1,17 @@
 import SpaceObject from './SpaceObject';
 import SpaceObjectGenerator from './SpaceObjectGenerator';
 import PlanetAreaGenerator from './PlanetAreaGenerator';
+import ForegroundCloudGenerator from './ForegroundCloudGenerator';
 import DeepSpaceLayer from './DeepSpaceLayer';
 import Background from './Background';
+import Foreground from './Foreground';
 
 class Starfield {
   constructor(map, config = {}) {
     this.initLayers();
     this.createBackground(map, config.backgroundTile);
     this.createDeepSpaceObjects(map, config.starfieldGenerator);
+    this.createForegroundObjects(map, config.foregroundGenerator);
   }
 
   initLayers() {
@@ -23,7 +26,12 @@ class Starfield {
     this.layers.push(new DeepSpaceLayer(map, generator));
   }
 
+  createForegroundObjects(map, generator) {
+    this.layers.push(new Foreground(map, generator));
+  }
+
   resetLayers() {
+    // @TODO This is obviously not enough to avoid leaking
     this.layers.splice();
   }
 
@@ -37,5 +45,6 @@ class Starfield {
 Starfield.SpaceObject = SpaceObject;
 Starfield.SpaceObjectGenerator = SpaceObjectGenerator;
 Starfield.PlanetAreaGenerator = PlanetAreaGenerator;
+Starfield.ForegroundCloudGenerator = ForegroundCloudGenerator;
 
 export default Starfield;
