@@ -87,11 +87,22 @@ class Foreground {
   }
 
   remove() {
+    this.clear();
+    this.group.remove(this.container);
+  }
+
+  clear() {
     while (this.spaceObjects.length) {
       const spaceObject = this.spaceObjects.pop();
       spaceObject.remove();
     }
-    this.group.remove(this.container);
+  }
+
+  add(spaceObject) {
+    if (!(spaceObject instanceof spaceObject)) {
+      throw new Error();
+    }
+    this.spaceObjects.push(spaceObject);
   }
 
   getGame() {
