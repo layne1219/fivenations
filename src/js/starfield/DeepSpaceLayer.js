@@ -85,6 +85,8 @@ class DeepSpaceLayer {
   }
 
   update() {
+    // don't need to update the background if there is no scroll event
+    // since the last update
     if (!this.map.isDirty()) return;
     for (let i = 0, l = this.spaceObjects.length; i < l; i += 1) {
       this.spaceObjects[i].update(this.texture, this.game, i === 0);

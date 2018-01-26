@@ -29,7 +29,7 @@ let starfield;
 let fogOfWar;
 let fogOfWarRenderer;
 let collisionMap;
-let fogOfWarDirty = false;
+let dirty = false;
 
 class Map {
   constructor(_game) {
@@ -69,7 +69,7 @@ class Map {
     fogOfWar.optimizedUpdate = Util.interval(
       (entityManager) => {
         fogOfWar.update(entityManager);
-        fogOfWarDirty = true;
+        dirty = true;
       },
       FOG_OF_WAR_REFRESH_RATE,
       fogOfWar,
@@ -90,9 +90,9 @@ class Map {
     if (starfield) starfield.update();
     if (fogOfWar) {
       fogOfWar.optimizedUpdate(entityManager);
-      if (fogOfWarDirty) {
+      if (dirty) {
         fogOfWarRenderer.update();
-        fogOfWarDirty = false;
+        dirty = false;
       }
     }
     if (collisionMap) {
@@ -103,7 +103,7 @@ class Map {
   scrollTo(x, y) {
     game.camera.x = x;
     game.camera.y = y;
-    fogOfWarDirty = true;
+    dirty = true;
   }
 
   scrollToTile(x, y) {
@@ -112,22 +112,22 @@ class Map {
 
   scrollLeft(extent) {
     game.camera.x -= extent || SCROLL_SPEED;
-    fogOfWarDirty = true;
+    dirty = true;
   }
 
   scrollRight(extent) {
     game.camera.x += extent || SCROLL_SPEED;
-    fogOfWarDirty = true;
+    dirty = true;
   }
 
   scrollUp(extent) {
     game.camera.y -= extent || SCROLL_SPEED;
-    fogOfWarDirty = true;
+    dirty = true;
   }
 
   scrollDown(extent) {
     game.camera.y += extent || SCROLL_SPEED;
-    fogOfWarDirty = true;
+    dirty = true;
   }
 
   getScreenWidth() {
@@ -168,6 +168,10 @@ class Map {
 
   getStarfield() {
     return starfield;
+  }
+
+  isDirty() {
+    return dirty;
   }
 }
 
