@@ -1,6 +1,7 @@
 /* global window */
 /* eslint class-methods-use-this: 0 */
 import Graphics from '../common/Graphics';
+import SpaceObject from './SpaceObject';
 
 const ns = window.fivenations;
 const sprites = {};
@@ -84,6 +85,7 @@ class DeepSpaceLayer {
   }
 
   update() {
+    if (!this.map.isDirty()) return;
     for (let i = 0, l = this.spaceObjects.length; i < l; i += 1) {
       this.spaceObjects[i].update(this.texture, this.game, i === 0);
     }
@@ -101,11 +103,32 @@ class DeepSpaceLayer {
     }
   }
 
-  add(spaceObject) {
-    if (!(spaceObject instanceof spaceObject)) {
-      throw new Error();
-    }
+  add(config) {
+    if (!config || !config.id) return;
+    // extract basic information from the given object parameter
+    const {
+      id, x, y, z, scale,
+    } = config;
+    const dataObject = this.game.cache.getJSON(id);
+    const { sprite, customFrame, animations } = dataObject;
+    const spriteObj = this.getSprite(sprite);
+    spriteObj.frame = customFrame;
+    const clone = this.game.make.sprite(0, 0, spriteObj.generateTexture());
+
+    // create the SpaceObject
+    const spaceObject = new SpaceObject(clone);
+
+    // sets all required attributes according to the given configuration
+    spaceObject
+      .setX(x)
+      .setY(y)
+      .setZ(z)
+      .setScale(scale)
+      .setAnimation(animations);
+
+    // adds the newly created SpaceObject to the collection
     this.spaceObjects.push(spaceObject);
+    // updates the sequence of the objects based on their Z value
     this.sortSpaceObjects();
   }
 

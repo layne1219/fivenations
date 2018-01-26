@@ -1,7 +1,7 @@
 {
     "id": "shootingstar",
     "name": "Shooting star",
-    "sprite": "starfield.shootingstart",
+    "sprite": "starfield.shootingstar",
     "animations": {
          "idle-forever": {
             "rate": 20,

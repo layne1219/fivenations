@@ -24,7 +24,7 @@ class PlanetGenerator extends SpaceObjectGenerator {
 
     const map = this.deepSpaceLayer.getMap();
     const type = Util.rnd(1, NUMBER_OF_TYPES);
-    const sprite = this.deepSpaceLayer.getSprite(`planet${type}`);
+    const sprite = this.deepSpaceLayer.getSprite(`starfield.planets.type-${type}`);
     const z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
     const x = Math.floor(Util.rnd(0, map.getScreenWidth() - screenWidth) * z);
     const y = Math.floor(Util.rnd(0, map.getScreenHeight() - screenHeight) * z);
