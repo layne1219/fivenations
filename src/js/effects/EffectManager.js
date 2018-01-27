@@ -334,19 +334,37 @@ class EffectManager {
       sprite = effect.getSprite();
       targetSprite = targetEntity.getSprite();
 
-      rotation = phaserGame.physics.arcade.angleBetween(sprite, targetSprite);
+      if (sprite.body.speed >= sprite.body.maxVelocity.x) {
+        rotation = phaserGame.physics.arcade.angleBetween(sprite, targetSprite);
 
-      if (rotation < sprite.rotation) {
-        sprite.body.angularVelocity = -50;
-      } else {
-        sprite.body.angularVelocity = 50;
+        if (sprite.rotation !== rotation) {
+          // Calculate difference between the current angle and rotation
+          let delta = rotation - sprite.rotation;
+
+          // Keep it in range from -180 to 180 to make the most efficient turns.
+          if (delta > Math.PI) delta -= Math.PI * 2;
+          if (delta < -Math.PI) delta += Math.PI * 2;
+
+          if (delta > 0) {
+            // Turn clockwise
+            sprite.angle += 5;
+          } else {
+            // Turn counter-clockwise
+            sprite.angle -= 5;
+          }
+
+          // Just set angle to target angle if they are close
+          if (Math.abs(delta) < sprite.game.math.degToRad(5)) {
+            sprite.rotation = rotation;
+          }
+        }
+
+        phaserGame.physics.arcade.velocityFromRotation(
+          sprite.rotation,
+          sprite.body.speed,
+          sprite.body.velocity,
+        );
       }
-
-      phaserGame.physics.arcade.velocityFromRotation(
-        sprite.rotation,
-        sprite.body._origVelocity,
-        sprite.body.velocity,
-      );
     }
   }
 
