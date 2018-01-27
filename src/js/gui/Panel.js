@@ -1,5 +1,7 @@
 /* global window, Phaser */
+/* eslint class-methods-use-this: 0 */
 import UserPointer from './UserPointer';
+
 const SPRITE_KEY = 'gui';
 const SPRITE_FRAME = 64;
 const PANEL_HEIGHT = 222;
