@@ -16,7 +16,7 @@ webpack --config ./config/webpack.production.config.js -p --bail
 cp -r $SOURCE/$RESOURCES $DIST/$RESOURCES
 
 # HTML 
-cp $SOURCE/web/index.html $DIST
+cp -r $SOURCE/web/* $DIST
 
 echo "----------------------------------------------";
 echo "             Build is successful!";
