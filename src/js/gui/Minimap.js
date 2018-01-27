@@ -234,6 +234,7 @@ export default class Minimap {
    */
   updateFogOfWar() {
     const fogOfWar = this.map.getFogOfWar();
+    if (!this.map.isDirty()) return;
     const tiles = fogOfWar.getMatrix();
     let cache = this.cache.fogOfWar;
     if (!cache) {
