@@ -118,32 +118,28 @@ class UserPointer {
 
   /**
    * Returning whether the mouse pointer is over the passed Phaser.Game.Sprite object
-   * @param  {object}  sprite [Phaser.Game.Sprite]
+   * @param {object} sprite - Phaser.Game.Sprite
    * @return {Boolean} [returns true if the mouse pointer is over the target item]
    */
   isHover(sprite) {
-    if (
-      phaserGame.camera.x + phaserGame.input.mousePointer.x <
-      sprite.x - sprite.offsetX
-    ) {
+    let mouseX = phaserGame.input.mousePointer.x;
+    let mouseY = phaserGame.input.mousePointer.y;
+
+    if (!sprite.fixedToCamera) {
+      mouseX += phaserGame.camera.x;
+      mouseY += phaserGame.camera.y;
+    }
+
+    if (mouseX < sprite.x - sprite.offsetX) {
       return false;
     }
-    if (
-      phaserGame.camera.x + phaserGame.input.mousePointer.x >
-      sprite.x - (sprite.offsetX + sprite.width)
-    ) {
+    if (mouseX > sprite.x - (sprite.offsetX + sprite.width)) {
       return false;
     }
-    if (
-      phaserGame.camera.y + phaserGame.input.mousePointer.y <
-      sprite.y - sprite.offsetY
-    ) {
+    if (mouseY < sprite.y - sprite.offsetY) {
       return false;
     }
-    if (
-      phaserGame.camera.y + phaserGame.input.mousePointer.y >
-      sprite.y - (sprite.offsetY + sprite.height)
-    ) {
+    if (mouseY > sprite.y - (sprite.offsetY + sprite.height)) {
       return false;
     }
     return true;
@@ -153,6 +149,13 @@ class UserPointer {
     return {
       x: phaserGame.camera.x + phaserGame.input.mousePointer.x,
       y: phaserGame.camera.y + phaserGame.input.mousePointer.y,
+    };
+  }
+
+  getScreenCoords() {
+    return {
+      x: phaserGame.input.mousePointer.x,
+      y: phaserGame.input.mousePointer.y,
     };
   }
 }

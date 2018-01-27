@@ -219,7 +219,7 @@ GUI.prototype = {
    * @return {Boolean} [true if the primary input is over the panel sprite]
    */
   isHover() {
-    return userPointer.isHover(panel);
+    return panel.isHover();
   },
 };
 
