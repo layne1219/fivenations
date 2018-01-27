@@ -87,6 +87,7 @@ class EffectManager {
 
       // saving the original velocity for later use (like effects following targets)
       sprite.body._origVelocity = config.velocity;
+      sprite.body._origAcceleration = config.acceleration;
     }
 
     // sets acceleration
@@ -116,6 +117,8 @@ class EffectManager {
     if (config.maxVelocity) {
       sprite.body.maxVelocity.set(config.maxVelocity);
     }
+
+    sprite.body.drag.set(0);
 
     // adds sprite to the appropriate graphics group
     const groupName =
@@ -325,7 +328,6 @@ class EffectManager {
     let rotation;
     let sprite;
     let targetSprite;
-    let point;
 
     if (!targetEntity) {
       effect.ttl = 0;
@@ -333,15 +335,19 @@ class EffectManager {
       sprite = effect.getSprite();
       targetSprite = targetEntity.getSprite();
 
-      rotation = ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
-      point = phaserGame.physics.arcade.velocityFromRotation(
-        rotation,
+      rotation = phaserGame.physics.arcade.angleBetween(sprite, targetSprite);
+
+      if (rotation < sprite.rotation) {
+        sprite.body.angularVelocity = -50;
+      } else {
+        sprite.body.angularVelocity = 50;
+      }
+
+      phaserGame.physics.arcade.velocityFromRotation(
+        sprite.rotation,
         sprite.body._origVelocity,
         sprite.body.velocity,
       );
-
-      sprite.body.velocity = point;
-      sprite.rotation = rotation;
     }
   }
 
