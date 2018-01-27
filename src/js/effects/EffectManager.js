@@ -9,7 +9,6 @@ import Weapon from '../entities/weapons/Weapon';
 import Effect from './Effect';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
-const ns = window.fivenations;
 
 let effects = [];
 let phaserGame;
