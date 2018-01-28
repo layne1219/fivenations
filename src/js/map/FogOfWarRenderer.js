@@ -100,6 +100,10 @@ class FogOfWarRenderer {
     this.bmd.context.globalCompositeOperation = 'source-over';
     this.bmd.context.fillRect(0, 0, this.bmd.width, this.bmd.height);
   }
+
+  hide() {
+    this.body.visible = false;
+  }
 }
 
 export default FogOfWarRenderer;

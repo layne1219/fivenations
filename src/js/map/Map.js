@@ -158,6 +158,10 @@ class Map {
     return fogOfWar;
   }
 
+  getFogOfWarRenderer() {
+    return fogOfWarRenderer;
+  }
+
   getCollisionMap() {
     return collisionMap;
   }
