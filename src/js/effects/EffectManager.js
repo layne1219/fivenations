@@ -334,7 +334,14 @@ class EffectManager {
       sprite = effect.getSprite();
       targetSprite = targetEntity.getSprite();
 
-      if (sprite.body.speed >= sprite.body.maxVelocity.x) {
+      if (
+        !effect._isHomingModeActivated &&
+        sprite.body.speed >= sprite.body.maxVelocity.x
+      ) {
+        effect._isHomingModeActivated = true;
+      }
+
+      if (effect._isHomingModeActivated) {
         rotation = phaserGame.physics.arcade.angleBetween(sprite, targetSprite);
 
         if (sprite.rotation !== rotation) {
