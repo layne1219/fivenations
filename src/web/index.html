@@ -18,11 +18,11 @@
           margin: auto;
       }
 
-      #fivenations-entity-editor {
+      #fivenations-data-editor {
         text-align: center;
       }
 
-      #fivenations-entity-editor div {
+      #fivenations-data-editor div {
         display: inline-block;
         position: relative;
         margin: 20px;
@@ -52,118 +52,14 @@
   <body>
 
     <div id="fivenations-game"></div>
-    <div id="fivenations-entity-editor">
-    </div>
+    <div id="fivenations-data-editor"></div>
+
     <script src="js/bundle.js"></script>
+    <script src="tools/data-editor.js"></script>
     <script>
 
-      var editorParentElm = 'fivenations-entity-editor';
-
-      /* function to save JSON to file from browser
-      * adapted from http://bgrins.github.io/devtools-snippets/#console-save
-      * @param {Object} data -- json object to save
-      * @param {String} file -- file name to save to 
-      */
-      function saveJSON(data, filename){
-
-          if(!data) {
-              console.error('No data')
-              return;
-          }
-
-          if(!filename) filename = 'console.json';
-
-          if(typeof data === "object"){
-              data = JSON.stringify(data, undefined, 4)
-          }
-
-          var blob = new Blob([data], {type: 'application/json'});
-          var a = document.createElement('a');
-          var evt = new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            view: window
-          });
-
-          a.download = filename;
-          a.href = window.URL.createObjectURL(blob);
-          a.dataset.downloadurl =  ['application/json', a.download, a.href].join(':');
-          a.dispatchEvent(evt);
-      }
-
-      /** 
-       * Editor object that represents an editorial block with all
-       * the requried functionality
-       * @param {string} id
-       */
-      function Editor(id) {
-        var parent = document.getElementById(editorParentElm);
-        var div = document.createElement('div');
-        
-        this.textArea = document.createElement('textarea');
-        this.textArea.setAttribute('id', id);
-
-        var button = document.createElement('button');
-        button.innerHTML = 'Save';
-        button.addEventListener('click', () => {
-          if (!this.key || !this.textArea.value) return;
-          saveJSON(this.textArea.value, this.key);
-        });
-
-        div.appendChild(this.textArea);
-        div.appendChild(button);
-        parent.appendChild(div);
-
-        window.editor = true;
-      }
-
-      Editor.prototype = {
-
-        edit: function(key, data) {
-          this.setData(key, data);
-          this.persist();
-          this.setOnChangeListener();
-        },
-
-        setData: function(key, data) {
-          this.key = key;
-          this.textArea.value = data;
-        },
-
-        clear: function() {
-          this.textArea.value = '';
-        },
-
-        setOnChangeListener: function() {
-          if (this.keyUpListener) this.textArea.removeEventListener('keyup', this.keyUpListener);
-          this.keyUpListener = this.textArea.addEventListener('keyup', () => {
-            this.persist();
-          });        
-        },
-
-        persist: function() {
-          localStorage.setItem(this.key, this.textArea.value);
-        }
-
-      };
-
-      function getEditorManager() {
-        var editors = ['entity', 'weapon', 'projectile'].reduce((obj, key) => {
-          obj[key] = new Editor(key);
-          return obj;
-        }, {});
-
-        return {
-          get: function(key) {
-            return editors[key];
-          },
-          clearAll: function() {
-            Object.keys(editors).forEach(key => editors[key].clear());
-          }
-        }
-      }
-
-      var editorManager = getEditorManager();
+      var editorParentElm = 'fivenations-data-editor';
+      var dataEditorManager = getDataEditorManager(editorParentElm);
 
       var app = new FiveNations({ canvasElmId: 'fivenations-game' });
       var scriptBox = FiveNations.Scriptbox.getInstance();
@@ -182,9 +78,6 @@
         game.map.new({
           width: 96,
           height: 96,
-          starfield: {
-            backgroundTile: 'starfield-1',
-          }
         });
 
         game.eventEmitter.synced.players.add({
@@ -200,65 +93,11 @@
         });        
 
         game.eventEmitter.local.addEventListener('gui/selection/change', () => {
-
-          var dataSource;
-          var entities = game.entityManager.entities(':selected');
-          if (!entities || entities.length === 0 || entities.length > 1) {
-            editorManager
-              .clearAll();
-            return;
-          }
-
-          var dataObject = entities[0].getDataObject();
-          var id = dataObject.getId();
-          var json;
-
-          if (localStorage.getItem(id)) {
-            json = localStorage.getItem(id);
-          } else {
-            json = dataObject.toJSON();
-          }
-
-          editorManager
-            .get('entity')
-            .edit(id, json);
-
+          dataEditorManager.onEntitySelect(game);
         });
 
         game.eventEmitter.local.addEventListener('gui/weapon/click', weapon => {
-
-          var id = weapon.getId();
-          var json;
-          var projectileId;
-
-          if (!id) return;
-
-          if (localStorage.getItem(id)) {
-            json = localStorage.getItem(id);
-          } else {
-            json = weapon.toJSON();
-          }
-
-          editorManager
-            .get('weapon')
-            .edit(id, json);
-
-          projectileId = weapon.getEffect();
-
-          if (!projectileId) return;
-          
-          if (localStorage.getItem(projectileId)) {
-            json = localStorage.getItem(projectileId);
-          } else {
-            json = JSON.stringify(game.game.cache.getJSON(projectileId), null, '  ');
-          }
-
-          if (!json) return;
-
-          editorManager
-            .get('projectile')
-            .edit(projectileId, json);
-
+          dataEditorManager.onWeaponSelect(game, weapon);
         });
 
       });

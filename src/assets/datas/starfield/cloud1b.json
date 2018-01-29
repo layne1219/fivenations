@@ -1,0 +1,6 @@
+{
+	"id": "cloud1b",
+	"name": "Interstellar Cloud",
+	"sprite": "starfield.clouds.bg.type-1",
+	"customFrame": 1
+}

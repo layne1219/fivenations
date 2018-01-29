@@ -21,27 +21,33 @@ class SpaceObject {
   }
 
   setScale(scale) {
-    this.sprite.scale.setTo(scale, scale);
+    if (scale) {
+      this.sprite.scale.setTo(scale, scale);
+    }
     return this;
   }
 
   setFrame(frame) {
-    this.sprite.frame = frame;
+    if (frame) {
+      this.sprite.frame = frame;
+    }
     return this;
   }
 
   setAnimation(animationDescriptor) {
-    if (!animationDescriptor || typeof animationDescriptor !== 'object') return;
-    Object.keys(animationDescriptor).forEach((key) => {
-      const data = animationDescriptor[key];
-      const animationOffset = animationDescriptor.animationOffset || 0;
-      const frames = data.frames.map(v => v + animationOffset);
-      this.sprite.animations.add(key, frames, data.rate, data.loopable);
-      // if the animation is called `idle-forever` it is started straightaway
-      if (key === ANIMATION_IDLE_FOREVER) {
-        this.sprite.animations.play(key);
-      }
-    });
+    if (animationDescriptor && typeof animationDescriptor === 'object') {
+      Object.keys(animationDescriptor).forEach((key) => {
+        const data = animationDescriptor[key];
+        const animationOffset = animationDescriptor.animationOffset || 0;
+        const frames = data.frames.map(v => v + animationOffset);
+        this.sprite.animations.add(key, frames, data.rate, data.loopable);
+        // if the animation is called `idle-forever` it is started straightaway
+        if (key === ANIMATION_IDLE_FOREVER) {
+          this.sprite.animations.play(key);
+        }
+      });
+    }
+    return this;
   }
 
   update(texture, game, clearLayer) {

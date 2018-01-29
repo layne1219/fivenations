@@ -18,11 +18,10 @@ class CloudGenerator extends SpaceObjectGenerator {
 
   createRandomizedCloud() {
     const map = this.deepSpaceLayer.getMap();
-    const sprites = this.deepSpaceLayer.getSprites();
     const NUMBER_OF_TYPES = 2;
     const NUMBER_OF_FRAMES = 4;
     const type = Util.rnd(1, NUMBER_OF_TYPES);
-    const sprite = sprites[`cloud${type}`];
+    const sprite = this.deepSpaceLayer.getSprite(`starfield.clouds.bg.type-${type}`);
     const z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
     const x = Math.floor(Util.rnd(0, map.getScreenWidth()) * z);
     const y = Math.floor(Util.rnd(0, map.getScreenHeight()) * z);

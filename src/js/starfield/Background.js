@@ -9,10 +9,26 @@ class Background {
   }
 
   initialise(map, tile = DEFAULT_STARFIELD_BACKGROUND_TILE) {
+    this.setGame(map);
+    this.setGroup();
+    this.setTile(tile);
+  }
+
+  setGame(map) {
     this.game = map.getGame();
+  }
+
+  setGroup() {
+    this.group = Graphics.getInstance().getGroup('starfield');
+  }
+
+  setTile(tile) {
+    // removes the current one if exsists
+    if (this.background) {
+      this.remove();
+    }
     this.background = this.game.add.tileSprite(0, 0, 1024, 1024, tile);
     this.background.fixedToCamera = true;
-    this.group = Graphics.getInstance().getGroup('starfield');
     this.group.add(this.background);
   }
 

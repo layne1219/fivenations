@@ -15,6 +15,6 @@ mkdir -p $DIST
 cp -r $SOURCE/$RESOURCES $DIST/$RESOURCES
 
 # HTML 
-cp $SOURCE/web/index.html $DIST
+cp -r $SOURCE/web/* $DIST
 
 webpack-dashboard -- webpack --config ./config/webpack.development.config.js

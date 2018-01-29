@@ -1,9 +1,10 @@
 /* global window */
 /* eslint class-methods-use-this: 0 */
 import Graphics from '../common/Graphics';
+import SpaceObject from './SpaceObject';
 
 const ns = window.fivenations;
-let sprites;
+const sprites = {};
 
 class DeepSpaceLayer {
   constructor(map, generator) {
@@ -12,7 +13,6 @@ class DeepSpaceLayer {
     this.createTexture();
     this.createContainer();
     this.addContainerToStarfieldGroup();
-    this.createSprites();
     this.createSpaceObjects(generator);
   }
 
@@ -50,15 +50,20 @@ class DeepSpaceLayer {
     this.group.add(this.container);
   }
 
-  createSprites() {
-    if (sprites) return;
-    sprites = {
-      cloud1: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-1'),
-      cloud2: this.game.make.sprite(0, 0, 'starfield.clouds.bg.type-2'),
-      meteorites: this.game.make.sprite(0, 0, 'starfield.meteorites'),
-      planet1: this.game.make.sprite(0, 0, 'starfield.planets.type-1'),
-      planet2: this.game.make.sprite(0, 0, 'starfield.planets.type-2'),
-    };
+  /**
+   * Fetches the sprite by the given id. If it doesn't exists yet it
+   * creates it and stores it in the local cache
+   * @param {string} id
+   * @return {object} Phaser.Sprite
+   */
+  getSprite(id) {
+    if (!id) {
+      throw new Error('Invalid id was given the fetch SpaceOjbect sprite!');
+    }
+    if (!sprites[id]) {
+      sprites[id] = this.game.make.sprite(0, 0, id);
+    }
+    return sprites[id];
   }
 
   createSpaceObjects(generatorClass) {
@@ -80,17 +85,53 @@ class DeepSpaceLayer {
   }
 
   update() {
+    // don't need to update the background if there is no scroll event
+    // since the last update
+    if (!this.map.isDirty()) return;
     for (let i = 0, l = this.spaceObjects.length; i < l; i += 1) {
       this.spaceObjects[i].update(this.texture, this.game, i === 0);
     }
   }
 
   remove() {
+    this.clear();
+    this.group.remove(this.container);
+  }
+
+  clear() {
     while (this.spaceObjects.length) {
       const spaceObject = this.spaceObjects.pop();
       spaceObject.remove();
     }
-    this.group.remove(this.container);
+  }
+
+  add(config) {
+    if (!config || !config.id) return;
+    // extract basic information from the given object parameter
+    const {
+      id, x, y, z, scale,
+    } = config;
+    const dataObject = this.game.cache.getJSON(id);
+    const { sprite, customFrame, animations } = dataObject;
+    const spriteObj = this.getSprite(sprite);
+    spriteObj.frame = customFrame;
+    const clone = this.game.make.sprite(0, 0, spriteObj.generateTexture());
+
+    // create the SpaceObject
+    const spaceObject = new SpaceObject(clone);
+
+    // sets all required attributes according to the given configuration
+    spaceObject
+      .setX(x)
+      .setY(y)
+      .setZ(z)
+      .setScale(scale)
+      .setAnimation(animations);
+
+    // adds the newly created SpaceObject to the collection
+    this.spaceObjects.push(spaceObject);
+    // updates the sequence of the objects based on their Z value
+    this.sortSpaceObjects();
   }
 
   getGame() {
