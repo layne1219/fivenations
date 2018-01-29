@@ -9,7 +9,6 @@ import Weapon from '../entities/weapons/Weapon';
 import Effect from './Effect';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
-const ns = window.fivenations;
 
 let effects = [];
 let phaserGame;
@@ -87,6 +86,7 @@ class EffectManager {
 
       // saving the original velocity for later use (like effects following targets)
       sprite.body._origVelocity = config.velocity;
+      sprite.body._origAcceleration = config.acceleration;
     }
 
     // sets acceleration
@@ -116,6 +116,8 @@ class EffectManager {
     if (config.maxVelocity) {
       sprite.body.maxVelocity.set(config.maxVelocity);
     }
+
+    sprite.body.drag.set(0);
 
     // adds sprite to the appropriate graphics group
     const groupName =
@@ -325,7 +327,6 @@ class EffectManager {
     let rotation;
     let sprite;
     let targetSprite;
-    let point;
 
     if (!targetEntity) {
       effect.ttl = 0;
@@ -333,15 +334,37 @@ class EffectManager {
       sprite = effect.getSprite();
       targetSprite = targetEntity.getSprite();
 
-      rotation = ns.game.game.physics.arcade.angleBetween(sprite, targetSprite);
-      point = phaserGame.physics.arcade.velocityFromRotation(
-        rotation,
-        sprite.body._origVelocity,
-        sprite.body.velocity,
-      );
+      if (sprite.body.speed >= sprite.body.maxVelocity.x) {
+        rotation = phaserGame.physics.arcade.angleBetween(sprite, targetSprite);
 
-      sprite.body.velocity = point;
-      sprite.rotation = rotation;
+        if (sprite.rotation !== rotation) {
+          // Calculate difference between the current angle and rotation
+          let delta = rotation - sprite.rotation;
+
+          // Keep it in range from -180 to 180 to make the most efficient turns.
+          if (delta > Math.PI) delta -= Math.PI * 2;
+          if (delta < -Math.PI) delta += Math.PI * 2;
+
+          if (delta > 0) {
+            // Turn clockwise
+            sprite.angle += 5;
+          } else {
+            // Turn counter-clockwise
+            sprite.angle -= 5;
+          }
+
+          // Just set angle to target angle if they are close
+          if (Math.abs(delta) < sprite.game.math.degToRad(5)) {
+            sprite.rotation = rotation;
+          }
+        }
+
+        phaserGame.physics.arcade.velocityFromRotation(
+          sprite.rotation,
+          sprite.body.speed,
+          sprite.body.velocity,
+        );
+      }
     }
   }
 
