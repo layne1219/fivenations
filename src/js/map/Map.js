@@ -177,6 +177,10 @@ class Map {
   isDirty() {
     return dirty;
   }
+
+  forceRefresh() {
+    dirty = true;
+  }
 }
 
 export default Map;
