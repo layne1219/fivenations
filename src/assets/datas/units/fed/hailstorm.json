@@ -189,5 +189,9 @@
         "fed-wreck-5"
       ]
     }
+  },
+  "damageArea": {
+    "width": 70,
+    "height": 70
   }
 }
