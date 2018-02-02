@@ -1,27 +1,38 @@
 {
-    "id": "missile",
-    "targetGraphicsGroup": "projectiles",
-    "size": "xsm",
-    "ttl": 750,
-    "followTarget": true,
-    "animations": {
-        "idle": {
-            "rate": 20,
-            "loopable": true,
-            "frames": [13, 14, 15, 16, 17, 18, 19]
-        }
-    },    
-    "events": {
-        "remove": {
-            "effects": ["blow-2"]
-        },
-        "collision": {
-            "damageTarget": true,
-            "removeEffect": true
-        }        
-    },
-    "trails": {
-        "rate": 5,
-        "effect": "smoke-trail-1"
+  "id": "missile",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 750,
+  "followTarget": true,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
     }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-cannon"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true
+    }
+  }
 }
