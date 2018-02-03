@@ -7,8 +7,8 @@
   "armor": 0,
   "power": 0,
   "hangar": 0,
-  "speed": 150,
-  "maneuverability": 50,
+  "speed": 180,
+  "maneuverability": 40,
   "realManeuverSystem": true,
   "vision": 2,
   "weapons": [
@@ -119,5 +119,9 @@
       "maxWrecks": 0,
       "wrecks": []
     }
+  },
+  "damageArea": {
+    "width": 30,
+    "height": 30
   }
 }

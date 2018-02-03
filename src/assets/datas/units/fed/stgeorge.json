@@ -4,7 +4,7 @@
   "type": "Carrier",
   "hull": 1200,
   "shield": 600,
-  "armor": 5,
+  "armor": 6,
   "power": 0,
   "hangar": 30,
   "speed": 30,
