@@ -1,28 +1,35 @@
 {
-    "id": "asr-missile",
-    "targetGraphicsGroup": "projectiles",
-    "size": "xsm",
-    "ttl": 450,
-    "followTarget": true,
-    "animations": {
-        "idle": {
-            "oncomplete": "keepLastFrame",
-            "rate": 20,
-            "loopable": false,
-            "frames": [45, 46, 47, 48, 49, 50, 51, 52]
-        }
+  "id": "asr-missile",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 450,
+  "followTarget": true,
+  "animations": {
+    "idle": {
+      "oncomplete": "keepLastFrame",
+      "rate": 20,
+      "loopable": false,
+      "frames": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ]
+    }
+  },
+  "events": {
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
     },
-    "events": {
-        "remove": {
-            "effects": ["blow-2"]
-        },
-        "collision": {
-            "damageTarget": true,
-            "removeEffect": true
-        }        
-    },
-    "trails": {
-        "rate": 20,
-        "effect": "smoke-trail-2"
-    }    
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true
+    }
+  }
 }

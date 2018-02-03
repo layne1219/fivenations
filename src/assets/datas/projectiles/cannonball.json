@@ -22,7 +22,7 @@
   "events": {
     "create": {
       "effects": [
-        "muzzleflash-yellow"
+        "muzzleflash-cannon"
       ]
     },
     "remove": {
