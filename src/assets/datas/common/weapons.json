@@ -19,7 +19,10 @@
     "type": "laser",
     "specialty": "-",
     "requires_entity_to_face_target": true,
-    "effect": "laser-beam-1"
+    "effect": "laser-beam-1",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1   
   },
   {
     "name": "130 mm Gun",
@@ -43,7 +46,10 @@
     "type": "cannon",
     "specialty": "-",
     "requires_entity_to_face_target": true,
-    "effect": "cannonball"
+    "effect": "cannonball",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Brimstone Missile",
@@ -67,7 +73,10 @@
     "type": "rocket",
     "specialty": "-",
     "requires_entity_to_face_target": true,
-    "effect": "missile"
+    "effect": "missile",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Radar",
@@ -89,34 +98,37 @@
     "type": "-",
     "specialty": "Detect invisibles"
   },
-  {
-    "name": "Rommel AF",
-    "id": 5,
-    "damage": 5,
-    "upgrade_level": 1,
-    "damage_shield": 5,
-    "upgrade_shield_level": 1,
-    "range": 250,
-    "speed": 60,
-    "velocity": 400,
-    "acceleration": 0,
-    "maxVelocity": 400,
-    "maneuverability": 100,
-    "accuracy": 40,
-    "effect_range": 0,
-    "collusion_effect": 0,
-    "power_cost": "-",
-    "cooldown": 5,
-    "homing": 0,
-    "type": "cannon",
-    "specialty": "Only aim at Fighters",
-    "requires_entity_to_face_target": false,
-    "targetTypes": [
-      "Fighter"
-    ],
-    "self_contained": true,
-    "effect": "rommel"
-  },
+{
+   "name": "Rommel AF",
+   "id": 5,
+   "damage": 5,
+   "upgrade_level": 1,
+   "damage_shield": 5,
+   "upgrade_shield_level": 1,
+   "range": 250,
+   "speed": 60,
+   "velocity": 800,
+   "acceleration": 0,
+   "maxVelocity": 800,
+   "maneuverability": 100,
+   "accuracy": 50,
+   "effect_range": 0,
+   "collusion_effect": 0,
+   "power_cost": "-",
+   "cooldown": 5,
+   "homing": 0,
+   "type": "cannon",
+   "specialty": "Only aim at Fighters",
+   "requires_entity_to_face_target": false,
+   "targetTypes": [
+     "Fighter"
+   ],
+   "self_contained": true,
+   "effect": "rommel",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1    
+},
   {
     "name": "Repairing Hangar",
     "id": 6,
@@ -157,7 +169,10 @@
     "homing": 0,
     "type": "rocket",
     "specialty": "-",
-    "effect": "kinetic-torpedo"
+    "effect": "kinetic-torpedo",
+    "minRange": 10,
+    "CAF": 0,    
+    "CHF": 1        
   },
   {
     "name": "Ragnarok Heavy Gun",
@@ -181,7 +196,10 @@
     "type": "cannon",
     "specialty": "If it's target destroyed, it can hit another unit (max 3)",
     "requires_entity_to_face_target": true,
-    "effect": "ragnarok-heavy-gun"
+    "effect": "ragnarok-heavy-gun",
+    "minRange": 20,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Cargo",
@@ -221,7 +239,10 @@
     "cooldown": 150,
     "homing": 0,
     "type": "laser",
-    "specialty": "Only for mining materials from asteroids"
+    "specialty": "Only for mining materials from asteroids",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1       
   },
   {
     "name": "Construction Crane",
@@ -281,7 +302,10 @@
     "cooldown": 100,
     "homing": 0,
     "type": "laser",
-    "specialty": "Can repair ships"
+    "specialty": "Can repair ships",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1      
   },
   {
     "name": "Shield Battery",
@@ -301,7 +325,10 @@
     "cooldown": 100,
     "homing": 0,
     "type": "laser",
-    "specialty": "Can restore ship's shield"
+    "specialty": "Can restore ship's shield",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1      
   },
   {
     "name": "Exploratory Bay",
@@ -321,7 +348,10 @@
     "cooldown": 100,
     "homing": 0,
     "type": "beam",
-    "specialty": "Can Dispell bad effects"
+    "specialty": "Can Dispell bad effects",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Construction Hangar",
@@ -351,19 +381,22 @@
     "damage_shield": 15,
     "range": 400,
     "speed": 30,
-    "acceleration": 50,
-    "velocity": 700,
+    "acceleration": 100,
+    "velocity": 200,
     "maxVelocity": 1000,
     "maneuverability": 40,
-    "accuracy": 95,
+    "accuracy": 100,
     "effect_range": 0,
     "collusion_effect": 2,
     "power_cost": "-",
-    "cooldown": 170,
-    "homing": 1,
+    "cooldown": 100,
+    "homing": 0,
     "type": "rocket",
     "specialty": "-",
-    "effect": "asr-missile"
+    "effect": "asr-missile",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Nuclear Missile POD",
@@ -403,7 +436,10 @@
     "cooldown": 1500,
     "homing": 0,
     "type": "-",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 40,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Radion disruptor",
@@ -423,7 +459,10 @@
     "cooldown": 180,
     "homing": 0,
     "type": "laser",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Meson cannon",
@@ -443,7 +482,10 @@
     "cooldown": 700,
     "homing": 0,
     "type": "laser",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Polaron cannon",
@@ -463,7 +505,10 @@
     "cooldown": 200,
     "homing": 0,
     "type": "beam",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Warp engine",
@@ -503,7 +548,10 @@
     "cooldown": 500,
     "homing": 1,
     "type": "beam",
-    "specialty": "Causes Neutralization for the enemy units for 3 sec"
+    "specialty": "Causes Neutralization for the enemy units for 3 sec",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Magnetic Pulse",
@@ -523,7 +571,10 @@
     "cooldown": 5,
     "homing": 0,
     "type": "beam",
-    "specialty": "The beam attract the enemy ships, before it explode"
+    "specialty": "The beam attract the enemy ships, before it explode",
+    "minRange": 20,
+    "CAF": 0,    
+    "CHF": 1        
   },
   {
     "name": "Forced shield",
@@ -563,7 +614,10 @@
     "cooldown": 10,
     "homing": 0,
     "type": "shockwave",
-    "specialty": "Egység maga körül shockwave-t indít el ami az effect range-ig folyamatosan nő és pusztítja az ellent"
+    "specialty": "Egység maga körül shockwave-t indít el ami az effect range-ig folyamatosan nő és pusztítja az ellent",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Vision",
@@ -603,7 +657,10 @@
     "cooldown": "0,75",
     "homing": 0,
     "type": "beam",
-    "specialty": "Nem gyengíti az armor a sebzését a hajó Hull-on"
+    "specialty": "Nem gyengíti az armor a sebzését a hajó Hull-on",
+    "minRange": 0,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Time distortion",
@@ -703,7 +760,10 @@
     "cooldown": 1,
     "homing": 0,
     "type": "beam",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Phase torpedo",
@@ -723,7 +783,10 @@
     "cooldown": "1,8",
     "homing": 0,
     "type": "cannon",
-    "specialty": "no effect on friendly units"
+    "specialty": "no effect on friendly units",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Gravimetric ray",
@@ -743,7 +806,10 @@
     "cooldown": 2,
     "homing": 1,
     "type": "beam",
-    "specialty": "Causes instantly damage to the ships's hull"
+    "specialty": "Causes instantly damage to the ships's hull",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Permament Cloak",
@@ -803,7 +869,10 @@
     "cooldown": "0,5",
     "homing": 0,
     "type": "laser",
-    "specialty": "damage +1 / sec (max dmg 14)"
+    "specialty": "damage +1 / sec (max dmg 14)",
+    "minRange": 20,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Plasma torpedo",
@@ -823,7 +892,10 @@
     "cooldown": 6,
     "homing": 0,
     "type": "scoop",
-    "specialty": "távolságonként 2-vel csökken a lövedék sebzése (min 10)"
+    "specialty": "távolságonként 2-vel csökken a lövedék sebzése (min 10)",
+    "minRange": 0,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Expanded shield",
@@ -883,7 +955,10 @@
     "cooldown": 10,
     "homing": 0,
     "type": "laser",
-    "specialty": "Átveszi az ellenséges hajót, fightereket, workship +0, Destroyereket +50, Cruisereketet, Cargo ship, expansionist +150, Special Cruiser + 75, Battleship és Carrier + 300 power kell (csak pajzs nélküli hajót tud)"
+    "specialty": "Átveszi az ellenséges hajót, fightereket, workship +0, Destroyereket +50, Cruisereketet, Cargo ship, expansionist +150, Special Cruiser + 75, Battleship és Carrier + 300 power kell (csak pajzs nélküli hajót tud)",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Cloak Generator",
@@ -943,7 +1018,10 @@
     "cooldown": "-",
     "homing": 0,
     "type": "laser",
-    "specialty": "20 secre tönkre teszi az ellenséges hajó fegyvereit, 1 fegyvert biztosan a többit 50% eséllyel damaged POD-á teszi"
+    "specialty": "20 secre tönkre teszi az ellenséges hajó fegyvereit, 1 fegyvert biztosan a többit 50% eséllyel damaged POD-á teszi",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Deploy leech mine",
@@ -1003,7 +1081,10 @@
     "cooldown": "0,5",
     "homing": 0,
     "type": "cannon",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Proton torpedo",
@@ -1023,7 +1104,10 @@
     "cooldown": 3,
     "homing": 0,
     "type": "rocket",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Unstable reactor",
@@ -1063,7 +1147,10 @@
     "cooldown": "3,5",
     "homing": 0,
     "type": "bomb",
-    "specialty": "Csak épületekre és aszteroidákra lehet lőni"
+    "specialty": "Csak épületekre és aszteroidákra lehet lőni",
+    "minRange": 20,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Antimatter beam",
@@ -1083,7 +1170,10 @@
     "cooldown": 6,
     "homing": 0,
     "type": "laser",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Hunter bay",
@@ -1103,7 +1193,10 @@
     "cooldown": 2,
     "homing": 0,
     "type": "-",
-    "specialty": "létrehoz egy Hunter vadászgépet, egyszerre max 6 vadászgépe lehet egy PODnak"
+    "specialty": "létrehoz egy Hunter vadászgépet, egyszerre max 6 vadászgépe lehet egy PODnak",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Energizer aura",
@@ -1143,7 +1236,10 @@
     "cooldown": "-",
     "homing": 0,
     "type": "-",
-    "specialty": "Ha egy épületnek nincs pajzsa, képes kikapcsolni azt 1 percre (ehhez az egység elpusztul)"
+    "specialty": "Ha egy épületnek nincs pajzsa, képes kikapcsolni azt 1 percre (ehhez az egység elpusztul)",
+    "minRange": 0,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Phoson Rain",
@@ -1163,7 +1259,10 @@
     "cooldown": 1,
     "homing": 0,
     "type": "beam",
-    "specialty": "harchelyzezben minden kilőtt lövedék után, a következő lövedék 0,2-al kevesebb cooldownnal lövődik ki (minimális cooldown 0,2 lesz)"
+    "specialty": "harchelyzezben minden kilőtt lövedék után, a következő lövedék 0,2-al kevesebb cooldownnal lövődik ki (minimális cooldown 0,2 lesz)",
+    "minRange": 10,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Overvoltage",
@@ -1183,7 +1282,10 @@
     "cooldown": "2,5",
     "homing": 0,
     "type": "laser",
-    "specialty": "Leszedi az ellenséges hajó pajzsát"
+    "specialty": "Leszedi az ellenséges hajó pajzsát",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Antimatter cloud",
@@ -1263,7 +1365,10 @@
     "cooldown": 0,
     "homing": 0,
     "type": "laser",
-    "specialty": "megfogja az ellenséges egységet, aki így nem tud mozogni, csak lőni"
+    "specialty": "megfogja az ellenséges egységet, aki így nem tud mozogni, csak lőni",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Sawtooth",
@@ -1283,7 +1388,10 @@
     "cooldown": 1,
     "homing": 0,
     "type": "closecombat",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Reactive cell wall",
@@ -1323,7 +1431,10 @@
     "cooldown": 1,
     "homing": 0,
     "type": "suptum",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Sticky phlegm",
@@ -1343,7 +1454,10 @@
     "cooldown": 2,
     "homing": 0,
     "type": "suptum",
-    "specialty": "Akit eltalál annak a sebessége 33%-al csökken 3 secre"
+    "specialty": "Akit eltalál annak a sebessége 33%-al csökken 3 secre",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Electrolit organ",
@@ -1363,7 +1477,10 @@
     "cooldown": "0,25",
     "homing": 0,
     "type": "lightning",
-    "specialty": "Nem gyengíti az armor a sebzését a hajó Hull-on"
+    "specialty": "Nem gyengíti az armor a sebzését a hajó Hull-on",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Mining fang",
@@ -1383,7 +1500,10 @@
     "cooldown": "1,5",
     "homing": 0,
     "type": "laser",
-    "specialty": "Only for mining materials from asteroids"
+    "specialty": "Only for mining materials from asteroids",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Spikeworm canal",
@@ -1403,7 +1523,10 @@
     "cooldown": "2,5",
     "homing": 0,
     "type": "special",
-    "specialty": "Spikewormot hoz létre aki önnálóan megy a célpontja fele"
+    "specialty": "Spikewormot hoz létre aki önnálóan megy a célpontja fele",
+    "minRange": 0,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Suicide",
@@ -1463,7 +1586,10 @@
     "cooldown": 4,
     "homing": 0,
     "type": "suptum",
-    "specialty": "Hull találat után (tehát pajzsra nem csak ha már elfogyott a pajzs) 2 secig +ban sebzi a célpontját 0,1 sec / 3 sebzés amire nem hat az armor"
+    "specialty": "Hull találat után (tehát pajzsra nem csak ha már elfogyott a pajzs) 2 secig +ban sebzi a célpontját 0,1 sec / 3 sebzés amire nem hat az armor",
+    "minRange": 10,
+    "CAF": 0,    
+    "CHF": 0        
   },
   {
     "name": "Stinging Cells",
@@ -1483,7 +1609,15 @@
     "cooldown": "0,8",
     "homing": 0,
     "type": "lightning",
-    "specialty": "Only aim at Fighters"
+    "requires_entity_to_face_target": false,
+    "targetTypes": [
+       "Fighter"
+    ],
+    "self_contained": true,    
+    "specialty": "Only aim at Fighters",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
   },
   {
     "name": "Remedial Womb",
@@ -1563,7 +1697,10 @@
     "cooldown": 4,
     "homing": 0,
     "type": "suptum",
-    "specialty": "16 irányba kilövi a támadó tumorjait amelyek sebzik az ellent"
+    "specialty": "16 irányba kilövi a támadó tumorjait amelyek sebzik az ellent",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1         
   },
   {
     "name": "Fiery Glob",
@@ -1583,7 +1720,10 @@
     "cooldown": 2,
     "homing": 0,
     "type": "suptum",
-    "specialty": "Az egység elfogyasztja a megsemmisített hajók romját, ebből azok árának 20%-át visszanyerik"
+    "specialty": "Az egység elfogyasztja a megsemmisített hajók romját, ebből azok árának 20%-át visszanyerik",
+    "minRange": 20,
+    "CAF": 1,    
+    "CHF": 1         
   },
   {
     "name": "Ink cloud",
@@ -1683,7 +1823,10 @@
     "cooldown": 2,
     "homing": 0,
     "type": "closecombat",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1         
   },
   {
     "name": "Acidic spores",
@@ -1783,7 +1926,10 @@
     "cooldown": 15,
     "homing": 0,
     "type": "Beam",
-    "specialty": "-"
+    "specialty": "-",
+    "minRange": 50,
+    "CAF": 0,    
+    "CHF": 0         
   },
   {
     "name": "Defensive spores",
@@ -1803,7 +1949,10 @@
     "cooldown": 6,
     "homing": 0,
     "type": "-",
-    "specialty": "Egység sebződésekor egy spore fieldet hoz létre, mely folyamatosan sebzi a benne lévő ellenséges egységek hullját (ignorálja a sebzés a pajzsot)"
+    "specialty": "Egység sebződésekor egy spore fieldet hoz létre, mely folyamatosan sebzi a benne lévő ellenséges egységek hullját (ignorálja a sebzés a pajzsot)",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1         
   },
   {
     "name": "Conductive Membrane",
@@ -1823,7 +1972,10 @@
     "cooldown": 4,
     "homing": "-",
     "type": "",
-    "specialty": ""
+    "specialty": "",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1         
   },
   {
     "name": "Conductive Membrane",
@@ -2063,7 +2215,10 @@
     "cooldown": 1.8,
     "homing": "-",
     "type": "firebreath",
-    "specialty": ""
+    "specialty": "",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1         
   },
   {
     "name": "Nerve spores",
@@ -2082,7 +2237,7 @@
     "power_cost": "-",
     "cooldown": 0,
     "homing": "-",
-    "type": "",
+    "type": "cloud",
     "specialty": ""
   },
   {
@@ -2102,7 +2257,101 @@
     "power_cost": "-",
     "cooldown": 1,
     "homing": "-",
-    "type": "",
+    "type": "aura",
     "specialty": ""
-  }
+  },
+  {
+    "name": "Emission inhibitor relay",
+    "id": 104,
+    "damage": 0,
+    "upgrade_level": 0,
+    "damage_shield": 0,
+    "range": 600,
+    "speed": 0,
+    "acceleration": 0,
+    "maxVelocity": 0,
+    "maneuverability": 0,
+    "accuracy": 0,
+    "effect_range": 0,
+    "collusion_effect": 0,
+    "power_cost": "-",
+    "cooldown": 240,
+    "homing": "-",
+    "type": "aura",
+    "specialty": "Az egység körül (rangenek megfelelő távolságra minden irányba) nem lehet ellenséges mágiát használni.: Exploratory Bay, Forced shield, Vision, Drain power, Black Hole, Defensive Stasis, Assimilation, Nano Virus, Overvoltage, Antimatter cloud, Observative integration, Acidic spores, Protective cloud" 
+  },
+  {
+    "name": "Siegebreaker Mortar",
+    "id": 105,
+    "damage": 150,
+    "upgrade_level": 5,
+    "damage_shield": 150,
+    "upgrade_shield_level": 5,
+    "range": 700,
+    "speed": 25,
+    "acceleration": 200,
+    "velocity": 200,
+    "maxVelocity": 500,
+    "maneuverability": 100,
+    "accuracy": 70,
+    "effect_range": 30,
+    "collusion_effect": 10,
+    "power_cost": "-",
+    "cooldown": 400,
+    "homing": 0,
+    "type": "bomb",
+    "specialty": "-",
+    "requires_entity_to_face_target": true,
+    "effect": "cannonball",
+    "minRange": 20,
+    "CAF": 0,    
+    "CHF": 1        
+  },  
+  {
+    "name": "Neutralizer",
+    "id": 106,
+    "damage": 12,
+    "upgrade_level": 1,
+    "damage_shield": 12,
+    "range": 500,
+    "speed": 100,
+    "acceleration": 0,
+    "maxVelocity": 100,
+    "maneuverability": 100,
+    "accuracy": 100,
+    "effect_range": 0,
+    "collusion_effect": 0,
+    "power_cost": "-",
+    "cooldown": "0,25",
+    "homing": 0,
+    "type": "lightning",
+    "specialty": "Nem gyengíti az armor a sebzését a hajó Hull-on, amíg sebzi az ellenséget addig az nem tud mozogni és lőni (Neutron torpedo effectje)",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
+  },  
+  {
+    "name": "Splinter gun",
+    "id": 107,
+    "damage": 10,
+    "upgrade_level": 1,
+    "damage_shield": 8,
+    "upgrade_shield_level": 1,    
+    "range": 300,
+    "speed": 30,
+    "acceleration": 4,
+    "maxVelocity": 60,
+    "maneuverability": 100,
+    "accuracy": 25,
+    "effect_range": 0,
+    "collusion_effect": 0,
+    "power_cost": "-",
+    "cooldown": "0,25",
+    "homing": 0,
+    "type": "cannon",
+    "specialty": "-",
+    "minRange": 0,
+    "CAF": 1,    
+    "CHF": 1        
+  }  
 ]
