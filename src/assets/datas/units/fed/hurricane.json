@@ -2,7 +2,7 @@
   "id": "hurricane",
   "name": "Hurricane",
   "type": "Fighter",
-  "hull": 40,
+  "hull": 45,
   "shield": 0,
   "armor": 0,
   "power": 0,
