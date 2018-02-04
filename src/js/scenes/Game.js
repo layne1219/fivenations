@@ -188,7 +188,7 @@ Game.prototype = {
 
     this.userPointer.on('multiselector/up', (multiselector) => {
       this.entityManager.entities().forEach((entity) => {
-        if (!entity.isEntityControlledByUser()) {
+        if (!entity.isEntityControlledByUser() && !ns.mapEditorMode) {
           return;
         }
         if (entity.isInside(multiselector)) {

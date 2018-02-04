@@ -530,7 +530,9 @@ class Entity {
    */
   remove() {
     this.delete();
-    EffectManager.getInstance().explode(this);
+    if (!ns.mapEditorMode) {
+      EffectManager.getInstance().explode(this);
+    }
   }
 
   /**
