@@ -24,7 +24,7 @@ class UserPointer {
 
       if (this.multiselector.active) {
         if (this.multiselector.width > 0 || this.multiselector.height > 0) {
-          this.dispatcher.dispatch('this.multiselector/up', this.multiselector);
+          this.dispatcher.dispatch('multiselector/up', this.multiselector);
         }
 
         this.multiselector.active = false;
