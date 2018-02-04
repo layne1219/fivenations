@@ -9,6 +9,7 @@ import Translations from '../preloader/Translations';
 
 let background;
 let bar;
+let popup;
 
 /**
  * Private function to set up all the assets needs to be loaded before the game starts
@@ -43,6 +44,8 @@ Preloader.prototype = {
 
     bar = this.add.sprite(326, 633, 'preloader-bar');
     this.load.setPreloadSprite(bar);
+
+    popup = this.add.sprite(20, 40, 'preloader-popup');
 
     // setting up the callback one the preloading is completed
     this.load.onLoadComplete.addOnce(() => {
