@@ -3,6 +3,7 @@ import { ANIMATION_IDLE_FOREVER } from '../common/Const';
 class SpaceObject {
   constructor(sprite) {
     this.sprite = sprite;
+    this.sprite.anchor.setTo(0.5, 0.5);
   }
 
   setX(x) {

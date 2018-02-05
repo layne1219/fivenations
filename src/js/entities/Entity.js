@@ -300,8 +300,11 @@ class Entity {
   update(authoritative) {
     // self-contained modules
     this.activityManager.update();
-    this.motionManager.update();
-    this.weaponManager.update(authoritative);
+
+    if (!ns.mapEditorMode) {
+      this.motionManager.update();
+      this.weaponManager.update(authoritative);
+    }
 
     // local behaviour
     this.updateShield();
