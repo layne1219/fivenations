@@ -14,6 +14,11 @@ export default {
       `${PATH_ASSETS}/gui/GUI_element.json`,
     );
     preloader.load.atlasJSONHash(
+      'gui-mute-fullscreen',
+      `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.png`,
+      `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.json`,
+    );
+    preloader.load.atlasJSONHash(
       'energy-shield',
       `${PATH_ASSETS}/effects/effect_shield.png`,
       `${PATH_ASSETS}/effects/effect_shield.json`,
