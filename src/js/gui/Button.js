@@ -27,11 +27,12 @@ class Button extends Phaser.Group {
     const over = config.customOverFrame || GUI_BUTTON.frames.over;
     const out = config.customOutFrame || GUI_BUTTON.frames.out;
     const down = config.customDownFrame || GUI_BUTTON.frames.down;
+    const spritesheet = config.spritesheet || GUI_BUTTON.spritesheet.id;
 
     this.sprite = phaserGame.add.button(
       0,
       0,
-      GUI_BUTTON.spritesheet.id,
+      spritesheet,
       onClick,
       this,
       over,
