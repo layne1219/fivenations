@@ -15,6 +15,7 @@ import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
 import NotificationBar from './NotificationBar';
 import FullScreenToggle from './FullScreenToggle';
+import AudioToggle from './AudioToggle';
 import Popup from './Popup';
 import Button from './Button';
 
@@ -50,6 +51,9 @@ let notificationBar;
 
 // reference to the FullScreenToggle Button
 let fullScreenToggle;
+
+// reference to AudioToggle Button
+let audioToggle;
 
 // reference to a Phaser.Sprite object that displays the click animation
 let clickAnim;
@@ -118,15 +122,22 @@ function initGUIDisplayElements() {
   notificationBar = new NotificationBar(phaserGame);
   notificationBar.appendTo(panel, NOTIFICATION_PANEL.x, NOTIFICATION_PANEL.y);
 
-  // FullScreen Toggle Button
   const gameWidth = ns.window.width;
   const gameHeight = ns.window.height;
 
+  // FullScreen Toggle Button
   fullScreenToggle = new FullScreenToggle({
     x: gameWidth / 2 - 18 - 5,
     y: gameHeight / -2 + 18 + 5,
   });
   group.add(fullScreenToggle);
+
+  // Mute / Unmute Audio
+  audioToggle = new AudioToggle({
+    x: gameWidth / 2 - 54 - 5,
+    y: gameHeight / -2 + 18 + 5,
+  });
+  group.add(audioToggle);
 }
 
 function GUI() {
