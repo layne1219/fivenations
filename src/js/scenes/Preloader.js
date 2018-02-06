@@ -1,3 +1,4 @@
+/* global window */
 import GUI from '../preloader/GUI';
 import Starfield from '../preloader/Starfield';
 import Entities from '../preloader/Entities';
@@ -7,10 +8,7 @@ import Projectiles from '../preloader/Projectiles';
 import Audio from '../preloader/Audio';
 import Translations from '../preloader/Translations';
 
-let background;
-let bar;
-let popup;
-
+const ns = window.fivenations;
 /**
  * Private function to set up all the assets needs to be loaded before the game starts
  * @param {object} [preloader] Preloader object defined below
@@ -39,13 +37,24 @@ Preloader.prototype = {
    * @return {void}
    */
   preload() {
-    background = this.game.add.sprite(0, 0, 'preloader-background');
-    background.fixedToCamera = true;
+    const gameWidth = ns.window.width;
+    const gameHeight = ns.window.height;
+    const popupWidth = 847;
+    const popupHeight = 598;
+    const popupX = (gameWidth - popupWidth) / 2;
+    const popupY = (gameHeight - popupHeight) / 2;
+    const barOffsetX = 132;
+    const barOffsetY = 558;
 
-    bar = this.add.sprite(326, 633, 'preloader-bar');
+    this.game.add.sprite(0, 0, 'preloader-background');
+    this.game.add.sprite(popupX, popupY, 'preloader-popup');
+
+    const bar = this.add.sprite(
+      popupX + barOffsetX,
+      popupY + barOffsetY,
+      'preloader-bar',
+    );
     this.load.setPreloadSprite(bar);
-
-    popup = this.add.sprite(20, 40, 'preloader-popup');
 
     // setting up the callback one the preloading is completed
     this.load.onLoadComplete.addOnce(() => {
