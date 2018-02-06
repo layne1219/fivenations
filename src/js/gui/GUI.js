@@ -1,3 +1,4 @@
+/* global window */
 import Graphics from '../common/Graphics';
 import {
   GROUP_GUI,
@@ -13,8 +14,11 @@ import ControlPanel from './ControlPanel';
 import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
 import NotificationBar from './NotificationBar';
+import FullScreenToggle from './FullScreenToggle';
 import Popup from './Popup';
 import Button from './Button';
+
+const ns = window.fivenations;
 
 let phaserGame;
 let entityManager;
@@ -43,6 +47,9 @@ let resourceDisplay;
 
 // reference notification bar
 let notificationBar;
+
+// reference to the FullScreenToggle Button
+let fullScreenToggle;
 
 // reference to a Phaser.Sprite object that displays the click animation
 let clickAnim;
@@ -112,7 +119,13 @@ function initGUIDisplayElements() {
   notificationBar.appendTo(panel, NOTIFICATION_PANEL.x, NOTIFICATION_PANEL.y);
 
   // FullScreen Toggle Button
-  fullScreenToggle = new FullScreenToggle({ x: 0, y: 0 });
+  const gameWidth = ns.window.width;
+  const gameHeight = ns.window.height;
+
+  fullScreenToggle = new FullScreenToggle({
+    x: gameWidth / 2 - 18 - 5,
+    y: gameHeight / -2 + 18 + 5,
+  });
   group.add(fullScreenToggle);
 }
 

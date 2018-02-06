@@ -14,7 +14,7 @@ export default {
       `${PATH_ASSETS}/gui/GUI_element.json`,
     );
     preloader.load.atlasJSONHash(
-      'gui-mute-fullscreen',
+      'gui.buttons',
       `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.png`,
       `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.json`,
     );

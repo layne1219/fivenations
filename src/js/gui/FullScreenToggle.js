@@ -20,7 +20,7 @@ class FullScreenToggle extends Phaser.Group {
     super(game);
     this.initFullScreenScaleMode();
     this.initFullScreenButton();
-    this.initDisableFullScreenButtin();
+    this.initDisableFullScreenButton();
     this.setCoordinates(config);
   }
 
@@ -41,7 +41,7 @@ class FullScreenToggle extends Phaser.Group {
     fullScreenButton = new Button({
       customOverFrame: 'roundbtn_fullscreen_oclick.png',
       customDownFrame: 'roundbtn_fullscreen_oclick.png',
-      customOutFrame: 'roundbtn_fullscreen_base',
+      customOutFrame: 'roundbtn_fullscreen_base.png',
       spritesheet: 'gui.buttons',
       onClick: () => {
         game.scale.startFullScreen(false);
@@ -60,7 +60,7 @@ class FullScreenToggle extends Phaser.Group {
     disableFullScreenButton = new Button({
       customOverFrame: 'roundbtn_invers_fullscreen_onclick.png',
       customDownFrame: 'roundbtn_invers_fullscreen_onclick.png',
-      customOutFrame: 'roundbtn_invers_fullscreen_base',
+      customOutFrame: 'roundbtn_invers_fullscreen_base.png',
       spritesheet: 'gui.buttons',
       onClick: () => {
         game.scale.stopFullScreen();
@@ -78,12 +78,10 @@ class FullScreenToggle extends Phaser.Group {
    * @param {object} - x, y
    */
   setCoordinates({ x, y }) {
-    const cX = x || ns.window.width / 2;
-    const cY = y || ns.window.height / 2;
-    this.x = cX;
-    this.y = cY;
+    this.x = x;
+    this.y = y;
     this.fixedToCamera = true;
-    this.cameraOffset.setTo(cX, cY);
+    this.cameraOffset.setTo(x, y);
   }
 }
 
