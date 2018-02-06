@@ -110,6 +110,10 @@ function initGUIDisplayElements() {
   // Notification Bar
   notificationBar = new NotificationBar(phaserGame);
   notificationBar.appendTo(panel, NOTIFICATION_PANEL.x, NOTIFICATION_PANEL.y);
+
+  // FullScreen Toggle Button
+  fullScreenToggle = new FullScreenToggle({ x: 0, y: 0 });
+  group.add(fullScreenToggle);
 }
 
 function GUI() {
