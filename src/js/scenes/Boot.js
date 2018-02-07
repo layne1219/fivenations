@@ -12,6 +12,7 @@ Boot.prototype = {
       `${PATH_ASSETS}/preload_background.jpg`,
     );
     this.load.image('preloader-bar', `${PATH_ASSETS}/preload_bar.png`);
+    this.load.image('preloader-popup', `${PATH_ASSETS}/preload_popup.png`);
   },
 
   create() {
