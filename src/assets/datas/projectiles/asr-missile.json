@@ -25,11 +25,18 @@
     "remove": {
       "effects": [
         "blow-2"
+      ],
+      "audio": [
+        "fed_rocket"
       ]
     },
     "collision": {
       "damageTarget": true,
-      "removeEffect": true
+      "removeEffect": true,
+      "audio": [
+        "hull_heavehit01",
+        "hull_heavehit02"
+      ]
     }
   }
 }

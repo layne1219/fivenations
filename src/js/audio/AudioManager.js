@@ -36,15 +36,16 @@ class AudioManager {
    * to the given marker definitions from Sprites.js
    */
   loadAudioSprite(key) {
-    const markerKeys = Object.keys(Sprites[key].markers);
+    const markerKeys = Object.keys(Sprites[key].spritemap);
     audioSprites[key] = phaserGame.add.audio(key);
     audioSprites[key].allowMultiple = true;
     markerKeys.forEach((markerKey) => {
-      const data = Sprites[key].markers[markerKey];
+      const data = Sprites[key].spritemap[markerKey];
+      const duration = data.end - data.start;
       audioSprites[key].addMarker(
         markerKey,
         data.start,
-        data.duration,
+        duration,
         data.volume || 1,
         data.loop,
       );

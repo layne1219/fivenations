@@ -101,9 +101,19 @@
       "end": 64.2669387755102,
       "loop": false
     },
-    "putbuilding": {
+    "laserhit1": {
       "start": 66,
-      "end": 68.10285714285715,
+      "end": 67.15374149659864,
+      "loop": false
+    },
+    "laserhit2": {
+      "start": 69,
+      "end": 70.74294784580499,
+      "loop": false
+    },
+    "putbuilding": {
+      "start": 72,
+      "end": 74.10285714285715,
       "loop": false
     }
   }

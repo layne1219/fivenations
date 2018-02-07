@@ -44,6 +44,17 @@ function collisionHandler(effectSprite, entitySprite) {
     eventEmitter.synced.entities(entity).damage({ weapon });
   }
 
+  if (collisionEvent.audio) {
+    const audioSprites = collisionEvent.audio;
+    if (audioSprites.length > 1) {
+      const markerId = audioSprites[Util.rnd(0, audioSprites.length - 1)];
+      audioManager.playAudioSprite(DEFAULT_AUDIO_SPRITE, markerId);
+    } else if (audioSprites.length === 1) {
+      const markerId = audioSprites[0];
+      audioManager.playAudioSprite(DEFAULT_AUDIO_SPRITE, markerId);
+    }
+  }
+
   // we don't need the arcade collision logic to separate the
   // colliding objects. For more information see:
   // https://phaser.io/docs/2.6.2/Phaser.Physics.Arcade.html#overlap

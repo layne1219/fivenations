@@ -198,6 +198,18 @@ Game.prototype = {
       });
     });
 
+    // Proxy mouse pointer events to Global Event Dispatcher
+    const dispatcher = this.eventEmitter.local;
+    const { dispatch } = dispatcher;
+    this.userPointer.on(
+      'leftbutton/down',
+      dispatch.bind(dispatcher, 'pointer/leftclick'),
+    );
+    this.userPointer.on(
+      'rightbutton/down',
+      dispatch.bind(dispatcher, 'pointer/rightclick'),
+    );
+
     // -----------------------------------------------------------------------
     //                              UserKeyboard
     // -----------------------------------------------------------------------

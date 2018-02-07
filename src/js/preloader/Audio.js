@@ -9,7 +9,7 @@ export default {
    */
   load(preloader) {
     PreloadedSprites.forEach((key) => {
-      preloader.load.audio(key, `${PUBLIC_URL}/${Sprites[key].asset}`);
+      preloader.load.audio(key, `${PUBLIC_URL}/${Sprites[key].resources[0]}`);
     });
   },
 };
