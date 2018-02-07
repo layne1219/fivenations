@@ -1,7 +1,7 @@
 /* eslint class-methods-use-this: 0 */
 import EventEmitter from '../sync/EventEmitter';
+import Events from './Events';
 import { PreloadedSprites, Sprites } from './Sprites';
-import { Events } from './Events';
 
 const audioSprites = {};
 
@@ -36,12 +36,13 @@ class AudioManager {
    * to the given marker definitions from Sprites.js
    */
   loadAudioSprite(key) {
+    const markerKeys = Object.keys(Sprites[key].markers);
     audioSprites[key] = phaserGame.add.audio(key);
     audioSprites[key].allowMultiple = true;
-    Sprites[key].markers.forEach((marker) => {
-      const data = Sprites[key].markers[marker];
+    markerKeys.forEach((markerKey) => {
+      const data = Sprites[key].markers[markerKey];
       audioSprites[key].addMarker(
-        marker,
+        markerKey,
         data.start,
         data.duration,
         data.volume || 1,
@@ -71,7 +72,7 @@ class AudioManager {
     const defaultCallback = audioManager =>
       audioManager.playAudioSprite(options);
     const callback = options.callback || defaultCallback;
-    emitter.addEventListeners(event, callback.bind(null, this));
+    emitter.addEventListener(event, callback.bind(null, this));
   }
 
   /**

@@ -34,7 +34,7 @@ class AudioToggle extends Phaser.Group {
       customOutFrame: 'roundbtn_mute_base.png',
       spritesheet: 'gui.buttons',
       onClick: () => {
-        game.sound.volume = 0;
+        game.sound.setMute();
         muteAudioButton.visible = false;
         unmuteAudioButton.visible = true;
       },
@@ -53,7 +53,8 @@ class AudioToggle extends Phaser.Group {
       customOutFrame: 'roundbtn_mutebtb_invers_base.png',
       spritesheet: 'gui.buttons',
       onClick: () => {
-        game.sound.volume = 1;
+        game.sound.muteOnPause = false;
+        game.sound.unsetMute();
         muteAudioButton.visible = true;
         unmuteAudioButton.visible = false;
       },

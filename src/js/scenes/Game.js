@@ -12,6 +12,7 @@ import TranslationManager from '../common/TranslationManager';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserPointer from '../gui/UserPointer';
+import AudioManager from '../audio/AudioManager';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
@@ -231,6 +232,12 @@ Game.prototype = {
     // !!! IMPORTANT TO HAVE THE EVENTBUS RESET BEFORE SCRIPTBOX !!!
     this.eventBusExecuter = EventBusExecuter.getInstance();
     this.eventBusExecuter.reset();
+
+    // -----------------------------------------------------------------------
+    //                              AudioManager
+    // -----------------------------------------------------------------------
+    AudioManager.setGame(this.game);
+    this.audioManager = AudioManager.getInstance();
 
     // -----------------------------------------------------------------------
     //                              Scriptbox
