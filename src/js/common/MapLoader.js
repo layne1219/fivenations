@@ -1,6 +1,28 @@
 /* global document, FileReader */
-/* eslint no-param-reassign: 0 */
-let singleton;
+
+/**
+ * Function to open the file system selector window and
+ * fetch the data from the selected json file
+ * @return {Promise}
+ */
+function loadJSON() {
+  return new Promise((resolve, rejected) => {
+    const elm = document.getElementById('selectFile');
+    elm.click();
+    elm.onchange = function onchange(event) {
+      const targetFile = event.target.files[0];
+      if (!targetFile) {
+        rejected();
+      }
+      const reader = new FileReader();
+      reader.onload = function onload(e) {
+        const result = JSON.parse(e.target.result);
+        resolve(result);
+      };
+      reader.readAsText(targetFile);
+    };
+  });
+}
 
 /**
  * Helper class to load all the various informations about the map
@@ -50,17 +72,26 @@ class Importer {
       this[key] = json[key];
     });
   }
+}
 
+/**
+ * Singleton pattern around the main class to make it useble across
+ * the whole application
+ */
+export default {
   /**
    * Loads all the exported components and entities into the Game
    * @param {object} game - FiveNations Game Scene
    */
-  loadMap(game) {
-    const mapConfig = this.getMap();
-    const players = this.getPlayers();
+  load(game, json) {
+    const importer = new Importer(json);
+    const mapConfig = importer.getMap();
+    const players = importer.getPlayers();
+
+    game.entityManager.reset();
+    game.playerManager.reset();
 
     game.map.new(mapConfig);
-    game.entityManager.reset();
 
     Object.keys(players).forEach((id) => {
       const { user, active } = players[id];
@@ -73,17 +104,17 @@ class Importer {
       });
     });
 
-    this.getEntities().forEach((config) => {
+    importer.getEntities().forEach((config) => {
       game.eventEmitter.synced.entities.add(config);
     });
 
-    this.getSpaceObjects().forEach((config) => {
+    importer.getSpaceObjects().forEach((config) => {
       game.map
         .getStarfield()
         .getDeepSpaceLayer()
         .add(config);
     });
-  }
-}
+  },
+};
 
-export default Importer;
+export { loadJSON };
