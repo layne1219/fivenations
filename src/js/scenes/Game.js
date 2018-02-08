@@ -16,20 +16,19 @@ import AudioManager from '../audio/AudioManager';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
+import MapLoader from '../common/MapLoader';
 
 const ns = window.fivenations;
 let authoritative = false;
 
-function Game() {}
-
-Game.prototype = {
+class Game {
   /**
    * Initialises the script that will be automatically fetched
    * from the ScriptBox upon creation
    */
   init(params = {}) {
     this.script = params.script;
-  },
+  }
 
   /**
    * Creates and links managers/controllers together
@@ -293,7 +292,7 @@ Game.prototype = {
     this.map.getCollisionMap().on('change', (map) => {
       this.easyStar.setGrid(map);
     });
-  },
+  }
 
   /**
    * Updates the Game scene on every tick
@@ -329,7 +328,15 @@ Game.prototype = {
       this.game.time.advancedTiming = true;
       this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
     }
-  },
-};
+  }
+
+  /**
+   * Loads a previously exported map json that has been preloaded
+   * @param {string} exporterMapId - id of the preloaded map json
+   */
+  loadMap(exportedMapId) {
+    MapLoader.load(this, exportedMapId);
+  }
+}
 
 export default Game;
