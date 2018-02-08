@@ -94,6 +94,12 @@ Game.prototype = {
     });
 
     // -----------------------------------------------------------------------
+    //                              AudioManager
+    // -----------------------------------------------------------------------
+    AudioManager.setGame(this.game);
+    this.audioManager = AudioManager.getInstance();
+
+    // -----------------------------------------------------------------------
     //                              UserPointer
     // -----------------------------------------------------------------------
     UserPointer.setGame(this.game);
@@ -244,12 +250,6 @@ Game.prototype = {
     // !!! IMPORTANT TO HAVE THE EVENTBUS RESET BEFORE SCRIPTBOX !!!
     this.eventBusExecuter = EventBusExecuter.getInstance();
     this.eventBusExecuter.reset();
-
-    // -----------------------------------------------------------------------
-    //                              AudioManager
-    // -----------------------------------------------------------------------
-    AudioManager.setGame(this.game);
-    this.audioManager = AudioManager.getInstance();
 
     // -----------------------------------------------------------------------
     //                              Scriptbox

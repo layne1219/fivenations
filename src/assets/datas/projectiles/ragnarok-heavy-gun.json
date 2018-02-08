@@ -23,7 +23,7 @@
   "events": {
     "create": {
       "effects": [
-        "muzzleflash-bigcannon",
+        "muzzleflash-bigcannon"
       ],
       "audio": [
         "fed_ragnarok"

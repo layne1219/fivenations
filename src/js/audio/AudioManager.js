@@ -2,6 +2,7 @@
 import EventEmitter from '../sync/EventEmitter';
 import Events from './Events';
 import { PreloadedSprites, Sprites } from './Sprites';
+import { DEFAULT_AUDIO_SPRITE } from '../common/Const';
 
 const audioSprites = {};
 
@@ -85,6 +86,23 @@ class AudioManager {
     const { sprite, marker } = options;
     if (!audioSprites[sprite]) return;
     audioSprites[sprite].play(marker);
+  }
+
+  playAudioSpriteByConfig(config) {
+    if (!config || !config.length) return;
+
+    const sprite = config.sprite || DEFAULT_AUDIO_SPRITE;
+    let marker;
+
+    if (config.length > 1) {
+      marker = config[Math.round(Math.random() * (config.length - 1))];
+    } else if (config.length === 1) {
+      [marker] = config;
+    }
+    this.playAudioSprite({
+      sprite,
+      marker,
+    });
   }
 }
 

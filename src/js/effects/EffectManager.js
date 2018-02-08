@@ -8,21 +8,18 @@ import EventEmitter from '../sync/EventEmitter';
 import Weapon from '../entities/weapons/Weapon';
 import Effect from './Effect';
 import AudioManager from '../audio/AudioManager';
-import { DEFAULT_AUDIO_SPRITE } from '../common/Const';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
 
 let effects = [];
 let phaserGame;
 let singleton;
-let audioManager;
 
 class EffectManager {
   constructor() {
     if (!phaserGame) {
       throw new Error('Invoke setGame first to pass the Phaser Game entity!');
     }
-    audioManager = AudioManager.getIstnace();
   }
 
   /**
@@ -171,15 +168,9 @@ class EffectManager {
       }
 
       // playback pre-registered audio sprites
-      const createAudioConfig = createEventConfig.audio || [];
-
-      if (createAudioConfig.length > 1) {
-        const markerId =
-          createAudioConfig[Util.rnd(0, createAudioConfig.length - 1)];
-        audioManager.playAudioSprite(DEFAULT_AUDIO_SPRITE, markerId);
-      } else if (createAudioConfig.length === 1) {
-        const markerId = createAudioConfig[0];
-        audioManager.playAudioSprite(DEFAULT_AUDIO_SPRITE, markerId);
+      const createAudioConfig = createEventConfig.audio;
+      if (createAudioConfig) {
+        AudioManager.getInstance().playAudioSpriteByConfig(createAudioConfig);
       }
     }
 

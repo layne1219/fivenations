@@ -1,6 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
 import Graphics from './Graphics';
 import EventEmitter from '../sync/EventEmitter';
+import AudioManager from '../audio/AudioManager';
 
 let phaserGame;
 let singleton;
@@ -45,14 +46,7 @@ function collisionHandler(effectSprite, entitySprite) {
   }
 
   if (collisionEvent.audio) {
-    const audioSprites = collisionEvent.audio;
-    if (audioSprites.length > 1) {
-      const markerId = audioSprites[Util.rnd(0, audioSprites.length - 1)];
-      audioManager.playAudioSprite(DEFAULT_AUDIO_SPRITE, markerId);
-    } else if (audioSprites.length === 1) {
-      const markerId = audioSprites[0];
-      audioManager.playAudioSprite(DEFAULT_AUDIO_SPRITE, markerId);
-    }
+    AudioManager.getInstance().playAudioSpriteByConfig(collisionEvent.audio);
   }
 
   // we don't need the arcade collision logic to separate the
