@@ -335,7 +335,8 @@ class Game {
    * @param {string} exporterMapId - id of the preloaded map json
    */
   loadMap(exportedMapId) {
-    MapLoader.load(this, exportedMapId);
+    const json = phaserGame.cache.getJSON(exportedMapId);
+    MapLoader.load(this, json);
   }
 }
 
