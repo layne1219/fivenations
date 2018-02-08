@@ -24,6 +24,9 @@
     "create": {
       "effects": [
         "muzzleflash-red"
+      ],
+      "audio": [
+        "fed_kinetictorpedo"
       ]
     },
     "remove": {
@@ -33,7 +36,11 @@
     },
     "collision": {
       "damageTarget": true,
-      "removeEffect": true
+      "removeEffect": true,
+      "audio": [
+        "hull_heavehit01",
+        "hull_heavehit02"
+      ]
     }
   }
 }

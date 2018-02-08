@@ -1,7 +1,8 @@
 /* eslint class-methods-use-this: 0 */
 import EventEmitter from '../sync/EventEmitter';
+import Events from './Events';
 import { PreloadedSprites, Sprites } from './Sprites';
-import { Events } from './Events';
+import { DEFAULT_AUDIO_SPRITE } from '../common/Const';
 
 const audioSprites = {};
 
@@ -36,14 +37,16 @@ class AudioManager {
    * to the given marker definitions from Sprites.js
    */
   loadAudioSprite(key) {
+    const markerKeys = Object.keys(Sprites[key].spritemap);
     audioSprites[key] = phaserGame.add.audio(key);
     audioSprites[key].allowMultiple = true;
-    Sprites[key].markers.forEach((marker) => {
-      const data = Sprites[key].markers[marker];
+    markerKeys.forEach((markerKey) => {
+      const data = Sprites[key].spritemap[markerKey];
+      const duration = data.end - data.start;
       audioSprites[key].addMarker(
-        marker,
+        markerKey,
         data.start,
-        data.duration,
+        duration,
         data.volume || 1,
         data.loop,
       );
@@ -71,7 +74,7 @@ class AudioManager {
     const defaultCallback = audioManager =>
       audioManager.playAudioSprite(options);
     const callback = options.callback || defaultCallback;
-    emitter.addEventListeners(event, callback.bind(null, this));
+    emitter.addEventListener(event, callback.bind(null, this));
   }
 
   /**
@@ -83,6 +86,23 @@ class AudioManager {
     const { sprite, marker } = options;
     if (!audioSprites[sprite]) return;
     audioSprites[sprite].play(marker);
+  }
+
+  playAudioSpriteByConfig(config) {
+    if (!config || !config.length) return;
+
+    const sprite = config.sprite || DEFAULT_AUDIO_SPRITE;
+    let marker;
+
+    if (config.length > 1) {
+      marker = config[Math.round(Math.random() * (config.length - 1))];
+    } else if (config.length === 1) {
+      [marker] = config;
+    }
+    this.playAudioSprite({
+      sprite,
+      marker,
+    });
   }
 }
 

@@ -12,6 +12,7 @@ import TranslationManager from '../common/TranslationManager';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserPointer from '../gui/UserPointer';
+import AudioManager from '../audio/AudioManager';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
@@ -91,6 +92,12 @@ Game.prototype = {
     this.eventEmitter.local.addEventListener('player/create', () => {
       authoritative = this.playerManager.getUser().isAuthorised();
     });
+
+    // -----------------------------------------------------------------------
+    //                              AudioManager
+    // -----------------------------------------------------------------------
+    AudioManager.setGame(this.game);
+    this.audioManager = AudioManager.getInstance();
 
     // -----------------------------------------------------------------------
     //                              UserPointer
@@ -196,6 +203,18 @@ Game.prototype = {
         }
       });
     });
+
+    // Proxy mouse pointer events to Global Event Dispatcher
+    const dispatcher = this.eventEmitter.local;
+    const { dispatch } = dispatcher;
+    this.userPointer.on(
+      'leftbutton/down',
+      dispatch.bind(dispatcher, 'pointer/leftclick'),
+    );
+    this.userPointer.on(
+      'rightbutton/down',
+      dispatch.bind(dispatcher, 'pointer/rightclick'),
+    );
 
     // -----------------------------------------------------------------------
     //                              UserKeyboard

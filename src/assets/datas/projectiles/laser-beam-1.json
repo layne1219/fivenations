@@ -20,6 +20,9 @@
     "create": {
       "effects": [
         "muzzleflash-red"
+      ],
+      "audio": [
+        "fed_laser"
       ]
     },
     "remove": {
@@ -30,7 +33,11 @@
     },
     "collision": {
       "damageTarget": true,
-      "removeEffect": true
+      "removeEffect": true,
+      "audio": [
+        "laserhit1",
+        "laserhit2"
+      ]
     }
   }
 }

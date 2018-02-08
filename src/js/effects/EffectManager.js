@@ -7,6 +7,7 @@ import DataObject from '../model/DataObject';
 import EventEmitter from '../sync/EventEmitter';
 import Weapon from '../entities/weapons/Weapon';
 import Effect from './Effect';
+import AudioManager from '../audio/AudioManager';
 
 const DEFAULT_GRAPHICS_GROUP = 'effects';
 
@@ -132,9 +133,9 @@ class EffectManager {
     }
 
     // executes defined functionality in the data object
-    const initEventConfig = dataObject.getEvent('create');
+    const createEventConfig = dataObject.getEvent('create');
 
-    if (initEventConfig) {
+    if (createEventConfig) {
       let offsetX = 0;
       let offsetY = 0;
 
@@ -148,9 +149,9 @@ class EffectManager {
         offsetY = projectileOffset.y || 0;
       }
 
-      const initEffects = initEventConfig.effects || [];
+      const createEffects = createEventConfig.effects || [];
 
-      initEffects.forEach((effectId) => {
+      createEffects.forEach((effectId) => {
         this.add({
           id: effectId,
           x: sprite.x + offsetX,
@@ -158,12 +159,18 @@ class EffectManager {
         });
       });
 
-      if (initEventConfig.execute) {
-        const exec = initEventConfig.execute;
+      if (createEventConfig.execute) {
+        const exec = createEventConfig.execute;
         const target = exec.target === 'self' ? effect : null;
         const func = this[exec.command] && this[exec.command].bind(this);
 
         if (func) func(target);
+      }
+
+      // playback pre-registered audio sprites
+      const createAudioConfig = createEventConfig.audio;
+      if (createAudioConfig) {
+        AudioManager.getInstance().playAudioSpriteByConfig(createAudioConfig);
       }
     }
 

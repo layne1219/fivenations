@@ -6,12 +6,21 @@
     "followTarget": false,
     "customFrame": 20,    
     "events": {
+        "create": {
+          "audio": [
+              "fed_rommel"
+          ]
+        },
         "remove": {
             "effects": ["flash-orange-2", "blow-1"]
         },
         "collision": {
             "damageTarget": true,
-            "removeEffect": true
-        }        
+            "removeEffect": true,
+            "audio": [
+                "DestAtckExplosion1",
+                "DestAtckExplosion2"
+            ]
+        }
     }
 }

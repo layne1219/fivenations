@@ -1,6 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
 import Graphics from './Graphics';
 import EventEmitter from '../sync/EventEmitter';
+import AudioManager from '../audio/AudioManager';
 
 let phaserGame;
 let singleton;
@@ -42,6 +43,10 @@ function collisionHandler(effectSprite, entitySprite) {
 
   if (collisionEvent.damageTarget) {
     eventEmitter.synced.entities(entity).damage({ weapon });
+  }
+
+  if (collisionEvent.audio) {
+    AudioManager.getInstance().playAudioSpriteByConfig(collisionEvent.audio);
   }
 
   // we don't need the arcade collision logic to separate the

@@ -1,0 +1,120 @@
+{
+  "resources": [
+    "assets/audio/sfx.ogg",
+    "assets/audio/sfx.m4a",
+    "assets/audio/sfx.mp3",
+    "assets/audio/sfx.ac3"
+  ],
+  "spritemap": {
+    "DestAtckExplosion1": {
+      "start": 0,
+      "end": 2.37859410430839,
+      "loop": false
+    },
+    "DestAtckExplosion2": {
+      "start": 4,
+      "end": 6.552743764172336,
+      "loop": false
+    },
+    "cantbuild": {
+      "start": 8,
+      "end": 8.581950113378685,
+      "loop": false
+    },
+    "click1": {
+      "start": 10,
+      "end": 10.364263038548753,
+      "loop": false
+    },
+    "click2": {
+      "start": 12,
+      "end": 12.651609977324263,
+      "loop": false
+    },
+    "destruction_big": {
+      "start": 14,
+      "end": 19.016961451247166,
+      "loop": false
+    },
+    "destruction_fighter": {
+      "start": 21,
+      "end": 23.4540589569161,
+      "loop": false
+    },
+    "destruction_medium": {
+      "start": 25,
+      "end": 27.92426303854875,
+      "loop": false
+    },
+    "destruction_small": {
+      "start": 29,
+      "end": 31.012879818594104,
+      "loop": false
+    },
+    "destruction_superbig": {
+      "start": 33,
+      "end": 37.50321995464853,
+      "loop": false
+    },
+    "fed_cannon1": {
+      "start": 39,
+      "end": 40.960634920634924,
+      "loop": false
+    },
+    "fed_cannon2": {
+      "start": 42,
+      "end": 42.944761904761904,
+      "loop": false
+    },
+    "fed_kinetictorpedo": {
+      "start": 44,
+      "end": 46.753015873015876,
+      "loop": false
+    },
+    "fed_laser": {
+      "start": 48,
+      "end": 49.03764172335601,
+      "loop": false
+    },
+    "fed_ragnarok": {
+      "start": 51,
+      "end": 53.991020408163266,
+      "loop": false
+    },
+    "fed_rocket": {
+      "start": 55,
+      "end": 56.089886621315195,
+      "loop": false
+    },
+    "fed_rommel": {
+      "start": 58,
+      "end": 58.87219954648526,
+      "loop": false
+    },
+    "hull_heavyhit01": {
+      "start": 60,
+      "end": 61.26984126984127,
+      "loop": false
+    },
+    "hull_heavyhit02": {
+      "start": 63,
+      "end": 64.2669387755102,
+      "loop": false
+    },
+    "laserhit1": {
+      "start": 66,
+      "end": 67.15374149659864,
+      "loop": false
+    },
+    "laserhit2": {
+      "start": 69,
+      "end": 70.74294784580499,
+      "loop": false
+    },
+    "putbuilding": {
+      "start": 72,
+      "end": 74.10285714285715,
+      "loop": false
+    }
+  }
+}
