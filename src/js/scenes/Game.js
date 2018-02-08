@@ -23,10 +23,17 @@ let authoritative = false;
 function Game() {}
 
 Game.prototype = {
+  /**
+   * Initialises the script that will be automatically fetched
+   * from the ScriptBox upon creation
+   */
   init(params = {}) {
     this.script = params.script;
   },
 
+  /**
+   * Creates and links managers/controllers together
+   */
   create() {
     // publishing the Game object
     ns.game = this;
@@ -288,6 +295,9 @@ Game.prototype = {
     });
   },
 
+  /**
+   * Updates the Game scene on every tick
+   */
   update() {
     // Execute all the registered events on the EventBus
     this.eventBusExecuter.run();
@@ -315,8 +325,10 @@ Game.prototype = {
     // User input - keyboard
     this.userKeyboard.update();
 
-    this.game.time.advancedTiming = true;
-    this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
+    if (ns.debugMode) {
+      this.game.time.advancedTiming = true;
+      this.game.debug.text(this.game.time.fps || '--', 2, 14, '#00ff00');
+    }
   },
 };
 
