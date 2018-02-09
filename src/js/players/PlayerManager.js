@@ -42,7 +42,10 @@ const singleton = {
         return players[i];
       }
     }
-    return false;
+    // we return a fake object that exposes the isAuthorised function
+    return {
+      isAuthorised: () => false,
+    };
   },
 
   /**
