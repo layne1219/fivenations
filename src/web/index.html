@@ -64,8 +64,6 @@
       var app = new FiveNations({ canvasElmId: 'fivenations-game' });
       var scriptBox = FiveNations.Scriptbox.getInstance();
       scriptBox.add('default', function(game) {
-        var Starfield = game.map.Starfield;
-
         window.addEntity = function(id, team, x, y) {
           game.eventEmitter.synced.entities.add({
             id: id || 'hurricane',
@@ -75,22 +73,7 @@
           });
         };
 
-        game.map.new({
-          width: 96,
-          height: 96,
-        });
-
-        game.eventEmitter.synced.players.add({
-          user: true,
-          team: 1,
-          authorised: true,
-        });
-
-        game.eventEmitter.synced.players.add({
-          user: false,
-          team: 2,
-          authorised: false,
-        });        
+        game.loadMap('promotionalmap01-1');        
 
         game.eventEmitter.local.addEventListener('gui/selection/change', () => {
           dataEditorManager.onEntitySelect(game);

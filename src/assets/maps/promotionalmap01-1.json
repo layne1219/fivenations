@@ -1,0 +1,3755 @@
+{
+  "map": {
+    "width": 96,
+    "height": 96,
+    "starfield": {
+      "backgroundTile": "starfield-1"
+    }
+  },
+  "players": {
+    "1": {
+      "team": 1,
+      "active": true,
+      "independent": false
+    },
+    "2": {
+      "team": 2,
+      "active": true,
+      "independent": false,
+      "user": true
+    },
+    "3": {
+      "team": 3,
+      "active": false,
+      "independent": false
+    },
+    "4": {
+      "team": 4,
+      "active": false,
+      "independent": false
+    },
+    "5": {
+      "team": 5,
+      "active": false,
+      "independent": false
+    },
+    "6": {
+      "team": 6,
+      "active": true,
+      "independent": true
+    },
+    "7": {
+      "team": 7,
+      "active": true,
+      "independent": true
+    },
+    "8": {
+      "team": 8,
+      "active": false,
+      "independent": false
+    }
+  },
+  "entities": [
+    {
+      "guid": "be3f602d-7ab7-44bd-acac-67e4c4478287",
+      "id": "orca",
+      "x": 226,
+      "y": 254,
+      "team": 2,
+      "createdAt": 1517941522361
+    },
+    {
+      "guid": "c3ea691b-6afb-4223-ac1d-93e093c5a26b",
+      "id": "orca",
+      "x": 319,
+      "y": 190,
+      "team": 2,
+      "createdAt": 1517941527609
+    },
+    {
+      "guid": "7be3e75c-e321-4a2c-a8d0-4f5f18d70d8f",
+      "id": "orca",
+      "x": 415,
+      "y": 251,
+      "team": 2,
+      "createdAt": 1517941529905
+    },
+    {
+      "guid": "7d65d86f-f70b-443b-9403-194debb1d7f7",
+      "id": "orca",
+      "x": 295,
+      "y": 327,
+      "team": 2,
+      "createdAt": 1517941530888
+    },
+    {
+      "guid": "2d923642-09b9-41df-8fc5-e8695891f1ce",
+      "id": "hailstorm",
+      "x": 208,
+      "y": 376,
+      "team": 2,
+      "createdAt": 1517941535506
+    },
+    {
+      "guid": "7ad42036-89f2-4157-85d2-c829d5137bdb",
+      "id": "hailstorm",
+      "x": 434,
+      "y": 166,
+      "team": 2,
+      "createdAt": 1517941536562
+    },
+    {
+      "guid": "873edc49-cc05-4689-bb1a-01e364f7dbda",
+      "id": "icarus",
+      "x": 123,
+      "y": 121,
+      "team": 2,
+      "createdAt": 1517941541136
+    },
+    {
+      "guid": "7abe371e-dc09-4c78-bec6-aa0afd361c16",
+      "id": "icarus",
+      "x": 183,
+      "y": 85,
+      "team": 2,
+      "createdAt": 1517941541855
+    },
+    {
+      "guid": "70e88683-ced5-4289-8186-3ec37d94f839",
+      "id": "hurricane",
+      "x": 319,
+      "y": 417,
+      "team": 2,
+      "createdAt": 1517941543712
+    },
+    {
+      "guid": "4c6b2e94-ad94-4f53-be0a-968f7a77f67f",
+      "id": "hurricane",
+      "x": 344,
+      "y": 396,
+      "team": 2,
+      "createdAt": 1517941544128
+    },
+    {
+      "guid": "fea4fd79-a482-4242-ad87-6c62a48942ce",
+      "id": "hurricane",
+      "x": 479,
+      "y": 319,
+      "team": 2,
+      "createdAt": 1517941544880
+    },
+    {
+      "guid": "8ae687b6-7f36-41fb-91ae-48592b9a97eb",
+      "id": "hurricane",
+      "x": 503,
+      "y": 299,
+      "team": 2,
+      "createdAt": 1517941545200
+    },
+    {
+      "guid": "de0c22a0-e6d6-4e60-873a-4b267aec86c3",
+      "id": "hurricane",
+      "x": 513,
+      "y": 333,
+      "team": 2,
+      "createdAt": 1517941545929
+    },
+    {
+      "guid": "365f0c9d-eff0-4c1a-bd89-08c95bc35163",
+      "id": "hurricane",
+      "x": 359,
+      "y": 429,
+      "team": 2,
+      "createdAt": 1517941546795
+    },
+    {
+      "guid": "0f617298-a633-4ec3-9247-1bbd51b5d2cf",
+      "id": "hurricane",
+      "x": 110,
+      "y": 352,
+      "team": 2,
+      "createdAt": 1517941548224
+    },
+    {
+      "guid": "bbf5dfe2-9348-46da-b861-86fe747ff8bb",
+      "id": "hurricane",
+      "x": 116,
+      "y": 391,
+      "team": 2,
+      "createdAt": 1517941548499
+    },
+    {
+      "guid": "34ecd436-65a6-4600-a3a5-76fbcfe31d1d",
+      "id": "hurricane",
+      "x": 82,
+      "y": 378,
+      "team": 2,
+      "createdAt": 1517941548953
+    },
+    {
+      "guid": "fedc9f51-80fd-4513-939a-25a485df56bb",
+      "id": "hurricane",
+      "x": 503,
+      "y": 106,
+      "team": 2,
+      "createdAt": 1517941549776
+    },
+    {
+      "guid": "bca6a5cf-4c3c-4e19-a3fa-cecb04f4095b",
+      "id": "hurricane",
+      "x": 530,
+      "y": 130,
+      "team": 2,
+      "createdAt": 1517941550033
+    },
+    {
+      "guid": "a4b6058d-326d-40b8-bdb6-05e4ba067a14",
+      "id": "hurricane",
+      "x": 543,
+      "y": 91,
+      "team": 2,
+      "createdAt": 1517941550464
+    },
+    {
+      "guid": "4b11816f-b478-4f93-9201-742b54b2dc07",
+      "id": "asteroid4",
+      "x": 1062,
+      "y": 198,
+      "team": 6,
+      "createdAt": 1517941601144
+    },
+    {
+      "guid": "580f6ca9-2929-4bd2-9048-f48b5c651ffb",
+      "id": "asteroidbig1",
+      "x": 1055,
+      "y": 258,
+      "team": 6,
+      "createdAt": 1517941603032
+    },
+    {
+      "guid": "d033ba70-a07b-4f4e-ad36-386263ea22b9",
+      "id": "asteroidbig2",
+      "x": 960,
+      "y": 350,
+      "team": 6,
+      "createdAt": 1517941604548
+    },
+    {
+      "guid": "716a2d3a-2446-400c-aad0-7808fb9fab4c",
+      "id": "asteroidsmall1",
+      "x": 1026,
+      "y": 377,
+      "team": 6,
+      "createdAt": 1517941606320
+    },
+    {
+      "guid": "6713f23b-8e46-4736-981f-694e639bd47b",
+      "id": "asteroidsmall1",
+      "x": 1066,
+      "y": 336,
+      "team": 6,
+      "createdAt": 1517941606808
+    },
+    {
+      "guid": "30f3eb44-d174-4f83-b315-7dd63d807030",
+      "id": "asteroidsmall1",
+      "x": 1038,
+      "y": 110,
+      "team": 6,
+      "createdAt": 1517941607800
+    },
+    {
+      "guid": "e8f9611d-69ef-4c32-bae3-405113a4f597",
+      "id": "asteroidsmall1",
+      "x": 818,
+      "y": 235,
+      "team": 6,
+      "createdAt": 1517941608928
+    },
+    {
+      "guid": "1c6b6594-41d7-4885-8bb7-d2ccc167c9e1",
+      "id": "asteroidsmall2",
+      "x": 885,
+      "y": 272,
+      "team": 6,
+      "createdAt": 1517941610631
+    },
+    {
+      "guid": "e65bdb59-81b6-412a-84d4-45566e1d5f4b",
+      "id": "asteroidsmall2",
+      "x": 935,
+      "y": 200,
+      "team": 6,
+      "createdAt": 1517941611352
+    },
+    {
+      "guid": "24c25965-3be2-4027-86f1-df5ce77dfbca",
+      "id": "asteroidsmall2",
+      "x": 914,
+      "y": 128,
+      "team": 6,
+      "createdAt": 1517941612306
+    },
+    {
+      "guid": "fe7ccc1f-97ae-42e7-ab77-ef6cae1db721",
+      "id": "asteroidsmall2",
+      "x": 867,
+      "y": 415,
+      "team": 6,
+      "createdAt": 1517941613872
+    },
+    {
+      "guid": "ee3bb482-2b13-4882-83a1-968aef114e93",
+      "id": "asteroidsmall2",
+      "x": 1109,
+      "y": 208,
+      "team": 6,
+      "createdAt": 1517941614823
+    },
+    {
+      "guid": "dca1535a-c050-4385-a24a-a8f8c4aadb22",
+      "id": "asteroidsmall2",
+      "x": 1195,
+      "y": 299,
+      "team": 6,
+      "createdAt": 1517941615529
+    },
+    {
+      "guid": "943a1e9e-b150-45d5-88f1-ed0a9885e11d",
+      "id": "asteroidsmall3",
+      "x": 1141,
+      "y": 347,
+      "team": 6,
+      "createdAt": 1517941617608
+    },
+    {
+      "guid": "12a3393b-1503-48de-9637-dd303ca1245c",
+      "id": "asteroidsmall3",
+      "x": 1091,
+      "y": 46,
+      "team": 6,
+      "createdAt": 1517941619208
+    },
+    {
+      "guid": "ea7289e2-19c5-4812-914c-7ac0dcbfc8f8",
+      "id": "asteroidsmall4",
+      "x": 775,
+      "y": 458,
+      "team": 6,
+      "createdAt": 1517941622208
+    },
+    {
+      "guid": "09f50056-8e5b-4f8b-bb02-858a5fe4a3e6",
+      "id": "asteroid1",
+      "x": 1044,
+      "y": 21,
+      "team": 6,
+      "createdAt": 1517941625361
+    },
+    {
+      "guid": "d9c7e2ba-b6fd-4104-a765-4e16767a5c06",
+      "id": "asteroid4",
+      "x": 1051,
+      "y": 79,
+      "team": 6,
+      "createdAt": 1517941628827
+    },
+    {
+      "guid": "b92ec8a6-29db-4d3c-bd8f-5171e5aed01b",
+      "id": "asteroid4",
+      "x": 1028,
+      "y": 886,
+      "team": 6,
+      "createdAt": 1517941646234
+    },
+    {
+      "guid": "e27b3552-198e-4586-ae53-822b83931d96",
+      "id": "asteroidsmall4",
+      "x": 998,
+      "y": 937,
+      "team": 6,
+      "createdAt": 1517941647976
+    },
+    {
+      "guid": "a1298612-8e11-4137-8598-9e85693775ef",
+      "id": "asteroidsmall3",
+      "x": 1067,
+      "y": 860,
+      "team": 6,
+      "createdAt": 1517941649401
+    },
+    {
+      "guid": "2003c1f0-a173-4571-989d-d03e469803be",
+      "id": "asteroid2",
+      "x": 565,
+      "y": 965,
+      "team": 6,
+      "createdAt": 1517941661509
+    },
+    {
+      "guid": "29decfba-b900-4fb1-8a59-409c012cb86e",
+      "id": "asteroidbig1",
+      "x": 403,
+      "y": 876,
+      "team": 6,
+      "createdAt": 1517941667265
+    },
+    {
+      "guid": "7e6ac554-a3a7-4183-a8a2-c3ff17712f1b",
+      "id": "asteroidbig2",
+      "x": 173,
+      "y": 854,
+      "team": 6,
+      "createdAt": 1517941669811
+    },
+    {
+      "guid": "966ed1c3-4421-42c5-8967-ee237ee25d52",
+      "id": "asteroidsmall1",
+      "x": 175,
+      "y": 772,
+      "team": 6,
+      "createdAt": 1517941671234
+    },
+    {
+      "guid": "c966aa76-d7e8-40dd-b87f-f416266c986c",
+      "id": "asteroidsmall1",
+      "x": 298,
+      "y": 829,
+      "team": 6,
+      "createdAt": 1517941671650
+    },
+    {
+      "guid": "9d9cd41c-1ae2-491e-9f9f-c2ac5947c759",
+      "id": "asteroidsmall1",
+      "x": 64,
+      "y": 889,
+      "team": 6,
+      "createdAt": 1517941672445
+    },
+    {
+      "guid": "4dfeda54-83a4-4a9e-801e-4fcc57a09a54",
+      "id": "asteroidsmall1",
+      "x": 315,
+      "y": 681,
+      "team": 6,
+      "createdAt": 1517941673065
+    },
+    {
+      "guid": "3a6cecc1-d4c6-41c1-a3e4-0d68fcb290d1",
+      "id": "asteroidsmall1",
+      "x": 718,
+      "y": 944,
+      "team": 6,
+      "createdAt": 1517941674041
+    },
+    {
+      "guid": "a271e2d8-78c4-4c97-98a4-6f67b1fbaf0b",
+      "id": "asteroidsmall2",
+      "x": 767,
+      "y": 952,
+      "team": 6,
+      "createdAt": 1517941675304
+    },
+    {
+      "guid": "80b139b8-ba90-4a9c-a919-a92fbbab9edf",
+      "id": "asteroidsmall2",
+      "x": 478,
+      "y": 868,
+      "team": 6,
+      "createdAt": 1517941676506
+    },
+    {
+      "guid": "33f64c89-07a0-43b3-a479-b55eda1b6299",
+      "id": "asteroidsmall2",
+      "x": 265,
+      "y": 888,
+      "team": 6,
+      "createdAt": 1517941677257
+    },
+    {
+      "guid": "696230b7-33bd-4d84-818f-b9446f047fb6",
+      "id": "asteroidsmall2",
+      "x": 30,
+      "y": 767,
+      "team": 6,
+      "createdAt": 1517941678569
+    },
+    {
+      "guid": "8e7ec350-64c8-4f1c-b5a2-b26ce46bab36",
+      "id": "asteroidsmall3",
+      "x": 24,
+      "y": 627,
+      "team": 6,
+      "createdAt": 1517941680353
+    },
+    {
+      "guid": "9c935d39-4c11-40d9-97ae-bea76ad0a139",
+      "id": "asteroid2",
+      "x": 776,
+      "y": 1024,
+      "team": 6,
+      "createdAt": 1517941689969
+    },
+    {
+      "guid": "eea57cff-8228-4b87-9716-8e45fbfc23c5",
+      "id": "asteroid4",
+      "x": 707,
+      "y": 996,
+      "team": 6,
+      "createdAt": 1517941691985
+    },
+    {
+      "guid": "8cd42a55-7147-436b-ae36-8efb74e3af39",
+      "id": "asteroid4",
+      "x": 791,
+      "y": 1085,
+      "team": 6,
+      "createdAt": 1517941692584
+    },
+    {
+      "guid": "3c344d85-777a-436f-a7ce-285478933779",
+      "id": "asteroid2",
+      "x": 860,
+      "y": 1142,
+      "team": 6,
+      "createdAt": 1517941695067
+    },
+    {
+      "guid": "078facc9-046e-47ab-b0c3-5ae8cba5158e",
+      "id": "asteroid3",
+      "x": 839,
+      "y": 1081,
+      "team": 6,
+      "createdAt": 1517941696384
+    },
+    {
+      "guid": "dd099201-2858-4887-816b-eb95062a7cd0",
+      "id": "asteroidsmall1",
+      "x": 787,
+      "y": 1155,
+      "team": 6,
+      "createdAt": 1517941698225
+    },
+    {
+      "guid": "a471f05e-a961-4e00-a672-972097063675",
+      "id": "asteroidsmall1",
+      "x": 867,
+      "y": 1203,
+      "team": 6,
+      "createdAt": 1517941698465
+    },
+    {
+      "guid": "b10e64a7-a61a-4b4d-8b11-189c998f72d2",
+      "id": "asteroidsmall1",
+      "x": 865,
+      "y": 1243,
+      "team": 6,
+      "createdAt": 1517941698985
+    },
+    {
+      "guid": "462b33a9-d92c-4560-ad6b-407a9bedf17c",
+      "id": "asteroidsmall1",
+      "x": 632,
+      "y": 999,
+      "team": 6,
+      "createdAt": 1517941699697
+    },
+    {
+      "guid": "45c68c83-ae38-4200-84ac-5b3f108575fb",
+      "id": "asteroidsmall2",
+      "x": 540,
+      "y": 916,
+      "team": 6,
+      "createdAt": 1517941702017
+    },
+    {
+      "guid": "5f77551a-8bed-49f3-8a03-3c89b9e8b3fc",
+      "id": "asteroidsmall2",
+      "x": 881,
+      "y": 1272,
+      "team": 6,
+      "createdAt": 1517941703344
+    },
+    {
+      "guid": "99934b76-d3dc-44cb-b443-7485057e4efa",
+      "id": "asteroid4",
+      "x": 1838,
+      "y": 244,
+      "team": 6,
+      "createdAt": 1517941715224
+    },
+    {
+      "guid": "084e1d99-a539-4256-ad35-19d7727e87f9",
+      "id": "asteroidbig2",
+      "x": 1909,
+      "y": 306,
+      "team": 6,
+      "createdAt": 1517941716769
+    },
+    {
+      "guid": "a908e96b-078a-48e8-93a3-2a366c34794e",
+      "id": "asteroidbig1",
+      "x": 1790,
+      "y": 479,
+      "team": 6,
+      "createdAt": 1517941718071
+    },
+    {
+      "guid": "9fa7211c-a7f7-4a3b-b6ec-6eb7eb120005",
+      "id": "asteroid2",
+      "x": 1849,
+      "y": 399,
+      "team": 6,
+      "createdAt": 1517941726464
+    },
+    {
+      "guid": "98976959-32ac-4f18-a48b-cc7343c46efd",
+      "id": "asteroid1",
+      "x": 1893,
+      "y": 216,
+      "team": 6,
+      "createdAt": 1517941728410
+    },
+    {
+      "guid": "42d31285-e9f7-4faa-bd2b-731b645777c6",
+      "id": "asteroid1",
+      "x": 1736,
+      "y": 579,
+      "team": 6,
+      "createdAt": 1517941729290
+    },
+    {
+      "guid": "953ac940-8807-4bc1-8898-a9bd92535928",
+      "id": "asteroid1",
+      "x": 1768,
+      "y": 89,
+      "team": 6,
+      "createdAt": 1517941730841
+    },
+    {
+      "guid": "88ed5e34-9c81-4953-912b-532f26df200b",
+      "id": "asteroid3",
+      "x": 1959,
+      "y": 85,
+      "team": 6,
+      "createdAt": 1517941732264
+    },
+    {
+      "guid": "57027710-0acd-4027-ba3a-ba038897a559",
+      "id": "asteroid4",
+      "x": 1856,
+      "y": 138,
+      "team": 6,
+      "createdAt": 1517941733488
+    },
+    {
+      "guid": "b6d65518-8749-4a2b-b932-7f1d12c55cbc",
+      "id": "asteroid4",
+      "x": 1958,
+      "y": 381,
+      "team": 6,
+      "createdAt": 1517941735112
+    },
+    {
+      "guid": "e8e69fc3-0db3-4c7f-84b9-f953fd77e88c",
+      "id": "asteroidsmall1",
+      "x": 1795,
+      "y": 552,
+      "team": 6,
+      "createdAt": 1517941740295
+    },
+    {
+      "guid": "25a875a0-e5a7-41b3-8763-de84e11be8ba",
+      "id": "asteroidsmall1",
+      "x": 1745,
+      "y": 524,
+      "team": 6,
+      "createdAt": 1517941740616
+    },
+    {
+      "guid": "54b23b07-c76f-426b-8756-dde2718314c7",
+      "id": "asteroidsmall1",
+      "x": 1700,
+      "y": 703,
+      "team": 6,
+      "createdAt": 1517941744512
+    },
+    {
+      "guid": "7b2f523b-d44a-416e-8fe8-518394b6ebc2",
+      "id": "asteroidsmall2",
+      "x": 1778,
+      "y": 591,
+      "team": 6,
+      "createdAt": 1517941747456
+    },
+    {
+      "guid": "f7f45f17-fb48-45b7-b1a0-a605cb043c18",
+      "id": "asteroidsmall2",
+      "x": 1811,
+      "y": 336,
+      "team": 6,
+      "createdAt": 1517941749216
+    },
+    {
+      "guid": "bb6c8571-d8c8-4d4b-aa89-7dd447ab597e",
+      "id": "asteroidsmall2",
+      "x": 1818,
+      "y": 99,
+      "team": 6,
+      "createdAt": 1517941749792
+    },
+    {
+      "guid": "34844828-3c8a-4bcd-8143-0cf147dbe727",
+      "id": "asteroidsmall2",
+      "x": 1885,
+      "y": 61,
+      "team": 6,
+      "createdAt": 1517941749992
+    },
+    {
+      "guid": "98bdd572-cb48-4cf3-9f6e-757c69c9234a",
+      "id": "asteroidsmall2",
+      "x": 1791,
+      "y": 236,
+      "team": 6,
+      "createdAt": 1517941750336
+    },
+    {
+      "guid": "0137a804-ffeb-467e-9b4b-8fc9cebcf5ea",
+      "id": "asteroidsmall2",
+      "x": 1683,
+      "y": 63,
+      "team": 6,
+      "createdAt": 1517941750760
+    },
+    {
+      "guid": "0cb15206-96ae-4555-b892-cc8f30bb51c6",
+      "id": "asteroidsmall4",
+      "x": 1763,
+      "y": 185,
+      "team": 6,
+      "createdAt": 1517941751896
+    },
+    {
+      "guid": "45a85893-51a3-47ff-8768-fcab29898d93",
+      "id": "asteroidicesmall1",
+      "x": 1953,
+      "y": 194,
+      "team": 6,
+      "createdAt": 1517941753608
+    },
+    {
+      "guid": "301e1d4a-0a4c-4a7f-9c5a-614f02a30412",
+      "id": "asteroidicesmall2",
+      "x": 1936,
+      "y": 160,
+      "team": 6,
+      "createdAt": 1517941755291
+    },
+    {
+      "guid": "c5c965a1-ff17-4204-bee6-e8b92c7aae6a",
+      "id": "asteroidsilicon1",
+      "x": 1901,
+      "y": 452,
+      "team": 6,
+      "createdAt": 1517941756900
+    },
+    {
+      "guid": "b2aa284d-9897-4741-982a-659e62eb17b4",
+      "id": "asteroidsilicon2",
+      "x": 1869,
+      "y": 525,
+      "team": 6,
+      "createdAt": 1517941758296
+    },
+    {
+      "guid": "503ca56d-f752-4a63-a9cb-7fc7adddeed7",
+      "id": "asteroidsiliconsmall1",
+      "x": 1924,
+      "y": 520,
+      "team": 6,
+      "createdAt": 1517941760677
+    },
+    {
+      "guid": "2bc680c9-740a-4d9e-ba0d-c299623b9b37",
+      "id": "asteroidsiliconsmall1",
+      "x": 1975,
+      "y": 433,
+      "team": 6,
+      "createdAt": 1517941761248
+    },
+    {
+      "guid": "99ca96a4-9791-404b-9cb5-42d4cf31d13b",
+      "id": "asteroid4",
+      "x": 2576,
+      "y": 258,
+      "team": 6,
+      "createdAt": 1517941775277
+    },
+    {
+      "guid": "95e023e6-1242-4dc1-9c7b-58990a2bb45f",
+      "id": "asteroidsmall3",
+      "x": 2509,
+      "y": 297,
+      "team": 6,
+      "createdAt": 1517941776836
+    },
+    {
+      "guid": "a1a0b354-a4b8-438b-a339-5362ab8614c9",
+      "id": "asteroidsmall4",
+      "x": 2616,
+      "y": 231,
+      "team": 6,
+      "createdAt": 1517941777930
+    },
+    {
+      "guid": "cb65c00c-42c2-4f45-a4bc-c41a8558986b",
+      "id": "asteroidsmall4",
+      "x": 2606,
+      "y": 322,
+      "team": 6,
+      "createdAt": 1517941779387
+    },
+    {
+      "guid": "f4f7ddab-097d-41db-b5c3-4408497922e5",
+      "id": "asteroidsmall4",
+      "x": 2588,
+      "y": 806,
+      "team": 6,
+      "createdAt": 1517941794684
+    },
+    {
+      "guid": "f910fa5d-c965-42c8-a61b-9848e1803c4d",
+      "id": "asteroid3",
+      "x": 2662,
+      "y": 796,
+      "team": 6,
+      "createdAt": 1517941796376
+    },
+    {
+      "guid": "c5fbb851-b14d-4fad-8ba7-fff5827f8276",
+      "id": "asteroid3",
+      "x": 2802,
+      "y": 715,
+      "team": 6,
+      "createdAt": 1517941796824
+    },
+    {
+      "guid": "9c535da9-5e86-4603-82aa-9f980bc72bb1",
+      "id": "asteroid4",
+      "x": 2688,
+      "y": 772,
+      "team": 6,
+      "createdAt": 1517941797920
+    },
+    {
+      "guid": "0b94f82e-a2d6-4698-974e-3ad3674a1f91",
+      "id": "asteroidbig1",
+      "x": 2767,
+      "y": 779,
+      "team": 6,
+      "createdAt": 1517941799640
+    },
+    {
+      "guid": "4b2f656b-0055-42bb-aa57-186634632845",
+      "id": "asteroidsmall3",
+      "x": 2839,
+      "y": 766,
+      "team": 6,
+      "createdAt": 1517941801744
+    },
+    {
+      "guid": "4c062f57-b7d2-444a-bc62-75fa9b051963",
+      "id": "asteroidsmall3",
+      "x": 2695,
+      "y": 852,
+      "team": 6,
+      "createdAt": 1517941802064
+    },
+    {
+      "guid": "ffe57688-d0f5-4346-8b19-fd73ebf95c0e",
+      "id": "asteroidsmall3",
+      "x": 2518,
+      "y": 870,
+      "team": 6,
+      "createdAt": 1517941802591
+    },
+    {
+      "guid": "8b1d6107-fb77-464d-bf39-bb529dda1c4d",
+      "id": "asteroidsmall2",
+      "x": 2857,
+      "y": 696,
+      "team": 6,
+      "createdAt": 1517941805506
+    },
+    {
+      "guid": "58da1b03-52f5-4134-9fe6-f48e461c49bf",
+      "id": "asteroidsmall2",
+      "x": 2565,
+      "y": 850,
+      "team": 6,
+      "createdAt": 1517941806825
+    },
+    {
+      "guid": "f78f20a2-f881-45ea-b4f0-782b4ad8088f",
+      "id": "asteroid3",
+      "x": 2901,
+      "y": 669,
+      "team": 6,
+      "createdAt": 1517941808242
+    },
+    {
+      "guid": "f754e72a-7e7b-4dbb-b67e-386ba9f4193e",
+      "id": "asteroid4",
+      "x": 2587,
+      "y": 885,
+      "team": 6,
+      "createdAt": 1517941811328
+    },
+    {
+      "guid": "4a464568-9d13-4bba-9a0a-10bba6ddca97",
+      "id": "asteroid4",
+      "x": 2808,
+      "y": 857,
+      "team": 6,
+      "createdAt": 1517941813585
+    },
+    {
+      "guid": "9ac67a65-da75-4c32-9152-c0591007c96b",
+      "id": "asteroid4",
+      "x": 3404,
+      "y": 2255,
+      "team": 6,
+      "createdAt": 1517941825195
+    },
+    {
+      "guid": "498dda92-e10b-4790-b749-2ff8c2201295",
+      "id": "asteroid4",
+      "x": 3235,
+      "y": 2320,
+      "team": 6,
+      "createdAt": 1517941825493
+    },
+    {
+      "guid": "edab174e-e327-414b-b266-e375281ea184",
+      "id": "asteroid4",
+      "x": 3092,
+      "y": 2431,
+      "team": 6,
+      "createdAt": 1517941825741
+    },
+    {
+      "guid": "78a04bce-6339-43ef-af29-8cbc6d3769d7",
+      "id": "asteroid4",
+      "x": 3025,
+      "y": 2526,
+      "team": 6,
+      "createdAt": 1517941825944
+    },
+    {
+      "guid": "e96ad6af-9bfe-4242-ad2e-2b2dc6b06581",
+      "id": "asteroid2",
+      "x": 3096,
+      "y": 2492,
+      "team": 6,
+      "createdAt": 1517941827632
+    },
+    {
+      "guid": "4ba39ed4-0d96-4fef-b9dd-31402aca807f",
+      "id": "asteroid2",
+      "x": 3148,
+      "y": 2344,
+      "team": 6,
+      "createdAt": 1517941827920
+    },
+    {
+      "guid": "99650075-c223-4703-b406-e8f5a9425488",
+      "id": "asteroid2",
+      "x": 3327,
+      "y": 2257,
+      "team": 6,
+      "createdAt": 1517941828400
+    },
+    {
+      "guid": "387115cd-7cdc-4472-a84a-e933ddfda2c9",
+      "id": "asteroid1",
+      "x": 3179,
+      "y": 2382,
+      "team": 6,
+      "createdAt": 1517941829513
+    },
+    {
+      "guid": "9c9c7cd1-101c-413c-ab87-1f364022224e",
+      "id": "asteroid1",
+      "x": 2987,
+      "y": 2586,
+      "team": 6,
+      "createdAt": 1517941831599
+    },
+    {
+      "guid": "11363566-ba20-4ded-b47d-4554f2291aeb",
+      "id": "asteroid2",
+      "x": 3158,
+      "y": 2458,
+      "team": 6,
+      "createdAt": 1517941833612
+    },
+    {
+      "guid": "3d48e997-a90e-4abe-b0dd-07d124909be6",
+      "id": "asteroid3",
+      "x": 3271,
+      "y": 2244,
+      "team": 6,
+      "createdAt": 1517941835016
+    },
+    {
+      "guid": "25834e7d-5f9f-4d74-922c-bbfddbdc22f6",
+      "id": "asteroid3",
+      "x": 2830,
+      "y": 2784,
+      "team": 6,
+      "createdAt": 1517941841584
+    },
+    {
+      "guid": "8f49abb3-56ae-419c-931a-099562d13810",
+      "id": "asteroidbig1",
+      "x": 3209,
+      "y": 2692,
+      "team": 6,
+      "createdAt": 1517941842746
+    },
+    {
+      "guid": "f53860a4-81c3-4f72-827f-ad91cfa63c75",
+      "id": "asteroidbig1",
+      "x": 3375,
+      "y": 2517,
+      "team": 6,
+      "createdAt": 1517941843094
+    },
+    {
+      "guid": "d42cdc1b-0865-4d4f-9a87-18a0c8101e0f",
+      "id": "asteroidbig2",
+      "x": 3212,
+      "y": 2529,
+      "team": 6,
+      "createdAt": 1517941844457
+    },
+    {
+      "guid": "b1484826-a44a-4eb3-a619-08f6400d5d93",
+      "id": "asteroidbig2",
+      "x": 3354,
+      "y": 2331,
+      "team": 6,
+      "createdAt": 1517941845417
+    },
+    {
+      "guid": "a3d83448-9452-4733-96da-f9fad8763f21",
+      "id": "asteroidsmall1",
+      "x": 3264,
+      "y": 2434,
+      "team": 6,
+      "createdAt": 1517941846888
+    },
+    {
+      "guid": "244483b1-6023-4e64-b823-7f7d995c8321",
+      "id": "asteroidsmall1",
+      "x": 3389,
+      "y": 2412,
+      "team": 6,
+      "createdAt": 1517941847104
+    },
+    {
+      "guid": "972a0e88-a51b-4b32-b8a1-abcaff33cc2b",
+      "id": "asteroidsmall1",
+      "x": 3221,
+      "y": 2415,
+      "team": 6,
+      "createdAt": 1517941847369
+    },
+    {
+      "guid": "51a66c36-9688-432d-a492-ab70e83a8364",
+      "id": "asteroidsmall1",
+      "x": 3244,
+      "y": 2384,
+      "team": 6,
+      "createdAt": 1517941847777
+    },
+    {
+      "guid": "93d6310a-9234-42b4-bf7f-a5fec3577c85",
+      "id": "asteroidsmall1",
+      "x": 2943,
+      "y": 2630,
+      "team": 6,
+      "createdAt": 1517941848569
+    },
+    {
+      "guid": "c63763c1-7c7e-4b7e-a4f3-37d7daf21261",
+      "id": "asteroid1",
+      "x": 3306,
+      "y": 2434,
+      "team": 6,
+      "createdAt": 1517941850419
+    },
+    {
+      "guid": "4d296f47-ce29-4aaa-a025-c0bdaa178f1e",
+      "id": "asteroidbig1",
+      "x": 3292,
+      "y": 2590,
+      "team": 6,
+      "createdAt": 1517941853965
+    },
+    {
+      "guid": "0eeec695-dd44-45bf-98e5-2166bd16ee5a",
+      "id": "asteroid3",
+      "x": 3340,
+      "y": 2649,
+      "team": 6,
+      "createdAt": 1517941855324
+    },
+    {
+      "guid": "57feada4-dcc1-4661-a957-e485e8eab2a4",
+      "id": "asteroid3",
+      "x": 3096,
+      "y": 2593,
+      "team": 6,
+      "createdAt": 1517941856288
+    },
+    {
+      "guid": "d2aeca52-7ebb-4a1d-8772-3f2a646f9997",
+      "id": "asteroidbig1",
+      "x": 2935,
+      "y": 2693,
+      "team": 6,
+      "createdAt": 1517941857944
+    },
+    {
+      "guid": "dbb75020-7cb8-4f24-a028-9afc137e5016",
+      "id": "asteroid1",
+      "x": 3045,
+      "y": 2632,
+      "team": 6,
+      "createdAt": 1517941860411
+    },
+    {
+      "guid": "7aae1154-b332-4c22-b29f-e6cc4410f1e4",
+      "id": "asteroid2",
+      "x": 3070,
+      "y": 2688,
+      "team": 6,
+      "createdAt": 1517941862072
+    },
+    {
+      "guid": "5e6d9cd6-8549-4da1-bb25-58f6d10158a3",
+      "id": "asteroidsmall4",
+      "x": 3021,
+      "y": 2739,
+      "team": 6,
+      "createdAt": 1517941863960
+    },
+    {
+      "guid": "fc2f95d5-ecc8-4f52-ba48-45e3b53ce810",
+      "id": "asteroidsmall4",
+      "x": 3009,
+      "y": 2698,
+      "team": 6,
+      "createdAt": 1517941864185
+    },
+    {
+      "guid": "605ee314-a63b-4094-b9de-1e8fc3fe68ab",
+      "id": "asteroidsmall4",
+      "x": 2850,
+      "y": 2743,
+      "team": 6,
+      "createdAt": 1517941864789
+    },
+    {
+      "guid": "50b5aa32-8304-4566-b79b-88a1609129e9",
+      "id": "asteroidsmall4",
+      "x": 2836,
+      "y": 2842,
+      "team": 6,
+      "createdAt": 1517941865393
+    },
+    {
+      "guid": "a0246a09-369e-4780-9bae-5a702cdb5c16",
+      "id": "asteroidsmall3",
+      "x": 2900,
+      "y": 2777,
+      "team": 6,
+      "createdAt": 1517941866817
+    },
+    {
+      "guid": "ad4b3c09-871d-460d-a455-f7fff7614fa4",
+      "id": "asteroidsmall3",
+      "x": 3136,
+      "y": 2651,
+      "team": 6,
+      "createdAt": 1517941867904
+    },
+    {
+      "guid": "37880610-7315-4a1e-a21f-65fa89c0cea2",
+      "id": "asteroidsmall3",
+      "x": 3194,
+      "y": 2627,
+      "team": 6,
+      "createdAt": 1517941868136
+    },
+    {
+      "guid": "d6698ec1-55cf-425d-9424-a89e7d31e2c4",
+      "id": "asteroidsmall3",
+      "x": 2950,
+      "y": 2521,
+      "team": 6,
+      "createdAt": 1517941871625
+    },
+    {
+      "guid": "48a93c24-0902-49c0-9017-9266a174a51d",
+      "id": "asteroidsmall3",
+      "x": 3158,
+      "y": 2242,
+      "team": 6,
+      "createdAt": 1517941872833
+    },
+    {
+      "guid": "fbba356c-4d9a-4cd3-b7da-73b7de120199",
+      "id": "asteroid4",
+      "x": 3340,
+      "y": 2172,
+      "team": 6,
+      "createdAt": 1517941874284
+    },
+    {
+      "guid": "991dd2bc-1920-46a3-8f27-5cd4324215a4",
+      "id": "asteroidsmall3",
+      "x": 3310,
+      "y": 2111,
+      "team": 6,
+      "createdAt": 1517941876961
+    },
+    {
+      "guid": "87549915-8b13-480c-9433-717558e56dfd",
+      "id": "asteroid1",
+      "x": 2788,
+      "y": 2988,
+      "team": 6,
+      "createdAt": 1517941886134
+    },
+    {
+      "guid": "f6ac46d9-d273-425e-9a27-6c5197169592",
+      "id": "asteroid2",
+      "x": 2774,
+      "y": 3066,
+      "team": 6,
+      "createdAt": 1517941887657
+    },
+    {
+      "guid": "40cc6850-8636-405d-912b-fbc202aadc80",
+      "id": "asteroid3",
+      "x": 2865,
+      "y": 3050,
+      "team": 6,
+      "createdAt": 1517941889134
+    },
+    {
+      "guid": "c572c029-8856-4952-85d7-96d2f459a357",
+      "id": "asteroidsmall3",
+      "x": 2826,
+      "y": 3108,
+      "team": 6,
+      "createdAt": 1517941890590
+    },
+    {
+      "guid": "ff6e3113-fb04-4b31-ac47-cea15d945199",
+      "id": "asteroidsmall3",
+      "x": 2845,
+      "y": 2988,
+      "team": 6,
+      "createdAt": 1517941890939
+    },
+    {
+      "guid": "60fd526c-8401-425f-a0ee-8782eecab894",
+      "id": "asteroidsmall1",
+      "x": 2782,
+      "y": 2925,
+      "team": 6,
+      "createdAt": 1517941892283
+    },
+    {
+      "guid": "50e16a63-30a2-48b4-990c-6e8efb4b4238",
+      "id": "asteroidsmall2",
+      "x": 2844,
+      "y": 2938,
+      "team": 6,
+      "createdAt": 1517941893673
+    },
+    {
+      "guid": "8de07035-7c17-48db-a7f0-0bd70bbfba16",
+      "id": "asteroidsmall2",
+      "x": 2816,
+      "y": 2939,
+      "team": 6,
+      "createdAt": 1517941893960
+    },
+    {
+      "guid": "a39a8703-c0e9-44b2-9eca-cd5f5a693518",
+      "id": "asteroidicesmall1",
+      "x": 2733,
+      "y": 3136,
+      "team": 6,
+      "createdAt": 1517941897733
+    },
+    {
+      "guid": "7b47861b-e6f5-4325-b268-9f4766e8fee4",
+      "id": "asteroidicesmall1",
+      "x": 2894,
+      "y": 2991,
+      "team": 6,
+      "createdAt": 1517941898649
+    },
+    {
+      "guid": "4b283e2c-7a78-408f-b8f8-5a21fe393d64",
+      "id": "asteroidice2",
+      "x": 2774,
+      "y": 3133,
+      "team": 6,
+      "createdAt": 1517941900161
+    },
+    {
+      "guid": "a4960459-f6db-4cd1-b42c-1cecb54bb4bd",
+      "id": "asteroidicesmall2",
+      "x": 2877,
+      "y": 3132,
+      "team": 6,
+      "createdAt": 1517941903188
+    },
+    {
+      "guid": "f9e3407b-799d-4bbd-b2c6-8cf4d7a96dd3",
+      "id": "asteroidice1",
+      "x": 2893,
+      "y": 2920,
+      "team": 6,
+      "createdAt": 1517941905275
+    },
+    {
+      "guid": "01e0b453-71f8-451f-b27d-339235a12c00",
+      "id": "asteroidice2",
+      "x": 2915,
+      "y": 3015,
+      "team": 6,
+      "createdAt": 1517941907610
+    },
+    {
+      "guid": "58b12d3a-b754-4fec-bbc6-3d71dd8a8f96",
+      "id": "asteroidtitaniumsmall1",
+      "x": 2900,
+      "y": 3232,
+      "team": 6,
+      "createdAt": 1517941916664
+    },
+    {
+      "guid": "d5451ac2-92c9-49c4-9862-7ea31f0bf904",
+      "id": "asteroidtitaniumsmall1",
+      "x": 2952,
+      "y": 3159,
+      "team": 6,
+      "createdAt": 1517941919502
+    },
+    {
+      "guid": "6f9a86f7-c0df-4c3e-a570-b6a6e3054831",
+      "id": "asteroidtitaniumsmall2",
+      "x": 2963,
+      "y": 3213,
+      "team": 6,
+      "createdAt": 1517941921366
+    },
+    {
+      "guid": "87ac8443-2836-453e-af4a-bc559e6f0562",
+      "id": "asteroidtitanium2",
+      "x": 2888,
+      "y": 3176,
+      "team": 6,
+      "createdAt": 1517941922777
+    },
+    {
+      "guid": "f881f8ae-86d6-4f69-8d34-887169951855",
+      "id": "asteroidtitanium2",
+      "x": 2768,
+      "y": 3182,
+      "team": 6,
+      "createdAt": 1517941923193
+    },
+    {
+      "guid": "3047f0b9-3b66-4691-9867-00f80fee81a5",
+      "id": "asteroidtitanium1",
+      "x": 2949,
+      "y": 3075,
+      "team": 6,
+      "createdAt": 1517941924785
+    },
+    {
+      "guid": "23cbbc90-289d-45e1-b9ce-9e6d67d627c4",
+      "id": "asteroidtitanium1",
+      "x": 2828,
+      "y": 3155,
+      "team": 6,
+      "createdAt": 1517941925543
+    },
+    {
+      "guid": "1853bc9b-ce6e-404b-bd4a-31b7583f12dc",
+      "id": "asteroid1",
+      "x": 2081,
+      "y": 3207,
+      "team": 6,
+      "createdAt": 1517941933398
+    },
+    {
+      "guid": "1ffe904d-3ae7-4e20-b9b3-322118c22f82",
+      "id": "asteroid1",
+      "x": 1978,
+      "y": 3390,
+      "team": 6,
+      "createdAt": 1517941933664
+    },
+    {
+      "guid": "774e15f7-32cb-4ab8-a26c-cdde619a93fe",
+      "id": "asteroid1",
+      "x": 1923,
+      "y": 3613,
+      "team": 6,
+      "createdAt": 1517941935441
+    },
+    {
+      "guid": "705ae9fb-4cc8-4204-8803-d6801028e020",
+      "id": "asteroid2",
+      "x": 2126,
+      "y": 3306,
+      "team": 6,
+      "createdAt": 1517941940574
+    },
+    {
+      "guid": "6eb5177b-12b4-4f1f-a0db-59f16e0f2aad",
+      "id": "asteroid2",
+      "x": 2032,
+      "y": 3323,
+      "team": 6,
+      "createdAt": 1517941947579
+    },
+    {
+      "guid": "88d31e5d-dfa5-4e80-9a4b-9373068d575c",
+      "id": "asteroid4",
+      "x": 2021,
+      "y": 3414,
+      "team": 6,
+      "createdAt": 1517941948912
+    },
+    {
+      "guid": "cf74aaf7-1750-4b26-aa08-5c51862c9947",
+      "id": "asteroid4",
+      "x": 1871,
+      "y": 3518,
+      "team": 6,
+      "createdAt": 1517941949264
+    },
+    {
+      "guid": "2a23ef67-7f82-4b21-925c-71a072618692",
+      "id": "asteroid3",
+      "x": 1944,
+      "y": 3516,
+      "team": 6,
+      "createdAt": 1517941951232
+    },
+    {
+      "guid": "bbb5c786-ff54-4d7c-aed6-2c71f981ddef",
+      "id": "asteroid3",
+      "x": 2034,
+      "y": 3586,
+      "team": 6,
+      "createdAt": 1517941952576
+    },
+    {
+      "guid": "108ae22b-21d4-4a40-9b40-42e2f563c20c",
+      "id": "asteroidsmall3",
+      "x": 2021,
+      "y": 3494,
+      "team": 6,
+      "createdAt": 1517941953965
+    },
+    {
+      "guid": "12fce6f5-c2fd-4cf3-b640-f39a255b5dc6",
+      "id": "asteroidsmall3",
+      "x": 1897,
+      "y": 3441,
+      "team": 6,
+      "createdAt": 1517941954288
+    },
+    {
+      "guid": "50b9fef5-31aa-4607-9ac8-8c0e22dad17e",
+      "id": "asteroidsmall3",
+      "x": 1967,
+      "y": 3464,
+      "team": 6,
+      "createdAt": 1517941954776
+    },
+    {
+      "guid": "4191b358-921b-4cd3-9a0a-cb21c83acd19",
+      "id": "asteroidsmall3",
+      "x": 1961,
+      "y": 3330,
+      "team": 6,
+      "createdAt": 1517941955256
+    },
+    {
+      "guid": "8d9754f2-9137-4e9b-9438-60f77b30d41b",
+      "id": "asteroidsmall3",
+      "x": 2126,
+      "y": 3221,
+      "team": 6,
+      "createdAt": 1517941955755
+    },
+    {
+      "guid": "f238fbec-9733-4dc0-9db9-ebf607a38b76",
+      "id": "asteroidsmall3",
+      "x": 2154,
+      "y": 3198,
+      "team": 6,
+      "createdAt": 1517941956052
+    },
+    {
+      "guid": "2f994e39-cc13-4b15-abad-66cc4f286f6e",
+      "id": "asteroidsmall3",
+      "x": 1821,
+      "y": 3607,
+      "team": 6,
+      "createdAt": 1517941958360
+    },
+    {
+      "guid": "2fc9ddd2-7f85-48de-b0d6-e630f2e8bfbd",
+      "id": "asteroidsmall4",
+      "x": 1862,
+      "y": 3590,
+      "team": 6,
+      "createdAt": 1517941959864
+    },
+    {
+      "guid": "17460e0d-2239-46fc-ba4d-668a11861b39",
+      "id": "asteroidsmall4",
+      "x": 2120,
+      "y": 3600,
+      "team": 6,
+      "createdAt": 1517941962266
+    },
+    {
+      "guid": "d34b0f0b-2532-4cf1-a5b3-8adc8fca442d",
+      "id": "asteroidsmall4",
+      "x": 2813,
+      "y": 2888,
+      "team": 6,
+      "createdAt": 1517941967144
+    },
+    {
+      "guid": "c572eea2-a26e-4a15-8ca9-65998446fad8",
+      "id": "asteroid1",
+      "x": 1411,
+      "y": 1811,
+      "team": 6,
+      "createdAt": 1517941982488
+    },
+    {
+      "guid": "12c91c29-4e89-4117-8d88-cf2869934e6e",
+      "id": "asteroid1",
+      "x": 1596,
+      "y": 1826,
+      "team": 6,
+      "createdAt": 1517941984656
+    },
+    {
+      "guid": "2374d0ab-8825-4d2d-857a-533112069358",
+      "id": "asteroid3",
+      "x": 1489,
+      "y": 1845,
+      "team": 6,
+      "createdAt": 1517941986074
+    },
+    {
+      "guid": "3e1148d3-89c3-4445-8c2f-10c1ad456671",
+      "id": "asteroid3",
+      "x": 1357,
+      "y": 1724,
+      "team": 6,
+      "createdAt": 1517941986968
+    },
+    {
+      "guid": "54fadeca-e266-4dc1-a55a-4dc7c93780ab",
+      "id": "asteroid4",
+      "x": 1411,
+      "y": 1755,
+      "team": 6,
+      "createdAt": 1517941988240
+    },
+    {
+      "guid": "663c557e-1660-402f-a5ba-637c2ff22b4b",
+      "id": "asteroidsmall3",
+      "x": 1470,
+      "y": 1807,
+      "team": 6,
+      "createdAt": 1517942000153
+    },
+    {
+      "guid": "779f3589-75a5-4934-abd7-a1a9997f98a5",
+      "id": "asteroidsmall3",
+      "x": 1451,
+      "y": 1787,
+      "team": 6,
+      "createdAt": 1517942000582
+    },
+    {
+      "guid": "22d85da0-e448-45b1-abfd-55837531a5f7",
+      "id": "asteroidsmall3",
+      "x": 1275,
+      "y": 1716,
+      "team": 6,
+      "createdAt": 1517942001410
+    },
+    {
+      "guid": "16e858ce-e3ca-4fb1-9aa2-c24ea1c3d771",
+      "id": "asteroidsmall4",
+      "x": 1533,
+      "y": 1895,
+      "team": 6,
+      "createdAt": 1517942002976
+    },
+    {
+      "guid": "5f2ff4c9-e916-417e-91f1-29bd576db065",
+      "id": "asteroidsmall2",
+      "x": 1597,
+      "y": 1879,
+      "team": 6,
+      "createdAt": 1517942005554
+    },
+    {
+      "guid": "b2581b28-f142-44ce-bf86-bf822bd42d67",
+      "id": "asteroidbig1",
+      "x": 1345,
+      "y": 2080,
+      "team": 6,
+      "createdAt": 1517942018315
+    },
+    {
+      "guid": "fb321531-ebad-4bba-ad5d-a9cdae150a3f",
+      "id": "asteroidbig2",
+      "x": 1232,
+      "y": 2213,
+      "team": 6,
+      "createdAt": 1517942019377
+    },
+    {
+      "guid": "68cf2f26-4499-4e70-9c67-97991986aff0",
+      "id": "asteroidbig2",
+      "x": 1156,
+      "y": 2499,
+      "team": 6,
+      "createdAt": 1517942021441
+    },
+    {
+      "guid": "c856b7f8-ced5-42fe-92f8-7f230cb9d2b1",
+      "id": "asteroidbig1",
+      "x": 848,
+      "y": 2694,
+      "team": 6,
+      "createdAt": 1517942022713
+    },
+    {
+      "guid": "8ee19107-1d76-4c8c-ac89-415b58c21939",
+      "id": "asteroid1",
+      "x": 967,
+      "y": 2597,
+      "team": 6,
+      "createdAt": 1517942025032
+    },
+    {
+      "guid": "120d5ab0-bbb0-4642-a75c-dfabc41bba9e",
+      "id": "asteroid1",
+      "x": 1170,
+      "y": 2365,
+      "team": 6,
+      "createdAt": 1517942025482
+    },
+    {
+      "guid": "6d04298c-71c6-4291-957c-65325009a331",
+      "id": "asteroid2",
+      "x": 1352,
+      "y": 2292,
+      "team": 6,
+      "createdAt": 1517942026852
+    },
+    {
+      "guid": "9fa55b11-f658-46a9-a716-583a13553c00",
+      "id": "asteroid2",
+      "x": 1312,
+      "y": 1977,
+      "team": 6,
+      "createdAt": 1517942027721
+    },
+    {
+      "guid": "23eada01-8fd8-4234-a970-fbf9ee8e678f",
+      "id": "asteroid2",
+      "x": 1416,
+      "y": 1924,
+      "team": 6,
+      "createdAt": 1517942028032
+    },
+    {
+      "guid": "b012e712-95e3-4d1f-b114-703407607b3d",
+      "id": "asteroid2",
+      "x": 883,
+      "y": 2806,
+      "team": 6,
+      "createdAt": 1517942030953
+    },
+    {
+      "guid": "264e5fed-7355-4202-9166-66d61f60428b",
+      "id": "asteroid2",
+      "x": 930,
+      "y": 2988,
+      "team": 6,
+      "createdAt": 1517942032766
+    },
+    {
+      "guid": "9c2178b4-c09f-440b-9b7c-4a8f90aa5904",
+      "id": "asteroid2",
+      "x": 949,
+      "y": 3224,
+      "team": 6,
+      "createdAt": 1517942034623
+    },
+    {
+      "guid": "cabd1b9c-61b0-4c3a-9e08-a0d54448b820",
+      "id": "asteroid3",
+      "x": 906,
+      "y": 3163,
+      "team": 6,
+      "createdAt": 1517942038329
+    },
+    {
+      "guid": "96241826-f056-4ccb-a909-cbfe34c203ef",
+      "id": "asteroid3",
+      "x": 999,
+      "y": 3271,
+      "team": 6,
+      "createdAt": 1517942039001
+    },
+    {
+      "guid": "f44ce816-3159-4e6c-9620-4029c10e411e",
+      "id": "asteroid3",
+      "x": 916,
+      "y": 2886,
+      "team": 6,
+      "createdAt": 1517942039745
+    },
+    {
+      "guid": "a3e66deb-01ad-4476-b051-f0f80704e6e1",
+      "id": "asteroid3",
+      "x": 924,
+      "y": 2651,
+      "team": 6,
+      "createdAt": 1517942040642
+    },
+    {
+      "guid": "84b11c3f-71ee-44c2-9eb4-74cbb8f0eb58",
+      "id": "asteroid3",
+      "x": 1104,
+      "y": 2424,
+      "team": 6,
+      "createdAt": 1517942041554
+    },
+    {
+      "guid": "28a467ec-58ae-4453-88eb-9e307a6f6764",
+      "id": "asteroid3",
+      "x": 1255,
+      "y": 2110,
+      "team": 6,
+      "createdAt": 1517942042785
+    },
+    {
+      "guid": "7b593247-34c5-4065-9e3e-048757ef0662",
+      "id": "asteroid4",
+      "x": 1402,
+      "y": 2009,
+      "team": 6,
+      "createdAt": 1517942043839
+    },
+    {
+      "guid": "0f9fb784-0615-42ae-995f-5b5f173e2071",
+      "id": "asteroid4",
+      "x": 1219,
+      "y": 2322,
+      "team": 6,
+      "createdAt": 1517942045515
+    },
+    {
+      "guid": "fb6ea30d-fbfe-43f9-9843-8166b2d999ce",
+      "id": "asteroid4",
+      "x": 1072,
+      "y": 2633,
+      "team": 6,
+      "createdAt": 1517942046977
+    },
+    {
+      "guid": "50cef4b1-8650-47aa-a3b2-c2c09452ac6c",
+      "id": "asteroidsmall2",
+      "x": 1020,
+      "y": 2685,
+      "team": 6,
+      "createdAt": 1517942048569
+    },
+    {
+      "guid": "d0e0a3ac-458c-41f6-b8fb-d9f9263cb0c4",
+      "id": "asteroidsmall2",
+      "x": 1041,
+      "y": 2570,
+      "team": 6,
+      "createdAt": 1517942048859
+    },
+    {
+      "guid": "fb89818a-f875-4e2c-ad38-1e4b522ba017",
+      "id": "asteroidsmall2",
+      "x": 854,
+      "y": 2764,
+      "team": 6,
+      "createdAt": 1517942051466
+    },
+    {
+      "guid": "cd111003-a4df-4f29-a923-cded314ec20c",
+      "id": "asteroidsmall2",
+      "x": 846,
+      "y": 2928,
+      "team": 6,
+      "createdAt": 1517942052081
+    },
+    {
+      "guid": "e007521e-fece-47d4-b976-908a30327542",
+      "id": "asteroidsmall2",
+      "x": 1007,
+      "y": 2970,
+      "team": 6,
+      "createdAt": 1517942052556
+    },
+    {
+      "guid": "66e9bce7-a5dd-49f6-a806-1fb968a00b8c",
+      "id": "asteroidsmall3",
+      "x": 904,
+      "y": 2936,
+      "team": 6,
+      "createdAt": 1517942053929
+    },
+    {
+      "guid": "36bb3d87-a0cd-4223-b174-b9ee003e5b27",
+      "id": "asteroidsmall3",
+      "x": 902,
+      "y": 3057,
+      "team": 6,
+      "createdAt": 1517942057063
+    },
+    {
+      "guid": "1d54bdff-2d6e-4812-930e-c7bc3ac85ad3",
+      "id": "asteroidsmall1",
+      "x": 983,
+      "y": 3094,
+      "team": 6,
+      "createdAt": 1517942059597
+    },
+    {
+      "guid": "7d788708-864b-48a4-af63-6fd527aed999",
+      "id": "asteroidsmall1",
+      "x": 946,
+      "y": 3094,
+      "team": 6,
+      "createdAt": 1517942060297
+    },
+    {
+      "guid": "72931dd8-9d48-4798-8c4e-7993b3e9d7ad",
+      "id": "asteroid3",
+      "x": 837,
+      "y": 3133,
+      "team": 6,
+      "createdAt": 1517942061801
+    },
+    {
+      "guid": "9a0d37a9-ecda-40db-afe9-1460ad316bf8",
+      "id": "asteroid4",
+      "x": 851,
+      "y": 3056,
+      "team": 6,
+      "createdAt": 1517942063697
+    },
+    {
+      "guid": "ca490c96-76d1-43bb-9914-4b3e5b030863",
+      "id": "asteroid2",
+      "x": 896,
+      "y": 3096,
+      "team": 6,
+      "createdAt": 1517942066078
+    },
+    {
+      "guid": "2db6e5cb-bc0b-47dd-a4ee-b05d50b72a9f",
+      "id": "asteroidsmall4",
+      "x": 842,
+      "y": 3205,
+      "team": 6,
+      "createdAt": 1517942068425
+    },
+    {
+      "guid": "753d0e0c-4eca-46ce-b54f-f1bfa2584088",
+      "id": "asteroidsmall4",
+      "x": 958,
+      "y": 2725,
+      "team": 6,
+      "createdAt": 1517942072557
+    },
+    {
+      "guid": "549f6215-44cb-43fd-912e-f554a28d7687",
+      "id": "asteroidsmall4",
+      "x": 1229,
+      "y": 2401,
+      "team": 6,
+      "createdAt": 1517942073360
+    },
+    {
+      "guid": "30e90c3b-84be-4616-9652-a19e123f8d03",
+      "id": "asteroidsmall4",
+      "x": 1202,
+      "y": 2134,
+      "team": 6,
+      "createdAt": 1517942074396
+    },
+    {
+      "guid": "bb62ac60-497d-42cf-8008-8e1631c116cd",
+      "id": "asteroidsmall4",
+      "x": 1389,
+      "y": 2195,
+      "team": 6,
+      "createdAt": 1517942074616
+    },
+    {
+      "guid": "0b8e8ccd-c272-4ff1-bcb1-dc4d024c684e",
+      "id": "asteroidsmall4",
+      "x": 1476,
+      "y": 2049,
+      "team": 6,
+      "createdAt": 1517942074943
+    },
+    {
+      "guid": "261fb838-82e3-494a-9611-509afa5a1502",
+      "id": "asteroidsmall4",
+      "x": 1329,
+      "y": 1808,
+      "team": 6,
+      "createdAt": 1517942076351
+    },
+    {
+      "guid": "acf7999c-c2a0-44c1-bb3d-404b1e321dae",
+      "id": "asteroidsmall4",
+      "x": 901,
+      "y": 3604,
+      "team": 6,
+      "createdAt": 1517942083497
+    },
+    {
+      "guid": "5b126ba9-e092-4a2f-b46e-7f59714787a5",
+      "id": "asteroid1",
+      "x": 1762,
+      "y": 2815,
+      "team": 6,
+      "createdAt": 1517942104775
+    },
+    {
+      "guid": "4f4b7b0b-aa2c-47a6-bd03-8ac3e9420523",
+      "id": "asteroidbig1",
+      "x": 1715,
+      "y": 2723,
+      "team": 6,
+      "createdAt": 1517942106008
+    },
+    {
+      "guid": "c692fdb3-1874-42c6-bac3-b4454afc4b19",
+      "id": "asteroidbig2",
+      "x": 1504,
+      "y": 2880,
+      "team": 6,
+      "createdAt": 1517942107632
+    },
+    {
+      "guid": "f61a202c-459f-4b7e-bcaf-5062b4d30836",
+      "id": "asteroid2",
+      "x": 1583,
+      "y": 2824,
+      "team": 6,
+      "createdAt": 1517942108651
+    },
+    {
+      "guid": "c8897cc6-cf35-4371-888d-f186e2088fd4",
+      "id": "asteroid2",
+      "x": 1590,
+      "y": 2748,
+      "team": 6,
+      "createdAt": 1517942108936
+    },
+    {
+      "guid": "91a2a4bc-4cb9-420a-b1c2-994d04a247ae",
+      "id": "asteroid3",
+      "x": 1650,
+      "y": 2800,
+      "team": 6,
+      "createdAt": 1517942110192
+    },
+    {
+      "guid": "4dc9f991-0ad0-49c2-8458-d930cff627cb",
+      "id": "asteroid3",
+      "x": 1381,
+      "y": 3005,
+      "team": 6,
+      "createdAt": 1517942110856
+    },
+    {
+      "guid": "223ad75d-8f37-4b4b-bdd8-c0161b26d561",
+      "id": "asteroidsmall3",
+      "x": 1428,
+      "y": 2972,
+      "team": 6,
+      "createdAt": 1517942112845
+    },
+    {
+      "guid": "0ada4e5a-c25e-4ef8-9f57-c215da7e1583",
+      "id": "asteroidsmall4",
+      "x": 1529,
+      "y": 2964,
+      "team": 6,
+      "createdAt": 1517942113938
+    },
+    {
+      "guid": "a4b091cf-117c-4c9d-aa93-a72ab74b2851",
+      "id": "asteroidsmall4",
+      "x": 1805,
+      "y": 2653,
+      "team": 6,
+      "createdAt": 1517942114536
+    },
+    {
+      "guid": "7bb756ff-e4d7-46b3-b40f-157b3eee06d4",
+      "id": "asteroidsmall2",
+      "x": 1805,
+      "y": 2733,
+      "team": 6,
+      "createdAt": 1517942115632
+    },
+    {
+      "guid": "46247f3f-5f49-4618-b33d-611ae4d6c46c",
+      "id": "asteroidsmall2",
+      "x": 1648,
+      "y": 2654,
+      "team": 6,
+      "createdAt": 1517942115880
+    },
+    {
+      "guid": "5e01b39c-9ada-4787-8832-b0abd9c9794c",
+      "id": "asteroidsmall2",
+      "x": 1617,
+      "y": 2892,
+      "team": 6,
+      "createdAt": 1517942116464
+    },
+    {
+      "guid": "2d3177c3-7a24-4283-a272-d424ba15955b",
+      "id": "asteroidsmall2",
+      "x": 1404,
+      "y": 2870,
+      "team": 6,
+      "createdAt": 1517942117303
+    },
+    {
+      "guid": "22da981b-7e1b-4091-bb47-ad9ddbb1a129",
+      "id": "asteroidsmall2",
+      "x": 1286,
+      "y": 3055,
+      "team": 6,
+      "createdAt": 1517942117600
+    },
+    {
+      "guid": "0363c63f-186f-4fcc-a5cd-882c194ae244",
+      "id": "asteroidsmall2",
+      "x": 1814,
+      "y": 2884,
+      "team": 6,
+      "createdAt": 1517942120952
+    },
+    {
+      "guid": "87d4cb0b-edb6-4c2e-aaa7-d57753b18bc5",
+      "id": "asteroidsmall3",
+      "x": 1365,
+      "y": 3082,
+      "team": 6,
+      "createdAt": 1517942124961
+    },
+    {
+      "guid": "b9a3dcaf-d698-40f1-a01b-d7aa5704a978",
+      "id": "asteroid1",
+      "x": 1967,
+      "y": 1233,
+      "team": 6,
+      "createdAt": 1517942136313
+    },
+    {
+      "guid": "101dad44-92e9-4634-b62a-51ceb7625f53",
+      "id": "asteroid1",
+      "x": 2069,
+      "y": 1333,
+      "team": 6,
+      "createdAt": 1517942136800
+    },
+    {
+      "guid": "081ade12-533d-4c5e-93b7-4fbe3e571b24",
+      "id": "asteroid2",
+      "x": 2043,
+      "y": 1256,
+      "team": 6,
+      "createdAt": 1517942139017
+    },
+    {
+      "guid": "11df6c31-f533-4bd8-bd2e-269ab22a1517",
+      "id": "asteroid2",
+      "x": 1898,
+      "y": 1396,
+      "team": 6,
+      "createdAt": 1517942139344
+    },
+    {
+      "guid": "3193aef8-29e8-4578-a3c8-797fbb9cc640",
+      "id": "asteroid3",
+      "x": 2076,
+      "y": 1428,
+      "team": 6,
+      "createdAt": 1517942140256
+    },
+    {
+      "guid": "1a712443-75db-4410-a299-66e43e942660",
+      "id": "asteroid4",
+      "x": 1946,
+      "y": 1365,
+      "team": 6,
+      "createdAt": 1517942258435
+    },
+    {
+      "guid": "ef88a11d-e1a0-425a-9d9e-c183a9316056",
+      "id": "asteroidbig1",
+      "x": 2122,
+      "y": 1270,
+      "team": 6,
+      "createdAt": 1517942260640
+    },
+    {
+      "guid": "c93aa9f8-dcd7-463b-abc2-b2ec29345f44",
+      "id": "asteroidsmall1",
+      "x": 2133,
+      "y": 1363,
+      "team": 6,
+      "createdAt": 1517942262478
+    },
+    {
+      "guid": "a58739a2-9ec4-47d4-aeba-7f80656a9b18",
+      "id": "asteroidsmall1",
+      "x": 2017,
+      "y": 1379,
+      "team": 6,
+      "createdAt": 1517942263097
+    },
+    {
+      "guid": "b0085543-78c4-4bcf-b813-cf6163280fad",
+      "id": "asteroidsmall1",
+      "x": 1993,
+      "y": 1303,
+      "team": 6,
+      "createdAt": 1517942263309
+    },
+    {
+      "guid": "8da063af-3df5-4b8d-850b-b546c3dd1ed0",
+      "id": "asteroidsmall1",
+      "x": 1859,
+      "y": 1460,
+      "team": 6,
+      "createdAt": 1517942263953
+    },
+    {
+      "guid": "7640c1c2-f96a-4a22-8a3b-03a68a57df14",
+      "id": "asteroidsmall1",
+      "x": 2212,
+      "y": 1191,
+      "team": 6,
+      "createdAt": 1517942264441
+    },
+    {
+      "guid": "878195d7-d790-47d9-95f9-2e316947db64",
+      "id": "asteroidsmall2",
+      "x": 2189,
+      "y": 1245,
+      "team": 6,
+      "createdAt": 1517942265601
+    },
+    {
+      "guid": "bc404110-5424-405e-8bf2-fea94be21f24",
+      "id": "asteroidsmall2",
+      "x": 2036,
+      "y": 1377,
+      "team": 6,
+      "createdAt": 1517942266423
+    },
+    {
+      "guid": "7486cc24-7840-4434-a5cc-3098036d3201",
+      "id": "asteroidsmall2",
+      "x": 1919,
+      "y": 1304,
+      "team": 6,
+      "createdAt": 1517942267056
+    },
+    {
+      "guid": "76c74b0b-75f8-4ab7-a3b4-57a334fb44dd",
+      "id": "asteroidsmall3",
+      "x": 1957,
+      "y": 1427,
+      "team": 6,
+      "createdAt": 1517942268481
+    },
+    {
+      "guid": "0dea235e-57e9-429e-b1b2-7c6a08bd14c2",
+      "id": "asteroidsmall3",
+      "x": 1862,
+      "y": 1345,
+      "team": 6,
+      "createdAt": 1517942269588
+    },
+    {
+      "guid": "06054f3a-7dee-4b7b-96a8-fe1dd6a1bd9a",
+      "id": "asteroid1",
+      "x": 2821,
+      "y": 2229,
+      "team": 6,
+      "createdAt": 1517942291680
+    },
+    {
+      "guid": "874e76ed-a19e-48ff-a4fc-396591f9871b",
+      "id": "asteroid1",
+      "x": 2908,
+      "y": 1965,
+      "team": 6,
+      "createdAt": 1517942292033
+    },
+    {
+      "guid": "b95203bd-58d5-432d-9c1f-e05f660043ce",
+      "id": "asteroid1",
+      "x": 2591,
+      "y": 2098,
+      "team": 6,
+      "createdAt": 1517942292561
+    },
+    {
+      "guid": "4210ea74-aeae-4f6a-ba4f-b7d4df2d3864",
+      "id": "asteroid2",
+      "x": 2642,
+      "y": 2136,
+      "team": 6,
+      "createdAt": 1517942294091
+    },
+    {
+      "guid": "97dd3628-56cc-4fdb-9fe6-7227b3620f96",
+      "id": "asteroid2",
+      "x": 2758,
+      "y": 1934,
+      "team": 6,
+      "createdAt": 1517942294347
+    },
+    {
+      "guid": "f7d70173-b29f-479a-a229-c45b82441a2c",
+      "id": "asteroid3",
+      "x": 2817,
+      "y": 2062,
+      "team": 6,
+      "createdAt": 1517942295391
+    },
+    {
+      "guid": "f7c04ff1-77a6-4749-b05a-222260be43ae",
+      "id": "asteroid4",
+      "x": 2948,
+      "y": 2225,
+      "team": 6,
+      "createdAt": 1517942297035
+    },
+    {
+      "guid": "50ed706e-be8f-4e49-81a3-a8e7fe7fd340",
+      "id": "asteroid4",
+      "x": 2560,
+      "y": 1795,
+      "team": 6,
+      "createdAt": 1517942297850
+    },
+    {
+      "guid": "8a157c03-83cb-4a67-9f3e-45337d9f4f40",
+      "id": "asteroidbig2",
+      "x": 2671,
+      "y": 1840,
+      "team": 6,
+      "createdAt": 1517942298896
+    },
+    {
+      "guid": "5d8db89f-3072-4879-a5f6-356aa65f1534",
+      "id": "asteroidsmall1",
+      "x": 2639,
+      "y": 1894,
+      "team": 6,
+      "createdAt": 1517942300412
+    },
+    {
+      "guid": "9bab7e55-54e2-459f-af2d-11086d03aafa",
+      "id": "asteroidsmall1",
+      "x": 2836,
+      "y": 1736,
+      "team": 6,
+      "createdAt": 1517942300977
+    },
+    {
+      "guid": "e7201244-289a-4b17-be92-0938ec225590",
+      "id": "asteroidsmall1",
+      "x": 2604,
+      "y": 1724,
+      "team": 6,
+      "createdAt": 1517942301542
+    },
+    {
+      "guid": "65ef6cd2-cd38-4407-a3e6-3ec4862c75d9",
+      "id": "asteroidsmall1",
+      "x": 2433,
+      "y": 1776,
+      "team": 6,
+      "createdAt": 1517942301761
+    },
+    {
+      "guid": "2ee6229d-c167-4492-81e0-c591c32cc628",
+      "id": "asteroidsmall1",
+      "x": 2542,
+      "y": 1962,
+      "team": 6,
+      "createdAt": 1517942302036
+    },
+    {
+      "guid": "eb4746e9-1cc4-423a-aa32-deaec4be3413",
+      "id": "asteroidsmall1",
+      "x": 2671,
+      "y": 2281,
+      "team": 6,
+      "createdAt": 1517942302889
+    },
+    {
+      "guid": "b1b53a5f-775c-4965-b5fe-7ed2c16e4059",
+      "id": "asteroidsmall1",
+      "x": 2890,
+      "y": 2296,
+      "team": 6,
+      "createdAt": 1517942303337
+    },
+    {
+      "guid": "3d886ce3-8c64-4ba8-8238-484b3e206d4c",
+      "id": "asteroidsmall1",
+      "x": 3098,
+      "y": 2288,
+      "team": 6,
+      "createdAt": 1517942303960
+    },
+    {
+      "guid": "9111518e-a049-494b-880f-175c519b1770",
+      "id": "asteroidsmall2",
+      "x": 2958,
+      "y": 2340,
+      "team": 6,
+      "createdAt": 1517942305177
+    },
+    {
+      "guid": "cd174885-0e15-4db1-9cc6-14b4fcc8563f",
+      "id": "asteroidsmall2",
+      "x": 2832,
+      "y": 2121,
+      "team": 6,
+      "createdAt": 1517942305385
+    },
+    {
+      "guid": "206917b7-6a47-4f84-8a47-657457a3fa87",
+      "id": "asteroidsmall2",
+      "x": 2662,
+      "y": 2013,
+      "team": 6,
+      "createdAt": 1517942306170
+    },
+    {
+      "guid": "672ffd04-5a91-41a3-80e8-08eeb6085a54",
+      "id": "asteroidsmall2",
+      "x": 2532,
+      "y": 1856,
+      "team": 6,
+      "createdAt": 1517942306545
+    },
+    {
+      "guid": "16f6bdc7-2080-4968-846a-6c9426cf1574",
+      "id": "asteroidsmall2",
+      "x": 2439,
+      "y": 1674,
+      "team": 6,
+      "createdAt": 1517942307146
+    },
+    {
+      "guid": "9075a133-a57d-4085-b852-24962e145048",
+      "id": "asteroidsmall3",
+      "x": 2840,
+      "y": 1868,
+      "team": 6,
+      "createdAt": 1517942308469
+    },
+    {
+      "guid": "c4a424d9-cccd-4925-a317-564b8d3418ec",
+      "id": "asteroidsmall3",
+      "x": 2674,
+      "y": 1708,
+      "team": 6,
+      "createdAt": 1517942308673
+    },
+    {
+      "guid": "892ff451-3b9a-4691-ab2e-7a489cd1a0a7",
+      "id": "asteroidsmall3",
+      "x": 2490,
+      "y": 1662,
+      "team": 6,
+      "createdAt": 1517942309137
+    },
+    {
+      "guid": "5e323202-8f2a-4be3-94e1-6d6a072f97f4",
+      "id": "asteroidsmall3",
+      "x": 2636,
+      "y": 1933,
+      "team": 6,
+      "createdAt": 1517942310290
+    },
+    {
+      "guid": "aab1a453-44a8-4a7e-ab5f-2f315f68ce69",
+      "id": "asteroidsmall4",
+      "x": 2704,
+      "y": 2068,
+      "team": 6,
+      "createdAt": 1517942311057
+    },
+    {
+      "guid": "5f4ae767-8a9a-43cc-aa32-4f9fdc089b7e",
+      "id": "asteroidsmall4",
+      "x": 2724,
+      "y": 2133,
+      "team": 6,
+      "createdAt": 1517942311306
+    },
+    {
+      "guid": "34f2195e-3fac-4a3f-bda5-ff8e6aa0a20d",
+      "id": "asteroid2",
+      "x": 2937,
+      "y": 2101,
+      "team": 6,
+      "createdAt": 1517942312785
+    },
+    {
+      "guid": "6aa78e00-de6f-4cd2-b8e1-4ffd848c02cd",
+      "id": "asteroid3",
+      "x": 2768,
+      "y": 2207,
+      "team": 6,
+      "createdAt": 1517942314289
+    },
+    {
+      "guid": "bb13a53b-62ce-49b7-b53f-27933b75bc22",
+      "id": "asteroid3",
+      "x": 2556,
+      "y": 1642,
+      "team": 6,
+      "createdAt": 1517942316529
+    },
+    {
+      "guid": "47d317c4-8a07-430d-8232-e404e4c83294",
+      "id": "asteroidsmall1",
+      "x": 2391,
+      "y": 1575,
+      "team": 6,
+      "createdAt": 1517942318368
+    },
+    {
+      "guid": "29a77822-ffad-41c3-8645-eb483bfdc0b3",
+      "id": "asteroidsmall1",
+      "x": 2450,
+      "y": 1627,
+      "team": 6,
+      "createdAt": 1517942319425
+    },
+    {
+      "guid": "3ae4a288-0439-46fd-9ab0-dd2dd3323b08",
+      "id": "asteroidsmall1",
+      "x": 2707,
+      "y": 1916,
+      "team": 6,
+      "createdAt": 1517942320666
+    },
+    {
+      "guid": "f1e6a352-1281-47e7-a57a-02b8dd436af8",
+      "id": "asteroidsmall1",
+      "x": 3065,
+      "y": 2154,
+      "team": 6,
+      "createdAt": 1517942324514
+    },
+    {
+      "guid": "9a119a54-03aa-43e5-8c12-96642ee4c0d4",
+      "id": "asteroidsmall1",
+      "x": 358,
+      "y": 2006,
+      "team": 6,
+      "createdAt": 1517942343377
+    },
+    {
+      "guid": "d90ad408-8d99-45ce-949a-b2f656c4464e",
+      "id": "asteroid2",
+      "x": 340,
+      "y": 2067,
+      "team": 6,
+      "createdAt": 1517942344827
+    },
+    {
+      "guid": "e614a323-dbb0-4ea4-b566-05bbd42b2a5a",
+      "id": "asteroid1",
+      "x": 411,
+      "y": 2036,
+      "team": 6,
+      "createdAt": 1517942346393
+    },
+    {
+      "guid": "18a17109-a17a-46cb-b182-95518685460c",
+      "id": "asteroidsmall4",
+      "x": 380,
+      "y": 2098,
+      "team": 6,
+      "createdAt": 1517942348361
+    },
+    {
+      "guid": "14ce7f57-9887-4c39-b188-01aa3fff188f",
+      "id": "asteroidsmall3",
+      "x": 470,
+      "y": 2027,
+      "team": 6,
+      "createdAt": 1517942350776
+    },
+    {
+      "guid": "aa7dd4bd-e448-4a77-b97d-2ca9d89da9e8",
+      "id": "asteroidsmall3",
+      "x": 1971,
+      "y": 2240,
+      "team": 6,
+      "createdAt": 1517942356071
+    },
+    {
+      "guid": "78202701-89d2-45ff-a7a2-377fb7899d58",
+      "id": "asteroidbig1",
+      "x": 1898,
+      "y": 2271,
+      "team": 6,
+      "createdAt": 1517942357455
+    },
+    {
+      "guid": "aecbb407-1c60-4e05-8cab-00e872e8f3a0",
+      "id": "asteroidtitanium1",
+      "x": 2734,
+      "y": 911,
+      "team": 6,
+      "createdAt": 1517942367368
+    },
+    {
+      "guid": "fbd0c027-4c18-4ed9-92a9-0ce4af1cd72d",
+      "id": "asteroidtitanium2",
+      "x": 2656,
+      "y": 897,
+      "team": 6,
+      "createdAt": 1517942368724
+    },
+    {
+      "guid": "7659b8c9-512f-49c3-9ec3-1afdbebae5a1",
+      "id": "asteroidtitaniumsmall1",
+      "x": 2824,
+      "y": 924,
+      "team": 6,
+      "createdAt": 1517942370337
+    },
+    {
+      "guid": "d9b462a8-a89d-49c3-9df7-6618006a0a43",
+      "id": "asteroidtitaniumsmall1",
+      "x": 2526,
+      "y": 919,
+      "team": 6,
+      "createdAt": 1517942371185
+    },
+    {
+      "guid": "df48aaf2-aa05-495e-8cfe-2423d38d7478",
+      "id": "asteroidsiliconsmall1",
+      "x": 2978,
+      "y": 631,
+      "team": 6,
+      "createdAt": 1517942375545
+    },
+    {
+      "guid": "0c505af5-d29c-4e80-8fee-4784b74faacd",
+      "id": "asteroidsilicon2",
+      "x": 2897,
+      "y": 599,
+      "team": 6,
+      "createdAt": 1517942376745
+    },
+    {
+      "guid": "e4132002-99fd-4087-874d-dfb839d2402d",
+      "id": "asteroidsiliconsmall1",
+      "x": 2813,
+      "y": 652,
+      "team": 6,
+      "createdAt": 1517942386439
+    },
+    {
+      "guid": "c8895d35-ddca-453d-b8e6-54d742172f6e",
+      "id": "asteroidsilicon1",
+      "x": 3015,
+      "y": 2271,
+      "team": 6,
+      "createdAt": 1517942398857
+    },
+    {
+      "guid": "167790a2-57e9-4c64-bd9c-ed404d2fc704",
+      "id": "asteroidsiliconsmall1",
+      "x": 3048,
+      "y": 2342,
+      "team": 6,
+      "createdAt": 1517942401538
+    },
+    {
+      "guid": "b915a46a-6b08-47b4-a042-8a81d9d66f72",
+      "id": "asteroidsiliconsmall1",
+      "x": 3029,
+      "y": 2444,
+      "team": 6,
+      "createdAt": 1517942403095
+    },
+    {
+      "guid": "0510af0a-fdcb-43a2-a20a-110875b2d8cf",
+      "id": "asteroidicesmall2",
+      "x": 798,
+      "y": 1247,
+      "team": 6,
+      "createdAt": 1517942413140
+    },
+    {
+      "guid": "ead5abba-a2c3-46e6-a9da-0ce0cfce32f1",
+      "id": "asteroidicesmall1",
+      "x": 748,
+      "y": 1173,
+      "team": 6,
+      "createdAt": 1517942415169
+    },
+    {
+      "guid": "ba9a56fb-58de-4088-b3de-cf690ff468c1",
+      "id": "asteroidicesmall1",
+      "x": 758,
+      "y": 1317,
+      "team": 6,
+      "createdAt": 1517942417616
+    },
+    {
+      "guid": "ebc3cce5-dc6f-474a-9b10-9d79954d75c0",
+      "id": "asteroidice1",
+      "x": 732,
+      "y": 1244,
+      "team": 6,
+      "createdAt": 1517942419371
+    },
+    {
+      "guid": "18d05c64-ceaf-40ce-b273-0097c37f158e",
+      "id": "asteroidice2",
+      "x": 826,
+      "y": 1284,
+      "team": 6,
+      "createdAt": 1517942422273
+    },
+    {
+      "guid": "a3669896-0f0f-496a-85bc-7c2ab5a797ce",
+      "id": "asteroidicesmall2",
+      "x": 724,
+      "y": 1360,
+      "team": 6,
+      "createdAt": 1517942427458
+    },
+    {
+      "guid": "6bd6a799-1dac-4a04-8a79-28cc3b4a7478",
+      "id": "asteroidicesmall2",
+      "x": 687,
+      "y": 1099,
+      "team": 6,
+      "createdAt": 1517942427913
+    },
+    {
+      "guid": "3cb6ff11-7312-4494-be67-a190bc5c2e56",
+      "id": "commandcenter",
+      "x": 3082,
+      "y": 3392,
+      "team": 7,
+      "createdAt": 1517942499697
+    },
+    {
+      "guid": "bd5b8ab9-122f-45bf-8bf4-ddde3161ba40",
+      "id": "miningstation",
+      "x": 3070,
+      "y": 3009,
+      "team": 7,
+      "createdAt": 1517942504158
+    },
+    {
+      "guid": "ebbe8552-332b-48e5-bdf7-c7357f894a64",
+      "id": "civilianbase",
+      "x": 3332,
+      "y": 3152,
+      "team": 7,
+      "createdAt": 1517942508815
+    },
+    {
+      "guid": "ca19cf44-96fa-4523-8952-7eed26a777f1",
+      "id": "civilianbase",
+      "x": 3405,
+      "y": 3082,
+      "team": 7,
+      "createdAt": 1517942509558
+    },
+    {
+      "guid": "a7c60b30-dc95-4467-add4-44acdac16892",
+      "id": "civilianbase",
+      "x": 3401,
+      "y": 3206,
+      "team": 7,
+      "createdAt": 1517942510371
+    },
+    {
+      "guid": "66933940-2387-4076-83bc-4d8c1760d18c",
+      "id": "solarstation",
+      "x": 2831,
+      "y": 3556,
+      "team": 7,
+      "createdAt": 1517942513685
+    },
+    {
+      "guid": "a636eea3-2e2e-4564-92b3-062434fac836",
+      "id": "solarstation",
+      "x": 2760,
+      "y": 3606,
+      "team": 7,
+      "createdAt": 1517942514553
+    },
+    {
+      "guid": "aaa6b59f-8ee8-4ab2-bdba-a3bd86e75f58",
+      "id": "solarstation",
+      "x": 3349,
+      "y": 3545,
+      "team": 7,
+      "createdAt": 1517942517579
+    },
+    {
+      "guid": "55bc4f3e-1202-4876-bcf4-ec9805d7bf89",
+      "id": "defensesatellite",
+      "x": 2932,
+      "y": 3581,
+      "team": 7,
+      "createdAt": 1517942522361
+    },
+    {
+      "guid": "6a49faa4-5324-4c72-9373-4b21af67bb31",
+      "id": "defensesatellite",
+      "x": 3009,
+      "y": 2929,
+      "team": 7,
+      "createdAt": 1517942524224
+    },
+    {
+      "guid": "fc004542-8539-483a-ac1e-82c63f40f7a7",
+      "id": "defensesatellite",
+      "x": 2672,
+      "y": 3201,
+      "team": 7,
+      "createdAt": 1517942527465
+    },
+    {
+      "guid": "272a0222-ee65-4c05-8b8b-ad633199ea27",
+      "id": "defensesatellite",
+      "x": 2238,
+      "y": 3277,
+      "team": 7,
+      "createdAt": 1517942528882
+    },
+    {
+      "guid": "0fe68830-86e5-4823-a478-b3a6a56bf2be",
+      "id": "defensesatellite",
+      "x": 2100,
+      "y": 3511,
+      "team": 7,
+      "createdAt": 1517942531178
+    },
+    {
+      "guid": "161e63a4-262e-4ec6-86bc-fd38de78d2b5",
+      "id": "defensesatellite",
+      "x": 2332,
+      "y": 3497,
+      "team": 7,
+      "createdAt": 1517942532678
+    },
+    {
+      "guid": "97f2eea4-b4ca-4173-ad4e-ad6fdc9ddfce",
+      "id": "astrometricstation",
+      "x": 2832,
+      "y": 3303,
+      "team": 7,
+      "createdAt": 1517942536922
+    },
+    {
+      "guid": "1218cb2e-3f67-43bf-8b74-63ca32aa816f",
+      "id": "orca",
+      "x": 2404,
+      "y": 493,
+      "team": 7,
+      "createdAt": 1517942561530
+    },
+    {
+      "guid": "0bec4383-96a1-46be-81d0-14f535a070ae",
+      "id": "orca",
+      "x": 2398,
+      "y": 557,
+      "team": 7,
+      "createdAt": 1517942562010
+    },
+    {
+      "guid": "dc111ea5-293a-4ccb-be4b-192285b9a6e7",
+      "id": "orca",
+      "x": 2470,
+      "y": 522,
+      "team": 7,
+      "createdAt": 1517942562465
+    },
+    {
+      "guid": "0db15198-9219-4b1a-8da5-aa7d377f6cbc",
+      "id": "orca",
+      "x": 2467,
+      "y": 3320,
+      "team": 7,
+      "createdAt": 1517942568393
+    },
+    {
+      "guid": "2b5625d4-46bb-4ff7-8e2d-d9608d651720",
+      "id": "orca",
+      "x": 2544,
+      "y": 3279,
+      "team": 7,
+      "createdAt": 1517942568859
+    },
+    {
+      "guid": "81a420b5-af12-4782-9b3b-9daba3b260e7",
+      "id": "hurricane",
+      "x": 3149,
+      "y": 3199,
+      "team": 7,
+      "createdAt": 1517942576562
+    },
+    {
+      "guid": "1ae7a0d4-cb23-4aa7-8304-078cca6a6c72",
+      "id": "hurricane",
+      "x": 3209,
+      "y": 3275,
+      "team": 7,
+      "createdAt": 1517942577193
+    },
+    {
+      "guid": "2393f9a6-e830-44fe-b97e-bacafd3ebe4c",
+      "id": "hurricane",
+      "x": 2917,
+      "y": 3438,
+      "team": 7,
+      "createdAt": 1517942578225
+    },
+    {
+      "guid": "802c41da-9db6-4334-b0e6-85feed1046b6",
+      "id": "hurricane",
+      "x": 3035,
+      "y": 3513,
+      "team": 7,
+      "createdAt": 1517942578553
+    },
+    {
+      "guid": "d7e5b700-ce66-4c03-883e-9249df2c877d",
+      "id": "hurricane",
+      "x": 904,
+      "y": 828,
+      "team": 1,
+      "createdAt": 1517942605801
+    },
+    {
+      "guid": "ae229d44-6fb6-4215-b828-945d54c6a3d7",
+      "id": "hurricane",
+      "x": 896,
+      "y": 777,
+      "team": 1,
+      "createdAt": 1517942606345
+    },
+    {
+      "guid": "be532965-2b0a-4bc8-883a-0f56d6a359b5",
+      "id": "hurricane",
+      "x": 960,
+      "y": 792,
+      "team": 1,
+      "createdAt": 1517942606939
+    },
+    {
+      "guid": "670b53f3-fa9c-4982-a2f5-acbd4554bf41",
+      "id": "orca",
+      "x": 1454,
+      "y": 419,
+      "team": 1,
+      "createdAt": 1517942610361
+    },
+    {
+      "guid": "819b3bb1-a40a-447c-bc45-829b6029e275",
+      "id": "orca",
+      "x": 1509,
+      "y": 512,
+      "team": 1,
+      "createdAt": 1517942612001
+    },
+    {
+      "guid": "5382facc-a9e5-4ef6-ba86-6b20341b4c47",
+      "id": "hurricane",
+      "x": 1438,
+      "y": 494,
+      "team": 1,
+      "createdAt": 1517942613219
+    },
+    {
+      "guid": "e5eb7184-776e-47a1-adda-6d163e031c5e",
+      "id": "hurricane",
+      "x": 1524,
+      "y": 444,
+      "team": 1,
+      "createdAt": 1517942614645
+    },
+    {
+      "guid": "c87a14ae-f7d9-4ace-8692-1982035dc0ee",
+      "id": "orca",
+      "x": 931,
+      "y": 1485,
+      "team": 1,
+      "createdAt": 1517942628467
+    },
+    {
+      "guid": "9153dc25-ae0a-41e1-a0a5-63ee47e31d80",
+      "id": "orca",
+      "x": 1034,
+      "y": 1498,
+      "team": 1,
+      "createdAt": 1517942629114
+    },
+    {
+      "guid": "e4b8d777-197c-4b2b-84f0-2e7e61099190",
+      "id": "orca",
+      "x": 1115,
+      "y": 1571,
+      "team": 1,
+      "createdAt": 1517942629811
+    },
+    {
+      "guid": "2fa65ee4-64ff-46c1-ac69-f5d478863332",
+      "id": "orca",
+      "x": 1137,
+      "y": 1647,
+      "team": 1,
+      "createdAt": 1517942630560
+    },
+    {
+      "guid": "68d9e6ba-c16b-4598-aea9-8db0af449af1",
+      "id": "hurricane",
+      "x": 966,
+      "y": 1556,
+      "team": 1,
+      "createdAt": 1517942632017
+    },
+    {
+      "guid": "f430dea7-d3d8-411c-88e8-d115345195c1",
+      "id": "hurricane",
+      "x": 1063,
+      "y": 1627,
+      "team": 1,
+      "createdAt": 1517942632545
+    },
+    {
+      "guid": "12c14865-624b-4a5b-95cc-0bf20729fba6",
+      "id": "hurricane",
+      "x": 851,
+      "y": 1462,
+      "team": 1,
+      "createdAt": 1517942633903
+    },
+    {
+      "guid": "b22332cf-825f-48f2-92fd-2d20358af211",
+      "id": "hurricane",
+      "x": 1169,
+      "y": 1710,
+      "team": 1,
+      "createdAt": 1517942635412
+    },
+    {
+      "guid": "9aec3002-0378-4074-9a19-fae208c81677",
+      "id": "hailstorm",
+      "x": 2340,
+      "y": 2531,
+      "team": 1,
+      "createdAt": 1517942662705
+    },
+    {
+      "guid": "4103b54f-5b4e-425a-9687-a8733a723be2",
+      "id": "orca",
+      "x": 2241,
+      "y": 2473,
+      "team": 1,
+      "createdAt": 1517942664337
+    },
+    {
+      "guid": "28fab797-0538-4e27-a10b-ead08a68b558",
+      "id": "orca",
+      "x": 2362,
+      "y": 2404,
+      "team": 1,
+      "createdAt": 1517942664649
+    },
+    {
+      "guid": "8992ee80-b030-44d5-9093-19e7a97dcab5",
+      "id": "orca",
+      "x": 2328,
+      "y": 2624,
+      "team": 1,
+      "createdAt": 1517942665523
+    },
+    {
+      "guid": "b8ff60b8-3b24-4789-8b95-d1aa43dee2b5",
+      "id": "orca",
+      "x": 2462,
+      "y": 2556,
+      "team": 1,
+      "createdAt": 1517942666138
+    },
+    {
+      "guid": "d2004a80-4f4a-4cdf-86ad-10335ad7bc51",
+      "id": "hailstorm",
+      "x": 1572,
+      "y": 2414,
+      "team": 1,
+      "createdAt": 1517942699115
+    },
+    {
+      "guid": "18e08c8e-dbcf-4bed-aaf9-bf467c0e7adb",
+      "id": "orca",
+      "x": 1562,
+      "y": 2311,
+      "team": 1,
+      "createdAt": 1517942700242
+    },
+    {
+      "guid": "72d886d8-eae1-4a6b-a62c-1f6ee9016d85",
+      "id": "orca",
+      "x": 1646,
+      "y": 2350,
+      "team": 1,
+      "createdAt": 1517942700507
+    },
+    {
+      "guid": "43451974-f737-42a9-b7e5-3e89d1b1feac",
+      "id": "orca",
+      "x": 1478,
+      "y": 2403,
+      "team": 1,
+      "createdAt": 1517942701054
+    },
+    {
+      "guid": "cd14425c-15fb-4b10-8dde-22e1deca6aa3",
+      "id": "orca",
+      "x": 1584,
+      "y": 2482,
+      "team": 1,
+      "createdAt": 1517942701368
+    },
+    {
+      "guid": "f6d54e33-c19b-4094-9e6d-6d20aa78c567",
+      "id": "hurricane",
+      "x": 1617,
+      "y": 2293,
+      "team": 1,
+      "createdAt": 1517942703011
+    },
+    {
+      "guid": "026d6b62-a533-4959-b593-1a89cfec9dda",
+      "id": "hurricane",
+      "x": 1493,
+      "y": 2326,
+      "team": 1,
+      "createdAt": 1517942703456
+    },
+    {
+      "guid": "51aa1653-581c-40d6-b2d9-fbb29ad00650",
+      "id": "hurricane",
+      "x": 1667,
+      "y": 2433,
+      "team": 1,
+      "createdAt": 1517942703856
+    },
+    {
+      "guid": "3c6288a6-b641-416c-bb1a-def80131c40d",
+      "id": "hurricane",
+      "x": 1515,
+      "y": 2478,
+      "team": 1,
+      "createdAt": 1517942704153
+    },
+    {
+      "guid": "d650b5e8-6082-41cd-8cdc-a28ef8cdde75",
+      "id": "hurricane",
+      "x": 2524,
+      "y": 1220,
+      "team": 1,
+      "createdAt": 1517942725085
+    },
+    {
+      "guid": "f8d56cee-fbda-4b5c-92d8-8a60ecb91c30",
+      "id": "hurricane",
+      "x": 2532,
+      "y": 1171,
+      "team": 1,
+      "createdAt": 1517942725482
+    },
+    {
+      "guid": "36795e08-39aa-4ada-a6c9-809a407ba438",
+      "id": "hurricane",
+      "x": 2584,
+      "y": 1177,
+      "team": 1,
+      "createdAt": 1517942725986
+    },
+    {
+      "guid": "5fb52399-e558-44ed-a67e-416d31356bd3",
+      "id": "orca",
+      "x": 2599,
+      "y": 1214,
+      "team": 1,
+      "createdAt": 1517942727222
+    },
+    {
+      "guid": "a724700b-b73f-45a1-aa16-6087c4048c64",
+      "id": "orca",
+      "x": 1974,
+      "y": 1744,
+      "team": 1,
+      "createdAt": 1517942736570
+    },
+    {
+      "guid": "0b54fa39-449a-4fce-8fdd-cb0088ddc2d6",
+      "id": "orca",
+      "x": 1971,
+      "y": 1802,
+      "team": 1,
+      "createdAt": 1517942737001
+    },
+    {
+      "guid": "6f13fd40-966e-4c0a-8d5f-cf7f71a47636",
+      "id": "orca",
+      "x": 2044,
+      "y": 1770,
+      "team": 1,
+      "createdAt": 1517942740769
+    },
+    {
+      "guid": "3ef728f8-8431-490b-924f-6f257cb1d4ca",
+      "id": "hurricane",
+      "x": 1908,
+      "y": 1765,
+      "team": 1,
+      "createdAt": 1517942742273
+    },
+    {
+      "guid": "18d2a351-a61c-4efa-866c-0395a829b917",
+      "id": "hurricane",
+      "x": 2031,
+      "y": 1707,
+      "team": 1,
+      "createdAt": 1517942742859
+    },
+    {
+      "guid": "74f4556f-bbd4-41f4-b9f5-a25cfbb0037d",
+      "id": "hurricane",
+      "x": 2029,
+      "y": 1829,
+      "team": 1,
+      "createdAt": 1517942743449
+    },
+    {
+      "guid": "bf485d91-d93a-445e-8f01-fe04d343914e",
+      "id": "hailstorm",
+      "x": 3257,
+      "y": 1222,
+      "team": 1,
+      "createdAt": 1517942755280
+    },
+    {
+      "guid": "992c889e-085e-414c-8d8e-a8092a4b662a",
+      "id": "hailstorm",
+      "x": 3325,
+      "y": 1319,
+      "team": 1,
+      "createdAt": 1517942755846
+    },
+    {
+      "guid": "310fb39b-1433-44b0-ae2b-13216e06ce07",
+      "id": "stgeorge",
+      "x": 3202,
+      "y": 1331,
+      "team": 1,
+      "createdAt": 1517942758137
+    },
+    {
+      "guid": "6bb4f9bb-725e-4071-a901-c5bfd7523e87",
+      "id": "orca",
+      "x": 3078,
+      "y": 1294,
+      "team": 1,
+      "createdAt": 1517942759639
+    },
+    {
+      "guid": "86de374f-50ba-4aeb-ae87-bcf9abe5caec",
+      "id": "orca",
+      "x": 3106,
+      "y": 1412,
+      "team": 1,
+      "createdAt": 1517942760666
+    },
+    {
+      "guid": "5c6ba8d1-85c0-4c57-ab2c-0672bae72039",
+      "id": "orca",
+      "x": 3182,
+      "y": 1465,
+      "team": 1,
+      "createdAt": 1517942761826
+    },
+    {
+      "guid": "3fbc4c63-238e-4407-b98c-a67c286b934d",
+      "id": "orca",
+      "x": 3314,
+      "y": 1456,
+      "team": 1,
+      "createdAt": 1517942762339
+    },
+    {
+      "guid": "764e4dfa-9bdf-4886-8205-1046701f8073",
+      "id": "defensesatellite",
+      "x": 939,
+      "y": 3424,
+      "team": 1,
+      "createdAt": 1517942797129
+    },
+    {
+      "guid": "5473ce39-bbf5-45e9-be2e-f98a6ff866ba",
+      "id": "defensesatellite",
+      "x": 913,
+      "y": 3517,
+      "team": 1,
+      "createdAt": 1517942798035
+    },
+    {
+      "guid": "4026229b-48cf-4a21-bf63-ea3fc13162af",
+      "id": "defensesatellite",
+      "x": 1802,
+      "y": 1416,
+      "team": 1,
+      "createdAt": 1517942814946
+    },
+    {
+      "guid": "016b5690-9812-49cb-ac27-ebc90994167d",
+      "id": "defensesatellite",
+      "x": 2088,
+      "y": 1155,
+      "team": 1,
+      "createdAt": 1517942816881
+    },
+    {
+      "guid": "5070817f-3355-4cf7-b924-f65190ccd6d4",
+      "id": "miningstation",
+      "x": 2996,
+      "y": 508,
+      "team": 1,
+      "createdAt": 1517942831033
+    },
+    {
+      "guid": "eb23e2b5-b4d9-4aa3-9d91-fc4c845bce11",
+      "id": "defensesatellite",
+      "x": 2907,
+      "y": 450,
+      "team": 1,
+      "createdAt": 1517942832993
+    },
+    {
+      "guid": "fe7a7a5d-08f6-433e-a7d6-6db0d60cc47d",
+      "id": "defensesatellite",
+      "x": 3078,
+      "y": 584,
+      "team": 1,
+      "createdAt": 1517942833801
+    },
+    {
+      "guid": "10e5dc3a-a3c4-46df-8907-02de1636a1f5",
+      "id": "orca",
+      "x": 3061,
+      "y": 414,
+      "team": 1,
+      "createdAt": 1517942835026
+    },
+    {
+      "guid": "cc705256-1933-444d-bf87-a57300082326",
+      "id": "asteroid1",
+      "x": 3514,
+      "y": 2489,
+      "team": 6,
+      "createdAt": 1517943212766
+    },
+    {
+      "guid": "11a3753a-a88f-4aff-a6de-d64bfd7b5d7a",
+      "id": "asteroid1",
+      "x": 3701,
+      "y": 2587,
+      "team": 6,
+      "createdAt": 1517943213211
+    },
+    {
+      "guid": "a2ef670e-2d4e-430a-a79c-039a108765ab",
+      "id": "asteroid1",
+      "x": 3711,
+      "y": 2469,
+      "team": 6,
+      "createdAt": 1517943214883
+    },
+    {
+      "guid": "57fa7a78-dd81-4e70-b5b5-9b84eaa3a7af",
+      "id": "asteroidbig2",
+      "x": 3554,
+      "y": 2491,
+      "team": 6,
+      "createdAt": 1517943225076
+    },
+    {
+      "guid": "b754863a-3783-4820-98a8-2df50be9ca07",
+      "id": "asteroidbig2",
+      "x": 3697,
+      "y": 2374,
+      "team": 6,
+      "createdAt": 1517943227137
+    },
+    {
+      "guid": "1650eb91-3fbe-4f0b-82c2-8d0fbbdd41c6",
+      "id": "asteroid4",
+      "x": 3551,
+      "y": 2384,
+      "team": 6,
+      "createdAt": 1517943233810
+    },
+    {
+      "guid": "de6e9b51-11a5-46c9-93ce-935d0b2c0c5e",
+      "id": "asteroid4",
+      "x": 3694,
+      "y": 2276,
+      "team": 6,
+      "createdAt": 1517943236417
+    },
+    {
+      "guid": "f0afebd4-3e12-473d-a03b-5c6061cf7196",
+      "id": "asteroid4",
+      "x": 3454,
+      "y": 2442,
+      "team": 6,
+      "createdAt": 1517943237441
+    },
+    {
+      "guid": "51c64629-4c86-4e5f-9e98-295293036be5",
+      "id": "asteroid4",
+      "x": 3590,
+      "y": 2558,
+      "team": 6,
+      "createdAt": 1517943238297
+    },
+    {
+      "guid": "b2bb9207-55d5-406d-870d-ff42d2f1df75",
+      "id": "asteroidsmall4",
+      "x": 3611,
+      "y": 2352,
+      "team": 6,
+      "createdAt": 1517943245073
+    },
+    {
+      "guid": "9a3fa92c-69e7-40b7-b64a-b467a23149a8",
+      "id": "asteroidsmall4",
+      "x": 3440,
+      "y": 2543,
+      "team": 6,
+      "createdAt": 1517943246075
+    },
+    {
+      "guid": "8eb7a558-a65c-46d3-a01a-315cd9e33043",
+      "id": "asteroidsmall4",
+      "x": 3449,
+      "y": 2370,
+      "team": 6,
+      "createdAt": 1517943246770
+    },
+    {
+      "guid": "1449b605-aebf-4342-bcf5-b9ac291e5a5d",
+      "id": "asteroidsmall4",
+      "x": 3644,
+      "y": 2616,
+      "team": 6,
+      "createdAt": 1517943247401
+    },
+    {
+      "guid": "7e693bec-8856-4c41-a8bd-3ec0dfcd7dcd",
+      "id": "asteroidsmall4",
+      "x": 3717,
+      "y": 2645,
+      "team": 6,
+      "createdAt": 1517943247764
+    },
+    {
+      "guid": "1f4ad30c-ef65-48d1-b6c5-ecae4c62ba65",
+      "id": "asteroidsmall4",
+      "x": 3533,
+      "y": 1212,
+      "team": 6,
+      "createdAt": 1517943254098
+    },
+    {
+      "guid": "7cf78507-e833-418b-ab52-3d541db143f2",
+      "id": "asteroidsmall4",
+      "x": 3624,
+      "y": 1292,
+      "team": 6,
+      "createdAt": 1517943254746
+    },
+    {
+      "guid": "b9899bdc-a7a4-45ee-b0a6-d894b6680dd8",
+      "id": "asteroidsmall3",
+      "x": 3551,
+      "y": 1261,
+      "team": 6,
+      "createdAt": 1517943257992
+    },
+    {
+      "guid": "ca84a658-a74e-48b0-be35-4b0357226a5c",
+      "id": "shipfactory",
+      "x": 3570,
+      "y": 3428,
+      "team": 7,
+      "createdAt": 1517943280331
+    },
+    {
+      "guid": "0ba5abe9-e39e-469d-96c1-51be43fa2193",
+      "id": "defensesatellite",
+      "x": 3634,
+      "y": 3336,
+      "team": 7,
+      "createdAt": 1517943286346
+    },
+    {
+      "guid": "c546e409-425a-4c6c-8c3a-85d178fcef80",
+      "id": "defensesatellite",
+      "x": 3500,
+      "y": 3140,
+      "team": 7,
+      "createdAt": 1517943289097
+    },
+    {
+      "guid": "bbdf0cc9-f922-4e84-baa2-d94d696f503c",
+      "id": "fleetheadquarters",
+      "x": 3657,
+      "y": 3556,
+      "team": 7,
+      "createdAt": 1517943295063
+    }
+  ],
+  "spaceObjects": [
+    {
+      "id": "smallplanet2",
+      "x": 1076.0096551724137,
+      "y": 1073.086896551724,
+      "z": 0.37310344827586206,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 2247.078620689655,
+      "y": 1590.7006896551725,
+      "z": 0.8696551724137931,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 2328.561379310345,
+      "y": 1930.2386206896551,
+      "z": 0.8696551724137931,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 2545.526896551724,
+      "y": 1993.1144827586206,
+      "z": 0.8696551724137931,
+      "scale": 1
+    },
+    {
+      "id": "meteorites6",
+      "x": 2264.561379310345,
+      "y": 1776.6662068965518,
+      "z": 0.8696551724137931,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 2101.326896551724,
+      "y": 1483.9144827586206,
+      "z": 0.8696551724137931,
+      "scale": 1
+    },
+    {
+      "id": "meteorites9",
+      "x": 2537.048275862069,
+      "y": 2112.365517241379,
+      "z": 0.8137931034482759,
+      "scale": 1
+    },
+    {
+      "id": "galaxy2",
+      "x": 1548.0151724137932,
+      "y": 1218.408275862069,
+      "z": 0.4289655172413793,
+      "scale": 1
+    },
+    {
+      "id": "galaxy1",
+      "x": 1452.1462068965518,
+      "y": 1516.0427586206897,
+      "z": 0.4289655172413793,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 1455.623448275862,
+      "y": 2572.0262068965517,
+      "z": 0.7268965517241379,
+      "scale": 1
+    },
+    {
+      "id": "meteorites1",
+      "x": 1728.1558620689655,
+      "y": 2762.566896551724,
+      "z": 0.7765517241379309,
+      "scale": 1
+    },
+    {
+      "id": "meteorites1",
+      "x": 1636.9075862068964,
+      "y": 2862.566896551724,
+      "z": 0.7765517241379309,
+      "scale": 1
+    },
+    {
+      "id": "meteorites1",
+      "x": 1347.2386206896551,
+      "y": 2200.339310344827,
+      "z": 0.7765517241379309,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 1311.9006896551723,
+      "y": 2435.932413793103,
+      "z": 0.8386206896551723,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 897.7489655172413,
+      "y": 2207.642758620689,
+      "z": 0.8386206896551723,
+      "scale": 1
+    },
+    {
+      "id": "meteorites9",
+      "x": 791.9972413793103,
+      "y": 2386.8220689655172,
+      "z": 0.7765517241379309,
+      "scale": 1
+    },
+    {
+      "id": "meteorites3",
+      "x": 724.1337931034482,
+      "y": 1902.7227586206895,
+      "z": 0.6337931034482758,
+      "scale": 1
+    },
+    {
+      "id": "meteorites3",
+      "x": 1017.5544827586206,
+      "y": 1458.0262068965517,
+      "z": 0.6337931034482758,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 1175.5089655172414,
+      "y": 1541.1558620689655,
+      "z": 0.7951724137931034,
+      "scale": 1
+    },
+    {
+      "id": "meteorites9",
+      "x": 560.3710344827587,
+      "y": 902.2593103448276,
+      "z": 0.7951724137931034,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 395.48689655172416,
+      "y": 702.0910344827587,
+      "z": 0.7144827586206897,
+      "scale": 1
+    },
+    {
+      "id": "meteorites5",
+      "x": 106,
+      "y": 591.703448275862,
+      "z": 0.6275862068965516,
+      "scale": 1
+    },
+    {
+      "id": "meteorites5",
+      "x": 586.0689655172414,
+      "y": 911.8758620689655,
+      "z": 0.6275862068965516,
+      "scale": 1
+    },
+    {
+      "id": "meteorites5",
+      "x": 729.7241379310344,
+      "y": 271,
+      "z": 0.6275862068965516,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 826.5586206896552,
+      "y": 184,
+      "z": 0.7641379310344828,
+      "scale": 1
+    },
+    {
+      "id": "galaxy2",
+      "x": 671.8827586206896,
+      "y": 125,
+      "z": 0.323448275862069,
+      "scale": 1
+    },
+    {
+      "id": "galaxy3",
+      "x": 1002.1103448275862,
+      "y": 160,
+      "z": 0.323448275862069,
+      "scale": 1
+    },
+    {
+      "id": "galaxy2",
+      "x": 1003.624827586207,
+      "y": 236,
+      "z": 0.24896551724137933,
+      "scale": 1
+    },
+    {
+      "id": "galaxy2",
+      "x": 1250.0868965517243,
+      "y": 131,
+      "z": 0.24896551724137933,
+      "scale": 1.303448275862069
+    },
+    {
+      "id": "galaxy2",
+      "x": 184,
+      "y": 1219.8220689655172,
+      "z": 0.24896551724137933,
+      "scale": 1.4137931034482758
+    },
+    {
+      "id": "meteorites3",
+      "x": 305.9958620689655,
+      "y": 871.303448275862,
+      "z": 0.30482758620689654,
+      "scale": 1.1379310344827587
+    },
+    {
+      "id": "meteorites7",
+      "x": 334.32689655172413,
+      "y": 1522.4827586206898,
+      "z": 0.7082758620689655,
+      "scale": 1.1379310344827587
+    },
+    {
+      "id": "meteorites7",
+      "x": 1362.2441379310344,
+      "y": 178,
+      "z": 0.7082758620689655,
+      "scale": 1.1379310344827587
+    },
+    {
+      "id": "meteorites8",
+      "x": 1492.3641379310345,
+      "y": 366.88965517241377,
+      "z": 0.7889655172413793,
+      "scale": 1.1379310344827587
+    },
+    {
+      "id": "meteorites8",
+      "x": 2235.4,
+      "y": 612.703448275862,
+      "z": 0.7889655172413793,
+      "scale": 1.1379310344827587
+    },
+    {
+      "id": "meteorites7",
+      "x": 2355.4068965517245,
+      "y": 791.6965517241379,
+      "z": 0.7889655172413793,
+      "scale": 1.1379310344827587
+    },
+    {
+      "id": "meteorites6",
+      "x": 1982.296551724138,
+      "y": 800.9655172413793,
+      "z": 0.7144827586206897,
+      "scale": 1.1379310344827587
+    }
+  ]
+}

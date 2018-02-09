@@ -7,6 +7,7 @@ import Effects from '../preloader/Effects';
 import Projectiles from '../preloader/Projectiles';
 import Audio from '../preloader/Audio';
 import Translations from '../preloader/Translations';
+import Maps from '../preloader/Maps';
 
 const ns = window.fivenations;
 /**
@@ -23,6 +24,7 @@ function loadResources(preloader) {
   Projectiles.load(preloader);
   Audio.load(preloader);
   Translations.load(preloader);
+  Maps.load(preloader);
 }
 
 /**
