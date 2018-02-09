@@ -1,6 +1,6 @@
 const { PUBLIC_URL } = process.env;
 // default maps to be preloaded regardless of the game mode
-const DEFAULT_MAPS = ['promotionalmap01-1.json'];
+const DEFAULT_MAPS = ['promotionalmap01-1'];
 
 export default {
   /**

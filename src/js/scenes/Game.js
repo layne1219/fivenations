@@ -335,7 +335,10 @@ class Game {
    * @param {string} exporterMapId - id of the preloaded map json
    */
   loadMap(exportedMapId) {
-    const json = phaserGame.cache.getJSON(exportedMapId);
+    const json = this.game.cache.getJSON(exportedMapId);
+    if (!json) {
+      throw new Error('The given map does not exist');
+    }
     MapLoader.load(this, json);
   }
 }

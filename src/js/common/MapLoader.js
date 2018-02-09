@@ -93,16 +93,19 @@ export default {
 
     game.map.new(mapConfig);
 
-    Object.keys(players).forEach((id) => {
-      const { user, active } = players[id];
+    Object.keys(players)
+      .map(id => players[id])
+      .sort(a => (a.user ? -1 : 1))
+      .forEach((player) => {
+        const { user, active } = player;
 
-      if (!active) return;
+        if (!active) return;
 
-      game.eventEmitter.synced.players.add({
-        authorised: !!user,
-        ...players[id],
+        game.eventEmitter.synced.players.add({
+          authorised: !!user,
+          ...player,
+        });
       });
-    });
 
     importer.getEntities().forEach((config) => {
       game.eventEmitter.synced.entities.add(config);
