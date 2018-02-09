@@ -29,7 +29,7 @@ let starfield;
 let fogOfWar;
 let fogOfWarRenderer;
 let collisionMap;
-let dirty = false;
+let dirty = true; // true for the first render
 
 class Map {
   constructor(_game) {
@@ -69,7 +69,9 @@ class Map {
     fogOfWar.optimizedUpdate = Util.interval(
       (entityManager) => {
         fogOfWar.update(entityManager);
-        dirty = true;
+        if (fogOfWar.isDirty()) {
+          dirty = true;
+        }
       },
       FOG_OF_WAR_REFRESH_RATE,
       fogOfWar,
@@ -92,6 +94,7 @@ class Map {
       fogOfWar.optimizedUpdate(entityManager);
       if (dirty) {
         fogOfWarRenderer.update();
+        console.log('Map is dirty...');
         dirty = false;
       }
     }

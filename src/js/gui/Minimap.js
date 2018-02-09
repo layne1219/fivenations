@@ -163,9 +163,9 @@ export default class Minimap {
    */
   update() {
     this.reset();
-    this.updateFogOfWar();
+    /* this.updateFogOfWar();
     this.updateEntities();
-    this.updateCamera();
+    this.updateCamera(); */
   }
 
   /**
