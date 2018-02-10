@@ -4,8 +4,6 @@ import FogOfWarMasks from './FogOfWarMasks';
 const FAKE_ROW = [];
 const FAKE_VALUE = 0;
 
-let dirty = true;
-
 function addFakeRows(map) {
   for (let i = map.getWidth() - 1; i >= 0; i -= 1) {
     FAKE_ROW.push(FAKE_VALUE);
@@ -28,7 +26,12 @@ class FogOfWar {
     if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
       if (!this.tiles[y][x]) {
         this.tiles[y][x] = 1;
-        dirty = true;
+        // only sets dirty true if the revealing was on screen
+        // otherwise we are not interested in refreshing the
+        // fog of war layer
+        if (this.map.isTileOnScreen(x, y)) {
+          this.dirty = true;
+        }
       }
     }
     return this;
@@ -43,7 +46,9 @@ class FogOfWar {
     for (let i = 0; i < mask.length; i += 1) {
       for (let j = 0; j < mask[i].length; j += 1) {
         if (mask[i][j]) {
-          this.visit(-offset + tile[0] + j, -offset + tile[1] + i);
+          const x = -offset + tile[0] + j;
+          const y = -offset + tile[1] + i;
+          this.visit(x, y);
         }
       }
     }
@@ -57,7 +62,7 @@ class FogOfWar {
   }
 
   update(entityManager) {
-    dirty = false;
+    this.dirty = false;
     entityManager.entities(':user').forEach((entity) => {
       this.visitTilesByEntityVisibility(entity);
     });
@@ -105,7 +110,7 @@ class FogOfWar {
    * @return {boolean}
    */
   isDirty() {
-    return dirty;
+    return this.dirty;
   }
 }
 
