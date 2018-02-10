@@ -32,22 +32,32 @@ class Popup extends Phaser.Group {
    * @param {object} config - configuration object to specify the button
    */
   initBasicComponents(config) {
-    const phaserGame = ns.game.game;
-    const { id } = GUI_POPUP.spritesheet;
-    const { text } = config;
+    const { game } = ns.game;
+    const {
+      offsetX, offsetY, spritesheet, frame, frameName, text,
+    } = config;
 
-    this.background = phaserGame.add.sprite(0, 0, id);
-    this.background.frame = GUI_POPUP.frames.background;
+    this.background = game.add.sprite(
+      offsetX || 0,
+      offsetY || 0,
+      spritesheet || GUI_POPUP.spritesheet,
+    );
+    this.background.frame = frame || GUI_POPUP.frames.background;
+    if (frameName) {
+      this.background.frameName = frameName;
+    }
     this.background.anchor.set(0.5);
 
-    this.text = phaserGame.add.text(0, 0, text, {
-      ...GUI_POPUP.style,
-      wordWrapWidth: this.background.width - GUI_POPUP.padding,
-    });
-    this.text.anchor.set(0.5);
-
     this.add(this.background);
-    this.add(this.text);
+
+    if (text) {
+      this.text = game.add.text(0, 0, text, {
+        ...GUI_POPUP.style,
+        wordWrapWidth: this.background.width - GUI_POPUP.padding,
+      });
+      this.text.anchor.set(0.5);
+      this.add(this.text);
+    }
   }
 
   /**
@@ -56,14 +66,19 @@ class Popup extends Phaser.Group {
    * @param {object} config - Configuration object
    */
   initConfirmButton(config) {
-    const { buttonLabel, onClick } = config;
+    const {
+      buttonLabel, onClick, buttonOffsetX, buttonOffsetY,
+    } = config;
     this.button = new Button({
       buttonLabel,
       onClick,
     });
-    this.button.x = 0;
+    this.button.x = buttonOffsetX || 0;
     this.button.y =
-      this.background.height / 2 - this.button.height / 2 - GUI_POPUP.padding;
+      this.background.height / 2 -
+      this.button.height / 2 -
+      GUI_POPUP.padding +
+      (buttonOffsetY || 0);
 
     this.add(this.button);
   }
