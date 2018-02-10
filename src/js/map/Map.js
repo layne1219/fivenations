@@ -1,3 +1,4 @@
+/* global window */
 /* eslint prefer-destructuring: 0 */
 /* eslint class-methods-use-this: 0 */
 import Starfield from '../starfield/Starfield';
@@ -5,6 +6,9 @@ import FogOfWar from './FogOfWar';
 import FogOfWarRenderer from './FogOfWarRenderer';
 import CollisionMap from './CollisionMap';
 import Util from '../common/Util';
+
+// FiveNations namespace to fetch the game window dimensions
+const ns = window.fivenations;
 
 // refresh rate skipped execution per tick
 const FOG_OF_WAR_REFRESH_RATE = 5;
@@ -29,12 +33,13 @@ let starfield;
 let fogOfWar;
 let fogOfWarRenderer;
 let collisionMap;
-let dirty = false;
+let dirty = true; // true for the first render
 
 class Map {
   constructor(_game) {
     this.initGame(_game);
     this.exposeStarfield();
+    this.calculateScreenDimensionInTiles();
   }
 
   initGame(_game) {
@@ -44,6 +49,11 @@ class Map {
 
   exposeStarfield() {
     this.Starfield = Starfield;
+  }
+
+  calculateScreenDimensionInTiles() {
+    this.screenTileWidth = Math.floor(ns.window.width / 40);
+    this.screenTileHeight = Math.floor(ns.window.height / 40);
   }
 
   new(config) {
@@ -69,7 +79,9 @@ class Map {
     fogOfWar.optimizedUpdate = Util.interval(
       (entityManager) => {
         fogOfWar.update(entityManager);
-        dirty = true;
+        if (fogOfWar.isDirty()) {
+          dirty = true;
+        }
       },
       FOG_OF_WAR_REFRESH_RATE,
       fogOfWar,
@@ -176,6 +188,23 @@ class Map {
 
   isDirty() {
     return dirty;
+  }
+
+  /**
+   * Returns whether the tile identified by the given coordinates is
+   * on or off the screen
+   * @param {number} x
+   * @param {number} y
+   */
+  isTileOnScreen(x, y) {
+    const screenX = Math.floor(game.camera.x / 40);
+    const screenY = Math.floor(game.camera.y / 40);
+    return (
+      x >= screenX &&
+      y >= screenY &&
+      x <= screenX + this.screenTileWidth &&
+      y <= screenY + this.screenTileHeight
+    );
   }
 
   forceRefresh() {
