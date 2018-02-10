@@ -1,0 +1,39 @@
+{"frames": [
+
+{
+	"filename": "endgame_defeat.png",
+	"frame": {"x":1,"y":521,"w":867,"h":482},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":14,"w":867,"h":482},
+	"sourceSize": {"w":867,"h":518},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "endgame_victory.png",
+	"frame": {"x":1,"y":1,"w":867,"h":518},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":867,"h":518},
+	"sourceSize": {"w":867,"h":518},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "popup_pausegame.png",
+	"frame": {"x":1,"y":1005,"w":845,"h":343},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":845,"h":343},
+	"sourceSize": {"w":845,"h":343},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "GUI_popups.png",
+	"format": "RGBA8888",
+	"size": {"w":869,"h":1349},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4a57ef27c240fc07aced7fcaa586499d:37f4fa80bdc6138680124b6b613539ae:0c13c71a2fd524d5590c9c1c2f82f81a$"
+}
+}

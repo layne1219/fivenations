@@ -1,0 +1,30 @@
+{"frames": [
+
+{
+	"filename": "promotionalmap_popup_event.png",
+	"frame": {"x":1,"y":395,"w":533,"h":156},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":533,"h":156},
+	"sourceSize": {"w":533,"h":156},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "promotionalmap_popup_start.png",
+	"frame": {"x":1,"y":1,"w":533,"h":392},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":533,"h":392},
+	"sourceSize": {"w":533,"h":392},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "GUI_promotionalmap_popups.png",
+	"format": "RGBA8888",
+	"size": {"w":535,"h":552},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3c333192e5c573d9d2d1a65ec09fa47c:5a010162bf8b1e9d9358662a67f789a3:a3bb59ff8e55e6b661b082db03fb9fb5$"
+}
+}
