@@ -73,7 +73,17 @@
           });
         };
 
-        game.loadMap('promotionalmap01-1');        
+        game.loadMap('promotionalmap01-1');   
+
+        game.GUI.addButton({
+          x: window.fivenations.window.width - 55,
+          y: 15,
+          customOverFrame: 195,
+          customOutFrame: 194,
+          customDownFrame: 195,
+          fixedToCamera: true,
+          onClick: () => popup.show(),
+        });             
 
         game.eventEmitter.local.addEventListener('gui/selection/change', () => {
           dataEditorManager.onEntitySelect(game);
