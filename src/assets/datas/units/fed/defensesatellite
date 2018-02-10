@@ -1,0 +1,88 @@
+{
+  "id": "defensesatellite",
+  "name": "Defense Satellite",
+  "type": "building",
+  "building": true,
+  "hull": 50,
+  "shield": 100,
+  "armor": 0,
+  "power": 0,
+  "hangar": 0,
+  "speed": 0,
+  "maneuverability": 0,
+  "vision": 60,
+  "weapons": [
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 70,
+  "silicium": 0,
+  "energy": 70,
+  "uranium": 0,
+  "space": 0,
+  "buildingTime": 10,
+  "directions": 0,
+  "animFrame": 1,
+  "animType": [
+    "idle-forever"
+  ],
+  "size": "s",
+  "animations": {
+    "idle-forever": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  },
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-small"
+      ],
+      "minWrecks": 3,
+      "maxWrecks": 5,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  },
+  "damageArea": {
+    "width": 90,
+    "height": 90
+  }
+}
