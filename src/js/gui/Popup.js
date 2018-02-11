@@ -2,6 +2,7 @@
 import { GUI_POPUP } from '../common/Const';
 import Button from './Button';
 import CloseButton from './CloseButton';
+import Overlay from './Overlay';
 
 const ns = window.fivenations;
 
@@ -17,6 +18,7 @@ class Popup extends Phaser.Group {
 
     this.config = config || {};
 
+    this.initOverlayComponent(config);
     this.initBasicComponents(config);
     this.initConfirmButton(config);
     this.initCloseButton(config);
@@ -24,6 +26,16 @@ class Popup extends Phaser.Group {
 
     if (this.config.pauseGame) {
       ns.game.paused = true;
+    }
+  }
+
+  initOverlayComponent(config) {
+    const { overlay } = config;
+    if (overlay) {
+      const overlayComponent = new Overlay();
+      overlayComponent.x = -overlayComponent.width / 2;
+      overlayComponent.y = -overlayComponent.height / 2;
+      this.add(overlayComponent);
     }
   }
 
@@ -69,18 +81,20 @@ class Popup extends Phaser.Group {
     const {
       buttonLabel, onClick, buttonOffsetX, buttonOffsetY,
     } = config;
-    this.button = new Button({
-      buttonLabel,
-      onClick,
-    });
-    this.button.x = buttonOffsetX || 0;
-    this.button.y =
-      this.background.height / 2 -
-      this.button.height / 2 -
-      GUI_POPUP.padding +
-      (buttonOffsetY || 0);
+    if (onClick) {
+      this.button = new Button({
+        buttonLabel,
+        onClick,
+      });
+      this.button.x = buttonOffsetX || 0;
+      this.button.y =
+        this.background.height / 2 -
+        this.button.height / 2 -
+        GUI_POPUP.padding +
+        (buttonOffsetY || 0);
 
-    this.add(this.button);
+      this.add(this.button);
+    }
   }
 
   /**
