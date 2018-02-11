@@ -19,6 +19,16 @@ export default {
       `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.json`,
     );
     preloader.load.atlasJSONHash(
+      'gui.popups',
+      `${PATH_ASSETS}/gui/GUI_promotionalmap_popups.png`,
+      `${PATH_ASSETS}/gui/GUI_promotionalmap_popups.json`,
+    );
+    preloader.load.atlasJSONHash(
+      'gui.endgametitles',
+      `${PATH_ASSETS}/gui/GUI_popups.png`,
+      `${PATH_ASSETS}/gui/GUI_popups.json`,
+    );
+    preloader.load.atlasJSONHash(
       'energy-shield',
       `${PATH_ASSETS}/effects/effect_shield.png`,
       `${PATH_ASSETS}/effects/effect_shield.json`,

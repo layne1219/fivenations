@@ -2,6 +2,8 @@
 import { GUI_POPUP } from '../common/Const';
 import Button from './Button';
 import CloseButton from './CloseButton';
+import Overlay from './Overlay';
+import Util from '../common/Util';
 
 const ns = window.fivenations;
 
@@ -17,13 +19,22 @@ class Popup extends Phaser.Group {
 
     this.config = config || {};
 
+    this.initOverlayComponent(config);
     this.initBasicComponents(config);
     this.initConfirmButton(config);
     this.initCloseButton(config);
+    this.initEventListener();
     this.setCoordinates(config);
+    this.show();
+  }
 
-    if (this.config.pauseGame) {
-      ns.game.paused = true;
+  initOverlayComponent(config) {
+    const { overlay } = config;
+    if (overlay) {
+      const overlayComponent = new Overlay();
+      overlayComponent.x = -overlayComponent.width / 2;
+      overlayComponent.y = -overlayComponent.height / 2;
+      this.add(overlayComponent);
     }
   }
 
@@ -32,22 +43,32 @@ class Popup extends Phaser.Group {
    * @param {object} config - configuration object to specify the button
    */
   initBasicComponents(config) {
-    const phaserGame = ns.game.game;
-    const { id } = GUI_POPUP.spritesheet;
-    const { text } = config;
+    const { game } = ns.game;
+    const {
+      offsetX, offsetY, spritesheet, frame, frameName, text,
+    } = config;
 
-    this.background = phaserGame.add.sprite(0, 0, id);
-    this.background.frame = GUI_POPUP.frames.background;
+    this.background = game.add.sprite(
+      offsetX || 0,
+      offsetY || 0,
+      spritesheet || GUI_POPUP.spritesheet,
+    );
+    this.background.frame = frame || GUI_POPUP.frames.background;
+    if (frameName) {
+      this.background.frameName = frameName;
+    }
     this.background.anchor.set(0.5);
 
-    this.text = phaserGame.add.text(0, 0, text, {
-      ...GUI_POPUP.style,
-      wordWrapWidth: this.background.width - GUI_POPUP.padding,
-    });
-    this.text.anchor.set(0.5);
-
     this.add(this.background);
-    this.add(this.text);
+
+    if (text) {
+      this.text = game.add.text(0, 0, text, {
+        ...GUI_POPUP.style,
+        wordWrapWidth: this.background.width - GUI_POPUP.padding,
+      });
+      this.text.anchor.set(0.5);
+      this.add(this.text);
+    }
   }
 
   /**
@@ -56,16 +77,26 @@ class Popup extends Phaser.Group {
    * @param {object} config - Configuration object
    */
   initConfirmButton(config) {
-    const { buttonLabel, onClick } = config;
-    this.button = new Button({
-      buttonLabel,
-      onClick,
-    });
-    this.button.x = 0;
-    this.button.y =
-      this.background.height / 2 - this.button.height / 2 - GUI_POPUP.padding;
+    const {
+      buttonLabel, onClick, buttonOffsetX, buttonOffsetY,
+    } = config;
+    if (onClick) {
+      this.button = new Button({
+        buttonLabel,
+        onClick: () => {
+          onClick();
+          this.eventDispatcher.dispatch('dismiss');
+        },
+      });
+      this.button.x = buttonOffsetX || 0;
+      this.button.y =
+        this.background.height / 2 -
+        this.button.height / 2 -
+        GUI_POPUP.padding +
+        (buttonOffsetY || 0);
 
-    this.add(this.button);
+      this.add(this.button);
+    }
   }
 
   /**
@@ -76,8 +107,9 @@ class Popup extends Phaser.Group {
   initCloseButton(config) {
     const onClose = () => {
       if (typeof config.onClose === 'function') {
-        onClose.call(this);
+        config.onClose.call(this);
       }
+      this.eventDispatcher.dispatch('dismiss');
       this.hide();
     };
 
@@ -94,6 +126,10 @@ class Popup extends Phaser.Group {
       GUI_POPUP.padding;
 
     this.add(this.closeButton);
+  }
+
+  initEventListener() {
+    this.eventDispatcher = new Util.EventDispatcher();
   }
 
   setCoordinates({ x, y }) {
@@ -121,7 +157,9 @@ class Popup extends Phaser.Group {
     this.visible = true;
     if (this.config.pauseGame) {
       ns.game.paused = true;
+      ns.game.physics.arcade.isPaused = ns.game.paused;
     }
+    this.eventDispatcher.dispatch('show');
   }
 
   /**
@@ -131,7 +169,18 @@ class Popup extends Phaser.Group {
     this.visible = false;
     if (this.config.pauseGame) {
       ns.game.paused = false;
+      ns.game.physics.arcade.isPaused = ns.game.paused;
     }
+    this.eventDispatcher.dispatch('hide');
+  }
+
+  /**
+   * Registers custom callbacks to the passed events
+   * @param {string} event
+   * @param {function} callback
+   */
+  on(event, callback) {
+    this.eventDispatcher.addEventListener(event, callback);
   }
 }
 

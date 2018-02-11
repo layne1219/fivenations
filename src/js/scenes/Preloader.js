@@ -41,11 +41,11 @@ Preloader.prototype = {
   preload() {
     const gameWidth = ns.window.width;
     const gameHeight = ns.window.height;
-    const popupWidth = 847;
+    const popupWidth = 726;
     const popupHeight = 598;
     const popupX = (gameWidth - popupWidth) / 2;
     const popupY = (gameHeight - popupHeight) / 2;
-    const barOffsetX = 132;
+    const barOffsetX = 92;
     const barOffsetY = 558;
 
     this.game.add.sprite(0, 0, 'preloader-background');

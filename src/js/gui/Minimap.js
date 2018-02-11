@@ -2,12 +2,15 @@
 /* eslint class-methods-use-this: 0 */
 import UserKeyboard from './UserKeyboard';
 import EventEmitter from '../sync/EventEmitter';
+import MinimapNotification from './MinimapNotification';
 
 const ns = window.fivenations;
 const MINIMIZED_WIDTH = 160;
 const MINIMIZED_HEIGHT = 160;
 
-export default class Minimap {
+const notifications = [];
+
+export default class Minimap extends Phaser.Group {
   /**
    * Creats a Minimap instance
    * @param {[object]} phaserGame     [reference to a Game instance]
@@ -18,12 +21,14 @@ export default class Minimap {
   constructor({
     phaserGame, map, entityManager, userPointer, playerManager,
   }) {
+    super(phaserGame);
     this.phaserGame = phaserGame;
     this.userPointer = userPointer;
     this.playerManager = playerManager;
 
     // Create a graphics object to display the desired elements
-    this.graphics = phaserGame.add.graphics(0, 0);
+    this.graphics = phaserGame.make.graphics(0, 0);
+    this.add(this.graphics);
 
     // referencies to local variables
     this.map = map;
@@ -166,6 +171,7 @@ export default class Minimap {
     this.updateFogOfWar();
     this.updateEntities();
     this.updateCamera();
+    this.updateNotifications();
   }
 
   /**
@@ -230,6 +236,14 @@ export default class Minimap {
   }
 
   /**
+   * Redrawing the rectangle showing the viewport of the phaser camera object
+   * @return {void}
+   */
+  updateNotifications() {
+    notifications.forEach(notification => notification.update(this.graphics));
+  }
+
+  /**
    * Updates Minimap with the visible tiles of the FogOfWar layer
    */
   updateFogOfWar() {
@@ -270,4 +284,31 @@ export default class Minimap {
   getGraphics() {
     return this.graphics;
   }
+
+  /**
+   * Places a notification on the Minimap and triggers its animation
+   * @param {object} config - {x, y}
+   */
+  showNotification(config) {
+    const notification = new MinimapNotification({
+      minimap: this,
+      map: this.map,
+      ...config,
+    });
+    notifications.push(notification);
+  }
+
+  /**
+   * Removes notification from the private collection
+   * @param {object} entity Entity instance
+   */
+  removeNotification(notification) {
+    for (let i = notifications.length - 1; i >= 0; i -= 1) {
+      if (notification === notifications[i]) {
+        notifications.splice(i, 1);
+      }
+    }
+  }
 }
+
+export { MINIMIZED_WIDTH, MINIMIZED_HEIGHT };

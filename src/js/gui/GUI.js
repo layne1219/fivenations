@@ -128,14 +128,14 @@ function initGUIDisplayElements() {
   // FullScreen Toggle Button
   fullScreenToggle = new FullScreenToggle({
     x: gameWidth / 2 - 18 - 5,
-    y: gameHeight / -2 + 18 + 5,
+    y: gameHeight / -2 + 18 + 35,
   });
   group.add(fullScreenToggle);
 
   // Mute / Unmute Audio
   audioToggle = new AudioToggle({
     x: gameWidth / 2 - 54 - 5,
-    y: gameHeight / -2 + 18 + 5,
+    y: gameHeight / -2 + 18 + 35,
   });
   group.add(audioToggle);
 }
@@ -240,6 +240,14 @@ GUI.prototype = {
    */
   showNotification(text) {
     notificationBar.show(text);
+  },
+
+  /**
+   * Shows a notification on the Minimap
+   * @param {object} config - {x, y}
+   */
+  showMinimapNotification(config) {
+    minimap.showNotification(config);
   },
 
   /**
