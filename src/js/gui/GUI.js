@@ -243,6 +243,14 @@ GUI.prototype = {
   },
 
   /**
+   * Shows a notification on the Minimap
+   * @param {object} config - {x, y}
+   */
+  showMinimapNotification(config) {
+    minimap.showNotification(config);
+  },
+
+  /**
    * Return a boolean value declaring whether the primary input is however the panel
    * @return {Boolean} [true if the primary input is over the panel sprite]
    */

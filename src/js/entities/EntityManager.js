@@ -26,6 +26,7 @@ const entities = [];
  * @return {function}
  */
 function createSelector(targetEntities) {
+  const playerRegExp = /:player\(([1-9+])\)/;
   /**
    * returns array of entities with the exposing the activity API against them
    * @param {mixed}
@@ -51,6 +52,12 @@ function createSelector(targetEntities) {
           if (!entity.isEntityControlledByUser()) return false;
           if (!entity.isSelected()) return false;
           if (entity.getDataObject().isBuilding()) return false;
+          return true;
+        });
+      } else if (playerRegExp.test(filter)) {
+        const playerId = parseInt(filter.match(playerRegExp)[1], 10);
+        targets = targetEntities.filter((entity) => {
+          if (entity.getDataObject().getTeam() !== playerId) return false;
           return true;
         });
       } else {

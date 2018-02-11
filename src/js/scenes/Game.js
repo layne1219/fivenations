@@ -8,6 +8,7 @@ import PlayerManager from '../players/PlayerManager';
 import EntityManager from '../entities/EntityManager';
 import EffectManager from '../effects/EffectManager';
 import CollisionManager from '../common/CollisionManager';
+import LocationManager from '../map/locations/LocationManager';
 import TranslationManager from '../common/TranslationManager';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
@@ -17,11 +18,12 @@ import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
 import EventEmitter from '../sync/EventEmitter';
 import MapLoader from '../common/MapLoader';
+import Util from '../common/Util';
 
 const ns = window.fivenations;
 let authoritative = false;
 
-class Game {
+class Game extends Util.EventDispatcher {
   /**
    * Initialises the script that will be automatically fetched
    * from the ScriptBox upon creation
@@ -73,6 +75,12 @@ class Game {
     // -----------------------------------------------------------------------
     EffectManager.setGame(this.game);
     this.effectManager = EffectManager.getInstance(true);
+
+    // -----------------------------------------------------------------------
+    //                            LocationManager
+    // -----------------------------------------------------------------------
+    LocationManager.setGame(this.game);
+    this.locationManager = LocationManager.getInstance(true);
 
     // -----------------------------------------------------------------------
     //                              CollisionManager
@@ -298,13 +306,13 @@ class Game {
    * Updates the Game scene on every tick
    */
   update() {
-    // Execute all the registered events on the EventBus
-    this.eventBusExecuter.run();
-
-    // Rendering the map
-    this.map.update(this.entityManager);
-
     if (this.paused !== true) {
+      // Execute all the registered events on the EventBus
+      this.eventBusExecuter.run();
+
+      // Rendering the map
+      this.map.update(this.entityManager);
+
       // updating entity attributes according to the time elapsed
       this.entityManager.update(authoritative, this.game.time.elapsedMS);
 
@@ -340,6 +348,15 @@ class Game {
       throw new Error('The given map does not exist');
     }
     MapLoader.load(this, json);
+  }
+
+  /**
+   * Registers a listener to the given event
+   * @param {string} event
+   * @param {function} callback
+   */
+  on(event, callback) {
+    this.addEventListener(event, callback);
   }
 }
 

@@ -3,6 +3,7 @@ import { GUI_POPUP } from '../common/Const';
 import Button from './Button';
 import CloseButton from './CloseButton';
 import Overlay from './Overlay';
+import Util from '../common/Util';
 
 const ns = window.fivenations;
 
@@ -22,11 +23,9 @@ class Popup extends Phaser.Group {
     this.initBasicComponents(config);
     this.initConfirmButton(config);
     this.initCloseButton(config);
+    this.initEventListener();
     this.setCoordinates(config);
-
-    if (this.config.pauseGame) {
-      ns.game.paused = true;
-    }
+    this.show();
   }
 
   initOverlayComponent(config) {
@@ -84,7 +83,10 @@ class Popup extends Phaser.Group {
     if (onClick) {
       this.button = new Button({
         buttonLabel,
-        onClick,
+        onClick: () => {
+          onClick();
+          this.eventDispatcher.dispatch('dismiss');
+        },
       });
       this.button.x = buttonOffsetX || 0;
       this.button.y =
@@ -105,8 +107,9 @@ class Popup extends Phaser.Group {
   initCloseButton(config) {
     const onClose = () => {
       if (typeof config.onClose === 'function') {
-        onClose.call(this);
+        config.onClose.call(this);
       }
+      this.eventDispatcher.dispatch('dismiss');
       this.hide();
     };
 
@@ -123,6 +126,10 @@ class Popup extends Phaser.Group {
       GUI_POPUP.padding;
 
     this.add(this.closeButton);
+  }
+
+  initEventListener() {
+    this.eventDispatcher = new Util.EventDispatcher();
   }
 
   setCoordinates({ x, y }) {
@@ -150,7 +157,9 @@ class Popup extends Phaser.Group {
     this.visible = true;
     if (this.config.pauseGame) {
       ns.game.paused = true;
+      ns.game.physics.arcade.isPaused = ns.game.paused;
     }
+    this.eventDispatcher.dispatch('show');
   }
 
   /**
@@ -160,7 +169,18 @@ class Popup extends Phaser.Group {
     this.visible = false;
     if (this.config.pauseGame) {
       ns.game.paused = false;
+      ns.game.physics.arcade.isPaused = ns.game.paused;
     }
+    this.eventDispatcher.dispatch('hide');
+  }
+
+  /**
+   * Registers custom callbacks to the passed events
+   * @param {string} event
+   * @param {function} callback
+   */
+  on(event, callback) {
+    this.eventDispatcher.addEventListener(event, callback);
   }
 }
 
