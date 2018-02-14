@@ -1,0 +1,527 @@
+{
+  "map": {
+    "width": 64,
+    "height": 64,
+    "starfield": {
+      "backgroundTile": "starfield-3"
+    }
+  },
+  "spaceObjects": [
+    {
+      "id": "planet10",
+      "x": 379.2,
+      "y": 516.8,
+      "z": 0.1,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 442,
+      "y": 337.3337931034483,
+      "z": 0.6524137931034483,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 84,
+      "y": 550.0896551724138,
+      "z": 0.7206896551724138,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 1555.9793103448276,
+      "y": 1646.5724137931034,
+      "z": 0.7206896551724138,
+      "scale": 1
+    },
+    {
+      "id": "meteorites3",
+      "x": 1635.8206896551726,
+      "y": 1624.9655172413795,
+      "z": 0.8137931034482759,
+      "scale": 1
+    },
+    {
+      "id": "meteorites6",
+      "x": 75,
+      "y": 1882.335172413793,
+      "z": 0.7641379310344828,
+      "scale": 1
+    },
+    {
+      "id": "galaxy9",
+      "x": 1302.4358620689654,
+      "y": 543.5489655172414,
+      "z": 0.6958620689655173,
+      "scale": 1
+    },
+    {
+      "id": "galaxy8",
+      "x": 979.6262068965517,
+      "y": 219.13379310344828,
+      "z": 0.6958620689655173,
+      "scale": 1
+    },
+    {
+      "id": "galaxy8",
+      "x": 1163.2896551724139,
+      "y": 249.00689655172414,
+      "z": 0.41034482758620694,
+      "scale": 1.1241379310344828
+    },
+    {
+      "id": "galaxy8",
+      "x": 1089.2896551724139,
+      "y": 1163.3379310344828,
+      "z": 0.41034482758620694,
+      "scale": 1.1241379310344828
+    },
+    {
+      "id": "meteorites9",
+      "x": 269,
+      "y": 804.5862068965517,
+      "z": 0.41034482758620694,
+      "scale": 1.1241379310344828
+    },
+    {
+      "id": "meteorites6",
+      "x": 193,
+      "y": 935.5862068965517,
+      "z": 0.41034482758620694,
+      "scale": 1.006896551724138
+    },
+    {
+      "id": "meteorites7",
+      "x": 159,
+      "y": 1087.8965517241377,
+      "z": 0.6275862068965516,
+      "scale": 1.006896551724138
+    },
+    {
+      "id": "smallplanet2",
+      "x": 953.4786206896551,
+      "y": 507.10896551724136,
+      "z": 0.2613793103448276,
+      "scale": 1.006896551724138
+    }
+  ],
+  "players": {
+    "6": {
+      "team": 6,
+      "user": true,
+      "active": true,
+      "independent": false
+    }
+  },
+  "entities": [
+    {
+      "guid": "509e17b7-8e8f-4ad6-a21a-0587f6bd8fe0",
+      "id": "commandcenter",
+      "x": 440,
+      "y": 484,
+      "team": 1,
+      "createdAt": 1518602178544
+    },
+    {
+      "guid": "fc51885f-b738-492f-9c71-bdef929de858",
+      "id": "civilianbase",
+      "x": 229,
+      "y": 693,
+      "team": 1,
+      "createdAt": 1518602183363
+    },
+    {
+      "guid": "3bd7e00e-2897-4313-b920-67cf49711396",
+      "id": "civilianbase",
+      "x": 291,
+      "y": 740,
+      "team": 1,
+      "createdAt": 1518602184098
+    },
+    {
+      "guid": "965ba48a-fa89-479b-b658-88fe7aefd786",
+      "id": "civilianbase",
+      "x": 207,
+      "y": 771,
+      "team": 1,
+      "createdAt": 1518602184868
+    },
+    {
+      "guid": "e650aaa1-6384-411e-8ba3-6412d64820f5",
+      "id": "defensesatellite",
+      "x": 675,
+      "y": 370,
+      "team": 1,
+      "createdAt": 1518602191259
+    },
+    {
+      "guid": "ea708889-c569-410d-b2de-f1dbfc536495",
+      "id": "defensesatellite",
+      "x": 752,
+      "y": 318,
+      "team": 1,
+      "createdAt": 1518602191914
+    },
+    {
+      "guid": "eb977627-1256-4cf1-b3b3-8f82f449fa5b",
+      "id": "defensesatellite",
+      "x": 275,
+      "y": 824,
+      "team": 1,
+      "createdAt": 1518602199276
+    },
+    {
+      "guid": "c0be333a-f945-48cf-bb27-a81289a353da",
+      "id": "solarstation",
+      "x": 699,
+      "y": 628,
+      "team": 1,
+      "createdAt": 1518602203641
+    },
+    {
+      "guid": "6e7916fc-0f5c-410b-8593-44992ac5979e",
+      "id": "solarstation",
+      "x": 756,
+      "y": 677,
+      "team": 1,
+      "createdAt": 1518602204450
+    },
+    {
+      "guid": "94a7a399-4761-47b7-9320-b6dd19c07a61",
+      "id": "solarstation",
+      "x": 678,
+      "y": 690,
+      "team": 1,
+      "createdAt": 1518602205279
+    },
+    {
+      "guid": "41b90d2f-f498-4b99-adac-f46b878529bd",
+      "id": "shipfactory",
+      "x": 788,
+      "y": 804,
+      "team": 1,
+      "createdAt": 1518602229475
+    },
+    {
+      "guid": "379b0c1a-5e3c-4621-938e-3e34ebec1d92",
+      "id": "miningstation",
+      "x": 276,
+      "y": 1303,
+      "team": 1,
+      "createdAt": 1518602239043
+    },
+    {
+      "guid": "e6703efd-231b-4d8b-a09d-2e0c54ccc0e6",
+      "id": "asteroid1",
+      "x": 133,
+      "y": 373,
+      "team": 6,
+      "createdAt": 1518602265648
+    },
+    {
+      "guid": "2ee3e8e7-85cb-4bb5-95f4-81c7d500862b",
+      "id": "asteroid1",
+      "x": 243,
+      "y": 279,
+      "team": 6,
+      "createdAt": 1518602266729
+    },
+    {
+      "guid": "998d8e04-13f4-43b6-9078-777c6bb3bceb",
+      "id": "asteroid1",
+      "x": 243,
+      "y": 381,
+      "team": 6,
+      "createdAt": 1518602267574
+    },
+    {
+      "guid": "1a7c9029-0211-40b1-ba9a-01b8292e5bc9",
+      "id": "asteroidbig2",
+      "x": 348,
+      "y": 254,
+      "team": 6,
+      "createdAt": 1518602270570
+    },
+    {
+      "guid": "c0b1166e-7af1-4958-b0c3-673eeb4220c3",
+      "id": "asteroid4",
+      "x": 243,
+      "y": 165,
+      "team": 6,
+      "createdAt": 1518602272520
+    },
+    {
+      "guid": "89a424fa-2d32-4d70-b9fe-9120a4072867",
+      "id": "asteroid4",
+      "x": 97,
+      "y": 489,
+      "team": 6,
+      "createdAt": 1518602273417
+    },
+    {
+      "guid": "e7309867-0305-4ee8-8287-c61fe900bd91",
+      "id": "asteroidsmall4",
+      "x": 177,
+      "y": 458,
+      "team": 6,
+      "createdAt": 1518602275632
+    },
+    {
+      "guid": "1ef5caf6-51d2-4660-bfae-2c438f521064",
+      "id": "asteroidsmall4",
+      "x": 144,
+      "y": 355,
+      "team": 6,
+      "createdAt": 1518602276215
+    },
+    {
+      "guid": "bde0d886-406b-4774-ad01-5cae017dc065",
+      "id": "asteroidsmall3",
+      "x": 453,
+      "y": 192,
+      "team": 6,
+      "createdAt": 1518602278299
+    },
+    {
+      "guid": "e7374847-3494-4df8-a98d-8c973ca04173",
+      "id": "asteroidsmall3",
+      "x": 38,
+      "y": 408,
+      "team": 6,
+      "createdAt": 1518602279243
+    },
+    {
+      "guid": "e6e188f8-052e-4831-9876-229a72883f6f",
+      "id": "asteroidsmall3",
+      "x": 166,
+      "y": 241,
+      "team": 6,
+      "createdAt": 1518602279732
+    },
+    {
+      "guid": "a5993e99-ed99-4a6c-b88c-10a8b509fa2d",
+      "id": "asteroidsmall1",
+      "x": 109,
+      "y": 313,
+      "team": 6,
+      "createdAt": 1518602282174
+    },
+    {
+      "guid": "d42f9c14-ceb1-4c9e-8315-5b80a8a94e5f",
+      "id": "asteroid3",
+      "x": 256,
+      "y": 1513,
+      "team": 6,
+      "createdAt": 1518602287802
+    },
+    {
+      "guid": "d64a95da-8088-4f1a-969b-c70fa7b41555",
+      "id": "asteroid3",
+      "x": 358,
+      "y": 1407,
+      "team": 6,
+      "createdAt": 1518602288433
+    },
+    {
+      "guid": "16e92494-f983-4241-b66c-83a6767e495c",
+      "id": "asteroid3",
+      "x": 412,
+      "y": 1543,
+      "team": 6,
+      "createdAt": 1518602289231
+    },
+    {
+      "guid": "352651fd-0d49-411a-b2df-a0c62dc9433d",
+      "id": "asteroid2",
+      "x": 349,
+      "y": 1494,
+      "team": 6,
+      "createdAt": 1518602291498
+    },
+    {
+      "guid": "ca6d3e22-639a-4587-822a-597c951dbdc2",
+      "id": "asteroid1",
+      "x": 180,
+      "y": 1494,
+      "team": 6,
+      "createdAt": 1518602293760
+    },
+    {
+      "guid": "23f79b9a-5e8a-48d8-b7de-af00e0e6386b",
+      "id": "asteroidsmall4",
+      "x": 299,
+      "y": 1582,
+      "team": 6,
+      "createdAt": 1518602296431
+    },
+    {
+      "guid": "9dbbab65-42d9-4254-98a5-c427ffea4bd1",
+      "id": "asteroidsmall4",
+      "x": 191,
+      "y": 1431,
+      "team": 6,
+      "createdAt": 1518602297190
+    },
+    {
+      "guid": "8e8bd254-729e-477e-997a-e281bf05271b",
+      "id": "asteroidsmall4",
+      "x": 95,
+      "y": 1517,
+      "team": 6,
+      "createdAt": 1518602298079
+    },
+    {
+      "guid": "4582e50d-98ed-4d8f-8023-e9975d9ba7e1",
+      "id": "asteroidsilicon1",
+      "x": 433,
+      "y": 1446,
+      "team": 6,
+      "createdAt": 1518602300620
+    },
+    {
+      "guid": "580a90ba-0aef-45db-ba43-9f7ee581c15a",
+      "id": "asteroidsilicon2",
+      "x": 408,
+      "y": 1344,
+      "team": 6,
+      "createdAt": 1518602303685
+    },
+    {
+      "guid": "3ea1c262-9a4d-4f06-984c-b51636b9a3a1",
+      "id": "asteroidtitanium1",
+      "x": 93,
+      "y": 1412,
+      "team": 6,
+      "createdAt": 1518602355778
+    },
+    {
+      "guid": "c0f57ac8-561e-4e0d-9244-c03d6bb3b886",
+      "id": "asteroidtitanium1",
+      "x": 172,
+      "y": 1362,
+      "team": 6,
+      "createdAt": 1518602356653
+    },
+    {
+      "guid": "2d934af2-8f5f-4475-8fa0-b84576e4aadc",
+      "id": "asteroidtitanium2",
+      "x": 44,
+      "y": 1338,
+      "team": 6,
+      "createdAt": 1518602359071
+    },
+    {
+      "guid": "77d4db53-3366-4dc6-9a18-4af764c9b023",
+      "id": "asteroidtitaniumsmall1",
+      "x": 137,
+      "y": 1439,
+      "team": 6,
+      "createdAt": 1518602361878
+    },
+    {
+      "guid": "79ec6540-2eaf-4e34-a3ac-fd2b61f474a8",
+      "id": "asteroidtitaniumsmall1",
+      "x": 81,
+      "y": 1318,
+      "team": 6,
+      "createdAt": 1518602362680
+    },
+    {
+      "guid": "f8f3631b-8792-4de3-aee7-e656dcdb4b13",
+      "id": "asteroidtitaniumsmall2",
+      "x": 233,
+      "y": 1454,
+      "team": 6,
+      "createdAt": 1518602365023
+    },
+    {
+      "guid": "d1a2d760-cc7a-439c-91ca-a7a87733a0e8",
+      "id": "asteroiduranium1",
+      "x": 470,
+      "y": 1249,
+      "team": 6,
+      "createdAt": 1518602368751
+    },
+    {
+      "guid": "0e78f5cd-d9a2-4c0d-995f-c15824896fbf",
+      "id": "asteroiduranium2",
+      "x": 490,
+      "y": 1323,
+      "team": 6,
+      "createdAt": 1518602370915
+    },
+    {
+      "guid": "a88687c8-bd91-456c-8839-44da9d041a1a",
+      "id": "engineershuttle",
+      "x": 366,
+      "y": 1205,
+      "team": 1,
+      "createdAt": 1518602408227
+    },
+    {
+      "guid": "ca7ca56b-a18f-4c3e-bc97-cabfcc55c364",
+      "id": "engineershuttle",
+      "x": 392,
+      "y": 1262,
+      "team": 1,
+      "createdAt": 1518602408886
+    },
+    {
+      "guid": "ec9e7bfe-08cf-4d36-9dab-29bcd5f46823",
+      "id": "engineershuttle",
+      "x": 173,
+      "y": 1253,
+      "team": 1,
+      "createdAt": 1518602409694
+    },
+    {
+      "guid": "6cc16a67-56d5-42db-b9c7-4b1a98766d45",
+      "id": "icarus",
+      "x": 268,
+      "y": 1215,
+      "team": 1,
+      "createdAt": 1518602412376
+    },
+    {
+      "guid": "d8c1b39d-b182-447c-a86a-9f9a9c4f06a3",
+      "id": "kutuzov",
+      "x": 543,
+      "y": 721,
+      "team": 1,
+      "createdAt": 1518602419346
+    },
+    {
+      "guid": "397315b5-a6c7-40f3-875b-3cb4d732af73",
+      "id": "orca",
+      "x": 635,
+      "y": 534,
+      "team": 1,
+      "createdAt": 1518602423302
+    },
+    {
+      "guid": "31a23e4b-d5af-4106-877b-8a3da7465b72",
+      "id": "orca",
+      "x": 703,
+      "y": 468,
+      "team": 1,
+      "createdAt": 1518602423731
+    },
+    {
+      "guid": "eec3b2fa-af97-4f1d-be65-33b5c3b35c99",
+      "id": "pasteur",
+      "x": 473,
+      "y": 799,
+      "team": 1,
+      "createdAt": 1518602427957
+    },
+    {
+      "guid": "93fd8f60-7169-4896-a409-a442d179047d",
+      "id": "astrometricstation",
+      "x": 984,
+      "y": 558,
+      "team": 1,
+      "createdAt": 1518602441494
+    }
+  ]
+}
