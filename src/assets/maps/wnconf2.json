@@ -1,0 +1,419 @@
+{
+  "map": {
+    "width": 64,
+    "height": 64,
+    "starfield": {
+      "backgroundTile": "starfield-2"
+    }
+  },
+  "spaceObjects": [
+    {
+      "id": "planet19",
+      "x": 713.3324137931035,
+      "y": 782.3324137931035,
+      "z": 0.2117241379310345,
+      "scale": 1
+    },
+    {
+      "id": "smallplanet2",
+      "x": 317.20000000000005,
+      "y": 321.4,
+      "z": 0.1,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 243,
+      "y": 1727.3531034482758,
+      "z": 0.7144827586206897,
+      "scale": 1
+    },
+    {
+      "id": "meteorites8",
+      "x": 104,
+      "y": 1679.3531034482758,
+      "z": 0.7144827586206897,
+      "scale": 1
+    },
+    {
+      "id": "meteorites7",
+      "x": 281,
+      "y": 1759.703448275862,
+      "z": 0.7827586206896552,
+      "scale": 1
+    },
+    {
+      "id": "meteorites9",
+      "x": 1435.7765517241378,
+      "y": 270,
+      "z": 0.6834482758620689,
+      "scale": 1
+    },
+    {
+      "id": "meteorites2",
+      "x": 1625.783448275862,
+      "y": 133,
+      "z": 0.7765517241379309,
+      "scale": 1
+    },
+    {
+      "id": "meteorites3",
+      "x": 1738.2565517241378,
+      "y": 422,
+      "z": 0.863448275862069,
+      "scale": 1
+    },
+    {
+      "id": "galaxy5",
+      "x": 714.6068965517242,
+      "y": 227,
+      "z": 0.19310344827586207,
+      "scale": 1
+    },
+    {
+      "id": "galaxy4",
+      "x": 477.60689655172416,
+      "y": 430,
+      "z": 0.19310344827586207,
+      "scale": 1
+    },
+    {
+      "id": "galaxy4",
+      "x": 105,
+      "y": 1449.536551724138,
+      "z": 0.546896551724138,
+      "scale": 1
+    },
+    {
+      "id": "galaxy5",
+      "x": 1394.791724137931,
+      "y": 271,
+      "z": 0.6524137931034483,
+      "scale": 1
+    }
+  ],
+  "players": {
+    "1": {
+      "team": 1,
+      "active": true,
+      "user": true,
+      "independent": false
+    },
+    "2": {
+      "team": 2,
+      "active": true,
+      "independent": false
+    },
+    "6": {
+      "team": 6,
+      "active": true,
+      "independent": true
+    }
+  },
+  "entities": [
+    {
+      "guid": "2a301033-a478-4eff-90f4-6ad0bca4903f",
+      "id": "avenger2",
+      "x": 1815,
+      "y": 198,
+      "team": 1,
+      "createdAt": 1518607999145
+    },
+    {
+      "guid": "f94ce6f6-9cd6-4209-9880-fe34ab12efe6",
+      "id": "avenger2",
+      "x": 1911,
+      "y": 333,
+      "team": 1,
+      "createdAt": 1518608001210
+    },
+    {
+      "guid": "93954187-a9e8-42f6-9ffb-cb1d4b1242c3",
+      "id": "stgeorge",
+      "x": 2011,
+      "y": 206,
+      "team": 1,
+      "createdAt": 1518608004999
+    },
+    {
+      "guid": "d9324d35-2b1c-4c0e-9294-1e7bcfd32e97",
+      "id": "hailstorm",
+      "x": 2059,
+      "y": 354,
+      "team": 1,
+      "createdAt": 1518608007256
+    },
+    {
+      "guid": "ceda2636-cb00-414a-84ae-ee90be91eaee",
+      "id": "hailstorm",
+      "x": 1709,
+      "y": 123,
+      "team": 1,
+      "createdAt": 1518608008309
+    },
+    {
+      "guid": "ed2d67e4-bfe1-472e-82ab-25c2fd8b9bbd",
+      "id": "orca",
+      "x": 1880,
+      "y": 75,
+      "team": 1,
+      "createdAt": 1518608010652
+    },
+    {
+      "guid": "7931ca2e-18b2-4fe6-a779-9b9faa619130",
+      "id": "orca",
+      "x": 1911,
+      "y": 159,
+      "team": 1,
+      "createdAt": 1518608011383
+    },
+    {
+      "guid": "6c733fb3-d700-49dd-8dfc-7d15c22948d5",
+      "id": "orca",
+      "x": 2007,
+      "y": 115,
+      "team": 1,
+      "createdAt": 1518608012065
+    },
+    {
+      "guid": "2055b188-953d-443c-9598-531bebe52c5b",
+      "id": "dresda",
+      "x": 1744,
+      "y": 373,
+      "team": 1,
+      "createdAt": 1518608014364
+    },
+    {
+      "guid": "c302d921-323e-4347-8f67-3438c7b5d115",
+      "id": "pasteur",
+      "x": 1653,
+      "y": 258,
+      "team": 1,
+      "createdAt": 1518608018242
+    },
+    {
+      "guid": "08a91983-6cce-49a9-80f0-572b28264790",
+      "id": "asteroid1",
+      "x": 2050,
+      "y": 550,
+      "team": 6,
+      "createdAt": 1518608038574
+    },
+    {
+      "guid": "ba22e60e-effd-4759-8039-3930a7a84add",
+      "id": "asteroidbig2",
+      "x": 2094,
+      "y": 478,
+      "team": 6,
+      "createdAt": 1518608041133
+    },
+    {
+      "guid": "d8e1b35d-def1-4ddd-a144-9aec9893a6f0",
+      "id": "asteroidsmall4",
+      "x": 2127,
+      "y": 559,
+      "team": 6,
+      "createdAt": 1518608043706
+    },
+    {
+      "guid": "6b68e14f-80e0-4fe9-b703-13051b8ab2a9",
+      "id": "asteroidsmall4",
+      "x": 1431,
+      "y": 189,
+      "team": 6,
+      "createdAt": 1518608047693
+    },
+    {
+      "guid": "dd3c93ae-a68d-49d5-b1f2-c1c56b5699c5",
+      "id": "asteroid2",
+      "x": 1467,
+      "y": 103,
+      "team": 6,
+      "createdAt": 1518608049320
+    },
+    {
+      "guid": "7ed068fe-6b17-4138-a632-fce5dfbc4e39",
+      "id": "asteroid3",
+      "x": 1372,
+      "y": 164,
+      "team": 6,
+      "createdAt": 1518608051146
+    },
+    {
+      "guid": "e0c798a3-82a0-45c3-bd08-85963eb1e363",
+      "id": "asteroid4",
+      "x": 1376,
+      "y": 259,
+      "team": 6,
+      "createdAt": 1518608053326
+    },
+    {
+      "guid": "79b7ae19-7ef6-4b7b-b43c-57a3c7c10ccc",
+      "id": "asteroidbig1",
+      "x": 1264,
+      "y": 263,
+      "team": 6,
+      "createdAt": 1518608055417
+    },
+    {
+      "guid": "f980a85d-2c7d-48b8-a158-e71fe6b614a7",
+      "id": "asteroidsmall1",
+      "x": 1346,
+      "y": 385,
+      "team": 6,
+      "createdAt": 1518608057555
+    },
+    {
+      "guid": "131bfe95-34d8-4e88-9f10-b30fcb1e8804",
+      "id": "asteroidsmall1",
+      "x": 1275,
+      "y": 184,
+      "team": 6,
+      "createdAt": 1518608058290
+    },
+    {
+      "guid": "cfcaaa60-1115-44a8-847c-37ed59bdc02f",
+      "id": "asteroidice1",
+      "x": 430,
+      "y": 2194,
+      "team": 6,
+      "createdAt": 1518608063611
+    },
+    {
+      "guid": "cf104bd3-3365-4e7a-892c-7bc3eb8b32b7",
+      "id": "asteroidice2",
+      "x": 361,
+      "y": 2130,
+      "team": 6,
+      "createdAt": 1518608065387
+    },
+    {
+      "guid": "14416584-c557-44f3-b572-05044000e38e",
+      "id": "asteroidicesmall2",
+      "x": 337,
+      "y": 2231,
+      "team": 6,
+      "createdAt": 1518608067030
+    },
+    {
+      "guid": "b6516ee3-f982-4338-bd3a-2c58e9eb9621",
+      "id": "asteroidicesmall1",
+      "x": 349,
+      "y": 2163,
+      "team": 6,
+      "createdAt": 1518608068602
+    },
+    {
+      "guid": "2b01e943-65a4-4ae1-8b29-664684604166",
+      "id": "asteroidsmall4",
+      "x": 284,
+      "y": 2127,
+      "team": 6,
+      "createdAt": 1518608072602
+    },
+    {
+      "guid": "5b5583b5-a16a-4bcf-a282-a45ed6ca1647",
+      "id": "asteroidsmall3",
+      "x": 275,
+      "y": 2224,
+      "team": 6,
+      "createdAt": 1518608074579
+    },
+    {
+      "guid": "ea3eabc7-59a8-4c5b-b3e1-488983c2fed1",
+      "id": "asteroidsmall1",
+      "x": 177,
+      "y": 2272,
+      "team": 6,
+      "createdAt": 1518608077284
+    },
+    {
+      "guid": "aabe86fe-c80f-4969-ad45-b3b30b72de66",
+      "id": "asteroid2",
+      "x": 201,
+      "y": 2197,
+      "team": 6,
+      "createdAt": 1518608083446
+    },
+    {
+      "guid": "7ce14d9d-34bc-4977-812c-9a0e1e06ac5b",
+      "id": "avenger",
+      "x": 1152,
+      "y": 765,
+      "team": 2,
+      "createdAt": 1518608105710
+    },
+    {
+      "guid": "5f5a2438-addf-4c58-8997-fef21edad78d",
+      "id": "avenger",
+      "x": 1262,
+      "y": 863,
+      "team": 2,
+      "createdAt": 1518608106460
+    },
+    {
+      "guid": "badb8e46-f8f0-407c-b897-0475fcd79324",
+      "id": "avenger",
+      "x": 1345,
+      "y": 943,
+      "team": 2,
+      "createdAt": 1518608107291
+    },
+    {
+      "guid": "406c2b5c-54f9-44f4-b865-717d91391b65",
+      "id": "kutuzov",
+      "x": 1166,
+      "y": 905,
+      "team": 2,
+      "createdAt": 1518608110342
+    },
+    {
+      "guid": "ee5a9e46-8203-4649-8743-48a155a6105b",
+      "id": "hailstorm",
+      "x": 1144,
+      "y": 644,
+      "team": 2,
+      "createdAt": 1518608115291
+    },
+    {
+      "guid": "291fd45f-7d68-46f7-8cf7-1278a25523b1",
+      "id": "hailstorm",
+      "x": 1460,
+      "y": 963,
+      "team": 2,
+      "createdAt": 1518608116211
+    },
+    {
+      "guid": "e92958c6-7d96-41c5-b7a7-3c7949360f0e",
+      "id": "orca",
+      "x": 1419,
+      "y": 877,
+      "team": 2,
+      "createdAt": 1518608120581
+    },
+    {
+      "guid": "9082264e-0070-4071-9a89-b9305751a9db",
+      "id": "orca",
+      "x": 1219,
+      "y": 735,
+      "team": 2,
+      "createdAt": 1518608121577
+    },
+    {
+      "guid": "e85d9f1b-1bd9-43f3-9efd-0f871fdb6e99",
+      "id": "orca",
+      "x": 1061,
+      "y": 855,
+      "team": 2,
+      "createdAt": 1518608122634
+    },
+    {
+      "guid": "518af0a7-8721-463c-a1fa-a0ac36fcac28",
+      "id": "orca",
+      "x": 1270,
+      "y": 973,
+      "team": 2,
+      "createdAt": 1518608123807
+    }
+  ]
+}
