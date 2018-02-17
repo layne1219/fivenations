@@ -19,7 +19,8 @@ function createStar() {
     .setX(Util.rnd(0, width))
     .setY(Util.rnd(0, height))
     .setZ(z)
-    .setSprite(sprite);
+    .setSprite(sprite)
+    .setFrame(Util.rnd(0, 6));
 
   return star;
 }
