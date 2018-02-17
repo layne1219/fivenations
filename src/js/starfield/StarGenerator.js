@@ -3,13 +3,14 @@ import Star from './Star';
 import SpaceObjectGenerator from './SpaceObjectGenerator';
 import Util from '../common/Util';
 
+const NUMBER_OF_STARS = 7;
 const NUMBER_OF_STARS_PER_SCREEN = 10;
 const ns = window.fivenations;
 const { width, height } = ns.window;
 let sprite;
 
 function getRandomizedZ() {
-  const z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
+  const z = Math.min(Math.random() + 0.5, 0.95);
   return z;
 }
 
@@ -20,7 +21,7 @@ function createStar() {
     .setY(Util.rnd(0, height))
     .setZ(z)
     .setSprite(sprite)
-    .setFrame(Util.rnd(0, 6));
+    .setFrame(Util.rnd(0, NUMBER_OF_STARS - 1));
 
   return star;
 }
