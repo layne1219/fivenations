@@ -2,20 +2,37 @@
 /* eslint class-methods-use-this: 0 */
 import Graphics from '../common/Graphics';
 import SpaceObject from './SpaceObject';
+import StarGenerator from './StarGenerator';
 
 const ns = window.fivenations;
 const sprites = {};
 
 class DeepSpaceLayer {
+  /**
+   * Returns the DeepSpaceLayer instance that is responsable to
+   * manage and render all parallex background elements
+   * @param {object} map - Map instance
+   * @param {object} generator - SpaceGenerator instance
+   */
   constructor(map, generator) {
+    // basic initialisation
     this.setMap(map);
     this.setGame(map.getGame());
     this.createTexture();
     this.createContainer();
     this.addContainerToStarfieldGroup();
+    // generate stars
+    this.createStars();
+    // execute the given generator to generate more objects
     this.createSpaceObjects(generator);
+    // reorder all space objects by their depth value
+    this.sortSpaceObjects();
   }
 
+  /**
+   * Sets the map instance
+   * @param {object} map - Map
+   */
   setMap(map) {
     if (!map) {
       throw new Error('Map instance must be passed as first parameter!');
@@ -23,6 +40,10 @@ class DeepSpaceLayer {
     this.map = map;
   }
 
+  /**
+   * Sets the Phaser.Game instance
+   * @param {object} game - Phaser.Game
+   */
   setGame(game) {
     if (!game) {
       throw new Error('Phaser.Game instance must be passed as first parameter!');
@@ -50,38 +71,34 @@ class DeepSpaceLayer {
     this.group.add(this.container);
   }
 
-  /**
-   * Fetches the sprite by the given id. If it doesn't exists yet it
-   * creates it and stores it in the local cache
-   * @param {string} id
-   * @return {object} Phaser.Sprite
-   */
-  getSprite(id) {
-    if (!id) {
-      throw new Error('Invalid id was given the fetch SpaceOjbect sprite!');
-    }
-    if (!sprites[id]) {
-      sprites[id] = this.game.make.sprite(0, 0, id);
-    }
-    return sprites[id];
-  }
-
   createSpaceObjects(generatorClass) {
-    this.spaceObjects = [];
+    if (!this.spaceObjects) {
+      this.spaceObjects = [];
+    }
     if (!generatorClass) return;
     this.generateSpaceObjects(generatorClass);
-    this.sortSpaceObjects();
   }
 
   generateSpaceObjects(Generator) {
     if (!Generator) return;
     const generatorInstance = new Generator(this);
     generatorInstance.generate();
-    this.spaceObjects = generatorInstance.getSpaceObjects();
+    generatorInstance
+      .getSpaceObjects()
+      .forEach(obj => this.spaceObjects.push(obj));
   }
 
   sortSpaceObjects() {
     this.spaceObjects.sort((a, b) => a.z - b.z);
+  }
+
+  createStars() {
+    if (!this.spaceObjects) {
+      this.spaceObjects = [];
+    }
+    const starGenerator = new StarGenerator(this);
+    starGenerator.generate();
+    starGenerator.getSpaceObjects().forEach(obj => this.spaceObjects.push(obj));
   }
 
   update() {
@@ -134,14 +151,42 @@ class DeepSpaceLayer {
     this.sortSpaceObjects();
   }
 
+  /**
+   * Fetches the sprite by the given id. If it doesn't exists yet it
+   * creates it and stores it in the local cache
+   * @param {string} id
+   * @return {object} Phaser.Sprite
+   */
+  getSprite(id) {
+    if (!id) {
+      throw new Error('Invalid id was given the fetch SpaceOjbect sprite!');
+    }
+    if (!sprites[id]) {
+      sprites[id] = this.game.make.sprite(0, 0, id);
+    }
+    return sprites[id];
+  }
+
+  /**
+   * Returns the game instance
+   * @return {object} Phaser.Game instance
+   */
   getGame() {
     return this.game;
   }
 
+  /**
+   * Returns the singleton Map instance
+   * @return {object} Map instance
+   */
   getMap() {
     return this.map;
   }
 
+  /**
+   * Returns the local cache for sprite objects
+   * @return {object} key-value map of Phaser.Sprite references
+   */
   getSprites() {
     return sprites;
   }

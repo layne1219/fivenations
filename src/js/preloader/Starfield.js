@@ -40,6 +40,12 @@ export default {
     );
 
     preloader.load.atlasJSONHash(
+      'starfield.stars',
+      `${PATH_ASSETS}/starfield/background_stars.png`,
+      `${PATH_ASSETS}/starfield/background_stars.json`,
+    );
+
+    preloader.load.atlasJSONHash(
       'starfield.clouds.bg.type-1',
       `${PATH_ASSETS}/starfield/background_clouds_type01.png`,
       `${PATH_ASSETS}/starfield/background_clouds_type01.json`,

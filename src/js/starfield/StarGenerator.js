@@ -3,71 +3,44 @@ import Star from './Star';
 import SpaceObjectGenerator from './SpaceObjectGenerator';
 import Util from '../common/Util';
 
-const NUMBER_OF_STARS_PER_SCREEN = 10;
+const NUMBER_OF_STAR_TYPES = 7;
+const NUMBER_OF_STARS_PER_SCREEN = 50;
 const ns = window.fivenations;
-const { width, height } = ns.window;
-let sprites;
 
 function getRandomizedZ() {
-  const z = Math.min(Math.random() + 0.1, Math.random() > 0.5 ? 0.25 : 0.6);
+  const z = Math.min(Math.random() + 0.05, 0.5);
   return z;
 }
 
-function getSpriteFromZ(z) {
-  const index = Util.rnd(0, 3);
-  let key = 'slow';
-
-  if (z >= 0.34 && z <= 0.65) {
-    key = 'mediate';
-  } else if (z > 0.65) {
-    key = 'fast';
-  }
-  if (!sprites[key] || !sprites[key][index]) {
-    throw new Error('Invalid sprite was given for a Star object!');
-  }
-  return sprites[key][index];
-}
-
-function createStar() {
-  const z = getRandomizedZ();
-  const sprite = getSpriteFromZ(z);
-  const star = new Star()
-    .setX(Util.rnd(0, width))
-    .setY(Util.rnd(0, height))
-    .setZ(z)
-    .setSprite(sprite);
-
-  return star;
-}
-
 class StarGenerator extends SpaceObjectGenerator {
-  constructor(game) {
-    super(game);
-    this.createSprites();
+  generate() {
     this.createStars();
   }
 
-  createSprites() {
-    if (sprites) return;
+  createRandomStarSprite() {
+    const sprite = this.deepSpaceLayer.getSprite('starfield.stars');
+    const phaserGame = ns.game.game;
+    const starFrame = Util.rnd(0, NUMBER_OF_STAR_TYPES - 1);
+    sprite.frame = starFrame;
+    const clone = phaserGame.make.sprite(0, 0, sprite.generateTexture());
+    return clone;
+  }
 
-    sprites = {
-      mediate: [
-        this.game.make.sprite(0, 0, 'starfield.star.big-1'),
-        this.game.make.sprite(0, 0, 'starfield.star.big-2'),
-        this.game.make.sprite(0, 0, 'starfield.star.big-3'),
-      ],
-      slow: [
-        this.game.make.sprite(0, 0, 'starfield.star.small-1'),
-        this.game.make.sprite(0, 0, 'starfield.star.small-2'),
-        this.game.make.sprite(0, 0, 'starfield.star.small-3'),
-      ],
-    };
+  createStar() {
+    const { width, height } = ns.window;
+    const starSprite = this.createRandomStarSprite();
+    const z = getRandomizedZ();
+    const star = new Star(starSprite)
+      .setX(Util.rnd(0, width))
+      .setY(Util.rnd(0, height))
+      .setZ(z);
+
+    return star;
   }
 
   createStars() {
-    let star;
     for (let i = 0; i < NUMBER_OF_STARS_PER_SCREEN; i += 1) {
-      star = createStar();
+      const star = this.createStar();
       this.addSpaceObject(star);
     }
   }
