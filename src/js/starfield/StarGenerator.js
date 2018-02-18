@@ -6,7 +6,6 @@ import Util from '../common/Util';
 const NUMBER_OF_STAR_TYPES = 7;
 const NUMBER_OF_STARS_PER_SCREEN = 50;
 const ns = window.fivenations;
-let sprite;
 
 function getRandomizedZ() {
   const z = Math.min(Math.random() + 0.05, 0.5);
