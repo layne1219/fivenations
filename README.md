@@ -6,28 +6,32 @@
 Five Nations is a sci-fi strategy game that takes place in the far future and follows the events of a galactic battle between five distinct species. The gameplay utilizes traditional real-time strategy elements with introducing modern features.
 
 ## Five Nations on Social Media
-[![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3]
+[![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3] [![alt text][4.1]][4]
 
 [1.1]: http://i.picresize.com/images/2017/11/08/SxV2s.png (twitter icon with padding)
 [2.1]: http://www.ifes.org/sites/all/themes/ifes/images/facebook-icon.png (facebook icon with padding)
-[3.1]: http://i.picresize.com/images/2017/11/08/dXjsQ.png (facebook icon with padding)
+[3.1]: https://user-images.githubusercontent.com/6104164/36752756-5425749e-1c04-11e8-9fba-6f289f069e37.png
+[4.1]: https://user-images.githubusercontent.com/6104164/36752755-540a00e2-1c04-11e8-81a0-6d6ae0e4c593.png
 
 [1]: http://www.twitter.com/vbence86
 [2]: http://www.facebook.com/fivenationsthegame
 [3]: http://www.instagram.com/fivenationsthegame
+[4]: http://www.indiedb.com/games/five-nations/
 
 ## Five Nations at Conferences
-[![alt text][4.1]][4] [![alt text][5.1]][5] 
-
-[4.1]: https://pbs.twimg.com/media/DSpGPrbW4AAIXGu.jpg
+[![alt text][5.1]][5] 
 
 [5.1]: https://www.berlinbalticnordic.net/wp-content/uploads/2017/12/WhiteNightsPrague.jpg
 
-[4]: https://gamedev.ee/
 [5]: https://wnconf.com/en
 
 ## About the project
 Five Nations is an open source HTML5 game that uses cutting-edge  technologies such as ES2015+, Babel, Webpack etc. The project is built on top of Phaser Community Edition and employs P2 physics engine. We employ modern CI flow with Jenkins, TravisCI and Docker. 
+
+![fivenations_flyers_gamer_2](https://user-images.githubusercontent.com/6104164/36749875-5dd70cc6-1bfc-11e8-853c-20f6a88892d2.jpg)
+
+![fivenations_flyers_contributors_2](https://user-images.githubusercontent.com/6104164/36749884-63a3506a-1bfc-11e8-822b-33ccd91964da.jpg)
+
 
 ## Contributing
 Since this is an open source project all form of contribution and feedback are welcomed. We are hiring!
