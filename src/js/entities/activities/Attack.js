@@ -55,7 +55,7 @@ class Attack extends Activity {
       this.kill();
     }
 
-    if (this._firstExecution && this.isTargetInRange()) {
+    if (this._firstExecution && this.isTargetInMinRange()) {
       this._firstExecution = false;
       this.entity.stop();
     }
@@ -74,7 +74,7 @@ class Attack extends Activity {
       return;
     }
 
-    if (!this.isTargetInRange()) {
+    if (!this.isTargetInMinRange()) {
       this.entity.getInRange(this.target);
       return;
     }
@@ -142,7 +142,7 @@ class Attack extends Activity {
    * Checks whether the specified target entity is in range
    * @return {boolean}
    */
-  isTargetInRange() {
+  isTargetInMinRange() {
     let distance;
     let range;
 
