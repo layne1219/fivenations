@@ -228,6 +228,15 @@ WeaponManager.prototype = {
     }
     return false;
   },
+
+  /**
+   * Returns if any of the weapons can fire their target entity
+   * @return {boolean}
+   */
+  hasWeaponReadyToFireTarget() {
+    if (!this.hasTargetEntity()) return false;
+    return this.weapons.some(weapon => weapon.isReleasable());
+  },
 };
 
 // exposes Constant like ID variables

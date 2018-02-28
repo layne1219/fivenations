@@ -74,7 +74,10 @@ class Attack extends Activity {
       return;
     }
 
-    if (!this.isTargetInMinRange()) {
+    // unshifts GetInRange Activiy to the Activity queue if the entity
+    // hasn't arrived at the distance where its weapon with the smallest range
+    // can be fired
+    if (!this.isTargetInMinRange() && !this.hasWeaponReadyToFireTarget()) {
       this.entity.getInRange(this.target);
       return;
     }
@@ -245,6 +248,14 @@ class Attack extends Activity {
    */
   getCoords() {
     return this._dogFightCoords;
+  }
+
+  /**
+   * Returns true if the entity currently has any releasable weapon
+   * @return {boolean}
+   */
+  hasWeaponReadyToFireTarget() {
+    return this.entity.getWeaponManager().hasWeaponReadyToFireTarget();
   }
 }
 
