@@ -10,6 +10,8 @@ import GetToDock from './GetToDock';
 import Attack from './Attack';
 import RotateToTarget from './RotateToTarget';
 
+const ns = window.fivenations;
+
 function ActivityManager(entity) {
   let activities = [];
 
@@ -84,6 +86,21 @@ function ActivityManager(entity) {
       if (activities[currentIdx].isActivated()) {
         activities[currentIdx].update();
       }
+    },
+
+    /**
+     * Display debug information about the activities
+     */
+    debug() {
+      const phaserGame = ns.game.game;
+      activities.forEach((activity, idx) => {
+        phaserGame.debug.text(
+          activity.constructor.name,
+          2,
+          30 + idx * 16,
+          '#ffff00',
+        );
+      });
     },
   };
 }
