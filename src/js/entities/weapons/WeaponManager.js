@@ -233,9 +233,9 @@ WeaponManager.prototype = {
    * Returns if any of the weapons can fire their target entity
    * @return {boolean}
    */
-  hasWeaponReadyToFireTarget() {
+  isWeaponReadyToFireTarget() {
     if (!this.hasTargetEntity()) return false;
-    return this.weapons.some(weapon => weapon.isReleasable());
+    return this.weapons.some(weapon => weapon.couldBeReleased());
   },
 };
 

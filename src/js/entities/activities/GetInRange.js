@@ -22,7 +22,7 @@ class GetInRange extends Move {
     // provided the entity has already approached the target
     // so that its weapon with the smallest range can be released
     // - or - it has any releasable weapon
-    if (this.isInMinRange() || this.hasWeaponReadyToFireTarget()) {
+    if (this.isInMinRange() || this.isWeaponReadyToFireTarget()) {
       this.entity.stop();
       this.kill();
       return;
@@ -82,8 +82,8 @@ class GetInRange extends Move {
    * Returns true if the entity currently has any releasable weapon
    * @return {boolean}
    */
-  hasWeaponReadyToFireTarget() {
-    return this.entity.getWeaponManager().hasWeaponReadyToFireTarget();
+  isWeaponReadyToFireTarget() {
+    return this.entity.getWeaponManager().isWeaponReadyToFireTarget();
   }
 }
 

@@ -77,7 +77,7 @@ class Attack extends Activity {
     // unshifts GetInRange Activiy to the Activity queue if the entity
     // hasn't arrived at the distance where its weapon with the smallest range
     // can be fired
-    if (!this.isTargetInMinRange() && !this.hasWeaponReadyToFireTarget()) {
+    if (!this.isTargetInMinRange() && !this.isWeaponReadyToFireTarget()) {
       this.entity.getInRange(this.target);
       return;
     }
@@ -254,8 +254,8 @@ class Attack extends Activity {
    * Returns true if the entity currently has any releasable weapon
    * @return {boolean}
    */
-  hasWeaponReadyToFireTarget() {
-    return this.entity.getWeaponManager().hasWeaponReadyToFireTarget();
+  isWeaponReadyToFireTarget() {
+    return this.entity.getWeaponManager().isWeaponReadyToFireTarget();
   }
 }
 
