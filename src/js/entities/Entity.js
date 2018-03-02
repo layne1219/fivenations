@@ -696,7 +696,7 @@ class Entity {
   }
 
   isHover() {
-    return UserPointer.getInstance().isHover(this.sprite);
+    return UserPointer.getInstance().isHoverEntity(this);
   }
 
   isInside(obj) {
