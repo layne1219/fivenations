@@ -145,6 +145,36 @@ class UserPointer {
     return true;
   }
 
+  /**
+   * Returns whether the mouse pointer is over the passed Entity
+   * @param {object} entity - Entity
+   * @return {boolean}
+   */
+  isHoverEntity(entity) {
+    const sprite = entity.getSprite();
+    let mouseX = phaserGame.input.mousePointer.x;
+    let mouseY = phaserGame.input.mousePointer.y;
+
+    if (!sprite.fixedToCamera) {
+      mouseX += phaserGame.camera.x;
+      mouseY += phaserGame.camera.y;
+    }
+
+    if (mouseX < sprite.x + sprite.hitArea.x) {
+      return false;
+    }
+    if (mouseX > sprite.x + (sprite.hitArea.x + sprite.hitArea.width)) {
+      return false;
+    }
+    if (mouseY < sprite.y + sprite.hitArea.y) {
+      return false;
+    }
+    if (mouseY > sprite.y + (sprite.hitArea.y + sprite.hitArea.height)) {
+      return false;
+    }
+    return true;
+  }
+
   getRealCoords() {
     return {
       x: phaserGame.camera.x + phaserGame.input.mousePointer.x,
