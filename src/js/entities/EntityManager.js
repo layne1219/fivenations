@@ -303,7 +303,7 @@ EntityManager.prototype = {
    * @return {[type]}        [description]
    */
   getEntitiesInRange(entity) {
-    const range = entity.getWeaponManager().getMaxRange();
+    const maxRange = entity.getWeaponManager().getMaxRange();
     const sprite = entity.getSprite();
     const candidates = this.quadTree.retrieve(sprite);
     return candidates
@@ -314,7 +314,7 @@ EntityManager.prototype = {
       .filter((data) => {
         if (data[1] === sprite) return false;
         if (data[1]._parent.isHibernated()) return false;
-        return data[0] <= range;
+        return data[0] <= maxRange;
       })
       .sort((a, b) => a[0] < b[0])
       .map(data => data[1]._parent);
