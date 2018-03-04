@@ -1,6 +1,8 @@
 import {
   ENTITY_SIZES,
   ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED,
+  TILE_WIDTH,
+  TILE_HEIGHT,
 } from '../common/Const';
 
 /**
@@ -142,6 +144,13 @@ function DataObject(json) {
 
     getVision() {
       return data.vision;
+    },
+
+    getVisionRange() {
+      if (!this._visionRange) {
+        this._visionRange = Math.round(data.vision * TILE_WIDTH / 2);
+      }
+      return this._visionRange;
     },
 
     getWeapons() {

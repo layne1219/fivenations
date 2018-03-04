@@ -260,20 +260,31 @@ EntityManager.prototype = {
   setClosestEntities(entity) {
     if (!entity) throw new Error('Invalid Entity instance is passed!');
 
-    const closests = this.getEntitiesInRange(entity);
-    let closestEnemy = null;
+    const closests = this.getEntitiesInApproximity(entity);
+    let closestEnemyInVision = null;
+    let closestEnemyInRange = null;
     let closestAlly = null;
 
     for (let i = closests.length - 1; i >= 0; i -= 1) {
-      if (!closestEnemy && closests[i].isEnemy(entity)) {
-        closestEnemy = closests[i];
+      const candidate = closests[i].candidate;
+      const distance = closests[i].distance;
+      const inRange = closests[i].inRange;
+      const inVision = closests[i].inVision;
+      if (entity.isEnemy(candiate)) {
+        if (!closestEnemyInRange && inRange) {
+          closestEnemyInRange = candidate;
+        }
+        if (!closestEnemyInVision && inVision) {
+          closestEnemyInVision = candidate;
+        }
       } else if (!closestAlly) {
-        closestAlly = closests[i];
+        closestAlly = candidate;
       }
-      if (closestEnemy && closestAlly) break;
+      if (closestEnemyInRange && closestAlly) break;
     }
 
-    entity.setClosestHostileEntityInRange(closestEnemy);
+    entity.setClosestHostileEntityInVision(closestEnemyInVision);
+    entity.setClosestHostileEntityInRange(closestEnemyInRange);
     entity.setClosestAllyEntityInRange(closestAlly);
   },
 
@@ -302,22 +313,28 @@ EntityManager.prototype = {
    * @param  {[type]} entity [description]
    * @return {[type]}        [description]
    */
-  getEntitiesInRange(entity) {
+  getEntitiesInApproximity(entity) {
     const maxRange = entity.getWeaponManager().getMaxRange();
+    const visionRange = entity.getDataObject().getVisionRange();
+    const maxDistance = Math.max(maxRange, visionRange);
     const sprite = entity.getSprite();
     const candidates = this.quadTree.retrieve(sprite);
     return candidates
-      .map(candidate => [
-        Util.distanceBetweenSprites(sprite, candidate),
+      .map(candidate => ({
+        distance: Util.distanceBetweenSprites(sprite, candidate),
         candidate,
-      ])
+      }))
       .filter((data) => {
-        if (data[1] === sprite) return false;
-        if (data[1]._parent.isHibernated()) return false;
-        return data[0] <= maxRange;
+        if (candidate === sprite) return false;
+        if (candidate._parent.isHibernated()) return false;
+        return distance <= maxDistance;
       })
-      .sort((a, b) => a[0] < b[0])
-      .map(data => data[1]._parent);
+      .sort((a, b) => a.distance < b.distance)
+      .map(data => ({
+        inVision: distance <= visionRange,
+        inRange: distance <= maxRange,
+        ...data,
+      }));
   },
 
   /**
