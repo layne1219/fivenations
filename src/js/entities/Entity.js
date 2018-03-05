@@ -668,11 +668,11 @@ class Entity {
   }
 
   /**
-   * Returns the closest entityin the vision range
+   * Returns the closest entity that can be attacked
    * @param {object} Entity
    */
-  setClosestHostileEntityInVision(entity) {
-    this.closestHostileEntityInVision;
+  setClosestAttackableHostileEntity(entity) {
+    this.closestAttackableHostileEntity = entity;
   }
 
   /**
@@ -875,11 +875,11 @@ class Entity {
   }
 
   /**
-   * Returns the closest entity that is in hostile relation to the one triggered the function call
+   * Returns the closest entity that can be attacked
    * @return {object} Entity
    */
-  getClosestHostileEntityInVision() {
-    return this.closestHostileEntityInVision;
+  getClosestAttackableHostileEntity() {
+    return this.closestAttackableHostileEntity;
   }
 
   /**

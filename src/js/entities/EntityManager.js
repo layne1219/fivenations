@@ -261,29 +261,27 @@ EntityManager.prototype = {
     if (!entity) throw new Error('Invalid Entity instance is passed!');
 
     const closests = this.getEntitiesInApproximity(entity);
-    let closestEnemyInVision = null;
+    let closestAttackableEntity = null;
     let closestEnemyInRange = null;
     let closestAlly = null;
 
     for (let i = closests.length - 1; i >= 0; i -= 1) {
-      const candidate = closests[i].candidate;
-      const distance = closests[i].distance;
-      const inRange = closests[i].inRange;
-      const inVision = closests[i].inVision;
-      if (entity.isEnemy(candiate)) {
+      const { candidate, inRange, inVision } = closests[i];
+
+      if (entity.isEnemy(candidate)) {
         if (!closestEnemyInRange && inRange) {
           closestEnemyInRange = candidate;
         }
-        if (!closestEnemyInVision && inVision) {
-          closestEnemyInVision = candidate;
+        if (!closestAttackableEntity && (inVision || inRange)) {
+          closestAttackableEntity = candidate;
         }
       } else if (!closestAlly) {
         closestAlly = candidate;
       }
-      if (closestEnemyInRange && closestAlly) break;
+      if (closestEnemyInRange && closestAttackableEntity && closestAlly) break;
     }
 
-    entity.setClosestHostileEntityInVision(closestEnemyInVision);
+    entity.setClosestAttackableHostileEntity(closestAttackableEntity);
     entity.setClosestHostileEntityInRange(closestEnemyInRange);
     entity.setClosestAllyEntityInRange(closestAlly);
   },
@@ -325,15 +323,15 @@ EntityManager.prototype = {
         candidate,
       }))
       .filter((data) => {
-        if (candidate === sprite) return false;
-        if (candidate._parent.isHibernated()) return false;
-        return distance <= maxDistance;
+        if (data.candidate === sprite) return false;
+        if (data.candidate._parent.isHibernated()) return false;
+        return data.distance <= maxDistance;
       })
       .sort((a, b) => a.distance < b.distance)
       .map(data => ({
-        inVision: distance <= visionRange,
-        inRange: distance <= maxRange,
-        ...data,
+        inVision: data.distance <= visionRange,
+        inRange: data.distance <= maxRange,
+        candidate: data.candidate._parent,
       }));
   },
 

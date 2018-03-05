@@ -1,9 +1,9 @@
 import {
   ENTITY_SIZES,
   ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED,
-  TILE_WIDTH,
-  TILE_HEIGHT,
 } from '../common/Const';
+
+import FogOfWarMasks from '../map/FogOfWarMasks';
 
 /**
  * Returns the dimensions of the given entity model
@@ -147,10 +147,11 @@ function DataObject(json) {
     },
 
     getVisionRange() {
-      if (!this._visionRange) {
-        this._visionRange = Math.round(data.vision * TILE_WIDTH / 2);
+      // use object context to cache calculated vision range value
+      if (!this.visionRange) {
+        this.visionRange = FogOfWarMasks.getVisionScreenWidth(this.getVision());
       }
-      return this._visionRange;
+      return this.visionRange;
     },
 
     getWeapons() {

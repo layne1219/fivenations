@@ -59,7 +59,7 @@ class Weapon {
     let targetEntityType;
 
     // targetEntity is always the closest in the vision range
-    const targetEntity = this.entity.getClosestHostileEntityInVision();
+    const targetEntity = this.entity.getClosestAttackableHostileEntity();
 
     // if there is no target nearby
     if (!targetEntity) {
