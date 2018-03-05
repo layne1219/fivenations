@@ -1,50 +1,94 @@
 import Activity from './Activity';
 
-/**
- * Constructor function to Fire
- * @param  {[object]} entity Instance of an Entity class
- * @return {[object]}
- */
-function Fire(entity) {
-  Activity.call(this);
-  this.entity = entity;
-  this.targetEntity = null;
-  this.weapons = [];
-}
-
-Fire.prototype = new Activity();
-Fire.prototype.constructor = Fire;
+const ns = window.fivenations;
 
 /**
- * Applying the activity on an entity
- * @return {[void]}
+ * Fire Activity that executes each of individual weapon's fire
+ * function
  */
-Fire.prototype.activate = function () {
-  Activity.prototype.activate.call(this);
+class Fire extends Activity {
+  /**
+   * @param {object} entity Instance of an Entity class
+   */
+  constructor(entity) {
+    super();
+    this.entity = entity;
+    this.targetEntity = null;
+    this.weapons = [];
+  }
 
-  if (this.targetEntity && this.weapons.length > 0) {
+  /**
+   * applies the activity on an entity
+   */
+  activate() {
+    super.activate();
+
+    if (this.hasTarget() && this.hasWeapons()) {
+      this.launchAllWeapons();
+      this.revealFogOfWarTile();
+    }
+
+    this.kill();
+  }
+
+  /**
+   * Returns whether the Activity has a valid target defined
+   * @return {boolean}
+   */
+  hasTarget() {
+    return this.targetEntity;
+  }
+
+  /**
+   * Returns whether the Activity has weapons attached to them
+   * @return {boolean}
+   */
+  hasWeapons() {
+    return this.weapons.length;
+  }
+
+  /**
+   * Cycles through all added weapons and calls their fire function
+   */
+  launchAllWeapons() {
     this.weapons.forEach((weapon) => {
       weapon.fire(this.targetEntity);
     });
   }
 
-  this.kill();
-};
+  /**
+   * Reveals the relevant FogOfWar tile if the target belongs to the User
+   */
+  revealFogOfWarTile() {
+    if (this.isTargetControlledByUser()) {
+      const fogOfWar = ns.game.map.getFogOfWar();
+      this.targetEntity.revealEntityInFogOfWar(fogOfWar);
+    }
+  }
 
-/**
- * Saving the target to which the entity will be moved
- * @return {[void]}
- */
-Fire.prototype.setTarget = function (entity) {
-  this.targetEntity = entity;
-};
+  /**
+   * Returns whether the target belongs to the User
+   * @return {boolean}
+   */
+  isTargetControlledByUser() {
+    return this.targetEntity.isEntityControlledByUser();
+  }
 
-/**
- * Sets the weapons to be fired at the given target
- * @param {array} weapons List of weapon instances
- */
-Fire.prototype.setWeapons = function (weapons) {
-  this.weapons = Array.prototype.concat.call(this.weapons, weapons);
-};
+  /**
+   * Saves the target to which the entity will be moved
+   * @param {object} entity - Entity instance
+   */
+  setTarget(entity) {
+    this.targetEntity = entity;
+  }
+
+  /**
+   * Sets the weapons to be fired at the given target
+   * @param {array} weapons List of weapon instances
+   */
+  setWeapons(weapons) {
+    this.weapons = Array.prototype.concat.call(this.weapons, weapons);
+  }
+}
 
 export default Fire;

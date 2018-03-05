@@ -518,6 +518,14 @@ class Entity {
   }
 
   /**
+   * Revelas the fog of war tile that the entity is belonged to
+   * @param {object} fogOfWar
+   */
+  revealEntityInFogOfWar(fogOfWar) {
+    fogOfWar.visit(...this.getTile());
+  }
+
+  /**
    * Removes all activity from the ActivityManager instance
    * @return {void}
    */
