@@ -86,6 +86,7 @@ class Weapon {
 
   release() {
     this.fire(this.targetEntity);
+    this.revealEntityInFogOfWarIfRequired();
   }
 
   fire(targetEntity) {
@@ -119,6 +120,12 @@ class Weapon {
     });
 
     this.freeze(this.data.cooldown);
+  }
+
+  revealEntityInFogOfWarIfRequired() {
+    if (this.targetEntity.isEntityControlledByUser()) {
+      this.entity.revealEntityInFogOfWar();
+    }
   }
 
   activate() {

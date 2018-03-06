@@ -519,10 +519,11 @@ class Entity {
 
   /**
    * Revelas the fog of war tile that the entity is belonged to
-   * @param {object} fogOfWar
    */
-  revealEntityInFogOfWar(fogOfWar) {
-    fogOfWar.visit(...this.getTile());
+  revealEntityInFogOfWar() {
+    const map = ns.game.map;
+    const fogOfWar = map.getFogOfWar();
+    fogOfWar.forceVisit(...this.getTile(map));
   }
 
   /**

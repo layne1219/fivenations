@@ -1,7 +1,5 @@
 import Activity from './Activity';
 
-const ns = window.fivenations;
-
 /**
  * Fire Activity that executes each of individual weapon's fire
  * function
@@ -61,8 +59,7 @@ class Fire extends Activity {
    */
   revealFogOfWarTile() {
     if (this.isTargetControlledByUser()) {
-      const fogOfWar = ns.game.map.getFogOfWar();
-      this.targetEntity.revealEntityInFogOfWar(fogOfWar);
+      this.targetEntity.revealEntityInFogOfWar();
     }
   }
 
