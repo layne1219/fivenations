@@ -22,8 +22,7 @@ Five Nations is a sci-fi strategy game that takes place in the far future and fo
 #### Phaser World - Game of the Week
 https://phaser.io/news/2018/03/five-nations
 
-<img width="200" alt="screen shot 2018-03-06 at 07 45 20" src="https://user-images.githubusercontent.com/6104164/37113065-8f743256-2244-11e8-9b18-ac2b70491b4f.png">
-<img width="200" alt="screen shot 2018-03-06 at 08 05 58" src="https://user-images.githubusercontent.com/6104164/37113067-8f904b26-2244-11e8-929c-1c4838ac840c.png">
+<img width="700" alt="screen shot 2018-03-06 at 07 45 20" src="https://user-images.githubusercontent.com/6104164/37113065-8f743256-2244-11e8-9b18-ac2b70491b4f.png">
 
 #### White Nights Prague '19
 [![alt text][5.1]][5] 
