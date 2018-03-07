@@ -33,6 +33,11 @@ function collisionHandler(effectSprite, entitySprite) {
     return false;
   }
 
+  // effect cannot hit Fighters if CHF is zero
+  if (!weapon.canHitFighters() && entity.getDataObject().isFighter()) {
+    return false;
+  }
+
   const collisionEvent = effect.getDataObject().getEvent('collision');
   const eventEmitter = EventEmitter.getInstance();
 

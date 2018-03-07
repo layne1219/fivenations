@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 import {
   ENTITY_SIZES,
   ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED,
@@ -276,7 +277,10 @@ function DataObject(json) {
     },
 
     isFighter() {
-      return this.getType() === 'Fighter';
+      if (!this._isFighter) {
+        this._isFighter = this.getType() === 'Fighter';
+      }
+      return this._isFighter;
     },
 
     getTargetGraphicsGroup() {

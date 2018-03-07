@@ -521,7 +521,7 @@ class Entity {
    * Revelas the fog of war tile that the entity is belonged to
    */
   revealEntityInFogOfWar() {
-    const map = ns.game.map;
+    const { map } = ns.game;
     const fogOfWar = map.getFogOfWar();
     fogOfWar.forceVisit(...this.getTile(map));
   }
@@ -767,6 +767,23 @@ class Entity {
    */
   isTargetable() {
     return !this.isHibernated();
+  }
+
+  /**
+   * Returns wether the entity can be targeted by the given entity
+   * @param {object} entity - Entity
+   * @return {Boolean} true if the entity is targetable
+   */
+  isTargetableByEntity(entity) {
+    if (!this.isTargetable()) return false;
+
+    // check whether the give entity can attack fighters
+    if (this.getDataObject().isFighter()) {
+      const hasCAF = entity.getWeaponManager().hasCAF();
+      if (!hasCAF) return false;
+    }
+
+    return true;
   }
 
   /**

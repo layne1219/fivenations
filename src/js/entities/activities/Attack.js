@@ -51,7 +51,7 @@ class Attack extends Activity {
   activate() {
     super.activate();
 
-    if (!this.target.isTargetable()) {
+    if (!this.target.isTargetableByEntity(this.entity)) {
       this.kill();
     }
 

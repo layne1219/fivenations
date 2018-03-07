@@ -268,7 +268,7 @@ EntityManager.prototype = {
     for (let i = closests.length - 1; i >= 0; i -= 1) {
       const { candidate, inRange, inVision } = closests[i];
 
-      if (entity.isEnemy(candidate)) {
+      if (entity.isEnemy(candidate) && candidate.isTargetableByEntity(entity)) {
         if (!closestEnemyInRange && inRange) {
           closestEnemyInRange = candidate;
         }
@@ -313,7 +313,7 @@ EntityManager.prototype = {
    */
   getEntitiesInApproximity(entity) {
     const maxRange = entity.getWeaponManager().getMaxRange();
-    const visionRange = entity.getDataObject().getVisionRange();
+    const visionRange = entity.getDataObject().getVisionRange() * 1.25;
     const maxDistance = Math.max(maxRange, visionRange);
     const sprite = entity.getSprite();
     const candidates = this.quadTree.retrieve(sprite);

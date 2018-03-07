@@ -217,6 +217,14 @@ class Weapon {
     return this.data.targetTypes;
   }
 
+  canAttackFighters() {
+    return this.data.CAF;
+  }
+
+  canHitFighters() {
+    return this.data.CHF;
+  }
+
   getEffect() {
     return this.data.effect;
   }
