@@ -51,10 +51,6 @@ class Attack extends Activity {
   activate() {
     super.activate();
 
-    if (!this.target.isTargetableByEntity(this.entity)) {
-      this.kill();
-    }
-
     if (this._firstExecution && this.isTargetInMinRange()) {
       this._firstExecution = false;
       this.entity.stop();
@@ -69,7 +65,7 @@ class Attack extends Activity {
    * Updates the activity on every tick
    */
   update() {
-    if (!this.target.isTargetable()) {
+    if (!this.target.isTargetableByEntity(this.entity)) {
       this.kill();
       return;
     }

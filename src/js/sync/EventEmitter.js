@@ -205,11 +205,13 @@ function createEntityEventAPI(entityManager) {
        */
       damage(options) {
         const { weapon } = options;
+        const emitter = weapon.getWeaponManager().getEntity();
 
         EventBus.getInstance().add({
           id: 'entity/damage',
           targets: entities,
           data: {
+            emitterEntity: emitter.getGUID(),
             damage: weapon.getDamage(),
             damageShield: weapon.getDamageShield(),
           },

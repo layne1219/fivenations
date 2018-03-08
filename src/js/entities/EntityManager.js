@@ -263,27 +263,32 @@ EntityManager.prototype = {
     const closests = this.getEntitiesInApproximity(entity);
     let closestAttackableEntity = null;
     let closestEnemyInRange = null;
-    let closestAlly = null;
+    const closestAllies = [];
 
     for (let i = closests.length - 1; i >= 0; i -= 1) {
       const { candidate, inRange, inVision } = closests[i];
 
-      if (entity.isEnemy(candidate) && candidate.isTargetableByEntity(entity)) {
-        if (!closestEnemyInRange && inRange) {
-          closestEnemyInRange = candidate;
-        }
-        if (!closestAttackableEntity && (inVision || inRange)) {
-          closestAttackableEntity = candidate;
+      if (entity.isEnemy(candidate)) {
+        // check if the encountered enemy entity can be targeted
+        if (candidate.isTargetableByEntity(entity)) {
+          // closest enemy in range
+          if (!closestEnemyInRange && inRange) {
+            closestEnemyInRange = candidate;
+          }
+          // closest attackable enemy (for scanning)
+          if (!closestAttackableEntity && (inVision || inRange)) {
+            closestAttackableEntity = candidate;
+          }
         }
       } else if (!closestAlly) {
-        closestAlly = candidate;
+        // we collect the non-hostile entities
+        closestAllies.push(candidate);
       }
-      if (closestEnemyInRange && closestAttackableEntity && closestAlly) break;
     }
 
     entity.setClosestAttackableHostileEntity(closestAttackableEntity);
     entity.setClosestHostileEntityInRange(closestEnemyInRange);
-    entity.setClosestAllyEntityInRange(closestAlly);
+    entity.setClosestAllyEntitiesInRange(closestAllies);
   },
 
   /**
@@ -332,6 +337,7 @@ EntityManager.prototype = {
         inVision: data.distance <= visionRange,
         inRange: data.distance <= maxRange,
         candidate: data.candidate._parent,
+        distance: data.distance,
       }));
   },
 

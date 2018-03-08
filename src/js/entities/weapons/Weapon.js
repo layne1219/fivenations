@@ -225,6 +225,10 @@ class Weapon {
     return this.data.CHF;
   }
 
+  getMinRange() {
+    return this.data.minRange;
+  }
+
   getEffect() {
     return this.data.effect;
   }
@@ -265,7 +269,7 @@ class Weapon {
     const sprite = this.entity.getSprite();
     const distance = Util.distanceBetweenSprites(sprite, targetSprite);
 
-    return distance <= this.getRange();
+    return distance <= this.getRange() && distance >= this.getMinRange();
   }
 
   isEntityMoving() {

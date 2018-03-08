@@ -89,6 +89,13 @@ function ActivityManager(entity) {
     },
 
     /**
+     * Returns true if the current Activity is Idle
+     */
+    isIdling() {
+      return activities[currentIdx] instanceof Idle;
+    },
+
+    /**
      * Display debug information about the activities
      */
     debug() {
