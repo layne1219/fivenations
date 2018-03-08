@@ -280,7 +280,7 @@ EntityManager.prototype = {
             closestAttackableEntity = candidate;
           }
         }
-      } else if (!closestAlly) {
+      } else {
         // we collect the non-hostile entities
         closestAllies.push(candidate);
       }
