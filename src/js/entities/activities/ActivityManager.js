@@ -23,8 +23,8 @@ function ActivityManager(entity) {
      * of the activity list if true
      */
     add(activity, addAsLast) {
-      let l = activities.length,
-        currentIdx = l - 1;
+      const l = activities.length;
+      const currentIdx = l - 1;
       if (!(activity instanceof Activity)) {
         throw 'You must extend the manager with an object inherits from Activity!';
       }
@@ -92,6 +92,8 @@ function ActivityManager(entity) {
      * Returns true if the current Activity is Idle
      */
     isIdling() {
+      const l = activities.length;
+      const currentIdx = l - 1;
       return activities[currentIdx] instanceof Idle;
     },
 

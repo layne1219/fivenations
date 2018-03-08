@@ -205,7 +205,7 @@ function createEntityEventAPI(entityManager) {
        */
       damage(options) {
         const { weapon } = options;
-        const emitter = weapon.getWeaponManager().getEntity();
+        const emitter = weapon.getManager().getEntity();
 
         EventBus.getInstance().add({
           id: 'entity/damage',

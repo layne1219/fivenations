@@ -236,7 +236,7 @@ WeaponManager.prototype = {
    */
   hasCAF() {
     if (undefined === this._hasCAF) {
-      this._hasCAF = this.weapons.some(weapon => weapon.canAttackFighers());
+      this._hasCAF = this.weapons.some(weapon => weapon.canAttackFighters());
     }
     return this._hasCAF;
   },
