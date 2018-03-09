@@ -268,21 +268,23 @@ EntityManager.prototype = {
     for (let i = closests.length - 1; i >= 0; i -= 1) {
       const { candidate, inRange, inVision } = closests[i];
 
-      if (entity.isEnemy(candidate)) {
-        // check if the encountered enemy entity can be targeted
-        if (candidate.isTargetableByEntity(entity)) {
-          // closest enemy in range
-          if (!closestEnemyInRange && inRange) {
-            closestEnemyInRange = candidate;
+      if (!candidate.isHibernated()) {
+        if (entity.isEnemy(candidate)) {
+          // check if the encountered enemy entity can be targeted
+          if (candidate.isTargetableByEntity(entity)) {
+            // closest enemy in range
+            if (!closestEnemyInRange && inRange) {
+              closestEnemyInRange = candidate;
+            }
+            // closest attackable enemy (for scanning)
+            if (!closestAttackableEntity && (inVision || inRange)) {
+              closestAttackableEntity = candidate;
+            }
           }
-          // closest attackable enemy (for scanning)
-          if (!closestAttackableEntity && (inVision || inRange)) {
-            closestAttackableEntity = candidate;
-          }
+        } else if (entity.getPlayer() === candidate.getPlayer()) {
+          // we collect the non-hostile entities
+          closestAllies.push(candidate);
         }
-      } else {
-        // we collect the non-hostile entities
-        closestAllies.push(candidate);
       }
     }
 

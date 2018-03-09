@@ -21,12 +21,26 @@ function getNearbyAlliedEntitiesToEntity(entity) {
 }
 
 /**
+ * Emits Universl Attack event for the given entity against the second entity
+ * @param {object} Entity - entity
+ * @param {object} Entity - target
+ */
+function attackTarget(entity, targetEntity) {
+  if (!entity.isIdling()) return false;
+
+  EventEmitter.getInstance()
+    .synced.entities(entity)
+    .attack({ targetEntity });
+}
+
+/**
  * Emits a synhcronized Attack event if the given entity idles
  * @param {object} Entity - entity
  * @param {object} Entity - target
  */
 function notifyNearbyEntities(entity, targetEntity) {
   const entities = getNearbyAlliedEntitiesToEntity(entity);
+  // attack
   EventEmitter.getInstance()
     .synced.entities(entities)
     .attack({ targetEntity });
@@ -55,6 +69,7 @@ class EntityDamage extends Event {
       // if authorised we notify all the nearby allied entities
       // to attack the target who initially inflicted the damage
       if (authorised) {
+        attackTarget(entity, emitter);
         notifyNearbyEntities(entity, emitter);
       }
     });

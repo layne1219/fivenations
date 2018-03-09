@@ -809,7 +809,7 @@ class Entity {
    * @return {boolean}
    */
   isIdling() {
-    this.activityManager.isIdling();
+    return this.activityManager.isIdling();
   }
 
   /**
