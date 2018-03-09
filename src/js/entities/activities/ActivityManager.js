@@ -75,8 +75,8 @@ function ActivityManager(entity) {
     },
 
     update() {
-      let l = activities.length,
-        currentIdx = l - 1;
+      const l = activities.length;
+      const currentIdx = l - 1;
       if (l === 0) {
         // when the activity list is emtpty the entity should go idling
         this.add(new Idle(entity));
