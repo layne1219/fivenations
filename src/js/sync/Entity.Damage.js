@@ -26,7 +26,7 @@ function getNearbyAlliedEntitiesToEntity(entity) {
  * @param {object} Entity - target
  */
 function attackTarget(entity, targetEntity) {
-  if (!entity.isIdling()) return false;
+  if (!entity.isIdling()) return;
 
   EventEmitter.getInstance()
     .synced.entities(entity)
@@ -63,15 +63,15 @@ class EntityDamage extends Event {
     options.targets.forEach((id) => {
       const entity = ns.game.entityManager.entities(id);
 
-      if (!entity) return;
-      entity.damage(options.data);
-
       // if authorised we notify all the nearby allied entities
       // to attack the target who initially inflicted the damage
       if (authorised) {
         attackTarget(entity, emitter);
         notifyNearbyEntities(entity, emitter);
       }
+
+      if (!entity) return;
+      entity.damage(options.data);
     });
   }
 }
