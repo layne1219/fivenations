@@ -505,6 +505,7 @@ class Entity {
   /**
    * Alters entity attributes according to the given parameters
    * @param {object} params
+   * @return {boolean} true if the entity is removed after applying the damage
    */
   damage(params) {
     this.dataObject.damage(params);
@@ -512,9 +513,11 @@ class Entity {
 
     if (this.dataObject.getHull() <= 0) {
       this.entityManager.remove(this);
-    } else {
-      this.eventDispatcher.dispatch('damage');
+      return true;
     }
+
+    this.eventDispatcher.dispatch('damage');
+    return false;
   }
 
   /**

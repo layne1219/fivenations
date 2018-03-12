@@ -75,6 +75,7 @@ function createEntityEventAPI(entityManager) {
        */
       follow(options) {
         const { targetEntity } = options;
+        if (!targetEntity) return this;
 
         EventBus.getInstance().add({
           id: 'entity/follow',
@@ -154,6 +155,8 @@ function createEntityEventAPI(entityManager) {
         const weaponGUIDs = [];
         let weaponCount = 0;
 
+        if (!targetEntity) return this;
+
         entities.forEach((entity, idx) => {
           weaponGUIDs[idx] = entity
             .getWeaponManager()
@@ -185,6 +188,7 @@ function createEntityEventAPI(entityManager) {
        */
       attack(options) {
         const { targetEntity } = options;
+        if (!targetEntity) return this;
 
         EventBus.getInstance().add({
           id: 'entity/attack',
@@ -205,16 +209,20 @@ function createEntityEventAPI(entityManager) {
        */
       damage(options) {
         const { weapon } = options;
+        const data = {
+          damage: weapon.getDamage(),
+          damageShield: weapon.getDamageShield(),
+        };
         const emitter = weapon.getManager().getEntity();
+
+        if (emitter) {
+          data.emitterEntity = emitter.getGUID();
+        }
 
         EventBus.getInstance().add({
           id: 'entity/damage',
           targets: entities,
-          data: {
-            emitterEntity: emitter.getGUID(),
-            damage: weapon.getDamage(),
-            damageShield: weapon.getDamageShield(),
-          },
+          data,
         });
 
         return this;
@@ -226,6 +234,7 @@ function createEntityEventAPI(entityManager) {
        */
       getToDock(options) {
         const { targetEntity } = options;
+        if (!targetEntity) return this;
 
         EventBus.getInstance().add({
           id: 'entity/getToDock',
@@ -246,6 +255,7 @@ function createEntityEventAPI(entityManager) {
        */
       dock(options) {
         const { targetEntity } = options;
+        if (!targetEntity) return this;
 
         EventBus.getInstance().add({
           id: 'entity/dock',
