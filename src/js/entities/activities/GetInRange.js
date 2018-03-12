@@ -61,7 +61,7 @@ class GetInRange extends Move {
 
   /**
    * Saving the target entity that will be followed
-   * @return {void}
+   * @oaram {object} entity - Entity
    */
   setTarget(entity) {
     this.target = entity;

@@ -4,7 +4,6 @@ import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
 
 const ns = window.fivenations;
-
 const dogFightDistanceTreshold = 100;
 const dogFightCoords = [
   {
@@ -36,7 +35,6 @@ class Attack extends Activity {
     this.entity = entity;
     this.motionManager = entity.getMotionManager();
     this._firstExecution = true;
-    this._hasBeenInRangeSince = false;
 
     // Helper variables for the DogFight logic
     this._dogFight = this.entity.getDataObject().isFighter();
@@ -58,7 +56,7 @@ class Attack extends Activity {
       this._firstExecution = false;
       this.entity.stop();
     }
-
+    has;
     // executes the undock activity against all docked entities
     // and makes them attack the current target
     this.releaseDockedEntities();
@@ -80,15 +78,6 @@ class Attack extends Activity {
     // hasn't arrived at the distance where its weapon with the smallest range
     // can be fired
     if (!this.isTargetInMinRange() && !this.isWeaponReadyToFireTarget()) {
-      // if the target is out of range for 3 seconds
-      if (
-        this._hasBeenInRangeSince &&
-        ns.game.time.time - this._hasBeenInRangeSince >= 3000
-      ) {
-        this.kill();
-        return;
-      }
-
       this.entity.getInRange(this.target);
       return;
     }
@@ -114,11 +103,6 @@ class Attack extends Activity {
         }
       }
     } else {
-      // we mark the entity that it has been in range at least once
-      // that is important to kill this activity when the target
-      // is out of the range for a pre-defined time period
-      this._hasBeenInRangeSince = ns.game.time.time;
-
       if (this.motionManager.isMoving()) {
         this.entity.stop();
         return;

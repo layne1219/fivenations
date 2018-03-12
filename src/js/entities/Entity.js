@@ -421,7 +421,7 @@ class Entity {
 
   /**
    * Registers a GetInRange activity with the given entity set as target
-   * @param  {object} targetEntity [Entity]
+   * @param {object} targetEntity - Entity
    * @return {void}
    */
   getInRange(targetEntity) {
