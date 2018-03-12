@@ -107,6 +107,7 @@ WeaponManager.prototype = {
     this.weapons.forEach((weapon) => {
       weapon.clearTargetEntity();
     });
+    this._lastEntityAttacked = null;
     this.targetEntityWillBeSet = false;
   },
 

@@ -422,10 +422,13 @@ class Entity {
   /**
    * Registers a GetInRange activity with the given entity set as target
    * @param {object} targetEntity - Entity
-   * @return {void}
+   * @param {boolean} checkIfTargetTooFar
    */
-  getInRange(targetEntity) {
-    const getInRange = new ActivityManager.GetInRange(this);
+  getInRange(targetEntity, checkIfTargetTooFar) {
+    const getInRange = new ActivityManager.GetInRange(
+      this,
+      checkIfTargetTooFar,
+    );
     getInRange.setTarget(targetEntity);
     this.activityManager.add(getInRange);
   }

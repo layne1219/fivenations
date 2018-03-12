@@ -105,7 +105,7 @@ class Attack extends Activity {
     // can be fired
     if (!this.isTargetInMinRange() && !this.isWeaponReadyToFireTarget()) {
       if (this.hasTargetGottenToFar()) {
-        this.stop();
+        this.entity.stop();
         this.kill();
       } else {
         this.entity.getInRange(this.target, this._hasBeenInRangeOnce);
@@ -156,6 +156,11 @@ class Attack extends Activity {
   moveTo(coords) {
     this.coords = coords;
     this.entity.getMotionManager().moveTo(this);
+  }
+
+  kill() {
+    this.entity.getWeaponManager().clearTargetEntity();
+    super.kill();
   }
 
   /**
@@ -209,7 +214,7 @@ class Attack extends Activity {
    */
   hasTargetGottenToFar() {
     if (!this._hasBeenInRangeOnce) return false;
-    return distance >= this._rangeTooFar;
+    return this._distance >= this._rangeTooFar;
   }
 
   /**
