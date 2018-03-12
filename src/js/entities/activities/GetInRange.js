@@ -1,13 +1,36 @@
+/* eslint no-underscore-dangle: 0 */
 import Activity from './Activity';
 import Move from './Move';
 import Util from '../../common/Util';
 
+const rangeTooFarFactor = 1.5;
+
 class GetInRange extends Move {
   /**
    * @param {object} entity Instance of an Entity class
+   * @param {boolean} willBeKilledIfTargetTooFar
    */
-  constructor(entity) {
+  constructor(entity, willBeKilledIfTargetTooFar = false) {
     super(entity);
+    this.willBeKilledIfTargetTooFar = willBeKilledIfTargetTooFar;
+
+    // helper variable to avoid calculating the distance between
+    // the main and target entity more than once per tick
+    this._distance = 0;
+
+    // the minimum range
+    this._minRange = this.entity.getWeaponManager().getMinRange();
+
+    // the range value that is deemed too far
+    this._rangeTooFar =
+      this.entity.getWeaponManager().getMaxRange() * rangeTooFarFactor;
+  }
+
+  /**
+   * Calculates the distance between the given and target entity
+   */
+  calculateDistance() {
+    this._distance = Util.distanceBetween(this.entity, this.target);
   }
 
   /**
@@ -19,10 +42,19 @@ class GetInRange extends Move {
       return;
     }
 
+    // calculates the distance betwen the given and target entity
+    // and saves it into a local helper variable for optimisation
+    this.calculateDistance();
+
     // provided the entity has already approached the target
     // so that its weapon with the smallest range can be released
     // - or - it has any releasable weapon
-    if (this.isInMinRange() || this.isWeaponReadyToFireTarget()) {
+    // - or - the target has been out of range and gotten too far
+    if (
+      this.isInMinRange() ||
+      this.isWeaponReadyToFireTarget() ||
+      this.isTargetTooFar()
+    ) {
       this.entity.stop();
       this.kill();
       return;
@@ -73,9 +105,7 @@ class GetInRange extends Move {
    * @return {boolean}
    */
   isInMinRange() {
-    const distance = Util.distanceBetween(this.entity, this.target);
-    const range = this.entity.getWeaponManager().getMinRange();
-    return distance <= range;
+    return this._distance <= this._minRange;
   }
 
   /**
@@ -84,6 +114,15 @@ class GetInRange extends Move {
    */
   isWeaponReadyToFireTarget() {
     return this.entity.getWeaponManager().isWeaponReadyToFireTarget();
+  }
+
+  /**
+   * Returns whether the target has gotten too far
+   * @return {boolean}
+   */
+  isTargetTooFar() {
+    if (!this.willBeKilledIfTargetTooFar) return false;
+    return this._distance > this._rangeTooFar;
   }
 }
 
