@@ -230,6 +230,14 @@ class Game extends Util.EventDispatcher {
       dispatch.bind(dispatcher, 'pointer/rightclick'),
     );
 
+    this.userPointer.on('scroll/up', this.map.scrollUp.bind(this.map, 25));
+    this.userPointer.on('scroll/down', this.map.scrollDown.bind(this.map, 25));
+    this.userPointer.on('scroll/left', this.map.scrollLeft.bind(this.map, 25));
+    this.userPointer.on(
+      'scroll/right',
+      this.map.scrollRight.bind(this.map, 25),
+    );
+
     // -----------------------------------------------------------------------
     //                              UserKeyboard
     // -----------------------------------------------------------------------

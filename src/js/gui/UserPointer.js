@@ -1,6 +1,10 @@
-/* global Phaser */
+/* global window, Phaser */
 /* eslint class-methods-use-this: 0 */
 import Util from '../common/Util';
+import GUI from '../gui/GUI';
+import { DEFAULT_CANVAS_WIDTH, DEFAULT_CANVAS_HEIGHT } from '../common/Const';
+
+const scrollTreshold = 50;
 
 let phaserGame;
 let singleton;
@@ -58,6 +62,39 @@ class UserPointer {
     });
   }
 
+  /**
+   * Invoked when the mouse pointer moves and emits
+   */
+  emitScrollEvents() {
+    const mouseX = phaserGame.input.mousePointer.x;
+    const mouseY = phaserGame.input.mousePointer.y;
+
+    if (
+      GUI.getInstance().isHover() &&
+      phaserGame.input.mousePointer.leftButton.isDown &&
+      !this.multiselector.active
+    ) {
+      return;
+    }
+
+    if (mouseX < scrollTreshold) {
+      this.dispatcher.dispatch('scroll/left');
+    } else if (mouseX + scrollTreshold > DEFAULT_CANVAS_WIDTH) {
+      this.dispatcher.dispatch('scroll/right');
+    }
+
+    if (mouseY < scrollTreshold) {
+      this.dispatcher.dispatch('scroll/up');
+    } else if (mouseY + scrollTreshold > DEFAULT_CANVAS_HEIGHT) {
+      this.dispatcher.dispatch('scroll/down');
+    }
+  }
+
+  /**
+   * Shorthand to register events through the built-in EventDispatcher
+   * @param {object}
+   * @param {function} callback
+   */
   on(event, callback) {
     this.dispatcher.addEventListener(event, callback);
   }
@@ -78,6 +115,8 @@ class UserPointer {
 
   update() {
     phaserGame.debug.geom(this.multiselector, '#0fffff', false);
+    // check mouse coordinates for scroll events
+    this.emitScrollEvents();
 
     if (phaserGame.input.mousePointer.leftButton.isDown) {
       this.dispatcher.dispatch('leftbutton/move', this);
