@@ -22,6 +22,11 @@ class FogOfWar {
     this.map = map;
   }
 
+  /**
+   * Reveals the tile based on the given coordinates
+   * @param {number} x
+   * @param {number} y
+   */
   visit(x, y) {
     if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
       if (!this.tiles[y][x]) {
@@ -35,6 +40,19 @@ class FogOfWar {
       }
     }
     return this;
+  }
+
+  /**
+   * Reveals the tile based on the given coordinates
+   * @param {number} x
+   * @param {number} y
+   */
+  forceVisit(x, y) {
+    this.visit(x, y);
+    if (this.dirty) {
+      this.map.forceRefresh();
+      this.dirty = false;
+    }
   }
 
   visitTilesByEntityVisibility(entity) {

@@ -421,11 +421,14 @@ class Entity {
 
   /**
    * Registers a GetInRange activity with the given entity set as target
-   * @param  {object} targetEntity [Entity]
-   * @return {void}
+   * @param {object} targetEntity - Entity
+   * @param {boolean} checkIfTargetTooFar
    */
-  getInRange(targetEntity) {
-    const getInRange = new ActivityManager.GetInRange(this);
+  getInRange(targetEntity, checkIfTargetTooFar) {
+    const getInRange = new ActivityManager.GetInRange(
+      this,
+      checkIfTargetTooFar,
+    );
     getInRange.setTarget(targetEntity);
     this.activityManager.add(getInRange);
   }
@@ -505,6 +508,7 @@ class Entity {
   /**
    * Alters entity attributes according to the given parameters
    * @param {object} params
+   * @return {boolean} true if the entity is removed after applying the damage
    */
   damage(params) {
     this.dataObject.damage(params);
@@ -512,9 +516,20 @@ class Entity {
 
     if (this.dataObject.getHull() <= 0) {
       this.entityManager.remove(this);
-    } else {
-      this.eventDispatcher.dispatch('damage');
+      return true;
     }
+
+    this.eventDispatcher.dispatch('damage');
+    return false;
+  }
+
+  /**
+   * Revelas the fog of war tile that the entity is belonged to
+   */
+  revealEntityInFogOfWar() {
+    const { map } = ns.game;
+    const fogOfWar = map.getFogOfWar();
+    fogOfWar.forceVisit(...this.getTile(map));
   }
 
   /**
@@ -659,21 +674,28 @@ class Entity {
 
   /**
    * Sets the given entity as the closest hostile entity in attack range of this entity
-   * @param {object} entity Closest entity that is in a hostile relation with the one
+   * @param {object} entity - Closest entity that is in a hostile relation with the one
    * initiated the call
-   * return {object} Entity
+   * @param {object} Entity
    */
   setClosestHostileEntityInRange(entity) {
     this.closestHostileEntity = entity;
   }
 
   /**
-   * Sets the given entity as the closest ally entity in attack range of this entity
-   * @param {object} entity Closest entity that is an ally of the one initiated the call
-   * return {object} Entity
+   * Returns the closest entity that can be attacked
+   * @param {object} Entity
    */
-  setClosestAllyEntityInRange(entity) {
-    this.closestAllyEntity = entity;
+  setClosestAttackableHostileEntity(entity) {
+    this.closestAttackableHostileEntity = entity;
+  }
+
+  /**
+   * Sets the given array of entities as the closest ally entities
+   * @param {array} entities - Closest entities
+   */
+  setClosestAllyEntitiesInRange(entities) {
+    this.closestAllyEntities = entities;
   }
 
   /**
@@ -723,7 +745,7 @@ class Entity {
 
   /**
    * returns true if the entity is controlled by the current user
-   * @return {Boolean}
+   * @return {boolean}
    */
   isEntityControlledByUser(player) {
     const p = player || PlayerManager.getInstance().getUser();
@@ -734,7 +756,7 @@ class Entity {
   /**
    * Returns whether the given entity is hostile or not
    * @param  {object} entity Entity instance
-   * @return {Boolean} true if the given entity is hostile
+   * @return {boolean} true if the given entity is hostile
    */
   isEnemy(entity) {
     const playerManager = PlayerManager.getInstance();
@@ -746,15 +768,32 @@ class Entity {
 
   /**
    * Returns wether the entity can be a target of other entities
-   * @return {Boolean} true if the entity is targetable
+   * @return {boolean} true if the entity is targetable
    */
   isTargetable() {
     return !this.isHibernated();
   }
 
   /**
+   * Returns wether the entity can be targeted by the given entity
+   * @param {object} entity - Entity
+   * @return {boolean} true if the entity is targetable
+   */
+  isTargetableByEntity(entity) {
+    if (!this.isTargetable()) return false;
+
+    // check whether the given entity can attack fighters
+    if (this.getDataObject().isFighter()) {
+      const hasCAF = entity.getWeaponManager().hasCAF();
+      if (!hasCAF) return false;
+    }
+
+    return true;
+  }
+
+  /**
    * Returns whether the entity is active or not
-   * @return {Boolean}
+   * @return {boolean}
    */
   isHibernated() {
     return !!this.hibarnated;
@@ -762,7 +801,7 @@ class Entity {
 
   /**
    * Returns wether the entity can take fighters in
-   * @return {Boolean}
+   * @return {boolean}
    */
   isDockable() {
     if (this.dockable === undefined) {
@@ -772,8 +811,16 @@ class Entity {
   }
 
   /**
+   * Returns whether the entity is idling or not
+   * @return {boolean}
+   */
+  isIdling() {
+    return this.activityManager.isIdling();
+  }
+
+  /**
    * Returns wether the entity can dock
-   * @return {Boolean}
+   * @return {boolean}
    */
   canDock() {
     if (this.isAbleToDock === undefined) {
@@ -784,7 +831,7 @@ class Entity {
 
   /**
    * Returns whether the entity can move or not
-   * @return {Boolean}
+   * @return {boolean}
    */
   canMove() {
     return this.dataObject.getSpeed() > 0;
@@ -867,11 +914,19 @@ class Entity {
   }
 
   /**
-   * Returns the closest entity that is in alliance with the current entity
+   * Returns the closest entity that can be attacked
    * @return {object} Entity
    */
-  getClosestAllyEntityInRange() {
-    return this.closestAllyEntity;
+  getClosestAttackableHostileEntity() {
+    return this.closestAttackableHostileEntity;
+  }
+
+  /**
+   * Returns the closest entity that is in alliance with the current entity
+   * @return {array} Entity[]
+   */
+  getClosestAllyEntitiesInRange() {
+    return this.closestAllyEntities;
   }
 
   /**

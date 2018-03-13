@@ -6,6 +6,7 @@ import FogOfWar from './FogOfWar';
 import FogOfWarRenderer from './FogOfWarRenderer';
 import CollisionMap from './CollisionMap';
 import Util from '../common/Util';
+import { TILE_WIDTH, TILE_HEIGHT, SCROLL_SPEED } from '../common/Const';
 
 // FiveNations namespace to fetch the game window dimensions
 const ns = window.fivenations;
@@ -20,9 +21,6 @@ const COLLISION_MAP_REFRESH_RATE = 100;
 
 const MIN_WIDTH = 32;
 const MIN_HEIGHT = 32;
-const TILE_WIDTH = 40;
-const TILE_HEIGHT = 40;
-const SCROLL_SPEED = 10;
 
 let width = MIN_WIDTH * TILE_WIDTH;
 let height = MIN_HEIGHT * TILE_HEIGHT;

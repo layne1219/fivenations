@@ -57,7 +57,9 @@ class Weapon {
 
     let targetTypes;
     let targetEntityType;
-    const targetEntity = this.entity.getClosestHostileEntityInRange();
+
+    // targetEntity is always the closest in the vision range
+    const targetEntity = this.entity.getClosestAttackableHostileEntity();
 
     // if there is no target nearby
     if (!targetEntity) {
@@ -83,45 +85,46 @@ class Weapon {
   }
 
   release() {
-    if (this.targetEntity) {
-      this.fire(this.targetEntity);
-    }
+    this.fire(this.targetEntity);
+    this.revealEntityInFogOfWarIfRequired();
   }
 
   fire(targetEntity) {
-    const targetSprite = targetEntity.getSprite();
-    const projectileOffset = this.entity.getProjectileOffsetByHeading();
+    const targetSprite = this.targetEntity.getSprite();
     const sprite = this.entity.getSprite();
-    const distance = Util.distanceBetweenSprites(sprite, targetSprite);
+    const projectileOffset = this.entity.getProjectileOffsetByHeading();
+    const accuracy = this.data.accuracy || 100;
+    const spreadMax = WEAPON_ACCURACY_SPREAD_IN_RADIAN * (1 - accuracy / 100);
+    const spread = Math.random() * spreadMax - spreadMax / 2;
+    const rotation =
+      ns.game.game.physics.arcade.angleBetween(sprite, targetSprite) + spread;
+    const offsetX = projectileOffset.x || 0;
+    const offsetY = projectileOffset.y || 0;
+    const x = sprite.x + offsetX;
+    const y = sprite.y + offsetY;
+    let velocity = this.data.velocity;
 
-    if (distance <= this.getRange()) {
-      const accuracy = this.data.accuracy || 100;
-      const spreadMax = WEAPON_ACCURACY_SPREAD_IN_RADIAN * (1 - accuracy / 100);
-      const spread = Math.random() * spreadMax - spreadMax / 2;
-      const rotation =
-        ns.game.game.physics.arcade.angleBetween(sprite, targetSprite) + spread;
-      const offsetX = projectileOffset.x || 0;
-      const offsetY = projectileOffset.y || 0;
-      const x = sprite.x + offsetX;
-      const y = sprite.y + offsetY;
-      let velocity = this.data.velocity;
+    if (!velocity) {
+      velocity = this.data.acceleration || this.data.maxVelocity;
+    }
 
-      if (!velocity) {
-        velocity = this.data.acceleration || this.data.maxVelocity;
-      }
+    EventEmitter.getInstance().synced.effects.add({
+      id: this.data.effect,
+      emitter: this,
+      maxVelocity: this.data.maxVelocity,
+      acceleration: this.data.acceleration,
+      rotation,
+      velocity,
+      x,
+      y,
+    });
 
-      EventEmitter.getInstance().synced.effects.add({
-        id: this.data.effect,
-        emitter: this,
-        maxVelocity: this.data.maxVelocity,
-        acceleration: this.data.acceleration,
-        rotation,
-        velocity,
-        x,
-        y,
-      });
+    this.freeze(this.data.cooldown);
+  }
 
-      this.freeze(this.data.cooldown);
+  revealEntityInFogOfWarIfRequired() {
+    if (this.targetEntity.isEntityControlledByUser()) {
+      this.entity.revealEntityInFogOfWar();
     }
   }
 
@@ -214,6 +217,18 @@ class Weapon {
     return this.data.targetTypes;
   }
 
+  canAttackFighters() {
+    return this.data.CAF;
+  }
+
+  canHitFighters() {
+    return this.data.CHF;
+  }
+
+  getMinRange() {
+    return this.data.minRange;
+  }
+
   getEffect() {
     return this.data.effect;
   }
@@ -235,18 +250,46 @@ class Weapon {
   }
 
   isReleasable() {
+    // only if the target is in range
+    if (!this.isTargetInRange()) return false;
+
+    // if in range and there is are no prerequisites
     if (this.unconditionalRelease) return true;
 
     // if the entity stands still
-    if (this.entity.getMotionManager().movement.velocity !== 0) return false;
+    if (this.isEntityMoving()) return false;
 
+    if (!this.isFacingTarget()) return false;
+
+    return true;
+  }
+
+  isTargetInRange() {
+    const targetSprite = this.targetEntity.getSprite();
+    const sprite = this.entity.getSprite();
+    const distance = Util.distanceBetweenSprites(sprite, targetSprite);
+
+    return distance <= this.getRange() && distance >= this.getMinRange();
+  }
+
+  isEntityMoving() {
+    return this.entity.getMotionManager().movement.velocity !== 0;
+  }
+
+  isFacingTarget() {
     // if the entity doesn't face target entity
     if (this.requiresEntityToFaceTarget()) {
       return this.entity
         .getMotionManager()
         .isEntityFacingTargetEntity(this.targetEntity);
     }
+    return true;
+  }
 
+  couldBeReleased() {
+    if (!this.hasTargetEntity()) return false;
+    if (!this.isReady()) return false;
+    if (!this.isTargetInRange()) return false;
     return true;
   }
 

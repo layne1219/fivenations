@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 const weaponsJSON = require('../../../assets/datas/common/weapons.json');
 
 import Weapon from './Weapon';
@@ -106,6 +107,7 @@ WeaponManager.prototype = {
     this.weapons.forEach((weapon) => {
       weapon.clearTargetEntity();
     });
+    this._lastEntityAttacked = null;
     this.targetEntityWillBeSet = false;
   },
 
@@ -227,6 +229,26 @@ WeaponManager.prototype = {
       }
     }
     return false;
+  },
+
+  /**
+   * Returns if any of the weapons can fire their target entity
+   * @return {boolean}
+   */
+  hasCAF() {
+    if (undefined === this._hasCAF) {
+      this._hasCAF = this.weapons.some(weapon => weapon.canAttackFighters());
+    }
+    return this._hasCAF;
+  },
+
+  /**
+   * Returns if any of the weapons can fire their target entity
+   * @return {boolean}
+   */
+  isWeaponReadyToFireTarget() {
+    if (!this.hasTargetEntity()) return false;
+    return this.weapons.some(weapon => weapon.couldBeReleased());
   },
 };
 

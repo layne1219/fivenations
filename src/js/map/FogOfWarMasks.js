@@ -1,3 +1,5 @@
+import { TILE_WIDTH } from '../common/Const';
+
 const masks = [
   [[1, 1, 1], [1, 1, 1], [1, 1, 1]],
   [
@@ -6806,6 +6808,11 @@ const FogOfWarMasks = {
     if (!size || size < offset) return oneByOne;
     if (!masks[size - offset]) return oneByOne;
     return masks[size - offset];
+  },
+
+  getVisionScreenWidth(size) {
+    const mask = this.getMaskBySize(size);
+    return Math.round(mask.length / 2) * TILE_WIDTH;
   },
 };
 

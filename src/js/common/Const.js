@@ -17,6 +17,14 @@ export const SUPPORTED_LOCALES = ['en_US', 'en_GB'];
 export const DEFAUT_LOCALE = SUPPORTED_LOCALES[0];
 
 // ==============================================================
+// ===                             MAP                        ===
+// ==============================================================
+// Map constants
+export const TILE_WIDTH = 40;
+export const TILE_HEIGHT = 40;
+export const SCROLL_SPEED = 10;
+
+// ==============================================================
 // ===                           ENTITIES                     ===
 // ==============================================================
 // size categories for entities

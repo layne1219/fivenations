@@ -1,79 +1,129 @@
+/* eslint no-underscore-dangle: 0 */
 import Activity from './Activity';
 import Move from './Move';
 import Util from '../../common/Util';
 
-/**
- * Constructor function to FollowActivity
- * @param  {[object]} entity Instance of an Entity class
- * @return {[object]}
- */
-function GetInRange(entity) {
-  Move.call(this, entity);
-}
+const rangeTooFarFactor = 1.5;
 
-GetInRange.prototype = new Move();
-GetInRange.prototype.constructor = GetInRange;
+class GetInRange extends Move {
+  /**
+   * @param {object} entity Instance of an Entity class
+   * @param {boolean} willBeKilledIfTargetTooFar
+   */
+  constructor(entity, willBeKilledIfTargetTooFar = false) {
+    super(entity);
+    this.willBeKilledIfTargetTooFar = willBeKilledIfTargetTooFar;
 
-/**
- * Updating the activity on every tick
- * @return {[void]}
- */
-GetInRange.prototype.update = function () {
-  let distance;
-  let range;
+    // helper variable to avoid calculating the distance between
+    // the main and target entity more than once per tick
+    this._distance = 0;
 
-  if (!this.target) {
-    return;
+    // the minimum range
+    this._minRange = this.entity.getWeaponManager().getMinRange();
+
+    // the range value that is deemed too far
+    this._rangeTooFar =
+      this.entity.getWeaponManager().getMaxRange() * rangeTooFarFactor;
   }
 
-  distance = Util.distanceBetween(this.entity, this.target);
-  range = this.entity.getWeaponManager().getMinRange();
-
-  if (distance <= range) {
-    this.entity.stop();
-    this.kill();
-    return;
+  /**
+   * Calculates the distance between the given and target entity
+   */
+  calculateDistance() {
+    this._distance = Util.distanceBetween(this.entity, this.target);
   }
 
-  if (
-    this.coords.x === this.target.getSprite().x &&
-    this.coords.y === this.target.getSprite().y
-  ) {
-  } else {
+  /**
+   * Updating the activity on every tick
+   * @return {[void]}
+   */
+  update() {
+    if (!this.target) {
+      return;
+    }
+
+    // calculates the distance betwen the given and target entity
+    // and saves it into a local helper variable for optimisation
+    this.calculateDistance();
+
+    // provided the entity has already approached the target
+    // so that its weapon with the smallest range can be released
+    // - or - it has any releasable weapon
+    // - or - the target has been out of range and gotten too far
+    if (
+      this.isInMinRange() ||
+      this.isWeaponReadyToFireTarget() ||
+      this.isTargetTooFar()
+    ) {
+      this.entity.stop();
+      this.kill();
+      return;
+    }
+
     this.moveTowardsTarget();
   }
-};
 
-/**
- * Applying the activity on an entity
- * @return {void}
- */
-GetInRange.prototype.activate = function () {
-  Activity.prototype.activate.call(this);
-  this.moveTowardsTarget();
-};
-
-/**
- * Move towards the target entity
- * @return {void}
- */
-GetInRange.prototype.moveTowardsTarget = function () {
-  this.setCoords({
-    x: this.target.getSprite().x,
-    y: this.target.getSprite().y,
-  });
-  this.entity.getMotionManager().moveTo(this);
-};
-
-/**
- * Saving the target entity that will be followed
- * @return {void}
- */
-GetInRange.prototype.setTarget = function (entity) {
-  if (!entity) {
-    throw 'Invalid entity is passed to be followed!';
+  /**
+   * Applying the activity on an entity
+   * @return {void}
+   */
+  activate() {
+    super.activate();
+    this.moveTowardsTarget();
   }
-  this.target = entity;
-};
+
+  /**
+   * Move towards the target entity
+   * @return {void}
+   */
+  moveTowardsTarget() {
+    if (
+      this.coords.x === this.target.getSprite().x &&
+      this.coords.y === this.target.getSprite().y
+    ) {
+      return;
+    }
+
+    this.setCoords({
+      x: this.target.getSprite().x,
+      y: this.target.getSprite().y,
+    });
+    this.entity.getMotionManager().moveTo(this);
+  }
+
+  /**
+   * Saving the target entity that will be followed
+   * @oaram {object} entity - Entity
+   */
+  setTarget(entity) {
+    this.target = entity;
+  }
+
+  /**
+   * Returns whether the target is in the range of the weapon
+   * that is with the smallest range attribute
+   * @return {boolean}
+   */
+  isInMinRange() {
+    return this._distance <= this._minRange;
+  }
+
+  /**
+   * Returns true if the entity currently has any releasable weapon
+   * @return {boolean}
+   */
+  isWeaponReadyToFireTarget() {
+    return this.entity.getWeaponManager().isWeaponReadyToFireTarget();
+  }
+
+  /**
+   * Returns whether the target has gotten too far
+   * @return {boolean}
+   */
+  isTargetTooFar() {
+    if (!this.willBeKilledIfTargetTooFar) return false;
+    return this._distance > this._rangeTooFar;
+  }
+}
 
 export default GetInRange;

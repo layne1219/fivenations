@@ -1,7 +1,10 @@
+/* eslint no-underscore-dangle: 0 */
 import {
   ENTITY_SIZES,
   ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED,
 } from '../common/Const';
+
+import FogOfWarMasks from '../map/FogOfWarMasks';
 
 /**
  * Returns the dimensions of the given entity model
@@ -144,6 +147,14 @@ function DataObject(json) {
       return data.vision;
     },
 
+    getVisionRange() {
+      // use object context to cache calculated vision range value
+      if (!this.visionRange) {
+        this.visionRange = FogOfWarMasks.getVisionScreenWidth(this.getVision());
+      }
+      return this.visionRange;
+    },
+
     getWeapons() {
       return data.weapons;
     },
@@ -266,7 +277,10 @@ function DataObject(json) {
     },
 
     isFighter() {
-      return this.getType() === 'Fighter';
+      if (!this._isFighter) {
+        this._isFighter = this.getType() === 'Fighter';
+      }
+      return this._isFighter;
     },
 
     getTargetGraphicsGroup() {

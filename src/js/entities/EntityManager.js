@@ -260,21 +260,37 @@ EntityManager.prototype = {
   setClosestEntities(entity) {
     if (!entity) throw new Error('Invalid Entity instance is passed!');
 
-    const closests = this.getEntitiesInRange(entity);
-    let closestEnemy = null;
-    let closestAlly = null;
+    const closests = this.getEntitiesInApproximity(entity);
+    let closestAttackableEntity = null;
+    let closestEnemyInRange = null;
+    const closestAllies = [];
 
     for (let i = closests.length - 1; i >= 0; i -= 1) {
-      if (!closestEnemy && closests[i].isEnemy(entity)) {
-        closestEnemy = closests[i];
-      } else if (!closestAlly) {
-        closestAlly = closests[i];
+      const { candidate, inRange, inVision } = closests[i];
+
+      if (!candidate.isHibernated()) {
+        if (entity.isEnemy(candidate)) {
+          // check if the encountered enemy entity can be targeted
+          if (candidate.isTargetableByEntity(entity)) {
+            // closest enemy in range
+            if (!closestEnemyInRange && inRange) {
+              closestEnemyInRange = candidate;
+            }
+            // closest attackable enemy (for scanning)
+            if (!closestAttackableEntity && (inVision || inRange)) {
+              closestAttackableEntity = candidate;
+            }
+          }
+        } else if (entity.getPlayer() === candidate.getPlayer()) {
+          // we collect the non-hostile entities
+          closestAllies.push(candidate);
+        }
       }
-      if (closestEnemy && closestAlly) break;
     }
 
-    entity.setClosestHostileEntityInRange(closestEnemy);
-    entity.setClosestAllyEntityInRange(closestAlly);
+    entity.setClosestAttackableHostileEntity(closestAttackableEntity);
+    entity.setClosestHostileEntityInRange(closestEnemyInRange);
+    entity.setClosestAllyEntitiesInRange(closestAllies);
   },
 
   /**
@@ -302,22 +318,29 @@ EntityManager.prototype = {
    * @param  {[type]} entity [description]
    * @return {[type]}        [description]
    */
-  getEntitiesInRange(entity) {
-    const range = entity.getWeaponManager().getMaxRange();
+  getEntitiesInApproximity(entity) {
+    const maxRange = entity.getWeaponManager().getMaxRange();
+    const visionRange = entity.getDataObject().getVisionRange() * 1.25;
+    const maxDistance = Math.max(maxRange, visionRange);
     const sprite = entity.getSprite();
     const candidates = this.quadTree.retrieve(sprite);
     return candidates
-      .map(candidate => [
-        Util.distanceBetweenSprites(sprite, candidate),
+      .map(candidate => ({
+        distance: Util.distanceBetweenSprites(sprite, candidate),
         candidate,
-      ])
+      }))
       .filter((data) => {
-        if (data[1] === sprite) return false;
-        if (data[1]._parent.isHibernated()) return false;
-        return data[0] <= range;
+        if (data.candidate === sprite) return false;
+        if (data.candidate._parent.isHibernated()) return false;
+        return data.distance <= maxDistance;
       })
-      .sort((a, b) => a[0] < b[0])
-      .map(data => data[1]._parent);
+      .sort((a, b) => a.distance < b.distance)
+      .map(data => ({
+        inVision: data.distance <= visionRange,
+        inRange: data.distance <= maxRange,
+        candidate: data.candidate._parent,
+        distance: data.distance,
+      }));
   },
 
   /**

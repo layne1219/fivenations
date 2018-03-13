@@ -10,6 +10,8 @@ import GetToDock from './GetToDock';
 import Attack from './Attack';
 import RotateToTarget from './RotateToTarget';
 
+const ns = window.fivenations;
+
 function ActivityManager(entity) {
   let activities = [];
 
@@ -21,8 +23,8 @@ function ActivityManager(entity) {
      * of the activity list if true
      */
     add(activity, addAsLast) {
-      let l = activities.length,
-        currentIdx = l - 1;
+      const l = activities.length;
+      const currentIdx = l - 1;
       if (!(activity instanceof Activity)) {
         throw 'You must extend the manager with an object inherits from Activity!';
       }
@@ -73,8 +75,8 @@ function ActivityManager(entity) {
     },
 
     update() {
-      let l = activities.length,
-        currentIdx = l - 1;
+      const l = activities.length;
+      const currentIdx = l - 1;
       if (l === 0) {
         // when the activity list is emtpty the entity should go idling
         this.add(new Idle(entity));
@@ -84,6 +86,30 @@ function ActivityManager(entity) {
       if (activities[currentIdx].isActivated()) {
         activities[currentIdx].update();
       }
+    },
+
+    /**
+     * Returns true if the current Activity is Idle
+     */
+    isIdling() {
+      const l = activities.length;
+      const currentIdx = l - 1;
+      return activities[currentIdx] instanceof Idle;
+    },
+
+    /**
+     * Display debug information about the activities
+     */
+    debug() {
+      const phaserGame = ns.game.game;
+      activities.forEach((activity, idx) => {
+        phaserGame.debug.text(
+          activity.constructor.name,
+          2,
+          30 + idx * 16,
+          '#ffff00',
+        );
+      });
     },
   };
 }

@@ -3,6 +3,10 @@ import PlayerManager from '../../players/PlayerManager';
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
 
+const ns = window.fivenations;
+
+const rangeTooFarFactor = 1.5;
+
 const dogFightDistanceTreshold = 100;
 const dogFightCoords = [
   {
@@ -40,6 +44,17 @@ class Attack extends Activity {
     // -1 means that there is no selected DogFight coordinate just yet
     this._dogFightCoordIdx = -1;
 
+    // helper variable to avoid calculating the distance between
+    // the main and target entity more than once per tick
+    this._distance = 0;
+
+    // the minimum range
+    this._minRange = this.entity.getWeaponManager().getMinRange();
+
+    // the range value that is deemed too far
+    this._rangeTooFar =
+      this.entity.getWeaponManager().getMaxRange() * rangeTooFarFactor;
+
     // gracefully cleans up the activity when the target is removed
     this.onTargetEntityRemove = () => this.kill();
   }
@@ -51,33 +66,55 @@ class Attack extends Activity {
   activate() {
     super.activate();
 
-    if (!this.target.isTargetable()) {
-      this.kill();
-    }
+    this.calculateDistance();
 
-    if (this._firstExecution && this.isTargetInRange()) {
+    if (this._firstExecution && this.isTargetInMinRange()) {
       this._firstExecution = false;
       this.entity.stop();
     }
-
     // executes the undock activity against all docked entities
     // and makes them attack the current target
     this.releaseDockedEntities();
   }
 
   /**
+   * Calculates the distance between the given and target entity
+   */
+  calculateDistance() {
+    this._distance = Util.distanceBetween(this.entity, this.target);
+  }
+
+  /**
    * Updates the activity on every tick
    */
   update() {
-    if (!this.target.isTargetable()) {
+    // if the target cannot be attacked the activity gets destroyed
+    if (!this.target.isTargetableByEntity(this.entity)) {
+      const dispatcher = EventEmitter.getInstance().local;
+      dispatcher.dispatch('attack/invalid-target');
       this.kill();
       return;
     }
 
-    if (!this.isTargetInRange()) {
-      this.entity.getInRange(this.target);
+    // calculates the distance betwen the given and target entity
+    // and saves it into a local helper variable for optimisation
+    this.calculateDistance();
+
+    // unshifts GetInRange Activiy to the Activity queue if the entity
+    // hasn't arrived at the distance where its weapon with the smallest range
+    // can be fired
+    if (!this.isTargetInMinRange() && !this.isWeaponReadyToFireTarget()) {
+      if (this.hasTargetGottenToFar()) {
+        this.entity.stop();
+        this.kill();
+      } else {
+        this.entity.getInRange(this.target, this._hasBeenInRangeOnce);
+      }
       return;
     }
+
+    // marks the entity so that we now it has been in range at least once
+    this._hasBeenInRangeOnce = true;
 
     // DogFight logic makes entities to select coordinates
     // around their target entity and move their while the
@@ -121,6 +158,11 @@ class Attack extends Activity {
     this.entity.getMotionManager().moveTo(this);
   }
 
+  kill() {
+    this.entity.getWeaponManager().clearTargetEntity();
+    super.kill();
+  }
+
   /**
    * Saving the target entity that will be attacked
    * @return {[void]}
@@ -142,14 +184,8 @@ class Attack extends Activity {
    * Checks whether the specified target entity is in range
    * @return {boolean}
    */
-  isTargetInRange() {
-    let distance;
-    let range;
-
-    distance = Util.distanceBetween(this.entity, this.target);
-    range = this.entity.getWeaponManager().getMinRange();
-
-    return distance <= range;
+  isTargetInMinRange() {
+    return this._distance <= this._minRange;
   }
 
   /**
@@ -169,6 +205,16 @@ class Attack extends Activity {
    */
   isDogFightEnabled() {
     return this._dogFight;
+  }
+
+  /**
+   * Returns true if the entity has been targetet at least once, but
+   * now it's gotten too far to continue the attack activity
+   * @return {boolean}
+   */
+  hasTargetGottenToFar() {
+    if (!this._hasBeenInRangeOnce) return false;
+    return this._distance >= this._rangeTooFar;
   }
 
   /**
@@ -245,6 +291,14 @@ class Attack extends Activity {
    */
   getCoords() {
     return this._dogFightCoords;
+  }
+
+  /**
+   * Returns true if the entity currently has any releasable weapon
+   * @return {boolean}
+   */
+  isWeaponReadyToFireTarget() {
+    return this.entity.getWeaponManager().isWeaponReadyToFireTarget();
   }
 }
 
