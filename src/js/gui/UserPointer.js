@@ -1,4 +1,4 @@
-/* global window, Phaser */
+/* global Phaser */
 /* eslint class-methods-use-this: 0 */
 import Util from '../common/Util';
 import GUI from '../gui/GUI';
