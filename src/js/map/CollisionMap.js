@@ -1,3 +1,4 @@
+/* global Phaser, window */
 import EasyStar from 'easystarjs';
 import Util from '../common/Util';
 
@@ -63,25 +64,23 @@ class CollisionMap {
    * occupied by an entity
    * @param {number} x - horizontal offset
    * @param {number} y - vertical offset
+   * @param {number} value - 0 or 1
+   * @param {number} width - number of tiles to visit horizontally
+   * @param {number} height - number of tiles to visit vertically
+   * @param {number} offsetX - horizontal offset
+   * @param {number} offsetY - vertical offset
    * @return {object} this
    */
-  visit(x, y) {
-    if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
-      this.tiles[y][x] = 1;
-    }
-    return this;
-  }
-
-  /**
-   * Sets the specified tile according to the given coordinates as
-   * empty
-   * @param {number} x - horizontal offset
-   * @param {number} y - vertical offset
-   * @return {object} this
-   */
-  unvisit(x, y) {
-    if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
-      this.tiles[y][x] = 0;
+  visit(x, y, value = 1, width = 1, height = 1, offsetX = 0, offsetY = 0) {
+    for (let i = width - 1; i >= 0; i -= 1) {
+      for (let j = height - 1; j >= 0; j -= 1) {
+        const tileX = Math.min(
+          Math.max(x - offsetX + i, 0),
+          this.tiles[0].length,
+        );
+        const tileY = Math.min(Math.max(y - offsetY + j, 0), this.tiles.length);
+        this.tiles[tileY][tileX] = value;
+      }
     }
     return this;
   }
@@ -96,36 +95,28 @@ class CollisionMap {
     const previousTile = entity.getPreviousTile(this.map);
     const tile = entity.getTile(this.map);
     const sprite = entity.getSprite();
-    const width = Math.ceil(sprite.width / COLLISION_TILE_WIDTH);
-    const height = Math.ceil(sprite.height / COLLISION_TILE_HEIGHT);
+    const width = Math.floor(sprite.hitArea.width / COLLISION_TILE_WIDTH);
+    const height = Math.floor(sprite.hitArea.height / COLLISION_TILE_HEIGHT);
     const offsetX = Math.floor(width / 2);
     const offsetY = Math.floor(height / 2);
 
     if (!previousTile) {
-      this.visit(tile[0], tile[1]);
+      this.visit(tile[0], tile[1], 1, width, height, offsetX, offsetY);
       return;
     }
 
     const sameCoords = previousTile.every((v, idx) => tile[idx] === v);
     if (!sameCoords) {
-      for (let i = width - 1; i >= 0; i -= 1) {
-        for (let j = height - 1; j >= 0; j -= 1) {
-          this.unvisit(
-            Math.min(
-              Math.max(previousTile[0] - offsetX + i, 0),
-              this.tiles[0].length,
-            ),
-            Math.min(
-              Math.max(previousTile[1] - offsetY + j, 0),
-              this.tiles.length,
-            ),
-          );
-          this.visit(
-            Math.min(Math.max(tile[0] - offsetX + i, 0), this.tiles[0].length),
-            Math.min(Math.max(tile[1] - offsetY + j, 0), this.tiles.length),
-          );
-        }
-      }
+      this.visit(
+        previousTile[0],
+        previousTile[1],
+        0,
+        width,
+        height,
+        offsetX,
+        offsetY,
+      );
+      this.visit(tile[0], tile[1], 1, width, height, offsetX, offsetY);
       this.setDirtyFlag(true);
     }
   }
