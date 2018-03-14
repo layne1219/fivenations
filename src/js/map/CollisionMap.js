@@ -1,4 +1,10 @@
+import EasyStar from 'easystarjs';
 import Util from '../common/Util';
+
+const ns = window.fivenations;
+
+// aggregation of tile ids that are considered as no-wall
+const ACCEPTABLE_TILES = [0];
 
 /**
  * Wraps a matrix that contains infomations about which map tile
@@ -13,6 +19,7 @@ class CollisionMap {
   constructor(map) {
     this.initMatrix(map);
     this.initEventDispatcher();
+    this.initEasyStar();
   }
 
   /**
@@ -30,6 +37,21 @@ class CollisionMap {
    */
   initEventDispatcher() {
     this.dispatcher = new Util.EventDispatcher();
+  }
+
+  /**
+   * Initialises an EasyStar pathfinding instance
+   */
+  initEasyStar() {
+    // eslint-disable-next-line new-cap
+    this.easyStar = new EasyStar.js();
+    // avoids easyStar to hold up the main thread by limiting the number of
+    // calculations per iteration
+    this.easyStar.setIterationsPerCalculation(1000);
+    this.easyStar.setGrid(this.tiles);
+    this.easyStar.setAcceptableTiles(ACCEPTABLE_TILES);
+    // refresh the grid when the collision map changes
+    this.on('change', tiles => this.easyStar.setGrid(tiles));
   }
 
   /**
@@ -117,6 +139,25 @@ class CollisionMap {
    */
   on(event, listener) {
     this.dispatcher.addEventListener(event, listener);
+  }
+
+  /**
+   * Displays the occupied tiles on the screen for debugging purposes
+   */
+  debug() {
+    const phaserGame = ns.game.game;
+    for (let i = this.tiles.length - 1; i >= 0; i--) {
+      for (let j = this.tiles[i].length - 1; j >= 0; j--) {
+        if (this.tiles[i][j]) {
+          const width = 40;
+          const height = 40;
+          const x = j * width;
+          const y = i * height;
+          const rect = new Phaser.Rectangle(x, y, width, height);
+          phaserGame.debug.geom(rect, '#fa0000', false);
+        }
+      }
+    }
   }
 
   /**

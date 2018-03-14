@@ -1,5 +1,4 @@
 /* global window, Phaser */
-import EasyStar from 'easystarjs';
 import Signals from '../common/Signals';
 import Graphics from '../common/Graphics';
 import Scriptbox from '../common/Scriptbox';
@@ -293,21 +292,6 @@ class Game extends Util.EventDispatcher {
     //                                QuadTree
     // -----------------------------------------------------------------------
     this.entityManager.createQuadTree(this.map);
-
-    // -----------------------------------------------------------------------
-    //                              A* Pathfinder
-    // -----------------------------------------------------------------------
-    // eslint-disable-next-line new-cap
-    this.easyStar = new EasyStar.js();
-    // avoids easyStar to hold up the main thread by limiting the number of
-    // calculations per iteration
-    this.easyStar.setIterationsPerCalculation(1000);
-    this.easyStar.setGrid(this.map.getCollisionMap());
-    this.easyStar.setAcceptableTiles([0]);
-    // refresh the grid when the collision map changes
-    this.map.getCollisionMap().on('change', (map) => {
-      this.easyStar.setGrid(map);
-    });
   }
 
   /**
