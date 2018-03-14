@@ -6,6 +6,10 @@ const ns = window.fivenations;
 // aggregation of tile ids that are considered as no-wall
 const ACCEPTABLE_TILES = [0];
 
+// dimensions of one collision tile in pixels
+const COLLISION_TILE_WIDTH = 40;
+const COLLISION_TILE_HEIGHT = 40;
+
 /**
  * Wraps a matrix that contains infomations about which map tile
  * is occupied by a given entity and exposes API calls to fetch
@@ -91,6 +95,11 @@ class CollisionMap {
     // it's important to execute getPreviousTile first
     const previousTile = entity.getPreviousTile(this.map);
     const tile = entity.getTile(this.map);
+    const sprite = entity.getSprite();
+    const width = Math.ceil(sprite.width / COLLISION_TILE_WIDTH);
+    const height = Math.ceil(sprite.height / COLLISION_TILE_HEIGHT);
+    const offsetX = Math.floor(width / 2);
+    const offsetY = Math.floor(height / 2);
 
     if (!previousTile) {
       this.visit(tile[0], tile[1]);
@@ -99,8 +108,24 @@ class CollisionMap {
 
     const sameCoords = previousTile.every((v, idx) => tile[idx] === v);
     if (!sameCoords) {
-      this.unvisit(previousTile[0], previousTile[1]);
-      this.visit(tile[0], tile[1]);
+      for (let i = width - 1; i >= 0; i -= 1) {
+        for (let j = height - 1; j >= 0; j -= 1) {
+          this.unvisit(
+            Math.min(
+              Math.max(previousTile[0] - offsetX + i, 0),
+              this.tiles[0].length,
+            ),
+            Math.min(
+              Math.max(previousTile[1] - offsetY + j, 0),
+              this.tiles.length,
+            ),
+          );
+          this.visit(
+            Math.min(Math.max(tile[0] - offsetX + i, 0), this.tiles[0].length),
+            Math.min(Math.max(tile[1] - offsetY + j, 0), this.tiles.length),
+          );
+        }
+      }
       this.setDirtyFlag(true);
     }
   }
@@ -146,11 +171,11 @@ class CollisionMap {
    */
   debug() {
     const phaserGame = ns.game.game;
-    for (let i = this.tiles.length - 1; i >= 0; i--) {
-      for (let j = this.tiles[i].length - 1; j >= 0; j--) {
+    for (let i = this.tiles.length - 1; i >= 0; i -= 1) {
+      for (let j = this.tiles[i].length - 1; j >= 0; j -= 1) {
         if (this.tiles[i][j]) {
-          const width = 40;
-          const height = 40;
+          const width = COLLISION_TILE_WIDTH;
+          const height = COLLISION_TILE_HEIGHT;
           const x = j * width;
           const y = i * height;
           const rect = new Phaser.Rectangle(x, y, width, height);
