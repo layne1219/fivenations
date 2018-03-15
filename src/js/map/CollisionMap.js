@@ -93,8 +93,7 @@ class CollisionMap {
    * @param {object} coords - [x, y]
    */
   setPreviousTile(entity, coords) {
-    return (this.previousCoords[entity.getGUID()] =
-      coords || entity.getTile(this.map));
+    this.previousCoords[entity.getGUID()] = coords || entity.getTile(this.map);
   }
 
   /**
