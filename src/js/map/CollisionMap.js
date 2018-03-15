@@ -86,19 +86,37 @@ class CollisionMap {
   }
 
   /**
-   * Sets the tile identified by the given entity location as
-   * occupied
+   * Returns details about the dimensions that the given entity
+   * might occupy
+   * @return {object} width, height, offsetX, offsetY
+   */
+  getEntityDimensionsForVisitingTiles(entity) {
+    const sprite = entity.getSprite();
+    const width = Math.floor(sprite.hitArea.width / COLLISION_TILE_WIDTH);
+    const height = Math.floor(sprite.hitArea.height / COLLISION_TILE_HEIGHT);
+
+    return {
+      offsetX: Math.floor(width / 2),
+      offsetY: Math.floor(height / 2),
+      width,
+      height,
+    };
+  }
+
+  /**
+   * Sets the collision tiles by given entity location
    * @param {object} entity - Entity instance
    */
   visitTilesByEntity(entity) {
     // it's important to execute getPreviousTile first
     const previousTile = entity.getPreviousTile(this.map);
     const tile = entity.getTile(this.map);
-    const sprite = entity.getSprite();
-    const width = Math.floor(sprite.hitArea.width / COLLISION_TILE_WIDTH);
-    const height = Math.floor(sprite.hitArea.height / COLLISION_TILE_HEIGHT);
-    const offsetX = Math.floor(width / 2);
-    const offsetY = Math.floor(height / 2);
+    const {
+      width,
+      height,
+      offsetX,
+      offsetY,
+    } = this.getEntityDimensionsForVisitingTiles(entity);
 
     if (!previousTile) {
       this.visit(tile[0], tile[1], 1, width, height, offsetX, offsetY);
@@ -119,6 +137,21 @@ class CollisionMap {
       this.visit(tile[0], tile[1], 1, width, height, offsetX, offsetY);
       this.setDirtyFlag(true);
     }
+  }
+
+  /**
+   * Unsets the collision tiles by given entity location
+   * @param {object} entity - Entity instance
+   */
+  unvisitTilesByEntity(entity) {
+    const tile = entity.getTile(this.map);
+    const {
+      width,
+      height,
+      offsetX,
+      offsetY,
+    } = this.getEntityDimensionsForVisitingTiles(entity);
+    this.visit(tile[0], tile[1], 0, width, height, offsetX, offsetY);
   }
 
   /**

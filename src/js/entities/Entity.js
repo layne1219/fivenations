@@ -547,7 +547,13 @@ class Entity {
    * @return {void}
    */
   remove() {
+    // releases occupied tiles from the active CollisionMap instance
+    const collisionMap = ns.game.map.getCollisionMap();
+    collisionMap.unvisitTilesByEntity(this);
+
+    // removes sprite from the relevant Phaser Scene
     this.delete();
+
     if (!ns.mapEditorMode) {
       EffectManager.getInstance().explode(this);
     }
