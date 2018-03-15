@@ -12,6 +12,30 @@ const COLLISION_TILE_WIDTH = 40;
 const COLLISION_TILE_HEIGHT = 40;
 
 /**
+ * Returns details about the dimensions that the given entity
+ * might occupy
+ * @return {object} width, height, offsetX, offsetY
+ */
+function getEntityDimensionsForVisitingTiles(entity) {
+  const sprite = entity.getSprite();
+  const width = Math.max(
+    Math.floor(sprite.hitArea.width / COLLISION_TILE_WIDTH),
+    1,
+  );
+  const height = Math.max(
+    Math.floor(sprite.hitArea.height / COLLISION_TILE_HEIGHT),
+    1,
+  );
+
+  return {
+    offsetX: Math.floor(width / 2),
+    offsetY: Math.floor(height / 2),
+    width,
+    height,
+  };
+}
+
+/**
  * Wraps a matrix that contains infomations about which map tile
  * is occupied by a given entity and exposes API calls to fetch
  * these datas in certain ways
@@ -35,6 +59,9 @@ class CollisionMap {
   initMatrix(map) {
     this.tiles = Util.matrix(map.getWidth(), map.getHeight());
     this.map = map;
+    // rainbow list to persist coordinates of previously occuped tiles
+    // on entity bases
+    this.previousCoords = {};
   }
 
   /**
@@ -60,18 +87,35 @@ class CollisionMap {
   }
 
   /**
+   * Sets the coordinates of the tile that the given entity
+   * previously occuped
+   * @param {object} entity - Entity
+   * @param {object} coords - [x, y]
+   */
+  setPreviousTile(entity, coords) {
+    return (this.previousCoords[entity.getGUID()] =
+      coords || entity.getTile(this.map));
+  }
+
+  /**
    * Sets the specified tile according to the given coordinates as
    * occupied by an entity
-   * @param {number} x - horizontal offset
-   * @param {number} y - vertical offset
-   * @param {number} value - 0 or 1
-   * @param {number} width - number of tiles to visit horizontally
-   * @param {number} height - number of tiles to visit vertically
-   * @param {number} offsetX - horizontal offset
-   * @param {number} offsetY - vertical offset
+   * @param {object} entity - Entity
+   * @param {boolean} previous - if true it releases the occupation of
+   * previous tiles
    * @return {object} this
    */
-  visit(x, y, value = 1, width = 1, height = 1, offsetX = 0, offsetY = 0) {
+  visit(entity, previous = false) {
+    const [x, y] = previous
+      ? this.getPreviousTile(entity)
+      : entity.getTile(this.map);
+    const {
+      width,
+      height,
+      offsetX,
+      offsetY,
+    } = getEntityDimensionsForVisitingTiles(entity);
+
     for (let i = width - 1; i >= 0; i -= 1) {
       for (let j = height - 1; j >= 0; j -= 1) {
         const tileX = Math.min(
@@ -79,28 +123,25 @@ class CollisionMap {
           this.tiles[0].length,
         );
         const tileY = Math.min(Math.max(y - offsetY + j, 0), this.tiles.length);
-        this.tiles[tileY][tileX] = value;
+        this.tiles[tileY][tileX] = previous ? 0 : 1;
       }
     }
+
+    if (!previous) {
+      this.setPreviousTile(entity, [x, y]);
+    }
+
+    this.setDirtyFlag(true);
+
     return this;
   }
 
   /**
-   * Returns details about the dimensions that the given entity
-   * might occupy
-   * @return {object} width, height, offsetX, offsetY
+   * Shorthand function to visit previously occuped tiles by the given entity
+   * @param {object} - entity
    */
-  getEntityDimensionsForVisitingTiles(entity) {
-    const sprite = entity.getSprite();
-    const width = Math.floor(sprite.hitArea.width / COLLISION_TILE_WIDTH);
-    const height = Math.floor(sprite.hitArea.height / COLLISION_TILE_HEIGHT);
-
-    return {
-      offsetX: Math.floor(width / 2),
-      offsetY: Math.floor(height / 2),
-      width,
-      height,
-    };
+  unvisitPrevious(entity) {
+    this.visit(entity, true);
   }
 
   /**
@@ -108,34 +149,14 @@ class CollisionMap {
    * @param {object} entity - Entity instance
    */
   visitTilesByEntity(entity) {
-    // it's important to execute getPreviousTile first
-    const previousTile = entity.getPreviousTile(this.map);
-    const tile = entity.getTile(this.map);
-    const {
-      width,
-      height,
-      offsetX,
-      offsetY,
-    } = this.getEntityDimensionsForVisitingTiles(entity);
-
-    if (!previousTile) {
-      this.visit(tile[0], tile[1], 1, width, height, offsetX, offsetY);
-      return;
-    }
-
-    const sameCoords = previousTile.every((v, idx) => tile[idx] === v);
-    if (!sameCoords) {
-      this.visit(
-        previousTile[0],
-        previousTile[1],
-        0,
-        width,
-        height,
-        offsetX,
-        offsetY,
-      );
-      this.visit(tile[0], tile[1], 1, width, height, offsetX, offsetY);
-      this.setDirtyFlag(true);
+    if (this.hasPreviousTile(entity)) {
+      const hasMoved = this.hasEntityChangedOccupiedTiles(entity);
+      if (hasMoved) {
+        this.unvisitPrevious(entity);
+        this.visit(entity);
+      }
+    } else {
+      this.visit(entity);
     }
   }
 
@@ -144,14 +165,7 @@ class CollisionMap {
    * @param {object} entity - Entity instance
    */
   unvisitTilesByEntity(entity) {
-    const tile = entity.getTile(this.map);
-    const {
-      width,
-      height,
-      offsetX,
-      offsetY,
-    } = this.getEntityDimensionsForVisitingTiles(entity);
-    this.visit(tile[0], tile[1], 0, width, height, offsetX, offsetY);
+    this.unvisitPrevious(entity);
   }
 
   /**
@@ -238,6 +252,24 @@ class CollisionMap {
   }
 
   /**
+   * Returns the coordinates of the tile that the given entity
+   * previously occuped
+   * @param {object} entity - Entity
+   * @return {object} array - [x, y]
+   */
+  getPreviousTile(entity) {
+    return this.previousCoords[entity.getGUID()];
+  }
+
+  /**
+   * Returns if the entity has previous coordinates of occupation
+   * @param {boolean} entity - Entity
+   */
+  hasPreviousTile(entity) {
+    return !!this.previousCoords[entity.getGUID()];
+  }
+
+  /**
    * Returns true if any of the tiles has been changed since the
    * last check
    * @return {boolean}
@@ -258,6 +290,18 @@ class CollisionMap {
       return this.tiles[y][x];
     }
     return false;
+  }
+
+  /**
+   * Returns whether the given entity has changed its position and
+   * therefore the collision tiles must be updated
+   * @param {object} entity
+   * @return {boolean}
+   */
+  hasEntityChangedOccupiedTiles(entity) {
+    const previousTile = this.getPreviousTile(entity);
+    const tile = entity.getTile(this.map);
+    return !previousTile.every((v, idx) => tile[idx] === v);
   }
 }
 

@@ -17,7 +17,7 @@ const FOG_OF_WAR_REFRESH_RATE = 5;
 // refresh rate skipped execution per tick
 // Entities are not moving rapidly so we won't have to update
 // the collision map obsessively
-const COLLISION_MAP_REFRESH_RATE = 100;
+const COLLISION_MAP_REFRESH_RATE = 10;
 
 const MIN_WIDTH = 32;
 const MIN_HEIGHT = 32;

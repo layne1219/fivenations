@@ -892,12 +892,7 @@ class Entity {
     const tileSize = map.getTileWidth();
     const x = Math.floor(sprite.x / tileSize);
     const y = Math.floor(sprite.y / tileSize);
-    this._previousTile = [x, y];
-    return this._previousTile;
-  }
-
-  getPreviousTile() {
-    return this._previousTile;
+    return [x, y];
   }
 
   getDockedEntities() {
