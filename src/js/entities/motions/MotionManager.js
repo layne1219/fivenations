@@ -332,6 +332,29 @@ MotionManager.prototype = {
     }
   },
 
+
+  calculateFrontCollisionPoints() {
+    const angleCode = this.rotation.currentAngleCode;
+    if (!this.collisionPoints[angleCode]) {
+      const rad = this.movement.currentAngle;
+      const cX = this.sprite.x;
+      const cY = this.sprite.y;
+      const x = 0;
+      const y = this.sprite.hitArea.height;
+
+      const c = Math.cos(rad);
+      const s = Math.sin(rad);
+
+      const dX = x - cX;
+      const dY = y - cY;
+
+      const nX = cX + (dX * c) - (dY * s);
+      const nY = cY + (dX * s) + (dY * c);
+      this.collisionPoints[angleCode] = { nX, nY };
+    }
+    return this.collisionPoints[angleCode];
+  }
+
   /**
    * Registers a callback to the given event
    * @param  {string} event

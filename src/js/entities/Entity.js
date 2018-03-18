@@ -895,6 +895,8 @@ class Entity {
     return [x, y];
   }
 
+  getTileAhead() {}
+
   getDockedEntities() {
     return this.docker;
   }
