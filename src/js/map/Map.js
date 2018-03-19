@@ -108,7 +108,7 @@ class Map {
     if (collisionMap) {
       collisionMap.optimizedUpdate(entityManager);
       if (ns.debugMode) {
-        collisionMap.debug();
+        collisionMap.debug(entityManager);
       }
     }
   }

@@ -93,7 +93,7 @@ class CollisionMap {
    * @param {object} coords - [x, y]
    */
   setPreviousTile(entity, coords) {
-    this.previousCoords[entity.getGUID()] = coords || entity.getTile(this.map);
+    this.previousCoords[entity.getGUID()] = coords || entity.getTile();
   }
 
   /**
@@ -105,9 +105,7 @@ class CollisionMap {
    * @return {object} this
    */
   visit(entity, previous = false) {
-    const [x, y] = previous
-      ? this.getPreviousTile(entity)
-      : entity.getTile(this.map);
+    const [x, y] = previous ? this.getPreviousTile(entity) : entity.getTile();
     const {
       width,
       height,
@@ -206,7 +204,7 @@ class CollisionMap {
   /**
    * Displays the occupied tiles on the screen for debugging purposes
    */
-  debug() {
+  debug(entityManager) {
     const phaserGame = ns.game.game;
     for (let i = this.tiles.length - 1; i >= 0; i -= 1) {
       for (let j = this.tiles[i].length - 1; j >= 0; j -= 1) {
@@ -220,6 +218,17 @@ class CollisionMap {
         }
       }
     }
+
+    // shows the tile where the leading collision point is located
+    entityManager.entities(':not(hibernated)').forEach((entity) => {
+      const coords = entity.getTileAhead();
+      const width = COLLISION_TILE_WIDTH;
+      const height = COLLISION_TILE_HEIGHT;
+      const x = coords[0] * width;
+      const y = coords[1] * height;
+      const rect = new Phaser.Rectangle(x, y, width, height);
+      phaserGame.debug.geom(rect, '#ffaa00', false);
+    });
   }
 
   /**
@@ -299,7 +308,7 @@ class CollisionMap {
    */
   hasEntityChangedOccupiedTiles(entity) {
     const previousTile = this.getPreviousTile(entity);
-    const tile = entity.getTile(this.map);
+    const tile = entity.getTile();
     return !previousTile.every((v, idx) => tile[idx] === v);
   }
 }

@@ -24,6 +24,8 @@ function MotionManager(entity) {
   this.isEntityArrivedAtDestination = false;
   this.isEntityStoppedAtDestination = false;
   this.isEntityHeadedToDestination = false;
+
+  this.collisionPoints = {};
 }
 
 /**
@@ -332,28 +334,32 @@ MotionManager.prototype = {
     }
   },
 
-
-  calculateFrontCollisionPoints() {
+  /**
+   * Calculates and returns the coordinates of a point
+   * in front of the entity given its current rotation
+   * @return {object} {x, y}
+   */
+  getFrontCollisionPoint() {
     const angleCode = this.rotation.currentAngleCode;
     if (!this.collisionPoints[angleCode]) {
       const rad = this.movement.currentAngle;
       const cX = this.sprite.x;
       const cY = this.sprite.y;
-      const x = 0;
-      const y = this.sprite.hitArea.height;
+      const nX = 0;
+      const nY = -this.sprite.hitArea.height;
 
       const c = Math.cos(rad);
       const s = Math.sin(rad);
 
-      const dX = x - cX;
-      const dY = y - cY;
+      const dX = nX - cX;
+      const dY = nY - cY;
 
-      const nX = cX + (dX * c) - (dY * s);
-      const nY = cY + (dX * s) + (dY * c);
-      this.collisionPoints[angleCode] = { nX, nY };
+      const x = cX + dX * c - dY * s;
+      const y = cY + dX * s + dY * c;
+      this.collisionPoints[angleCode] = { x, y };
     }
     return this.collisionPoints[angleCode];
-  }
+  },
 
   /**
    * Registers a callback to the given event

@@ -529,7 +529,7 @@ class Entity {
   revealEntityInFogOfWar() {
     const { map } = ns.game;
     const fogOfWar = map.getFogOfWar();
-    fogOfWar.forceVisit(...this.getTile(map));
+    fogOfWar.forceVisit(...this.getTile());
   }
 
   /**
@@ -887,15 +887,25 @@ class Entity {
     return animations.getAnimation(key);
   }
 
-  getTile(map) {
+  getTile() {
     const sprite = this.getSprite();
-    const tileSize = map.getTileWidth();
-    const x = Math.floor(sprite.x / tileSize);
-    const y = Math.floor(sprite.y / tileSize);
+    const x = Math.floor(sprite.x / Const.TILE_WIDTH);
+    const y = Math.floor(sprite.y / Const.TILE_WIDTH);
     return [x, y];
   }
 
-  getTileAhead() {}
+  /**
+   * Returns the tile ahead of the entity based on its rotation
+   * @param {object} map - Map instance
+   * @return {object} array of coordinates [x, y]
+   */
+  getTileAhead() {
+    const motionManager = this.getMotionManager();
+    const coordsAhead = motionManager.getFrontCollisionPoint();
+    const x = Math.floor(coordsAhead.x / Const.TILE_WIDTH);
+    const y = Math.floor(coordsAhead.y / Const.TILE_WIDTH);
+    return [x, y];
+  }
 
   getDockedEntities() {
     return this.docker;
