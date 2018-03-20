@@ -901,9 +901,9 @@ class Entity {
    */
   getTileAhead() {
     const motionManager = this.getMotionManager();
-    const coordsAhead = motionManager.getFrontCollisionPoint();
-    const x = Math.floor(coordsAhead.x / Const.TILE_WIDTH);
-    const y = Math.floor(coordsAhead.y / Const.TILE_WIDTH);
+    const coordsAhead = motionManager.getFrontCollisionPointOffset();
+    const x = Math.floor((this.sprite.x + coordsAhead.x) / Const.TILE_WIDTH);
+    const y = Math.floor((this.sprite.y + coordsAhead.y) / Const.TILE_WIDTH);
     return [x, y];
   }
 

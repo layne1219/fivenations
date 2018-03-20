@@ -339,23 +339,18 @@ MotionManager.prototype = {
    * in front of the entity given its current rotation
    * @return {object} {x, y}
    */
-  getFrontCollisionPoint() {
+  getFrontCollisionPointOffset() {
     const angleCode = this.rotation.currentAngleCode;
     if (!this.collisionPoints[angleCode]) {
       const rad = this.movement.currentAngle;
-      const cX = this.sprite.x;
-      const cY = this.sprite.y;
-      const nX = 0;
-      const nY = -this.sprite.hitArea.height;
+      const nX = this.sprite.hitArea.width;
+      const nY = 0;
 
       const c = Math.cos(rad);
       const s = Math.sin(rad);
 
-      const dX = nX - cX;
-      const dY = nY - cY;
-
-      const x = cX + dX * c - dY * s;
-      const y = cY + dX * s + dY * c;
+      const x = nX * c - nY * s;
+      const y = nX * s + nY * c;
       this.collisionPoints[angleCode] = { x, y };
     }
     return this.collisionPoints[angleCode];
