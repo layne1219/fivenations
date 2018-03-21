@@ -1,43 +1,89 @@
 {
-    "id": "fusionreactor",
-    "name": "Fusion Reactor",
-    "type": "building",
-    "building": true,
-    "hull": 300,
-    "shield": 100,
-    "armor": 3,
-    "power": 0, 
-    "hangar": 0,
-    "speed": 0,
-    "maneuverability": 0,
-    "vision": 20,
-    "weapons": [ 87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-    "titanium": 400,
-    "silicium": 500,
-    "energy": 250,
-    "uranium": 50,
-    "space": 0,
-    "buildingTime": 25,
-    "directions": 0,
-    "animFrame": 1,
-    "animType": ["idle"],
-    "size": "m",
-    "animations": {
-        "idle": {
-            "rate": 20,
-            "loopable": true,
-            "frames": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-        }
-    },
-    "events": {
-		"remove": {
-			"effects": [
-                "fusionreactor-wreckage",
-                "destruction-medium"
-            ],
-			"minWrecks": 5,
-			"maxWrecks": 10,
-			"wrecks": ["fed-wreck-1", "fed-wreck-2", "fed-wreck-3", "fed-wreck-4", "fed-wreck-5"]
-		}
-	}
+  "id": "fusionreactor",
+  "name": "Fusion Reactor",
+  "type": "building",
+  "building": true,
+  "hull": 300,
+  "shield": 100,
+  "armor": 3,
+  "power": 0,
+  "hangar": 0,
+  "speed": 0,
+  "maneuverability": 0,
+  "vision": 3,
+  "weapons": [
+    87,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 400,
+  "silicium": 500,
+  "energy": 250,
+  "uranium": 50,
+  "space": 0,
+  "buildingTime": 25,
+  "directions": 0,
+  "animFrame": 1,
+  "animType": [
+    "idle"
+  ],
+  "size": "m",
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    }
+  },
+  "events": {
+    "remove": {
+      "effects": [
+        "fusionreactor-wreckage",
+        "destruction-medium"
+      ],
+      "minWrecks": 5,
+      "maxWrecks": 10,
+      "wrecks": [
+        "fed-wreck-1",
+        "fed-wreck-2",
+        "fed-wreck-3",
+        "fed-wreck-4",
+        "fed-wreck-5"
+      ]
+    }
+  },
+  "damageArea": {
+    "width": 90,
+    "height": 90
+  }
 }
