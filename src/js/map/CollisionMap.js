@@ -221,13 +221,16 @@ class CollisionMap {
 
     // shows the tile where the leading collision point is located
     entityManager.entities(':not(hibernated)').forEach((entity) => {
-      const coords = entity.getTileAhead();
+      const tiles = entity.getTilesAhead();
       const width = COLLISION_TILE_WIDTH;
       const height = COLLISION_TILE_HEIGHT;
-      const x = coords[0] * width;
-      const y = coords[1] * height;
-      const rect = new Phaser.Rectangle(x, y, width, height);
-      phaserGame.debug.geom(rect, '#ffaa00', false);
+
+      tiles.forEach((tile) => {
+        const x = tile.x * width;
+        const y = tile.y * height;
+        const rect = new Phaser.Rectangle(x, y, width, height);
+        phaserGame.debug.geom(rect, '#ffaa00', false);
+      });
     });
   }
 

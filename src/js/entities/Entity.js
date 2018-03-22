@@ -899,29 +899,19 @@ class Entity {
   }
 
   /**
-   * Returns the collision tile ahead of the entity based on its rotation
-   * @return {object} array of coordinates [x, y]
-   */
-  getTileAhead() {
-    const motionManager = this.getMotionManager();
-    const coordsAhead = motionManager.getFrontCollisionPointOffset();
-    const x = Math.floor((this.sprite.x + coordsAhead.x) / Const.TILE_WIDTH);
-    const y = Math.floor((this.sprite.y + coordsAhead.y) / Const.TILE_WIDTH);
-    return [x, y];
-  }
-
-  /**
    * Returns the arc of collision tiles ahead of the entity based
    * on its rotation (defaults to 3 tiles in predefined concave)
-   * @return {object} array of coordinates [x, y]
+   * @return {object} array of coordinates { x, y }
    */
   getTilesAhead() {
     const motionManager = this.getMotionManager();
-    const coordsAhead = motionManager.getFrontCollisionPointOffset();
-    const x = Math.floor((this.sprite.x + coordsAhead.x) / Const.TILE_WIDTH);
-    const y = Math.floor((this.sprite.y + coordsAhead.y) / Const.TILE_WIDTH);
-    return [x, y];
+    return [].map((coords) => {
+      const x = Math.floor((this.sprite.x + coords.x) / Const.TILE_WIDTH);
+      const y = Math.floor((this.sprite.y + coords.y) / Const.TILE_WIDTH);
+      return { x, y };
+    });
   }
+
   getDockedEntities() {
     return this.docker;
   }
