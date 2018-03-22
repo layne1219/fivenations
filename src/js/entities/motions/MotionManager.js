@@ -1,6 +1,7 @@
 import EffectManager from './EffectManager';
 import Effects from './Effects';
 import Util from '../../common/Util';
+import { TILE_WIDTH } from '../../common/Const';
 
 /**
  * Constructor function to initialise the MotionManager
@@ -337,13 +338,14 @@ MotionManager.prototype = {
   /**
    * Calculates and returns the coordinates of a point
    * in front of the entity given its current rotation
+   * @param {number} angleOffset - offset to the angle (defaults to 0)
    * @return {object} {x, y}
    */
-  getFrontCollisionPointOffset() {
-    const angleCode = this.rotation.currentAngleCode;
+  getFrontCollisionPointOffset(angleOffset = 0) {
+    const angleCode = this.rotation.currentAngleCode + angleOffset;
     if (!this.collisionPoints[angleCode]) {
       const rad = this.movement.currentAngle;
-      const nX = this.sprite.hitArea.width;
+      const nX = Math.max(this.sprite.hitArea.width, TILE_WIDTH);
       const nY = 0;
 
       const c = Math.cos(rad);
