@@ -18,6 +18,30 @@ import * as Const from '../common/Const';
 const ns = window.fivenations;
 
 /**
+ * Returns details about the dimensions that the given entity
+ * might occupy in the collision map
+ * @param {object} sprite - Sprite instance (Entity.getSprite())
+ * @return {object} width, height, offsetX, offsetY
+ */
+function getEntityDimensionsForVisitingTiles(sprite) {
+  const width = Math.max(
+    Math.floor(sprite.hitArea.width / Const.TILE_WIDTH),
+    1,
+  );
+  const height = Math.max(
+    Math.floor(sprite.hitArea.height / Const.TILE_HEIGHT),
+    1,
+  );
+
+  return {
+    offsetX: Math.floor(width / 2),
+    offsetY: Math.floor(height / 2),
+    width,
+    height,
+  };
+}
+
+/**
  * Registers animations sequences against the given sprite object if there is any
  * specified in the DO
  * @param  {object} sprite [Phaser.Sprite object to get extended with animations]
@@ -187,6 +211,9 @@ const extendSprite = (entity, sprite, dataObject) => {
   sprite._damageHeight = damageHeight * 0.5;
   sprite._damageWidthWithShield = Math.round(damageWidth);
   sprite._damageHeightWithShield = Math.round(damageHeight);
+
+  // pre-calculate collision data for better performance
+  sprite._collision = getEntityDimensionsForVisitingTiles(sprite);
 
   sprite._parent = entity;
 
@@ -966,6 +993,15 @@ class Entity {
     if (!projectileOffset.length) return projectileOffset;
     const angleCode = this.motionManager.getCurrentAngleCode();
     return projectileOffset[angleCode] || {};
+  }
+
+  /**
+   * Returns helper variables to calculate tiles on the collision map
+   * that the entity occupies
+   * @return {object} - { width, height, offsetX, offsetY }
+   */
+  getCollisionData() {
+    return this.sprite._collision;
   }
 }
 

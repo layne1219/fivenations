@@ -1,39 +1,12 @@
 /* global Phaser, window */
 import EasyStar from 'easystarjs';
 import Util from '../common/Util';
+import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
 
 const ns = window.fivenations;
 
 // aggregation of tile ids that are considered as no-wall
 const ACCEPTABLE_TILES = [0];
-
-// dimensions of one collision tile in pixels
-const COLLISION_TILE_WIDTH = 40;
-const COLLISION_TILE_HEIGHT = 40;
-
-/**
- * Returns details about the dimensions that the given entity
- * might occupy
- * @return {object} width, height, offsetX, offsetY
- */
-function getEntityDimensionsForVisitingTiles(entity) {
-  const sprite = entity.getSprite();
-  const width = Math.max(
-    Math.floor(sprite.hitArea.width / COLLISION_TILE_WIDTH),
-    1,
-  );
-  const height = Math.max(
-    Math.floor(sprite.hitArea.height / COLLISION_TILE_HEIGHT),
-    1,
-  );
-
-  return {
-    offsetX: Math.floor(width / 2),
-    offsetY: Math.floor(height / 2),
-    width,
-    height,
-  };
-}
 
 /**
  * Wraps a matrix that contains infomations about which map tile
@@ -107,11 +80,8 @@ class CollisionMap {
   visit(entity, previous = false) {
     const [x, y] = previous ? this.getPreviousTile(entity) : entity.getTile();
     const {
-      width,
-      height,
-      offsetX,
-      offsetY,
-    } = getEntityDimensionsForVisitingTiles(entity);
+      width, height, offsetX, offsetY,
+    } = entity.getCollisionData();
 
     for (let i = width - 1; i >= 0; i -= 1) {
       for (let j = height - 1; j >= 0; j -= 1) {
@@ -209,8 +179,8 @@ class CollisionMap {
     for (let i = this.tiles.length - 1; i >= 0; i -= 1) {
       for (let j = this.tiles[i].length - 1; j >= 0; j -= 1) {
         if (this.tiles[i][j]) {
-          const width = COLLISION_TILE_WIDTH;
-          const height = COLLISION_TILE_HEIGHT;
+          const width = TILE_WIDTH;
+          const height = TILE_HEIGHT;
           const x = j * width;
           const y = i * height;
           const rect = new Phaser.Rectangle(x, y, width, height);
@@ -222,8 +192,8 @@ class CollisionMap {
     // shows the tile where the leading collision point is located
     entityManager.entities(':not(hibernated)').forEach((entity) => {
       const tiles = entity.getTilesAhead();
-      const width = COLLISION_TILE_WIDTH;
-      const height = COLLISION_TILE_HEIGHT;
+      const width = TILE_WIDTH;
+      const height = TILE_HEIGHT;
 
       tiles.forEach((tile) => {
         const x = tile.x * width;
