@@ -931,12 +931,7 @@ class Entity {
    * @return {object} array of coordinates { x, y }
    */
   getTilesAhead() {
-    const motionManager = this.getMotionManager();
-    return [].map((coords) => {
-      const x = Math.floor((this.sprite.x + coords.x) / Const.TILE_WIDTH);
-      const y = Math.floor((this.sprite.y + coords.y) / Const.TILE_WIDTH);
-      return { x, y };
-    });
+    return [];
   }
 
   getDockedEntities() {
@@ -991,7 +986,7 @@ class Entity {
   getProjectileOffsetByHeading() {
     const projectileOffset = this.dataObject.getProjectileOffset();
     if (!projectileOffset.length) return projectileOffset;
-    const angleCode = this.motionManager.getCurrentAngleCode();
+    const angleCode = this.getCurrentAngleCode();
     return projectileOffset[angleCode] || {};
   }
 
