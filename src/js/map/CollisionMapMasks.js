@@ -145,4 +145,16 @@ const masks = [
   ],
 ];
 
-export default masks;
+const MaskManager = {
+  /**
+   * Returns the appropaite mask by the given width in tiles
+   * @param {number} widthInTiles
+   * @return {object} array number[][]
+   */
+  getMaskByWidth(widthInTiles) {
+    if (!widthInTiles) return masks[0];
+    return masks[Math.min(3, widthInTiles - 1)];
+  },
+};
+
+export default MaskManager;

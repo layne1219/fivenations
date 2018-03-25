@@ -7,6 +7,7 @@ import MotionManager from '../entities/motions/MotionManager';
 import AbilityManager from '../entities/AbilityManager';
 import WeaponManager from '../entities/weapons/WeaponManager';
 import EffectManager from '../effects/EffectManager';
+import CollisionMapMasks from '../map/CollisionMapMasks';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserKeyboard from '../gui/UserKeyboard';
@@ -931,7 +932,27 @@ class Entity {
    * @return {object} array of coordinates { x, y }
    */
   getTilesAhead() {
-    return [];
+    const [x, y] = this.getTile();
+    const { width, offsetX, offsetY } = this.sprite._collision;
+    const angleCode = this.motionManager.getCurrentAngleCode();
+    const maxAngleCode = this.motionManager.getMaxAngleCount();
+    const consolidatedAngleCode = Math.floor(angleCode / (maxAngleCode / 8));
+    const masks = CollisionMapMasks.getMaskByWidth(width);
+    const mask = masks[consolidatedAngleCode];
+    const tilesAhead = [];
+
+    for (let i = mask.length - 1; i >= 0; i -= 1) {
+      for (let j = mask[i].length - 1; j >= 0; j -= 1) {
+        if (mask[i][j]) {
+          tilesAhead.push({
+            x: x - 1 - offsetX + j,
+            y: y - 1 - offsetY + i,
+          });
+        }
+      }
+    }
+
+    return tilesAhead;
   }
 
   getDockedEntities() {
@@ -986,7 +1007,7 @@ class Entity {
   getProjectileOffsetByHeading() {
     const projectileOffset = this.dataObject.getProjectileOffset();
     if (!projectileOffset.length) return projectileOffset;
-    const angleCode = this.getCurrentAngleCode();
+    const angleCode = this.motionManager.getCurrentAngleCode();
     return projectileOffset[angleCode] || {};
   }
 

@@ -62,7 +62,7 @@ function createRotationObject(entity) {
     realManeuverSystem: hasRealManeuverSystem,
     targetAngleCode: 0,
     currentAngleCode: 0,
-    maxAngleCount: dataObject.getDirections(),
+    maxAngleCount: dataObject.getDirections() || 1,
     angularVelocity: 0,
     angularVelocityHelper: 0,
     maxAngularVelocity: maneuverability,
@@ -501,6 +501,14 @@ MotionManager.prototype = {
    */
   getCurrentAngleInDeg() {
     return (Phaser.Math.radToDeg(this.getCurrentAngleInRad()) + 270) % 360;
+  },
+
+  /**
+   * Returns the maximum count of separate angle states
+   * @return {number}
+   */
+  getMaxAngleCount() {
+    return this.rotation.maxAngleCount;
   },
 };
 
