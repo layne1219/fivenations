@@ -116,11 +116,22 @@ class CollisionMap {
    * @param {object} entity - Entity instance
    */
   visitTilesByEntity(entity) {
+    // at every tick we assume that the entity is unblocked
+    entity.setObstacleAhead(false);
+    // update the entity collision state only if it has moved since the
+    // previously executed check
     if (this.hasPreviousTile(entity)) {
       const hasMoved = this.hasEntityChangedOccupiedTiles(entity);
       if (hasMoved) {
         this.unvisitPrevious(entity);
         this.visit(entity);
+        // obstacle ahead
+        if (this.isObstacleAheadForEntity(entity)) {
+          // flags the entity as blocked. It will be used by
+          // the corresponding Activity Manager to make the actual
+          // move activity interrupted if need be
+          entity.setObstacleAhead(true);
+        }
       }
     } else {
       this.visit(entity);
@@ -283,6 +294,17 @@ class CollisionMap {
     const previousTile = this.getPreviousTile(entity);
     const tile = entity.getTile();
     return !previousTile.every((v, idx) => tile[idx] === v);
+  }
+
+  /**
+   * Returns whether the entity has an obstacle ahead according to
+   * its current heading
+   * @param {entity}
+   * @return {boolean}
+   */
+  isObstacleAheadForEntity(entity) {
+    const tilesAhead = entity.getTilesAhead();
+    return tilesAhead.some(tile => this.isOccupied(tile.x, tile.y));
   }
 }
 

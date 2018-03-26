@@ -733,6 +733,14 @@ class Entity {
   }
 
   /**
+   * Sets whether there is any obstacle ahead
+   * @param {boolean} bool - true if there is any
+   */
+  setObstacleAhead(bool) {
+    this.obstacleAhead = bool;
+  }
+
+  /**
    * Fires the given event against the entity
    * @param {string} event - event id to be fired
    */
@@ -850,6 +858,14 @@ class Entity {
    */
   isIdling() {
     return this.activityManager.isIdling();
+  }
+
+  /**
+   * Returns if there is an obstacle ahead
+   * @param {boolean}
+   */
+  isObstacleAhead() {
+    return this.obstacleAhead;
   }
 
   /**
