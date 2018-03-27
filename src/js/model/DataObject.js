@@ -283,6 +283,13 @@ function DataObject(json) {
       return this._isFighter;
     },
 
+    isSpaceObject() {
+      if (!this._isSpaceObject) {
+        this._isSpaceObject = this.getType() === 'Space Object';
+      }
+      return this._isSpaceObject;
+    },
+
     getTargetGraphicsGroup() {
       return data.targetGraphicsGroup;
     },

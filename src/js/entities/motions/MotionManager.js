@@ -44,6 +44,7 @@ function createMovementObject(entity) {
     maxVelocity: dataObject.getSpeed(),
     maxAcceleration: dataObject.getSpeed(),
     maxTargetDragTreshold: dataObject.getSpeed(),
+    stopping: false,
   };
 }
 
@@ -115,6 +116,7 @@ MotionManager.prototype = {
    * @return {void}
    */
   moveTo(activity) {
+    this._forceStopped = false;
     this.activity = activity;
 
     this.effectManager.resetEffects();
@@ -125,7 +127,7 @@ MotionManager.prototype = {
       this.effectManager.addEffect(Effects.get('resetMovement'));
     }
 
-    if (!this.hasRealManeuverSystem() && !this.isEntityFacingTarget()) {
+    if (this.isRequiredToRotateFirst()) {
       this.effectManager.addEffect(Effects.get('stopAnimation'));
       this.effectManager.addEffect(Effects.get('rotateToTarget'));
     }
@@ -144,6 +146,7 @@ MotionManager.prototype = {
    * @return {void}
    */
   reset() {
+    this._forceStopped = false;
     this.effectManager.resetEffects();
   },
 
@@ -156,6 +159,16 @@ MotionManager.prototype = {
     this.effectManager.addEffect(Effects.get('stopping'));
     this.effectManager.addEffect(Effects.get('resetMovement'));
     this.effectManager.addEffect(Effects.get('stopAnimation'));
+  },
+
+  /**
+   * Terminates all effects and make the entity stop
+   *
+   */
+  forceStop() {
+    this._forceStopped = true;
+    this.effectManager.resetEffects();
+    this.effectManager.addEffect(Effects.get('resetMovement'));
   },
 
   /**
@@ -322,9 +335,16 @@ MotionManager.prototype = {
 
   /**
    * Executes checks after altering the position of the given entity has been ran
-   * @return {void}
    */
   executeChecks() {
+    this.checkIfEntityHasStoppedAtDestination();
+    this.checkIfEntityIsBlockedByObstacle();
+  },
+
+  /**
+   * Tests if the entity has already stopped at the target destination
+   */
+  checkIfEntityHasStoppedAtDestination() {
     if (this.isEntityStoppedAtDestination) {
       if (this.activity) {
         this.activity.kill();
@@ -336,10 +356,31 @@ MotionManager.prototype = {
   },
 
   /**
+   * Tests if there is an obstacle in front of the entity and therefore
+   * it must terminate the currently executed motion effect
+   */
+  checkIfEntityIsBlockedByObstacle() {
+    // the entity stands still and it hasn't been blocked yet
+    if (!this.isMoving() && !this._forceStopped) return;
+    // if the entity is not blocked by an obsticle ahead
+    if (!this.entity.isObstacleAhead()) {
+      // although the entity is not blocked anymore, but if it has been
+      // force stopped and there is no obstacles in the way anyore
+      if (this._forceStopped && this.activity) {
+        this.moveTo(this.activity);
+      }
+    } else if (!this._forceStopped) {
+      // obstacle is ahead - execute force stop
+      this.forceStop();
+    }
+  },
+
+  /**
    * Calculates and returns the coordinates of a point
    * in front of the entity given its current rotation
    * @param {number} angleOffset - offset to the angle (defaults to 0)
    * @return {object} {x, y}
+   * @deprecated
    */
   getFrontCollisionPointOffset(angleOffset = 0) {
     const angleCode = this.rotation.currentAngleCode + angleOffset;
@@ -362,7 +403,6 @@ MotionManager.prototype = {
    * Registers a callback to the given event
    * @param  {string} event
    * @param  {Function} callback
-   * @return {void}
    */
   on(event, callback) {
     this.dispatcher.addEventListener(event, callback);
@@ -426,11 +466,34 @@ MotionManager.prototype = {
   },
 
   /**
+   * Returns true if the entity is not needed to rotate before it
+   * executes further effects
+   * @return {boolean}
+   */
+  isRequiredToRotateFirst() {
+    if (this.isEntityFacingTarget()) return false;
+    if (this.hasRealManeuverSystem()) {
+      if (!this.entity.isObstacleAhead()) return false;
+    }
+    // the entity is not facing the target or there is an
+    // obstacle ahead regardless current the manouver system
+    return true;
+  },
+
+  /**
    * Returns whether the entity is moving in any direction
    * @return {boolean}
    */
   isMoving() {
     return this.movement.velocity > 0;
+  },
+
+  /**
+   * Returns whether the entity is stopping
+   * @return {boolean}
+   */
+  isStopping() {
+    return this.movement.stopping;
   },
 
   /**

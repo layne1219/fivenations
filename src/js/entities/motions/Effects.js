@@ -1,10 +1,12 @@
 /**
- * Registers an object to fetch functions representing effects
+ * Exposes functions that represent motion effects for entities.
  * The function needs to return a bool value. If the value is false
  * the effect will be regarded as finished and removed from the
  * effect queue supervised by the EffectManager instance
  */
 import Util from '../../common/Util';
+
+const ns = window.fivenations;
 
 const effects = {
   /**
@@ -105,11 +107,13 @@ const effects = {
         motionManager.movement.targetInitialDistance &&
       motionManager.movement.velocity > 0
     ) {
+      motionManager.movement.stopping = true;
       return true;
     }
     if (motionManager.isEntityArrivedAtDestination) {
       motionManager.isEntityStoppedAtDestination = true;
     }
+    motionManager.movement.stopping = false;
     motionManager.getEntity().dispatch('stop');
     return false;
   },
@@ -123,6 +127,7 @@ const effects = {
     motionManager.movement.acceleration = 0;
     motionManager.movement.velocity = 0;
     motionManager.rotation.angularVelocity = 0;
+    motionManager.movement.stopping = false;
 
     return false;
   },
@@ -144,10 +149,20 @@ const effects = {
     // rotating with default speed until the entity arrives at the target angle
     motionManager.rotation.angularVelocity =
       motionManager.rotation.maxAngularVelocity;
-    return (
-      motionManager.rotation.currentAngleCode !==
+    if (
+      motionManager.rotation.currentAngleCode ===
       motionManager.rotation.targetAngleCode
-    );
+    ) {
+      // when the rotation terminates and the entity is headed to the target
+      // we have to execute an update to the collisionMap to see whether the
+      // entity is now blocked or not
+      const collisionMap = ns.game.map.getCollisionMap();
+      const entity = motionManager.getEntity();
+      collisionMap.updateObstaclesForEntity(entity);
+
+      return false;
+    }
+    return true;
   },
 
   /**

@@ -8,6 +8,11 @@ const ns = window.fivenations;
 // aggregation of tile ids that are considered as no-wall
 const ACCEPTABLE_TILES = [0];
 
+// various types of obstacles
+const OBSTACLE_BUILDING = 0;
+const OBSTACLE_ENTITY = 1;
+const OBSTACLE_SPACE_OBJECT = 2;
+
 /**
  * Wraps a matrix that contains infomations about which map tile
  * is occupied by a given entity and exposes API calls to fetch
@@ -78,7 +83,10 @@ class CollisionMap {
    * @return {object} this
    */
   visit(entity, previous = false) {
-    const [x, y] = previous ? this.getPreviousTile(entity) : entity.getTile();
+    const tile = previous ? this.getPreviousTile(entity) : entity.getTile();
+    if (!tile) return;
+
+    const [x, y] = tile;
     const {
       width, height, offsetX, offsetY,
     } = entity.getCollisionData();
@@ -90,7 +98,16 @@ class CollisionMap {
           this.tiles[0].length,
         );
         const tileY = Math.min(Math.max(y - offsetY + j, 0), this.tiles.length);
-        this.tiles[tileY][tileX] = previous ? 0 : 1;
+        // when unsetting the previous tile
+        if (previous && this.tiles[tileY][tileX]) {
+          // if it's belonged to the given entity only
+          if (this.tiles[tileY][tileX].entity === entity) {
+            this.tiles[tileY][tileX] = null;
+          }
+        } else {
+          // persist the tile data (owner, type)
+          this.tiles[tileY][tileX] = this.getCollisionTileDataByEntity(entity);
+        }
       }
     }
 
@@ -116,8 +133,6 @@ class CollisionMap {
    * @param {object} entity - Entity instance
    */
   visitTilesByEntity(entity) {
-    // at every tick we assume that the entity is unblocked
-    entity.setObstacleAhead(false);
     // update the entity collision state only if it has moved since the
     // previously executed check
     if (this.hasPreviousTile(entity)) {
@@ -125,13 +140,6 @@ class CollisionMap {
       if (hasMoved) {
         this.unvisitPrevious(entity);
         this.visit(entity);
-        // obstacle ahead
-        if (this.isObstacleAheadForEntity(entity)) {
-          // flags the entity as blocked. It will be used by
-          // the corresponding Activity Manager to make the actual
-          // move activity interrupted if need be
-          entity.setObstacleAhead(true);
-        }
       }
     } else {
       this.visit(entity);
@@ -147,6 +155,41 @@ class CollisionMap {
   }
 
   /**
+   * Updates collision tiles according to the positions of the
+   * passed aggregation of entities
+   * @param {object} Entity[]
+   */
+  visitTilesByEntities(entities) {
+    entities.forEach(entity => this.visitTilesByEntity(entity));
+  }
+
+  /**
+   * Updates the obstacle flag (that shows whether there is an obstacle
+   * ahead of a given entity) for the given entity.
+   * @param {object} entity - Entity
+   */
+  updateObstaclesForEntity(entity) {
+    // at every tick we assume that the entity is unblocked
+    entity.setObstacleAhead(false);
+
+    if (this.isObstacleAheadForEntity(entity)) {
+      // flags the entity as blocked. It will be used by
+      // the corresponding Activity Manager to make the actual
+      // activity interrupted if need be
+      entity.setObstacleAhead(true);
+    }
+  }
+
+  /**
+   * Updates the obstacle flag (that shows whether there is an obstacle
+   * ahead of a given entity) for all entities.
+   * @param {object} entities - Entity[]
+   */
+  updateObstaclesForEntities(entities) {
+    entities.forEach(entity => this.updateObstaclesForEntity(entity));
+  }
+
+  /**
    * Loops through all active entities and sets the occupiation of
    * the collision map accordingly
    * @param {object} EntityManager - instance of EntityManager
@@ -154,13 +197,18 @@ class CollisionMap {
   update(entityManager) {
     this.setDirtyFlag(false);
 
-    entityManager
+    const entities = entityManager
       .entities(':not(hibernated)')
-      .forEach(entity => this.visitTilesByEntity(entity));
+      .filter(entity => !entity.getDataObject().isFighter());
 
+    this.visitTilesByEntities(entities);
     // if the map has been altered since the last check
     // we execute all the registered listeners
     if (this.isDirty()) {
+      // if the collision tiles have changed we've got to
+      // update which entity is now blocked
+      this.updateObstaclesForEntities(entities);
+      // for listeners
       this.dispatcher.dispatch('change', this.tiles);
     }
   }
@@ -213,6 +261,26 @@ class CollisionMap {
         phaserGame.debug.geom(rect, '#ffaa00', false);
       });
     });
+  }
+
+  /**
+   * Returns an object that contains collision informations for
+   * the specified tile it has been attached to
+   * @param {object} entity - Entity
+   * @return {object}
+   */
+  getCollisionTileDataByEntity(entity) {
+    const dataObject = entity.getDataObject();
+    let type = OBSTACLE_ENTITY;
+    if (dataObject.isSpaceObject()) {
+      type = OBSTACLE_SPACE_OBJECT;
+    } else if (dataObject.isBuilding()) {
+      type = OBSTACLE_BUILDING;
+    }
+    return {
+      entity,
+      type,
+    };
   }
 
   /**
@@ -285,6 +353,28 @@ class CollisionMap {
   }
 
   /**
+   * Fetches a tile identified by the given coordinets and
+   * returns whether it is occupied or not based on the type
+   * of the occupation and the entity
+   * @param {object} coords - horizontal and vertical offsets
+   * @param {object} entity - Entity
+   * @return {boolean} true if the tile is occupied
+   */
+  isOccupiedForEntity(coords, entity) {
+    const { x, y } = coords;
+    if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
+      const tile = this.tiles[y][x];
+      if (!tile) {
+        return false;
+      }
+      // @TODO implement further logic to determine if the tile
+      // is an obstacle for the given entity.
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Returns whether the given entity has changed its position and
    * therefore the collision tiles must be updated
    * @param {object} entity
@@ -303,8 +393,11 @@ class CollisionMap {
    * @return {boolean}
    */
   isObstacleAheadForEntity(entity) {
+    // Fighter class entities can go through anything
+    if (entity.getDataObject().isFighter()) return false;
+    // get the array of tiles ahead
     const tilesAhead = entity.getTilesAhead();
-    return tilesAhead.some(tile => this.isOccupied(tile.x, tile.y));
+    return tilesAhead.some(tile => this.isOccupiedForEntity(tile, entity));
   }
 }
 
