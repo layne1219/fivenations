@@ -14,6 +14,41 @@ const OBSTACLE_ENTITY = 1;
 const OBSTACLE_SPACE_OBJECT = 2;
 
 /**
+ * Returns an object that contains collision informations for
+ * the specified tile it has been attached to
+ * @param {object} entity - Entity
+ * @return {object}
+ */
+function getCollisionTileDataByEntity(entity) {
+  const dataObject = entity.getDataObject();
+  let type = OBSTACLE_ENTITY;
+  if (dataObject.isSpaceObject()) {
+    type = OBSTACLE_SPACE_OBJECT;
+  } else if (dataObject.isBuilding()) {
+    type = OBSTACLE_BUILDING;
+  }
+  return {
+    entity,
+    type,
+  };
+}
+
+/**
+ * Returns if the given tile is deemed as obstacle for the given entity
+ * @param {object} tile - tile data (see getCollisionTileDataByEntity)
+ * @param {object} entity - Entity
+ */
+function isTileOccupiedForEntity(tile, entity) {
+  const dataObject = entity.getDataObject();
+  // if the entity is a Destroyer it can go through all obstacles
+  // apart from Space Objects
+  if (dataObject.isDestroyer()) {
+    return tile.type === OBSTACLE_SPACE_OBJECT;
+  }
+  return true;
+}
+
+/**
  * Wraps a matrix that contains infomations about which map tile
  * is occupied by a given entity and exposes API calls to fetch
  * these datas in certain ways
@@ -84,7 +119,7 @@ class CollisionMap {
    */
   visit(entity, previous = false) {
     const tile = previous ? this.getPreviousTile(entity) : entity.getTile();
-    if (!tile) return;
+    if (!tile) return this;
 
     const [x, y] = tile;
     const {
@@ -106,7 +141,7 @@ class CollisionMap {
           }
         } else {
           // persist the tile data (owner, type)
-          this.tiles[tileY][tileX] = this.getCollisionTileDataByEntity(entity);
+          this.tiles[tileY][tileX] = getCollisionTileDataByEntity(entity);
         }
       }
     }
@@ -205,9 +240,11 @@ class CollisionMap {
     // if the map has been altered since the last check
     // we execute all the registered listeners
     if (this.isDirty()) {
+      // we don't care about if buildings are blocked
+      const nonBuildings = entities.filter(entity => !entity.getDataObject().isBuilding());
       // if the collision tiles have changed we've got to
       // update which entity is now blocked
-      this.updateObstaclesForEntities(entities);
+      this.updateObstaclesForEntities(nonBuildings);
       // for listeners
       this.dispatcher.dispatch('change', this.tiles);
     }
@@ -261,26 +298,6 @@ class CollisionMap {
         phaserGame.debug.geom(rect, '#ffaa00', false);
       });
     });
-  }
-
-  /**
-   * Returns an object that contains collision informations for
-   * the specified tile it has been attached to
-   * @param {object} entity - Entity
-   * @return {object}
-   */
-  getCollisionTileDataByEntity(entity) {
-    const dataObject = entity.getDataObject();
-    let type = OBSTACLE_ENTITY;
-    if (dataObject.isSpaceObject()) {
-      type = OBSTACLE_SPACE_OBJECT;
-    } else if (dataObject.isBuilding()) {
-      type = OBSTACLE_BUILDING;
-    }
-    return {
-      entity,
-      type,
-    };
   }
 
   /**
@@ -367,9 +384,7 @@ class CollisionMap {
       if (!tile) {
         return false;
       }
-      // @TODO implement further logic to determine if the tile
-      // is an obstacle for the given entity.
-      return true;
+      return isTileOccupiedForEntity(tile, entity);
     }
     return false;
   }

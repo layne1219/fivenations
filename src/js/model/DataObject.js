@@ -283,6 +283,13 @@ function DataObject(json) {
       return this._isFighter;
     },
 
+    isDestroyer() {
+      if (!this._isDestroyer) {
+        this._isDestroyer = this.getType() === 'Destroyer';
+      }
+      return this._isDestroyer;
+    },
+
     isSpaceObject() {
       if (!this._isSpaceObject) {
         this._isSpaceObject = this.getType() === 'Space Object';

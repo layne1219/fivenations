@@ -135,9 +135,12 @@ MotionManager.prototype = {
     this.effectManager.addEffect(Effects.get('startMovement'));
     this.effectManager.addEffect(Effects.get('accelerateToTarget'));
     this.effectManager.addEffect(Effects.get('moveToTarget'));
-    this.effectManager.addEffect(Effects.get('stopping'));
-    this.effectManager.addEffect(Effects.get('resetMovement'));
-    this.effectManager.addEffect(Effects.get('stopAnimation'));
+
+    if (this.isRequiredToStopWhenArrivingAtTheDestination()) {
+      this.effectManager.addEffect(Effects.get('stopping'));
+      this.effectManager.addEffect(Effects.get('resetMovement'));
+      this.effectManager.addEffect(Effects.get('stopAnimation'));
+    }
   },
 
   /**
@@ -477,6 +480,17 @@ MotionManager.prototype = {
     }
     // the entity is not facing the target or there is an
     // obstacle ahead regardless current the manouver system
+    return true;
+  },
+
+  /**
+   * Returns if the entity must stop when arriving to its destination.
+   * It is mostly used to avoid interruptions (repeated stop-and-go)
+   * when the next target is situated in a way that the entity can carry on
+   * moving without changing direction.
+   * @return {boolean}
+   */
+  isRequiredToStopWhenArrivingAtTheDestination() {
     return true;
   },
 
