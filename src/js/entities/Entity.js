@@ -943,6 +943,18 @@ class Entity {
   }
 
   /**
+   * Returns the collision tile the entity occupies
+   * @return {object} - { x, y }
+   */
+  getTileObj() {
+    const sprite = this.getSprite();
+    return {
+      x: Math.floor(sprite.x / Const.TILE_WIDTH),
+      y: Math.floor(sprite.y / Const.TILE_WIDTH),
+    };
+  }
+
+  /**
    * Returns the arc of collision tiles ahead of the entity based
    * on its rotation (defaults to 3 tiles in predefined concave)
    * @return {object} array of coordinates { x, y }
@@ -969,6 +981,15 @@ class Entity {
     }
 
     return tilesAhead;
+  }
+
+  /**
+   * Returns an array of tile coordinates
+   * @return {object} array of tile coordinates that leads to the
+   * target destination with no collision involved
+   */
+  getTilesToTarget() {
+    return this.motionManager.getTilesToTarget();
   }
 
   getDockedEntities() {

@@ -1,4 +1,5 @@
 import Activity from './Activity';
+import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 class Move extends Activity {
   /**
@@ -46,6 +47,17 @@ class Move extends Activity {
    */
   getCoords() {
     return this.coords;
+  }
+
+  /**
+   * Returns the tile of the destination
+   * @return {object} { x, y }
+   */
+  getTile() {
+    return {
+      x: Math.floor(this.coords.x / TILE_WIDTH),
+      y: Math.floor(this.coords.y / TILE_HEIGHT),
+    };
   }
 }
 

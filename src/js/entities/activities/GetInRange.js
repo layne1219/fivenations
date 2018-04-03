@@ -68,7 +68,10 @@ class GetInRange extends Move {
    * @return {void}
    */
   activate() {
-    super.activate();
+    if (!this.entity.canMove()) {
+      this.kill();
+      return;
+    }
     this.moveTowardsTarget();
   }
 

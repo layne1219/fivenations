@@ -3,6 +3,8 @@ import Effects from './Effects';
 import Util from '../../common/Util';
 import { TILE_WIDTH } from '../../common/Const';
 
+const ns = window.fivenations;
+
 /**
  * Constructor function to initialise the MotionManager
  * @param {[object]} entity [The target entity whose coordinates will be altered by the applied effects]
@@ -116,31 +118,38 @@ MotionManager.prototype = {
    * @return {void}
    */
   moveTo(activity) {
-    this._forceStopped = false;
-    this.activity = activity;
+    const collisionMap = ns.game.map.getCollisionMap();
+    collisionMap
+      .calculatePath(this.entity.getTileObj(), activity.getTile())
+      .then((path) => {
+        this.tilesToTarget = path;
 
-    this.effectManager.resetEffects();
-    this.effectManager.execute(Effects.get('initMovement'));
+        this._forceStopped = false;
+        this.activity = activity;
 
-    if (this.isRequiredToStopBeforeFurtherAction()) {
-      this.effectManager.addEffect(Effects.get('stopping'));
-      this.effectManager.addEffect(Effects.get('resetMovement'));
-    }
+        this.effectManager.resetEffects();
+        this.effectManager.execute(Effects.get('initMovement'));
 
-    if (this.isRequiredToRotateFirst()) {
-      this.effectManager.addEffect(Effects.get('stopAnimation'));
-      this.effectManager.addEffect(Effects.get('rotateToTarget'));
-    }
+        if (this.isRequiredToStopBeforeFurtherAction()) {
+          this.effectManager.addEffect(Effects.get('stopping'));
+          this.effectManager.addEffect(Effects.get('resetMovement'));
+        }
 
-    this.effectManager.addEffect(Effects.get('startMovement'));
-    this.effectManager.addEffect(Effects.get('accelerateToTarget'));
-    this.effectManager.addEffect(Effects.get('moveToTarget'));
+        if (this.isRequiredToRotateFirst()) {
+          this.effectManager.addEffect(Effects.get('stopAnimation'));
+          this.effectManager.addEffect(Effects.get('rotateToTarget'));
+        }
 
-    if (this.isRequiredToStopWhenArrivingAtTheDestination()) {
-      this.effectManager.addEffect(Effects.get('stopping'));
-      this.effectManager.addEffect(Effects.get('resetMovement'));
-      this.effectManager.addEffect(Effects.get('stopAnimation'));
-    }
+        this.effectManager.addEffect(Effects.get('startMovement'));
+        this.effectManager.addEffect(Effects.get('accelerateToTarget'));
+        this.effectManager.addEffect(Effects.get('moveToTarget'));
+
+        if (this.isRequiredToStopWhenArrivingAtTheDestination()) {
+          this.effectManager.addEffect(Effects.get('stopping'));
+          this.effectManager.addEffect(Effects.get('resetMovement'));
+          this.effectManager.addEffect(Effects.get('stopAnimation'));
+        }
+      });
   },
 
   /**
@@ -586,6 +595,15 @@ MotionManager.prototype = {
    */
   getMaxAngleCount() {
     return this.rotation.maxAngleCount;
+  },
+
+  /**
+   * Returns an array of tile coordinates
+   * @return {object} array of tile coordinates that leads to the
+   * target destination with no collision involved
+   */
+  getTilesToTarget() {
+    return this.tilesToTarget;
   },
 };
 

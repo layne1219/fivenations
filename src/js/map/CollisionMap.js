@@ -92,11 +92,25 @@ class CollisionMap {
     this.easyStar = new EasyStar.js();
     // avoids easyStar to hold up the main thread by limiting the number of
     // calculations per iteration
-    this.easyStar.setIterationsPerCalculation(1000);
+    this.easyStar.setIterationsPerCalculation(100);
     this.easyStar.setGrid(this.tiles);
     this.easyStar.setAcceptableTiles(ACCEPTABLE_TILES);
     // refresh the grid when the collision map changes
     this.on('change', tiles => this.easyStar.setGrid(tiles));
+  }
+
+  /**
+   * Returns a Promise that is resolved when the built-n EasyStar
+   * library finishes with the calculation of the shortest path between
+   * the two given coordinates.
+   * @param {object} start - { x, y }
+   * @param {object} dest - { x, y }
+   * @return {Promise}
+   */
+  calculatePath(start, dest) {
+    return new Promise((resolve) => {
+      this.easyStar.findPath(start.x, start.y, dest.x, dest.y, resolve);
+    });
   }
 
   /**
@@ -251,6 +265,13 @@ class CollisionMap {
   }
 
   /**
+   * Calculates the paths on every tick
+   */
+  calculateEasyStarPaths() {
+    this.easyStar.calculate();
+  }
+
+  /**
    * Sets whether the map has changed since the last check
    * @param {boolean}
    */
@@ -297,6 +318,16 @@ class CollisionMap {
         const rect = new Phaser.Rectangle(x, y, width, height);
         phaserGame.debug.geom(rect, '#ffaa00', false);
       });
+
+      const pathTiles = entity.getTilesToTarget();
+      if (pathTiles) {
+        pathTiles.forEach((tile) => {
+          const x = tile.x * width;
+          const y = tile.y * height;
+          const rect = new Phaser.Rectangle(x, y, width, height);
+          phaserGame.debug.geom(rect, '#00ab00', false);
+        });
+      }
     });
   }
 
