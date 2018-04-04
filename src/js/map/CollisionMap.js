@@ -313,7 +313,7 @@ class CollisionMap {
         const x = tile.x * width;
         const y = tile.y * height;
         const rect = new Phaser.Rectangle(x, y, width, height);
-        phaserGame.debug.geom(rect, '#48ac8b', false);
+        phaserGame.debug.geom(rect, '#ffac00', false);
       });
 
       const pathTiles = entity.getTilesToTarget();

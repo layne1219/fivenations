@@ -961,6 +961,12 @@ class Entity {
    * @return {object} array of coordinates { x, y }
    */
   getTilesAhead() {
+    // normally we use the next tile determined by EasyStarJs
+    const nextTile = this.motionManager.getNextTileToTarget();
+    if (nextTile) {
+      return [nextTile];
+    }
+
     const [x, y] = this.getTile();
     const { width, offsetX, offsetY } = this.sprite._collision;
     const angleCode = this.motionManager.getCurrentAngleCode();

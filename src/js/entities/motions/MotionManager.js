@@ -155,7 +155,7 @@ MotionManager.prototype = {
   moveToNextTile() {
     if (!this.tilesToTarget || !this.tilesToTarget.length) return;
 
-    const nextTile = this.tilesToTarget.shift();
+    const nextTile = this.tilesToTarget[0];
     const nextTileCoords = this.getScreenCoordinatesOfTile(nextTile);
     const activity = new Move(this.entity);
     activity.setCoords(nextTileCoords);
@@ -165,7 +165,7 @@ MotionManager.prototype = {
     // when executing the last Move activity to the final tile
     // we make sure that the entity won't look for the next tile
     // and it does stop
-    if (this.tilesToTarget.length === 0) {
+    if (this.tilesToTarget.length === 1) {
       this.isUsingPathFinding = false;
       stopWhenArrives = true;
     }
@@ -420,6 +420,7 @@ MotionManager.prototype = {
   checkIfEntityHasArrivedAtDestination() {
     if (this.isEntityArrivedAtDestination) {
       if (this.isUsingPathFinding) {
+        this.tilesToTarget.shift();
         this.moveToNextTile();
       }
     }
@@ -690,6 +691,15 @@ MotionManager.prototype = {
    */
   getTilesToTarget() {
     return this.tilesToTarget;
+  },
+
+  /**
+   * Return the next tile towards the target calculated by EasyStarJs
+   * @return {object} { x, y }
+   */
+  getNextTileToTarget() {
+    if (!this.tilesToTarget || !this.tilesToTarget.length) return null;
+    return this.tilesToTarget[0];
   },
 
   /**

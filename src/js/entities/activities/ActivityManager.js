@@ -111,6 +111,13 @@ function ActivityManager(entity) {
         );
       });
     },
+    /**
+     * Returns the currently executed Activity instance
+     * @return {object} Activity
+     */
+    getCurrentActivity() {
+      return activities[currentIdx];
+    },
   };
 }
 
