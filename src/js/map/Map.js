@@ -110,7 +110,6 @@ class Map {
       if (ns.debugMode) {
         collisionMap.debug(entityManager);
       }
-      collisionMap.calculateEasyStarPaths();
     }
   }
 
