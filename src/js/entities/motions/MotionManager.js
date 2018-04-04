@@ -123,33 +123,41 @@ MotionManager.prototype = {
       .calculatePath(this.entity.getTileObj(), activity.getTile())
       .then((path) => {
         this.tilesToTarget = path;
-
-        this._forceStopped = false;
-        this.activity = activity;
-
-        this.effectManager.resetEffects();
-        this.effectManager.execute(Effects.get('initMovement'));
-
-        if (this.isRequiredToStopBeforeFurtherAction()) {
-          this.effectManager.addEffect(Effects.get('stopping'));
-          this.effectManager.addEffect(Effects.get('resetMovement'));
-        }
-
-        if (this.isRequiredToRotateFirst()) {
-          this.effectManager.addEffect(Effects.get('stopAnimation'));
-          this.effectManager.addEffect(Effects.get('rotateToTarget'));
-        }
-
-        this.effectManager.addEffect(Effects.get('startMovement'));
-        this.effectManager.addEffect(Effects.get('accelerateToTarget'));
-        this.effectManager.addEffect(Effects.get('moveToTarget'));
-
-        if (this.isRequiredToStopWhenArrivingAtTheDestination()) {
-          this.effectManager.addEffect(Effects.get('stopping'));
-          this.effectManager.addEffect(Effects.get('resetMovement'));
-          this.effectManager.addEffect(Effects.get('stopAnimation'));
-        }
+        this.setUpEffectsForMoving();
       });
+  },
+
+  /**
+   * Helper function to moveTo that collects all the required effects
+   * and set them up in the appropriate order for making the entity change
+   * its current position
+   */
+  setUpEffectsForMoving() {
+    this._forceStopped = false;
+    this.activity = activity;
+
+    this.effectManager.resetEffects();
+    this.effectManager.execute(Effects.get('initMovement'));
+
+    if (this.isRequiredToStopBeforeFurtherAction()) {
+      this.effectManager.addEffect(Effects.get('stopping'));
+      this.effectManager.addEffect(Effects.get('resetMovement'));
+    }
+
+    if (this.isRequiredToRotateFirst()) {
+      this.effectManager.addEffect(Effects.get('stopAnimation'));
+      this.effectManager.addEffect(Effects.get('rotateToTarget'));
+    }
+
+    this.effectManager.addEffect(Effects.get('startMovement'));
+    this.effectManager.addEffect(Effects.get('accelerateToTarget'));
+    this.effectManager.addEffect(Effects.get('moveToTarget'));
+
+    if (this.isRequiredToStopWhenArrivingAtTheDestination()) {
+      this.effectManager.addEffect(Effects.get('stopping'));
+      this.effectManager.addEffect(Effects.get('resetMovement'));
+      this.effectManager.addEffect(Effects.get('stopAnimation'));
+    }
   },
 
   /**

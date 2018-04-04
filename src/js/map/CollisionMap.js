@@ -92,7 +92,7 @@ class CollisionMap {
     this.easyStar = new EasyStar.js();
     // avoids easyStar to hold up the main thread by limiting the number of
     // calculations per iteration
-    this.easyStar.setIterationsPerCalculation(100);
+    this.easyStar.setIterationsPerCalculation(1000);
     this.easyStar.setGrid(this.tiles);
     this.easyStar.setAcceptableTiles(ACCEPTABLE_TILES);
     // refresh the grid when the collision map changes
@@ -151,7 +151,7 @@ class CollisionMap {
         if (previous && this.tiles[tileY][tileX]) {
           // if it's belonged to the given entity only
           if (this.tiles[tileY][tileX].entity === entity) {
-            this.tiles[tileY][tileX] = null;
+            this.tiles[tileY][tileX] = 0;
           }
         } else {
           // persist the tile data (owner, type)
@@ -262,6 +262,7 @@ class CollisionMap {
       // for listeners
       this.dispatcher.dispatch('change', this.tiles);
     }
+    this.calculateEasyStarPaths();
   }
 
   /**
