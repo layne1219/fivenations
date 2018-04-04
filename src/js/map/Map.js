@@ -107,6 +107,7 @@ class Map {
     }
     if (collisionMap) {
       collisionMap.optimizedUpdate(entityManager);
+      collisionMap.calculateEasyStarPaths();
       if (ns.debugMode) {
         collisionMap.debug(entityManager);
       }

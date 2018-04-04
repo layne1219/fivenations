@@ -21,18 +21,19 @@ const ns = window.fivenations;
 /**
  * Returns details about the dimensions that the given entity
  * might occupy in the collision map
- * @param {object} sprite - Sprite instance (Entity.getSprite())
- * @return {object} width, height, offsetX, offsetY
+ * @param {object} sprite [Phaser.Sprite object to get extended with animations]
+ * @param {object} dataObject [DataObject instance that may contain animation sequences defined]
+ * @return {object}
  */
-function getEntityDimensionsForVisitingTiles(sprite) {
-  const width = Math.max(
-    Math.floor(sprite.hitArea.width / Const.TILE_WIDTH),
-    1,
-  );
-  const height = Math.max(
-    Math.floor(sprite.hitArea.height / Const.TILE_HEIGHT),
-    1,
-  );
+function getEntityDimensionsForVisitingTiles(sprite, dataObject) {
+  const isBuilding = dataObject.isBuilding() || dataObject.isSpaceObject();
+  let width = 1;
+  let height = 1;
+
+  if (isBuilding) {
+    width = Math.max(Math.floor(sprite.hitArea.width / Const.TILE_WIDTH), 1);
+    height = Math.max(Math.floor(sprite.hitArea.height / Const.TILE_HEIGHT), 1);
+  }
 
   return {
     offsetX: Math.floor(width / 2),
@@ -214,7 +215,7 @@ const extendSprite = (entity, sprite, dataObject) => {
   sprite._damageHeightWithShield = Math.round(damageHeight);
 
   // pre-calculate collision data for better performance
-  sprite._collision = getEntityDimensionsForVisitingTiles(sprite);
+  sprite._collision = getEntityDimensionsForVisitingTiles(sprite, dataObject);
 
   sprite._parent = entity;
 

@@ -10,7 +10,6 @@ EffectManager.prototype = {
    * @return {void}
    */
   execute(effect) {
-    if (typeof effect !== 'function') return;
     effect.call(null, this.motionManager);
   },
 
@@ -35,9 +34,6 @@ EffectManager.prototype = {
    * @param {[function]} effect [function that will be triggered at every tick when selected]
    */
   addEffect(effect) {
-    if (typeof effect !== 'function') {
-      return false;
-    }
     this.effects.push(effect);
   },
 
@@ -46,9 +42,6 @@ EffectManager.prototype = {
    * @param {[function]} effect [function that will be triggered at every tick when selected]
    */
   addEffectToTop(effect) {
-    if (typeof effect !== 'function') {
-      return false;
-    }
     this.effects.unshift(effect);
   },
 
@@ -69,9 +62,6 @@ EffectManager.prototype = {
    * @return {[void]}}
    */
   removeEffect(effect) {
-    if (effect !== 'function') {
-      return false;
-    }
     for (let i = this.effects.length - 1; i >= 0; i -= 1) {
       if (effect === this.effects[i]) {
         this.effects.splice(i, 1);

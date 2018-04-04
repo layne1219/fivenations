@@ -27,10 +27,7 @@ function getCollisionTileDataByEntity(entity) {
   } else if (dataObject.isBuilding()) {
     type = OBSTACLE_BUILDING;
   }
-  return {
-    entity,
-    type,
-  };
+  return type;
 }
 
 /**
@@ -43,7 +40,7 @@ function isTileOccupiedForEntity(tile, entity) {
   // if the entity is a Destroyer it can go through all obstacles
   // apart from Space Objects
   if (dataObject.isDestroyer()) {
-    return tile.type === OBSTACLE_SPACE_OBJECT;
+    return tile === OBSTACLE_SPACE_OBJECT;
   }
   return true;
 }
@@ -95,6 +92,7 @@ class CollisionMap {
     this.easyStar.setIterationsPerCalculation(1000);
     this.easyStar.setGrid(this.tiles);
     this.easyStar.setAcceptableTiles(ACCEPTABLE_TILES);
+    this.easyStar.enableDiagonals();
     // refresh the grid when the collision map changes
     this.on('change', tiles => this.easyStar.setGrid(tiles));
   }
@@ -148,14 +146,12 @@ class CollisionMap {
         );
         const tileY = Math.min(Math.max(y - offsetY + j, 0), this.tiles.length);
         // when unsetting the previous tile
-        if (previous && this.tiles[tileY][tileX]) {
+        if (previous) {
           // if it's belonged to the given entity only
-          if (this.tiles[tileY][tileX].entity === entity) {
-            this.tiles[tileY][tileX] = 0;
-          }
+          this.tiles[tileY][tileX] = 0;
         } else {
-          // persist the tile data (owner, type)
-          this.tiles[tileY][tileX] = getCollisionTileDataByEntity(entity);
+          const data = getCollisionTileDataByEntity(entity);
+          this.tiles[tileY][tileX] = data;
         }
       }
     }
@@ -262,7 +258,6 @@ class CollisionMap {
       // for listeners
       this.dispatcher.dispatch('change', this.tiles);
     }
-    this.calculateEasyStarPaths();
   }
 
   /**
@@ -302,7 +297,8 @@ class CollisionMap {
           const x = j * width;
           const y = i * height;
           const rect = new Phaser.Rectangle(x, y, width, height);
-          phaserGame.debug.geom(rect, '#fa0000', false);
+          const color = '#fa0000';
+          phaserGame.debug.geom(rect, color, false);
         }
       }
     }
@@ -317,7 +313,7 @@ class CollisionMap {
         const x = tile.x * width;
         const y = tile.y * height;
         const rect = new Phaser.Rectangle(x, y, width, height);
-        phaserGame.debug.geom(rect, '#ffaa00', false);
+        phaserGame.debug.geom(rect, '#48ac8b', false);
       });
 
       const pathTiles = entity.getTilesToTarget();
