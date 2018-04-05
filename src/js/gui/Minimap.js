@@ -183,7 +183,7 @@ export default class Minimap extends Phaser.Group {
     this.entityManager
       .entities(':not(hibernated)')
       .filter((entity) => {
-        const coords = entity.getTile(this.map);
+        const coords = entity.getTile();
         return fogOfWar.isVisible(coords[0], coords[1]);
       })
       .forEach((entity) => {

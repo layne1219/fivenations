@@ -59,7 +59,7 @@ class FogOfWar {
     const vision = Math.max(entity.getDataObject().getVision(), 1);
     const mask = FogOfWarMasks.getMaskBySize(vision);
     const offset = Math.floor(mask.length / 2);
-    const tile = entity.getTile(this.map);
+    const tile = entity.getTile();
 
     for (let i = 0; i < mask.length; i += 1) {
       for (let j = 0; j < mask[i].length; j += 1) {

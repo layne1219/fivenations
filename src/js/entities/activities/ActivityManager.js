@@ -75,6 +75,9 @@ function ActivityManager(entity) {
     },
 
     update() {
+      if (ns.debugMode) {
+        this.debug();
+      }
       const l = activities.length;
       const currentIdx = l - 1;
       if (l === 0) {
@@ -105,11 +108,20 @@ function ActivityManager(entity) {
       activities.forEach((activity, idx) => {
         phaserGame.debug.text(
           activity.constructor.name,
-          2,
-          30 + idx * 16,
+          entity.getSprite().x - ns.game.camera.x,
+          entity.getSprite().y - ns.game.camera.y + idx * 16,
           '#ffff00',
         );
       });
+    },
+    /**
+     * Returns the currently executed Activity instance
+     * @return {object} Activity
+     */
+    getCurrentActivity() {
+      const l = activities.length;
+      const currentIdx = l - 1;
+      return activities[currentIdx];
     },
   };
 }

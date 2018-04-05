@@ -2,6 +2,7 @@ import Activity from './Activity';
 import PlayerManager from '../../players/PlayerManager';
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
+import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 const ns = window.fivenations;
 
@@ -117,7 +118,7 @@ class Attack extends Activity {
     this._hasBeenInRangeOnce = true;
 
     // DogFight logic makes entities to select coordinates
-    // around their target entity and move their while the
+    // around their target entity and fly around it while the
     // Attack activity is being executed
     if (this.isDogFightEnabled()) {
       // _dogFightCoordIdx === -1 indicates the first execution of
@@ -291,6 +292,17 @@ class Attack extends Activity {
    */
   getCoords() {
     return this._dogFightCoords;
+  }
+
+  /**
+   * Returns the tile of the destination
+   * @return {object} { x, y }
+   */
+  getTile() {
+    return {
+      x: Math.floor(this._dogFightCoords.x / TILE_WIDTH),
+      y: Math.floor(this._dogFightCoords.y / TILE_HEIGHT),
+    };
   }
 
   /**

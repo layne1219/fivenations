@@ -16,6 +16,7 @@ Activity.prototype = {
   },
 
   kill() {
+    if (!this.manager) return;
     this.manager.remove(this);
   },
 

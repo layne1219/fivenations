@@ -7,6 +7,7 @@ import MotionManager from '../entities/motions/MotionManager';
 import AbilityManager from '../entities/AbilityManager';
 import WeaponManager from '../entities/weapons/WeaponManager';
 import EffectManager from '../effects/EffectManager';
+import CollisionMapMasks from '../map/CollisionMapMasks';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserKeyboard from '../gui/UserKeyboard';
@@ -16,6 +17,31 @@ import Graphics from '../common/Graphics';
 import * as Const from '../common/Const';
 
 const ns = window.fivenations;
+
+/**
+ * Returns details about the dimensions that the given entity
+ * might occupy in the collision map
+ * @param {object} sprite [Phaser.Sprite object to get extended with animations]
+ * @param {object} dataObject [DataObject instance that may contain animation sequences defined]
+ * @return {object}
+ */
+function getEntityDimensionsForVisitingTiles(sprite, dataObject) {
+  const isBuilding = dataObject.isBuilding() || dataObject.isSpaceObject();
+  let width = 1;
+  let height = 1;
+
+  if (isBuilding) {
+    width = Math.max(Math.floor(sprite.hitArea.width / Const.TILE_WIDTH), 1);
+    height = Math.max(Math.floor(sprite.hitArea.height / Const.TILE_HEIGHT), 1);
+  }
+
+  return {
+    offsetX: Math.floor(width / 2),
+    offsetY: Math.floor(height / 2),
+    width,
+    height,
+  };
+}
 
 /**
  * Registers animations sequences against the given sprite object if there is any
@@ -187,6 +213,9 @@ const extendSprite = (entity, sprite, dataObject) => {
   sprite._damageHeight = damageHeight * 0.5;
   sprite._damageWidthWithShield = Math.round(damageWidth);
   sprite._damageHeightWithShield = Math.round(damageHeight);
+
+  // pre-calculate collision data for better performance
+  sprite._collision = getEntityDimensionsForVisitingTiles(sprite, dataObject);
 
   sprite._parent = entity;
 
@@ -529,7 +558,7 @@ class Entity {
   revealEntityInFogOfWar() {
     const { map } = ns.game;
     const fogOfWar = map.getFogOfWar();
-    fogOfWar.forceVisit(...this.getTile(map));
+    fogOfWar.forceVisit(...this.getTile());
   }
 
   /**
@@ -547,7 +576,13 @@ class Entity {
    * @return {void}
    */
   remove() {
+    // releases occupied tiles from the active CollisionMap instance
+    const collisionMap = ns.game.map.getCollisionMap();
+    collisionMap.unvisitTilesByEntity(this);
+
+    // removes sprite from the relevant Phaser Scene
     this.delete();
+
     if (!ns.mapEditorMode) {
       EffectManager.getInstance().explode(this);
     }
@@ -699,6 +734,24 @@ class Entity {
   }
 
   /**
+   * Sets whether there is any obstacle ahead
+   * @param {boolean} bool - true if there is any
+   */
+  setObstacleAhead(bool) {
+    this.obstacleAhead = bool;
+  }
+
+  /**
+   * Sets a suggested tile. It is used to predict on which
+   * tile the entity should be sitting according to calculations
+   * in other scopes
+   * @param {object} tile - { x, y }
+   */
+  setSuggestedTile(tile) {
+    this.suggestedTile = tile;
+  }
+
+  /**
    * Fires the given event against the entity
    * @param {string} event - event id to be fired
    */
@@ -819,6 +872,14 @@ class Entity {
   }
 
   /**
+   * Returns if there is an obstacle ahead
+   * @param {boolean}
+   */
+  isObstacleAhead() {
+    return this.obstacleAhead;
+  }
+
+  /**
    * Returns wether the entity can dock
    * @return {boolean}
    */
@@ -881,17 +942,80 @@ class Entity {
     return animations.getAnimation(key);
   }
 
-  getTile(map) {
+  /**
+   * Returns the collision tile the entity occupies
+   * @return {object} array of coordinates [x, y]
+   */
+  getTile() {
+    if (this.suggestedTile) {
+      const { x, y } = this.suggestedTile;
+      return [x, y];
+    }
     const sprite = this.getSprite();
-    const tileSize = map.getTileWidth();
-    const x = Math.floor(sprite.x / tileSize);
-    const y = Math.floor(sprite.y / tileSize);
-    this._previousTile = [x, y];
-    return this._previousTile;
+    const x = Math.floor(sprite.x / Const.TILE_WIDTH);
+    const y = Math.floor(sprite.y / Const.TILE_WIDTH);
+    return [x, y];
   }
 
-  getPreviousTile() {
-    return this._previousTile;
+  /**
+   * Returns the collision tile the entity occupies
+   * @return {object} - { x, y }
+   */
+  getTileObj() {
+    if (this.suggestedTile) {
+      return this.suggestedTile;
+    }
+    const sprite = this.getSprite();
+    return {
+      x: Math.floor(sprite.x / Const.TILE_WIDTH),
+      y: Math.floor(sprite.y / Const.TILE_WIDTH),
+    };
+  }
+
+  /**
+   * Returns the arc of collision tiles ahead of the entity based
+   * on its rotation (defaults to 3 tiles in predefined concave)
+   * @return {object} array of coordinates { x, y }
+   */
+  getTilesAhead() {
+    // normally we use the next tile determined by EasyStarJs
+    const nextTile = this.motionManager.getNextTileToTarget();
+    if (nextTile) {
+      return [nextTile];
+    }
+
+    const [x, y] = this.getTile();
+    const { width, offsetX, offsetY } = this.sprite._collision;
+    const angleCode = this.motionManager.getCurrentAngleCode();
+    const maxAngleCode = this.motionManager.getMaxAngleCount();
+    const consolidatedAngleCode = Math.floor(angleCode / (maxAngleCode / 8));
+    const masks = CollisionMapMasks.getMaskByWidth(width);
+    const mask = masks[consolidatedAngleCode];
+    const tilesAhead = [];
+
+    if (!mask) return [];
+
+    for (let i = mask.length - 1; i >= 0; i -= 1) {
+      for (let j = mask[i].length - 1; j >= 0; j -= 1) {
+        if (mask[i][j]) {
+          tilesAhead.push({
+            x: x - 1 - offsetX + j,
+            y: y - 1 - offsetY + i,
+          });
+        }
+      }
+    }
+
+    return tilesAhead;
+  }
+
+  /**
+   * Returns an array of tile coordinates
+   * @return {object} array of tile coordinates that leads to the
+   * target destination with no collision involved
+   */
+  getTilesToTarget() {
+    return this.motionManager.getTilesToTarget();
   }
 
   getDockedEntities() {
@@ -948,6 +1072,15 @@ class Entity {
     if (!projectileOffset.length) return projectileOffset;
     const angleCode = this.motionManager.getCurrentAngleCode();
     return projectileOffset[angleCode] || {};
+  }
+
+  /**
+   * Returns helper variables to calculate tiles on the collision map
+   * that the entity occupies
+   * @return {object} - { width, height, offsetX, offsetY }
+   */
+  getCollisionData() {
+    return this.sprite._collision;
   }
 }
 
