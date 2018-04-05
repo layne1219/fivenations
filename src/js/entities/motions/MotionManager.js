@@ -119,7 +119,6 @@ MotionManager.prototype = {
    * Make the entity move from its current position to the target coords. The operation also
    * calculates all the required helper variables including the rotoation.
    * @param  {object} activity Reference to the given Activity instance
-   * @return {void}
    */
   moveTo(activity) {
     // Fighter class entities do not need pathfinding
@@ -131,21 +130,43 @@ MotionManager.prototype = {
       return;
     }
 
+    this.originalActivity = activity;
+    this.isUsingPathFinding = true;
+
+    const start = this.entity.getTileObj();
+    const dest = activity.getTile();
+
+    // async recoursive function to get the path to the
+    // closest point of the given destination
+    this.calculatePath(start, dest);
+  },
+
+  /**
+   * Invokes EasyStarJs to asyncroniously calculate the path between
+   * the given coordinates
+   * @param {object} start - { x, y }
+   * @param {object} dest - { x, y }
+   */
+  calculatePath(start, dest) {
     const collisionMap = ns.game.map.getCollisionMap();
     // calculate the shortest path between the entity and the given
     // target
-    collisionMap
-      .calculatePath(this.entity.getTileObj(), activity.getTile())
-      .then((path) => {
-        if (!path) return;
+    collisionMap.calculatePath(start, dest).then((path) => {
+      // the calculation failed due to the destination is occupied
+      // so we fire up another attempt next to it
+      if (!path) {
+        const attemptDest = dest;
+        attemptDest.x += Math.floor(Math.random() * 4) - 2;
+        attemptDest.y += Math.floor(Math.random() * 4) - 2;
+        this.calculatePath(start, attemptDest);
+        return;
+      }
 
-        this.originalActivity = activity;
-        this.isUsingPathFinding = true;
-        // slice is due to the fact that the first tile is underneath the
-        // entity and since it's already there we can get rid of it
-        this.tilesToTarget = path.slice(1);
-        this.moveToNextTile();
-      });
+      // slice is due to the fact that the first tile is underneath the
+      // entity and since it's already there we can get rid of it
+      this.tilesToTarget = path.slice(1);
+      this.moveToNextTile();
+    });
   },
 
   /**
@@ -155,6 +176,7 @@ MotionManager.prototype = {
   moveToNextTile() {
     if (!this.tilesToTarget || !this.tilesToTarget.length) return;
 
+    const collisionMap = ns.game.map.getCollisionMap();
     const nextTile = this.tilesToTarget[0];
     const nextTileCoords = this.getScreenCoordinatesOfTile(nextTile);
     const activity = new Move(this.entity);
@@ -169,6 +191,16 @@ MotionManager.prototype = {
       this.isUsingPathFinding = false;
       stopWhenArrives = true;
     }
+
+    // This is used to suggest the entity its tile.
+    // When the entity arrives at its destination we set
+    // the suggested tile as this.lastTileToTarget
+    this.lastTileToTarget = nextTile;
+
+    // updates whether the current entity faces an obstacle
+    // it is important to be updated here as the tile that is
+    // checked against any obstacles is the nextTile above
+    collisionMap.updateObstaclesForEntity(this.entity);
 
     this.setUpEffectsForMoving(activity, stopWhenArrives);
   },
@@ -218,6 +250,7 @@ MotionManager.prototype = {
    * @return {void}
    */
   reset() {
+    this.entity.setSuggestedTile(false);
     this._forceStopped = false;
     this.effectManager.resetEffects();
   },
@@ -420,6 +453,8 @@ MotionManager.prototype = {
   checkIfEntityHasArrivedAtDestination() {
     if (this.isEntityArrivedAtDestination) {
       if (this.isUsingPathFinding) {
+        // we suggest a tile for the entity
+        this.setSuggestedTile(this.lastTileToTarget);
         this.tilesToTarget.shift();
         this.moveToNextTile();
       }
@@ -431,7 +466,15 @@ MotionManager.prototype = {
    */
   checkIfEntityHasStoppedAtDestination() {
     if (this.isEntityStoppedAtDestination) {
-      if (this.activity) {
+      // we suggest a tile for the entity
+      this.setSuggestedTile(this.lastTileToTarget);
+      // when the entity utilizes EasyStarJs it overwrites the activity
+      // instance with separate Move Activities to each of the tiles
+      // that EasyStarJs calculates, so we've got to kill the original
+      // activity instead
+      if (this.originalActivity) {
+        this.originalActivity.kill();
+      } else if (this.activity) {
         this.activity.kill();
       }
       this.dispatcher.dispatch('arrive');
@@ -472,6 +515,14 @@ MotionManager.prototype = {
         this.moveTo(this.originalActivity);
       }
     }
+  },
+
+  /**
+   * Sets a suggested tile for the entity
+   * @param {object} tile - {x, y}
+   */
+  setSuggestedTile(tile) {
+    this.entity.setSuggestedTile(tile);
   },
 
   /**

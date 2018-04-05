@@ -47,7 +47,7 @@ class GetInRange extends Move {
     this.calculateDistance();
 
     // provided the entity has already approached the target
-    // so that its weapon with the smallest range can be released
+    // close enough so that its weapon with the smallest range can be released
     // - or - it has any releasable weapon
     // - or - the target has been out of range and gotten too far
     if (
@@ -68,11 +68,15 @@ class GetInRange extends Move {
    * @return {void}
    */
   activate() {
-    if (!this.entity.canMove()) {
-      this.kill();
-      return;
-    }
-    this.moveTowardsTarget();
+    const sprite = this.target.getSprite();
+    const x = sprite.x;
+    const y = sprite.y;
+    this.setCoords({
+      x,
+      y,
+    });
+
+    super.activate();
   }
 
   /**
@@ -87,10 +91,6 @@ class GetInRange extends Move {
       return;
     }
 
-    this.setCoords({
-      x: this.target.getSprite().x,
-      y: this.target.getSprite().y,
-    });
     this.entity.getMotionManager().moveTo(this);
   }
 

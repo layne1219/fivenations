@@ -118,7 +118,7 @@ class Attack extends Activity {
     this._hasBeenInRangeOnce = true;
 
     // DogFight logic makes entities to select coordinates
-    // around their target entity and move their while the
+    // around their target entity and fly around it while the
     // Attack activity is being executed
     if (this.isDogFightEnabled()) {
       // _dogFightCoordIdx === -1 indicates the first execution of

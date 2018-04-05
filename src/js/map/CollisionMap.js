@@ -31,6 +31,18 @@ function getCollisionTileDataByEntity(entity) {
 }
 
 /**
+ * Returns true if the entity is actually sitting on the same tile
+ * that has been passed for checking
+ * @param {object} tile - { x, y }
+ * @param {object} entity - Entity instance
+ * @returns {boolean}
+ */
+function isItsOwnTile(tile, entity) {
+  const entityTile = entity.getTileObj();
+  return tile.x === entityTile.x && tile.y === entityTile.y;
+}
+
+/**
  * Returns if the given tile is deemed as obstacle for the given entity
  * @param {object} tile - tile data (see getCollisionTileDataByEntity)
  * @param {object} entity - Entity
@@ -410,6 +422,9 @@ class CollisionMap {
     if (x >= 0 && y >= 0 && y < this.tiles.length && x < this.tiles[0].length) {
       const tile = this.tiles[y][x];
       if (!tile) {
+        return false;
+      }
+      if (isItsOwnTile(coords, entity)) {
         return false;
       }
       return isTileOccupiedForEntity(tile, entity);

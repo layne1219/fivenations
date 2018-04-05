@@ -742,6 +742,16 @@ class Entity {
   }
 
   /**
+   * Sets a suggested tile. It is used to predict on which
+   * tile the entity should be sitting according to calculations
+   * in other scopes
+   * @param {object} tile - { x, y }
+   */
+  setSuggestedTile(tile) {
+    this.suggestedTile = tile;
+  }
+
+  /**
    * Fires the given event against the entity
    * @param {string} event - event id to be fired
    */
@@ -937,6 +947,10 @@ class Entity {
    * @return {object} array of coordinates [x, y]
    */
   getTile() {
+    if (this.suggestedTile) {
+      const { x, y } = this.suggestedTile;
+      return [x, y];
+    }
     const sprite = this.getSprite();
     const x = Math.floor(sprite.x / Const.TILE_WIDTH);
     const y = Math.floor(sprite.y / Const.TILE_WIDTH);
@@ -948,6 +962,9 @@ class Entity {
    * @return {object} - { x, y }
    */
   getTileObj() {
+    if (this.suggestedTile) {
+      return this.suggestedTile;
+    }
     const sprite = this.getSprite();
     return {
       x: Math.floor(sprite.x / Const.TILE_WIDTH),
@@ -975,6 +992,8 @@ class Entity {
     const masks = CollisionMapMasks.getMaskByWidth(width);
     const mask = masks[consolidatedAngleCode];
     const tilesAhead = [];
+
+    if (!mask) return [];
 
     for (let i = mask.length - 1; i >= 0; i -= 1) {
       for (let j = mask[i].length - 1; j >= 0; j -= 1) {
