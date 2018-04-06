@@ -57,10 +57,7 @@ class GetInRange extends Move {
     ) {
       this.entity.stop();
       this.kill();
-      return;
     }
-
-    this.moveTowardsTarget();
   }
 
   /**
@@ -70,22 +67,6 @@ class GetInRange extends Move {
   activate() {
     this.setCoordsToTarget();
     super.activate();
-  }
-
-  /**
-   * Move towards the target entity
-   * @return {void}
-   */
-  moveTowardsTarget() {
-    if (
-      this.coords.x === this.target.getSprite().x &&
-      this.coords.y === this.target.getSprite().y
-    ) {
-      return;
-    }
-
-    this.setCoordsToTarget();
-    this.entity.getMotionManager().moveTo(this);
   }
 
   /**
