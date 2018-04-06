@@ -371,7 +371,13 @@ MotionManager.prototype = {
    * @return {void}
    */
   updateRotation() {
-    if (this.isMoving() && this.entity.hasSlowManeuverability()) {
+    // when entities with slow manouver ability are moving but not
+    // facing the target closely
+    if (
+      this.isMoving() &&
+      this.entity.hasSlowManeuverability() &&
+      !this.isEntityFacingTargetRoughly()
+    ) {
       return;
     }
 
@@ -603,6 +609,23 @@ MotionManager.prototype = {
   },
 
   /**
+   * Returns if the entity is headed more or less towards its target.
+   * This is used to prevent entities to stop every time when the
+   * angle between them and their targets differ
+   * @return {boolean} true if the diff between the angleCodes is less then 90 degrees
+   */
+  isEntityFacingTargetRoughly() {
+    const { targetAngleCode, currentAngleCode, maxAngleCount } = this.rotation;
+    const diff = Util.getDiffBetweenRadialValues(
+      targetAngleCode,
+      currentAngleCode,
+      maxAngleCount,
+    );
+    const treshold = Math.floor(maxAngleCount / 4); // one quarter of a round
+    return diff < treshold;
+  },
+
+  /**
    * Returns whether the entity needs trigger the stop action
    * before having any further actions added to its motion queue
    * @return {boolean}
@@ -610,7 +633,7 @@ MotionManager.prototype = {
   isRequiredToStopBeforeFurtherAction() {
     return (
       this.isMoving() &&
-      !this.isEntityFacingTarget() &&
+      !this.isEntityFacingTargetRoughly() &&
       this.entity.hasSlowManeuverability()
     );
   },
