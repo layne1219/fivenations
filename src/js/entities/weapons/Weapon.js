@@ -253,6 +253,9 @@ class Weapon {
     // only if the target is in range
     if (!this.isTargetInRange()) return false;
 
+    // if the target entity is actually targetable by this entity
+    if (!this.targetEntity.isTargetableByEntity(this.entity)) return false;
+
     // if in range and there is are no prerequisites
     if (this.unconditionalRelease) return true;
 
