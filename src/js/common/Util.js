@@ -23,6 +23,19 @@ export default {
     },
 
     /**
+     * Returns the difference between the given radial numbers based on the
+     * passed maximum value. (Example.: angle codes or angles)
+     * @param {number} a
+     * @param {number} b
+     * @param {number} max
+     * @return {number}
+     */
+    getDiffBetweenRadialValues: function(a, b, max) {
+        const m = max / 2;
+        return m - Math.abs(Math.abs(a - b) - m); 
+    },
+
+    /**
      * returns whether the given value is numeric or not
      * @param {mixed} val 
      */

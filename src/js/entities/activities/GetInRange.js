@@ -68,14 +68,7 @@ class GetInRange extends Move {
    * @return {void}
    */
   activate() {
-    const sprite = this.target.getSprite();
-    const x = sprite.x;
-    const y = sprite.y;
-    this.setCoords({
-      x,
-      y,
-    });
-
+    this.setCoordsToTarget();
     super.activate();
   }
 
@@ -91,15 +84,30 @@ class GetInRange extends Move {
       return;
     }
 
+    this.setCoordsToTarget();
     this.entity.getMotionManager().moveTo(this);
   }
 
   /**
    * Saving the target entity that will be followed
-   * @oaram {object} entity - Entity
+   * @param {object} entity - Entity
    */
   setTarget(entity) {
     this.target = entity;
+  }
+
+  /**
+   * Updates the coords object with the coordinates of the given
+   * target Entity
+   */
+  setCoordsToTarget() {
+    const sprite = this.target.getSprite();
+    const x = sprite.x;
+    const y = sprite.y;
+    this.setCoords({
+      x,
+      y,
+    });
   }
 
   /**
