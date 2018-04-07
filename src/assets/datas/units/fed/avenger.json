@@ -7,8 +7,8 @@
   "armor": 5,
   "power": 0,
   "hangar": 0,
-  "speed": 40,
-  "maneuverability": 10,
+  "speed": 45,
+  "maneuverability": 20,
   "vision": 7,
   "weapons": [
     5,
@@ -18,9 +18,9 @@
     2,
     7,
     7,
+    7,
     3,
     3,
-    0,
     0,
     0
   ],
@@ -36,8 +36,8 @@
   "hasJetEngine": true,
   "size": "l",
   "sizeOffset": {
-    "w": 45,
-    "h": 45
+    "w": 30,
+    "h": 30
   },
   "selectionOffset": {
     "x": 0,

@@ -37,8 +37,8 @@
   "hasJetEngine": true,
   "size": "xsm",
   "sizeOffset": {
-    "w": 15,
-    "h": 15
+    "w": 2,
+    "h": 2
   },
   "selectionOffset": {
     "x": 0,

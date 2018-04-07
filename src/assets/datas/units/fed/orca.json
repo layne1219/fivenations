@@ -3,12 +3,12 @@
   "name": "Orca",
   "type": "Destroyer",
   "hull": 120,
-  "shield": 60,
+  "shield": 100,
   "armor": 1,
   "power": 0,
   "hangar": 0,
-  "speed": 80,
-  "maneuverability": 35,
+  "speed": 90,
+  "maneuverability": 40,
   "vision": 4,
   "weapons": [
     1,
@@ -36,8 +36,8 @@
   "hasJetEngine": true,
   "size": "sm",
   "sizeOffset": {
-    "w": 20,
-    "h": 20
+    "w": 15,
+    "h": 15
   },
   "selectionOffset": {
     "x": 0,
