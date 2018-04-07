@@ -31,7 +31,7 @@
     "upgrade_level": 2,
     "damage_shield": 15,
     "upgrade_shield_level": 2,
-    "range": 250,
+    "range": 300,
     "speed": 40,
     "acceleration": 200,
     "velocity": 200,
@@ -75,8 +75,8 @@
     "requires_entity_to_face_target": true,
     "effect": "missile",
     "minRange": 0,
-    "CAF": 1,    
-    "CHF": 1        
+    "CAF": 1,
+    "CHF": 1
   },
   {
     "name": "Radar",
@@ -152,9 +152,9 @@
   {
     "name": "Kinetic Torpedo",
     "id": 7,
-    "damage": 40,
+    "damage": 50,
     "upgrade_level": 3,
-    "damage_shield": 45,
+    "damage_shield": 50,
     "upgrade_shield_level": 3,
     "range": 300,
     "velocity": 50,
@@ -380,9 +380,9 @@
     "upgrade_level": 2,
     "damage_shield": 15,
     "range": 400,
-    "speed": 30,
+    "speed": 150,
     "acceleration": 100,
-    "velocity": 200,
+    "velocity": 400,
     "maxVelocity": 1000,
     "maneuverability": 40,
     "accuracy": 100,
@@ -395,7 +395,7 @@
     "specialty": "-",
     "effect": "asr-missile",
     "minRange": 0,
-    "CAF": 1,    
+    "CAF": 0,    
     "CHF": 1        
   },
   {
