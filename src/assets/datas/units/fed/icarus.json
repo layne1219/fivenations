@@ -7,8 +7,8 @@
   "armor": 4,
   "power": 0,
   "hangar": 0,
-  "speed": 30,
-  "maneuverability": 10,
+  "speed": 40,
+  "maneuverability": 15,
   "vision": 2,
   "weapons": [
     1,
