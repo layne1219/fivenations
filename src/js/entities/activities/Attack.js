@@ -8,25 +8,7 @@ const ns = window.fivenations;
 
 const rangeTooFarFactor = 1.5;
 
-const dogFightDistanceTreshold = 100;
-const dogFightCoords = [
-  {
-    x: -0.4,
-    y: -0.4,
-  },
-  {
-    x: 0.4,
-    y: -0.4,
-  },
-  {
-    x: 0.4,
-    y: 0.4,
-  },
-  {
-    x: -0.4,
-    y: 0.4,
-  },
-];
+const dogFightDistanceTreshold = 50;
 
 class Attack extends Activity {
   /**
@@ -232,22 +214,10 @@ class Attack extends Activity {
    * @return {object} object containing {x, y} coordinates
    */
   getNextDogFightCoordinate() {
-    const targetSprite = this.target.getSprite();
-    let offset;
-
-    if (this._dogFightCoordIdx === -1) {
-      // uses creation time to simulate randomness
-      this._dogFightCoordIdx = this.entity.getCreationTime();
-    } else {
-      this._dogFightCoordIdx += 1;
-    }
-
-    this._dogFightCoordIdx %= dogFightCoords.length;
-    offset = dogFightCoords[this._dogFightCoordIdx];
-
+    const { x, y, hitArea } = this.target.getSprite();
     return {
-      x: targetSprite.x + targetSprite.width * offset.x,
-      y: targetSprite.y + targetSprite.height * offset.y,
+      x: x - hitArea.width / 2,
+      y: y - hitArea.height / 2,
     };
   }
 

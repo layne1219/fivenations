@@ -395,13 +395,27 @@ MotionManager.prototype = {
       const step =
         this.rotation.maxAngularVelocity / 10 * this.game.time.physicsElapsed;
 
+      // Determines the direction of the rotation
       if (Math.abs(a - b) > step * 2) {
         if (!this.rotation.angularDirection) {
-          this.rotation.angularDirection =
-            (a - b >= 0 && a - b <= 180) || (a - b <= -180 && a - b >= -360)
-              ? 1
-              : -1;
+          const target = {
+            x: this.movement.targetX,
+            y: this.movement.targetY,
+          };
+          const rotation = this.game.physics.arcade.angleBetween(
+            this.sprite,
+            target,
+          );
+          // Calculate difference between the current angle and rotation
+          let delta = rotation - this.sprite.rotation;
+
+          // Keep it in range from -180 to 180 to make the most efficient turns.
+          if (delta > Math.PI) delta -= Math.PI * 2;
+          if (delta < -Math.PI) delta += Math.PI * 2;
+
+          this.rotation.angularDirection = delta > 0 ? 1 : -1;
         }
+
         this.movement.currentAngle += this.rotation.angularDirection * step;
       } else {
         this.movement.currentAngle = this.movement.targetAngle;

@@ -78,7 +78,10 @@ class Weapon {
       } else if (this.manager._lastEntityAttacked !== targetEntity) {
         EventEmitter.getInstance()
           .synced.entities(this.entity.getGUID())
-          .attack({ targetEntity });
+          .attack({
+            targetEntity,
+            addAsLast: true,
+          });
         this.manager._lastEntityAttacked = targetEntity;
       }
     }
@@ -254,7 +257,7 @@ class Weapon {
     if (!this.isTargetInRange()) return false;
 
     // if the target entity is actually targetable by this entity
-    if (!this.targetEntity.isTargetableByEntity(this.entity)) return false;
+    if (!this.isTargetAttackable()) return false;
 
     // if in range and there is are no prerequisites
     if (this.unconditionalRelease) return true;
@@ -273,6 +276,18 @@ class Weapon {
     const distance = Util.distanceBetweenSprites(sprite, targetSprite);
 
     return distance <= this.getRange() && distance >= this.getMinRange();
+  }
+
+  /**
+   * Returns true if this weapon is able to attack the targetEntity
+   * @return {boolean}
+   */
+  isTargetAttackable() {
+    // check whether the given entity can attack fighters
+    if (this.targetEntity.getDataObject().isFighter()) {
+      if (!this.canAttackFighters()) return false;
+    }
+    return true;
   }
 
   isEntityMoving() {
