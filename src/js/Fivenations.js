@@ -5,7 +5,7 @@ import { DEFAULT_CANVAS_WIDTH, DEFAULT_CANVAS_HEIGHT } from './common/Const';
 import Util from './common/Util';
 import Boot from './scenes/Boot';
 import MenuPreloader from './scenes/MenuPreloader';
-import Menu from './scenes/Menu';
+import MainMenu from './scenes/MainMenu';
 import GamePreloader from './scenes/GamePreloader';
 import Game from './scenes/Game';
 
@@ -39,7 +39,7 @@ function initPhaserGame(params) {
 function initScenes() {
   game.state.add('boot', Boot);
   game.state.add('menu-preloader', MenuPreloader);
-  game.state.add('menu', Menu);
+  game.state.add('mainmenu', MainMenu);
   game.state.add('game-preloader', GamePreloader);
   game.state.add('game', Game);
 }
