@@ -35,7 +35,7 @@ Boot.prototype = {
       this.game.scale.forceOrientation(true);
       this.game.scale.pageAlignHorizontally = true;
     }
-    this.game.state.start('preloader');
+    this.game.state.start('menu-preloader');
   },
 };
 
