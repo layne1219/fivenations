@@ -20,6 +20,8 @@ EntityCreate.prototype.execute = (options) => {
     return;
   }
   const config = options.data;
+  // creates and augments the EntityManager with a new entity that
+  // is generated based on the given configuration object
   ns.game.entityManager.add(config);
 };
 

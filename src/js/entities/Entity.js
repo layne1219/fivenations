@@ -31,8 +31,10 @@ function getEntityDimensionsForVisitingTiles(sprite, dataObject) {
   let height = 1;
 
   if (isBuilding) {
-    width = Math.max(Math.floor(sprite.hitArea.width / Const.TILE_WIDTH), 1);
-    height = Math.max(Math.floor(sprite.hitArea.height / Const.TILE_HEIGHT), 1);
+    width =
+      Math.max(Math.floor(sprite.hitArea.width / Const.TILE_WIDTH), 1) + 1;
+    height =
+      Math.max(Math.floor(sprite.hitArea.height / Const.TILE_HEIGHT), 1) + 1;
   }
 
   return {

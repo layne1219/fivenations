@@ -9,9 +9,9 @@ const ns = window.fivenations;
 const ACCEPTABLE_TILES = [0];
 
 // various types of obstacles
-const OBSTACLE_BUILDING = 0;
-const OBSTACLE_ENTITY = 1;
-const OBSTACLE_SPACE_OBJECT = 2;
+const OBSTACLE_BUILDING = 1;
+const OBSTACLE_ENTITY = 2;
+const OBSTACLE_SPACE_OBJECT = 3;
 
 /**
  * Returns an object that contains collision informations for
@@ -316,28 +316,31 @@ class CollisionMap {
     }
 
     // shows the tile where the leading collision point is located
-    entityManager.entities(':not(hibernated)').forEach((entity) => {
-      const tiles = entity.getTilesAhead();
-      const width = TILE_WIDTH;
-      const height = TILE_HEIGHT;
+    entityManager
+      .entities(':not(hibernated)')
+      .filter(entity => !entity.getDataObject().isBuilding())
+      .forEach((entity) => {
+        const tiles = entity.getTilesAhead();
+        const width = TILE_WIDTH;
+        const height = TILE_HEIGHT;
 
-      tiles.forEach((tile) => {
-        const x = tile.x * width;
-        const y = tile.y * height;
-        const rect = new Phaser.Rectangle(x, y, width, height);
-        phaserGame.debug.geom(rect, '#ffac00', false);
-      });
-
-      const pathTiles = entity.getTilesToTarget();
-      if (pathTiles) {
-        pathTiles.forEach((tile) => {
+        tiles.forEach((tile) => {
           const x = tile.x * width;
           const y = tile.y * height;
           const rect = new Phaser.Rectangle(x, y, width, height);
-          phaserGame.debug.geom(rect, '#00ab00', false);
+          phaserGame.debug.geom(rect, '#ffac00', false);
         });
-      }
-    });
+
+        const pathTiles = entity.getTilesToTarget();
+        if (pathTiles) {
+          pathTiles.forEach((tile) => {
+            const x = tile.x * width;
+            const y = tile.y * height;
+            const rect = new Phaser.Rectangle(x, y, width, height);
+            phaserGame.debug.geom(rect, '#00ab00', false);
+          });
+        }
+      });
   }
 
   /**
