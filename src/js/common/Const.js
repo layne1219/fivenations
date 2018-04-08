@@ -149,6 +149,11 @@ export const DEFAULT_FONT = {
   color: '#77C7D2',
 };
 
+export const MENU_FONT = {
+  font: '12px conthraxsemibold',
+  color: '#99eded',
+};
+
 // Tooltip default padding coordinates
 export const DEFAULT_TOOLTIP_PADDING = {
   x: 10,
