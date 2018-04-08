@@ -19,11 +19,7 @@ Menu.prototype = {
   update() {},
 
   onDown() {
-    this.game.state.start('game');
-
-    // Stretch to fill
-    // this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.NO_SCALE;
-    // this.game.scale.startFullScreen(false);
+    this.game.state.start('game-preloader');
   },
 };
 
