@@ -28,23 +28,21 @@ class FullScreenToggle extends Phaser.Group {
    * Defines the scaling mode for full-screen
    */
   initFullScreenScaleMode() {
-    const { game } = ns.game;
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    this.scaleMode = game.scale.fullScreenScaleMode;
+    this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.scaleMode = this.game.scale.fullScreenScaleMode;
   }
 
   /**
    * Creates the button to toggle the game to Full-Screen mode
    */
   initFullScreenButton() {
-    const { game } = ns.game;
     fullScreenButton = new Button({
       customOverFrame: 'roundbtn_fullscreen_oclick.png',
       customDownFrame: 'roundbtn_fullscreen_oclick.png',
       customOutFrame: 'roundbtn_fullscreen_base.png',
       spritesheet: 'gui.buttons',
       onClick: () => {
-        game.scale.startFullScreen(false);
+        this.game.scale.startFullScreen(false);
         fullScreenButton.visible = false;
         disableFullScreenButton.visible = true;
       },
@@ -56,14 +54,13 @@ class FullScreenToggle extends Phaser.Group {
    * Creates the button to toggle the game back to normal mode
    */
   initDisableFullScreenButton() {
-    const { game } = ns.game;
     disableFullScreenButton = new Button({
       customOverFrame: 'roundbtn_invers_fullscreen_onclick.png',
       customDownFrame: 'roundbtn_invers_fullscreen_onclick.png',
       customOutFrame: 'roundbtn_invers_fullscreen_base.png',
       spritesheet: 'gui.buttons',
       onClick: () => {
-        game.scale.stopFullScreen();
+        this.game.scale.stopFullScreen();
         fullScreenButton.visible = true;
         disableFullScreenButton.visible = false;
       },

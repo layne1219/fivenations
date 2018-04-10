@@ -1,6 +1,5 @@
 import '../scss/main.scss';
 
-import 'phaser-shim';
 import './globals';
 import { DEFAULT_CANVAS_WIDTH, DEFAULT_CANVAS_HEIGHT } from './common/Const';
 import Util from './common/Util';

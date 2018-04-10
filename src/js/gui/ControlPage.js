@@ -1,4 +1,4 @@
-/* global window, Phaser */
+/* global Phaser */
 import ControlButton from './ControlButton';
 
 const COLUMNS = 5;
@@ -6,7 +6,6 @@ const ROWS = 5;
 const ICON_WIDTH = 40;
 const ICON_HEIGHT = 40;
 const MARGIN = 0;
-const ns = window.fivenations;
 const BUTTON_NUMBER = ROWS * COLUMNS;
 
 class ControlPanelPage extends Phaser.Group {
@@ -17,7 +16,7 @@ class ControlPanelPage extends Phaser.Group {
    * @return {object} ControlPanelPage
    */
   constructor(entityManager) {
-    super(ns.game);
+    super(entityManager.getGame());
 
     // initialising the buttons
     this.init(entityManager);

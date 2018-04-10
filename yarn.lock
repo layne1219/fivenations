@@ -5196,9 +5196,9 @@ phantomjs-prebuilt@^2.1.16:
     request-progress "^2.0.1"
     which "^1.2.10"
 
-phaser-shim@^2.4.8:
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/phaser-shim/-/phaser-shim-2.4.8.tgz#4a465e3fcd363978af74836d624e320379a2c1b1"
+phaser-ce@^2.10.3:
+  version "2.10.3"
+  resolved "https://registry.yarnpkg.com/phaser-ce/-/phaser-ce-2.10.3.tgz#35cc4cf7cbe5bec13981b0f1ea759a54ba005631"
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"

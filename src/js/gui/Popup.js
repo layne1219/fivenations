@@ -43,12 +43,11 @@ class Popup extends Phaser.Group {
    * @param {object} config - configuration object to specify the button
    */
   initBasicComponents(config) {
-    const { game } = ns.game;
     const {
       offsetX, offsetY, spritesheet, frame, frameName, text,
     } = config;
 
-    this.background = game.add.sprite(
+    this.background = this.game.add.sprite(
       offsetX || 0,
       offsetY || 0,
       spritesheet || GUI_POPUP.spritesheet,
@@ -62,7 +61,7 @@ class Popup extends Phaser.Group {
     this.add(this.background);
 
     if (text) {
-      this.text = game.add.text(0, 0, text, {
+      this.text = this.game.add.text(0, 0, text, {
         ...GUI_POPUP.style,
         wordWrapWidth: this.background.width - GUI_POPUP.padding,
       });
@@ -156,8 +155,8 @@ class Popup extends Phaser.Group {
   show() {
     this.visible = true;
     if (this.config.pauseGame) {
-      ns.game.paused = true;
-      ns.game.physics.arcade.isPaused = ns.game.paused;
+      this.game.paused = true;
+      this.game.physics.arcade.isPaused = this.game.paused;
     }
     this.eventDispatcher.dispatch('show');
   }
@@ -168,8 +167,8 @@ class Popup extends Phaser.Group {
   hide() {
     this.visible = false;
     if (this.config.pauseGame) {
-      ns.game.paused = false;
-      ns.game.physics.arcade.isPaused = ns.game.paused;
+      this.game.paused = false;
+      this.game.physics.arcade.isPaused = this.game.paused;
     }
     this.eventDispatcher.dispatch('hide');
   }

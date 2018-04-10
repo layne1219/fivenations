@@ -15,7 +15,7 @@ class ControlButton extends Phaser.Sprite {
    * @return {object} [ControlPanelPage]
    */
   constructor(entityManager) {
-    super(ns.game, 0, 0, 'gui');
+    super(entityManager.getGame(), 0, 0, 'gui');
 
     // initialising the buttons
     this.init(entityManager);
@@ -34,7 +34,7 @@ class ControlButton extends Phaser.Sprite {
    * Adds the Sprite object to the Game stage
    */
   init(entityManager) {
-    ns.game.add.existing(this);
+    this.game.add.existing(this);
     this.inputEnabled = true;
     this.entityManager = entityManager;
   }
