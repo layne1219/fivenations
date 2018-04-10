@@ -1,4 +1,6 @@
 /* global Phaser */
+import TranslationManager from '../common/TranslationManager';
+
 const { PUBLIC_URL } = process.env;
 const PATH_ASSETS = `${PUBLIC_URL}/assets/images/gui`;
 
@@ -16,6 +18,8 @@ Boot.prototype = {
   },
 
   create() {
+    TranslationManager.setGame(this.game);
+
     // preventing the context menu to appear when the user clicks with the right mouse button
     this.game.canvas.oncontextmenu = (e) => {
       e.preventDefault();

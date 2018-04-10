@@ -152,6 +152,8 @@ export const DEFAULT_FONT = {
 export const MENU_FONT = {
   font: '12px conthraxsemibold',
   color: '#99eded',
+  onHover: '#ffffff',
+  onDisabled: '#999999',
 };
 
 // Tooltip default padding coordinates
