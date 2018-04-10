@@ -1,7 +1,5 @@
-/* global Phaser, window */
+/* global Phaser */
 import { MENU_FONT } from '../common/Const';
-
-const ns = window.fivenations;
 
 // configuration for the render text
 const TEXT_CONFIG = {

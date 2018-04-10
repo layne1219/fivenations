@@ -1,8 +1,6 @@
-/* global Phaser, window */
+/* global Phaser */
 import HeaderButton from './HeaderButton';
 import TranslationManager from '../common/TranslationManager';
-
-const ns = window.fivenations;
 
 class Header extends Phaser.Group {
   constructor(game) {
