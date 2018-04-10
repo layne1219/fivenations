@@ -6,7 +6,6 @@ const ns = window.fivenations;
 /**
  * Private function to set up all the assets needs to be loaded before the game starts
  * @param {object} [preloader] Preloader object defined below
- * @return {void}
  */
 function loadResources(preloader) {
   Menu.load(preloader);
