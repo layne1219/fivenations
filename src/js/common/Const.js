@@ -150,7 +150,7 @@ export const DEFAULT_FONT = {
 };
 
 export const MENU_FONT = {
-  font: '12px conthraxsemibold',
+  font: '11px conthraxsemibold',
   color: '#99eded',
   onHover: '#ffffff',
   onDisabled: '#999999',

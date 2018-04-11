@@ -9,7 +9,7 @@ const TEXT_CONFIG = {
   fillOnDisabled: MENU_FONT.onDisabled,
 };
 
-const PADDING = 20;
+const PADDING = 10;
 
 class HeaderButton extends Phaser.Group {
   /**
@@ -111,15 +111,19 @@ class HeaderButton extends Phaser.Group {
    * or selected
    */
   activate() {
+    this.active = true;
     this.highlight.visible = true;
+    this.over();
   }
 
   /**
    * Activates the button to highlight that it has been clicked
    * or selected
    */
-  deacticate() {
+  deactivate() {
+    this.active = false;
     this.highlight.visible = false;
+    this.out();
   }
 
   /**
@@ -153,7 +157,7 @@ class HeaderButton extends Phaser.Group {
    * Invoked when the user input gets off the group
    */
   out() {
-    if (this.disabled) return;
+    if (this.disabled || this.active) return;
     this.label.fill = TEXT_CONFIG.fill;
   }
 

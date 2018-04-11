@@ -9,23 +9,23 @@ import TranslationManager from '../common/TranslationManager';
 const BUTTONS = [
   {
     translation: 'mainmenu.campaign',
-    submenu: 'menu-campaign',
+    page: 'campaign',
   },
   {
     translation: 'mainmenu.skirmish',
-    submenu: 'menu-skirmish',
+    page: 'skirmish',
   },
   {
     translation: 'mainmenu.multiplayer',
-    submenu: 'menu-multiplayer',
+    page: 'multiplayer',
   },
   {
     translation: 'mainmenu.howtoplay',
-    submenu: 'menu-howtoplay',
+    page: 'howtoplay',
   },
   {
     translation: 'mainmenu.spacemarket',
-    submenu: 'menu-spacemarket',
+    page: 'spacemarket',
   },
 ];
 
@@ -68,8 +68,11 @@ class Header extends Phaser.Group {
   addButtons() {
     const translator = TranslationManager.getInstance();
     let previous;
+
+    this.buttons = [];
+
     BUTTONS.forEach((config) => {
-      const offsetY = 0;
+      const offsetY = 5;
       let offsetX;
       if (previous) {
         offsetX = previous.x + previous.width / 2;
@@ -78,7 +81,7 @@ class Header extends Phaser.Group {
       }
       const button = this.addButton({
         label: translator.translate(config.translation),
-        onClick: () => this.game.state.start(config.submenu),
+        onClick: () => {},
         x: offsetX,
         y: offsetY,
       });
@@ -98,12 +101,30 @@ class Header extends Phaser.Group {
     const button = new HeaderButton({
       game: this.game,
       label,
-      onClick,
+      onClick: () => {
+        this.selectButton(button);
+        onClick();
+      },
     });
     button.x = x + button.width / 2;
     button.y = y + button.height / 2;
     this.add(button);
+    this.buttons.push(button);
     return button;
+  }
+
+  /**
+   * Activates the given button and deactives the rest
+   * @param {object} button - HeaderButton
+   */
+  selectButton(button) {
+    this.buttons.forEach((btn) => {
+      if (btn === button) {
+        btn.activate();
+      } else {
+        btn.deactivate();
+      }
+    });
   }
 
   /**
