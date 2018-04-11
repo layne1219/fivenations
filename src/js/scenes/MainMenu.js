@@ -7,7 +7,6 @@ class MainMenu {
   create() {
     this.createBackground();
     this.createHeader();
-    this.input.onDown.add(this.onDown, this);
   }
 
   /**
@@ -21,12 +20,7 @@ class MainMenu {
    * Creates the header element
    */
   createHeader() {
-    const header = new Header(this.game);
-    this.add(header);
-  }
-
-  onDown() {
-    this.game.state.start('game-preloader');
+    this.header = new Header(this.game);
   }
 }
 

@@ -9,6 +9,8 @@ const TEXT_CONFIG = {
   fillOnDisabled: MENU_FONT.onDisabled,
 };
 
+const PADDING = 20;
+
 class HeaderButton extends Phaser.Group {
   /**
    * Creates the button based on the given configuration object
@@ -35,10 +37,12 @@ class HeaderButton extends Phaser.Group {
       id: 'mainmenu_header_option_selection_highlight.png',
     });
     this.highlight.anchor.set(0.5);
+    this.highlight.y += 12;
     this.highlight.visible = false;
     if (config.active) {
       this.activate();
     }
+    this.add(this.highlight);
   }
 
   /**
@@ -52,6 +56,7 @@ class HeaderButton extends Phaser.Group {
     }));
     this.label.setShadow(0, 0, 'rgba(0, 0, 0, 0.5)', 0);
     this.label.anchor.set(0.5);
+    this.add(this.label);
   }
 
   /**
@@ -63,10 +68,27 @@ class HeaderButton extends Phaser.Group {
       id: 'mainmenu_header_optionseparator.png',
     });
     this.separator.anchor.set(0.5);
-    this.separator.x = this.width / 2;
+    this.separator.x = this.label.x + this.width / 2 + PADDING;
     if (config.noSeparator) {
       this.separator.visible = false;
     }
+    this.add(this.separator);
+  }
+
+  /**
+   * Creates a non-visible sprite that can be used to
+   * bind input event listeners to it.
+   * @return {object} Phaser.Sprite
+   */
+  createClickableArea() {
+    const width = this.label.width + PADDING * 2;
+    const height = this.label.height + PADDING * 2;
+    const bmd = this.game.add.bitmapData(width, height);
+    const clickArea = this.game.add.sprite(this.x, this.y, bmd);
+    clickArea.inputEnabled = true;
+    clickArea.anchor.set(0.5);
+    this.add(clickArea);
+    return clickArea;
   }
 
   /**
@@ -77,17 +99,18 @@ class HeaderButton extends Phaser.Group {
     const callback = () => {
       this.click(config.onClick);
     };
-    this.inputEnableChildren = true;
-    this.onChildInputDown.add(callback, this);
-    this.onChildInputOver.add(this.over, this);
-    this.onChildInputOut.add(this.out, this);
+
+    const click = this.createClickableArea();
+    click.events.onInputDown.add(callback, this);
+    click.events.onInputOver.add(this.over, this);
+    click.events.onInputOut.add(this.out, this);
   }
 
   /**
    * Activates the button to highlight that it has been clicked
    * or selected
    */
-  acticate() {
+  activate() {
     this.highlight.visible = true;
   }
 
