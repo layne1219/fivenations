@@ -337,6 +337,10 @@ class Entity {
       this.weaponManager.update(authoritative);
     }
 
+    if (ns.debugMode) {
+      this.game.debug.body(this.sprite);
+    }
+
     // local behaviour
     this.updateShield();
   }
@@ -377,15 +381,15 @@ class Entity {
       this.sprite.body.setSize(
         this.sprite._damageWidth,
         this.sprite._damageHeight,
-        0,
-        0,
+        this.sprite.width / 2 - this.sprite._damageWidth / 2,
+        this.sprite.height / 2 - this.sprite._damageWidth / 2,
       );
     } else {
       this.sprite.body.setSize(
         this.sprite._damageWidthWithShield,
         this.sprite._damageHeightWithShield,
-        0,
-        0,
+        this.sprite.width / 2 - this.sprite._damageWidthWithShield / 2,
+        this.sprite.height / 2 - this.sprite._damageHeightWithShield / 2,
       );
     }
 
