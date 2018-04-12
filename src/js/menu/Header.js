@@ -1,5 +1,6 @@
 /* global Phaser */
 import HeaderButton from './HeaderButton';
+import Popup from './Popup';
 import TranslationManager from '../common/TranslationManager';
 
 // list of buttons appear on the top header
@@ -10,22 +11,27 @@ const BUTTONS = [
   {
     translation: 'mainmenu.campaign',
     page: 'campaign',
+    available: false,
   },
   {
     translation: 'mainmenu.skirmish',
     page: 'skirmish',
+    available: false,
   },
   {
     translation: 'mainmenu.multiplayer',
     page: 'multiplayer',
+    available: false,
   },
   {
     translation: 'mainmenu.howtoplay',
     page: 'howtoplay',
+    available: false,
   },
   {
     translation: 'mainmenu.spacemarket',
     page: 'spacemarket',
+    available: false,
   },
 ];
 
@@ -72,6 +78,7 @@ class Header extends Phaser.Group {
     this.buttons = [];
 
     BUTTONS.forEach((config) => {
+      const { available } = config;
       const offsetY = 5;
       let offsetX;
       if (previous) {
@@ -81,7 +88,11 @@ class Header extends Phaser.Group {
       }
       const button = this.addButton({
         label: translator.translate(config.translation),
-        onClick: () => {},
+        onClick: () => {
+          if (!available) {
+            this.showWarningPopup();
+          }
+        },
         x: offsetX,
         y: offsetY,
       });
@@ -125,6 +136,23 @@ class Header extends Phaser.Group {
         btn.deactivate();
       }
     });
+  }
+
+  /**
+   * Shows a popup to notify the user that this menu is not available
+   */
+  showWarningPopup() {
+    if (!this.popup) {
+      this.popup = new Popup({
+        game: this.game,
+        text: 'This funcationality is not available yet!',
+        textOffsetY: -50,
+        buttonLabel: 'OK',
+        onClick: () => this.popup.hide(),
+        overlay: true,
+      });
+    }
+    this.popup.show();
   }
 
   /**
