@@ -23,18 +23,18 @@ function loadResources(preloader) {
   Effects.load(preloader);
   Projectiles.load(preloader);
   Audio.load(preloader);
-  Translations.load(preloader);
   Maps.load(preloader);
+  Translations.load(preloader);
 }
 
 /**
  * Preloader object used for asyncroniously download assets for the game
  */
-function Preloader() {
+function GamePreloader() {
   this.ready = false;
 }
 
-Preloader.prototype = {
+GamePreloader.prototype = {
   /**
    * @return {void}
    */
@@ -82,4 +82,4 @@ Preloader.prototype = {
   },
 };
 
-export default Preloader;
+export default GamePreloader;

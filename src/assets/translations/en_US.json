@@ -1,4 +1,9 @@
 {
+    "mainmenu.campaign": "CAMPAIGN",
+    "mainmenu.skirmish": "SKIRMISH",
+    "mainmenu.multiplayer": "MULTIPLAYER",
+    "mainmenu.howtoplay": "HOW TO PLAY",
+    "mainmenu.spacemarket": "SPACE MARKET",
     "abilities.move": "Move",
     "abilities.stop": "Stop",
     "abilities.follow": "Follow",

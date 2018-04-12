@@ -1,21 +1,33 @@
 /* global Phaser */
+import FVLoader from '../common/FVLoader';
+import TranslationManager from '../common/TranslationManager';
+
 const { PUBLIC_URL } = process.env;
 const PATH_ASSETS = `${PUBLIC_URL}/assets/images/gui`;
 
 function Boot() {}
 
 Boot.prototype = {
+  init() {
+    // swap Phaser.Loader for our custom one
+    // @see https://hacks.mozilla.org/2016/06/webfont-preloading-for-html5-games/
+    this.game.load = new FVLoader(this.game);
+  },
+
   preload() {
-    this.load.crossOrigin = 'anonymous';
-    this.load.image(
+    this.game.load.crossOrigin = 'anonymous';
+    this.game.load.image(
       'preloader-background',
       `${PATH_ASSETS}/preload_background.jpg`,
     );
-    this.load.image('preloader-bar', `${PATH_ASSETS}/preload_bar.png`);
-    this.load.image('preloader-popup', `${PATH_ASSETS}/preload_popup.png`);
+    this.game.load.image('preloader-bar', `${PATH_ASSETS}/preload_bar.png`);
+    this.game.load.image('preloader-popup', `${PATH_ASSETS}/preload_popup.png`);
+    this.game.load.webfont('conthraxsemibold', 'conthraxsemibold');
   },
 
   create() {
+    TranslationManager.setGame(this.game);
+
     // preventing the context menu to appear when the user clicks with the right mouse button
     this.game.canvas.oncontextmenu = (e) => {
       e.preventDefault();
@@ -35,7 +47,7 @@ Boot.prototype = {
       this.game.scale.forceOrientation(true);
       this.game.scale.pageAlignHorizontally = true;
     }
-    this.game.state.start('preloader');
+    this.game.state.start('menu-preloader');
   },
 };
 

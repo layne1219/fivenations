@@ -6,7 +6,7 @@ const version = require('../package.json').version;
 // Phaser webpack config
 const phaserModule = path.join(paths.appNodeModules, '/phaser-ce/');
 const phaser = path.join(phaserModule, 'build/custom/phaser-split.js');
-const pixi = path.join(phaserModule, 'build/custom/pixi.js');
+const pixi = path.join(paths.appSrc, 'shims/pixi.js');
 const p2 = path.join(phaserModule, 'build/custom/p2.js');
 
 module.exports = {
@@ -61,7 +61,16 @@ module.exports = {
       },
       {
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'url-loader',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/fonts/', // where the fonts will go
+              publicPath: '', // override the default path
+            },
+          },
+        ],
       },
     ],
   },
