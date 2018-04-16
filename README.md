@@ -5,6 +5,15 @@
 ## About the game
 Five Nations is a sci-fi strategy game that takes place in the far future and follows the events of a galactic battle between five distinct species. The gameplay utilizes traditional real-time strategy elements with introducing modern features.
 
+#### GAMEPLAY
+A traditional RTS that takes place in space with a wide variety of units bringing back the classic atmosphere of strategy games. The player has a total control over micro and macro unit management, production and economy that provides long hours of gameplay and a fully engaging experience. 
+
+#### FIVE DISTINCT RACES
+Unique tech trees and units assure that each race requires a completely different strategy to defeat all hostile forces.
+
+#### STORY MODE
+A sequence of campaign maps will be released at regular intervals to keep the audience engaged in a particularly dynamic story of how the battle for the galaxy unfolds.
+
 ## Five Nations on Social Media
 [![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3] [![alt text][4.1]][4]
 
