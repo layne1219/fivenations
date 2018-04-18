@@ -15,23 +15,31 @@ Unique tech trees and units assure that each race requires a completely differen
 A sequence of campaign maps will be released at regular intervals to keep the audience engaged in a particularly dynamic story of how the battle for the galaxy unfolds.
 
 ## Five Nations on Social Media
-[![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3] [![alt text][4.1]][4]
+[![alt text][1.1]][1] [![alt text][2.1]][2] [![alt text][3.1]][3] [![alt text][4.1]][4] [![alt text][5.1]][5]
 
-[1.1]: http://i.picresize.com/images/2017/11/08/SxV2s.png (twitter icon with padding)
+[1.1]: https://addons-media.operacdn.com/media/extensions/45/113345/1.0-rev1/icons/icon_64x64_ad9605cf03e88937e909afe13099906d.png (twitter icon with padding)
 [2.1]: http://www.ifes.org/sites/all/themes/ifes/images/facebook-icon.png (facebook icon with padding)
 [3.1]: https://user-images.githubusercontent.com/6104164/36752756-5425749e-1c04-11e8-9fba-6f289f069e37.png
 [4.1]: https://user-images.githubusercontent.com/6104164/36752755-540a00e2-1c04-11e8-81a0-6d6ae0e4c593.png
+[5.1]: https://addons.cdn.mozilla.net/user-media/addon_icons/413/413644-64.png?modified=1401980673
 
 [1]: http://www.twitter.com/vbence86
 [2]: http://www.facebook.com/fivenationsthegame
 [3]: http://www.instagram.com/fivenationsthegame
 [4]: http://www.indiedb.com/games/five-nations/
+[5]: https://www.youtube.com/channel/UCqRjvoTHUfmutBrYleLIoLQ
+
 
 ## Five Nations in Press
+#### Game Access
+http://game-access.com/
+
+<img width="504" alt="screen shot 2018-04-18 at 19 31 24" src="https://user-images.githubusercontent.com/6104164/38948218-2da4df0a-433f-11e8-8549-adcb1ebcea4d.png">
+
 #### Phaser World - Game of the Week
 https://phaser.io/news/2018/03/five-nations
 
-<img width="700" alt="screen shot 2018-03-06 at 07 45 20" src="https://user-images.githubusercontent.com/6104164/37113065-8f743256-2244-11e8-9b18-ac2b70491b4f.png">
+<img width="504" alt="screen shot 2018-03-06 at 07 45 20" src="https://user-images.githubusercontent.com/6104164/37113065-8f743256-2244-11e8-9b18-ac2b70491b4f.png">
 
 #### White Nights Prague '19
 [![alt text][5.1]][5] 
