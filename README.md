@@ -42,11 +42,11 @@ https://phaser.io/news/2018/03/five-nations
 <img width="504" alt="screen shot 2018-03-06 at 07 45 20" src="https://user-images.githubusercontent.com/6104164/37113065-8f743256-2244-11e8-9b18-ac2b70491b4f.png">
 
 #### White Nights Prague '19
-[![alt text][5.1]][5] 
+[![alt text][6.1]][6] 
 
-[5.1]: https://www.berlinbalticnordic.net/wp-content/uploads/2017/12/WhiteNightsPrague.jpg
+[6.1]: https://www.berlinbalticnordic.net/wp-content/uploads/2017/12/WhiteNightsPrague.jpg
 
-[5]: https://wnconf.com/en
+[6]: https://wnconf.com/en
 
 ## About the project
 Five Nations is an open source HTML5 game that uses cutting-edge  technologies such as ES2015+, Babel, Webpack etc. The project is built on top of Phaser Community Edition and employs P2 physics engine. We employ modern CI flow with Jenkins, TravisCI and Docker. 
