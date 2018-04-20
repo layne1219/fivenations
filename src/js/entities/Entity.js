@@ -494,6 +494,18 @@ class Entity {
   }
 
   /**
+   * Registers a Mine activity with the given entity (asteroid) set as target
+   * @param {object} targetEntity
+   * @return {void}
+   */
+  mine(targetEntity) {
+    const mine = new ActivityManager.Mine(this);
+    mine.setTarget(targetEntity);
+    this.activityManager.add(mine, addAsLast);
+    this.weaponManager.setTargetEntity(targetEntity);
+  }
+
+  /**
    * Registers a RotateToTarget activity with the given entity set as target
    * @param  {object} targetEntity [Entity]
    * @return {void}

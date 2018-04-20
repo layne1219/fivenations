@@ -8,6 +8,7 @@ import Fire from './Fire';
 import GetInRange from './GetInRange';
 import GetToDock from './GetToDock';
 import Attack from './Attack';
+import Mine from './Mine';
 import RotateToTarget from './RotateToTarget';
 
 const ns = window.fivenations;
@@ -134,6 +135,7 @@ ActivityManager.Fire = Fire;
 ActivityManager.GetInRange = GetInRange;
 ActivityManager.GetToDock = GetToDock;
 ActivityManager.Attack = Attack;
+ActivityManager.Mine = Mine;
 ActivityManager.RotateToTarget = RotateToTarget;
 
 export default ActivityManager;
