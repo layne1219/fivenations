@@ -297,6 +297,10 @@ function DataObject(json) {
       return this._isSpaceObject;
     },
 
+    isResource() {
+      return data.resource;
+    },
+
     getTargetGraphicsGroup() {
       return data.targetGraphicsGroup;
     },
