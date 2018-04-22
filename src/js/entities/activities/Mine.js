@@ -1,4 +1,4 @@
-import Activity from './Activity';
+import Move from './Move';
 import PlayerManager from '../../players/PlayerManager';
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
@@ -6,7 +6,7 @@ import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 const ns = window.fivenations;
 
-class Mine extends Activity {
+class Mine extends Move {
   /**
    * Generates an Attack activity instance
    * @param {object} entity - Entity instance
@@ -14,12 +14,7 @@ class Mine extends Activity {
   constructor(entity) {
     super();
 
-    this.entity = entity;
     this.motionManager = entity.getMotionManager();
-
-    // helper variable to avoid calculating the distance between
-    // the main and target entity more than once per tick
-    this._distance = 0;
 
     // the minimum range
     this._minRange = 30;
@@ -32,15 +27,8 @@ class Mine extends Activity {
    * Applies the activity on an entity
    */
   activate() {
+    if (!this.target || !this.target.isResource()) this.kill();
     super.activate();
-    this.calculateDistance();
-  }
-
-  /**
-   * Calculates the distance between the given and target entity
-   */
-  calculateDistance() {
-    this._distance = Util.distanceBetween(this.entity, this.target);
   }
 
   /**
@@ -99,6 +87,8 @@ class Mine extends Activity {
 
     this.target = entity;
     this.target.on('remove', this.onTargetEntityRemove);
+
+    this.setCoordsToTarget();
   }
 
   /**
@@ -119,24 +109,18 @@ class Mine extends Activity {
   }
 
   /**
-   * Returns the coordinates to which the entity is heading. It is only
-   * used if the entity executes the DogFight logic while attacking
-   * @return {object} {x, y}
+   * Updates the coords object with the coordinates of the given
+   * target Entity
    */
-  getCoords() {
-    return this._dogFightCoords;
-  }
-
-  /**
-   * Returns the tile of the destination
-   * @return {object} { x, y }
-   */
-  getTile() {
-    return {
-      x: Math.floor(this._dogFightCoords.x / TILE_WIDTH),
-      y: Math.floor(this._dogFightCoords.y / TILE_HEIGHT),
-    };
+  setCoordsToTarget() {
+    const sprite = this.target.getSprite();
+    const x = sprite.x;
+    const y = sprite.y;
+    this.setCoords({
+      x,
+      y,
+    });
   }
 }
 
-export default Attack;
+export default Mine;

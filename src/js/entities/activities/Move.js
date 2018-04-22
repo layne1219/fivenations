@@ -11,6 +11,10 @@ class Move extends Activity {
     super();
     this.entity = entity;
     this.coords = {};
+
+    // helper variable to avoid calculating the distance between
+    // the main and target entity more than once per tick
+    this._distance = 0;
   }
 
   /**
@@ -28,6 +32,13 @@ class Move extends Activity {
     if (this.entity) {
       this.entity.getMotionManager().moveTo(this);
     }
+  }
+
+  /**
+   * Calculates the distance between the given and target entity
+   */
+  calculateDistance() {
+    this._distance = Util.distanceBetween(this.entity, this.target);
   }
 
   /**
