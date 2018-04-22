@@ -1,4 +1,5 @@
 /* global window */
+/* eslint class-methods-use-this: 0 */
 import Event from './Event';
 
 const ns = window.fivenations;

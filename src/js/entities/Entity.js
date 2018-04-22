@@ -501,7 +501,7 @@ class Entity {
   mine(targetEntity) {
     const mine = new ActivityManager.Mine(this);
     mine.setTarget(targetEntity);
-    this.activityManager.add(mine, addAsLast);
+    this.activityManager.add(mine);
     this.weaponManager.setTargetEntity(targetEntity);
   }
 
