@@ -50,6 +50,10 @@ AbilityManager.prototype = {
     if (this.isDockable()) {
       this.abilities.push(abilitiesJSON.undock);
     }
+
+    if (this.canMine()) {
+      this.abilities.push(abilitiesJSON.mining);
+    }
   },
 
   /**
@@ -86,6 +90,17 @@ AbilityManager.prototype = {
    */
   isDockable() {
     return this.entity.isDockable();
+  },
+
+  /**
+   * Returns whether the entity can mine resources
+   * @return {boolean}
+   */
+  canMine() {
+    const weaponsThatCanMine = [
+      10, // mining-laser
+    ];
+    return weaponsThatCanMine.some(id => this.entity.hasWeapon(id));
   },
 
   /**
