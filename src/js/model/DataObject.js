@@ -283,6 +283,13 @@ function DataObject(json) {
       return this._isFighter;
     },
 
+    isWorker() {
+      if (!this._isWorker) {
+        this._isWorker = this.getType() === 'Worker';
+      }
+      return this._isWorker;
+    },
+
     isDestroyer() {
       if (!this._isDestroyer) {
         this._isDestroyer = this.getType() === 'Destroyer';

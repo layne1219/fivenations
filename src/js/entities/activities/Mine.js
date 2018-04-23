@@ -12,12 +12,12 @@ class Mine extends Move {
    * @param {object} entity - Entity instance
    */
   constructor(entity) {
-    super();
+    super(entity);
 
     this.motionManager = entity.getMotionManager();
 
     // the minimum range
-    this._minRange = 30;
+    this._minRange = 100;
 
     // gracefully cleans up the activity when the target is removed
     this.onTargetEntityRemove = () => this.kill();
@@ -27,7 +27,8 @@ class Mine extends Move {
    * Applies the activity on an entity
    */
   activate() {
-    if (!this.target || !this.target.isResource()) this.kill();
+    const isTargetResource = this.target.getDataObject().isResource();
+    if (!this.target || !isTargetResource) this.kill();
     super.activate();
   }
 
@@ -49,11 +50,6 @@ class Mine extends Move {
 
     if (this.motionManager.isMoving()) {
       this.entity.stop();
-      return;
-    }
-
-    if (!this.isEntityFacingTarget()) {
-      this.entity.rotateToTarget(this.target);
     }
   }
 

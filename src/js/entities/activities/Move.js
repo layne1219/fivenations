@@ -30,9 +30,12 @@ class Move extends Activity {
       return;
     }
 
-    if (this.entity) {
-      this.entity.getMotionManager().moveTo(this);
+    if (Util.areCoordsEqual(this.entity.getTileObj(), this.getTile())) {
+      this.kill();
+      return;
     }
+
+    this.entity.getMotionManager().moveTo(this);
   }
 
   /**

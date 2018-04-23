@@ -196,6 +196,18 @@ export default {
     },
 
     /**
+     * Returns if the given coordinates are equal
+     * @param {object} source first entity
+     * @param {object} target second entity
+     */
+    areCoordsEqual: function(source, target) {
+        const { x, y } = source;
+        const dx = target.x;
+        const dy = target.y;
+        return x === dx && y === dy;
+    },
+
+    /**
      * Deep clones the given parameter
      * @param {mixed} o
      * @return {mixed} cloned version of o

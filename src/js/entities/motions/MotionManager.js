@@ -19,6 +19,7 @@ function MotionManager(entity) {
   this.entity = entity;
   this.sprite = entity.getSprite();
   this.isFighter = this.entity.getDataObject().isFighter();
+  this.isWorker = this.entity.getDataObject().isWorker();
   this.animationManager = entity.getAnimationManager();
   this.rotationFrames = createRotationFrames(entity);
 
@@ -122,7 +123,7 @@ MotionManager.prototype = {
    */
   moveTo(activity) {
     // Fighter class entities do not need pathfinding
-    if (this.isFighter) {
+    if (this.isFighter || this.isWorker) {
       // we set up the effects that make the entity go straight
       // to the target skipping the pathfinding entirely
       this.isUsingPathFinding = false;
