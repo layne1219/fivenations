@@ -1,4 +1,5 @@
 import Activity from './Activity';
+import Util from '../../common/Util';
 import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 class Move extends Activity {
