@@ -16,10 +16,12 @@ export default {
       });
 
       if (targetEntity) {
+        const resetActivityQueue = true;
         EventEmitter.getInstance()
           .synced.entities(':user:selected')
           .mine({
             targetEntity,
+            resetActivityQueue,
           });
         targetEntity.selectedAsTarget();
       }

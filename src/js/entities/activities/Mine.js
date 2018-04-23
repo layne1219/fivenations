@@ -17,7 +17,7 @@ class Mine extends Move {
     this.motionManager = entity.getMotionManager();
 
     // the minimum range
-    this._minRange = 100;
+    this._minRange = 50;
 
     // gracefully cleans up the activity when the target is removed
     this.onTargetEntityRemove = () => this.kill();
@@ -63,6 +63,9 @@ class Mine extends Move {
     this.entity.getMotionManager().moveTo(this);
   }
 
+  /**
+   * Kills the activity and cleans up the target entity
+   */
   kill() {
     this.entity.getWeaponManager().clearTargetEntity();
     super.kill();
@@ -74,7 +77,7 @@ class Mine extends Move {
    */
   setTarget(entity) {
     if (!entity) {
-      throw 'Invalid entity is passed to be followed!';
+      throw 'Invalid entity is passed to be mined!';
     }
 
     if (this.target) {
