@@ -6,7 +6,19 @@ import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 const ns = window.fivenations;
 
-class Mine extends Move {
+// legnth of the Mining in Milliseconds
+const MINE_LENGTH_IN_MS = 5000;
+
+// states of the Mine Actvity
+const INACTIVE = 0;
+const GO_TO_RESOURCE = 1;
+const MINE_RESOURCE_STARTED = 2;
+const MINE_RESOURCE_ANIMATION = 3;
+const MINE_RESOURCE_FINISHED = 4;
+const RETURN_TO_STATION = 5;
+const MINE_CYCLE_COMPLETED = 6;
+
+class Mine extends Activity {
   /**
    * Generates an Attack activity instance
    * @param {object} entity - Entity instance
@@ -14,10 +26,24 @@ class Mine extends Move {
   constructor(entity) {
     super(entity);
 
+    // shorthand to optimise function calls
     this.motionManager = entity.getMotionManager();
 
     // the minimum range
     this._minRange = 50;
+
+    // default state
+    this.state = STATE_INACTIVE;
+
+    // rainbow table of available states
+    this.states = {
+      GO_TO_RESOURCE: this.goToResource.bind(this),
+      MINE_RESOURCE_STARTED: this.mineResourceStarted.bind(this),
+      MINE_RESOURCE_ANIMATION: this.mineResourceAnimation.bind(this),
+      MINE_RESOURCE_FINISHED: this.mineResourceFininshed.bind(this),
+      RETURN_TO_STATION: this.returnToStation.bind(this),
+      MINE_CYCLE_COMPLETED: this.mineCycleCompleted.bind(this),
+    };
 
     // gracefully cleans up the activity when the target is removed
     this.onTargetEntityRemove = () => this.kill();
@@ -29,34 +55,102 @@ class Mine extends Move {
   activate() {
     const isTargetResource = this.target.getDataObject().isResource();
     if (!this.target || !isTargetResource) this.kill();
+
+    this.state = GO_TO_RESOURCE;
     super.activate();
   }
 
   /**
-   * Updates the activity on every tick
+   * Makes the entity get in range to its target resource
    */
-  update() {
-    // calculates the distance betwen the given and target entity
-    // and saves it into a local helper variable for optimisation
-    this.calculateDistance();
+  goToResource() {
+    if (!this.isResourceInMinRange()) {
+      this.entity.getInRange(this.target);
+    }
 
-    // unshifts GetInRange Activiy to the Activity queue if the entity
-    // hasn't arrived at the distance where its weapon with the smallest range
-    // can be fired
-    if (!this.isTargetInMinRange()) {
-      this.entity.getInRange(this.target, false);
+    // If the entity is in the mininmum range but it's still moving
+    // for any reason
+    if (this.motionManager.isMoving()) {
+      this.entity.stop();
+    }
+
+    // make a transition to the next state
+    this.setState(MINE_RESOURCE_STARTED);
+  }
+
+  /**
+   * Makes the entity begin the mining process
+   */
+  mineResourceStarted() {
+    this.mineResourceCompletedDueAt = this.game.time.time + MINE_LENGTH_IN_MS;
+    this.setState(MINE_RESOURCE_ANIMATION);
+  }
+
+  /**
+   * Makes the entity trigger the mining animation and calculates
+   * when exactly the mining stage should be fininshed off
+   */
+  mineResourceAnimation() {
+    if (this.game.time.time >= this.mineResourceCompletedDueAt) {
+      this.setState(MINE_RESOURCE_FINISHED);
+    }
+    console.log('Mining Resource Animation...');
+  }
+
+  /**
+   * Stops the mining animation and fetches the closest station
+   * to which the resource can be delivered
+   */
+  mineResourceFininshed() {
+    this.targetStation = this.getClosestStation();
+  }
+
+  /**
+   * Checks if the entity has arrived at the station
+   */
+  returnToStation() {
+    if (!this.isStationInMinRange()) {
+      this.entity.getInRange(this.target);
       return;
     }
 
     if (this.motionManager.isMoving()) {
       this.entity.stop();
     }
+
+    this.setState(MINE_CYCLE_COMPLETED);
+  }
+
+  /**
+   * State for cleanups and potential syncronisations
+   */
+  mineCycleCompleted() {
+    console.log('emit a synced event of adding resources to the station');
+    this.setState(GO_TO_RESOURCE);
+  }
+
+  /**
+   * Helper function to wrap setting the state into one context
+   */
+
+  setState(state) {
+    this.state = state;
+  }
+
+  /**
+   * Updates the activity on every tick
+   */
+  update() {
+    // invokes the bound functionality to the current state,
+    // this is executed at every tick
+    this.states[this.state]();
   }
 
   /**
    * Makes the entity to move to the given coordinate without
    * registering another activity. That is helpful to implement
    * entity behaviour that requiest the entity to move during the attack
+   * @param {object} coords - { x,  y }
    */
   moveTo(coords) {
     this.coords = coords;
@@ -91,20 +185,21 @@ class Mine extends Move {
   }
 
   /**
-   * Checks whether the specified target entity is in range
+   * Checks whether the target resource entity is in range
    * @return {boolean}
    */
-  isTargetInMinRange() {
-    return this._distance <= this._minRange;
+  isResourceInMinRange() {
+    const distance = Util.distanceBetween(this.entity, this.target);
+    return distance <= this._minRange;
   }
 
   /**
-   * Checks whether the specified target entity is facing
-   * the given target entity
+   * Checks whether the target station entity is in range
    * @return {boolean}
    */
-  isEntityFacingTarget() {
-    return this.motionManager.isEntityFacingTargetEntity(this.target);
+  isStationInMinRange() {
+    const distance = Util.distanceBetween(this.entity, this.targetStation);
+    return distance <= this._minRange;
   }
 
   /**

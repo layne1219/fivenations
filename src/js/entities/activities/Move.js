@@ -19,8 +19,7 @@ class Move extends Activity {
   }
 
   /**
-   * Applying the activity on an entity
-   * @return {[void]}
+   * Executes the activity against an entity
    */
   activate() {
     super.activate();

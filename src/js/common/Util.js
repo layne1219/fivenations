@@ -222,7 +222,29 @@ export default {
             }
         }
         return output;
-    },         
+    },
+
+    StateMachine: (function() {
+        return class StateManager {
+          constructor(ctx) {
+            this.states = [];
+            this.ctx = ctx;
+          }
+          add(state) {
+            this.states.push(state);
+          }
+          update(){
+            if (!this.current) return;
+            if (this.current.update) this.current.update.call(ctx);
+          }
+          transitionTo(state) {
+            if (state === this.current) return;
+            if (this.current.leave) this.current.leave.call(ctx);
+            if (state.enter) state.enter.call(ctx);
+            this.current = state;
+          }
+        }
+    }),
 
     // Eventlistener object
     EventDispatcher: (function() {
