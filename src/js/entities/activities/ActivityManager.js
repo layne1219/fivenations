@@ -86,10 +86,12 @@ function ActivityManager(entity) {
         this.add(new Idle(entity));
         return;
       }
-      // we are excecuting the last function in the queue treating it with priority
-      if (activities[currentIdx].isActivated()) {
-        activities[currentIdx].update();
-      }
+      // excecutes the last function in the queue treating it with priority
+      // if it has been activated and it realises the update function
+      if (!activities[currentIdx].isActivated()) return;
+      if (!activities[currentIdx].update) return;
+
+      activities[currentIdx].update();
     },
 
     /**

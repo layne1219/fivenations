@@ -60,6 +60,8 @@ function isTileOccupiedForEntity(tile, entity) {
 /**
  * Returns true if the given entity does need to visit the
  * collision map and update the related tiles
+ * Add further conditions here if you want the entity
+ * to be exluded from the collision checking
  * @param {object} entity - Entity
  */
 function doesNeedToVisitCollisionMap(entity) {

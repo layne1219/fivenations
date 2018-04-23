@@ -1,8 +1,6 @@
-import Move from './Move';
-import PlayerManager from '../../players/PlayerManager';
+import Activity from './Activity';
 import EventEmitter from '../../sync/EventEmitter';
 import Util from '../../common/Util';
-import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 const ns = window.fivenations;
 
@@ -33,16 +31,16 @@ class Mine extends Activity {
     this._minRange = 50;
 
     // default state
-    this.state = STATE_INACTIVE;
+    this.state = INACTIVE;
 
     // rainbow table of available states
     this.states = {
-      GO_TO_RESOURCE: this.goToResource.bind(this),
-      MINE_RESOURCE_STARTED: this.mineResourceStarted.bind(this),
-      MINE_RESOURCE_ANIMATION: this.mineResourceAnimation.bind(this),
-      MINE_RESOURCE_FINISHED: this.mineResourceFininshed.bind(this),
-      RETURN_TO_STATION: this.returnToStation.bind(this),
-      MINE_CYCLE_COMPLETED: this.mineCycleCompleted.bind(this),
+      [GO_TO_RESOURCE]: this.goToResource.bind(this),
+      [MINE_RESOURCE_STARTED]: this.mineResourceStarted.bind(this),
+      [MINE_RESOURCE_ANIMATION]: this.mineResourceAnimation.bind(this),
+      [MINE_RESOURCE_FINISHED]: this.mineResourceFininshed.bind(this),
+      [RETURN_TO_STATION]: this.returnToStation.bind(this),
+      [MINE_CYCLE_COMPLETED]: this.mineCycleCompleted.bind(this),
     };
 
     // gracefully cleans up the activity when the target is removed
@@ -82,7 +80,8 @@ class Mine extends Activity {
    * Makes the entity begin the mining process
    */
   mineResourceStarted() {
-    this.mineResourceCompletedDueAt = this.game.time.time + MINE_LENGTH_IN_MS;
+    const time = ns.game.game.time.time;
+    this.mineResourceCompletedDueAt = time + MINE_LENGTH_IN_MS;
     this.setState(MINE_RESOURCE_ANIMATION);
   }
 
@@ -91,7 +90,8 @@ class Mine extends Activity {
    * when exactly the mining stage should be fininshed off
    */
   mineResourceAnimation() {
-    if (this.game.time.time >= this.mineResourceCompletedDueAt) {
+    const time = ns.game.game.time.time;
+    if (time >= this.mineResourceCompletedDueAt) {
       this.setState(MINE_RESOURCE_FINISHED);
     }
     console.log('Mining Resource Animation...');
@@ -141,7 +141,7 @@ class Mine extends Activity {
    * Updates the activity on every tick
    */
   update() {
-    // invokes the bound functionality to the current state,
+    // invokes the functionality that is bound to the current state,
     // this is executed at every tick
     this.states[this.state]();
   }
@@ -214,6 +214,22 @@ class Mine extends Activity {
       x,
       y,
     });
+  }
+
+  /**
+   * Saving the target to which the entity will be moved
+   * @return {[void]}
+   */
+  setCoords(coords) {
+    this.coords = coords;
+  }
+
+  /**
+   * Returns the coordinates to which the entity moves
+   * @return {object} object literal that contains the coordinates
+   */
+  getCoords() {
+    return this.coords;
   }
 }
 
