@@ -1,15 +1,14 @@
 /* global window */
 import Menu from '../preloader/Menu';
-import Translations from '../preloader/Translations';
 
 const ns = window.fivenations;
+
 /**
  * Private function to set up all the assets needs to be loaded before the game starts
  * @param {object} [preloader] Preloader object defined below
  */
 function loadResources(preloader) {
   Menu.load(preloader);
-  Translations.load(preloader);
 }
 
 /**

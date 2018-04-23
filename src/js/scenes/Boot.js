@@ -1,5 +1,6 @@
 /* global Phaser */
 import FVLoader from '../common/FVLoader';
+import Translations from '../preloader/Translations';
 import TranslationManager from '../common/TranslationManager';
 
 const { PUBLIC_URL } = process.env;
@@ -23,6 +24,13 @@ Boot.prototype = {
     this.game.load.image('preloader-bar', `${PATH_ASSETS}/preload_bar.png`);
     this.game.load.image('preloader-popup', `${PATH_ASSETS}/preload_popup.png`);
     this.game.load.webfont('conthraxsemibold', 'conthraxsemibold');
+
+    Translations.load(this.game);
+
+    // setting up the callback one the preloading is completed
+    this.game.load.onLoadComplete.addOnce(() => {
+      this.game.state.start('game-preloader');
+    }, this);
   },
 
   create() {
@@ -47,7 +55,6 @@ Boot.prototype = {
       this.game.scale.forceOrientation(true);
       this.game.scale.pageAlignHorizontally = true;
     }
-    this.game.state.start('menu-preloader');
   },
 };
 
