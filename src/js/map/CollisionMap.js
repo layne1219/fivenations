@@ -58,6 +58,16 @@ function isTileOccupiedForEntity(tile, entity) {
 }
 
 /**
+ * Returns true if the given entity does need to visit the
+ * collision map and update the related tiles
+ * @param {object} entity - Entity
+ */
+function doesNeedToVisitCollisionMap(entity) {
+  const dataObject = entity.getDataObject();
+  return !dataObject.isFighter() && !dataObject.isWorker();
+}
+
+/**
  * Wraps a matrix that contains infomations about which map tile
  * is occupied by a given entity and exposes API calls to fetch
  * these datas in certain ways
@@ -247,16 +257,6 @@ class CollisionMap {
   }
 
   /**
-   * Returns true if the given entity does need to visit the
-   * collision map and update the related tiles
-   * @param {object} entity - Entity
-   */
-  doesNeedToVisitCollisionMap(entity) {
-    const dataObject = entity.getDataObject();
-    return !dataObject.isFighter() && !dataObject.isWorker();
-  }
-
-  /**
    * Loops through all active entities and sets the occupiation of
    * the collision map accordingly
    * @param {object} EntityManager - instance of EntityManager
@@ -266,7 +266,7 @@ class CollisionMap {
 
     const entities = entityManager
       .entities(':not(hibernated)')
-      .filter(entity => this.doesNeedToVisitCollisionMap(entity));
+      .filter(entity => doesNeedToVisitCollisionMap(entity));
 
     this.visitTilesByEntities(entities);
     // if the map has been altered since the last check
@@ -466,7 +466,7 @@ class CollisionMap {
   isObstacleAheadForEntity(entity) {
     // only if the entity cannot go through everything
     // e.g.: Fighter and Worker class entities can go through anything
-    if (!this.doesNeedToVisitCollisionMap(entity)) return false;
+    if (!doesNeedToVisitCollisionMap(entity)) return false;
     // get the array of tiles ahead
     const tilesAhead = entity.getTilesAhead();
     return tilesAhead.some(tile => this.isOccupiedForEntity(tile, entity));
