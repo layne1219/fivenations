@@ -315,6 +315,26 @@ function createEntityEventAPI(entityManager) {
 
         return this;
       },
+      /**
+       * Alters the resources in the cargo area
+       * @return {this}
+       * @chainable
+       */
+      mine(options) {
+        const { titanium, silicium, uranium } = options;
+
+        EventBus.getInstance().add({
+          id: 'entity/cargo/alter',
+          targets: entities,
+          data: {
+            titanium,
+            silicium,
+            uranium,
+          },
+        });
+
+        return this;
+      },
     };
   }
 

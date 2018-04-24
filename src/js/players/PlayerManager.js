@@ -37,13 +37,14 @@ const singleton = {
    * @return {object} Player instance
    */
   getUser() {
+    // cache the user since it won't change throughout a session
     if (!this.user) {
-      for (let i = players.length - 1; i >= 0; i -= 1) {
+      for (let i = players.length - 1; i >= 0 && !this.user; i -= 1) {
         if (players[i].isControlledByUser()) {
           this.user = players[i];
-          return;
         }
       }
+      // @TODO this will inevitabely lead to technical depth - Clean up!
       // we return a fake object that exposes the isAuthorised function
       this.user = {
         isAuthorised: () => false,
