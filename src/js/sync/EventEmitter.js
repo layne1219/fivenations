@@ -320,7 +320,7 @@ function createEntityEventAPI(entityManager) {
        * @return {this}
        * @chainable
        */
-      mine(options) {
+      alterCargo(options) {
         const { titanium, silicium, uranium } = options;
 
         EventBus.getInstance().add({

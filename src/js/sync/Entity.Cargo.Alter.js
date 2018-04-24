@@ -25,4 +25,4 @@ class EntityCargoAlter extends Event {
   }
 }
 
-export default EntityMine;
+export default EntityCargoAlter;
