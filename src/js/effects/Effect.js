@@ -67,9 +67,8 @@ class Effect {
       if (this.emitter instanceof Effect || this.emitter instanceof Weapon) {
         this.targetEntity = this.emitter.getTargetEntity();
         if (!this.targetEntity) return;
-        this.targetEntity.on('remove', () => {
-          this.targetEntity = null;
-        });
+        this.onTargetEntityRemove = this.removeTargetEntity.bind(this);
+        this.targetEntity.on('remove', this.onTargetEntityRemove);
       }
     }
   }
@@ -170,9 +169,19 @@ class Effect {
   }
 
   remove() {
+    if (this.targetEntity) {
+      this.targetEntity.off('remove', this.onTargetEntityRemove);
+    }
     this.sprite._group.remove(this.sprite);
     this.sprite.destroy();
     this.manager.explode(this);
+  }
+
+  /**
+   * Removes target entity
+   */
+  removeTargetEntity() {
+    this.targetEntity = null;
   }
 
   getId() {

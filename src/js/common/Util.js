@@ -252,6 +252,7 @@ export default {
         // Inharitable event dispatcher object
         function EventDispatcher() {
             this.events = {};
+            this.dirty = false;
         }
 
         EventDispatcher.prototype.events = {};
@@ -270,7 +271,8 @@ export default {
             if (!this.events[type][index]) {
                 return this;
             }
-            this.events[type].splice(index, 1);
+            this.events[type][index] = null;
+            this.dirty = true;
             return this;
         };
         EventDispatcher.prototype.dispatch = function(type, event) {
@@ -287,9 +289,18 @@ export default {
                     );
                 }
             }
+            if (this.dirty) {
+                this.clean();
+            }
         };
         EventDispatcher.prototype.reset = function() {
             this.events = {};
+        }
+        EventDispatcher.prototype.clean = function() {
+            Object.keys(this.events).forEach(key => {
+                this.events[key] = this.events[key].filter(val => val);
+            });
+            this.dirty = false;
         }
 
         return EventDispatcher;

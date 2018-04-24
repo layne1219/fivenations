@@ -314,6 +314,21 @@ class Entity {
   }
 
   /**
+   * registers listner to the given event type that will be
+   * execute only once
+   * @param {string} event - event type
+   * @param {object} callback
+   */
+  once(event, callback) {
+    const ctx = this;
+    const once = function once(...args) {
+      callback(...args);
+      ctx.eventDispatcher.removeEventListener(event, once);
+    };
+    this.eventDispatcher.addEventListener(event, once);
+  }
+
+  /**
    * removing custom callbacks to the passed events
    * @param  {string}   event
    * @param  {Function} callback
@@ -397,14 +412,25 @@ class Entity {
   }
 
   /**
-   * Altering the entity's position
-   * @param  {[integer]} targetX [description]
-   * @param  {[integer]} targetY [description]
-   * @return {[void]}
+   * Alters the entity's position by executing the Move activity
+   * @param {number} targetX - Horizontal coordinate of the target
+   * @param {number} targetY - Vertivcal coordinate of the target
    */
   moveTo(targetX, targetY) {
     const move = new ActivityManager.Move(this);
     move.setCoords({ x: targetX, y: targetY });
+    this.activityManager.add(move);
+  }
+
+  /**
+   * Wrapper around "moveTo" function that expects an entity as
+   * the parameter instead and calculates its coordinates
+   * @param {object} entity - Entity instance to move to
+   */
+  moveToEntity(entity) {
+    const move = new ActivityManager.Move(this);
+    const { x, y } = entity.getSprite();
+    move.setCoords({ x, y });
     this.activityManager.add(move);
   }
 
@@ -611,9 +637,11 @@ class Entity {
    * @return {[type]} [description]
    */
   delete() {
-    this.eventDispatcher.dispatch('remove');
+    this._willBeRemoved = true;
+    this.eventDispatcher.dispatch('remove', this);
     this.sprite._group.remove(this.sprite);
     this.sprite.destroy();
+    this.eventDispatcher.reset();
   }
 
   /**
@@ -867,7 +895,7 @@ class Entity {
    * @return {boolean}
    */
   isHibernated() {
-    return !!this.hibarnated;
+    return this.hibarnated || this._willBeRemoved;
   }
 
   /**

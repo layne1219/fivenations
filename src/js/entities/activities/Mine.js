@@ -1,5 +1,6 @@
 import Activity from './Activity';
 import EventEmitter from '../../sync/EventEmitter';
+import EntityManager from '../EntityManager';
 import Util from '../../common/Util';
 
 const ns = window.fivenations;
@@ -16,6 +17,9 @@ const MINE_RESOURCE_FINISHED = 4;
 const RETURN_TO_STATION = 5;
 const MINE_CYCLE_COMPLETED = 6;
 
+// Federation mining station
+const MINING_STATION_ID = 'miningstation';
+
 class Mine extends Activity {
   /**
    * Generates an Attack activity instance
@@ -31,7 +35,7 @@ class Mine extends Activity {
     this._minRange = 50;
 
     // default state
-    this.state = INACTIVE;
+    this.state = GO_TO_RESOURCE;
 
     // rainbow table of available states
     this.states = {
@@ -44,7 +48,9 @@ class Mine extends Activity {
     };
 
     // gracefully cleans up the activity when the target is removed
-    this.onTargetEntityRemove = () => this.kill();
+    this.onTargetEntityRemove = this.setClosestTargetResource.bind(this);
+    // callback to find another station when the current one is removed
+    this.onTargetStationRemove = this.setClosestTargetStation.bind(this);
   }
 
   /**
@@ -54,8 +60,20 @@ class Mine extends Activity {
     const isTargetResource = this.target.getDataObject().isResource();
     if (!this.target || !isTargetResource) this.kill();
 
-    this.state = GO_TO_RESOURCE;
     super.activate();
+  }
+
+  /**
+   * Removes the Activity from the activity queue
+   */
+  kill() {
+    if (this.target) {
+      this.target.off('remove', this.onTargetEntityRemove);
+    }
+    if (this.targetStation) {
+      this.targetStation.off('remove', this.onTargetStationRemove);
+    }
+    super.kill();
   }
 
   /**
@@ -63,7 +81,7 @@ class Mine extends Activity {
    */
   goToResource() {
     if (!this.isResourceInMinRange()) {
-      this.entity.getInRange(this.target);
+      this.entity.moveToEntity(this.target);
     }
 
     // If the entity is in the mininmum range but it's still moving
@@ -94,7 +112,6 @@ class Mine extends Activity {
     if (time >= this.mineResourceCompletedDueAt) {
       this.setState(MINE_RESOURCE_FINISHED);
     }
-    console.log('Mining Resource Animation...');
   }
 
   /**
@@ -102,7 +119,16 @@ class Mine extends Activity {
    * to which the resource can be delivered
    */
   mineResourceFininshed() {
-    this.targetStation = this.getClosestStation();
+    // determines the closest station - this is process heavy function
+    // so must be executed prudently
+    this.setClosestTargetStation();
+
+    // we kill the activity if there is no mining station
+    if (this.targetStation) {
+      this.setState(RETURN_TO_STATION);
+    } else {
+      this.kill();
+    }
   }
 
   /**
@@ -110,7 +136,7 @@ class Mine extends Activity {
    */
   returnToStation() {
     if (!this.isStationInMinRange()) {
-      this.entity.getInRange(this.target);
+      this.entity.moveToEntity(this.targetStation);
       return;
     }
 
@@ -125,16 +151,36 @@ class Mine extends Activity {
    * State for cleanups and potential syncronisations
    */
   mineCycleCompleted() {
-    console.log('emit a synced event of adding resources to the station');
     this.setState(GO_TO_RESOURCE);
   }
 
   /**
-   * Helper function to wrap setting the state into one context
+   * Finds the next clostest resource the Mine Activity can be
+   * executed against
    */
+  findClosestResource(previous) {
+    return previous
+      .getClosestAllyEntitiesInRange()
+      .filter(entity => entity.getDataObject().isResource() && !entity.isHibernated())
+      .shift();
+  }
 
-  setState(state) {
-    this.state = state;
+  /**
+   * Fetches the closets allies and filters it down to the
+   * closest Mining station
+   */
+  findClosestTargetStation() {
+    const entityManager = EntityManager.getInstance();
+    const sprite = this.entity.getSprite();
+    return entityManager
+      .entities(':not(hibernated)')
+      .filter(entity => entity.getDataObject().getId() === MINING_STATION_ID)
+      .sort((a, b) => {
+        const distanceToA = Util.distanceBetweenSprites(sprite, a.getSprite());
+        const distanceToB = Util.distanceBetweenSprites(sprite, b.getSprite());
+        return distanceToA > distanceToB;
+      })
+      .shift();
   }
 
   /**
@@ -147,41 +193,63 @@ class Mine extends Activity {
   }
 
   /**
-   * Makes the entity to move to the given coordinate without
-   * registering another activity. That is helpful to implement
-   * entity behaviour that requiest the entity to move during the attack
-   * @param {object} coords - { x,  y }
+   * Helper function to wrap setting the state into one context
    */
-  moveTo(coords) {
-    this.coords = coords;
-    this.entity.getMotionManager().moveTo(this);
+  setState(state) {
+    this.state = state;
   }
 
   /**
-   * Kills the activity and cleans up the target entity
-   */
-  kill() {
-    this.entity.getWeaponManager().clearTargetEntity();
-    super.kill();
-  }
-
-  /**
-   * Saving the target entity that will be attacked
+   * Saves the target entity that will be attacked
    * @return {[void]}
    */
   setTarget(entity) {
-    if (!entity) {
-      throw 'Invalid entity is passed to be mined!';
-    }
-
     if (this.target) {
       this.target.off('remove', this.onTargetEntityRemove);
     }
 
     this.target = entity;
     this.target.on('remove', this.onTargetEntityRemove);
+  }
 
-    this.setCoordsToTarget();
+  /**
+   * Saving the target entity that will be attacked
+   * @return {[void]}
+   */
+  setTargetStation(entity) {
+    if (this.targetStation) {
+      this.targetStation.off('remove', this.onTargetStationRemove);
+    }
+
+    this.targetStation = entity;
+    this.targetStation.on('remove', this.onTargetStationRemove);
+  }
+
+  /**
+   * Finds a closest resource and persists it into the target
+   * local variable
+   */
+  setClosestTargetResource(previous) {
+    const entity = this.findClosestResource(previous);
+    if (entity) {
+      this.setTarget(entity);
+      this.setState(GO_TO_RESOURCE);
+    } else {
+      this.kill();
+    }
+  }
+
+  /**
+   * Finds the closest station and persists it into the targetStation
+   * local variable
+   */
+  setClosestTargetStation() {
+    const entity = this.findClosestTargetStation();
+    if (entity) {
+      this.setTargetStation(entity);
+    } else {
+      this.kill();
+    }
   }
 
   /**
@@ -200,36 +268,6 @@ class Mine extends Activity {
   isStationInMinRange() {
     const distance = Util.distanceBetween(this.entity, this.targetStation);
     return distance <= this._minRange;
-  }
-
-  /**
-   * Updates the coords object with the coordinates of the given
-   * target Entity
-   */
-  setCoordsToTarget() {
-    const sprite = this.target.getSprite();
-    const x = sprite.x;
-    const y = sprite.y;
-    this.setCoords({
-      x,
-      y,
-    });
-  }
-
-  /**
-   * Saving the target to which the entity will be moved
-   * @return {[void]}
-   */
-  setCoords(coords) {
-    this.coords = coords;
-  }
-
-  /**
-   * Returns the coordinates to which the entity moves
-   * @return {object} object literal that contains the coordinates
-   */
-  getCoords() {
-    return this.coords;
   }
 }
 
