@@ -381,6 +381,19 @@ function DataObject(json) {
     getCargoUranium() {
       return data.cargoUranium;
     },
+
+    /**
+     * Returns the cargo attributes of the given entity
+     * @param {object} entity - Entity instance
+     * @return {object} - { titanium, silicium, uranium }
+     */
+    getCargo() {
+      return {
+        titanium: this.getCargoTitanium(),
+        silicium: this.getCargoSilicium(),
+        uranium: this.getCargoUranium(),
+      };
+    },
   };
 }
 

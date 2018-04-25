@@ -190,14 +190,39 @@ class Mine extends Activity {
    */
   pickUpCargo() {
     const manager = PlayerManager.getInstance();
-    const emitter = EventEmitter.getInstance();
     if (!manager.isUserAuthorised) return;
 
-    const cargo = {
-      titanium: 10,
-    };
+    const emitter = EventEmitter.getInstance();
+    const resourceDO = this.target.getDataObject();
+    const cargo = resourceDO.getCargo();
+    const capacity = this.entity.getDataObject().getCargoCapacity();
+    let titanium;
+    let silicium;
+    let uranium;
 
-    emitter.synced.entities(this.entity).alterCargo(cargo);
+    if (cargo.titanium > 0) {
+      capacity = Math.min(cargo.titanium, capacity);
+      cargo.titanium -= capacity;
+      titanium = capacity;
+    } else if (cargo.silicium > 0) {
+      capacity = Math.min(cargo.silicium, capacity);
+      cargo.silicium -= capacity;
+      silicium = capacity;
+    } else if (cargo.uranium > 0) {
+      capacity = Math.min(cargo.uranium, capacity);
+      cargo.uranium -= capacity;
+      uranium = capacity;
+    }
+
+    // updates the altered cargo attributes for the resource
+    emitter.synced.entities(this.target).alterCargo(cargo);
+
+    // picks up the cargo
+    emitter.synced.entities(this.entity).alterCargo({
+      titanium,
+      silicium,
+      uranium,
+    });
   }
 
   /**
@@ -209,11 +234,7 @@ class Mine extends Activity {
 
     const emitter = EventEmitter.getInstance();
     const dataObject = this.entity.getDataObject();
-    const cargo = {
-      titanium: dataObject.getCargoTitanium(),
-      silicium: dataObject.getCargoSilicium(),
-      uranium: dataObject.getCargoUranium(),
-    };
+    const cargo = dataObject.getCargo();
 
     emitter.synced.entities(this.targetStation).alterCargo(cargo);
     emitter.synced.entities(this.entity).alterCargo({
