@@ -1,4 +1,5 @@
 import Activity from './Activity';
+import PlayerManager from '../../players/PlayerManager';
 import EventEmitter from '../../sync/EventEmitter';
 import EntityManager from '../EntityManager';
 import Util from '../../common/Util';
@@ -195,7 +196,7 @@ class Mine extends Activity {
     const emitter = EventEmitter.getInstance();
     const resourceDO = this.target.getDataObject();
     const cargo = resourceDO.getCargo();
-    const capacity = this.entity.getDataObject().getCargoCapacity();
+    let capacity = this.entity.getDataObject().getCargoCapacity();
     let titanium;
     let silicium;
     let uranium;

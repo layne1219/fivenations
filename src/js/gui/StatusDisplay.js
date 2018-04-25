@@ -1,7 +1,33 @@
 import StatusBar from './StatusBar';
+import CargoDisplay from './CargoDisplay';
 import Graphics from '../common/Graphics';
 
 let phaserGame;
+
+// icons for cargo displays
+const ICON_TITANIUM = 'gui_resource_01_titanium.png';
+const ICON_SILICIUM = 'gui_resource_02_silicium.png';
+const ICON_URANIUM = 'gui_resource_03_uranium.png';
+
+// color keys for cargo texts
+const COLOR_TITANIUM = '#FFFFFF';
+const COLOR_SILICIUM = '#FFFFFF';
+const COLOR_URANIUM = '#FFFFFF';
+
+/**
+ * Returns whether the given entity can carry or has cargo
+ * @paran {object} entity - Entity instance
+ * @return {boolean}
+ */
+function canCarryCargo(entity) {
+  const dataObject = entity.getDataObject();
+  return (
+    dataObject.getCargoCapacity() ||
+    dataObject.getCargoTitanium() ||
+    dataObject.getCargoSilicium() ||
+    dataObject.getCargoUranium()
+  );
+}
 
 export default class StatusDisplay {
   constructor(_phaserGame) {
@@ -22,11 +48,12 @@ export default class StatusDisplay {
    * @return {[void]}
    */
   appendTo(entity) {
-    const height = entity.getDataObject().getHeight();
-    const width = Math.max(entity.getDataObject().getWidth(), height);
+    const dataObject = entity.getDataObject();
+    const height = dataObject.getHeight();
+    const width = Math.max(dataObject.getWidth(), height);
 
     // Shield if there is any
-    if (entity.getDataObject().getMaxShield() > 0) {
+    if (dataObject.getMaxShield() > 0) {
       this.shieldBar = new StatusBar({ color: '0x0000FF', width, phaserGame });
       this.shieldBar.getGroup().x = this.shieldBar.getGroup().width / -2;
       this.shieldBar.getGroup().y = -height;
@@ -39,11 +66,37 @@ export default class StatusDisplay {
     this.group.add(this.healthBar.getGroup());
 
     // Power if there is any
-    if (entity.getDataObject().getMaxPower() > 0) {
+    if (dataObject.getMaxPower() > 0) {
       this.powerBar = new StatusBar({ color: '0xFF00FF', width, phaserGame });
       this.powerBar.getGroup().x = this.powerBar.getGroup().width / -2;
       this.powerBar.getGroup().y = -height + this.group.children.length * 6;
       this.group.add(this.powerBar.getGroup());
+    }
+
+    if (canCarryCargo(entity) > 0) {
+      // Titanium Cargo
+      this.cargoTitanium = new CargoDisplay(
+        phaserGame,
+        ICON_TITANIUM,
+        COLOR_TITANIUM,
+      );
+      this.group.add(this.cargoTitanium);
+
+      // Silicium Cargo
+      this.cargoSilicium = new CargoDisplay(
+        phaserGame,
+        ICON_SILICIUM,
+        COLOR_SILICIUM,
+      );
+      this.group.add(this.cargoSilicium);
+
+      // Uranium Cargo
+      this.cargoUranium = new CargoDisplay(
+        phaserGame,
+        ICON_URANIUM,
+        COLOR_URANIUM,
+      );
+      this.group.add(this.cargoUranium);
     }
 
     entity.on('select', this.show.bind(this));
@@ -83,6 +136,43 @@ export default class StatusDisplay {
     if (this.powerBar) {
       ratio = dataObject.getPower() / dataObject.getMaxPower();
       this.powerBar.update(ratio);
+    }
+
+    const titanium = dataObject.getCargoTitanium();
+    const silicium = dataObject.getCargoSilicium();
+    const uranium = dataObject.getCargoUranium();
+    let cargoOffset = 0;
+
+    if (this.cargoTitanium) {
+      if (titanium > 0) {
+        this.cargoTitanium.update(titanium);
+        this.cargoTitanium.y = cargoOffset;
+        this.cargoTitanium.visible = true;
+        cargoOffset += this.cargoTitanium.height;
+      } else {
+        this.cargoTitanium.visible = false;
+      }
+    }
+
+    if (this.cargoSilicium) {
+      if (silicium > 0) {
+        this.cargoSilicium.update(silicium);
+        this.cargoSilicium.y = cargoOffset;
+        this.cargoSilicium.visible = true;
+        cargoOffset += this.cargoSilicium.height;
+      } else {
+        this.cargoSilicium.visible = false;
+      }
+    }
+
+    if (this.cargoUranium) {
+      if (uranium > 0) {
+        this.cargoUranium.update(uranium);
+        this.cargoUranium.y = cargoOffset;
+        this.cargoUranium.visible = true;
+      } else {
+        this.cargoUranium.visible = false;
+      }
     }
   }
 

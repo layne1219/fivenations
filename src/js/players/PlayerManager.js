@@ -44,11 +44,6 @@ const singleton = {
           this.user = players[i];
         }
       }
-      // @TODO this will inevitabely lead to technical depth - Clean up!
-      // we return a fake object that exposes the isAuthorised function
-      this.user = {
-        isAuthorised: () => false,
-      };
     }
     return this.user;
   },
