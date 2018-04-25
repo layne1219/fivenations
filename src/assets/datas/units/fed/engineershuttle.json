@@ -30,6 +30,7 @@
   "uranium": 0,
   "space": 2,
   "buildingTime": 8,
+  "cargoCapacity": 10,
   "directions": 16,
   "animFrame": 3,
   "animType": [

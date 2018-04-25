@@ -22,7 +22,10 @@
 	"animFrame": 1,
 	"animType": ["idle-forever"],
 	"size": "sm",
-	"resource": true,		
+	"resource": true,
+	"cargoTitanum": 0,
+	"cargoSilicium": 250,
+	"cargoUranium": 0,
     "animations": {
         "idle-forever": {
             "rate": 26,
