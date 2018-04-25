@@ -110,6 +110,7 @@ class Mine extends Activity {
   mineResourceAnimation() {
     const time = ns.game.game.time.time;
     if (time >= this.mineResourceCompletedDueAt) {
+      this.pickUpCargo();
       this.setState(MINE_RESOURCE_FINISHED);
     }
   }
@@ -151,6 +152,7 @@ class Mine extends Activity {
    * State for cleanups and potential syncronisations
    */
   mineCycleCompleted() {
+    this.dropOffCargoAtStation();
     this.setState(GO_TO_RESOURCE);
   }
 
@@ -181,6 +183,44 @@ class Mine extends Activity {
         return distanceToA > distanceToB;
       })
       .shift();
+  }
+
+  /**
+   * Alters the carried cargo based on the target resource
+   */
+  pickUpCargo() {
+    const manager = PlayerManager.getInstance();
+    const emitter = EventEmitter.getInstance();
+    if (!manager.isUserAuthorised) return;
+
+    const cargo = {
+      titanium: 10,
+    };
+
+    emitter.synced.entities(this.entity).alterCargo(cargo);
+  }
+
+  /**
+   * Adds the carried cargo to the station's cargo attributes
+   */
+  dropOffCargoAtStation() {
+    const manager = PlayerManager.getInstance();
+    if (!manager.isUserAuthorised) return;
+
+    const emitter = EventEmitter.getInstance();
+    const dataObject = this.entity.getDataObject();
+    const cargo = {
+      titanium: dataObject.getCargoTitanium(),
+      silicium: dataObject.getCargoSilicium(),
+      uranium: dataObject.getCargoUranium(),
+    };
+
+    emitter.synced.entities(this.targetStation).alterCargo(cargo);
+    emitter.synced.entities(this.entity).alterCargo({
+      titanium: 0,
+      silicium: 0,
+      uranium: 0,
+    });
   }
 
   /**
