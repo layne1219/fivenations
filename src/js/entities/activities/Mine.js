@@ -1,5 +1,6 @@
 import Activity from './Activity';
 import PlayerManager from '../../players/PlayerManager';
+import EffectManager from '../../effects/EffectManager';
 import EventEmitter from '../../sync/EventEmitter';
 import EntityManager from '../EntityManager';
 import Util from '../../common/Util';
@@ -18,6 +19,9 @@ const MINE_RESOURCE_FINISHED = 4;
 const RETURN_TO_STATION = 5;
 const MINE_CYCLE_COMPLETED = 6;
 
+// animation key
+const MINE_ANIMATION_KEY = 'mining';
+
 // Federation mining station
 const MINING_STATION_ID = 'miningstation';
 
@@ -29,8 +33,9 @@ class Mine extends Activity {
   constructor(entity) {
     super(entity);
 
-    // shorthand to optimise function calls
+    // shorthands to optimise function calls
     this.motionManager = entity.getMotionManager();
+    this.effectManager = EffectManager.getInstance();
 
     // the minimum range
     this._minRange = 50;
@@ -101,6 +106,7 @@ class Mine extends Activity {
   mineResourceStarted() {
     const time = ns.game.game.time.time;
     this.mineResourceCompletedDueAt = time + MINE_LENGTH_IN_MS;
+    this.entity.animate(MINE_ANIMATION_KEY);
     this.setState(MINE_RESOURCE_ANIMATION);
   }
 
@@ -113,6 +119,8 @@ class Mine extends Activity {
     if (time >= this.mineResourceCompletedDueAt) {
       this.pickUpCargo();
       this.setState(MINE_RESOURCE_FINISHED);
+    } else {
+      this.emitMiningEffects();
     }
   }
 
@@ -121,6 +129,7 @@ class Mine extends Activity {
    * to which the resource can be delivered
    */
   mineResourceFininshed() {
+    this.entity.stopAnimation();
     // determines the closest station - this is process heavy function
     // so must be executed prudently
     this.setClosestTargetStation();
@@ -137,6 +146,15 @@ class Mine extends Activity {
    * Checks if the entity has arrived at the station
    */
   returnToStation() {
+    if (!this.targetStation) {
+      this.kill();
+      return;
+    }
+
+    if (this.isStationFullUp()) {
+      this.setClosestTargetStation();
+    }
+
     if (!this.isStationInMinRange()) {
       this.entity.moveToEntity(this.targetStation);
       return;
@@ -177,7 +195,12 @@ class Mine extends Activity {
     const sprite = this.entity.getSprite();
     return entityManager
       .entities(':not(hibernated)')
-      .filter(entity => entity.getDataObject().getId() === MINING_STATION_ID)
+      .filter((entity) => {
+        const dataObject = entity.getDataObject();
+        return (
+          dataObject.getId() === MINING_STATION_ID && !dataObject.isCargoFull()
+        );
+      })
       .sort((a, b) => {
         const distanceToA = Util.distanceBetweenSprites(sprite, a.getSprite());
         const distanceToB = Util.distanceBetweenSprites(sprite, b.getSprite());
@@ -240,8 +263,26 @@ class Mine extends Activity {
     const emitter = EventEmitter.getInstance();
     const entityDO = this.entity.getDataObject();
     const stationDO = this.targetStation.getDataObject();
-    const currentCargo = stationDO.getCargo();
     const dropOffCargo = entityDO.getCargo();
+    const dropOffCargoSum = entityDO.getCargoSum();
+    const currentCargo = stationDO.getCargo();
+    const currentCargoSum = stationDO.getCargoSum();
+    const stationCapacity = stationDO.getCargoCapacity();
+    let diff = currentCargoSum + dropOffCargoSum - stationCapacity;
+
+    if (diff > 0) {
+      const diffTitanium = dropOffCargo.titanium - diff;
+      dropOffCargo.titanium = Math.max(0, diffTitanium);
+      diff -= dropOffCargo.titanium;
+
+      const diffSilicium = dropOffCargo.silicium - diff;
+      dropOffCargo.silicium = Math.max(0, diffSilicium);
+      diff -= dropOffCargo.silicium;
+
+      const diffUranium = dropOffCargo.uranium - diff;
+      dropOffCargo.uranium = Math.max(0, diffUranium);
+      diff -= dropOffCargo.uranium;
+    }
 
     currentCargo.titanium += dropOffCargo.titanium;
     currentCargo.silicium += dropOffCargo.silicium;
@@ -253,6 +294,29 @@ class Mine extends Activity {
       silicium: 0,
       uranium: 0,
     });
+  }
+
+  /**
+   * Generates effects to perk up the mining animation
+   */
+  emitMiningEffects() {
+    // emitting effects just locally since this is not required
+    // to be syncronised as it does not have impact on the game
+    if (Math.random() < 0.05) {
+      this.effectManager.add({
+        id: 'muzzleflash-electric',
+        x: this.entity.getSprite().x + Util.rnd(0, 10) - 5,
+        y: this.entity.getSprite().y + Util.rnd(0, 10) - 5,
+      });
+    }
+
+    if (Math.random() < 0.05) {
+      this.effectManager.add({
+        id: 'construction',
+        x: this.target.getSprite().x + Util.rnd(0, 50) - 25,
+        y: this.target.getSprite().y + Util.rnd(0, 50) - 25,
+      });
+    }
   }
 
   /**
@@ -340,6 +404,15 @@ class Mine extends Activity {
   isStationInMinRange() {
     const distance = Util.distanceBetween(this.entity, this.targetStation);
     return distance <= this._minRange;
+  }
+
+  /**
+   * Returns whether the target station is full up with resources
+   * @return {boolean}
+   */
+  isStationFullUp() {
+    const dataObject = this.targetStation.getDataObject();
+    return dataObject.isCargoFull();
   }
 }
 

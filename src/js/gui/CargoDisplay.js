@@ -1,5 +1,4 @@
 /* global Phaser */
-import { DEFAULT_FONT } from '../common/Const';
 
 // font family and size
 const FONT = '14px BerlinSansFB-Reg';

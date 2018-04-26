@@ -383,6 +383,15 @@ function DataObject(json) {
     },
 
     /**
+     * Returns whether the entity's cargo is full up
+     * @return {boolean}
+     */
+    isCargoFull() {
+      const sum = this.getCargoSum();
+      return sum >= data.cargoCapacity;
+    },
+
+    /**
      * Returns the cargo attributes of the given entity
      * @param {object} entity - Entity instance
      * @return {object} - { titanium, silicium, uranium }
@@ -393,6 +402,15 @@ function DataObject(json) {
         silicium: this.getCargoSilicium(),
         uranium: this.getCargoUranium(),
       };
+    },
+
+    /**
+     * Returns the mrged amount of cargo
+     * @return {number} summarised amount of cargo
+     */
+    getCargoSum() {
+      const cargo = this.getCargo();
+      return Object.keys(cargo).reduce((sum, key) => cargo[key] + sum, 0);
     },
   };
 }
