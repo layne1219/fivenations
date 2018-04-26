@@ -45,6 +45,13 @@ function DataObject(json) {
   data.dimensions = getDimensionsBySize(data);
   data.damageArea = getDamageArea(data);
 
+  // cargo
+  if (data.cargoCapacity > 0) {
+    data.cargoTitanium = 0;
+    data.cargoSilicium = 0;
+    data.cargoUranium = 0;
+  }
+
   // for providing privacy for the data variables we have to create a closure here so as not to
   // publish any data variable held by the entity
   return {

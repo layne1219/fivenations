@@ -30,24 +30,24 @@ export const SCROLL_SPEED = 10;
 // size categories for entities
 export const ENTITY_SIZES = {
   xsm: {
-    width: 35,
-    height: 35,
+    width: 25,
+    height: 25,
   },
   sm: {
     width: 50,
     height: 50,
   },
   m: {
-    width: 90,
-    height: 90,
+    width: 75,
+    height: 75,
   },
   l: {
-    width: 130,
-    height: 130,
+    width: 100,
+    height: 100,
   },
   xl: {
-    width: 170,
-    height: 170,
+    width: 125,
+    height: 125,
   },
 };
 

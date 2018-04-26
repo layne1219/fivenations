@@ -191,6 +191,8 @@ class Mine extends Activity {
    */
   pickUpCargo() {
     const manager = PlayerManager.getInstance();
+
+    // !!! executed for only authorised users
     if (!manager.isUserAuthorised) return;
 
     const emitter = EventEmitter.getInstance();
@@ -231,13 +233,21 @@ class Mine extends Activity {
    */
   dropOffCargoAtStation() {
     const manager = PlayerManager.getInstance();
+
+    // !!! executed for only authorised users
     if (!manager.isUserAuthorised) return;
 
     const emitter = EventEmitter.getInstance();
-    const dataObject = this.entity.getDataObject();
-    const cargo = dataObject.getCargo();
+    const entityDO = this.entity.getDataObject();
+    const stationDO = this.targetStation.getDataObject();
+    const currentCargo = stationDO.getCargo();
+    const dropOffCargo = entityDO.getCargo();
 
-    emitter.synced.entities(this.targetStation).alterCargo(cargo);
+    currentCargo.titanium += dropOffCargo.titanium;
+    currentCargo.silicium += dropOffCargo.silicium;
+    currentCargo.uranium += dropOffCargo.uranium;
+
+    emitter.synced.entities(this.targetStation).alterCargo(currentCargo);
     emitter.synced.entities(this.entity).alterCargo({
       titanium: 0,
       silicium: 0,

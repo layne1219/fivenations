@@ -74,12 +74,14 @@ export default class StatusDisplay {
     }
 
     if (canCarryCargo(entity) > 0) {
+      const cargoOffsetX = this.healthBar.getGroup().x;
       // Titanium Cargo
       this.cargoTitanium = new CargoDisplay(
         phaserGame,
         ICON_TITANIUM,
         COLOR_TITANIUM,
       );
+      this.cargoTitanium.x = cargoOffsetX;
       this.group.add(this.cargoTitanium);
 
       // Silicium Cargo
@@ -88,6 +90,7 @@ export default class StatusDisplay {
         ICON_SILICIUM,
         COLOR_SILICIUM,
       );
+      this.cargoSilicium.x = cargoOffsetX;
       this.group.add(this.cargoSilicium);
 
       // Uranium Cargo
@@ -96,13 +99,16 @@ export default class StatusDisplay {
         ICON_URANIUM,
         COLOR_URANIUM,
       );
+      this.cargoUranium.x = cargoOffsetX;
       this.group.add(this.cargoUranium);
     }
 
+    // registers event listeners against entity events
     entity.on('select', this.show.bind(this));
     entity.on('unselect', this.hide.bind(this));
     entity.on('damage', this.update.bind(this));
     entity.on('remove', this.remove.bind(this));
+    entity.on('updateCargo', this.update.bind(this));
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
@@ -115,11 +121,9 @@ export default class StatusDisplay {
   }
 
   /**
-   * Refresing the graphics objects according to the current values of
-   * the exposed abilities of the entity
-   * @return {[void]}
+   * Updates the bars above the entity
    */
-  update() {
+  updateBars() {
     const dataObject = this.parent.getDataObject();
     let ratio;
 
@@ -137,18 +141,25 @@ export default class StatusDisplay {
       ratio = dataObject.getPower() / dataObject.getMaxPower();
       this.powerBar.update(ratio);
     }
+  }
 
+  /**
+   * Updates the cargo data
+   */
+  updateCargo() {
+    const dataObject = this.parent.getDataObject();
+    const height = dataObject.getHeight();
     const titanium = dataObject.getCargoTitanium();
     const silicium = dataObject.getCargoSilicium();
     const uranium = dataObject.getCargoUranium();
-    let cargoOffset = 0;
+    let cargoOffset = height / 2;
 
     if (this.cargoTitanium) {
       if (titanium > 0) {
         this.cargoTitanium.update(titanium);
         this.cargoTitanium.y = cargoOffset;
         this.cargoTitanium.visible = true;
-        cargoOffset += this.cargoTitanium.height;
+        cargoOffset += this.cargoTitanium.height * 0.75;
       } else {
         this.cargoTitanium.visible = false;
       }
@@ -159,7 +170,7 @@ export default class StatusDisplay {
         this.cargoSilicium.update(silicium);
         this.cargoSilicium.y = cargoOffset;
         this.cargoSilicium.visible = true;
-        cargoOffset += this.cargoSilicium.height;
+        cargoOffset += this.cargoSilicium.height * 0.75;
       } else {
         this.cargoSilicium.visible = false;
       }
@@ -174,6 +185,16 @@ export default class StatusDisplay {
         this.cargoUranium.visible = false;
       }
     }
+  }
+
+  /**
+   * Refreshes the graphics objects according to the current values of
+   * the exposed abilities of the entity
+   * @return {[void]}
+   */
+  update() {
+    this.updateBars();
+    this.updateCargo();
   }
 
   /**

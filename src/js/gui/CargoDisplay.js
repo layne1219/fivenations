@@ -1,6 +1,9 @@
 /* global Phaser */
 import { DEFAULT_FONT } from '../common/Const';
 
+// font family and size
+const FONT = '14px BerlinSansFB-Reg';
+
 /**
  * Phaser.Group class that realises the Cargo Display
  */
@@ -27,10 +30,13 @@ class CargoDisplay extends Phaser.Group {
    * @param {string} color - Color string
    */
   addText(color) {
-    this.label = this.game.add.text(this.icon.x + this.icon.width, 0, '', {
-      font: DEFAULT_FONT.font,
+    const x = this.icon.x + this.icon.width;
+    const y = this.icon.y + 4;
+    this.label = this.game.add.text(x, y, '', {
+      font: FONT,
       fill: color,
     });
+    this.label.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
     this.add(this.label);
   }
 

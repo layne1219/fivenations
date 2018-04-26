@@ -18,9 +18,11 @@ class EntityCargoAlter extends Event {
       const dataObject = entity.getDataObject();
       const { titanium, silicium, uranium } = options.data;
 
-      if (titanium) dataObject.setCargoTitanium(titanium);
-      if (silicium) dataObject.setCargoSilicium(silicium);
-      if (uranium) dataObject.setCargoUranium(uranium);
+      if (undefined !== titanium) dataObject.setCargoTitanium(titanium);
+      if (undefined !== silicium) dataObject.setCargoSilicium(silicium);
+      if (undefined !== uranium) dataObject.setCargoUranium(uranium);
+
+      entity.dispatch('updateCargo');
     });
   }
 }
