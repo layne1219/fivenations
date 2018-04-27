@@ -66,12 +66,20 @@ function DataObject(json) {
           this.damageShield(params.damageShield);
         }
       } else {
-        this.damageHull(params.damage);
+        this.damageHull(params.damage, params.ignoreArmor);
       }
     },
 
-    damageHull(value) {
-      data.hull = Math.max(data.hull - Math.max(value - data.armor, 1), 0);
+    /**
+     * Deducts the given amount from the entity's Hull value.
+     * If the ignoreArmor is truthy the logic will disregard the
+     * current armor.
+     * @param {number} value - the amount by which the hull will be reduced
+     * @param {boolean} ignoreArmor - ignorse the armor
+     */
+    damageHull(value, ignoreArmor = false) {
+      const armor = ignoreArmor ? 0 : data.armor;
+      data.hull = Math.max(data.hull - Math.max(value - armor, 1), 0);
     },
 
     damageShield(value) {

@@ -16,11 +16,20 @@ class EntityCargoAlter extends Event {
     options.targets.forEach((id) => {
       const entity = ns.game.entityManager.entities(id);
       const dataObject = entity.getDataObject();
-      const { titanium, silicium, uranium } = options.data;
+      const {
+        titanium, silicium, uranium, damage,
+      } = options.data;
 
       if (undefined !== titanium) dataObject.setCargoTitanium(titanium);
       if (undefined !== silicium) dataObject.setCargoSilicium(silicium);
       if (undefined !== uranium) dataObject.setCargoUranium(uranium);
+
+      if (damage) {
+        entity.damage({
+          damage,
+          ignoreArmor: true,
+        });
+      }
 
       entity.dispatch('updateCargo');
     });

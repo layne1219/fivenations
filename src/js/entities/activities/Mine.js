@@ -241,7 +241,10 @@ class Mine extends Activity {
     }
 
     // updates the altered cargo attributes for the resource
-    emitter.synced.entities(this.target).alterCargo(cargo);
+    emitter.synced.entities(this.target).alterCargo({
+      damage: capacity, // asteroids lose their hull while they are mined
+      ...cargo,
+    });
 
     // picks up the cargo
     emitter.synced.entities(this.entity).alterCargo({

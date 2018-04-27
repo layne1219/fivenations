@@ -321,16 +321,10 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       alterCargo(options) {
-        const { titanium, silicium, uranium } = options;
-
         EventBus.getInstance().add({
           id: 'entity/cargo/alter',
           targets: entities,
-          data: {
-            titanium,
-            silicium,
-            uranium,
-          },
+          data: options,
         });
 
         return this;
