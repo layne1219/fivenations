@@ -58,6 +58,12 @@
     }
   },
   "events": {
+    "create": {
+      "activity": {
+        "class": "createIcarus",
+        "authorisedOnly": true
+      }
+    },
     "remove": {
       "effects": [
         "miningstation-wreckage",
