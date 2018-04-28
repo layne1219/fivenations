@@ -1,9 +1,9 @@
 /* eslint no-underscore-dangle: 0 */
-const weaponsJSON = require('../../../assets/datas/common/weapons.json');
-
 import Weapon from './Weapon';
 import Util from '../../common/Util';
 import { WEAPON_INSTANCE_DELAY } from '../../common/Const';
+
+const weaponsJSON = require('../../../assets/datas/common/weapons.json');
 
 const cache = {};
 

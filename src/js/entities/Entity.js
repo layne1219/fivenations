@@ -227,6 +227,19 @@ const extendSprite = (entity, sprite, dataObject) => {
   return sprite;
 };
 
+/**
+ * Sets the home station of the give entity and registers listeners
+ * @param {object} entity - Entity instance
+ * @param {object} homeStation - Entity instance
+ */
+function setHomeStation(entity, homeStation) {
+  entity.homeStation = homeStation;
+  homeStation.deliverer = entity;
+
+  homeStation.on('remove', () => (entity.homeStation = null));
+  entity.on('remove', () => (homeStation.deliverer = null));
+}
+
 class Entity {
   /**
    * generates an Entity instance
@@ -301,6 +314,9 @@ class Entity {
     if (this.dataObject.hasJetEngine()) {
       this.jetEngine = this.entityManager.addJetEngine(this);
     }
+
+    // add home station
+    setHomeStation(entity, config.homeStation);
   }
 
   /**
@@ -942,6 +958,24 @@ class Entity {
    */
   canMove() {
     return this.dataObject.getSpeed() > 0;
+  }
+
+  /**
+   * Returns true if the entity (e.g.: Mining Station) has a
+   * deliverer attached (such as Icarus)
+   * @return {boolean}
+   */
+  hasDeliverer() {
+    return this.deliverer;
+  }
+
+  /**
+   * Returns the entity that is designated as home station
+   * (e.g.: Icarus's home station is a Mining Station)
+   * @return {object} Entity
+   */
+  getHomeStation() {
+    return this.homeStation;
   }
 
   getSprite() {
