@@ -1,15 +1,16 @@
 import Activity from './Activity';
-import Move from './Move';
-import Patrol from './Patrol';
-import Follow from './Follow';
-import Stop from './Stop';
-import Idle from './Idle';
-import Fire from './Fire';
-import GetInRange from './GetInRange';
-import GetToDock from './GetToDock';
-import Attack from './Attack';
-import Mine from './Mine';
-import RotateToTarget from './RotateToTarget';
+import Move from './shared/Move';
+import Patrol from './shared/Patrol';
+import Follow from './shared/Follow';
+import Stop from './shared/Stop';
+import Idle from './shared/Idle';
+import Fire from './shared/Fire';
+import GetInRange from './shared/GetInRange';
+import GetToDock from './shared/GetToDock';
+import Attack from './shared/Attack';
+import Mine from './shared/Mine';
+import RotateToTarget from './shared/RotateToTarget';
+import CreateIcarus from './custom/CreateIcarus';
 
 const ns = window.fivenations;
 
@@ -139,5 +140,6 @@ ActivityManager.GetToDock = GetToDock;
 ActivityManager.Attack = Attack;
 ActivityManager.Mine = Mine;
 ActivityManager.RotateToTarget = RotateToTarget;
+ActivityManager.CreateIcarus = CreateIcarus;
 
 export default ActivityManager;

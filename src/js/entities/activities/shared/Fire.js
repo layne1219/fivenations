@@ -1,4 +1,4 @@
-import Activity from './Activity';
+import Activity from '../Activity';
 
 /**
  * Fire Activity that executes each of individual weapon's fire

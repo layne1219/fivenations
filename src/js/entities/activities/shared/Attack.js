@@ -1,8 +1,8 @@
-import Activity from './Activity';
-import PlayerManager from '../../players/PlayerManager';
-import EventEmitter from '../../sync/EventEmitter';
-import Util from '../../common/Util';
-import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
+import Activity from '../Activity';
+import PlayerManager from '../../../players/PlayerManager';
+import EventEmitter from '../../../sync/EventEmitter';
+import Util from '../../../common/Util';
+import { TILE_WIDTH, TILE_HEIGHT } from '../../../common/Const';
 
 const ns = window.fivenations;
 

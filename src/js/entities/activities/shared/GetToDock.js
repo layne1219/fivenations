@@ -1,7 +1,7 @@
 import GetInRange from './GetInRange';
-import PlayerManager from '../../players/PlayerManager';
-import EventEmitter from '../../sync/EventEmitter';
-import Util from '../../common/Util';
+import PlayerManager from '../../../players/PlayerManager';
+import EventEmitter from '../../../sync/EventEmitter';
+import Util from '../../../common/Util';
 
 class GetToDock extends GetInRange {
   /**

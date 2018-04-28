@@ -1,4 +1,4 @@
-import Activity from './Activity';
+import Activity from '../Activity';
 
 const MIN_DISTANCE_TO_TARGET = 50;
 

@@ -1,9 +1,9 @@
-import Activity from './Activity';
-import PlayerManager from '../../players/PlayerManager';
-import EffectManager from '../../effects/EffectManager';
-import EventEmitter from '../../sync/EventEmitter';
-import EntityManager from '../EntityManager';
-import Util from '../../common/Util';
+import Activity from '../Activity';
+import PlayerManager from '../../../players/PlayerManager';
+import EffectManager from '../../../effects/EffectManager';
+import EventEmitter from '../../../sync/EventEmitter';
+import EntityManager from '../../EntityManager';
+import Util from '../../../common/Util';
 
 const ns = window.fivenations;
 

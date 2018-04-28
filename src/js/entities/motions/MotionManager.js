@@ -1,6 +1,6 @@
 import EffectManager from './EffectManager';
 import Effects from './Effects';
-import Move from '../activities/Move';
+import Move from '../activities/shared/Move';
 import Util from '../../common/Util';
 import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 

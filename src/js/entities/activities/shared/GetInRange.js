@@ -1,7 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
-import Activity from './Activity';
+import Activity from '../Activity';
 import Move from './Move';
-import Util from '../../common/Util';
+import Util from '../../../common/Util';
 
 const rangeTooFarFactor = 1.5;
 
