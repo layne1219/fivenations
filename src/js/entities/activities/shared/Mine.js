@@ -216,7 +216,7 @@ class Mine extends Activity {
     const manager = PlayerManager.getInstance();
 
     // !!! executed for only authorised users
-    if (!manager.isUserAuthorised) return;
+    if (!manager.isUserAuthorised()) return;
 
     const emitter = EventEmitter.getInstance();
     const resourceDO = this.target.getDataObject();

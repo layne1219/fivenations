@@ -130,6 +130,8 @@ EntityManager.prototype = {
       sprite,
       dataObject,
       createdAt: config.createdAt,
+      homeStation: config.homeStation,
+      noUserControl: config.noUserControl,
     });
 
     // setting the coordinates if not ommitted

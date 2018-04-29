@@ -21,14 +21,18 @@ function createEventExecuter() {
           continue;
         }
         try {
-          console.debug(`Executing: ${evt.id}`, evt);
           evtObj = factory.getEventObjectById(evt.id);
           evtObj.execute({
             targets: evt.targets,
             data: evt.data,
             resetActivityQueue: evt.resetActivityQueue,
           });
+          // replicate the event against the local dispatcher
           emitter.local.dispatch(evt.id);
+          // if there is a callback added we execute it.
+          if (evt.callback) {
+            evt.callback();
+          }
         } catch (ex) {
           // @TODO catch these errors for further assessment
           throw new Error(ex);

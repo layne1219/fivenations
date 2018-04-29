@@ -59,10 +59,12 @@
   },
   "events": {
     "create": {
-      "activity": {
-        "class": "createIcarus",
-        "authorisedOnly": true
-      }
+      "activities": [
+        {
+          "id": "CreateIcarus",
+          "authorisedOnly": true
+        }
+      ]
     },
     "remove": {
       "effects": [

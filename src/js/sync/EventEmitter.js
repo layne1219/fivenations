@@ -344,16 +344,27 @@ function createEntityEventAPI(entityManager) {
   }
 
   /**
-   * Emits an entity/create event
-   * @param {[type]} config [description]
+   * Emits an 'entity/create' event
+   * @param {object} config - object holding the details of the creation
+   * @return {object} Promise - resolved when the 'entity/create' event is
+   * executed
    */
   $.add = (config) => {
-    if (!config) return;
+    if (!config) return null;
     if (!config.guid) config.guid = Util.getGUID();
     if (!config.createdAt) config.createdAt = new Date().getTime();
-    EventBus.getInstance().add({
-      id: 'entity/create',
-      data: config,
+    // we return a promise that is resolved when the event is
+    // executed. The promise is created to propagate the GUID to
+    // higher level logic so that external code is notified when
+    // the newly generated entity is placed in the EntityManager
+    return new Promise((resolve) => {
+      EventBus.getInstance().add({
+        id: 'entity/create',
+        data: config,
+        // the promise will return the GUID regardless of what else
+        // is added inside of the EventBus
+        callback: resolve.bind(null, config.guid),
+      });
     });
   };
 

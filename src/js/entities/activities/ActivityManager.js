@@ -10,9 +10,18 @@ import GetToDock from './shared/GetToDock';
 import Attack from './shared/Attack';
 import Mine from './shared/Mine';
 import RotateToTarget from './shared/RotateToTarget';
+import Delivery from './shared/Delivery';
 import CreateIcarus from './custom/CreateIcarus';
 
 const ns = window.fivenations;
+
+/**
+ * Static function that returns the Class definition of the
+ * Activity with the given name
+ */
+function getActivityByString(className) {
+  return ActivityManager[className];
+}
 
 function ActivityManager(entity) {
   let activities = [];
@@ -141,5 +150,7 @@ ActivityManager.Attack = Attack;
 ActivityManager.Mine = Mine;
 ActivityManager.RotateToTarget = RotateToTarget;
 ActivityManager.CreateIcarus = CreateIcarus;
+ActivityManager.Delivery = Delivery;
+ActivityManager.getActivityByString = getActivityByString;
 
 export default ActivityManager;

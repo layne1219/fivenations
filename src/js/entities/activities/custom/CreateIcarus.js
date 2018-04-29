@@ -4,6 +4,7 @@ import EventEmitter from '../../../sync/EventEmitter';
 import Util from '../../../common/Util';
 
 const CHECK_INTERVAL = 5000;
+const ICARUS_ID = 'icarus';
 
 class CreateIcarus extends Activity {
   /**
@@ -44,10 +45,11 @@ class CreateIcarus extends Activity {
   checkIcarus() {
     if (this.entity.hasDeliverer()) return;
     const { x, y } = this.entity.getSprite();
+    const team = this.entity.getDataObject().getTeam();
     const emitter = EventEmitter.getInstance();
     emitter.synced.entities.add({
-      id: id || 'hurricane',
-      team: team || 1,
+      id: ICARUS_ID,
+      team,
       x,
       y,
       noUserControl: true,

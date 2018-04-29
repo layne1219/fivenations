@@ -236,8 +236,35 @@ function setHomeStation(entity, homeStation) {
   entity.homeStation = homeStation;
   homeStation.deliverer = entity;
 
-  homeStation.on('remove', () => (entity.homeStation = null));
-  entity.on('remove', () => (homeStation.deliverer = null));
+  homeStation.on('remove', () => {
+    entity.homeStation = null;
+  });
+  entity.on('remove', () => {
+    homeStation.deliverer = null;
+  });
+}
+
+/**
+ * Executes the predefined "create" event in the DataObject
+ * E.g.: "create": {"activity": }
+ */
+function executeCreateEvent(entity) {
+  const dataObject = entity.getDataObject();
+  const event = dataObject.getEvent('create');
+  const { activities } = event;
+
+  if (!activities || !activities.length) return;
+
+  activities.forEach((config) => {
+    const authorised = entity.getPlayer().isAuthorised();
+    if (!config.authorisedOnly || authorised) {
+      const ActivityClass = ActivityManager.getActivityByString(config.id);
+      if (!ActivityClass) return;
+      // instantiate the fetched activity and pass this entity
+      const activity = new ActivityClass(entity);
+      entity.getActivityManager().add(activity);
+    }
+  });
 }
 
 class Entity {
@@ -315,8 +342,11 @@ class Entity {
       this.jetEngine = this.entityManager.addJetEngine(this);
     }
 
+    // execute predefined create event in DataObject
+    executeCreateEvent(this);
+
     // add home station
-    setHomeStation(entity, config.homeStation);
+    setHomeStation(this, config.homeStation);
   }
 
   /**
@@ -556,6 +586,14 @@ class Entity {
     const rotate = new ActivityManager.RotateToTarget(this);
     rotate.setTarget(targetEntity);
     this.activityManager.add(rotate);
+  }
+
+  /**
+   * Adds the Delivery Activity to the activity queue
+   */
+  deliver() {
+    const deliver = new ActivityManager.Deliver(this);
+    this.activityManager.add(deliver);
   }
 
   /**
