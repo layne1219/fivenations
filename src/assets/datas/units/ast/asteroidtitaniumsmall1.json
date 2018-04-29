@@ -1,6 +1,6 @@
 {
 	"id": "asteroidtitaniumsmall1",
-	"name": "Smaller Titanium Asteroid",
+	"name": "Metal asteroid",
 	"type": "Space Object",
 	"building": true,
 	"hull": 250,
