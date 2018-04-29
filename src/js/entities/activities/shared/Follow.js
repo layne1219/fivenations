@@ -52,7 +52,12 @@ Follow.prototype.moveTowardsTarget = function () {
     x: this.target.getSprite().x,
     y: this.target.getSprite().y,
   });
-  this.entity.getMotionManager().moveTo(this);
+  if (this.target.getDataObject().isBuilding()) {
+    this.entity.moveToEntity(this.target);
+    this.kill();
+  } else {
+    this.entity.getMotionManager().moveTo(this);
+  }
 };
 
 /**

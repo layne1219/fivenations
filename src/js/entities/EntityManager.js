@@ -46,11 +46,17 @@ function createSelector(targetEntities) {
         targets = targetEntities.filter(entity =>
           entity.isEntityControlledByUser());
       } else if (filter === ':user:selected') {
-        targets = targetEntities.filter(entity => entity.isEntityControlledByUser() && entity.isSelected());
+        targets = targetEntities.filter((entity) => {
+          if (!entity.isEntityControlledByUser()) return false;
+          if (!entity.isSelected()) return false;
+          if (entity.hasNoUserControl()) return false;
+          return true;
+        });
       } else if (filter === ':user:selected:not(building)') {
         targets = targetEntities.filter((entity) => {
           if (!entity.isEntityControlledByUser()) return false;
           if (!entity.isSelected()) return false;
+          if (entity.hasNoUserControl()) return false;
           if (entity.getDataObject().isBuilding()) return false;
           return true;
         });

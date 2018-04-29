@@ -211,6 +211,7 @@ class Game extends Util.EventDispatcher {
         if (!entity.isEntityControlledByUser() && !ns.mapEditorMode) {
           return;
         }
+        if (entity.hasNoUserControl()) return;
         if (entity.isInside(multiselector)) {
           entity.select();
         }

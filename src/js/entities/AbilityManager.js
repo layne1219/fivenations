@@ -105,11 +105,13 @@ AbilityManager.prototype = {
   },
 
   /**
-   * Returning an array of IDs each of representing an ability
+   * Returns an array of IDs each of representing an ability
    * the entity is capable of
+   * Returns an empty array if the entity has no user control
    * @return {[Array]} A collection of abilities the entity is in a possesion of
    */
   getAbilities() {
+    if (this.entity.hasNoUserControl()) return [];
     return this.abilities;
   },
 };

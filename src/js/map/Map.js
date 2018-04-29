@@ -188,6 +188,20 @@ class Map {
     return starfield;
   }
 
+  /**
+   * Returns the screen coordinates of the given tile
+   * @return {object} { x, y }
+   * @example
+   * getScreenCoordinatesOfTile({x: 10, y: 5}) // {x: 400, y: 200}
+   */
+  getScreenCoordinatesOfTile(tile) {
+    const { x, y } = tile;
+    return {
+      x: x * TILE_WIDTH + TILE_WIDTH / 2,
+      y: y * TILE_HEIGHT + TILE_HEIGHT / 2,
+    };
+  }
+
   isDirty() {
     return dirty;
   }

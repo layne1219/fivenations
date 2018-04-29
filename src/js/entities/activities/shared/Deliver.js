@@ -6,6 +6,9 @@ import Util from '../../../common/Util';
 
 const ns = window.fivenations;
 
+// collection of entity ids where cargo can be delivered
+const DELIVERY_POINTS = ['commandcenter'];
+
 // states of the Deliver Actvity
 const INACTIVE = 0;
 const GO_TO_PICKUP_POINT = 1;
@@ -24,11 +27,8 @@ class Deliver extends Activity {
     // shorthands to optimise function calls
     this.motionManager = entity.getMotionManager();
 
-    // the minimum range
-    this._minRange = 50;
-
     // fetch cargo capacity
-    this._capacity = this.entity.getCargoCapacity();
+    this._capacity = this.entity.getDataObject().getCargoCapacity();
 
     // default state
     this.state = GO_TO_PICKUP_POINT;
@@ -62,8 +62,9 @@ class Deliver extends Activity {
       this.kill();
       return;
     }
+    this._pickUpPointRange = this.pickUpPoint.getDataObject().getWidth();
 
-    this.dropOffPoint = this.setClosestDeliveryPoint();
+    this.setClosestDeliveryPoint();
   }
 
   /**
@@ -199,7 +200,7 @@ class Deliver extends Activity {
       .sort((a, b) => {
         const distanceToA = Util.distanceBetweenSprites(sprite, a.getSprite());
         const distanceToB = Util.distanceBetweenSprites(sprite, b.getSprite());
-        return distanceToA > distanceToB;
+        return distanceToA - distanceToB;
       })
       .shift();
   }
@@ -230,7 +231,7 @@ class Deliver extends Activity {
     });
 
     // updates the altered cargo attributes of the pick up point
-    emitter.synced.entities(this.target).alterCargo(cargo);
+    emitter.synced.entities(this.pickUpPoint).alterCargo(cargo);
 
     // picks up the cargo
     emitter.synced.entities(this.entity).alterCargo(delivery);
@@ -275,6 +276,7 @@ class Deliver extends Activity {
     }
 
     this.dropOffPoint = entity;
+    this._dropOffPointRange = this.dropOffPoint.getDataObject().getWidth();
     this.dropOffPoint.on('remove', this.onDeliveryPointRemove);
   }
 
@@ -297,7 +299,7 @@ class Deliver extends Activity {
    */
   isPickUpPointInMinRange() {
     const distance = Util.distanceBetween(this.entity, this.pickUpPoint);
-    return distance <= this._minRange;
+    return distance <= this._pickUpPointRange;
   }
 
   /**
@@ -306,7 +308,7 @@ class Deliver extends Activity {
    */
   isDeliveryPointInMinRange() {
     const distance = Util.distanceBetween(this.entity, this.dropOffPoint);
-    return distance <= this._minRange;
+    return distance <= this._dropOffPointRange;
   }
 }
 

@@ -1,20 +1,16 @@
+/* global window */
 import Activity from '../Activity';
 import PlayerManager from '../../../players/PlayerManager';
 import EventEmitter from '../../../sync/EventEmitter';
 import Util from '../../../common/Util';
+import { TILE_WIDTH, TILE_HEIGHT } from '../../../common/Const';
+
+const ns = window.fivenations;
 
 const CHECK_INTERVAL = 5000;
 const ICARUS_ID = 'icarus';
 
 class CreateIcarus extends Activity {
-  /**
-   * @param {object} entity - Instance of an Entity class
-   */
-  constructor(entity) {
-    super();
-    this.entity = entity;
-  }
-
   /**
    * Executes the activity against an entity
    */
@@ -44,7 +40,12 @@ class CreateIcarus extends Activity {
    */
   checkIcarus() {
     if (this.entity.hasDeliverer()) return;
-    const { x, y } = this.entity.getSprite();
+    // calculates the coordinets of the nearby empty tile where
+    // the icarus will be placed
+    const collisionMap = ns.game.map.getCollisionMap();
+    const tile = collisionMap.getFirstEmptyTileNextToEntity(this.entity);
+    const x = tile.x * TILE_WIDTH;
+    const y = tile.y * TILE_HEIGHT;
     const team = this.entity.getDataObject().getTeam();
     const emitter = EventEmitter.getInstance();
     emitter.synced.entities.add({

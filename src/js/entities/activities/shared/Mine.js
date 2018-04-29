@@ -204,7 +204,7 @@ class Mine extends Activity {
       .sort((a, b) => {
         const distanceToA = Util.distanceBetweenSprites(sprite, a.getSprite());
         const distanceToB = Util.distanceBetweenSprites(sprite, b.getSprite());
-        return distanceToA > distanceToB;
+        return distanceToA - distanceToB;
       })
       .shift();
   }

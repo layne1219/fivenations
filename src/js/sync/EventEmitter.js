@@ -353,6 +353,8 @@ function createEntityEventAPI(entityManager) {
     if (!config) return null;
     if (!config.guid) config.guid = Util.getGUID();
     if (!config.createdAt) config.createdAt = new Date().getTime();
+    // serialize the homeStation entity into a string
+    if (config.homeStation) config.homeStation = config.homeStation.getGUID();
     // we return a promise that is resolved when the event is
     // executed. The promise is created to propagate the GUID to
     // higher level logic so that external code is notified when

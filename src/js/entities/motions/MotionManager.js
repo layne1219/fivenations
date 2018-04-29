@@ -122,17 +122,15 @@ MotionManager.prototype = {
    * @param  {object} activity Reference to the given Activity instance
    */
   moveTo(activity) {
-    // Fighter class entities do not need pathfinding
-    if (this.isFighter || this.isWorker) {
-      // we set up the effects that make the entity go straight
-      // to the target skipping the pathfinding entirely
-      this.isUsingPathFinding = false;
+    // update usage of pathfinding algorythm
+    this.isUsingPathFinding = this.isEmployingPathfinding();
+
+    if (!this.isUsingPathFinding) {
       this.setUpEffectsForMoving(activity);
       return;
     }
 
     this.originalActivity = activity;
-    this.isUsingPathFinding = true;
 
     const start = this.entity.getTileObj();
     const dest = activity.getTile();
@@ -179,7 +177,7 @@ MotionManager.prototype = {
 
     const collisionMap = ns.game.map.getCollisionMap();
     const nextTile = this.tilesToTarget[0];
-    const nextTileCoords = this.getScreenCoordinatesOfTile(nextTile);
+    const nextTileCoords = ns.game.map.getScreenCoordinatesOfTile(nextTile);
     const activity = new Move(this.entity);
     activity.setCoords(nextTileCoords);
 
@@ -696,6 +694,15 @@ MotionManager.prototype = {
   },
 
   /**
+   * Returns true if the entity uses the pathfinding logic to
+   * move to its target coordinates
+   * @returns {boolean}
+   */
+  isEmployingPathfinding() {
+    return !(this.isFighter || this.isWorker);
+  },
+
+  /**
    * Returns whether the entity has the real maneuver system activated
    * @returns {boolean}
    */
@@ -789,20 +796,6 @@ MotionManager.prototype = {
   getNextTileToTarget() {
     if (!this.tilesToTarget || !this.tilesToTarget.length) return null;
     return this.tilesToTarget[0];
-  },
-
-  /**
-   * Returns the screen coordinates of the given tile
-   * @return {object} { x, y }
-   * @example
-   * getScreenCoordinatesOfTile({x: 10, y: 5}) // {x: 400, y: 200}
-   */
-  getScreenCoordinatesOfTile(tile) {
-    const { x, y } = tile;
-    return {
-      x: x * TILE_WIDTH + TILE_WIDTH / 2,
-      y: y * TILE_HEIGHT + TILE_HEIGHT / 2,
-    };
   },
 };
 

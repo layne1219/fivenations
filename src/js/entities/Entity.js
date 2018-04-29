@@ -230,9 +230,10 @@ const extendSprite = (entity, sprite, dataObject) => {
 /**
  * Sets the home station of the give entity and registers listeners
  * @param {object} entity - Entity instance
- * @param {object} homeStation - Entity instance
+ * @param {string} guid - guid of the home station entity
  */
-function setHomeStation(entity, homeStation) {
+function setHomeStation(manager, entity, guid) {
+  const homeStation = manager.entities(guid);
   entity.homeStation = homeStation;
   homeStation.deliverer = entity;
 
@@ -251,6 +252,9 @@ function setHomeStation(entity, homeStation) {
 function executeCreateEvent(entity) {
   const dataObject = entity.getDataObject();
   const event = dataObject.getEvent('create');
+
+  if (!event) return;
+
   const { activities } = event;
 
   if (!activities || !activities.length) return;
@@ -342,11 +346,18 @@ class Entity {
       this.jetEngine = this.entityManager.addJetEngine(this);
     }
 
+    // add home station - this is used to mark a link between
+    // a deliverer entity and a pick up point such as Icarus and
+    // Mining station
+    if (config.homeStation) {
+      setHomeStation(this.entityManager, this, config.homeStation);
+    }
+
+    // no user control
+    this.noUserControl = config.noUserControl;
+
     // execute predefined create event in DataObject
     executeCreateEvent(this);
-
-    // add home station
-    setHomeStation(this, config.homeStation);
   }
 
   /**
@@ -474,9 +485,27 @@ class Entity {
    * @param {object} entity - Entity instance to move to
    */
   moveToEntity(entity) {
+    const cm = ns.game.map.getCollisionMap();
     const move = new ActivityManager.Move(this);
-    const { x, y } = entity.getSprite();
-    move.setCoords({ x, y });
+    let coords;
+
+    // if the entity employs pathfinding algorythm we must
+    // determine the closest empty tile that can be taken to
+    // approach the entity
+    if (this.motionManager.isEmployingPathfinding()) {
+      // this returns only the tile coordinates not the screen coordinates
+      const tile = cm.getClosestEmptyTileNextToEntityFromEntity(entity, this);
+      // if the entity is already there we just terminate the whole execution
+      if (Util.areCoordsEqual(tile, this.getTileObj())) {
+        return;
+      }
+      coords = ns.game.map.getScreenCoordinatesOfTile(tile);
+    } else {
+      // if the entity does not use pathfinding we just send it straight
+      // on the top of the target
+      coords = entity.getSprite();
+    }
+    move.setCoords(coords);
     this.activityManager.add(move);
   }
 
@@ -1005,6 +1034,15 @@ class Entity {
    */
   hasDeliverer() {
     return this.deliverer;
+  }
+
+  /**
+   * Returns true if it cannot be managed by the user
+   * (e.g.: Federation Icarus)
+   * @return {boolean}
+   */
+  hasNoUserControl() {
+    return this.noUserControl;
   }
 
   /**
