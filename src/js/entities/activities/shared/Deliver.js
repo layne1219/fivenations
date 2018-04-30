@@ -43,6 +43,7 @@ class Deliver extends Activity {
     };
 
     // callback to find another station when the current one is removed
+    this.onPickUpPointRemove = this.releaseDeliverer.bind(this);
     this.onDeliveryPointRemove = this.setClosestDeliveryPoint.bind(this);
   }
 
@@ -62,6 +63,8 @@ class Deliver extends Activity {
       this.kill();
       return;
     }
+
+    this.pickUpPoint.on('remove', this.onPickUpPointRemove);
     this._pickUpPointRange = this.pickUpPoint.getDataObject().getWidth();
 
     this.setClosestDeliveryPoint();
@@ -71,6 +74,9 @@ class Deliver extends Activity {
    * Removes the Activity from the activity queue
    */
   kill() {
+    if (this.pickUpPoint) {
+      this.pickUpPoint.off('remove', this.onPickUpPointRemove);
+    }
     if (this.dropOffPoint) {
       this.dropOffPoint.off('remove', this.onDeliveryPointRemove);
     }
@@ -247,6 +253,14 @@ class Deliver extends Activity {
       ...delivery,
       overwrite: true,
     });
+  }
+
+  /**
+   * Gives the control back to the user after the home station
+   * is destroyed
+   */
+  releaseDeliverer() {
+    this.entity.setNoUserControl(false);
   }
 
   /**
