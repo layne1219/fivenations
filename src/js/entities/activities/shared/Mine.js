@@ -228,15 +228,15 @@ class Mine extends Activity {
 
     if (cargo.titanium > 0) {
       capacity = Math.min(cargo.titanium, capacity);
-      cargo.titanium -= capacity;
+      cargo.titanium = -capacity;
       titanium = capacity;
     } else if (cargo.silicium > 0) {
       capacity = Math.min(cargo.silicium, capacity);
-      cargo.silicium -= capacity;
+      cargo.silicium = -capacity;
       silicium = capacity;
     } else if (cargo.uranium > 0) {
       capacity = Math.min(cargo.uranium, capacity);
-      cargo.uranium -= capacity;
+      cargo.uranium = -capacity;
       uranium = capacity;
     }
 
@@ -251,6 +251,7 @@ class Mine extends Activity {
       titanium,
       silicium,
       uranium,
+      overwrite: true,
     });
   }
 
@@ -287,15 +288,12 @@ class Mine extends Activity {
       diff -= dropOffCargo.uranium;
     }
 
-    currentCargo.titanium += dropOffCargo.titanium;
-    currentCargo.silicium += dropOffCargo.silicium;
-    currentCargo.uranium += dropOffCargo.uranium;
-
-    emitter.synced.entities(this.targetStation).alterCargo(currentCargo);
+    emitter.synced.entities(this.targetStation).alterCargo(dropOffCargo);
     emitter.synced.entities(this.entity).alterCargo({
       titanium: 0,
       silicium: 0,
       uranium: 0,
+      overwrite: true,
     });
   }
 

@@ -163,20 +163,18 @@ class Deliver extends Activity {
     const entityDO = this.entity.getDataObject();
     const cargo = entityDO.getCargo();
     const player = this.dropOffPoint.getPlayer();
-    const playerTitanium = player.getTitanium();
-    const playerSilicium = player.getSilicium();
-    const playerUranium = player.getUranium();
 
     emitter.synced.entities(this.entity).alterCargo({
       titanium: 0,
       silicium: 0,
       uranium: 0,
+      overwrite: true,
     });
 
     emitter.synced.players(player).alter({
-      titanium: playerTitanium + cargo.titanium,
-      silicium: playerSilicium + cargo.siliciym,
-      uranium: playerUranium + cargo.uranium,
+      titanium: cargo.titanium,
+      silicium: cargo.silicium,
+      uranium: cargo.uranium,
     });
   }
 
@@ -235,7 +233,7 @@ class Deliver extends Activity {
     ['titanium', 'silicium', 'uranium'].forEach((key) => {
       if (cargo[key] > 0 && deliveryCapacity > 0) {
         const pickUp = Math.min(cargo[key], deliveryCapacity);
-        cargo[key] -= pickUp;
+        cargo[key] = -pickUp;
         delivery[key] = pickUp;
         deliveryCapacity -= pickUp;
       }
@@ -245,7 +243,10 @@ class Deliver extends Activity {
     emitter.synced.entities(this.pickUpPoint).alterCargo(cargo);
 
     // picks up the cargo
-    emitter.synced.entities(this.entity).alterCargo(delivery);
+    emitter.synced.entities(this.entity).alterCargo({
+      ...delivery,
+      overwrite: true,
+    });
   }
 
   /**

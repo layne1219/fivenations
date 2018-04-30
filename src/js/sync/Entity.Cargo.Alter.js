@@ -17,12 +17,19 @@ class EntityCargoAlter extends Event {
       const entity = ns.game.entityManager.entities(id);
       const dataObject = entity.getDataObject();
       const {
-        titanium, silicium, uranium, damage,
+        titanium, silicium, uranium, damage, overwrite,
       } = options.data;
 
-      if (undefined !== titanium) dataObject.setCargoTitanium(titanium);
-      if (undefined !== silicium) dataObject.setCargoSilicium(silicium);
-      if (undefined !== uranium) dataObject.setCargoUranium(uranium);
+      if (!overwrite) {
+        const current = dataObject.getCargo();
+        dataObject.setCargoTitanium(current.titanium + (titanium || 0));
+        dataObject.setCargoSilicium(current.silicium + (silicium || 0));
+        dataObject.setCargoUranium(current.uranium + (uranium || 0));
+      } else {
+        if (undefined !== titanium) dataObject.setCargoTitanium(titanium);
+        if (undefined !== silicium) dataObject.setCargoSilicium(silicium);
+        if (undefined !== uranium) dataObject.setCargoUranium(uranium);
+      }
 
       if (damage) {
         entity.damage({

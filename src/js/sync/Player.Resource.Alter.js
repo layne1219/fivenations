@@ -22,13 +22,24 @@ PlayerResourceAlter.prototype.execute = (options) => {
 
   const player = PlayerManager.getInstance().getPlayerByGUID(options.data.guid);
   const {
-    titanium, silicium, energy, uranium,
+    titanium, silicium, energy, uranium, overwrite,
   } = options.data;
 
-  if (undefined !== titanium) player.setTitanium(titanium);
-  if (undefined !== silicium) player.setSilicium(silicium);
-  if (undefined !== energy) player.setEnergy(energy);
-  if (undefined !== uranium) player.setUranium(uranium);
+  if (overwrite) {
+    if (undefined !== titanium) player.setTitanium(titanium);
+    if (undefined !== silicium) player.setSilicium(silicium);
+    if (undefined !== energy) player.setEnergy(energy);
+    if (undefined !== uranium) player.setUranium(uranium);
+  } else {
+    const currentTitanium = player.getTitanium();
+    const currentSilicium = player.getSilicium();
+    const currentEnergy = player.getEnergy();
+    const currentUranium = player.getUranium();
+    player.setTitanium(currentTitanium + (titanium || 0));
+    player.setSilicium(currentSilicium + (silicium || 0));
+    player.setEnergy(currentEnergy + (energy || 0));
+    player.setUranium(currentUranium + (uranium || 0));
+  }
 
   if (player.isControlledByUser()) {
     const dispatcher = EventEmitter.getInstance().local;

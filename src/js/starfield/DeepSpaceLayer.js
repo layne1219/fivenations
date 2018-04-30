@@ -149,6 +149,8 @@ class DeepSpaceLayer {
     this.spaceObjects.push(spaceObject);
     // updates the sequence of the objects based on their Z value
     this.sortSpaceObjects();
+    // refreshes the map
+    this.map.forceRefresh();
   }
 
   /**
