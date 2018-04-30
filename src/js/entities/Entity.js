@@ -881,6 +881,14 @@ class Entity {
   }
 
   /**
+   * Sets the control of the unit
+   * @param {boolean}
+   */
+  setNoUserControl(bool) {
+    this.noUserControl = bool;
+  }
+
+  /**
    * Fires the given event against the entity
    * @param {string} event - event id to be fired
    */

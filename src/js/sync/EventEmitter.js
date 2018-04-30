@@ -347,19 +347,20 @@ function createEntityEventAPI(entityManager) {
    * Emits an 'entity/create' event
    * @param {object} config - object holding the details of the creation
    * @return {object} Promise - resolved when the 'entity/create' event is
-   * executed
+   * executed.
+   * We return a promise that is resolved when the event is
+   * executed. The promise is created to propagate the GUID to
+   * higher level logic so that external code is notified when
+   * the newly generated entity is placed in the EntityManager
    */
-  $.add = (config) => {
-    if (!config) return null;
-    if (!config.guid) config.guid = Util.getGUID();
-    if (!config.createdAt) config.createdAt = new Date().getTime();
-    // serialize the homeStation entity into a string
-    if (config.homeStation) config.homeStation = config.homeStation.getGUID();
-    // we return a promise that is resolved when the event is
-    // executed. The promise is created to propagate the GUID to
-    // higher level logic so that external code is notified when
-    // the newly generated entity is placed in the EntityManager
-    return new Promise((resolve) => {
+  $.add = config =>
+    new Promise((resolve, reject) => {
+      if (!config) reject();
+      if (!config.guid) config.guid = Util.getGUID();
+      if (!config.createdAt) config.createdAt = new Date().getTime();
+      // serialize the homeStation entity into a string
+      if (config.homeStation) config.homeStation = config.homeStation.getGUID();
+
       EventBus.getInstance().add({
         id: 'entity/create',
         data: config,
@@ -368,7 +369,6 @@ function createEntityEventAPI(entityManager) {
         callback: resolve.bind(null, config.guid),
       });
     });
-  };
 
   return $;
 }
@@ -406,10 +406,14 @@ function createPlayerEventAPI(playerManager) {
    */
   function $(filter) {
     let targets;
-    if (filter === ':user') {
-      targets = playerManager.getUser();
-    } else if (filter !== undefined) {
-      targets = playerManager.getPlayerByGUID(filter);
+    if (typeof filter === 'string') {
+      if (filter === ':user') {
+        targets = playerManager.getUser();
+      } else if (filter !== undefined) {
+        targets = playerManager.getPlayerByGUID(filter);
+      }
+    } else if (typeof filter === 'object') {
+      targets = filter;
     } else {
       targets = playerManager.getPlayers();
     }
@@ -420,14 +424,18 @@ function createPlayerEventAPI(playerManager) {
    * Emits an player/create event
    * @param {object} config configuration object for the player
    */
-  $.add = (config) => {
-    if (!config) return;
-    if (!config.guid) config.guid = Util.getGUID();
-    EventBus.getInstance().add({
-      id: 'player/create',
-      data: config,
+  $.add = config =>
+    new Promise((resolve, reject) => {
+      if (!config) reject();
+      if (!config.guid) config.guid = Util.getGUID();
+      EventBus.getInstance().add({
+        id: 'player/create',
+        data: config,
+        // the promise will return the GUID regardless of what else
+        // is added inside of the EventBus
+        callback: resolve.bind(null, config.guid),
+      });
     });
-  };
 
   return $;
 }

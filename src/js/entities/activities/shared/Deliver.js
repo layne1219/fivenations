@@ -161,11 +161,22 @@ class Deliver extends Activity {
 
     const emitter = EventEmitter.getInstance();
     const entityDO = this.entity.getDataObject();
+    const cargo = entityDO.getCargo();
+    const player = this.dropOffPoint.getPlayer();
+    const playerTitanium = player.getTitanium();
+    const playerSilicium = player.getSilicium();
+    const playerUranium = player.getUranium();
 
     emitter.synced.entities(this.entity).alterCargo({
       titanium: 0,
       silicium: 0,
       uranium: 0,
+    });
+
+    emitter.synced.players(player).alter({
+      titanium: playerTitanium + cargo.titanium,
+      silicium: playerSilicium + cargo.siliciym,
+      uranium: playerUranium + cargo.uranium,
     });
   }
 

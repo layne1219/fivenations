@@ -101,10 +101,20 @@ export default {
 
         if (!active) return;
 
-        game.eventEmitter.synced.players.add({
-          authorised: !!user,
-          ...player,
-        });
+        // creates the player event
+        game.eventEmitter.synced.players
+          .add({
+            authorised: !!user,
+            ...player,
+          })
+          .then((guid) => {
+            game.eventEmitter.synced.players(guid).alter({
+              titanium: 0,
+              silicium: 0,
+              energy: 0,
+              uranium: 0,
+            });
+          });
       });
 
     importer.getEntities().forEach((config) => {

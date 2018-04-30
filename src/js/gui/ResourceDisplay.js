@@ -1,5 +1,6 @@
-/* global window, Phaser */
-const ns = window.fivenations;
+/* global Phaser */
+import EventEmitter from '../sync/EventEmitter';
+
 const style = {
   font: '11px BerlinSansFB-Reg',
   fill: '#FFFFFF',
@@ -65,7 +66,11 @@ export default class ResourceDisplay extends Phaser.Group {
   }
 
   registerEventListeners() {
-    ns.game.signals.onPlayerResourcesUpdate.add(this.updateContent, this);
+    const emitter = EventEmitter.getInstance();
+    emitter.local.addEventListener(
+      'user/resource/alter',
+      this.updateContent.bind(this),
+    );
   }
 
   updateContent() {
