@@ -1,8 +1,6 @@
-/* global window */
 import Event from './Event';
+import EventEmitter from './EventEmitter';
 import PlayerManager from '../players/PlayerManager';
-
-const ns = window.fivenations;
 
 function PlayerResourceAlter(...args) {
   Event.apply(this, args);
@@ -23,15 +21,29 @@ PlayerResourceAlter.prototype.execute = (options) => {
   }
 
   const player = PlayerManager.getInstance().getPlayerByGUID(options.data.guid);
+  const {
+    titanium, silicium, energy, uranium, overwrite,
+  } = options.data;
 
-  if (options.data.titanium) player.setTitanium(options.data.titanium);
-  if (options.data.silicium) player.setSilicium(options.data.silicium);
-  if (options.data.energy) player.setEnergy(options.data.energy);
-  if (options.data.uranium) player.setUranium(options.data.uranium);
+  if (overwrite) {
+    if (undefined !== titanium) player.setTitanium(titanium);
+    if (undefined !== silicium) player.setSilicium(silicium);
+    if (undefined !== energy) player.setEnergy(energy);
+    if (undefined !== uranium) player.setUranium(uranium);
+  } else {
+    const currentTitanium = player.getTitanium();
+    const currentSilicium = player.getSilicium();
+    const currentEnergy = player.getEnergy();
+    const currentUranium = player.getUranium();
+    player.setTitanium(currentTitanium + (titanium || 0));
+    player.setSilicium(currentSilicium + (silicium || 0));
+    player.setEnergy(currentEnergy + (energy || 0));
+    player.setUranium(currentUranium + (uranium || 0));
+  }
 
-  ns.game.signals.onResourcesUpdate.dispatch(options);
   if (player.isControlledByUser()) {
-    ns.game.signals.onPlayerResourcesUpdate.dispatch();
+    const dispatcher = EventEmitter.getInstance().local;
+    dispatcher.dispatch('user/resource/alter');
   }
 };
 

@@ -1,16 +1,27 @@
 import Activity from './Activity';
-import Move from './Move';
-import Patrol from './Patrol';
-import Follow from './Follow';
-import Stop from './Stop';
-import Idle from './Idle';
-import Fire from './Fire';
-import GetInRange from './GetInRange';
-import GetToDock from './GetToDock';
-import Attack from './Attack';
-import RotateToTarget from './RotateToTarget';
+import Move from './shared/Move';
+import Patrol from './shared/Patrol';
+import Follow from './shared/Follow';
+import Stop from './shared/Stop';
+import Idle from './shared/Idle';
+import Fire from './shared/Fire';
+import GetInRange from './shared/GetInRange';
+import GetToDock from './shared/GetToDock';
+import Attack from './shared/Attack';
+import Mine from './shared/Mine';
+import RotateToTarget from './shared/RotateToTarget';
+import Deliver from './shared/Deliver';
+import CreateIcarus from './custom/CreateIcarus';
 
 const ns = window.fivenations;
+
+/**
+ * Static function that returns the Class definition of the
+ * Activity with the given name
+ */
+function getActivityByString(className) {
+  return ActivityManager[className];
+}
 
 function ActivityManager(entity) {
   let activities = [];
@@ -85,10 +96,12 @@ function ActivityManager(entity) {
         this.add(new Idle(entity));
         return;
       }
-      // we are excecuting the last function in the queue treating it with priority
-      if (activities[currentIdx].isActivated()) {
-        activities[currentIdx].update();
-      }
+      // excecutes the last function in the queue treating it with priority
+      // if it has been activated and it realises the update function
+      if (!activities[currentIdx].isActivated()) return;
+      if (!activities[currentIdx].update) return;
+
+      activities[currentIdx].update();
     },
 
     /**
@@ -134,6 +147,10 @@ ActivityManager.Fire = Fire;
 ActivityManager.GetInRange = GetInRange;
 ActivityManager.GetToDock = GetToDock;
 ActivityManager.Attack = Attack;
+ActivityManager.Mine = Mine;
 ActivityManager.RotateToTarget = RotateToTarget;
+ActivityManager.CreateIcarus = CreateIcarus;
+ActivityManager.Deliver = Deliver;
+ActivityManager.getActivityByString = getActivityByString;
 
 export default ActivityManager;

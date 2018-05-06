@@ -21,7 +21,9 @@
 	"directions": 1,
 	"animFrame": 1,
 	"animType": ["idle-forever"],
-	"size": "sm",	
+	"size": "sm",
+	"resource": true,
+	"cargoUranium": 250,
     "animations": {
         "idle-forever": {
             "rate": 24,

@@ -27,6 +27,8 @@ const text = {
   titleFont: '12px BerlinSansFB-Reg',
   defaultFont: '11px BerlinSansFB-Reg',
   color: '#77C7D2',
+  gap: 12,
+  dynamicTextsOffsetY: 36,
 };
 
 /**
@@ -111,23 +113,27 @@ class MainAttributeGroup extends Phaser.Group {
       fill: '#FFFFFF',
     }));
     this.rankElm = null;
-    this.hullElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 36, '', {
+    this.hullElm = this.add(phaserGame.add.text(0, 0, '', {
       font: text.defaultFont,
       fill: text.color,
     }));
-    this.shieldElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 47, '', {
+    this.shieldElm = this.add(phaserGame.add.text(0, 0, '', {
       font: text.defaultFont,
       fill: text.color,
     }));
-    this.armorElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 58, '', {
+    this.armorElm = this.add(phaserGame.add.text(0, 0, '', {
       font: text.defaultFont,
       fill: text.color,
     }));
-    this.powerElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 69, '', {
+    this.powerElm = this.add(phaserGame.add.text(0, 0, '', {
       font: text.defaultFont,
       fill: text.color,
     }));
-    this.hangarElm = this.add(phaserGame.add.text(text.marginLeft, text.marginTop + 80, '', {
+    this.hangarElm = this.add(phaserGame.add.text(0, 0, '', {
+      font: text.defaultFont,
+      fill: text.color,
+    }));
+    this.cargoElm = this.add(phaserGame.add.text(0, 0, '', {
       font: text.defaultFont,
       fill: text.color,
     }));
@@ -143,6 +149,8 @@ class MainAttributeGroup extends Phaser.Group {
     const maxShield = dataObject.getMaxShield();
     const maxPower = dataObject.getMaxPower();
     const maxHangar = dataObject.getMaxHangar();
+    const maxCapacity = dataObject.getCargoCapacity();
+    let offsetY = text.dynamicTextsOffsetY;
 
     this.iconSprite.show(entity);
 
@@ -161,6 +169,9 @@ class MainAttributeGroup extends Phaser.Group {
 
     this.hullElm.text = hullTitle + hullValue + hullMaxValue;
     this.hullElm.addColor(hullColor, hullTitle.length);
+    this.hullElm.x = text.marginLeft;
+    this.hullElm.y = text.marginTop + offsetY;
+    offsetY += text.gap;
 
     // Shield
     if (maxShield > 0) {
@@ -170,6 +181,9 @@ class MainAttributeGroup extends Phaser.Group {
 
       this.shieldElm.text = shieldTitle + shieldValue + shieldMaxValue;
       this.shieldElm.addColor('#475D86', shieldTitle.length);
+      this.shieldElm.x = text.marginLeft;
+      this.shieldElm.y = text.marginTop + offsetY;
+      offsetY += text.gap;
     } else {
       this.shieldElm.text = '';
     }
@@ -180,6 +194,9 @@ class MainAttributeGroup extends Phaser.Group {
 
     this.armorElm.text = armorTitle + armorValue;
     this.armorElm.addColor('#FFFFFF', armorTitle.length);
+    this.armorElm.x = text.marginLeft;
+    this.armorElm.y = text.marginTop + offsetY;
+    offsetY += text.gap;
 
     // Power
     if (maxPower > 0) {
@@ -189,6 +206,9 @@ class MainAttributeGroup extends Phaser.Group {
 
       this.powerElm.text = powerTitle + powerValue + powerMaxValue;
       this.powerElm.addColor('#FFFFFF', powerTitle.length);
+      this.powerElm.x = text.marginLeft;
+      this.powerElm.y = text.marginTop + offsetY;
+      offsetY += text.gap;
     } else {
       this.powerElm.text = '';
     }
@@ -201,8 +221,29 @@ class MainAttributeGroup extends Phaser.Group {
 
       this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;
       this.hangarElm.addColor('#FFFFFF', hangarTitle.length);
+      this.hangarElm.x = text.marginLeft;
+      this.hangarElm.y = text.marginTop + offsetY;
+      offsetY += text.gap;
     } else {
       this.hangarElm.text = '';
+    }
+
+    // Hangar
+    if (maxCapacity > 0) {
+      const cargoTitle = 'Cargo: ';
+      const titanium = dataObject.getCargoTitanium() || 0;
+      const silicium = dataObject.getCargoSilicium() || 0;
+      const uranium = dataObject.getCargoUranium() || 0;
+      const cargoValue = titanium + silicium + uranium;
+      const cargoMaxValue = `/${maxCapacity}`;
+
+      this.cargoElm.text = cargoTitle + cargoValue + cargoMaxValue;
+      this.cargoElm.addColor('#FFFFFF', cargoTitle.length);
+      this.cargoElm.x = text.marginLeft;
+      this.cargoElm.y = text.marginTop + offsetY;
+      offsetY += text.gap;
+    } else {
+      this.cargoElm.text = '';
     }
   }
 }

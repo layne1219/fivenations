@@ -111,6 +111,13 @@ ns.effects = Object.assign(ns.effects || {}, {
     dataURL: `${PATH_ASSETS_DATA}blackhole.json`,
   },
 
+  construction: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}effect_construction.png`,
+    atlasURL: `${PATH_ASSETS_IMG}effect_construction.json`,
+    dataURL: `${PATH_ASSETS_DATA}construction.json`,
+  },
+
   'destruction-big': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}effect_destruction_big.png`,

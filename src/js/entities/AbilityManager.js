@@ -50,6 +50,10 @@ AbilityManager.prototype = {
     if (this.isDockable()) {
       this.abilities.push(abilitiesJSON.undock);
     }
+
+    if (this.canMine()) {
+      this.abilities.push(abilitiesJSON.mining);
+    }
   },
 
   /**
@@ -89,11 +93,25 @@ AbilityManager.prototype = {
   },
 
   /**
-   * Returning an array of IDs each of representing an ability
+   * Returns whether the entity can mine resources
+   * @return {boolean}
+   */
+  canMine() {
+    const weaponManager = this.entity.getWeaponManager();
+    const weaponsThatCanMine = [
+      10, // mining-laser
+    ];
+    return weaponsThatCanMine.some(id => weaponManager.hasWeapon(id));
+  },
+
+  /**
+   * Returns an array of IDs each of representing an ability
    * the entity is capable of
+   * Returns an empty array if the entity has no user control
    * @return {[Array]} A collection of abilities the entity is in a possesion of
    */
   getAbilities() {
+    if (this.entity.hasNoUserControl()) return [];
     return this.abilities;
   },
 };

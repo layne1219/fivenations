@@ -45,6 +45,13 @@ function DataObject(json) {
   data.dimensions = getDimensionsBySize(data);
   data.damageArea = getDamageArea(data);
 
+  // cargo
+  if (data.cargoCapacity > 0) {
+    data.cargoTitanium = 0;
+    data.cargoSilicium = 0;
+    data.cargoUranium = 0;
+  }
+
   // for providing privacy for the data variables we have to create a closure here so as not to
   // publish any data variable held by the entity
   return {
@@ -59,12 +66,20 @@ function DataObject(json) {
           this.damageShield(params.damageShield);
         }
       } else {
-        this.damageHull(params.damage);
+        this.damageHull(params.damage, params.ignoreArmor);
       }
     },
 
-    damageHull(value) {
-      data.hull = Math.max(data.hull - Math.max(value - data.armor, 1), 0);
+    /**
+     * Deducts the given amount from the entity's Hull value.
+     * If the ignoreArmor is truthy the logic will disregard the
+     * current armor.
+     * @param {number} value - the amount by which the hull will be reduced
+     * @param {boolean} ignoreArmor - ignorse the armor
+     */
+    damageHull(value, ignoreArmor = false) {
+      const armor = ignoreArmor ? 0 : data.armor;
+      data.hull = Math.max(data.hull - Math.max(value - armor, 1), 0);
     },
 
     damageShield(value) {
@@ -77,6 +92,18 @@ function DataObject(json) {
 
     setTeam(team) {
       data.team = team;
+    },
+
+    setCargoTitanium(amount) {
+      data.cargoTitanium = amount;
+    },
+
+    setCargoSilicium(amount) {
+      data.cargoSilicium = amount;
+    },
+
+    setCargoUranium(amount) {
+      data.cargoUranium = amount;
     },
 
     isBuilding() {
@@ -283,6 +310,13 @@ function DataObject(json) {
       return this._isFighter;
     },
 
+    isWorker() {
+      if (!this._isWorker) {
+        this._isWorker = this.getType() === 'Worker';
+      }
+      return this._isWorker;
+    },
+
     isDestroyer() {
       if (!this._isDestroyer) {
         this._isDestroyer = this.getType() === 'Destroyer';
@@ -295,6 +329,10 @@ function DataObject(json) {
         this._isSpaceObject = this.getType() === 'Space Object';
       }
       return this._isSpaceObject;
+    },
+
+    isResource() {
+      return data.resource;
     },
 
     getTargetGraphicsGroup() {
@@ -334,6 +372,53 @@ function DataObject(json) {
 
     getFrames() {
       return data.frames;
+    },
+
+    getCargoCapacity() {
+      return data.cargoCapacity;
+    },
+
+    getCargoTitanium() {
+      return data.cargoTitanium;
+    },
+
+    getCargoSilicium() {
+      return data.cargoSilicium;
+    },
+
+    getCargoUranium() {
+      return data.cargoUranium;
+    },
+
+    /**
+     * Returns whether the entity's cargo is full up
+     * @return {boolean}
+     */
+    isCargoFull() {
+      const sum = this.getCargoSum();
+      return sum >= data.cargoCapacity;
+    },
+
+    /**
+     * Returns the cargo attributes of the given entity
+     * @param {object} entity - Entity instance
+     * @return {object} - { titanium, silicium, uranium }
+     */
+    getCargo() {
+      return {
+        titanium: this.getCargoTitanium(),
+        silicium: this.getCargoSilicium(),
+        uranium: this.getCargoUranium(),
+      };
+    },
+
+    /**
+     * Returns the mrged amount of cargo
+     * @return {number} summarised amount of cargo
+     */
+    getCargoSum() {
+      const cargo = this.getCargo();
+      return Object.keys(cargo).reduce((sum, key) => cargo[key] + sum, 0);
     },
   };
 }

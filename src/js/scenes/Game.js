@@ -1,5 +1,4 @@
 /* global window, Phaser */
-import Signals from '../common/Signals';
 import Graphics from '../common/Graphics';
 import Scriptbox from '../common/Scriptbox';
 import Map from '../map/Map';
@@ -37,8 +36,6 @@ class Game extends Util.EventDispatcher {
   create() {
     // publishing the Game object
     ns.game = this;
-
-    this.signals = Signals.create();
 
     // disables Phaser from pausing the game when it loses focus
     this.stage.disableVisibilityChange = false;
@@ -211,6 +208,7 @@ class Game extends Util.EventDispatcher {
         if (!entity.isEntityControlledByUser() && !ns.mapEditorMode) {
           return;
         }
+        if (entity.hasNoUserControl()) return;
         if (entity.isInside(multiselector)) {
           entity.select();
         }

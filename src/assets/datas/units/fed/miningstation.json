@@ -31,6 +31,7 @@
   "uranium": 0,
   "space": 0,
   "buildingTime": 20,
+  "cargoCapacity": 5000,
   "directions": 0,
   "animFrame": 1,
   "animType": [
@@ -57,6 +58,14 @@
     }
   },
   "events": {
+    "create": {
+      "activities": [
+        {
+          "id": "CreateIcarus",
+          "authorisedOnly": true
+        }
+      ]
+    },
     "remove": {
       "effects": [
         "miningstation-wreckage",

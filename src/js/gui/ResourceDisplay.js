@@ -1,5 +1,6 @@
-/* global window, Phaser */
-const ns = window.fivenations;
+/* global Phaser */
+import EventEmitter from '../sync/EventEmitter';
+
 const style = {
   font: '11px BerlinSansFB-Reg',
   fill: '#FFFFFF',
@@ -25,7 +26,7 @@ class ResourceGroup extends Phaser.Group {
       this.textGroup.text += `/${max}`;
     }
     this.textGroup.addColor('#FFFFFF', 0);
-    this.textGroup.addColor('#475D86', current.toString().length + 1);
+    // this.textGroup.addColor('#475D86', current.toString().length + 1);
   }
 }
 
@@ -48,24 +49,28 @@ export default class ResourceDisplay extends Phaser.Group {
   }
 
   initTextElements(phaserGame) {
-    this.titanium = new ResourceGroup({ x: 0, y: 0 }, phaserGame);
+    this.titanium = new ResourceGroup({ x: -82, y: 0 }, phaserGame);
     this.add(this.titanium);
 
-    this.silicium = new ResourceGroup({ x: 76, y: 0 }, phaserGame);
+    this.silicium = new ResourceGroup({ x: 13, y: 0 }, phaserGame);
     this.add(this.silicium);
 
-    this.energy = new ResourceGroup({ x: 152, y: 0 }, phaserGame);
+    this.energy = new ResourceGroup({ x: 105, y: 0 }, phaserGame);
     this.add(this.energy);
 
-    this.uranium = new ResourceGroup({ x: 228, y: 0 }, phaserGame);
+    this.uranium = new ResourceGroup({ x: 200, y: 0 }, phaserGame);
     this.add(this.uranium);
 
-    this.food = new ResourceGroup({ x: 304, y: 0 }, phaserGame);
+    this.food = new ResourceGroup({ x: 294, y: 0 }, phaserGame);
     this.add(this.food);
   }
 
   registerEventListeners() {
-    ns.game.signals.onPlayerResourcesUpdate.add(this.updateContent, this);
+    const emitter = EventEmitter.getInstance();
+    emitter.local.addEventListener(
+      'user/resource/alter',
+      this.updateContent.bind(this),
+    );
   }
 
   updateContent() {

@@ -6,6 +6,7 @@ import DataObject from '../model/DataObject';
 import EnergyShield from './misc/EnergyShield';
 import JetEngine from './misc/JetEngine';
 import QuadTree from '../common/QuadTree';
+import EventEmitter from '../sync/EventEmitter';
 import Util from '../common/Util';
 import {
   GROUP_EFFECTS,
@@ -46,11 +47,17 @@ function createSelector(targetEntities) {
         targets = targetEntities.filter(entity =>
           entity.isEntityControlledByUser());
       } else if (filter === ':user:selected') {
-        targets = targetEntities.filter(entity => entity.isEntityControlledByUser() && entity.isSelected());
+        targets = targetEntities.filter((entity) => {
+          if (!entity.isEntityControlledByUser()) return false;
+          if (!entity.isSelected()) return false;
+          if (entity.hasNoUserControl()) return false;
+          return true;
+        });
       } else if (filter === ':user:selected:not(building)') {
         targets = targetEntities.filter((entity) => {
           if (!entity.isEntityControlledByUser()) return false;
           if (!entity.isSelected()) return false;
+          if (entity.hasNoUserControl()) return false;
           if (entity.getDataObject().isBuilding()) return false;
           return true;
         });
@@ -130,6 +137,8 @@ EntityManager.prototype = {
       sprite,
       dataObject,
       createdAt: config.createdAt,
+      homeStation: config.homeStation,
+      noUserControl: config.noUserControl,
     });
 
     // setting the coordinates if not ommitted
@@ -139,6 +148,8 @@ EntityManager.prototype = {
     }
 
     entities.push(entity);
+
+    this.notifyListenersThatEntityCountHasChanged();
   },
 
   /**
@@ -156,6 +167,7 @@ EntityManager.prototype = {
     entity = null;
     // when an entity is removed we've got to refresh the quad tree
     this.updateEntityDistances();
+    this.notifyListenersThatEntityCountHasChanged();
   },
 
   /**
@@ -250,6 +262,15 @@ EntityManager.prototype = {
     for (let i = entities.length - 1; i >= 0; i -= 1) {
       this.quadTree.insert(entities[i].getSprite());
     }
+  },
+
+  /**
+   * Emits a local event as the user needs to update all the relevant
+   * components that shows the entity count
+   */
+  notifyListenersThatEntityCountHasChanged() {
+    const emitter = EventEmitter.getInstance();
+    emitter.local.dispatch('user/resource/alter');
   },
 
   /**

@@ -58,6 +58,18 @@ function isTileOccupiedForEntity(tile, entity) {
 }
 
 /**
+ * Returns true if the given entity does need to visit the
+ * collision map and update the related tiles
+ * Add further conditions here if you want the entity
+ * to be exluded from the collision checking
+ * @param {object} entity - Entity
+ */
+function doesNeedToVisitCollisionMap(entity) {
+  const dataObject = entity.getDataObject();
+  return !dataObject.isFighter() && !dataObject.isWorker();
+}
+
+/**
  * Wraps a matrix that contains infomations about which map tile
  * is occupied by a given entity and exposes API calls to fetch
  * these datas in certain ways
@@ -256,7 +268,7 @@ class CollisionMap {
 
     const entities = entityManager
       .entities(':not(hibernated)')
-      .filter(entity => !entity.getDataObject().isFighter());
+      .filter(entity => doesNeedToVisitCollisionMap(entity));
 
     this.visitTilesByEntities(entities);
     // if the map has been altered since the last check
@@ -382,6 +394,81 @@ class CollisionMap {
   }
 
   /**
+   * Returns all the empty tiles around the given entity
+   * @param {object} entity - Entity instance
+   * @return {object} Array - Array of Tile coordinates
+   */
+  getEmptyTilesNextToEntity(entity, returnFirst = false) {
+    const tile = entity.getTile();
+    if (!tile) return null;
+    const emptyTiles = [];
+    const mapWidth = this.tiles[0].length;
+    const mapHeight = this.tiles.length;
+    const [x, y] = tile;
+    let {
+      width, height, offsetX, offsetY,
+    } = entity.getCollisionData();
+
+    // extend the collision dimension with an outer ring where
+    // the empty tiles might possible be situated
+    width += 2;
+    height += 2;
+    offsetX += 1;
+    offsetY += 1;
+
+    for (let i = 0; i < width; i += 1) {
+      for (let j = height - 1; j >= 0; j -= 1) {
+        // we care only about the outer ring
+        if (i === width - 1 || i === 0 || j === height - 1 || j === 0) {
+          const tileX = Math.min(Math.max(x - offsetX + i, 0), mapWidth);
+          const tileY = Math.min(Math.max(y - offsetY + j, 0), mapHeight);
+          // if empty otherwise we carry on looping through the area
+          if (!this.tiles[tileY][tileX]) {
+            emptyTiles.push({
+              x: tileX,
+              y: tileY,
+            });
+            if (returnFirst) {
+              return emptyTiles.shift();
+            }
+          }
+        }
+      }
+    }
+    return emptyTiles;
+  }
+
+  /**
+   * Returns the coordinates of the tile that is not occupied next to
+   * given entity
+   * @param {object} entity - Entity
+   * @return {object} { x, y }
+   */
+  getFirstEmptyTileNextToEntity(entity) {
+    return this.getEmptyTilesNextToEntity(entity, true);
+  }
+
+  /**
+   * Returns the closest unoccupied tile next to the given entity
+   * from the perspective of the 2nd entity
+   * @param {object} entity - Entity instance
+   * @param {object} fromEntity - Entity instance
+   * @return {object} { x, y } - Tile coordinest not screen coordinates!
+   */
+  getClosestEmptyTileNextToEntityFromEntity(entity, fromEntity) {
+    const fromTile = fromEntity.getTileObj();
+    const emptyTiles = this.getEmptyTilesNextToEntity(entity);
+    if (!emptyTiles.length) return null;
+    const emptyTilesSorted = emptyTiles
+      .map(tile => ({
+        ...tile,
+        distance: Util.distanceBetweenSprites(fromTile, tile),
+      }))
+      .sort((a, b) => a.distance - b.distance);
+    return emptyTilesSorted.shift();
+  }
+
+  /**
    * Returns if the entity has previous coordinates of occupation
    * @param {boolean} entity - Entity
    */
@@ -454,8 +541,9 @@ class CollisionMap {
    * @return {boolean}
    */
   isObstacleAheadForEntity(entity) {
-    // Fighter class entities can go through anything
-    if (entity.getDataObject().isFighter()) return false;
+    // only if the entity cannot go through everything
+    // e.g.: Fighter and Worker class entities can go through anything
+    if (!doesNeedToVisitCollisionMap(entity)) return false;
     // get the array of tiles ahead
     const tilesAhead = entity.getTilesAhead();
     return tilesAhead.some(tile => this.isOccupiedForEntity(tile, entity));

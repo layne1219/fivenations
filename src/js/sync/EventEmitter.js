@@ -70,7 +70,7 @@ function createEntityEventAPI(entityManager) {
       /**
        * Makes all the given entities to follow the given target entity
        * @param  {object} options [configuration object to create the desired event]
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       follow(options) {
@@ -91,7 +91,7 @@ function createEntityEventAPI(entityManager) {
       /**
        * Makes all the given entities to patrol between the current and given coordinates
        * @param  {object} options [configuration object to create the desired event]
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       patrol(options) {
@@ -106,7 +106,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Makes all given entities to perform a stop action
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       stop(options) {
@@ -120,7 +120,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Removes entities from the game
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       remove() {
@@ -134,7 +134,7 @@ function createEntityEventAPI(entityManager) {
       /**
        * Removes all registered activities from the entity's
        * entity manager instance
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       reset() {
@@ -147,7 +147,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Executes the attached logic for firing the given weapons
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       fire(options) {
@@ -183,7 +183,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Executes the attached logic for attack the given target
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       attack(options) {
@@ -204,7 +204,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Inflicts a defined damage to the specify entities
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       damage(options) {
@@ -229,7 +229,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Executes the attached logic for getting to the given target in order to dock
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       getToDock(options) {
@@ -250,7 +250,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Docks entities into the target entity
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       dock(options) {
@@ -270,7 +270,7 @@ function createEntityEventAPI(entityManager) {
       },
       /**
        * Undocks entities from the specified entity
-       * @return {void}
+       * @return {this}
        * @chainable
        */
       undock(options) {
@@ -295,6 +295,40 @@ function createEntityEventAPI(entityManager) {
 
         return this;
       },
+      /**
+       * Executes the attached logic of mining the given target resource
+       * @return {this}
+       * @chainable
+       */
+      mine(options) {
+        const { targetEntity } = options;
+        if (!targetEntity) return this;
+
+        EventBus.getInstance().add({
+          id: 'entity/mine',
+          targets: entities,
+          data: {
+            targetEntity: targetEntity.getGUID(),
+          },
+          resetActivityQueue: options.resetActivityQueue,
+        });
+
+        return this;
+      },
+      /**
+       * Alters the resources in the cargo area
+       * @return {this}
+       * @chainable
+       */
+      alterCargo(options) {
+        EventBus.getInstance().add({
+          id: 'entity/cargo/alter',
+          targets: entities,
+          data: options,
+        });
+
+        return this;
+      },
     };
   }
 
@@ -310,18 +344,31 @@ function createEntityEventAPI(entityManager) {
   }
 
   /**
-   * Emits an entity/create event
-   * @param {[type]} config [description]
+   * Emits an 'entity/create' event
+   * @param {object} config - object holding the details of the creation
+   * @return {object} Promise - resolved when the 'entity/create' event is
+   * executed.
+   * We return a promise that is resolved when the event is
+   * executed. The promise is created to propagate the GUID to
+   * higher level logic so that external code is notified when
+   * the newly generated entity is placed in the EntityManager
    */
-  $.add = (config) => {
-    if (!config) return;
-    if (!config.guid) config.guid = Util.getGUID();
-    if (!config.createdAt) config.createdAt = new Date().getTime();
-    EventBus.getInstance().add({
-      id: 'entity/create',
-      data: config,
+  $.add = config =>
+    new Promise((resolve, reject) => {
+      if (!config) reject();
+      if (!config.guid) config.guid = Util.getGUID();
+      if (!config.createdAt) config.createdAt = new Date().getTime();
+      // serialize the homeStation entity into a string
+      if (config.homeStation) config.homeStation = config.homeStation.getGUID();
+
+      EventBus.getInstance().add({
+        id: 'entity/create',
+        data: config,
+        // the promise will return the GUID regardless of what else
+        // is added inside of the EventBus
+        callback: resolve.bind(null, config.guid),
+      });
     });
-  };
 
   return $;
 }
@@ -359,10 +406,14 @@ function createPlayerEventAPI(playerManager) {
    */
   function $(filter) {
     let targets;
-    if (filter === ':user') {
-      targets = playerManager.getUser();
-    } else if (filter !== undefined) {
-      targets = playerManager.getPlayerByGUID(filter);
+    if (typeof filter === 'string') {
+      if (filter === ':user') {
+        targets = playerManager.getUser();
+      } else if (filter !== undefined) {
+        targets = playerManager.getPlayerByGUID(filter);
+      }
+    } else if (typeof filter === 'object') {
+      targets = filter;
     } else {
       targets = playerManager.getPlayers();
     }
@@ -373,14 +424,18 @@ function createPlayerEventAPI(playerManager) {
    * Emits an player/create event
    * @param {object} config configuration object for the player
    */
-  $.add = (config) => {
-    if (!config) return;
-    if (!config.guid) config.guid = Util.getGUID();
-    EventBus.getInstance().add({
-      id: 'player/create',
-      data: config,
+  $.add = config =>
+    new Promise((resolve, reject) => {
+      if (!config) reject();
+      if (!config.guid) config.guid = Util.getGUID();
+      EventBus.getInstance().add({
+        id: 'player/create',
+        data: config,
+        // the promise will return the GUID regardless of what else
+        // is added inside of the EventBus
+        callback: resolve.bind(null, config.guid),
+      });
     });
-  };
 
   return $;
 }

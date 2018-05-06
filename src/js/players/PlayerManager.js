@@ -37,15 +37,15 @@ const singleton = {
    * @return {object} Player instance
    */
   getUser() {
-    for (let i = players.length - 1; i >= 0; i -= 1) {
-      if (players[i].isControlledByUser()) {
-        return players[i];
+    // cache the user since it won't change throughout a session
+    if (!this.user) {
+      for (let i = players.length - 1; i >= 0 && !this.user; i -= 1) {
+        if (players[i].isControlledByUser()) {
+          this.user = players[i];
+        }
       }
     }
-    // we return a fake object that exposes the isAuthorised function
-    return {
-      isAuthorised: () => false,
-    };
+    return this.user;
   },
 
   /**
@@ -106,11 +106,22 @@ const singleton = {
   /**
    * Returns whether the given players are hostile to each other
    * @param {object} Entity instance
-   * @param {boject} Player instance
+   * @param {object} Player instance
    * @return {boolean}
    */
   isEntityHostileToPlayer(entity, player) {
     return this.isPlayerHostileToPlayer(player, entity.getPlayer());
+  },
+
+  /**
+   * Returns whether the user is authorised or not
+   * @return {boolean}
+   */
+  isUserAuthorised() {
+    if (undefined === this.authorised) {
+      this.authorised = this.getUser().isAuthorised();
+    }
+    return this.authorised;
   },
 };
 

@@ -1,7 +1,7 @@
 /* eslint no-underscore-dangle: 0 */
-import Activity from './Activity';
+import Activity from '../Activity';
 import Move from './Move';
-import Util from '../../common/Util';
+import Util from '../../../common/Util';
 
 const rangeTooFarFactor = 1.5;
 
@@ -14,23 +14,12 @@ class GetInRange extends Move {
     super(entity);
     this.willBeKilledIfTargetTooFar = willBeKilledIfTargetTooFar;
 
-    // helper variable to avoid calculating the distance between
-    // the main and target entity more than once per tick
-    this._distance = 0;
-
     // the minimum range
     this._minRange = this.entity.getWeaponManager().getMinRange();
 
     // the range value that is deemed too far
     this._rangeTooFar =
       this.entity.getWeaponManager().getMaxRange() * rangeTooFarFactor;
-  }
-
-  /**
-   * Calculates the distance between the given and target entity
-   */
-  calculateDistance() {
-    this._distance = Util.distanceBetween(this.entity, this.target);
   }
 
   /**

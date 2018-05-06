@@ -227,6 +227,50 @@ const extendSprite = (entity, sprite, dataObject) => {
   return sprite;
 };
 
+/**
+ * Sets the home station of the give entity and registers listeners
+ * @param {object} entity - Entity instance
+ * @param {string} guid - guid of the home station entity
+ */
+function setHomeStation(manager, entity, guid) {
+  const homeStation = manager.entities(guid);
+  entity.homeStation = homeStation;
+  homeStation.deliverer = entity;
+
+  homeStation.on('remove', () => {
+    entity.homeStation = null;
+  });
+  entity.on('remove', () => {
+    homeStation.deliverer = null;
+  });
+}
+
+/**
+ * Executes the predefined "create" event in the DataObject
+ * E.g.: "create": {"activity": }
+ */
+function executeCreateEvent(entity) {
+  const dataObject = entity.getDataObject();
+  const event = dataObject.getEvent('create');
+
+  if (!event) return;
+
+  const { activities } = event;
+
+  if (!activities || !activities.length) return;
+
+  activities.forEach((config) => {
+    const authorised = entity.getPlayer().isAuthorised();
+    if (!config.authorisedOnly || authorised) {
+      const ActivityClass = ActivityManager.getActivityByString(config.id);
+      if (!ActivityClass) return;
+      // instantiate the fetched activity and pass this entity
+      const activity = new ActivityClass(entity);
+      entity.getActivityManager().add(activity);
+    }
+  });
+}
+
 class Entity {
   /**
    * generates an Entity instance
@@ -301,6 +345,19 @@ class Entity {
     if (this.dataObject.hasJetEngine()) {
       this.jetEngine = this.entityManager.addJetEngine(this);
     }
+
+    // add home station - this is used to mark a link between
+    // a deliverer entity and a pick up point such as Icarus and
+    // Mining station
+    if (config.homeStation) {
+      setHomeStation(this.entityManager, this, config.homeStation);
+    }
+
+    // no user control
+    this.noUserControl = config.noUserControl;
+
+    // execute predefined create event in DataObject
+    executeCreateEvent(this);
   }
 
   /**
@@ -311,6 +368,21 @@ class Entity {
    */
   on(event, callback) {
     this.eventDispatcher.addEventListener(event, callback);
+  }
+
+  /**
+   * registers listner to the given event type that will be
+   * execute only once
+   * @param {string} event - event type
+   * @param {object} callback
+   */
+  once(event, callback) {
+    const ctx = this;
+    const once = function once(...args) {
+      callback(...args);
+      ctx.eventDispatcher.removeEventListener(event, once);
+    };
+    this.eventDispatcher.addEventListener(event, once);
   }
 
   /**
@@ -397,14 +469,43 @@ class Entity {
   }
 
   /**
-   * Altering the entity's position
-   * @param  {[integer]} targetX [description]
-   * @param  {[integer]} targetY [description]
-   * @return {[void]}
+   * Alters the entity's position by executing the Move activity
+   * @param {number} targetX - Horizontal coordinate of the target
+   * @param {number} targetY - Vertivcal coordinate of the target
    */
   moveTo(targetX, targetY) {
     const move = new ActivityManager.Move(this);
     move.setCoords({ x: targetX, y: targetY });
+    this.activityManager.add(move);
+  }
+
+  /**
+   * Wrapper around "moveTo" function that expects an entity as
+   * the parameter instead and calculates its coordinates
+   * @param {object} entity - Entity instance to move to
+   */
+  moveToEntity(entity) {
+    const cm = ns.game.map.getCollisionMap();
+    const move = new ActivityManager.Move(this);
+    let coords;
+
+    // if the entity employs pathfinding algorythm we must
+    // determine the closest empty tile that can be taken to
+    // approach the entity
+    if (this.motionManager.isEmployingPathfinding()) {
+      // this returns only the tile coordinates not the screen coordinates
+      const tile = cm.getClosestEmptyTileNextToEntityFromEntity(entity, this);
+      // if the entity is already there we just terminate the whole execution
+      if (Util.areCoordsEqual(tile, this.getTileObj())) {
+        return;
+      }
+      coords = ns.game.map.getScreenCoordinatesOfTile(tile);
+    } else {
+      // if the entity does not use pathfinding we just send it straight
+      // on the top of the target
+      coords = entity.getSprite();
+    }
+    move.setCoords(coords);
     this.activityManager.add(move);
   }
 
@@ -494,6 +595,18 @@ class Entity {
   }
 
   /**
+   * Registers a Mine activity with the given entity (asteroid) set as target
+   * @param {object} targetEntity
+   * @return {void}
+   */
+  mine(targetEntity) {
+    const mine = new ActivityManager.Mine(this);
+    mine.setTarget(targetEntity);
+    this.activityManager.add(mine);
+    this.weaponManager.setTargetEntity(targetEntity);
+  }
+
+  /**
    * Registers a RotateToTarget activity with the given entity set as target
    * @param  {object} targetEntity [Entity]
    * @return {void}
@@ -502,6 +615,14 @@ class Entity {
     const rotate = new ActivityManager.RotateToTarget(this);
     rotate.setTarget(targetEntity);
     this.activityManager.add(rotate);
+  }
+
+  /**
+   * Adds the Delivery Activity to the activity queue
+   */
+  deliver() {
+    const deliver = new ActivityManager.Deliver(this);
+    this.activityManager.add(deliver);
   }
 
   /**
@@ -599,9 +720,11 @@ class Entity {
    * @return {[type]} [description]
    */
   delete() {
-    this.eventDispatcher.dispatch('remove');
+    this._willBeRemoved = true;
+    this.eventDispatcher.dispatch('remove', this);
     this.sprite._group.remove(this.sprite);
     this.sprite.destroy();
+    this.eventDispatcher.reset();
   }
 
   /**
@@ -758,6 +881,14 @@ class Entity {
   }
 
   /**
+   * Sets the control of the unit
+   * @param {boolean}
+   */
+  setNoUserControl(bool) {
+    this.noUserControl = bool;
+  }
+
+  /**
    * Fires the given event against the entity
    * @param {string} event - event id to be fired
    */
@@ -855,7 +986,7 @@ class Entity {
    * @return {boolean}
    */
   isHibernated() {
-    return !!this.hibarnated;
+    return this.hibarnated || this._willBeRemoved;
   }
 
   /**
@@ -902,6 +1033,33 @@ class Entity {
    */
   canMove() {
     return this.dataObject.getSpeed() > 0;
+  }
+
+  /**
+   * Returns true if the entity (e.g.: Mining Station) has a
+   * deliverer attached (such as Icarus)
+   * @return {boolean}
+   */
+  hasDeliverer() {
+    return this.deliverer;
+  }
+
+  /**
+   * Returns true if it cannot be managed by the user
+   * (e.g.: Federation Icarus)
+   * @return {boolean}
+   */
+  hasNoUserControl() {
+    return this.noUserControl;
+  }
+
+  /**
+   * Returns the entity that is designated as home station
+   * (e.g.: Icarus's home station is a Mining Station)
+   * @return {object} Entity
+   */
+  getHomeStation() {
+    return this.homeStation;
   }
 
   getSprite() {

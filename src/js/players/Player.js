@@ -51,7 +51,7 @@ class Player {
   }
 
   setTitanium(value) {
-    if (!value) return;
+    if (value === undefined) return;
     this.dispatcher.dispatch('change/titanium', {
       old: this.titanium,
       new: value,
@@ -60,7 +60,7 @@ class Player {
   }
 
   setSilicium(value) {
-    if (!value) return;
+    if (value === undefined) return;
     this.dispatcher.dispatch('change/silicium', {
       old: this.silicium,
       new: value,
@@ -69,7 +69,7 @@ class Player {
   }
 
   setEnergy(value) {
-    if (!value) return;
+    if (value === undefined) return;
     this.dispatcher.dispatch('change/energy', {
       old: this.energy,
       new: value,
@@ -78,7 +78,7 @@ class Player {
   }
 
   setUranium(value) {
-    if (!value) return;
+    if (value === undefined) return;
     this.dispatcher.dispatch('change/uranium', {
       old: this.uranium,
       new: value,
@@ -112,8 +112,9 @@ class Player {
 
   getCurrentEntityNumber() {
     const { entityManager } = ns.game;
-    return entityManager.entities(entity =>
-      entity.isEntityControlledByUser(this)).length;
+    return entityManager
+      .entities(entity => entity.isEntityControlledByUser(this))
+      .reduce((sum, entity) => sum + entity.getDataObject().getSpace(), 0);
   }
 
   getGUID() {

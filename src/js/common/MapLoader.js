@@ -93,6 +93,30 @@ export default {
 
     game.map.new(mapConfig);
 
+    this.generatePlayersAsync(game, players).then(() => {
+      importer.getEntities().forEach((config) => {
+        game.eventEmitter.synced.entities.add(config);
+      });
+
+      importer.getSpaceObjects().forEach((config) => {
+        game.map
+          .getStarfield()
+          .getDeepSpaceLayer()
+          .add(config);
+      });
+    });
+  },
+
+  /**
+   * Generates the player/create events and returns a promise
+   * when all of them are execcuted so that the players are in
+   * the PlayerManager collection
+   * @param {object} game - Game Scene instance
+   * @param {object} players - Array of manifest objects
+   * @return {Promise}
+   */
+  generatePlayersAsync(game, players) {
+    const promises = [];
     Object.keys(players)
       .map(id => players[id])
       .sort(a => (a.user ? -1 : 1))
@@ -101,22 +125,24 @@ export default {
 
         if (!active) return;
 
-        game.eventEmitter.synced.players.add({
-          authorised: !!user,
-          ...player,
-        });
+        // creates the player event
+        const promise = game.eventEmitter.synced.players
+          .add({
+            authorised: !!user,
+            ...player,
+          })
+          .then((guid) => {
+            game.eventEmitter.synced.players(guid).alter({
+              titanium: 0,
+              silicium: 0,
+              energy: 0,
+              uranium: 0,
+            });
+          });
+
+        promises.push(promise);
       });
-
-    importer.getEntities().forEach((config) => {
-      game.eventEmitter.synced.entities.add(config);
-    });
-
-    importer.getSpaceObjects().forEach((config) => {
-      game.map
-        .getStarfield()
-        .getDeepSpaceLayer()
-        .add(config);
-    });
+    return Promise.all(promises);
   },
 };
 

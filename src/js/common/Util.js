@@ -196,6 +196,18 @@ export default {
     },
 
     /**
+     * Returns if the given coordinates are equal
+     * @param {object} source first entity
+     * @param {object} target second entity
+     */
+    areCoordsEqual: function(source, target) {
+        const { x, y } = source;
+        const dx = target.x;
+        const dy = target.y;
+        return x === dx && y === dy;
+    },
+
+    /**
      * Deep clones the given parameter
      * @param {mixed} o
      * @return {mixed} cloned version of o
@@ -210,7 +222,29 @@ export default {
             }
         }
         return output;
-    },         
+    },
+
+    StateMachine: (function() {
+        return class StateManager {
+          constructor(ctx) {
+            this.states = [];
+            this.ctx = ctx;
+          }
+          add(state) {
+            this.states.push(state);
+          }
+          update(){
+            if (!this.current) return;
+            if (this.current.update) this.current.update.call(ctx);
+          }
+          transitionTo(state) {
+            if (state === this.current) return;
+            if (this.current.leave) this.current.leave.call(ctx);
+            if (state.enter) state.enter.call(ctx);
+            this.current = state;
+          }
+        }
+    }),
 
     // Eventlistener object
     EventDispatcher: (function() {
@@ -218,6 +252,7 @@ export default {
         // Inharitable event dispatcher object
         function EventDispatcher() {
             this.events = {};
+            this.dirty = false;
         }
 
         EventDispatcher.prototype.events = {};
@@ -236,7 +271,8 @@ export default {
             if (!this.events[type][index]) {
                 return this;
             }
-            this.events[type].splice(index, 1);
+            this.events[type][index] = null;
+            this.dirty = true;
             return this;
         };
         EventDispatcher.prototype.dispatch = function(type, event) {
@@ -253,9 +289,18 @@ export default {
                     );
                 }
             }
+            if (this.dirty) {
+                this.clean();
+            }
         };
         EventDispatcher.prototype.reset = function() {
             this.events = {};
+        }
+        EventDispatcher.prototype.clean = function() {
+            Object.keys(this.events).forEach(key => {
+                this.events[key] = this.events[key].filter(val => val);
+            });
+            this.dirty = false;
         }
 
         return EventDispatcher;

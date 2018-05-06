@@ -1,5 +1,6 @@
-import Activity from './Activity';
-import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
+import Activity from '../Activity';
+import Util from '../../../common/Util';
+import { TILE_WIDTH, TILE_HEIGHT } from '../../../common/Const';
 
 class Move extends Activity {
   /**
@@ -11,11 +12,14 @@ class Move extends Activity {
     super();
     this.entity = entity;
     this.coords = {};
+
+    // helper variable to avoid calculating the distance between
+    // the main and target entity more than once per tick
+    this._distance = 0;
   }
 
   /**
-   * Applying the activity on an entity
-   * @return {[void]}
+   * Executes the activity against an entity
    */
   activate() {
     super.activate();
@@ -25,9 +29,19 @@ class Move extends Activity {
       return;
     }
 
-    if (this.entity) {
-      this.entity.getMotionManager().moveTo(this);
+    if (Util.areCoordsEqual(this.entity.getTileObj(), this.getTile())) {
+      this.kill();
+      return;
     }
+
+    this.entity.getMotionManager().moveTo(this);
+  }
+
+  /**
+   * Calculates the distance between the given and target entity
+   */
+  calculateDistance() {
+    this._distance = Util.distanceBetween(this.entity, this.target);
   }
 
   /**

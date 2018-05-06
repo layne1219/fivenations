@@ -1,4 +1,4 @@
-import Activity from './Activity';
+import Activity from '../Activity';
 
 const ANIMATION_KEY = 'idle';
 
