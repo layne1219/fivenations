@@ -1,102 +1,102 @@
-{"frames": {
+{"frames": [
 
-"planet01.png":
 {
-	"frame": {"x":1,"y":1,"w":428,"h":428},
+	"filename": "planet01.png",
+	"frame": {"x":1,"y":426,"w":422,"h":421},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":422,"h":421},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet02.png":
 {
-	"frame": {"x":1,"y":431,"w":428,"h":428},
+	"filename": "planet02.png",
+	"frame": {"x":1,"y":849,"w":403,"h":403},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":13,"w":403,"h":403},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet03.png":
 {
-	"frame": {"x":1,"y":861,"w":419,"h":419},
+	"filename": "planet03.png",
+	"frame": {"x":387,"y":1636,"w":370,"h":370},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":419,"h":419},
-	"sourceSize": {"w":419,"h":419},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"planet04.png":
-{
-	"frame": {"x":431,"y":1,"w":428,"h":428},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":28,"w":370,"h":370},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet05.png":
 {
-	"frame": {"x":431,"y":431,"w":428,"h":428},
+	"filename": "planet04.png",
+	"frame": {"x":406,"y":1250,"w":384,"h":384},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":22,"w":384,"h":384},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet06.png":
 {
-	"frame": {"x":861,"y":1,"w":428,"h":428},
+	"filename": "planet05.png",
+	"frame": {"x":1,"y":1254,"w":384,"h":384},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":22,"w":384,"h":384},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet07.png":
 {
-	"frame": {"x":422,"y":861,"w":419,"h":419},
+	"filename": "planet06.png",
+	"frame": {"x":1,"y":1640,"w":369,"h":369},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":419,"h":419},
-	"sourceSize": {"w":419,"h":419},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"planet08.png":
-{
-	"frame": {"x":1291,"y":1,"w":428,"h":428},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":29,"w":369,"h":369},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet09.png":
 {
-	"frame": {"x":861,"y":431,"w":428,"h":428},
+	"filename": "planet07.png",
+	"frame": {"x":1,"y":1,"w":422,"h":423},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":422,"h":423},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"planet10.png":
 {
-	"frame": {"x":1291,"y":431,"w":428,"h":428},
+	"filename": "planet08.png",
+	"frame": {"x":406,"y":849,"w":399,"h":399},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":428},
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":14,"w":399,"h":399},
 	"sourceSize": {"w":428,"h":428},
 	"pivot": {"x":0.5,"y":0.5}
-}},
+},
+{
+	"filename": "planet09.png",
+	"frame": {"x":425,"y":426,"w":422,"h":421},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":422,"h":421},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "planet10.png",
+	"frame": {"x":425,"y":1,"w":422,"h":423},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":422,"h":423},
+	"sourceSize": {"w":428,"h":428},
+	"pivot": {"x":0.5,"y":0.5}
+}],
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "background_planets01.png",
 	"format": "RGBA8888",
-	"size": {"w":1720,"h":1281},
+	"size": {"w":848,"h":2010},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7bfd68aeb6f38ac0ca5ef95e75e818aa:d57d8cabfce5c7d1c55c4492c7202467:88f3cde0a5299c7a206cdbe93bf5a4b4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:326204b8b4f708684d8cff872ebc3675:ef87fa16c6cf83f0cd5a5c86468c1908:88f3cde0a5299c7a206cdbe93bf5a4b4$"
 }
 }
