@@ -1,0 +1,156 @@
+{"frames": [
+
+{
+	"filename": "exp_fed04_building_buildend.png",
+	"frame": {"x":1,"y":1,"w":176,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":83,"w":176,"h":131},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed04_building_debrish.png",
+	"frame": {"x":1,"y":134,"w":128,"h":95},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":80,"y":101,"w":128,"h":95},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040000.png",
+	"frame": {"x":179,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040001.png",
+	"frame": {"x":184,"y":114,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040002.png",
+	"frame": {"x":325,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040003.png",
+	"frame": {"x":325,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040004.png",
+	"frame": {"x":325,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040005.png",
+	"frame": {"x":471,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040006.png",
+	"frame": {"x":179,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040007.png",
+	"frame": {"x":471,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040008.png",
+	"frame": {"x":330,"y":114,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040009.png",
+	"frame": {"x":184,"y":114,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "exp_fed_build040010.png",
+	"frame": {"x":179,"y":1,"w":144,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":96,"w":144,"h":111},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_construct_exp_fed_build04.png",
+	"frame": {"x":131,"y":187,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_exp_fed_build04.png",
+	"frame": {"x":476,"y":114,"w":127,"h":111},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":127,"h":111},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_exp_fed_build_sm04.png",
+	"frame": {"x":131,"y":134,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "exp_fed_build04.png",
+	"format": "RGBA8888",
+	"size": {"w":616,"h":230},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:302d23caacef4a064866a89836230b27:fd0a5de69a764f9fcab22eba46e8cb4e:81bd0660bf79f3486824ba874bae575a$"
+}
+}
