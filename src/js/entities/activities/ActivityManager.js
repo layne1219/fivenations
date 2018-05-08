@@ -11,6 +11,7 @@ import Attack from './shared/Attack';
 import Mine from './shared/Mine';
 import RotateToTarget from './shared/RotateToTarget';
 import Deliver from './shared/Deliver';
+import Produce from './shared/Produce';
 import CreateIcarus from './custom/CreateIcarus';
 
 const ns = window.fivenations;
@@ -111,6 +112,15 @@ function ActivityManager(entity) {
       const l = activities.length;
       const currentIdx = l - 1;
       return activities[currentIdx] instanceof Idle;
+    },
+
+    /**
+     * Returns true if the current Activity is Idle
+     */
+    isProducing() {
+      const l = activities.length;
+      const currentIdx = l - 1;
+      return activities[currentIdx] instanceof Produce;
     },
 
     /**

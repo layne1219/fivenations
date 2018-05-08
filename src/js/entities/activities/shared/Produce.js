@@ -33,20 +33,34 @@ class Produce extends Activity {
   }
 
   /**
-   * Calculates the timestamp at whitch the production must be
+   * Calculates the timestamp at which the production must be
    * completed
    */
   setComplitionTime() {
     const time = ns.game.game.time.time;
-    const dataSource = phaserGame.cache.getJSON(this.target);
-    const getProductionLengthInMs = dataSource.buildingTime * 1000;
+    const getProductionLengthInMs = this.targteDO.buildingTime * 1000;
     this.complitionTime = time + getProductionLengthInMs;
   }
 
   /**
    * Dispatches a Universal event to create the designated entity
    */
-  createEntity() {}
+  createEntity() {
+    // calculates the coordinets of the nearby empty tile where
+    // the icarus will be placed
+    const collisionMap = ns.game.map.getCollisionMap();
+    const tile = collisionMap.getFirstEmptyTileNextToEntity(this.entity);
+    const x = tile.x * TILE_WIDTH;
+    const y = tile.y * TILE_HEIGHT;
+    const team = this.entity.getDataObject().getTeam();
+    const emitter = EventEmitter.getInstance();
+    emitter.synced.entities.add({
+      id: this.targetDO.id,
+      team,
+      x,
+      y,
+    });
+  }
 
   /**
    * Updates the activity on every tick
@@ -62,10 +76,18 @@ class Produce extends Activity {
 
   /**
    * Saves the target entity that will be attacked
-   * @return {[void]}
    */
   setTarget(entity) {
     this.target = entity;
+    this.targteDO = phaserGame.cache.getJSON(this.target);
+  }
+
+  /**
+   * Returns the timestamp of by when the production must be done
+   * @return {number}
+   */
+  getComplitionTime() {
+    return this.complitionTime;
   }
 }
 

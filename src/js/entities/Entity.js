@@ -1009,6 +1009,14 @@ class Entity {
   }
 
   /**
+   * Returns whether the entity is executing the Produce activity
+   * @return {boolean}
+   */
+  isProducing() {
+    return this.activityManager.isProducing();
+  }
+
+  /**
    * Returns if there is an obstacle ahead
    * @param {boolean}
    */
