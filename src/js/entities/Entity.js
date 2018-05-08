@@ -1013,7 +1013,7 @@ class Entity {
    * @return {boolean}
    */
   isProducing() {
-    return this.activityManager.isProducing();
+    return this.productionManager.isProducing();
   }
 
   /**
