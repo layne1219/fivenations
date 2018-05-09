@@ -2,10 +2,11 @@
 /* eslint no-underscore-dangle: 0 */
 import PlayerManager from '../players/PlayerManager';
 import EventEmitter from '../sync/EventEmitter';
-import ActivityManager from '../entities/activities/ActivityManager';
-import MotionManager from '../entities/motions/MotionManager';
-import AbilityManager from '../entities/AbilityManager';
-import WeaponManager from '../entities/weapons/WeaponManager';
+import ActivityManager from './activities/ActivityManager';
+import MotionManager from './motions/MotionManager';
+import AbilityManager from './AbilityManager';
+import WeaponManager from './weapons/WeaponManager';
+import ProductionManager from './production/ProductionManager';
 import EffectManager from '../effects/EffectManager';
 import CollisionMapMasks from '../map/CollisionMapMasks';
 import GUI from '../gui/GUI';
@@ -329,6 +330,9 @@ class Entity {
 
     // AbilityManager for determining which abilities are available for this entity
     this.abilityManager = new AbilityManager(this);
+
+    // ProductionManager oversees the production slots of this entity
+    this.productionManager = new ProductionManager(this);
 
     // Player instance
     this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
@@ -1070,42 +1074,90 @@ class Entity {
     return this.homeStation;
   }
 
+  /**
+   * Returns the sprite object of this entity
+   * @return {object} Phaser.Sprite
+   */
   getSprite() {
     return this.sprite;
   }
 
+  /**
+   * Returns the DataObject instance linked to this entity
+   * @return {object} DataObject
+   */
   getDataObject() {
     return this.dataObject;
   }
 
+  /**
+   * Returns the ActivityManager instance linked to this entity
+   * @return {object} ActivityManager
+   */
   getActivityManager() {
     return this.activityManager;
   }
 
+  /**
+   * Returns the MotionManager instance linked to this entity
+   * @return {object} MotionManager
+   */
   getMotionManager() {
     return this.motionManager;
   }
 
+  /**
+   * Returns the AbilityManager instance linked to this entity
+   * @return {object} AbilityManager
+   */
   getAbilityManager() {
     return this.abilityManager;
   }
 
+  /**
+   * Returns the WeaponManager instance linked to this entity
+   * @return {object} WeaponManager
+   */
   getWeaponManager() {
     return this.weaponManager;
   }
 
+  /**
+   * Returns the ProductionManager instance linked to this entity
+   * @return {object} ProductionManager
+   */
+  getProductionManager() {
+    return this.productionManager;
+  }
+
+  /**
+   * Return the Player instance to which this entity belongs
+   * @return {object} Player
+   */
   getPlayer() {
     return this.player;
   }
 
+  /**
+   * Returns the unique identifier for this entity
+   * @return {string}
+   */
   getGUID() {
     return this.guid;
   }
 
+  /**
+   * Returns the animation manager instance
+   * @return {object}
+   */
   getAnimationManager() {
     return this.sprite.animations;
   }
 
+  /**
+   * Returns the animation manifest instance by the given key
+   * @return {object}
+   */
   getAnimationByKey(key) {
     const animations = this.getAnimations();
     if (!animations) {
@@ -1190,10 +1242,19 @@ class Entity {
     return this.motionManager.getTilesToTarget();
   }
 
+  /**
+   * Returns an array of entity instances that have been kept by this
+   * very entity.
+   * @return {object} array of entities that have been docked into this
+   */
   getDockedEntities() {
     return this.docker;
   }
 
+  /**
+   * Returns the number of docked entities
+   * @return {number}
+   */
   getNumberOfDockerEntities() {
     if (!this.docker) {
       return 0;
