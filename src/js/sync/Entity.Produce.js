@@ -15,7 +15,7 @@ class EntityProduce extends Event {
     }
     options.targets.forEach((id) => {
       const entity = ns.game.entityManager.entities(id);
-      const entityIdToBeProduced = options.data.id;
+      const entityIdToBeProduced = options.data.targetId;
       entity.produce(entityIdToBeProduced);
     });
   }

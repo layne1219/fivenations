@@ -329,6 +329,20 @@ function createEntityEventAPI(entityManager) {
 
         return this;
       },
+      /**
+       * Produce entity
+       * @return {this}
+       * @chainable
+       */
+      produce(options) {
+        EventBus.getInstance().add({
+          id: 'entity/produce',
+          targets: entities,
+          data: options,
+        });
+
+        return this;
+      },
     };
   }
 

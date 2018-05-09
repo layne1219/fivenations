@@ -28,15 +28,16 @@ class Produce extends Activity {
    * completed
    */
   getBuildingTime() {
-    return this.targteDO.buildingTime * 1000;
+    return this.targetDO.buildingTime * 1000;
   }
 
   /**
    * Saves the id of the entity that will be produced
    */
   setTarget(entityIdToBeProduced) {
-    this.targteDO = phaserGame.cache.getJSON(entityIdToBeProduced);
+    const phaserGame = ns.game.game;
+    this.targetDO = phaserGame.cache.getJSON(entityIdToBeProduced);
   }
 }
 
-export default Mine;
+export default Produce;

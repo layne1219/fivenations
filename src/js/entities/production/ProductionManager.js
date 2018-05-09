@@ -89,7 +89,7 @@ class ProductionManager {
    * Starts the animation sequence
    */
   startAnimation() {
-    this.entity.startAnimation(PRODUCTION_ANIMATION_KEY);
+    this.entity.animate(PRODUCTION_ANIMATION_KEY);
   }
 
   /**
