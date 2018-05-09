@@ -14,6 +14,7 @@ import EntityUndock from './Entity.Undock';
 import EntityPlace from './Entity.Place';
 import EntityMine from './Entity.Mine';
 import EntityCargoAlter from './Entity.Cargo.Alter';
+import EntityProduce from './Entity.Produce';
 import PlayerCreate from './Player.Create';
 import PlayerResoureAlter from './Player.Resource.Alter';
 import EffectCreate from './Effect.Create';
@@ -40,6 +41,7 @@ function createEventFactory() {
     'entity/place': new EntityPlace(),
     'entity/mine': new EntityMine(),
     'entity/cargo/alter': new EntityCargoAlter(),
+    'entity/produce': new EntityProduce(),
 
     // Player
     'player/create': new PlayerCreate(),

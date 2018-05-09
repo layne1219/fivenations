@@ -11,6 +11,7 @@ import Attack from './shared/Attack';
 import Mine from './shared/Mine';
 import RotateToTarget from './shared/RotateToTarget';
 import Deliver from './shared/Deliver';
+import Produce from './shared/Produce';
 import CreateIcarus from './custom/CreateIcarus';
 
 const ns = window.fivenations;
@@ -151,6 +152,7 @@ ActivityManager.Mine = Mine;
 ActivityManager.RotateToTarget = RotateToTarget;
 ActivityManager.CreateIcarus = CreateIcarus;
 ActivityManager.Deliver = Deliver;
+ActivityManager.Produce = Produce;
 ActivityManager.getActivityByString = getActivityByString;
 
 export default ActivityManager;
