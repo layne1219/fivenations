@@ -334,11 +334,28 @@ function createEntityEventAPI(entityManager) {
        * @return {this}
        * @chainable
        */
-      produce(options) {
+      addProduction(options) {
         EventBus.getInstance().add({
-          id: 'entity/produce',
+          id: 'entity/production/add',
           targets: entities,
           data: options,
+        });
+
+        return this;
+      },
+      /**
+       * Cancel Production of the given entities
+       * @param {number} productionSlotIdx
+       * @return {this}
+       * @chainable
+       */
+      cancelProduction(productionSlotIdx) {
+        EventBus.getInstance().add({
+          id: 'entity/production/cancel',
+          targets: entities,
+          data: {
+            productionSlotIdx,
+          },
         });
 
         return this;

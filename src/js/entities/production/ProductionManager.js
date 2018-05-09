@@ -25,7 +25,6 @@ class ProductionManager {
       if (this.isProductionReady()) {
         this.createEntityFromCurrentSlot();
         this.removeProductionSlotByIndex(0);
-        this.stopAnimation();
       }
     } else {
       this.startProduction();
@@ -47,6 +46,9 @@ class ProductionManager {
   removeProductionSlotByIndex(idx) {
     if (!this.slots[idx]) return;
     this.slots.splice(idx, 1);
+    if (idx === 0) {
+      this.stopAnimation();
+    }
   }
 
   /**

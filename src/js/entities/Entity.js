@@ -694,6 +694,15 @@ class Entity {
   }
 
   /**
+   * Cancels the production by the given index
+   * @param {number} idx - index of the production element
+   */
+  cancelProduction(idx = 0) {
+    const manager = this.entity.getProductionManager();
+    manager.removeProductionSlotByIndex(idx);
+  }
+
+  /**
    * Revelas the fog of war tile that the entity is belonged to
    */
   revealEntityInFogOfWar() {
