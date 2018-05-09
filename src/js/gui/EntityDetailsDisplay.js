@@ -307,13 +307,15 @@ class WeaponGroup extends Phaser.Group {
   }
 
   /**
-   * Updating the attributes text group as per the passed dataObject
+   * Updates the attributes text group as per the passed dataObject
    * @param  {object} entity [Entity]
    * @return {void}
    */
   updateContent(entity) {
-    if (!entity) {
-      throw new Error('Invalid Entity instance has been passed!');
+    if (entity.isProducing()) {
+      this.visible = false;
+    } else {
+      this.visible = true;
     }
 
     for (let i = weaponNumber - 1; i >= 0; i -= 1) {
