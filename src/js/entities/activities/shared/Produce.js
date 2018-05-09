@@ -18,26 +18,24 @@ class Produce extends Activity {
    */
   addProductionSlot() {
     const manager = this.entity.getProductionManager();
-    manager.addProductionSlot({
-      id: this.targetDO.id,
-      time: this.getTime(),
-    });
+    const { id } = this.targetDO;
+    const time = this.getBuildingTime();
+    manager.addProductionSlot({ id, time });
   }
 
   /**
    * Calculates the timestamp at which the production must be
    * completed
    */
-  getTime() {
+  getBuildingTime() {
     return this.targteDO.buildingTime * 1000;
   }
 
   /**
-   * Saves the target entity that will be attacked
+   * Saves the id of the entity that will be produced
    */
-  setTarget(entity) {
-    this.target = entity;
-    this.targteDO = phaserGame.cache.getJSON(this.target);
+  setTarget(entityIdToBeProduced) {
+    this.targteDO = phaserGame.cache.getJSON(entityIdToBeProduced);
   }
 }
 

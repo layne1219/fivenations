@@ -4,6 +4,8 @@ import { TILE_WIDTH, TILE_HEIGHT } from '../../common/Const';
 
 const ns = window.fivenations;
 
+const PRODUCTION_ANIMATION_KEY = 'construction';
+
 class ProductionManager {
   constructor(entity) {
     this.entity = entity;
@@ -15,19 +17,19 @@ class ProductionManager {
    * the determined entity when the production time passes by
    */
   update() {
-    const current = this.slots[0];
-    if (!current) return;
+    if (!this.isProducing()) {
+      return;
+    }
 
-    const now = ns.game.game.time.time;
-
-    if (current.activated) {
-      if (now >= current.complitionTime) {
-        this.createEntity(current.id);
+    if (this.hasProductionStarted()) {
+      if (this.isProductionReady()) {
+        this.createEntityFromCurrentSlot();
         this.removeProductionSlotByIndex(0);
+        this.stopAnimation();
       }
     } else {
-      current.activated = true;
-      current.complitionTime = now + current.time;
+      this.startProduction();
+      this.startAnimation();
     }
   }
 
@@ -51,7 +53,8 @@ class ProductionManager {
    * Dispatches a Universal event to create the designated entity
    * @param {string} id - Id of the entity product
    */
-  createEntity(id) {
+  createEntityFromCurrentSlot() {
+    const id = this.slots[0].id;
     const manager = PlayerManager.getInstance();
     // only for authorised players
     if (!manager.isUserAuthorised()) return;
@@ -72,10 +75,55 @@ class ProductionManager {
   }
 
   /**
+   * Starts the production with setting up all the required
+   * helper variables
+   */
+  startProduction() {
+    const current = this.slots[0];
+    const now = ns.game.game.time.time;
+    current.activated = true;
+    current.complitionTime = now + current.time;
+  }
+
+  /**
+   * Starts the animation sequence
+   */
+  startAnimation() {
+    this.entity.startAnimation(PRODUCTION_ANIMATION_KEY);
+  }
+
+  /**
+   * Stops the animation sequence
+   * Augments the production queue of the given target
+   */
+  stopAnimation() {
+    this.entity.stopAnimation();
+  }
+
+  /**
    * Returns true if the the queue is not empty
+   * @return {boolean}
    */
   isProducing() {
     return this.slots.length;
+  }
+
+  /**
+   * Returns whether the production is ready
+   * @returns {boolean}
+   */
+  isProductionReady() {
+    const now = ns.game.game.time.time;
+    const current = this.slots[0];
+    return current.complitionTime <= now;
+  }
+
+  /**
+   * Returns true if the production has been started
+   * @return {boolean}
+   */
+  hasProductionStarted() {
+    return this.slots[0].activated;
   }
 
   /**

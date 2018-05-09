@@ -407,6 +407,7 @@ class Entity {
   update(authoritative) {
     // self-contained modules
     this.activityManager.update();
+    this.productionManager.update();
 
     if (!ns.mapEditorMode) {
       this.motionManager.update();
@@ -649,7 +650,6 @@ class Entity {
 
   /**
    * Reactivates all the entities that have been enclosed into the docker array
-   * @return {void}
    */
   undock() {
     if (this.docker === undefined) return null;
@@ -681,6 +681,16 @@ class Entity {
 
     this.eventDispatcher.dispatch('damage');
     return false;
+  }
+
+  /**
+   * Registers a Produce activity
+   * @param {string} id - Id of the entity to be produced
+   */
+  produce(id) {
+    const produce = new ActivityManager.Produce(this);
+    produce.setTarget(id);
+    this.activityManager.add(produce);
   }
 
   /**

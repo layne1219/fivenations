@@ -152,6 +152,7 @@ ActivityManager.Mine = Mine;
 ActivityManager.RotateToTarget = RotateToTarget;
 ActivityManager.CreateIcarus = CreateIcarus;
 ActivityManager.Deliver = Deliver;
+ActivityManager.Produce = Produce;
 ActivityManager.getActivityByString = getActivityByString;
 
 export default ActivityManager;
