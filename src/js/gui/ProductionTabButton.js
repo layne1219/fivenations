@@ -6,22 +6,12 @@ export const SPRITESHEET_ID = 'production-tab-button';
 /**
  * Phaser.Group class that realises the MainMenu header
  */
-class ProductionTabButton extends Phaser.Group {
+class ProductionTabButton extends Phaser.Sprite {
   constructor(game) {
-    super(game);
-    this.createSprite();
-  }
-
-  /**
-   * Creates a Phaser.Sprite instance based on the given configuration
-   * @param {object} config - { x, y, id }
-   * @return {object} Phaser.Sprite
-   */
-  createSprite() {
-    const sprite = this.game.add.sprite(0, 0, 'production-tab-button');
-    this.add(sprite);
-    return sprite;
+    super(game, 0, 0, SPRITESHEET_ID);
+    this.game.add.existing(this);
+    this.inputEnabled = true;
   }
 }
 
-export default Header;
+export default ProductionTabButton;
