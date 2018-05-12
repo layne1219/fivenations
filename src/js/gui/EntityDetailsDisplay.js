@@ -653,8 +653,10 @@ class EntityDetailsDisplay {
 
     // Updating the texts + splash icon
     for (let i = this.attributeGroup.children.length - 1; i >= 0; i -= 1) {
-      // @TODO Phaser.Group.prototype.update.call(this);
-      this.attributeGroup.children[i].updateContent(entity);
+      const tab = this.attributeGroup.children[i];
+      if (tab.visible) {
+        tab.updateContent(entity);
+      }
     }
   }
 

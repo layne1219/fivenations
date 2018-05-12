@@ -16,76 +16,6 @@ const SLOTS_PADDING_Y = 5;
 const frames = {};
 
 /**
- * Creates sprites for the production slot icons to the
- * and appends them to given sprite collection
- * @param {object} sprites
- */
-function addSlotIcons(sprites) {
-  const slotNamePrefix = 'slot-';
-  for (let i = 0; i < SLOTS_COUNT - 1; i += 1) {
-    const sprite = this.createElement({
-      assetId: 'gui',
-      id: `XXX_gui_construction_queue_${i + 1}.png`,
-    });
-    sprites[`${slotNamePrefix}${i}`] = sprite;
-  }
-}
-
-/**
- * Creates sprites for all the entity icons and appends them to
- * given sprite collection
- * @param {object} sprites
- */
-function addEntityIcons(sprites) {
-  Object.keys(ns.entities).forEach((key) => {
-    const sprite = this.createElement({
-      assetId: key,
-      idx: ENTITY_ICON_CONSTRUCT,
-    });
-    sprites[key] = sprite;
-  });
-}
-
-/**
- * Pieces all the given sprites together into spritesheet. This is
- * because the icons of entities are placed into separate spritesheets and
- * in order to keep the rendering of the production tab efficient we
- * merge them together into one spritesheet.
- * @param {object} game - Phaser instance
- * @param {object} sprites - collection of Phaser.Sprites
- */
-function constructSpriteSheet(game, sprites) {
-  const spriteCount = Object.keys(sprites).length;
-  const columns = 25;
-  const firstKey = Object.keys(sprites)[0];
-  const spriteWidth = sprites[firstKey].width;
-  const spriteHeight = sprites[firstKey].height;
-  const rows = Math.floor(spriteCount / columns);
-  const width = Math.floor(spriteWidth * columns);
-  const height = Math.floor(spriteHeight * rows);
-  const bmd = game.add.bitmapData(width, height);
-
-  Object.keys(sprites).forEach((key, idx) => {
-    const sprite = sprites[key];
-    const x = spriteWidth * (idx % columns);
-    const y = spriteHeight * Math.floor(idx / columns);
-    bmd.draw(sprite, x, y);
-    frames[key] = idx;
-  });
-
-  game.cache.addSpriteSheet(
-    SPRITESHEET_ID,
-    '',
-    bmd.canvas,
-    spriteWidth,
-    spriteHeight,
-    spriteCount,
-    0,
-    0,
-  );
-}
-
-/**
  * Phaser.Group class that realises the Production Slot element
  */
 class ProductionTab extends Phaser.Group {
@@ -140,9 +70,83 @@ class ProductionTab extends Phaser.Group {
    */
   createProductionTabButtonSpriteSheet() {
     const sprites = {};
-    addSlotIcons(sprites);
-    addEntityIcons(sprites);
-    constructSpriteSheet(this.game, sprites);
+    this.addSlotIcons(sprites);
+    this.addEntityIcons(sprites);
+    this.constructSpriteSheet(sprites);
+  }
+
+  /**
+   * Creates sprites for the production slot icons to the
+   * and appends them to given sprite collection
+   * @param {object} sprites
+   */
+  addSlotIcons(sprites) {
+    const slotNamePrefix = 'slot-';
+    for (let i = 0; i < SLOTS_COUNT - 1; i += 1) {
+      const sprite = this.createElement({
+        assetId: 'gui',
+        id: `XXX_gui_construction_queue_${i + 1}.png`,
+      });
+      sprites[`${slotNamePrefix}${i}`] = sprite;
+    }
+  }
+
+  /**
+   * Creates sprites for all the entity icons and appends them to
+   * given sprite collection
+   * @param {object} sprites
+   */
+  addEntityIcons(sprites) {
+    Object.keys(ns.entities)
+      .filter((key) => {
+        const data = this.game.cache.getJSON(key);
+        return data.type !== 'Space Object';
+      })
+      .forEach((key) => {
+        const sprite = this.createElement({
+          assetId: key,
+          idx: ENTITY_ICON_CONSTRUCT,
+        });
+        sprites[key] = sprite;
+      });
+  }
+
+  /**
+   * Pieces all the given sprites together into spritesheet. This is
+   * because the icons of entities are placed into separate spritesheets and
+   * in order to keep the rendering of the production tab efficient we
+   * merge them together into one spritesheet.
+   * @param {object} sprites - collection of Phaser.Sprites
+   */
+  constructSpriteSheet(sprites) {
+    const spriteCount = Object.keys(sprites).length;
+    const columns = 25;
+    const firstKey = Object.keys(sprites)[0];
+    const spriteWidth = sprites[firstKey].width;
+    const spriteHeight = sprites[firstKey].height;
+    const rows = Math.floor(spriteCount / columns);
+    const width = Math.floor(spriteWidth * columns);
+    const height = Math.floor(spriteHeight * rows);
+    const bmd = this.game.add.bitmapData(width, height);
+
+    Object.keys(sprites).forEach((key, idx) => {
+      const sprite = sprites[key];
+      const x = spriteWidth * (idx % columns);
+      const y = spriteHeight * Math.floor(idx / columns);
+      bmd.draw(sprite, x, y);
+      frames[key] = idx;
+    });
+
+    this.game.cache.addSpriteSheet(
+      SPRITESHEET_ID,
+      '',
+      bmd.canvas,
+      spriteWidth,
+      spriteHeight,
+      spriteCount,
+      0,
+      0,
+    );
   }
 
   /**
@@ -154,7 +158,7 @@ class ProductionTab extends Phaser.Group {
     const {
       x, y, id, idx, assetId,
     } = config;
-    const sprite = this.game.add.sprite(x || 0, y || 0, assetId);
+    const sprite = this.game.make.sprite(x || 0, y || 0, assetId);
     if (id) {
       sprite.frameName = id;
     } else if (idx) {
