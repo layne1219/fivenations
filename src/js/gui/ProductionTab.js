@@ -5,11 +5,19 @@ import ProductionTabButton, { SPRITESHEET_ID } from './ProductionTabButton';
 const ns = window.fivenations;
 
 // Number of slots to be shown in the Production Tab
-const SLOTS_COUNT = 10;
+const SLOTS_COUNT = 9;
 
 // Paddings between Slot elements
 const SLOTS_PADDING_X = 5;
 const SLOTS_PADDING_Y = 5;
+
+// Status Bar
+const STATUS_BAR_COLOR = '0x84e1e3';
+const STATUS_BAR_PADDING = 2;
+const STATUS_BAR_X = 43;
+const STATUS_BAR_Y = 10;
+const STATUS_BAR_WIDTH = 300;
+const STATUS_BAR_HEIGHT = 15;
 
 // Rainbow table for the dynamically generated ProductionTabButton
 // spritesheet. The table associates the indices with frame names
@@ -23,6 +31,7 @@ class ProductionTab extends Phaser.Group {
     super(game);
     this.createProductionTabButtonSpriteSheet();
     this.addButtons();
+    this.addStatusBar();
   }
 
   /**
@@ -34,7 +43,10 @@ class ProductionTab extends Phaser.Group {
     const slots = entity.getProductionManager().getAllSlots();
     for (let i = 0; i < SLOTS_COUNT; i += 1) {
       if (slots[i]) {
-        this.buttons[i].frame = frames[slots[i]];
+        this.buttons[i].frame = frames[slots[i].id];
+        if (i === 0) {
+          this.updateStatusBar(slots[0]);
+        }
       } else {
         this.buttons[i].frame = i;
       }
@@ -55,7 +67,8 @@ class ProductionTab extends Phaser.Group {
         button.x = 0;
         button.y = 0;
       } else {
-        button.x = (i - 1) * (button.width + SLOTS_PADDING_X);
+        const space = button.width + SLOTS_PADDING_X;
+        button.x = (i - 1) * space;
         button.y = button.height + SLOTS_PADDING_Y;
       }
 
@@ -82,10 +95,10 @@ class ProductionTab extends Phaser.Group {
    */
   addSlotIcons(sprites) {
     const slotNamePrefix = 'slot-';
-    for (let i = 0; i < SLOTS_COUNT - 1; i += 1) {
+    for (let i = 1; i <= SLOTS_COUNT; i += 1) {
       const sprite = this.createElement({
         assetId: 'gui',
-        id: `XXX_gui_construction_queue_${i + 1}.png`,
+        id: `XXX_gui_construction_queue_${i}.png`,
       });
       sprites[`${slotNamePrefix}${i}`] = sprite;
     }
@@ -165,6 +178,42 @@ class ProductionTab extends Phaser.Group {
       sprite.frame = idx;
     }
     return sprite;
+  }
+
+  /**
+   * Adds the status bar to the prodution tab
+   */
+  addStatusBar() {
+    this.statusBar = this.game.add.graphics(0, 0);
+    this.add(this.statusBar);
+  }
+
+  /**
+   * Redraws the status bar according to the remaining time of the
+   * executed production
+   * @param {object} currentSlot - informations about the production
+   * element that is currently being produced
+   */
+  updateStatusBar(currentSlot) {
+    const now = ns.game.game.time.time;
+    const { complitionTime, time } = currentSlot;
+    const ratio = 1 - (Math.max(complitionTime, now) - now) / time;
+    this.statusBar.clear();
+    this.statusBar.lineStyle(1, STATUS_BAR_COLOR, 1);
+    this.statusBar.drawRect(
+      STATUS_BAR_X,
+      STATUS_BAR_Y,
+      STATUS_BAR_WIDTH,
+      STATUS_BAR_HEIGHT,
+    );
+    this.statusBar.beginFill(STATUS_BAR_COLOR);
+    this.statusBar.drawRect(
+      STATUS_BAR_X + STATUS_BAR_PADDING,
+      STATUS_BAR_Y + STATUS_BAR_PADDING,
+      STATUS_BAR_WIDTH * ratio - STATUS_BAR_PADDING * 2,
+      STATUS_BAR_HEIGHT - STATUS_BAR_PADDING * 2,
+    );
+    this.statusBar.endFill();
   }
 }
 

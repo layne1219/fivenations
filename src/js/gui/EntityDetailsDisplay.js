@@ -578,6 +578,8 @@ class EntityDetailsDisplay {
     });
 
     this.productionTab = new ProductionTab(phaserGame);
+    this.productionTab.x = x + 240;
+    this.productionTab.y = y + 15;
 
     container.add(this.mainAttributeGroup);
     container.add(this.weaponGroup);
