@@ -54,6 +54,10 @@ AbilityManager.prototype = {
     if (this.canMine()) {
       this.abilities.push(abilitiesJSON.mining);
     }
+
+    if (this.canProduce()) {
+      this.abilities = this.abilities.concat(this.getProducableEntitesAsAbilities());
+    }
   },
 
   /**
@@ -102,6 +106,24 @@ AbilityManager.prototype = {
       10, // mining-laser
     ];
     return weaponsThatCanMine.some(id => weaponManager.hasWeapon(id));
+  },
+
+  /**
+   * Returns whether the entity can produce other entities
+   * @return {boolean}
+   */
+  canProduce() {
+    const DO = this.entity.getDataObject();
+    return DO.getProduction() && DO.getProduction().length;
+  },
+
+  /**
+   * Returns the array of entity IDs
+   * @return {object} array of entity IDs
+   */
+  getProducableEntitesAsAbilities() {
+    const DO = this.entity.getDataObject();
+    return DO.getProduction();
   },
 
   /**
