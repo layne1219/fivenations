@@ -37,6 +37,11 @@
     "construction"
   ],
   "size": "l",
+  "production": [
+    "hurricane",
+    "orca",
+    "hurricane"
+  ],
   "animations": {
     "construction": {
       "rate": 20,

@@ -37,6 +37,10 @@
     "construction"
   ],
   "size": "xl",
+  "production": [
+    "hurricane",
+    "engineershuttle"
+  ],
   "animations": {
     "idle": {
       "rate": 20,
