@@ -1,6 +1,12 @@
 /* global Phaser */
 import ControlButton from './ControlButton';
 
+// produce ability id
+const abilitiesJSON = require('../../assets/datas/common/abilities.json');
+
+const ABILITY_PRODUCE = abilitiesJSON.produce;
+
+// layout details
 const COLUMNS = 5;
 const ROWS = 5;
 const ICON_WIDTH = 40;
@@ -86,10 +92,17 @@ class ControlPanelPage extends Phaser.Group {
     }
     const abilities = this.parent.entityManager.getMergedAbilities(entities);
     this.buttons.forEach((button, idx) => {
+      const ability = abilities[idx];
       if (!abilities[idx]) {
         button.visible = false;
       } else {
-        button.setId(abilities[idx]);
+        // if the ability equals to the name of an entity
+        // the button must be converted into a produce button
+        if (ns.entities.some(id => ability === id)) {
+          button.convertToProduceButton(ability);
+        } else {
+          button.setId(ability);
+        }
         button.visible = true;
       }
     });

@@ -1,3 +1,4 @@
+import ProduceButtonLogic from './ProduceButton';
 import StopButtonLogic from './StopButton';
 import MoveButtonLogic from './MoveButton';
 import PatrolButtonLogic from './PatrolButton';
@@ -12,6 +13,7 @@ const abilitiesJSON = require('../../assets/datas/common/abilities.json');
 
 const buttonLogics = {};
 
+buttonLogics[abilitiesJSON.produce] = ProduceButtonLogic;
 buttonLogics[abilitiesJSON.stop] = StopButtonLogic;
 buttonLogics[abilitiesJSON.move] = MoveButtonLogic;
 buttonLogics[abilitiesJSON.patrol] = PatrolButtonLogic;
