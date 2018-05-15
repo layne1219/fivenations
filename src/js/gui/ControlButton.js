@@ -1,6 +1,7 @@
 /* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
 import TranslationManager from '../common/TranslationManager';
+import { PRODUCTION_ICON_FRAMES } from './ProductionTab';
 import { SPRITESHEET_ID as entityIcons } from './ProductionTabButton';
 import { Tooltipify } from './Tooltip';
 
@@ -99,7 +100,7 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * No-op function for inheritance
+   * Executes the logic attached to the deactive event
    */
   deactivate() {
     const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
@@ -131,11 +132,12 @@ class ControlButton extends Phaser.Sprite {
    * @param {number} id
    */
   setButtonFrame(id) {
-    this.frame = id;
+    this.frame = abilitiesJSON[id];
   }
 
   /**
-   *
+   * Adds label on the top of the button according to the
+   * original id that equals to an Entity Id
    * @param {object} entityId - Entity instance to be produced
    */
   convertToProduceButton(entityId) {
@@ -150,18 +152,18 @@ class ControlButton extends Phaser.Sprite {
    */
   setEntityIconAsLabel(entityId) {
     if (!this.entityIconsSprite) {
-      this.entityIconsSprite = this.game.add.sprite(0, 0, entityIcons);
-      this.add(this.entityIconsSprite);
+      this.entityIconsSprite = this.game.add.sprite(5, 6, entityIcons);
+      this.addChild(this.entityIconsSprite);
     }
 
     // turns the original button to an empty button
-    const buttonId = abilitiesJSON.produce;
+    const buttonId = 'produce';
     this.id = buttonId;
     this.frameName = EMPTY_ICON_NAME;
 
     // makes the entity icon visible
-    this.entityIcons.frameName = entityId;
-    this.entityIcons.visible = true;
+    this.entityIconsSprite.frame = PRODUCTION_ICON_FRAMES[entityId];
+    this.entityIconsSprite.visible = true;
 
     // updates the tooltip to the entity's name
     this.setTranslatedTooltipLabel(entityId);

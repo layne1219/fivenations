@@ -9,20 +9,18 @@ import FollowButtonLogic from './FollowButton';
 import DockButtonLogic from './DockButton';
 import UndockButtonLogic from './UndockButton';
 
-const abilitiesJSON = require('../../assets/datas/common/abilities.json');
-
 const buttonLogics = {};
 
-buttonLogics[abilitiesJSON.produce] = ProduceButtonLogic;
-buttonLogics[abilitiesJSON.stop] = StopButtonLogic;
-buttonLogics[abilitiesJSON.move] = MoveButtonLogic;
-buttonLogics[abilitiesJSON.patrol] = PatrolButtonLogic;
-buttonLogics[abilitiesJSON.cancel] = CancelButtonLogic;
-buttonLogics[abilitiesJSON.attack] = AttackButtonLogic;
-buttonLogics[abilitiesJSON.mining] = MineButtonLogic;
-buttonLogics[abilitiesJSON.follow] = FollowButtonLogic;
-buttonLogics[abilitiesJSON.dock] = DockButtonLogic;
-buttonLogics[abilitiesJSON.undock] = UndockButtonLogic;
+buttonLogics.produce = ProduceButtonLogic;
+buttonLogics.stop = StopButtonLogic;
+buttonLogics.move = MoveButtonLogic;
+buttonLogics.patrol = PatrolButtonLogic;
+buttonLogics.cancel = CancelButtonLogic;
+buttonLogics.attack = AttackButtonLogic;
+buttonLogics.mining = MineButtonLogic;
+buttonLogics.follow = FollowButtonLogic;
+buttonLogics.dock = DockButtonLogic;
+buttonLogics.undock = UndockButtonLogic;
 
 export default {
   getLogicByControlButton(controlButton) {
@@ -41,9 +39,9 @@ export default {
 
   getTranslationKeyById(id) {
     const prefix = 'abilities.';
-    const keys = Object.keys(abilitiesJSON);
+    const keys = Object.keys(buttonLogics);
     for (let i = 0, l = keys.length; i < l; i += 1) {
-      if (abilitiesJSON[keys[i]] === id) {
+      if (keys[i] === id) {
         return `${prefix}${keys[i]}`;
       }
     }

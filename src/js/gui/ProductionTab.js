@@ -21,7 +21,7 @@ const STATUS_BAR_HEIGHT = 15;
 
 // Rainbow table for the dynamically generated ProductionTabButton
 // spritesheet. The table associates the indices with frame names
-const frames = {};
+export const PRODUCTION_ICON_FRAMES = {};
 
 /**
  * Phaser.Group class that realises the Production Slot element
@@ -43,7 +43,7 @@ class ProductionTab extends Phaser.Group {
     const slots = entity.getProductionManager().getAllSlots();
     for (let i = 0; i < SLOTS_COUNT; i += 1) {
       if (slots[i]) {
-        this.buttons[i].frame = frames[slots[i].id];
+        this.buttons[i].frame = PRODUCTION_ICON_FRAMES[slots[i].id];
         if (i === 0) {
           this.updateStatusBar(slots[0]);
         }
@@ -147,7 +147,7 @@ class ProductionTab extends Phaser.Group {
       const x = spriteWidth * (idx % columns);
       const y = spriteHeight * Math.floor(idx / columns);
       bmd.draw(sprite, x, y);
-      frames[key] = idx;
+      PRODUCTION_ICON_FRAMES[key] = idx;
     });
 
     this.game.cache.addSpriteSheet(

@@ -5,6 +5,6 @@ export default {
     const entityId = button.getProducableEntity();
     EventEmitter.getInstance()
       .synced.entities(':user:selected')
-      .addProduction({ id: entityId });
+      .addProduction({ targetId: entityId });
   },
 };

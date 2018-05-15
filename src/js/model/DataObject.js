@@ -427,7 +427,7 @@ function DataObject(json) {
      * @return {object} list of producable entities
      */
     getProduction() {
-      return this.production;
+      return data.production;
     },
   };
 }

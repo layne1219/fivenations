@@ -1,10 +1,7 @@
-/* global Phaser */
+/* global Phaser, window */
 import ControlButton from './ControlButton';
 
-// produce ability id
-const abilitiesJSON = require('../../assets/datas/common/abilities.json');
-
-const ABILITY_PRODUCE = abilitiesJSON.produce;
+const ns = window.fivenations;
 
 // layout details
 const COLUMNS = 5;
@@ -57,9 +54,9 @@ class ControlPanelPage extends Phaser.Group {
   }
 
   /**
-   * return a fresh instance of ControlButton
-   * @param  {[integer]} id [Id of the button]
-   * @return {[object]} [GUI.ControlButton]
+   * returns a fresh instance of ControlButton
+   * @param  {string} id - Id of the button
+   * @return {object} GUI.ControlButton
    */
   createControlButton(id) {
     const button = new ControlButton(this.entityManager);
@@ -98,7 +95,7 @@ class ControlPanelPage extends Phaser.Group {
       } else {
         // if the ability equals to the name of an entity
         // the button must be converted into a produce button
-        if (ns.entities.some(id => ability === id)) {
+        if (Object.keys(ns.entities).some(id => ability === id)) {
           button.convertToProduceButton(ability);
         } else {
           button.setId(ability);
