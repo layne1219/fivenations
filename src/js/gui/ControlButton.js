@@ -188,6 +188,14 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
+   * Transforms the button to a cancel button
+   */
+  convertToCancelProductionButton() {
+    this.setId('cancelProduction');
+    this.visible = true;
+  }
+
+  /**
    * Set the coordinates of the sprite instance
    * @param {number} x [horizontal padding on the control page]
    * @param {number} y [vertical padding on the control page]

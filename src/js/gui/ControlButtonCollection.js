@@ -1,4 +1,3 @@
-import ProduceButtonLogic from './ProduceButton';
 import StopButtonLogic from './StopButton';
 import MoveButtonLogic from './MoveButton';
 import PatrolButtonLogic from './PatrolButton';
@@ -8,10 +7,13 @@ import MineButtonLogic from './MineButton';
 import FollowButtonLogic from './FollowButton';
 import DockButtonLogic from './DockButton';
 import UndockButtonLogic from './UndockButton';
+import ProduceButtonLogic from './ProduceButton';
+import CancelProductionLogic from './CancelProductionButton';
 
 const buttonLogics = {};
 
 buttonLogics.produce = ProduceButtonLogic;
+buttonLogics.cancelProduction = CancelProductionLogic;
 buttonLogics.stop = StopButtonLogic;
 buttonLogics.move = MoveButtonLogic;
 buttonLogics.patrol = PatrolButtonLogic;

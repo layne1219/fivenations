@@ -125,6 +125,14 @@ AbilityManager.prototype = {
   },
 
   /**
+   * Returns true if the given entity's production queue is not empty
+   * @return {boolean}
+   */
+  isProducing() {
+    return this.entity.isProducing();
+  },
+
+  /**
    * Returns an array of IDs each of representing an ability
    * the entity is capable of
    * Returns an empty array if the entity has no user control

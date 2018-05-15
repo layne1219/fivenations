@@ -39,5 +39,6 @@
     "demolish": 100,
     "contruct": 101,
     "cancel": 102,
+    "cancelProduction": 102,
     "setrallypoint": 103
 }

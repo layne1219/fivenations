@@ -72,6 +72,8 @@ class ProductionTab extends Phaser.Group {
         button.y = button.height + SLOTS_PADDING_Y;
       }
 
+      button.setSlotIdx(i);
+
       this.buttons.push(button);
       this.add(button);
     }

@@ -38,6 +38,7 @@ class ProductionManager {
    */
   addProductionSlot(slot) {
     this.slots.push(slot);
+    this.updateControlPage();
   }
 
   /**
@@ -48,7 +49,17 @@ class ProductionManager {
     this.slots.splice(idx, 1);
     if (idx === 0) {
       this.stopAnimation();
+      this.updateControlPage();
     }
+  }
+
+  /**
+   * Notifies the ControlPage instances that they must be updated
+   * due to change in the production tab
+   */
+  updateControlPage() {
+    const emitter = EventEmitter.getInstance();
+    emitter.local.dispatch('gui/controlpage/update');
   }
 
   /**

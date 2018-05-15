@@ -328,11 +328,11 @@ class Entity {
     // WeaponManager for handling wepon objects an entity is in a possesion of
     this.weaponManager = new WeaponManager(this);
 
-    // AbilityManager for determining which abilities are available for this entity
-    this.abilityManager = new AbilityManager(this);
-
     // ProductionManager oversees the production slots of this entity
     this.productionManager = new ProductionManager(this);
+
+    // AbilityManager for determining which abilities are available for this entity
+    this.abilityManager = new AbilityManager(this);
 
     // Player instance
     this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
@@ -698,7 +698,7 @@ class Entity {
    * @param {number} idx - index of the production element
    */
   cancelProduction(idx = 0) {
-    const manager = this.entity.getProductionManager();
+    const manager = this.getProductionManager();
     manager.removeProductionSlotByIndex(idx);
   }
 
@@ -1036,6 +1036,7 @@ class Entity {
    * @return {boolean}
    */
   isProducing() {
+    if (!this.productionManager) return false;
     return this.productionManager.isProducing();
   }
 

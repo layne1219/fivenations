@@ -9,7 +9,14 @@ const ROWS = 5;
 const ICON_WIDTH = 40;
 const ICON_HEIGHT = 40;
 const MARGIN = 0;
-const BUTTON_NUMBER = ROWS * COLUMNS;
+const BUTTON_COUNT = ROWS * COLUMNS;
+
+// fixed layout positions for abilities if a given ability
+// does not incorporated into this object literal it will be
+// placed automatically at the next available slot.
+const ABILITY_POSITIONS = {
+  cancelProduction: BUTTON_COUNT - 1,
+};
 
 class ControlPanelPage extends Phaser.Group {
   /**
@@ -42,7 +49,7 @@ class ControlPanelPage extends Phaser.Group {
    */
   populate() {
     let button;
-    for (let i = 0; i < BUTTON_NUMBER; i += 1) {
+    for (let i = 0; i < BUTTON_COUNT; i += 1) {
       const x = (i % COLUMNS) * (ICON_WIDTH + MARGIN);
       const y = Math.floor(i / COLUMNS) * (ICON_HEIGHT + MARGIN);
 
@@ -88,21 +95,59 @@ class ControlPanelPage extends Phaser.Group {
       return;
     }
     const abilities = this.parent.entityManager.getMergedAbilities(entities);
-    this.buttons.forEach((button, idx) => {
-      const ability = abilities[idx];
-      if (!abilities[idx]) {
-        button.visible = false;
-      } else {
-        // if the ability equals to the name of an entity
-        // the button must be converted into a produce button
-        if (Object.keys(ns.entities).some(id => ability === id)) {
-          button.convertToProduceButton(ability);
-        } else {
-          button.setId(ability);
-        }
-        button.visible = true;
+
+    this.extendAbilities(abilities, entities);
+    this.hideAllButtons();
+    this.showButtonsByAbilities(abilities);
+  }
+
+  /**
+   * Extends the merged abilities with complementory abilities
+   * that must be tested on the fly
+   * @param {object} abilities - Array of ability IDs
+   * @param {object} entities - Array of Entity instances
+   */
+  extendAbilities(abilities, entities) {
+    // if there is only one entity selected
+    if (entities.length === 1) {
+      // if the selected entity is producing other entities
+      // we must display the cancel production button
+      if (entities[0].isProducing()) {
+        abilities.push('cancelProduction');
       }
+    }
+  }
+
+  hideAllButtons() {
+    this.buttons.forEach(button => (button.visible = false));
+  }
+
+  /**
+   * Shows the control buttons according to the given ability IDs
+   * @param {object} abilities - Array of ability IDs
+   */
+  showButtonsByAbilities(abilities) {
+    abilities.forEach((ability, idx) => {
+      const buttonIdx = ABILITY_POSITIONS[ability] || idx;
+      const button = this.buttons[buttonIdx];
+      // if the ability equals to the name of an entity
+      // the button must be converted into a produce button
+      if (this.shouldControlButtonBeAProduceButton(ability)) {
+        button.convertToProduceButton(ability);
+      } else {
+        button.setId(ability);
+      }
+      button.visible = true;
     });
+  }
+
+  /**
+   * Returns if the given ability requires a Produce Button
+   * @param {string} ability - Id of the ability
+   * @return {boolean}
+   */
+  shouldControlButtonBeAProduceButton(ability) {
+    return Object.keys(ns.entities).some(id => ability === id);
   }
 
   /**
