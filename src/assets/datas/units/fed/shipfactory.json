@@ -40,12 +40,12 @@
   "production": [
     "hurricane",
     "orca",
-    "hurricane"
+    "hailstorm"
   ],
   "animations": {
     "construction": {
       "rate": 20,
-      "loopable": false,
+      "loopable": true,
       "frames": [
         1,
         2,

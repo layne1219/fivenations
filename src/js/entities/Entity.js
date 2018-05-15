@@ -688,9 +688,9 @@ class Entity {
    * @param {string} id - Id of the entity to be produced
    */
   produce(id) {
-    const produce = new ActivityManager.Produce(this);
-    produce.setTarget(id);
-    this.activityManager.add(produce);
+    const targetDO = this.game.cache.getJSON(id);
+    const time = targetDO.buildingTime * 1000;
+    this.productionManager.addProductionSlot({ id, time });
   }
 
   /**
@@ -698,8 +698,7 @@ class Entity {
    * @param {number} idx - index of the production element
    */
   cancelProduction(idx = 0) {
-    const manager = this.getProductionManager();
-    manager.removeProductionSlotByIndex(idx);
+    this.productionManager.removeProductionSlotByIndex(idx);
   }
 
   /**
