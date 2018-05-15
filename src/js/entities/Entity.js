@@ -794,14 +794,16 @@ class Entity {
 
   /**
    * Stops current animations from being played and reset the frame counter
-   * @return {void}
+   * @param {string} key - Key of the animation to be terminated
    */
-  stopAnimation() {
+  stopAnimation(key) {
     if (!this.sprite.animations.currentAnim) return;
+    const currentAnimKey = this.sprite.animations.currentAnim.name;
     // idle-forever animation cannot be stopped
-    if (
-      this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER
-    ) {
+    if (currentAnimKey === Const.ANIMATION_IDLE_FOREVER) {
+      return;
+    }
+    if (key !== undefined && currentAnimKey !== key) {
       return;
     }
     this.sprite.animations.stop(null, true);

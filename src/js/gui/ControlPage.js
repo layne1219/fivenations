@@ -18,6 +18,32 @@ const ABILITY_POSITIONS = {
   cancelProduction: BUTTON_COUNT - 1,
 };
 
+/**
+ * Extends the merged abilities with complementory abilities
+ * that must be tested on the fly
+ * @param {object} abilities - Array of ability IDs
+ * @param {object} entities - Array of Entity instances
+ */
+function extendAbilities(abilities, entities) {
+  // if there is only one entity selected
+  if (entities.length === 1) {
+    // if the selected entity is producing other entities
+    // we must display the cancel production button
+    if (entities[0].isProducing()) {
+      abilities.push('cancelProduction');
+    }
+  }
+}
+
+/**
+ * Returns if the given ability requires a Produce Button
+ * @param {string} ability - Id of the ability
+ * @return {boolean}
+ */
+function shouldControlButtonBeAProduceButton(ability) {
+  return Object.keys(ns.entities).some(id => ability === id);
+}
+
 class ControlPanelPage extends Phaser.Group {
   /**
    * Constructing an a ControlPanelPage that consists the clickable
@@ -95,31 +121,16 @@ class ControlPanelPage extends Phaser.Group {
       return;
     }
     const abilities = this.parent.entityManager.getMergedAbilities(entities);
+    extendAbilities(abilities, entities);
 
-    this.extendAbilities(abilities, entities);
     this.hideAllButtons();
     this.showButtonsByAbilities(abilities);
   }
 
-  /**
-   * Extends the merged abilities with complementory abilities
-   * that must be tested on the fly
-   * @param {object} abilities - Array of ability IDs
-   * @param {object} entities - Array of Entity instances
-   */
-  extendAbilities(abilities, entities) {
-    // if there is only one entity selected
-    if (entities.length === 1) {
-      // if the selected entity is producing other entities
-      // we must display the cancel production button
-      if (entities[0].isProducing()) {
-        abilities.push('cancelProduction');
-      }
-    }
-  }
-
   hideAllButtons() {
-    this.buttons.forEach(button => (button.visible = false));
+    this.buttons.forEach((button) => {
+      button.visible = false;
+    });
   }
 
   /**
@@ -132,22 +143,13 @@ class ControlPanelPage extends Phaser.Group {
       const button = this.buttons[buttonIdx];
       // if the ability equals to the name of an entity
       // the button must be converted into a produce button
-      if (this.shouldControlButtonBeAProduceButton(ability)) {
+      if (shouldControlButtonBeAProduceButton(ability)) {
         button.convertToProduceButton(ability);
       } else {
         button.setId(ability);
       }
       button.visible = true;
     });
-  }
-
-  /**
-   * Returns if the given ability requires a Produce Button
-   * @param {string} ability - Id of the ability
-   * @return {boolean}
-   */
-  shouldControlButtonBeAProduceButton(ability) {
-    return Object.keys(ns.entities).some(id => ability === id);
   }
 
   /**

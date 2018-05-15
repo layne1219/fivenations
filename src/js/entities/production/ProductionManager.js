@@ -110,7 +110,7 @@ class ProductionManager {
    * Augments the production queue of the given target
    */
   stopAnimation() {
-    this.entity.stopAnimation();
+    this.entity.stopAnimation(PRODUCTION_ANIMATION_KEY);
   }
 
   /**
