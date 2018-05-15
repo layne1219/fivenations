@@ -1,10 +1,19 @@
 /* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
 import TranslationManager from '../common/TranslationManager';
+import { PRODUCTION_ICON_FRAMES } from './ProductionTab';
+import { SPRITESHEET_ID as entityIcons } from './ProductionTabButton';
 import { Tooltipify } from './Tooltip';
+
+const abilitiesJSON = require('../../assets/datas/common/abilities.json');
 
 const PADDING_ONCLICK = 2;
 const TRANSPARENCY_ONLICK = 0.75;
+
+// empty icon id
+// this is used to place additional labels on the buttons
+// such as entity icons for the produce ability
+const EMPTY_ICON_NAME = 'gui_btn_50_spc.png';
 
 // reference to the shared game configuarition object
 const ns = window.fivenations;
@@ -85,20 +94,20 @@ class ControlButton extends Phaser.Sprite {
     const controlPage = this.getControlPage();
     const controlPanel = controlPage.getControlPanel();
     if (typeof buttonLogic.activate === 'function') {
-      buttonLogic.activate(this.entityManager, controlPanel);
+      buttonLogic.activate(this.entityManager, controlPanel, this);
     }
     return this;
   }
 
   /**
-   * No-op function for inheritance
+   * Executes the logic attached to the deactive event
    */
   deactivate() {
     const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
     const controlPage = this.getControlPage();
     const controlPanel = controlPage.getControlPanel();
     if (typeof buttonLogic.deactivate === 'function') {
-      buttonLogic.deactivate(this.entityManager, controlPanel);
+      buttonLogic.deactivate(this.entityManager, controlPanel, this);
     }
     return this;
   }
@@ -112,6 +121,9 @@ class ControlButton extends Phaser.Sprite {
     this.id = id;
     this.setButtonFrame(id);
     this.setTranslatedTooltipLabel(id);
+    if (this.entityIconsSprite) {
+      this.entityIconsSprite.visible = false;
+    }
     return this;
   }
 
@@ -120,7 +132,50 @@ class ControlButton extends Phaser.Sprite {
    * @param {number} id
    */
   setButtonFrame(id) {
-    this.frame = id;
+    this.frame = abilitiesJSON[id];
+  }
+
+  /**
+   * Adds label on the top of the button according to the
+   * original id that equals to an Entity Id
+   * @param {object} entityId - Entity instance to be produced
+   */
+  convertToProduceButton(entityId) {
+    this.setEntityIconAsLabel(entityId);
+    this.setProducableEntity(entityId);
+  }
+
+  /**
+   * Shows the given entity's icon as the label on the top of the
+   * button
+   * @param {string} entityId - id of the given entity
+   */
+  setEntityIconAsLabel(entityId) {
+    if (!this.entityIconsSprite) {
+      this.entityIconsSprite = this.game.add.sprite(5, 6, entityIcons);
+      this.addChild(this.entityIconsSprite);
+    }
+
+    // turns the original button to an empty button
+    const buttonId = 'produce';
+    this.id = buttonId;
+    this.frameName = EMPTY_ICON_NAME;
+
+    // makes the entity icon visible
+    this.entityIconsSprite.frame = PRODUCTION_ICON_FRAMES[entityId];
+    this.entityIconsSprite.visible = true;
+
+    // updates the tooltip to the entity's name
+    this.setTranslatedTooltipLabel(entityId);
+  }
+
+  /**
+   * Shows the given entity's icon as the label on the top of the
+   * button
+   * @param {string} entityId - id of the given entity
+   */
+  setProducableEntity(entityId) {
+    this.producableEntityId = entityId;
   }
 
   /**
@@ -130,6 +185,14 @@ class ControlButton extends Phaser.Sprite {
   setTranslatedTooltipLabel(id) {
     const translationLabel = ControlButtonCollection.getTranslationKeyById(id);
     this.tooltipLabel = TranslationManager.getInstance().translate(translationLabel);
+  }
+
+  /**
+   * Transforms the button to a cancel button
+   */
+  convertToCancelProductionButton() {
+    this.setId('cancelProduction');
+    this.visible = true;
   }
 
   /**
@@ -158,6 +221,14 @@ class ControlButton extends Phaser.Sprite {
    */
   getControlPage() {
     return this.parent;
+  }
+
+  /**
+   * Returns the id of the entity can be produced by clicking on this button
+   * @return {string}
+   */
+  getProducableEntity() {
+    return this.producableEntityId;
   }
 }
 

@@ -42,6 +42,7 @@
     "abilities.back": "No Translation",
     "abilities.demolish": "No Translation",
     "abilities.contruct": "No Translation",
-    "abilities.cancel": "No Translation",
+    "abilities.cancel": "Cancel",
+    "abilities.cancelProduction": "Cancel Production",
     "abilities.setrallypoint": "No Translation"
 }

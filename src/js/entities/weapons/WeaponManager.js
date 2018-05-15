@@ -206,15 +206,15 @@ WeaponManager.prototype = {
    * @return {boolean}
    */
   hasOffensiveWeapon() {
-    if (this.hasOffensiveWeapon === undefined) {
+    if (this._hasOffensiveWeapon === undefined) {
       for (let i = this.weapons.length - 1; i >= 0; i -= 1) {
         if (this.weapons[i].isOffensive()) {
-          this.hasOffensiveWeapon = true;
+          this._hasOffensiveWeapon = true;
           break;
         }
       }
     }
-    return this.hasOffensiveWeapon;
+    return this._hasOffensiveWeapon;
   },
 
   /**

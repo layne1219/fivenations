@@ -1,4 +1,5 @@
 {
+    "produce": 9999,
     "move": 65,
     "stop": 66,
     "follow": 69,
@@ -38,5 +39,6 @@
     "demolish": 100,
     "contruct": 101,
     "cancel": 102,
+    "cancelProduction": 102,
     "setrallypoint": 103
 }

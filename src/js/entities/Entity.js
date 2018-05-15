@@ -328,11 +328,11 @@ class Entity {
     // WeaponManager for handling wepon objects an entity is in a possesion of
     this.weaponManager = new WeaponManager(this);
 
-    // AbilityManager for determining which abilities are available for this entity
-    this.abilityManager = new AbilityManager(this);
-
     // ProductionManager oversees the production slots of this entity
     this.productionManager = new ProductionManager(this);
+
+    // AbilityManager for determining which abilities are available for this entity
+    this.abilityManager = new AbilityManager(this);
 
     // Player instance
     this.player = PlayerManager.getInstance().getPlayerByTeam(this.dataObject.getTeam());
@@ -688,9 +688,9 @@ class Entity {
    * @param {string} id - Id of the entity to be produced
    */
   produce(id) {
-    const produce = new ActivityManager.Produce(this);
-    produce.setTarget(id);
-    this.activityManager.add(produce);
+    const targetDO = this.game.cache.getJSON(id);
+    const time = targetDO.buildingTime * 1000;
+    this.productionManager.addProductionSlot({ id, time });
   }
 
   /**
@@ -698,8 +698,7 @@ class Entity {
    * @param {number} idx - index of the production element
    */
   cancelProduction(idx = 0) {
-    const manager = this.entity.getProductionManager();
-    manager.removeProductionSlotByIndex(idx);
+    this.productionManager.removeProductionSlotByIndex(idx);
   }
 
   /**
@@ -794,14 +793,16 @@ class Entity {
 
   /**
    * Stops current animations from being played and reset the frame counter
-   * @return {void}
+   * @param {string} key - Key of the animation to be terminated
    */
-  stopAnimation() {
+  stopAnimation(key) {
     if (!this.sprite.animations.currentAnim) return;
+    const currentAnimKey = this.sprite.animations.currentAnim.name;
     // idle-forever animation cannot be stopped
-    if (
-      this.sprite.animations.currentAnim.name === Const.ANIMATION_IDLE_FOREVER
-    ) {
+    if (currentAnimKey === Const.ANIMATION_IDLE_FOREVER) {
+      return;
+    }
+    if (key !== undefined && currentAnimKey !== key) {
       return;
     }
     this.sprite.animations.stop(null, true);
@@ -1036,6 +1037,7 @@ class Entity {
    * @return {boolean}
    */
   isProducing() {
+    if (!this.productionManager) return false;
     return this.productionManager.isProducing();
   }
 

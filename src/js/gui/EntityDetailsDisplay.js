@@ -1,6 +1,7 @@
 /* global Phaser */
 /* eslint class-methods-use-this: 0 */
 import EventEmitter from '../sync/EventEmitter';
+import ProductionTab from './ProductionTab';
 import Util from '../common/Util';
 import {
   ENTITY_ICON,
@@ -307,13 +308,15 @@ class WeaponGroup extends Phaser.Group {
   }
 
   /**
-   * Updating the attributes text group as per the passed dataObject
+   * Updates the attributes text group as per the passed dataObject
    * @param  {object} entity [Entity]
    * @return {void}
    */
   updateContent(entity) {
-    if (!entity) {
-      throw new Error('Invalid Entity instance has been passed!');
+    if (entity.isProducing()) {
+      this.visible = false;
+    } else {
+      this.visible = true;
     }
 
     for (let i = weaponNumber - 1; i >= 0; i -= 1) {
@@ -516,7 +519,7 @@ class MultiselectionGroup extends Phaser.Group {
   }
 }
 
-export default class EntityDetailsDisplay {
+class EntityDetailsDisplay {
   /**
    * Constructing an EntityDetailsDisplay instance
    * @param {object} entityManager [reference to the singleton instance of EntityManager]
@@ -547,35 +550,40 @@ export default class EntityDetailsDisplay {
   createAttributeGroup(x, y, phaserGame) {
     const container = phaserGame.add.group();
 
-    const mainAttributeGroup = new MainAttributeGroup(phaserGame);
-    mainAttributeGroup.x = x;
-    mainAttributeGroup.y = y;
+    this.mainAttributeGroup = new MainAttributeGroup(phaserGame);
+    this.mainAttributeGroup.x = x;
+    this.mainAttributeGroup.y = y;
 
-    const weaponGroup = new WeaponGroup(phaserGame);
-    weaponGroup.x = x + 100;
-    weaponGroup.y = y - 10;
+    this.weaponGroup = new WeaponGroup(phaserGame);
+    this.weaponGroup.x = x + 100;
+    this.weaponGroup.y = y - 10;
 
     const weaponGroupPopup = new WeaponGroupPopup(phaserGame);
-    weaponGroup.add(weaponGroupPopup);
-    weaponGroup.on('over', (item) => {
+    this.weaponGroup.add(weaponGroupPopup);
+    this.weaponGroup.on('over', (item) => {
       weaponGroupPopup.x = item.x + weaponPopupPaddingX;
       weaponGroupPopup.y =
         item.y - weaponGroupPopup.height + weaponPopupPaddingY;
       weaponGroupPopup.visible = true;
       weaponGroupPopup.updateContent(item.weapon);
     });
-    weaponGroup.on('out', () => {
+    this.weaponGroup.on('out', () => {
       weaponGroupPopup.visible = false;
     });
-    weaponGroup.on('click', (item) => {
+    this.weaponGroup.on('click', (item) => {
       EventEmitter.getInstance().local.dispatch(
         'gui/weapon/click',
         item.weapon,
       );
     });
 
-    container.add(mainAttributeGroup);
-    container.add(weaponGroup);
+    this.productionTab = new ProductionTab(phaserGame);
+    this.productionTab.x = x + 240;
+    this.productionTab.y = y + 15;
+
+    container.add(this.mainAttributeGroup);
+    container.add(this.weaponGroup);
+    container.add(this.productionTab);
 
     return container;
   }
@@ -635,10 +643,22 @@ export default class EntityDetailsDisplay {
     this.attributeGroup.visible = true;
     this.multiselectionGroup.visible = false;
 
+    // if the given entity is producing another entity
+    // the weapon group must be hidden and the production tab displayed
+    if (entity.isProducing()) {
+      this.weaponGroup.visible = false;
+      this.productionTab.visible = true;
+    } else {
+      this.weaponGroup.visible = true;
+      this.productionTab.visible = false;
+    }
+
     // Updating the texts + splash icon
     for (let i = this.attributeGroup.children.length - 1; i >= 0; i -= 1) {
-      // @TODO Phaser.Group.prototype.update.call(this);
-      this.attributeGroup.children[i].updateContent(entity);
+      const tab = this.attributeGroup.children[i];
+      if (tab.visible) {
+        tab.updateContent(entity);
+      }
     }
   }
 
@@ -671,3 +691,5 @@ export default class EntityDetailsDisplay {
     this.group.visible = false;
   }
 }
+
+export default EntityDetailsDisplay;

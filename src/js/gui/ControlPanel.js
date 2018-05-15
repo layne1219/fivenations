@@ -66,6 +66,10 @@ export default class ControlPanel extends Phaser.Group {
       'gui/selection/change',
       this.update.bind(this),
     );
+    emitter.local.addEventListener(
+      'gui/controlpage/update',
+      this.update.bind(this),
+    );
   }
 
   /**

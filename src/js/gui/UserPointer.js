@@ -4,7 +4,7 @@ import Util from '../common/Util';
 import GUI from '../gui/GUI';
 import { DEFAULT_CANVAS_WIDTH, DEFAULT_CANVAS_HEIGHT } from '../common/Const';
 
-const scrollTreshold = 50;
+const scrollTreshold = 10;
 
 let phaserGame;
 let singleton;

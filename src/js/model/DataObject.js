@@ -420,6 +420,15 @@ function DataObject(json) {
       const cargo = this.getCargo();
       return Object.keys(cargo).reduce((sum, key) => cargo[key] + sum, 0);
     },
+
+    /**
+     * Returns an array of strings representing entities that can
+     * be produced
+     * @return {object} list of producable entities
+     */
+    getProduction() {
+      return data.production;
+    },
   };
 }
 

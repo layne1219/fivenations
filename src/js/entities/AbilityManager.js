@@ -1,5 +1,3 @@
-const abilitiesJSON = require('../../assets/datas/common/abilities');
-
 /**
  * Constructor function to initialise the AbilityManager
  * @param {[object]} entity [The target entity whose attributes will be tested]
@@ -30,29 +28,33 @@ AbilityManager.prototype = {
   testAbilities() {
     if (this.canMove()) {
       this.abilities = this.abilities.concat([
-        abilitiesJSON.move,
-        abilitiesJSON.stop,
-        abilitiesJSON.follow,
-        abilitiesJSON.patrol,
-        abilitiesJSON.hold,
-        abilitiesJSON.defend,
+        'move',
+        'stop',
+        'follow',
+        'patrol',
+        'hold',
+        'defend',
       ]);
     }
 
     if (this.canAttack()) {
-      this.abilities.push(abilitiesJSON.attack);
+      this.abilities.push('attack');
     }
 
     if (this.canDock()) {
-      this.abilities.push(abilitiesJSON.dock);
+      this.abilities.push('dock');
     }
 
     if (this.isDockable()) {
-      this.abilities.push(abilitiesJSON.undock);
+      this.abilities.push('undock');
     }
 
     if (this.canMine()) {
-      this.abilities.push(abilitiesJSON.mining);
+      this.abilities.push('mining');
+    }
+
+    if (this.canProduce()) {
+      this.abilities = this.abilities.concat(this.getProducableEntitesAsAbilities());
     }
   },
 
@@ -102,6 +104,32 @@ AbilityManager.prototype = {
       10, // mining-laser
     ];
     return weaponsThatCanMine.some(id => weaponManager.hasWeapon(id));
+  },
+
+  /**
+   * Returns whether the entity can produce other entities
+   * @return {boolean}
+   */
+  canProduce() {
+    const DO = this.entity.getDataObject();
+    return DO.getProduction() && DO.getProduction().length;
+  },
+
+  /**
+   * Returns the array of entity IDs
+   * @return {object} array of entity IDs
+   */
+  getProducableEntitesAsAbilities() {
+    const DO = this.entity.getDataObject();
+    return DO.getProduction();
+  },
+
+  /**
+   * Returns true if the given entity's production queue is not empty
+   * @return {boolean}
+   */
+  isProducing() {
+    return this.entity.isProducing();
   },
 
   /**

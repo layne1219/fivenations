@@ -395,17 +395,18 @@ EntityManager.prototype = {
       return [];
     }
 
-    abilities = targetEntities
+    const clones = targetEntities.slice(0);
+    abilities = clones
       .shift()
       .getAbilityManager()
       .getAbilities();
 
     // eslint-disable-next-line no-cond-assign
-    while ((next = targetEntities.shift())) {
+    while ((next = clones.shift())) {
       abilities = abilities.filter(subsection(next));
     }
 
-    return abilities;
+    return abilities.slice(0);
   },
 
   /**
