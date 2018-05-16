@@ -31,6 +31,11 @@
   "space": 12,
   "buildingTime": 35,
   "directions": 32,
+  "requiredEntities": [
+    "astrometricstation"
+  ],
+  "requiredResearches": [
+  ],
   "animFrame": 1,
   "animType": 0,
   "hasJetEngine": true,
