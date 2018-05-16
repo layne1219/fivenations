@@ -46,6 +46,7 @@ class ControlButton extends Phaser.Sprite {
     this.game.add.existing(this);
     this.inputEnabled = true;
     this.entityManager = entityManager;
+    this.filterGray = new FilterGray(this.game);
   }
 
   /**
@@ -113,6 +114,23 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
+   * Disables the button that makes it appear in grayscale and
+   * prevent the click listeners from being executed
+   */
+  disable() {
+    this.disabled = true;
+    this.filters = [this.filterGray];
+  }
+
+  /**
+   * Enables the button
+   */
+  enable() {
+    this.disabled = false;
+    this.filters = [];
+  }
+
+  /**
    * Sets or occasionally resets the frame, activity callback and
    * tooltip label accoding to the given id
    * @param {number} id
@@ -164,9 +182,6 @@ class ControlButton extends Phaser.Sprite {
     // makes the entity icon visible
     this.entityIconsSprite.frame = PRODUCTION_ICON_FRAMES[entityId];
     this.entityIconsSprite.visible = true;
-
-    // updates the tooltip to the entity's name
-    this.setTranslatedTooltipLabel(entityId);
   }
 
   /**
