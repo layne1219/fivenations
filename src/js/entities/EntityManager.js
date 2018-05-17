@@ -270,7 +270,10 @@ EntityManager.prototype = {
    */
   notifyListenersThatEntityCountHasChanged() {
     const emitter = EventEmitter.getInstance();
+    // to alter resource display
     emitter.local.dispatch('user/resource/alter');
+    // to alter control panel (to potentially disable production buttons)
+    emitter.local.dispatch('gui/controlpage/update');
   },
 
   /**
@@ -336,8 +339,8 @@ EntityManager.prototype = {
 
   /**
    * Returns an array of candidates that are in range to the given entity
-   * @param  {[type]} entity [description]
-   * @return {[type]}        [description]
+   * @param {object} entity [description]
+   * @return {object} array of {inVision, inRange, candidate, distance}
    */
   getEntitiesInApproximity(entity) {
     const maxRange = entity.getWeaponManager().getMaxRange();

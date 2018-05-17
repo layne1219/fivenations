@@ -1,4 +1,6 @@
 /* global window */
+import EntityManager from '../entities/EntityManager';
+
 import Util from '../common/Util';
 
 const ns = window.fivenations;
@@ -131,6 +133,35 @@ class Player {
 
   isIndependent() {
     return this.independent;
+  }
+
+  /**
+   * Returns whether all the required entities have been produced
+   * prior to the production of the given entity
+   * @param {object} entityId - string
+   * @return {boolean}
+   */
+  hasAllRequiredEntitiesFor(entityId) {
+    const { game } = ns.game;
+    const { requiredEntities } = game.cache.getJSON(entityId);
+    const entityManager = EntityManager.getInstance();
+
+    if (!requiredEntities || !requiredEntities.length) {
+      return true;
+    }
+
+    const entities = entityManager.entities(`:player(${this.team})`);
+    const found = {};
+
+    // collects all the different kind of entities
+    entities.forEach((entity) => {
+      const DO = entity.getDataObject();
+      const id = DO.getId();
+      found[id] = true;
+    });
+
+    // if the player has all the required entities it returns true
+    return requiredEntities.every(id => found[id]);
   }
 }
 

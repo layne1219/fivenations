@@ -429,6 +429,24 @@ function DataObject(json) {
     getProduction() {
       return data.production;
     },
+
+    /**
+     * Returns an array of strings representing entities that
+     * must be in existance prior to the production of this entity
+     * @return {object} array of entity IDs
+     */
+    getRequiredEntities() {
+      return data.requireEntities;
+    },
+
+    /**
+     * Returns an array of strings representing resouches that
+     * must be finished prior to the production of this entity
+     * @return {object} array of research IDs
+     */
+    getRequiredResourches() {
+      return data.requiredResourches;
+    },
   };
 }
 

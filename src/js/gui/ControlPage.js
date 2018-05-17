@@ -19,6 +19,15 @@ const ABILITY_POSITIONS = {
 };
 
 /**
+ * Returns true if there is only one entity in the given array
+ * @param {object} entities - Array of Entity instances
+ * @return {boolean}
+ */
+function hasOnlyOneEntity(entities) {
+  return entities.length === 1;
+}
+
+/**
  * Extends the merged abilities with complementory abilities
  * that must be tested on the fly
  * @param {object} abilities - Array of ability IDs
@@ -123,32 +132,41 @@ class ControlPanelPage extends Phaser.Group {
     const abilities = this.parent.entityManager.getMergedAbilities(entities);
     extendAbilities(abilities, entities);
 
-    this.hideAllButtons();
-    this.showButtonsByAbilities(abilities);
+    this.resetAllButtons();
+    this.showButtonsByAbilities(abilities, entities);
   }
 
-  hideAllButtons() {
+  /**
+   * Sets all button back to the initial state
+   */
+  resetAllButtons() {
     this.buttons.forEach((button) => {
       button.visible = false;
+      button.enable();
     });
   }
 
   /**
    * Shows the control buttons according to the given ability IDs
    * @param {object} abilities - Array of ability IDs
+   * @param {object} entities - Array of Entity instances
    */
-  showButtonsByAbilities(abilities) {
+  showButtonsByAbilities(abilities, entities) {
     abilities.forEach((ability, idx) => {
       const buttonIdx = ABILITY_POSITIONS[ability] || idx;
       const button = this.buttons[buttonIdx];
       // if the ability equals to the name of an entity
       // the button must be converted into a produce button
       if (shouldControlButtonBeAProduceButton(ability)) {
-        button.convertToProduceButton(ability);
+        if (hasOnlyOneEntity(entities)) {
+          const entity = entities[0];
+          button.convertToProduceButton(ability, entity);
+          button.visible = true;
+        }
       } else {
         button.setId(ability);
+        button.visible = true;
       }
-      button.visible = true;
     });
   }
 
