@@ -1,6 +1,7 @@
 /* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
 import TranslationManager from '../common/TranslationManager';
+import FilterGray from '../filters/FilterGray';
 import { PRODUCTION_ICON_FRAMES } from './ProductionTab';
 import { SPRITESHEET_ID as entityIcons } from './ProductionTabButton';
 import { Tooltipify } from './Tooltip';
@@ -54,10 +55,12 @@ class ControlButton extends Phaser.Sprite {
    */
   addEventListeners() {
     this.events.onInputDown.add(() => {
+      if (this.disabled) return;
       this.y += PADDING_ONCLICK;
       this.alpha = TRANSPARENCY_ONLICK;
     });
     this.events.onInputUp.add(() => {
+      if (this.disabled) return;
       this.y -= PADDING_ONCLICK;
       this.alpha = 1;
     });
@@ -90,6 +93,7 @@ class ControlButton extends Phaser.Sprite {
    * Executes the logic corresponding to the control button being clicked
    */
   activate() {
+    if (this.disabled) return this;
     const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
     // reference to ControlPanel needs to be evaluated in run time
     const controlPage = this.getControlPage();
@@ -104,6 +108,7 @@ class ControlButton extends Phaser.Sprite {
    * Executes the logic attached to the deactive event
    */
   deactivate() {
+    if (this.disabled) return this;
     const buttonLogic = ControlButtonCollection.getLogicByControlButton(this);
     const controlPage = this.getControlPage();
     const controlPanel = controlPage.getControlPanel();
@@ -127,7 +132,7 @@ class ControlButton extends Phaser.Sprite {
    */
   enable() {
     this.disabled = false;
-    this.filters = [];
+    this.filters = null;
   }
 
   /**
@@ -157,10 +162,13 @@ class ControlButton extends Phaser.Sprite {
    * Adds label on the top of the button according to the
    * original id that equals to an Entity Id
    * @param {object} entityId - Entity instance to be produced
+   * @param {object} parentEntity - Entity instance that will
+   * produce the entity
    */
-  convertToProduceButton(entityId) {
+  convertToProduceButton(entityId, parentEntity) {
     this.setEntityIconAsLabel(entityId);
     this.setProducableEntity(entityId);
+    this.enableOrDisableByParentEntity(entityId, parentEntity);
   }
 
   /**
@@ -191,6 +199,20 @@ class ControlButton extends Phaser.Sprite {
    */
   setProducableEntity(entityId) {
     this.producableEntityId = entityId;
+  }
+
+  /**
+   * Checks if the produce button must be disabled or not
+   * @param {string} entityId - id of the entity represented by this button
+   * @param {object} parentEntity - the entity to which this control button
+   * belongs
+   */
+  enableOrDisableByParentEntity(entityId, parentEntity) {
+    const player = parentEntity.getPlayer();
+    const enabled = player.hasAllRequiredEntitiesFor(entityId);
+    if (!enabled) {
+      this.disable();
+    }
   }
 
   /**
@@ -244,6 +266,14 @@ class ControlButton extends Phaser.Sprite {
    */
   getProducableEntity() {
     return this.producableEntityId;
+  }
+
+  /**
+   * Returns true if the button is in disabled state
+   * @return {boolean}
+   */
+  isDisabled() {
+    return this.disabled;
   }
 }
 

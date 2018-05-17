@@ -142,9 +142,8 @@ class Player {
    * @return {boolean}
    */
   hasAllRequiredEntitiesFor(entityId) {
-    const game = ns.game.game;
-    const data = game.cache.getJSON(entityId);
-    const requiredEntities = data.requiredEntities;
+    const { game } = ns.game;
+    const { requiredEntities } = game.cache.getJSON(entityId);
     const entityManager = EntityManager.getInstance();
 
     if (!requiredEntities || !requiredEntities.length) {
@@ -157,12 +156,12 @@ class Player {
     // collects all the different kind of entities
     entities.forEach((entity) => {
       const DO = entity.getDataObject();
-      const entityId = DO.getId();
-      found[entityId] = true;
+      const id = DO.getId();
+      found[id] = true;
     });
 
     // if the player has all the required entities it returns true
-    return requiredEntities.every(entityId => found[entityId]);
+    return requiredEntities.every(id => found[id]);
   }
 }
 
