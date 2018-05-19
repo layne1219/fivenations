@@ -103,12 +103,17 @@ function createTooltip(phaserGame) {
  */
 function Tooltipify(options, phaserGame = ns.game.game) {
   const { target, label } = options;
+  let { test } = options;
+  if (typeof test !== 'function') {
+    test = () => true;
+  }
   // lazy instantiation
   if (!tooltip) {
     tooltip = createTooltip(phaserGame);
   }
   target.events.onInputOver.add((item) => {
-    const labelValue = typeof label === 'function' ? label() : label;
+    if (!test()) return;
+    const labelValue = typeof label === 'function' ? label(item) : label;
     const maxOffsetX = ns.window.width - tooltip.width;
     const maxOffsetY = ns.window.height - tooltip.height;
     const x = item.worldPosition.x + DEFAULT_TOOLTIP_PADDING.x;
@@ -127,6 +132,7 @@ function Tooltipify(options, phaserGame = ns.game.game) {
     tooltip.updateContent(labelValue);
   });
   target.events.onInputOut.add(() => {
+    if (!test()) return;
     tooltip.visible = false;
   });
 }
