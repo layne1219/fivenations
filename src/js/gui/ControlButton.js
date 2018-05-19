@@ -5,11 +5,16 @@ import FilterGray from '../filters/FilterGray';
 import { PRODUCTION_ICON_FRAMES } from './ProductionTab';
 import { SPRITESHEET_ID as entityIcons } from './ProductionTabButton';
 import { Tooltipify } from './Tooltip';
+import { ProductionTooltipify } from './ProductionTooltip';
 
 const abilitiesJSON = require('../../assets/datas/common/abilities.json');
 
 const PADDING_ONCLICK = 2;
 const TRANSPARENCY_ONLICK = 0.75;
+
+// possible types of the ControlButton
+const TYPE_DEFAULT = 0;
+const TYPE_PRODUCTION = 1;
 
 // empty icon id
 // this is used to place additional labels on the buttons
@@ -27,17 +32,20 @@ class ControlButton extends Phaser.Sprite {
   constructor(entityManager) {
     super(entityManager.getGame(), 0, 0, 'gui');
 
-    // initialising the buttons
+    // cretes the button sprite instance
     this.init(entityManager);
 
-    // applying default event handlers on the generated instance
+    // applies default event handlers on the generated instance
     this.addEventListeners();
 
-    // activating custom behaviour upon click
+    // activates custom behaviour upon click
     this.addBehaviour();
 
-    // Attach Tooltip to the button
+    // attaches a Tooltip to the button
     this.addTooltip();
+
+    // attaches a ProductionTooltip to the button
+    this.addProductionTooltip();
   }
 
   /**
@@ -85,7 +93,22 @@ class ControlButton extends Phaser.Sprite {
   addTooltip() {
     Tooltipify({
       target: this,
-      label: () => this.tooltipLabel,
+      label: (item) => {
+        const id = item.getId();
+        const translationLabel = ControlButtonCollection.getTranslationKeyById(id);
+        return TranslationManager.getInstance().translate(translationLabel);
+      },
+      test: () => this.type === TYPE_DEFAULT,
+    });
+  }
+
+  /**
+   * Attaches a ProductionTooltip instance to the button
+   */
+  addProductionTooltip() {
+    ProductionTooltipify({
+      target: this,
+      test: () => this.type === TYPE_PRODUCTION,
     });
   }
 
@@ -143,7 +166,7 @@ class ControlButton extends Phaser.Sprite {
   setId(id) {
     this.id = id;
     this.setButtonFrame(id);
-    this.setTranslatedTooltipLabel(id);
+    this.setType(TYPE_DEFAULT);
     if (this.entityIconsSprite) {
       this.entityIconsSprite.visible = false;
     }
@@ -166,6 +189,7 @@ class ControlButton extends Phaser.Sprite {
    * produce the entity
    */
   convertToProduceButton(entityId, parentEntity) {
+    this.setType(TYPE_PRODUCTION);
     this.setEntityIconAsLabel(entityId);
     this.setProducableEntity(entityId);
     this.enableOrDisableByParentEntity(entityId, parentEntity);
@@ -218,10 +242,11 @@ class ControlButton extends Phaser.Sprite {
   /**
    * Determines the translation for the Tooltip
    * @param {number} id
+   * Sets the type of the button
+   * @param {number} type - type of the control button
    */
-  setTranslatedTooltipLabel(id) {
-    const translationLabel = ControlButtonCollection.getTranslationKeyById(id);
-    this.tooltipLabel = TranslationManager.getInstance().translate(translationLabel);
+  setType(type) {
+    this.type = type || TYPE_DEFAULT;
   }
 
   /**
