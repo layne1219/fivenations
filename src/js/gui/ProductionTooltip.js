@@ -179,11 +179,11 @@ class ProductionTooltip extends Phaser.Group {
     const translator = TranslationManager.getInstance();
     const header = translator.translate('tooltip.entities.required');
     this.prerequisitsGroup = this.game.add.group();
-    this.prerequisitsHeader = this.game.add.text(20, 52, header, {
+    this.prerequisitsHeader = this.game.add.text(20, 60, header, {
       font: FONT.font,
       fill: FONT.redFill,
     });
-    this.requiredEntities = this.game.add.text(20, 65, '', {
+    this.requiredEntities = this.game.add.text(20, 73, '', {
       font: FONT.font,
       fill: FONT.redFill,
       wordWrap: true,
@@ -252,8 +252,9 @@ class ProductionTooltip extends Phaser.Group {
   updatePrerequisits(dataObject) {
     const translator = TranslationManager.getInstance();
     const entities = dataObject.requiredEntities || [];
-    this.requiredEntities.text = entities.map(entity =>
-      translator.translate(`entities.${entity}\n`));
+    this.requiredEntities.text = entities
+      .map(entity => translator.translate(`entities.${entity}`))
+      .join('\n');
   }
 
   /**
