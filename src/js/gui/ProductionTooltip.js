@@ -12,6 +12,7 @@ const FONT = {
   defaultFill: DEFAULT_FONT.color,
   whiteFill: '#ffffff',
   darkFill: '#728dbc',
+  redFill: '#ff0000',
 };
 
 // icons for resources
@@ -41,7 +42,8 @@ class ProductionTooltip extends Phaser.Group {
     this.setDefaultVisiblity();
     this.initBackgroundSprite(phaserGame);
     this.initEntityLabels();
-    this.createResourceElements();
+    this.createResourceGroup();
+    this.createPrerequisitsGroup();
   }
 
   /**
@@ -97,7 +99,7 @@ class ProductionTooltip extends Phaser.Group {
    * Creates all the required elements to show how much resources
    * the user requires to trigger the production of the pointed entity
    */
-  createResourceElements() {
+  createResourceGroup() {
     this.resourceGroup = this.game.add.group();
     this.titaniumIcon = this.createSprite({
       x: 15,
@@ -155,6 +157,11 @@ class ProductionTooltip extends Phaser.Group {
     this.uraniumText.anchor.set(0.5);
     this.supplyText.anchor.set(0.5);
 
+    this.resourceGroup.add(this.titaniumIcon);
+    this.resourceGroup.add(this.siliciumIcon);
+    this.resourceGroup.add(this.energyIcon);
+    this.resourceGroup.add(this.uraniumIcon);
+    this.resourceGroup.add(this.supplyIcon);
     this.resourceGroup.add(this.titaniumText);
     this.resourceGroup.add(this.siliciumText);
     this.resourceGroup.add(this.energyText);
@@ -162,6 +169,31 @@ class ProductionTooltip extends Phaser.Group {
     this.resourceGroup.add(this.supplyText);
 
     this.add(this.resourceGroup);
+  }
+
+  /**
+   * Creates the visual elements to show the list of prerequisits
+   * if the attached ControlButton is disabled
+   */
+  createPrerequisitsGroup() {
+    const translator = TranslationManager.getInstance();
+    const header = translator.translate('tooltip.entities.required');
+    this.prerequisitsGroup = this.game.add.group();
+    this.prerequisitsHeader = this.game.add.text(20, 52, header, {
+      font: FONT.font,
+      fill: FONT.redFill,
+    });
+    this.requiredEntities = this.game.add.text(20, 65, '', {
+      font: FONT.font,
+      fill: FONT.redFill,
+      wordWrap: true,
+      wordWrapWidth: 161,
+    });
+    this.requiredEntities.lineSpacing = -8;
+
+    this.prerequisitsGroup.add(this.prerequisitsHeader);
+    this.prerequisitsGroup.add(this.requiredEntities);
+    this.add(this.prerequisitsGroup);
   }
 
   /**
@@ -177,8 +209,12 @@ class ProductionTooltip extends Phaser.Group {
     // the button is disabled so we show the list of prerequisits to
     // help the user undestand why the entity cannot be produced right now
     if (controlButton.isDisabled()) {
+      this.prerequisitsGroup.visible = true;
+      this.resourceGroup.visible = false;
       this.updatePrerequisits(data);
     } else {
+      this.prerequisitsGroup.visible = false;
+      this.resourceGroup.visible = true;
       this.updateProductionContent(data);
     }
   }
@@ -206,6 +242,18 @@ class ProductionTooltip extends Phaser.Group {
     this.energyText.text = dataObject.energy;
     this.uraniumText.text = dataObject.uranium;
     this.supplyText.text = dataObject.space;
+  }
+
+  /**
+   * Displays the list of other entities that is needed to
+   * trigger the production of the given entity
+   * @param {object} data - Entity Data object
+   */
+  updatePrerequisits(dataObject) {
+    const translator = TranslationManager.getInstance();
+    const entities = dataObject.requiredEntities || [];
+    this.requiredEntities.text = entities.map(entity =>
+      translator.translate(`entities.${entity}\n`));
   }
 
   /**
