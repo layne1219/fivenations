@@ -2,73 +2,73 @@
 
 {
 	"filename": "fed_build_L_buildingphase01.png",
-	"frame": {"x":264,"y":143,"w":37,"h":35},
+	"frame": {"x":267,"y":143,"w":38,"h":35},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":35},
+	"spriteSourceSize": {"x":131,"y":134,"w":38,"h":35},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_L_buildingphase02.png",
-	"frame": {"x":178,"y":1,"w":175,"h":140},
+	"frame": {"x":179,"y":1,"w":176,"h":140},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":74,"w":175,"h":140},
+	"spriteSourceSize": {"x":62,"y":74,"w":176,"h":140},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_L_buildingphase03.png",
-	"frame": {"x":1,"y":1,"w":175,"h":193},
+	"frame": {"x":1,"y":1,"w":176,"h":194},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":62,"y":37,"w":175,"h":193},
+	"spriteSourceSize": {"x":62,"y":37,"w":176,"h":194},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_M_buildingphase01.png",
-	"frame": {"x":264,"y":143,"w":37,"h":35},
+	"frame": {"x":267,"y":143,"w":38,"h":35},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":35},
+	"spriteSourceSize": {"x":131,"y":134,"w":38,"h":35},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_M_buildingphase02.png",
-	"frame": {"x":355,"y":122,"w":120,"h":95},
+	"frame": {"x":357,"y":122,"w":120,"h":95},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":89,"y":101,"w":120,"h":95},
+	"spriteSourceSize": {"x":90,"y":101,"w":120,"h":95},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_M_buildingphase03.png",
-	"frame": {"x":355,"y":1,"w":120,"h":119},
+	"frame": {"x":357,"y":1,"w":120,"h":119},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":89,"y":91,"w":120,"h":119},
+	"spriteSourceSize": {"x":90,"y":92,"w":120,"h":119},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_S_buildingphase01.png",
-	"frame": {"x":264,"y":143,"w":37,"h":35},
+	"frame": {"x":267,"y":143,"w":38,"h":35},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":131,"y":134,"w":37,"h":35},
+	"spriteSourceSize": {"x":131,"y":134,"w":38,"h":35},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build_S_buildingphase02.png",
-	"frame": {"x":178,"y":143,"w":84,"h":78},
+	"frame": {"x":179,"y":143,"w":86,"h":77},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":106,"w":84,"h":78},
+	"spriteSourceSize": {"x":107,"y":107,"w":86,"h":77},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -77,8 +77,8 @@
 	"version": "1.0",
 	"image": "fed_build_buildingphases.png",
 	"format": "RGBA8888",
-	"size": {"w":476,"h":222},
+	"size": {"w":478,"h":221},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a258e3cc4c03a769b1ec435af99d8b33:3b5b83ae0d7c1d7e045879d166dda758:ffb9688312137853dd3eeb12ffa9ee41$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ea014ae506d09fd47421f69826726faa:29486ebecc5c99e7cb1f59abde42f3c0:ffb9688312137853dd3eeb12ffa9ee41$"
 }
 }
