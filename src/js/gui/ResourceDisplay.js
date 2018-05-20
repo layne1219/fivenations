@@ -22,7 +22,7 @@ class ResourceGroup extends Phaser.Group {
     const { current, max } = values;
 
     this.textGroup.text = current || 0;
-    if (max) {
+    if (max !== undefined) {
       this.textGroup.text += ` / ${max}`;
     }
     this.textGroup.addColor('#FFFFFF', 0);

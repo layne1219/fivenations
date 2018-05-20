@@ -207,7 +207,7 @@ function DataObject(json) {
     },
 
     getSupply() {
-      return data.supply;
+      return data.supply || 0;
     },
 
     getBuildingTime() {

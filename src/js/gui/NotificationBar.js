@@ -46,7 +46,7 @@ class NotificationBar extends Phaser.Group {
    */
   initTextComponent() {
     this.label = this.add(this.game.add.text(0, 0, '', {
-      font: DEFAULT_FONT.font,
+      font: DEFAULT_FONT.font.replace('11px', '13px'),
       fill: DEFAULT_FONT.color,
       boundsAlignH: 'center',
       boundsAlignV: 'middle',
@@ -78,7 +78,7 @@ class NotificationBar extends Phaser.Group {
     Object.keys(eventsTranslationsMap).forEach((key) => {
       const translation = eventsTranslationsMap[key];
       const text = translator.translate(translation);
-      emitter.local.addEventListener(key, this.show(text));
+      emitter.local.addEventListener(key, this.show.bind(this, text));
     });
   }
 
