@@ -4,6 +4,9 @@
     "mainmenu.multiplayer": "MULTIPLAYER",
     "mainmenu.howtoplay": "HOW TO PLAY",
     "mainmenu.spacemarket": "SPACE MARKET",
+    
+    "tooltip.entities.required": "Required:",
+    
     "abilities.move": "Move",
     "abilities.stop": "Stop",
     "abilities.follow": "Follow",
@@ -44,5 +47,31 @@
     "abilities.contruct": "No Translation",
     "abilities.cancel": "Cancel",
     "abilities.cancelProduction": "Cancel Production",
-    "abilities.setrallypoint": "No Translation"
+    "abilities.setrallypoint": "No Translation",
+    "entities.hurricane": "Hurricane",
+    "entities.orca": "Orca",
+    "entities.hailstorm": "Hailstorm",
+    "entities.stgeorge": "St. George",
+    "entities.avenger": "Avenger",
+    "entities.avenger2": "Avenger II",
+    "entities.icarus": "Icarus",
+    "entities.enginnershuttle": "Engineer Shuttle",
+    "entities.kutuzov": "Kutuzov",
+    "entities.pasteur": "Pasteur",
+    "entities.teller": "Teller",
+    "entities.nuclearmissile": "Nuclear Missile",
+    "entities.astrometricstation": "Astrometric Station",
+    
+    "entities.categories.Fighter": "Fighter",
+    "entities.categories.Destroyer": "Destroyer",
+    "entities.categories.Cruiser": "Cruiser",
+    "entities.categories.Carrier": "Carrier",
+    "entities.categories.Battleship": "Battleship",
+    "entities.categories.SpecialCruiser": "Special Cruiser",
+    "entities.categories.Cargo": "Cargoship",
+    "entities.categories.Expansionist": "Expansionist",
+    
+    "entities.descriptions.hurricane": "Hurricanes are tactical and space superiority fighters.",
+    "entities.descriptions.orca": "Orcaa are the cornerstones of federation's combar potential.",
+    "entities.descriptions.hailstorm": "Hailstorms are heavy cruisers with long distance missiles."
 }
