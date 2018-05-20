@@ -23,7 +23,7 @@ class ResourceGroup extends Phaser.Group {
 
     this.textGroup.text = current || 0;
     if (max) {
-      this.textGroup.text += `/${max}`;
+      this.textGroup.text += ` / ${max}`;
     }
     this.textGroup.addColor('#FFFFFF', 0);
     // this.textGroup.addColor('#475D86', current.toString().length + 1);
@@ -79,7 +79,10 @@ export default class ResourceDisplay extends Phaser.Group {
     this.silicium.updateContent({ current: user.getSilicium() });
     this.energy.updateContent({ current: user.getEnergy() });
     this.uranium.updateContent({ current: user.getUranium() });
-    this.food.updateContent({ current: user.getCurrentEntityNumber() });
+    this.food.updateContent({
+      current: user.getCurrentEntityNumber(),
+      max: user.getSupply(),
+    });
   }
 
   /**

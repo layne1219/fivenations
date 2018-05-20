@@ -37,7 +37,7 @@ class Player {
     this.setTitanium(config.titanium || 0);
     this.setSilicium(config.silicium || 0);
     this.setEnergy(config.energy || 0);
-    this.setUranium(config.Uranium || 0);
+    this.setUranium(config.uranium || 0);
   }
 
   on(evt, func) {
@@ -115,8 +115,15 @@ class Player {
   getCurrentEntityNumber() {
     const { entityManager } = ns.game;
     return entityManager
-      .entities(entity => entity.isEntityControlledByUser(this))
+      .entities(`:player(${this.team})`)
       .reduce((sum, entity) => sum + entity.getDataObject().getSpace(), 0);
+  }
+
+  getSupply() {
+    const { entityManager } = ns.game;
+    return entityManager
+      .entities(`:player(${this.team})`)
+      .reduce((sum, entity) => sum + entity.getDataObject().getSupply(), 0);
   }
 
   getGUID() {

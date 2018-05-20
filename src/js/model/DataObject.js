@@ -206,6 +206,10 @@ function DataObject(json) {
       return data.space;
     },
 
+    getSupply() {
+      return data.supply;
+    },
+
     getBuildingTime() {
       return data.buildingTime;
     },
