@@ -1,1 +1,174 @@
-{"frames":[{"filename":"gui_ico_obj_titaniumasteroid.png","frame":{"x":1,"y":1,"w":105,"h":99},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":2,"y":3,"w":105,"h":99},"sourceSize":{"w":127,"h":111},"pivot":{"x":0.5,"y":0.5}},{"filename":"gui_ico_obj_titaniumasteroid.png","frame":{"x":1,"y":1,"w":105,"h":99},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":2,"y":3,"w":105,"h":99},"sourceSize":{"w":127,"h":111},"pivot":{"x":0.5,"y":0.5}},{"filename":"gui_ico_obj_sm_titaniumasteroid.png","frame":{"x":56,"y":312,"w":51,"h":51},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":51,"h":51},"sourceSize":{"w":51,"h":51},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00000.png","frame":{"x":55,"y":414,"w":51,"h":45},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":124,"y":124,"w":51,"h":45},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00001.png","frame":{"x":1,"y":250,"w":55,"h":60},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":120,"y":119,"w":55,"h":60},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00002.png","frame":{"x":59,"y":102,"w":48,"h":62},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":123,"y":119,"w":48,"h":62},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00003.png","frame":{"x":54,"y":461,"w":50,"h":58},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":122,"y":124,"w":50,"h":58},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00004.png","frame":{"x":1,"y":384,"w":52,"h":48},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":121,"y":125,"w":52,"h":48},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00005.png","frame":{"x":1,"y":178,"w":56,"h":70},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":118,"y":113,"w":56,"h":70},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00006.png","frame":{"x":1,"y":102,"w":56,"h":74},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":117,"y":111,"w":56,"h":74},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00007.png","frame":{"x":1,"y":312,"w":53,"h":70},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":118,"y":114,"w":53,"h":70},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00008.png","frame":{"x":59,"y":166,"w":48,"h":47},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":124,"y":121,"w":48,"h":47},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00009.png","frame":{"x":1,"y":527,"w":46,"h":48},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":124,"y":121,"w":46,"h":48},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00010.png","frame":{"x":59,"y":215,"w":47,"h":44},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":123,"y":126,"w":47,"h":44},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00011.png","frame":{"x":1,"y":480,"w":50,"h":45},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":122,"y":126,"w":50,"h":45},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00012.png","frame":{"x":58,"y":261,"w":49,"h":49},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":121,"y":123,"w":49,"h":49},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00013.png","frame":{"x":53,"y":521,"w":49,"h":49},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":122,"y":122,"w":49,"h":49},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00014.png","frame":{"x":56,"y":365,"w":51,"h":47},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":122,"y":124,"w":51,"h":47},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"titaniummeteor_sm01_00015.png","frame":{"x":1,"y":434,"w":51,"h":44},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":123,"y":126,"w":51,"h":44},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}}],"meta":{"app":"http://www.codeandweb.com/texturepacker","version":"1.0","image":"asteroid_titanium_sm01.png","format":"RGBA8888","size":{"w":108,"h":576},"scale":"1","smartupdate":"$TexturePacker:SmartUpdate:12dbdf46a37b9b6456cafb449f76397b:381ae1d5b098e1e3f1baba9e0949762a:e12453e0052962a2dc7ff7293fc5b4de$"}}
+{"frames": [
+
+{
+	"filename": "gui_ico_obj_sm_titaniumasteroid.png",
+	"frame": {"x":182,"y":517,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_obj_titaniumasteroid.png",
+	"frame": {"x":1,"y":1,"w":105,"h":99},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":105,"h":99},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00000.png",
+	"frame": {"x":130,"y":517,"w":50,"h":60},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":124,"y":110,"w":50,"h":60},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00001.png",
+	"frame": {"x":67,"y":504,"w":61,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":117,"y":104,"w":61,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00002.png",
+	"frame": {"x":71,"y":419,"w":64,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":117,"y":107,"w":64,"h":76},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00003.png",
+	"frame": {"x":1,"y":416,"w":68,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":104,"w":68,"h":86},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00004.png",
+	"frame": {"x":1,"y":312,"w":78,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":95,"w":78,"h":102},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00005.png",
+	"frame": {"x":86,"y":108,"w":79,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":94,"w":79,"h":107},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00006.png",
+	"frame": {"x":167,"y":108,"w":74,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":94,"w":74,"h":102},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00007.png",
+	"frame": {"x":165,"y":311,"w":75,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":111,"y":93,"w":75,"h":105},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00008.png",
+	"frame": {"x":167,"y":212,"w":74,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":94,"w":74,"h":97},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00009.png",
+	"frame": {"x":84,"y":217,"w":79,"h":101},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":92,"w":79,"h":101},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00010.png",
+	"frame": {"x":1,"y":208,"w":81,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":111,"y":93,"w":81,"h":102},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00011.png",
+	"frame": {"x":148,"y":418,"w":83,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":96,"w":83,"h":97},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00012.png",
+	"frame": {"x":108,"y":1,"w":84,"h":105},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":94,"w":84,"h":105},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00013.png",
+	"frame": {"x":1,"y":102,"w":83,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":109,"y":94,"w":83,"h":104},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00014.png",
+	"frame": {"x":81,"y":320,"w":65,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":113,"y":98,"w":65,"h":97},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "titaniummeteor_sm01_00015.png",
+	"frame": {"x":1,"y":504,"w":64,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":122,"y":114,"w":64,"h":75},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "asteroid_titanium_sm01.png",
+	"format": "RGBA8888",
+	"size": {"w":242,"h":580},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:bd60794e42a9fad8ed549c4a0c6a248f:6da5cacfaa7d67710e1c652b1a6ecc93:e12453e0052962a2dc7ff7293fc5b4de$"
+}
+}
