@@ -2,16 +2,16 @@
 
 {
 	"filename": "debrish_fed03_0000.png",
-	"frame": {"x":445,"y":231,"w":62,"h":80},
+	"frame": {"x":371,"y":411,"w":63,"h":80},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":110,"y":104,"w":62,"h":80},
+	"spriteSourceSize": {"x":109,"y":104,"w":63,"h":80},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed03_0001.png",
-	"frame": {"x":321,"y":930,"w":71,"h":73},
+	"frame": {"x":436,"y":289,"w":71,"h":73},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":119,"y":108,"w":71,"h":73},
@@ -20,7 +20,7 @@
 },
 {
 	"filename": "debrish_fed03_0002.png",
-	"frame": {"x":394,"y":962,"w":88,"h":53},
+	"frame": {"x":403,"y":839,"w":88,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":116,"w":88,"h":53},
@@ -29,16 +29,16 @@
 },
 {
 	"filename": "debrish_fed03_0003.png",
-	"frame": {"x":422,"y":1081,"w":78,"h":52},
+	"frame": {"x":348,"y":1198,"w":79,"h":53},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":118,"y":125,"w":78,"h":52},
+	"spriteSourceSize": {"x":118,"y":125,"w":79,"h":53},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed03_0004.png",
-	"frame": {"x":287,"y":1211,"w":63,"h":53},
+	"frame": {"x":403,"y":1302,"w":63,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":126,"y":128,"w":63,"h":53},
@@ -47,7 +47,7 @@
 },
 {
 	"filename": "debrish_fed03_0005.png",
-	"frame": {"x":422,"y":1135,"w":70,"h":54},
+	"frame": {"x":436,"y":440,"w":70,"h":54},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":130,"w":70,"h":54},
@@ -56,25 +56,25 @@
 },
 {
 	"filename": "debrish_fed03_0006.png",
-	"frame": {"x":332,"y":1081,"w":88,"h":49},
+	"frame": {"x":402,"y":1020,"w":88,"h":51},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":98,"y":126,"w":88,"h":49},
+	"spriteSourceSize": {"x":98,"y":125,"w":88,"h":51},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed03_0007.png",
-	"frame": {"x":126,"y":1231,"w":79,"h":62},
+	"frame": {"x":325,"y":769,"w":80,"h":63},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":102,"y":117,"w":79,"h":62},
+	"spriteSourceSize": {"x":101,"y":116,"w":80,"h":63},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed04_0000.png",
-	"frame": {"x":259,"y":373,"w":85,"h":127},
+	"frame": {"x":138,"y":865,"w":85,"h":127},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":105,"y":88,"w":85,"h":127},
@@ -83,7 +83,7 @@
 },
 {
 	"filename": "debrish_fed04_0001.png",
-	"frame": {"x":1,"y":884,"w":135,"h":106},
+	"frame": {"x":1,"y":883,"w":135,"h":106},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":89,"y":98,"w":135,"h":106},
@@ -92,25 +92,25 @@
 },
 {
 	"filename": "debrish_fed04_0002.png",
-	"frame": {"x":331,"y":98,"w":159,"h":74},
+	"frame": {"x":331,"y":99,"w":160,"h":74},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":73,"y":110,"w":159,"h":74},
+	"spriteSourceSize": {"x":72,"y":110,"w":160,"h":74},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed04_0003.png",
-	"frame": {"x":254,"y":502,"w":115,"h":80},
+	"frame": {"x":326,"y":175,"w":115,"h":81},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":99,"y":122,"w":115,"h":80},
+	"spriteSourceSize": {"x":99,"y":122,"w":115,"h":81},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed04_0004.png",
-	"frame": {"x":216,"y":765,"w":85,"h":100},
+	"frame": {"x":261,"y":1201,"w":85,"h":100},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":111,"w":85,"h":100},
@@ -128,28 +128,28 @@
 },
 {
 	"filename": "debrish_fed04_0006.png",
-	"frame": {"x":159,"y":292,"w":160,"h":79},
+	"frame": {"x":159,"y":199,"w":160,"h":78},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":66,"y":109,"w":160,"h":79},
+	"spriteSourceSize": {"x":66,"y":109,"w":160,"h":78},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed04_0007.png",
-	"frame": {"x":1,"y":774,"w":116,"h":108},
+	"frame": {"x":1,"y":772,"w":116,"h":109},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":83,"y":97,"w":116,"h":108},
+	"spriteSourceSize": {"x":83,"y":97,"w":116,"h":109},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0000.png",
-	"frame": {"x":346,"y":373,"w":58,"h":118},
+	"frame": {"x":225,"y":865,"w":59,"h":118},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":119,"y":91,"w":58,"h":118},
+	"spriteSourceSize": {"x":110,"y":93,"w":59,"h":118},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
@@ -158,85 +158,85 @@
 	"frame": {"x":1,"y":1099,"w":122,"h":101},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":93,"y":94,"w":122,"h":101},
+	"spriteSourceSize": {"x":85,"y":97,"w":122,"h":101},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0002.png",
-	"frame": {"x":1,"y":1295,"w":153,"h":62},
+	"frame": {"x":134,"y":335,"w":153,"h":63},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":73,"y":117,"w":153,"h":62},
+	"spriteSourceSize": {"x":64,"y":119,"w":153,"h":63},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0003.png",
-	"frame": {"x":1,"y":1202,"w":123,"h":91},
+	"frame": {"x":123,"y":493,"w":122,"h":91},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":110,"w":123,"h":91},
+	"spriteSourceSize": {"x":86,"y":113,"w":122,"h":91},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0004.png",
-	"frame": {"x":210,"y":652,"w":59,"h":111},
+	"frame": {"x":443,"y":175,"w":59,"h":112},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":121,"y":100,"w":59,"h":111},
+	"spriteSourceSize": {"x":111,"y":102,"w":59,"h":112},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0005.png",
-	"frame": {"x":321,"y":231,"w":122,"h":90},
+	"frame": {"x":123,"y":586,"w":122,"h":90},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":83,"y":114,"w":122,"h":90},
+	"spriteSourceSize": {"x":73,"y":116,"w":122,"h":90},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0006.png",
-	"frame": {"x":326,"y":174,"w":153,"h":55},
+	"frame": {"x":159,"y":279,"w":154,"h":54},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":72,"y":122,"w":153,"h":55},
+	"spriteSourceSize": {"x":62,"y":125,"w":154,"h":54},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed05_0007.png",
-	"frame": {"x":134,"y":373,"w":123,"h":91},
+	"frame": {"x":134,"y":400,"w":123,"h":91},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":80,"y":105,"w":123,"h":91},
+	"spriteSourceSize": {"x":71,"y":107,"w":123,"h":91},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed07_0000.png",
-	"frame": {"x":292,"y":1025,"w":38,"h":73},
+	"frame": {"x":470,"y":364,"w":38,"h":74},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":129,"y":111,"w":38,"h":73},
+	"spriteSourceSize": {"x":130,"y":110,"w":38,"h":74},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed07_0001.png",
-	"frame": {"x":156,"y":1295,"w":80,"h":62},
+	"frame": {"x":321,"y":968,"w":79,"h":62},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":117,"y":114,"w":80,"h":62},
+	"spriteSourceSize": {"x":118,"y":114,"w":79,"h":62},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed07_0002.png",
-	"frame": {"x":138,"y":981,"w":89,"h":39},
+	"frame": {"x":336,"y":1157,"w":89,"h":39},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":132,"w":89,"h":39},
@@ -245,16 +245,16 @@
 },
 {
 	"filename": "debrish_fed07_0003.png",
-	"frame": {"x":212,"y":1025,"w":78,"h":66},
+	"frame": {"x":407,"y":769,"w":79,"h":68},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":120,"y":124,"w":78,"h":66},
+	"spriteSourceSize": {"x":120,"y":123,"w":79,"h":68},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed07_0004.png",
-	"frame": {"x":292,"y":1100,"w":38,"h":74},
+	"frame": {"x":310,"y":676,"w":38,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":131,"y":125,"w":38,"h":74},
@@ -263,7 +263,7 @@
 },
 {
 	"filename": "debrish_fed07_0005.png",
-	"frame": {"x":390,"y":1017,"w":80,"h":62},
+	"frame": {"x":321,"y":834,"w":80,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":101,"y":131,"w":80,"h":62},
@@ -272,16 +272,16 @@
 },
 {
 	"filename": "debrish_fed07_0006.png",
-	"frame": {"x":332,"y":1132,"w":88,"h":44},
+	"frame": {"x":416,"y":1073,"w":88,"h":44},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":96,"y":130,"w":88,"h":44},
+	"spriteSourceSize": {"x":97,"y":130,"w":88,"h":44},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed07_0007.png",
-	"frame": {"x":212,"y":1093,"w":78,"h":62},
+	"frame": {"x":321,"y":1032,"w":78,"h":62},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":100,"y":117,"w":78,"h":62},
@@ -290,16 +290,16 @@
 },
 {
 	"filename": "debrish_fed09_0000.png",
-	"frame": {"x":138,"y":877,"w":95,"h":102},
+	"frame": {"x":247,"y":499,"w":96,"h":102},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":101,"y":97,"w":95,"h":102},
+	"spriteSourceSize": {"x":101,"y":97,"w":96,"h":102},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed09_0001.png",
-	"frame": {"x":134,"y":466,"w":118,"h":90},
+	"frame": {"x":114,"y":678,"w":118,"h":90},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":96,"y":100,"w":118,"h":90},
@@ -308,61 +308,61 @@
 },
 {
 	"filename": "debrish_fed09_0002.png",
-	"frame": {"x":159,"y":199,"w":149,"h":91},
+	"frame": {"x":1,"y":1202,"w":150,"h":92},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":83,"y":107,"w":149,"h":91},
+	"spriteSourceSize": {"x":83,"y":107,"w":150,"h":92},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed09_0003.png",
-	"frame": {"x":397,"y":737,"w":106,"h":87},
+	"frame": {"x":153,"y":1202,"w":106,"h":88},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":108,"y":120,"w":106,"h":87},
+	"spriteSourceSize": {"x":108,"y":120,"w":106,"h":88},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed09_0004.png",
-	"frame": {"x":119,"y":768,"w":95,"h":107},
+	"frame": {"x":127,"y":994,"w":96,"h":107},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":101,"y":113,"w":95,"h":107},
+	"spriteSourceSize": {"x":101,"y":113,"w":96,"h":107},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed09_0005.png",
-	"frame": {"x":122,"y":558,"w":117,"h":92},
+	"frame": {"x":119,"y":770,"w":117,"h":93},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":85,"y":115,"w":117,"h":92},
+	"spriteSourceSize": {"x":85,"y":115,"w":117,"h":93},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed09_0006.png",
-	"frame": {"x":331,"y":1,"w":149,"h":95},
+	"frame": {"x":331,"y":1,"w":150,"h":96},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":65,"y":103,"w":149,"h":95},
+	"spriteSourceSize": {"x":65,"y":103,"w":150,"h":96},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed09_0007.png",
-	"frame": {"x":271,"y":651,"w":106,"h":97},
+	"frame": {"x":125,"y":1103,"w":105,"h":97},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":84,"y":95,"w":106,"h":97},
+	"spriteSourceSize": {"x":85,"y":95,"w":105,"h":97},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed10_0000.png",
-	"frame": {"x":238,"y":1276,"w":56,"h":68},
+	"frame": {"x":447,"y":669,"w":56,"h":68},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":122,"y":113,"w":56,"h":68},
@@ -371,34 +371,34 @@
 },
 {
 	"filename": "debrish_fed10_0001.png",
-	"frame": {"x":207,"y":1217,"w":78,"h":57},
+	"frame": {"x":322,"y":1303,"w":79,"h":57},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":114,"y":115,"w":78,"h":57},
+	"spriteSourceSize": {"x":114,"y":115,"w":79,"h":57},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed10_0002.png",
-	"frame": {"x":321,"y":323,"w":86,"h":48},
+	"frame": {"x":348,"y":1253,"w":86,"h":47},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":104,"y":124,"w":86,"h":48},
+	"spriteSourceSize": {"x":104,"y":125,"w":86,"h":47},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed10_0003.png",
-	"frame": {"x":206,"y":1157,"w":78,"h":58},
+	"frame": {"x":336,"y":1096,"w":78,"h":59},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":112,"y":127,"w":78,"h":58},
+	"spriteSourceSize": {"x":112,"y":126,"w":78,"h":59},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed10_0004.png",
-	"frame": {"x":332,"y":1005,"w":56,"h":74},
+	"frame": {"x":432,"y":496,"w":56,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":120,"y":116,"w":56,"h":74},
@@ -407,7 +407,7 @@
 },
 {
 	"filename": "debrish_fed10_0005.png",
-	"frame": {"x":125,"y":1095,"w":78,"h":68},
+	"frame": {"x":286,"y":898,"w":78,"h":68},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":119,"w":78,"h":68},
@@ -416,34 +416,34 @@
 },
 {
 	"filename": "debrish_fed10_0006.png",
-	"frame": {"x":235,"y":967,"w":84,"h":56},
+	"frame": {"x":235,"y":1303,"w":85,"h":57},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":109,"y":122,"w":84,"h":56},
+	"spriteSourceSize": {"x":109,"y":122,"w":85,"h":57},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed10_0007.png",
-	"frame": {"x":126,"y":1165,"w":78,"h":64},
+	"frame": {"x":366,"y":898,"w":78,"h":64},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":108,"y":113,"w":78,"h":64},
+	"spriteSourceSize": {"x":109,"y":113,"w":78,"h":64},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0000.png",
-	"frame": {"x":235,"y":867,"w":84,"h":98},
+	"frame": {"x":345,"y":499,"w":85,"h":98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":107,"y":103,"w":84,"h":98},
+	"spriteSourceSize": {"x":107,"y":103,"w":85,"h":98},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0001.png",
-	"frame": {"x":371,"y":494,"w":113,"h":86},
+	"frame": {"x":321,"y":258,"w":113,"h":86},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":102,"w":113,"h":86},
@@ -452,61 +452,61 @@
 },
 {
 	"filename": "debrish_fed11_0002.png",
-	"frame": {"x":241,"y":584,"w":114,"h":65},
+	"frame": {"x":1,"y":1296,"w":115,"h":65},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":92,"y":119,"w":114,"h":65},
+	"spriteSourceSize": {"x":92,"y":119,"w":115,"h":65},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0003.png",
-	"frame": {"x":406,"y":422,"w":102,"h":70},
+	"frame": {"x":247,"y":603,"w":103,"h":71},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":113,"y":131,"w":102,"h":70},
+	"spriteSourceSize": {"x":113,"y":131,"w":103,"h":71},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0004.png",
-	"frame": {"x":125,"y":1022,"w":85,"h":71},
+	"frame": {"x":238,"y":760,"w":85,"h":71},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":105,"y":127,"w":85,"h":71},
+	"spriteSourceSize": {"x":106,"y":127,"w":85,"h":71},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0005.png",
-	"frame": {"x":397,"y":826,"w":113,"h":62},
+	"frame": {"x":289,"y":346,"w":113,"h":63},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":80,"y":132,"w":113,"h":62},
+	"spriteSourceSize": {"x":80,"y":132,"w":113,"h":63},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0006.png",
-	"frame": {"x":397,"y":582,"w":114,"h":65},
+	"frame": {"x":118,"y":1296,"w":115,"h":65},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":90,"y":113,"w":114,"h":65},
+	"spriteSourceSize": {"x":90,"y":113,"w":115,"h":65},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed11_0007.png",
-	"frame": {"x":409,"y":323,"w":102,"h":97},
+	"frame": {"x":232,"y":1101,"w":102,"h":98},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":82,"y":97,"w":102,"h":97},
+	"spriteSourceSize": {"x":82,"y":96,"w":102,"h":98},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed13_0000.png",
-	"frame": {"x":296,"y":1266,"w":49,"h":56},
+	"frame": {"x":446,"y":894,"w":49,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":125,"y":114,"w":49,"h":56},
@@ -515,16 +515,16 @@
 },
 {
 	"filename": "debrish_fed13_0001.png",
-	"frame": {"x":352,"y":1226,"w":64,"h":45},
+	"frame": {"x":404,"y":364,"w":64,"h":45},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":130,"y":122,"w":64,"h":45},
+	"spriteSourceSize": {"x":131,"y":122,"w":64,"h":45},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed13_0002.png",
-	"frame": {"x":286,"y":1178,"w":69,"h":31},
+	"frame": {"x":416,"y":1119,"w":69,"h":31},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":131,"y":140,"w":69,"h":31},
@@ -533,7 +533,7 @@
 },
 {
 	"filename": "debrish_fed13_0003.png",
-	"frame": {"x":357,"y":1178,"w":61,"h":46},
+	"frame": {"x":447,"y":621,"w":61,"h":46},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":133,"y":139,"w":61,"h":46},
@@ -542,16 +542,16 @@
 },
 {
 	"filename": "debrish_fed13_0004.png",
-	"frame": {"x":413,"y":1281,"w":48,"h":54},
+	"frame": {"x":402,"y":964,"w":48,"h":54},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":124,"y":139,"w":48,"h":54},
+	"spriteSourceSize": {"x":125,"y":139,"w":48,"h":54},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed13_0005.png",
-	"frame": {"x":347,"y":1273,"w":64,"h":45},
+	"frame": {"x":429,"y":1193,"w":64,"h":45},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":142,"w":64,"h":45},
@@ -560,7 +560,7 @@
 },
 {
 	"filename": "debrish_fed13_0006.png",
-	"frame": {"x":420,"y":1191,"w":69,"h":39},
+	"frame": {"x":427,"y":1152,"w":69,"h":39},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":98,"y":136,"w":69,"h":39},
@@ -569,7 +569,7 @@
 },
 {
 	"filename": "debrish_fed13_0007.png",
-	"frame": {"x":418,"y":1232,"w":61,"h":47},
+	"frame": {"x":447,"y":572,"w":61,"h":47},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":122,"w":61,"h":47},
@@ -578,25 +578,25 @@
 },
 {
 	"filename": "debrish_fed_build01_0000.png",
-	"frame": {"x":1,"y":152,"w":156,"h":172},
+	"frame": {"x":1,"y":152,"w":156,"h":171},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":65,"y":44,"w":156,"h":172},
+	"spriteSourceSize": {"x":65,"y":45,"w":156,"h":171},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed_build02_0000.png",
-	"frame": {"x":1,"y":992,"w":122,"h":105},
+	"frame": {"x":1,"y":991,"w":124,"h":106},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":90,"y":98,"w":122,"h":105},
+	"spriteSourceSize": {"x":89,"y":98,"w":124,"h":106},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed_build03_0000.png",
-	"frame": {"x":321,"y":848,"w":74,"h":80},
+	"frame": {"x":234,"y":678,"w":74,"h":80},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":113,"y":118,"w":74,"h":80},
@@ -605,7 +605,7 @@
 },
 {
 	"filename": "debrish_fed_build04_0000.png",
-	"frame": {"x":463,"y":1281,"w":40,"h":46},
+	"frame": {"x":452,"y":952,"w":40,"h":46},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":130,"y":120,"w":40,"h":46},
@@ -614,7 +614,7 @@
 },
 {
 	"filename": "debrish_fed_build05_0000.png",
-	"frame": {"x":114,"y":652,"w":94,"h":114},
+	"frame": {"x":225,"y":985,"w":94,"h":114},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":70,"w":94,"h":114},
@@ -632,7 +632,7 @@
 },
 {
 	"filename": "debrish_fed_build07_0000.png",
-	"frame": {"x":1,"y":627,"w":111,"h":145},
+	"frame": {"x":1,"y":625,"w":111,"h":145},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":91,"y":71,"w":111,"h":145},
@@ -641,28 +641,28 @@
 },
 {
 	"filename": "debrish_fed_build08_0000.png",
-	"frame": {"x":379,"y":649,"w":109,"h":86},
+	"frame": {"x":259,"y":411,"w":110,"h":86},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":95,"y":119,"w":109,"h":86},
+	"spriteSourceSize": {"x":95,"y":119,"w":110,"h":86},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed_build09_0000.png",
-	"frame": {"x":397,"y":890,"w":92,"h":70},
+	"frame": {"x":350,"y":697,"w":90,"h":70},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":96,"y":110,"w":92,"h":70},
+	"spriteSourceSize": {"x":98,"y":110,"w":90,"h":70},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed_build10_0000.png",
-	"frame": {"x":1,"y":486,"w":119,"h":139},
+	"frame": {"x":1,"y":484,"w":120,"h":139},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":101,"y":66,"w":119,"h":139},
+	"spriteSourceSize": {"x":100,"y":66,"w":120,"h":139},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
@@ -677,19 +677,19 @@
 },
 {
 	"filename": "debrish_fed_build13_0000.png",
-	"frame": {"x":303,"y":750,"w":92,"h":96},
+	"frame": {"x":352,"y":599,"w":93,"h":96},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":111,"y":100,"w":92,"h":96},
+	"spriteSourceSize": {"x":111,"y":100,"w":93,"h":96},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "debrish_fed_build14_0000.png",
-	"frame": {"x":1,"y":326,"w":131,"h":158},
+	"frame": {"x":1,"y":325,"w":131,"h":157},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":80,"y":62,"w":131,"h":158},
+	"spriteSourceSize": {"x":80,"y":62,"w":131,"h":157},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -698,8 +698,8 @@
 	"version": "1.0",
 	"image": "fed_unitandbuilding_wreckages.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":1358},
+	"size": {"w":509,"h":1362},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c2207afc8b8ed936ad6f1d64b552e37c:d9fa72363f136149a73bc543bb269750:2b4de4d9766cca77dce86f78815219ca$"
+	"smartupdate": "$TexturePacker:SmartUpdate:09aaed99c70304e795e7112c051e466a:178fffda48655fc0367fa9ba6e4a97e0:2b4de4d9766cca77dce86f78815219ca$"
 }
 }
