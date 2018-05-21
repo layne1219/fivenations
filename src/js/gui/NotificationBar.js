@@ -1,5 +1,7 @@
 /* global Phaser */
 import { DEFAULT_FONT, NOTIFICATION_PANEL } from '../common/Const';
+import TranslationManager from '../common/TranslationManager';
+import EventEmitter from '../sync/EventEmitter';
 
 /**
  * Notification bar implementation that can be used to display
@@ -16,6 +18,7 @@ class NotificationBar extends Phaser.Group {
     this.setDefaultVisiblity();
     this.initBackground();
     this.initTextComponent();
+    this.initListeners();
   }
 
   /**
@@ -43,7 +46,7 @@ class NotificationBar extends Phaser.Group {
    */
   initTextComponent() {
     this.label = this.add(this.game.add.text(0, 0, '', {
-      font: DEFAULT_FONT.font,
+      font: DEFAULT_FONT.font.replace('11px', '13px'),
       fill: DEFAULT_FONT.color,
       boundsAlignH: 'center',
       boundsAlignV: 'middle',
@@ -55,6 +58,28 @@ class NotificationBar extends Phaser.Group {
       NOTIFICATION_PANEL.width,
       NOTIFICATION_PANEL.height,
     );
+  }
+
+  /**
+   * Registers the default event listeners
+   */
+  initListeners() {
+    const translator = TranslationManager.getInstance();
+    const emitter = EventEmitter.getInstance();
+    const notEnoughPrefix = 'notifications.notenough.';
+    const eventsTranslationsMap = {
+      // insufficient founds notifications
+      'resources/unsufficient/titanium': `${notEnoughPrefix}titanium`,
+      'resources/unsufficient/silicium': `${notEnoughPrefix}silicium`,
+      'resources/unsufficient/energy': `${notEnoughPrefix}energy`,
+      'resources/unsufficient/uranium': `${notEnoughPrefix}uranium`,
+      'resources/unsufficient/space': `${notEnoughPrefix}space`,
+    };
+    Object.keys(eventsTranslationsMap).forEach((key) => {
+      const translation = eventsTranslationsMap[key];
+      const text = translator.translate(translation);
+      emitter.local.addEventListener(key, this.show.bind(this, text));
+    });
   }
 
   /**

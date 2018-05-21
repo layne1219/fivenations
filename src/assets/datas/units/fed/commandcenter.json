@@ -30,6 +30,7 @@
   "energy": 0,
   "uranium": 0,
   "space": 0,
+  "supply": 30,
   "buildingTime": 30,
   "directions": 0,
   "animFrame": 1,

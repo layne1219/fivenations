@@ -22,8 +22,8 @@ class ResourceGroup extends Phaser.Group {
     const { current, max } = values;
 
     this.textGroup.text = current || 0;
-    if (max) {
-      this.textGroup.text += `/${max}`;
+    if (max !== undefined) {
+      this.textGroup.text += ` / ${max}`;
     }
     this.textGroup.addColor('#FFFFFF', 0);
     // this.textGroup.addColor('#475D86', current.toString().length + 1);
@@ -55,11 +55,11 @@ export default class ResourceDisplay extends Phaser.Group {
     this.silicium = new ResourceGroup({ x: 13, y: 0 }, phaserGame);
     this.add(this.silicium);
 
-    this.energy = new ResourceGroup({ x: 105, y: 0 }, phaserGame);
-    this.add(this.energy);
-
-    this.uranium = new ResourceGroup({ x: 200, y: 0 }, phaserGame);
+    this.uranium = new ResourceGroup({ x: 105, y: 0 }, phaserGame);
     this.add(this.uranium);
+
+    this.energy = new ResourceGroup({ x: 200, y: 0 }, phaserGame);
+    this.add(this.energy);
 
     this.food = new ResourceGroup({ x: 294, y: 0 }, phaserGame);
     this.add(this.food);
@@ -79,7 +79,10 @@ export default class ResourceDisplay extends Phaser.Group {
     this.silicium.updateContent({ current: user.getSilicium() });
     this.energy.updateContent({ current: user.getEnergy() });
     this.uranium.updateContent({ current: user.getUranium() });
-    this.food.updateContent({ current: user.getCurrentEntityNumber() });
+    this.food.updateContent({
+      current: user.getCurrentEntityNumber(),
+      max: user.getSupply(),
+    });
   }
 
   /**

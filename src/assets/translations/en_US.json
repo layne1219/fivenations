@@ -6,6 +6,12 @@
     "mainmenu.spacemarket": "SPACE MARKET",
     
     "tooltip.entities.required": "Required:",
+
+    "notifications.notenough.titanium": "Insufficient Titanium!",
+    "notifications.notenough.silicium": "Insufficient Silicium!",
+    "notifications.notenough.energy": "Not enough Energy!",
+    "notifications.notenough.uranium": "Insufficient Uranium!",
+    "notifications.notenough.space": "You do not have enough supply!",
     
     "abilities.move": "Move",
     "abilities.stop": "Stop",
