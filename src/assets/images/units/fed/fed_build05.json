@@ -1,1 +1,138 @@
-{"frames":[{"filename":"gui_construct_fed_build05.png","frame":{"x":101,"y":202,"w":38,"h":38},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":38,"h":38},"sourceSize":{"w":38,"h":38},"pivot":{"x":0.5,"y":0.5}},{"filename":"gui_ico_fed_build05.png","frame":{"x":1,"y":149,"w":98,"h":110},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":11,"y":1,"w":98,"h":110},"sourceSize":{"w":127,"h":111},"pivot":{"x":0.5,"y":0.5}},{"filename":"gui_ico_fed_sm_build05.png","frame":{"x":101,"y":149,"w":51,"h":51},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":51,"h":51},"sourceSize":{"w":51,"h":51},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed05_building_buildend.png","frame":{"x":1,"y":1,"w":176,"h":146},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":62,"y":68,"w":176,"h":146},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00000.png","frame":{"x":720,"y":1,"w":121,"h":132},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":121,"h":132},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00001.png","frame":{"x":709,"y":135,"w":133,"h":132},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":133,"h":132},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00002.png","frame":{"x":573,"y":139,"w":134,"h":132},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":134,"h":132},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00003.png","frame":{"x":584,"y":1,"w":134,"h":132},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":134,"h":132},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00004.png","frame":{"x":179,"y":1,"w":134,"h":136},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":134,"h":136},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00005.png","frame":{"x":315,"y":1,"w":133,"h":136},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":133,"h":136},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00006.png","frame":{"x":450,"y":139,"w":121,"h":136},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":121,"h":136},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00007.png","frame":{"x":179,"y":139,"w":134,"h":136},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":134,"h":136},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00008.png","frame":{"x":315,"y":139,"w":133,"h":136},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":133,"h":136},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"fed_build05_00009.png","frame":{"x":450,"y":1,"w":132,"h":136},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":84,"y":64,"w":132,"h":136},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}}],"meta":{"app":"http://www.codeandweb.com/texturepacker","version":"1.0","image":"fed_build05.png","format":"RGBA8888","size":{"w":843,"h":276},"scale":"1","smartupdate":"$TexturePacker:SmartUpdate:4a93cf72eb644f3bbb1a4ee3a2b549ac:fcdce0bde75de564f9c6aebf4302ecfd:7baa1c2ce79f41a49530b4b9fd079db7$"}}
+{"frames": [
+
+{
+	"filename": "__gui_construct_fed_build05.png",
+	"frame": {"x":179,"y":54,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "__gui_ico_fed_build05.png",
+	"frame": {"x":1,"y":818,"w":98,"h":110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":1,"w":98,"h":110},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "__gui_ico_fed_sm_build05.png",
+	"frame": {"x":179,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "_fed05_building_buildend.png",
+	"frame": {"x":1,"y":1,"w":176,"h":140},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":62,"y":74,"w":176,"h":140},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0000.png",
+	"frame": {"x":1,"y":143,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0001.png",
+	"frame": {"x":125,"y":143,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0002.png",
+	"frame": {"x":1,"y":278,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0003.png",
+	"frame": {"x":125,"y":278,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0004.png",
+	"frame": {"x":1,"y":413,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0005.png",
+	"frame": {"x":125,"y":413,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0006.png",
+	"frame": {"x":1,"y":548,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0007.png",
+	"frame": {"x":125,"y":548,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0008.png",
+	"frame": {"x":1,"y":683,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build05_0009.png",
+	"frame": {"x":125,"y":683,"w":122,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":83,"y":64,"w":122,"h":133},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "fed_build05.png",
+	"format": "RGBA8888",
+	"size": {"w":248,"h":929},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c8f18e9265a68dadb371062da58bf430:86c46bf0eeb55392af975accd1cdeb61:7baa1c2ce79f41a49530b4b9fd079db7$"
+}
+}
