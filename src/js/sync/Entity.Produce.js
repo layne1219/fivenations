@@ -15,10 +15,10 @@ const ns = window.fivenations;
 function getRequiredResources(entityId) {
   const data = ns.game.game.cache.getJSON(entityId);
   return {
-    titanium: data.titanium,
-    silicium: data.silicium,
-    uranium: data.uranium,
-    energy: data.energy,
+    titanium: -data.titanium,
+    silicium: -data.silicium,
+    uranium: -data.uranium,
+    energy: -data.energy,
   };
 }
 
@@ -30,7 +30,9 @@ function getRequiredResources(entityId) {
  */
 function alterResources(player, entityId) {
   const emitter = EventEmitter.getInstance();
-  emitter.synced.player(player.getGUID()).alter(getRequiredResources(entityId));
+  emitter.synced
+    .players(player.getGUID())
+    .alter(getRequiredResources(entityId));
 }
 
 class EntityProduce extends Event {

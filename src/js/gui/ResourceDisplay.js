@@ -55,11 +55,11 @@ export default class ResourceDisplay extends Phaser.Group {
     this.silicium = new ResourceGroup({ x: 13, y: 0 }, phaserGame);
     this.add(this.silicium);
 
-    this.energy = new ResourceGroup({ x: 105, y: 0 }, phaserGame);
-    this.add(this.energy);
-
-    this.uranium = new ResourceGroup({ x: 200, y: 0 }, phaserGame);
+    this.uranium = new ResourceGroup({ x: 105, y: 0 }, phaserGame);
     this.add(this.uranium);
+
+    this.energy = new ResourceGroup({ x: 200, y: 0 }, phaserGame);
+    this.add(this.energy);
 
     this.food = new ResourceGroup({ x: 294, y: 0 }, phaserGame);
     this.add(this.food);
