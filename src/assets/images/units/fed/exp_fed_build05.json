@@ -1,7 +1,34 @@
 {"frames": [
 
 {
-	"filename": "exp_fed05_building_buildend.png",
+	"filename": "__gui_construct_exp_fed_build05.png",
+	"frame": {"x":54,"y":154,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "__gui_ico_exp_fed_build05.png",
+	"frame": {"x":323,"y":125,"w":106,"h":111},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":0,"w":106,"h":111},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "__gui_ico_exp_fed_build_sm05.png",
+	"frame": {"x":1,"y":154,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "_exp_fed05_building_buildend.png",
 	"frame": {"x":1,"y":1,"w":176,"h":151},
 	"rotated": false,
 	"trimmed": true,
@@ -10,17 +37,8 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "exp_fed05_building_debrish.png",
-	"frame": {"x":1,"y":309,"w":136,"h":122},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":67,"w":136,"h":122},
-	"sourceSize": {"w":300,"h":300},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "exp_fed_build05.png",
-	"frame": {"x":1,"y":154,"w":142,"h":153},
+	"filename": "exp_fed_build_05.png",
+	"frame": {"x":179,"y":1,"w":142,"h":153},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":83,"y":65,"w":142,"h":153},
@@ -28,30 +46,12 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "gui_construct_exp_fed_build05.png",
-	"frame": {"x":179,"y":54,"w":38,"h":38},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
-	"sourceSize": {"w":38,"h":38},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "gui_ico_exp_fed_build05.png",
-	"frame": {"x":139,"y":309,"w":106,"h":111},
+	"filename": "Xexp_fed05_building_debrish.png",
+	"frame": {"x":323,"y":1,"w":135,"h":122},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":12,"y":0,"w":106,"h":111},
-	"sourceSize": {"w":127,"h":111},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "gui_ico_exp_fed_build_sm05.png",
-	"frame": {"x":179,"y":1,"w":51,"h":51},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
-	"sourceSize": {"w":51,"h":51},
+	"spriteSourceSize": {"x":86,"y":66,"w":135,"h":122},
+	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -59,8 +59,8 @@
 	"version": "1.0",
 	"image": "exp_fed_build05.png",
 	"format": "RGBA8888",
-	"size": {"w":246,"h":432},
+	"size": {"w":459,"h":237},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:adce62d9a7e2e0539da46690c21c37ff:86a70069f1d2b8d9a8ad4e9a8b3ae4f0:17ad83b6ff7f048f0868640ac770c4fa$"
+	"smartupdate": "$TexturePacker:SmartUpdate:869091f88fd6778903d872725f960bd3:8f308d9eb7261015543e4235646890be:17ad83b6ff7f048f0868640ac770c4fa$"
 }
 }
