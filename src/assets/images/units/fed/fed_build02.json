@@ -2,7 +2,7 @@
 
 {
 	"filename": "__gui_construct_fed_build02.png",
-	"frame": {"x":1616,"y":54,"w":38,"h":38},
+	"frame": {"x":1,"y":194,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -11,7 +11,7 @@
 },
 {
 	"filename": "__gui_ico_fed_build02.png",
-	"frame": {"x":1497,"y":1,"w":117,"h":111},
+	"frame": {"x":859,"y":123,"w":117,"h":111},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":117,"h":111},
@@ -20,7 +20,7 @@
 },
 {
 	"filename": "__gui_ico_fed_sm_build02.png",
-	"frame": {"x":1616,"y":1,"w":51,"h":51},
+	"frame": {"x":1,"y":141,"w":51,"h":51},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
@@ -28,17 +28,17 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "_fed_build02_0010.png",
-	"frame": {"x":1,"y":1,"w":134,"h":120},
+	"filename": "_fed02_building_buildend.png",
+	"frame": {"x":1,"y":1,"w":176,"h":138},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
+	"spriteSourceSize": {"x":62,"y":76,"w":176,"h":138},
 	"sourceSize": {"w":300,"h":300},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "fed_build02_0000.png",
-	"frame": {"x":137,"y":1,"w":134,"h":120},
+	"frame": {"x":179,"y":1,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -47,7 +47,7 @@
 },
 {
 	"filename": "fed_build02_0001.png",
-	"frame": {"x":273,"y":1,"w":134,"h":120},
+	"frame": {"x":179,"y":123,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -56,7 +56,7 @@
 },
 {
 	"filename": "fed_build02_0002.png",
-	"frame": {"x":409,"y":1,"w":134,"h":120},
+	"frame": {"x":315,"y":1,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -65,7 +65,7 @@
 },
 {
 	"filename": "fed_build02_0003.png",
-	"frame": {"x":545,"y":1,"w":134,"h":120},
+	"frame": {"x":315,"y":123,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "fed_build02_0004.png",
-	"frame": {"x":681,"y":1,"w":134,"h":120},
+	"frame": {"x":451,"y":1,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -83,7 +83,7 @@
 },
 {
 	"filename": "fed_build02_0005.png",
-	"frame": {"x":817,"y":1,"w":134,"h":120},
+	"frame": {"x":451,"y":123,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -92,7 +92,7 @@
 },
 {
 	"filename": "fed_build02_0006.png",
-	"frame": {"x":953,"y":1,"w":134,"h":120},
+	"frame": {"x":587,"y":1,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -101,7 +101,7 @@
 },
 {
 	"filename": "fed_build02_0007.png",
-	"frame": {"x":1089,"y":1,"w":134,"h":120},
+	"frame": {"x":587,"y":123,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -110,7 +110,7 @@
 },
 {
 	"filename": "fed_build02_0008.png",
-	"frame": {"x":1225,"y":1,"w":134,"h":120},
+	"frame": {"x":723,"y":1,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -119,7 +119,16 @@
 },
 {
 	"filename": "fed_build02_0009.png",
-	"frame": {"x":1361,"y":1,"w":134,"h":120},
+	"frame": {"x":859,"y":1,"w":134,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "fed_build02_0010.png",
+	"frame": {"x":723,"y":123,"w":134,"h":120},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":86,"y":92,"w":134,"h":120},
@@ -131,8 +140,8 @@
 	"version": "1.0",
 	"image": "fed_build02.png",
 	"format": "RGBA8888",
-	"size": {"w":1668,"h":122},
+	"size": {"w":994,"h":244},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:38e9e6b292472f7c09cad245bcc90c27:aa6b98d2d86a77520b55d0c304578be8:d173a8aed195554498723168f68d5d1a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f9320121512d5ad0666e0a467c3b2766:e6bd226e071aaa3d5f8ea8e4524aabd4:d173a8aed195554498723168f68d5d1a$"
 }
 }
