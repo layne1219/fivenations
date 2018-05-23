@@ -1,12 +1,11 @@
 const json = require('json-update');
 const jsonFile = require('jsonfile');
-const beautify = require("json-beautify");
+const beautify = require('json-beautify');
 const path = require('path');
 
 const dir = '../src/assets/images/units/';
 const files = [
-
-/*	'ath/ath_build01.json',
+  /*	'ath/ath_build01.json',
 	'ath/ath_build02.json',
 	'ath/ath_build03.json',
 	'ath/ath_build04.json',
@@ -93,7 +92,7 @@ const files = [
 	'syl/syl_unit11.json',
 	'syl/syl_unit12.json',
 	'syl/syl_unit13.json',
-	'syl/syl_unit14.json',			
+	'syl/syl_unit14.json',
 
 	'tho/tho_build01.json',
 	'tho/tho_build02.json',
@@ -110,21 +109,21 @@ const files = [
 	'tho/tho_build13.json',
 	'tho/tho_build14.json',
 
-	'tho/tho_unit01.json',
-	'tho/tho_unit02.json',
-	'tho/tho_unit03.json',
-	'tho/tho_unit04.json',
-	'tho/tho_unit05.json',
-	'tho/tho_unit06.json',
-	'tho/tho_unit07.json',
-	'tho/tho_unit08.json',
-	'tho/tho_unit09.json',
-	'tho/tho_unit10.json',
-	'tho/tho_unit11.json',
-	'tho/tho_unit12.json',
-	'tho/tho_unit13.json',
+*/ 'tho/tho_unit01.json',
+  'tho/tho_unit02.json',
+  'tho/tho_unit03.json',
+  'tho/tho_unit04.json',
+  'tho/tho_unit05.json',
+  'tho/tho_unit06.json',
+  'tho/tho_unit07.json',
+  'tho/tho_unit08.json',
+  'tho/tho_unit09.json',
+  'tho/tho_unit10.json',
+  'tho/tho_unit11.json',
+  'tho/tho_unit12.json',
+  'tho/tho_unit13.json',
 
-	'zho/zho_build01.json',
+  /*	'zho/zho_build01.json',
 	'zho/zho_build02.json',
 	'zho/zho_build03.json',
 	'zho/zho_build04.json',
@@ -155,7 +154,7 @@ const files = [
 	'zho/zho_unit13.json',
 	'zho/zho_unit14.json',
 	'zho/zho_unit15.json',
-	'zho/zho_unit16.json', */
+	'zho/zho_unit16.json',
 
 	'ast/asteroid01.json',
 	'ast/asteroid02.json',
@@ -166,10 +165,10 @@ const files = [
 	'ast/asteroid_sm02.json',
 	'ast/asteroid_sm03.json',
 	'ast/asteroid_sm04.json',
-	
+
 	'ast/asteroid_big01.json',
 	'ast/asteroid_big02.json',
-	
+
 	'ast/asteroid_ice01.json',
 	'ast/asteroid_ice02.json',
 	'ast/asteroid_ice_sm01.json',
@@ -188,36 +187,34 @@ const files = [
 	'ast/asteroid_uranium01.json',
 	'ast/asteroid_uranium02.json',
 	'ast/asteroid_uranium_sm01.json',
-	'ast/asteroid_uranium_sm02.json',
-
+	'ast/asteroid_uranium_sm02.json', */
 ];
 
-files.forEach(file => {
-	const target = path.join(dir, file);
-	json
-		.load(target)
-		.then(data => {
-			/*const prefix = file.substring(0, 3);
-			const suffix = file.substring(4, 4); 
+files.forEach((file) => {
+  const target = path.join(dir, file);
+  json
+    .load(target)
+    .then((data) => {
+      /* const prefix = file.substring(0, 3);
+			const suffix = file.substring(4, 4);
 			const newData = Object.assign({}, data);
 			const icons = newData.frames.splice(newData.frames.length - 3);
 			const iconsSorted = [
 				icons.filter(data => data.filename.indexOf('construct') !== -1)[0],
 				icons.filter(data => data.filename.indexOf(`ico_${prefix}_${suffix}`) !== -1)[0],
 				icons.filter(data => data.filename.indexOf(`ico_${prefix}_sm_${suffix}`) !== -1)[0]
-			];*/
-			const newData = Object.assign({}, data);
-			const tmp = Object.assign({}, newData.frames[1]);
+			]; */
+      const newData = Object.assign({}, data);
+      const tmp = Object.assign({}, newData.frames[1]);
 
-			if (tmp.filename.indexOf('_sm_') !== -1) {
-				newData.frames[1] = Object.assign({}, newData.frames[2]);
-				newData.frames[2] = tmp; 
-			}
+      if (tmp.filename.indexOf('_sm_') !== -1) {
+        newData.frames[1] = Object.assign({}, newData.frames[2]);
+        newData.frames[2] = tmp;
+      }
 
-			return jsonFile.writeFile(target, newData, {spaces: 2});
-		})
-		.then((err, data) => console.log(`${target} has been updated`));
-
+      return jsonFile.writeFile(target, newData, { spaces: 2 });
+    })
+    .then((err, data) => console.log(`${target} has been updated`));
 });
 
 /**
@@ -246,5 +243,4 @@ Object.keys(ids).forEach(id => {
 	console.log(`${v.name}: [${v.frames.join(', ')}]`);
 })
 
-**/
-
+* */
