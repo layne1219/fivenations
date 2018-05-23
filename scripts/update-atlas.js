@@ -109,21 +109,21 @@ const files = [
 	'tho/tho_build13.json',
 	'tho/tho_build14.json',
 
-	'tho/tho_unit01.json',
-	'tho/tho_unit02.json',
-	'tho/tho_unit03.json',
-	'tho/tho_unit04.json',
-	'tho/tho_unit05.json',
-	'tho/tho_unit06.json',
-	'tho/tho_unit07.json',
-	'tho/tho_unit08.json',
-	'tho/tho_unit09.json',
-	'tho/tho_unit10.json',
-	'tho/tho_unit11.json',
-	'tho/tho_unit12.json',
-	'tho/tho_unit13.json',
+*/ 'tho/tho_unit01.json',
+  'tho/tho_unit02.json',
+  'tho/tho_unit03.json',
+  'tho/tho_unit04.json',
+  'tho/tho_unit05.json',
+  'tho/tho_unit06.json',
+  'tho/tho_unit07.json',
+  'tho/tho_unit08.json',
+  'tho/tho_unit09.json',
+  'tho/tho_unit10.json',
+  'tho/tho_unit11.json',
+  'tho/tho_unit12.json',
+  'tho/tho_unit13.json',
 
-	'zho/zho_build01.json',
+  /*	'zho/zho_build01.json',
 	'zho/zho_build02.json',
 	'zho/zho_build03.json',
 	'zho/zho_build04.json',
@@ -154,7 +154,7 @@ const files = [
 	'zho/zho_unit13.json',
 	'zho/zho_unit14.json',
 	'zho/zho_unit15.json',
-	'zho/zho_unit16.json', */
+	'zho/zho_unit16.json',
 
   'ast/asteroid01.json',
   'ast/asteroid02.json',
@@ -187,7 +187,7 @@ const files = [
   'ast/asteroid_uranium01.json',
   'ast/asteroid_uranium02.json',
   'ast/asteroid_uranium_sm01.json',
-  'ast/asteroid_uranium_sm02.json',
+  'ast/asteroid_uranium_sm02.json',*/
 ];
 
 files.forEach((file) => {
