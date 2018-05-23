@@ -1,1 +1,57 @@
-{"frames":[{"filename":"gui_construct_tho_build05.png","frame":{"x":90,"y":85,"w":38,"h":38},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":38,"h":38},"sourceSize":{"w":38,"h":38},"pivot":{"x":0.5,"y":0.5}},{"filename":"gui_ico_tho_build05.png","frame":{"x":1,"y":1,"w":87,"h":97},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":21,"y":13,"w":87,"h":97},"sourceSize":{"w":127,"h":111},"pivot":{"x":0.5,"y":0.5}},{"filename":"gui_ico_tho_sm_build05.png","frame":{"x":184,"y":63,"w":51,"h":51},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":51,"h":51},"sourceSize":{"w":51,"h":51},"pivot":{"x":0.5,"y":0.5}},{"filename":"tho_build05_0000.png","frame":{"x":184,"y":1,"w":56,"h":60},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":122,"y":121,"w":56,"h":60},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}},{"filename":"tho_build_05_buildingphase_end.png","frame":{"x":90,"y":1,"w":92,"h":82},"rotated":false,"trimmed":true,"spriteSourceSize":{"x":104,"y":101,"w":92,"h":82},"sourceSize":{"w":300,"h":300},"pivot":{"x":0.5,"y":0.5}}],"meta":{"app":"http://www.codeandweb.com/texturepacker","version":"1.0","image":"tho_build05.png","format":"RGBA8888","size":{"w":241,"h":124},"scale":"1","smartupdate":"$TexturePacker:SmartUpdate:9abeff1ed29ad01663b48720d085b118:7473d2a9febc1f99b3411bbbb483e9d7:07a4b69c1e82caae7ffc114170731ba9$"}}
+{"frames": [
+
+{
+	"filename": "__gui_construct_tho_build05.png",
+	"frame": {"x":90,"y":88,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "__gui_ico_tho_build05.png",
+	"frame": {"x":1,"y":1,"w":87,"h":97},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":13,"w":87,"h":97},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "__gui_ico_tho_sm_build05.png",
+	"frame": {"x":178,"y":62,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "_tho_build_05_buildingphase_end.png",
+	"frame": {"x":90,"y":1,"w":86,"h":85},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":107,"y":100,"w":86,"h":85},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tho_build05_0000.png",
+	"frame": {"x":178,"y":1,"w":57,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":121,"y":122,"w":57,"h":59},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "tho_build05.png",
+	"format": "RGBA8888",
+	"size": {"w":236,"h":127},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:edd1566a58fb7dcbea338de7963740b5:27d5c1c70229e1a249f115de89a8a0ce:07a4b69c1e82caae7ffc114170731ba9$"
+}
+}
