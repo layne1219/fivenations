@@ -7,10 +7,10 @@
     
     "tooltip.entities.required": "Required:",
 
-    "notifications.notenough.titanium": "Insufficient Titanium!",
-    "notifications.notenough.silicium": "Insufficient Silicium!",
+    "notifications.notenough.titanium": "Insufficient Metal!",
+    "notifications.notenough.silicium": "Insufficient Helium-3!",
     "notifications.notenough.energy": "Not enough Energy!",
-    "notifications.notenough.uranium": "Insufficient Uranium!",
+    "notifications.notenough.uranium": "Insufficient Tachyon!",
     "notifications.notenough.space": "You do not have enough supply!",
     
     "abilities.move": "Move",
