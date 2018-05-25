@@ -54,6 +54,27 @@ ns.effects = Object.assign(ns.effects || {}, {
     atlasURL: `${PATH_ASSETS_IMG}/weapon_projectiles.json`,
     dataURL: `${PATH_ASSETS_DATA}/ragnarok-heavy-gun.json`,
   },
+
+  'lancet-gun': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}/weapon_projectiles.png`,
+    atlasURL: `${PATH_ASSETS_IMG}/weapon_projectiles.json`,
+    dataURL: `${PATH_ASSETS_DATA}/lancet-gun.json`,
+  },
+
+  'proton-torpedo': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}/weapon_projectiles.png`,
+    atlasURL: `${PATH_ASSETS_IMG}/weapon_projectiles.json`,
+    dataURL: `${PATH_ASSETS_DATA}/proton-torpedo.json`,
+  },
+
+  'thermobaric-bomb': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}/weapon_projectiles.png`,
+    atlasURL: `${PATH_ASSETS_IMG}/weapon_projectiles.json`,
+    dataURL: `${PATH_ASSETS_DATA}/thermobaric-bomb.json`,
+  },
 });
 
 export default {
