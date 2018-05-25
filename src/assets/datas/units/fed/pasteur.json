@@ -26,10 +26,10 @@
   ],
   "titanium": 100,
   "silicium": 150,
-  "energy": 350,
+  "energy": 300,
   "uranium": 0,
-  "space": 8,
-  "buildingTime": 20,
+  "space": 5,
+  "buildingTime": 45,
   "directions": 32,
   "animFrame": 1,
   "animType": 0,
@@ -189,5 +189,9 @@
         "fed-wreck-5"
       ]
     }
+  },
+  "damageArea": {
+    "width": 54,
+    "height": 54
   }
 }

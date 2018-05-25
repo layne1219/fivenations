@@ -7,13 +7,13 @@
   "armor": 4,
   "power": 0,
   "hangar": 15,
-  "speed": 35,
+  "speed": 40,
   "maneuverability": 15,
   "vision": 7,
   "weapons": [
     7,
     7,
-    5,
+    7,
     16,
     0,
     0,
@@ -24,12 +24,12 @@
     0,
     0
   ],
-  "titanium": 750,
+  "titanium": 600,
   "silicium": 250,
-  "energy": 500,
+  "energy": 400,
   "uranium": 50,
-  "space": 25,
-  "buildingTime": 40,
+  "space": 15,
+  "buildingTime": 70,
   "directions": 32,
   "animFrame": 1,
   "animType": 0,
@@ -189,5 +189,9 @@
         "fed-wreck-5"
       ]
     }
+  },
+  "damageArea": {
+    "width": 80,
+    "height": 80
   }
 }

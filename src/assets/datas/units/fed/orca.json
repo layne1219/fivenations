@@ -11,10 +11,10 @@
   "maneuverability": 40,
   "vision": 4,
   "weapons": [
-    1,
-    1,
-    1,
     2,
+    0,
+    0,
+    0,
     0,
     0,
     0,
@@ -24,12 +24,12 @@
     0,
     0
   ],
-  "titanium": 200,
+  "titanium": 150,
   "silicium": 0,
-  "energy": 100,
+  "energy": 50,
   "uranium": 0,
-  "space": 4,
-  "buildingTime": 12,
+  "space": 3,
+  "buildingTime": 24,
   "directions": 16,
   "animFrame": 1,
   "animType": 0,
@@ -126,7 +126,7 @@
     }
   },
   "damageArea": {
-    "width": 40,
-    "height": 40
+    "width": 30,
+    "height": 30
   }
 }
