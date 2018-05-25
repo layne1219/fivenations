@@ -11,6 +11,7 @@ import TranslationManager from '../common/TranslationManager';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserPointer from '../gui/UserPointer';
+import Shorthand from '../gui/Shorthand';
 import AudioManager from '../audio/AudioManager';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
@@ -114,6 +115,7 @@ class Game extends Util.EventDispatcher {
     // -----------------------------------------------------------------------
     UserPointer.setGame(this.game);
     this.userPointer = UserPointer.getInstance(true);
+    this.shorthand = Shorthand.getInstance();
 
     // Right Mouse Button to send units to a position
     this.userPointer.on('rightbutton/down', () => {
@@ -138,42 +140,18 @@ class Game extends Util.EventDispatcher {
         return false;
       });
 
+      const targetingEntities = entitiesHovering.length > 0;
+      const selectedEntities = this.eventEmitter.synced.entities(':user:selected');
+
       if (UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
         resetActivityQueue = false;
       }
 
-      if (entitiesHovering.length > 0) {
-        const selectedEntities = this.eventEmitter.synced.entities(':user:selected');
-
-        // if the entity is hostile we should trigger the attack short hand
-        if (
-          this.playerManager.isEntityHostileToPlayer(
-            targetEntity,
-            this.playerManager.getUser(),
-          )
-        ) {
-          selectedEntities.attack({
-            targetEntity,
-            resetActivityQueue,
-          });
-        } else {
-          // short hand for follow
-          selectedEntities.follow({
-            targetEntity,
-            resetActivityQueue,
-          });
-        }
-
-        targetEntity.selectedAsTarget();
-      } else {
-        this.eventEmitter.synced.entities(':user:selected:not(building)').move({
-          x: coords.x,
-          y: coords.y,
-          resetActivityQueue,
-        });
-
-        this.GUI.putClickAnim(coords.x, coords.y);
-      }
+      this.shorthand.execute({
+        targetEntity,
+        targetingEntities,
+        selectedEntities,
+      });
     });
 
     // Unselecting units when clicking over an area with no entities underneath
