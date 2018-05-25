@@ -177,6 +177,7 @@ WeaponManager.prototype = {
         if (!weapon.isOffensive()) return min;
 
         range = weapon.getRange();
+        if (!range) return min;
         if (range < min) return range;
 
         return min;

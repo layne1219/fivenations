@@ -280,6 +280,7 @@ export default {
                 return;
             }
             for (var i in this.events[type]) {
+                if (!this.events[type][i]) continue;
                 if (typeof this.events[type][i] === 'function') {
                     this.events[type][i](event);
                 } else if (typeof this.events[type][i] === 'object') {
