@@ -1,0 +1,46 @@
+{
+  "id": "proton-torpedo",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 200,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156
+      ]
+    }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-red"
+      ],
+      "audio": [
+        "fed_cannon1",
+        "fed_cannon2"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true,
+      "audio": [
+        "DestAtckExplosion1",
+        "DestAtckExplosion2"
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "thermobaric-bomb",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 200,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164
+      ]
+    }
+  },
+  "trails": {
+  	"effect": "smoke-trail-3",
+  	"rate": 15
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-red"
+      ],
+      "audio": [
+        "fed_cannon1",
+        "fed_cannon2"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true,
+      "audio": [
+        "DestAtckExplosion1",
+        "DestAtckExplosion2"
+      ]
+    }
+  }
+}

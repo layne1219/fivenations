@@ -1,0 +1,46 @@
+{
+  "id": "lancet-gun",
+  "targetGraphicsGroup": "projectiles",
+  "size": "xsm",
+  "ttl": 200,
+  "animations": {
+    "idle": {
+      "rate": 20,
+      "loopable": true,
+      "frames": [
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148
+      ]
+    }
+  },
+  "events": {
+    "create": {
+      "effects": [
+        "muzzleflash-red"
+      ],
+      "audio": [
+        "fed_cannon1",
+        "fed_cannon2"
+      ]
+    },
+    "remove": {
+      "effects": [
+        "blow-2"
+      ]
+    },
+    "collision": {
+      "damageTarget": true,
+      "removeEffect": true,
+      "audio": [
+        "DestAtckExplosion1",
+        "DestAtckExplosion2"
+      ]
+    }
+  }
+}
