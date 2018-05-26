@@ -25,12 +25,12 @@
     7,
     7
   ],
-  "titanium": 2000,
-  "silicium": 800,
-  "energy": 800,
-  "uranium": 50,
+  "titanium": 1000,
+  "silicium": 400,
+  "energy": 1000,
+  "uranium": 100,
   "space": 0,
-  "buildingTime": 90,
+  "buildingTime": 200,
   "directions": 0,
   "animFrame": 1,
   "animType": [
@@ -84,7 +84,7 @@
     }
   },
   "damageArea": {
-    "width": 170,
-    "height": 170
+    "width": 125,
+    "height": 125
   }
 }
