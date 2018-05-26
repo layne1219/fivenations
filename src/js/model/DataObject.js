@@ -258,6 +258,18 @@ function DataObject(json) {
       return data.animations;
     },
 
+    getJetEngineSprite() {
+      return data.jetEngineSprite;
+    },
+
+    getJetEngineFrames() {
+      return data.jetEngineFrames;
+    },
+
+    getJetEngineAlphaOffset() {
+      return data.jetEngineAlphaOffset;
+    },
+
     getAnimationByKey(key) {
       if (!data.animations) return null;
       return data.animations[key];

@@ -1,0 +1,25 @@
+{
+    "id": "theocratsseat-wreckage",
+    "size": "m",
+    "ttl": 500,
+    "customFrame": 51,
+    "frames": [
+        51
+    ],
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}

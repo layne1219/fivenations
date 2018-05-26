@@ -481,30 +481,460 @@ ns.effects = Object.assign(ns.effects || {}, {
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_red.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
+
   'muzzleflash-spore': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_spore.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_spore.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
+
   'muzzleflash-yellow': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_yellow.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_yellow.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
+
   'muzzleflash-cannon': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_cannon.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_cannon.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
+
   'muzzleflash-greencannon': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}muzzleflash_green_cannon.png`,
     atlasURL: `${PATH_ASSETS_IMG}muzzleflash_green_cannon.json`,
     dataURL: `${PATH_ASSETS_DATA}muzzleflash.json`,
   },
+
+  'hailstorm-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}hailstorm-wreckage.json`,
+  },
+
+  'stgeorge-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}stgeorge-wreckage.json`,
+  },
+
+  'avenger-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}avenger-wreckage.json`,
+  },
+
+  'avenger2-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}avenger2-wreckage.json`,
+  },
+
+  'icarus-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}icarus-wreckage.json`,
+  },
+
+  'kutuzov-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}kutuzov-wreckage.json`,
+  },
+
+  'pasteur-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}pasteur-wreckage.json`,
+  },
+
+  'dresda-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}dresda-wreckage.json`,
+  },
+
+  'teller-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}teller-wreckage.json`,
+  },
+
+  'commandcenter-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}commandcenter-wreckage.json`,
+  },
+
+  'miningstation-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}miningstation-wreckage.json`,
+  },
+
+  'civilianbase-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}civilianbase-wreckage.json`,
+  },
+
+  'solarstation-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}solarstation-wreckage.json`,
+  },
+
+  'shipfactory-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}shipfactory-wreckage.json`,
+  },
+
+  'dockyard-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}dockyard-wreckage.json`,
+  },
+
+  'merchantport-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}merchantport-wreckage.json`,
+  },
+
+  'researchcenter-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}researchcenter-wreckage.json`,
+  },
+
+  'astrometricstation-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}astrometricstation-wreckage.json`,
+  },
+
+  'fleetheadquarters-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}fleetheadquarters-wreckage.json`,
+  },
+
+  'defenseplatform-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}defenseplatform-wreckage.json`,
+  },
+
+  'fusionreactor-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}fusionreactor-wreckage.json`,
+  },
+
+  'flanker-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}flanker-wreckage.json`,
+  },
+
+  'mothership-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}mothership-wreckage.json`,
+  },
+
+  'invader-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}invader-wreckage.json`,
+  },
+
+  'gathering-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}gathering-wreckage.json`,
+  },
+
+  'clairvoyant-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}clairvoyant-wreckage.json`,
+  },
+
+  'theocrat-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}theocrat-wreckage.json`,
+  },
+
+  'centralpyramid-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}centralpyramid-wreckage.json`,
+  },
+
+  'masstransmitter-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}masstransmitter-wreckage.json`,
+  },
+
+  'biosphere-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}biosphere-wreckage.json`,
+  },
+
+  'powercore-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}powercore-wreckage.json`,
+  },
+
+  'sanctuary-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}sanctuary-wreckage.json`,
+  },
+
+  'synodum-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}synodum-wreckage.json`,
+  },
+
+  'conservatory-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}conservatory-wreckage.json`,
+  },
+
+  'monumentofwill-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}monumentofwill-wreckage.json`,
+  },
+
+  'basilica-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}basilica-wreckage.json`,
+  },
+
+  'theocratsseat-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}theocratsseat-wreckage.json`,
+  },
+
+  'shieldgenerator-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}shieldgenerator-wreckage.json`,
+  },
+
+  'devastator-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}devastator-wreckage.json`,
+  },
+
+  'grinder-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}grinder-wreckage.json`,
+  },
+
+  'vindicator-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}vindicator-wreckage.json`,
+  },
+
+  'flagship-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}flagship-wreckage.json`,
+  },
+
+  'harvester-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}harvester-wreckage.json`,
+  },
+
+  'havoc-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}havoc-wreckage.json`,
+  },
+
+  'breaker-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}breaker-wreckage.json`,
+  },
+
+  'vanguard-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}vanguard-wreckage.json`,
+  },
+
+  'capitol-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}capitol-wreckage.json`,
+  },
+
+  'materialsilo-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}materialsilo-wreckage.json`,
+  },
+
+  'habitat-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}habitat-wreckage.json`,
+  },
+
+  'powerplant-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}powerplant-wreckage.json`,
+  },
+
+  'energystorage-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}energystorage-wreckage.json`,
+  },
+
+  'hall-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}hall-wreckage.json`,
+  },
+
+  'flagshipyard-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}flagshipyard-wreckage.json`,
+  },
+
+  'forum-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}forum-wreckage.json`,
+  },
+
+  'skycourt-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}skycourt-wreckage.json`,
+  },
+
+  'senate-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}senate-wreckage.json`,
+  },
+
+  'guardstation-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}guardstation-wreckage.json`,
+  },
+
+  'provincialbeacon-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}provincialbeacon-wreckage.json`,
+  },
+
+  'ioncannon-wreckage': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
+    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
+    dataURL: `${PATH_ASSETS_DATA}ioncannon-wreckage.json`,
+  },
+});
+
+const NO_WRECKAGES_PER_NATION = 5;
+
+['fed', 'ath', 'syl', 'tho'].forEach((nation) => {
+  for (let i = 1; i <= NO_WRECKAGES_PER_NATION; i += 1) {
+    ns.effects[`${nation}-wreck-${i}`] = {
+      preloading: true,
+      spriteURL: `${PATH_ASSETS_IMG}${nation}_wreck0${i}.png`,
+      atlasURL: `${PATH_ASSETS_IMG}${nation}_wreck0${i}.json`,
+      dataURL: `${PATH_ASSETS_DATA}${nation}-wreck-${i}.json`,
+    };
+  }
 });
 
 export default {

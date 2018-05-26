@@ -1,0 +1,26 @@
+{
+    "id": "devastator-wreckage",
+    "size": "m",
+    "ttl": 300,
+    "customFrame": 0,
+    "frames": [
+        0, 1, 2, 3, 4, 5, 6, 7
+    ],
+    "persistOrienationFromEmitter": true,
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-medium"]
+        }
+    }
+}
