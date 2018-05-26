@@ -2359,7 +2359,7 @@
     "minRange": 0,
     "CAF": 1,    
     "CHF": 1        
-  }  
+  }, 
   {
     "name": "Hydro Beam",
     "id": 108,
@@ -2383,7 +2383,7 @@
     "minRange": 0,
     "CAF": 1,    
     "CHF": 1        
-  }  
+  }, 
   {
     "name": "Phoson Cannon",
     "id": 109,
@@ -2407,7 +2407,7 @@
     "minRange": 0,
     "CAF": 1,    
     "CHF": 1        
-  }  
+  },
   {
     "name": "Thermo Plasma",
     "id": 110,
@@ -2431,7 +2431,7 @@
     "minRange": 0,
     "CAF": 1,    
     "CHF": 1        
-  }  
+  },
   {
     "name": "Q Disruptor",
     "id": 111,
