@@ -3,9 +3,9 @@
   "name": "Ship Factory",
   "type": "building",
   "building": true,
-  "hull": 750,
+  "hull": 1000,
   "shield": 0,
-  "armor": 4,
+  "armor": 5,
   "power": 0,
   "hangar": 0,
   "speed": 0,
@@ -26,11 +26,11 @@
     0
   ],
   "titanium": 350,
-  "silicium": 150,
+  "silicium": 100,
   "energy": 250,
   "uranium": 0,
   "space": 0,
-  "buildingTime": 25,
+  "buildingTime": 60,
   "directions": 0,
   "animFrame": 1,
   "animType": [
@@ -85,7 +85,7 @@
     }
   },
   "damageArea": {
-    "width": 130,
-    "height": 130
+    "width": 100,
+    "height": 100
   }
 }
