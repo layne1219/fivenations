@@ -1,32 +1,237 @@
 {
-	"id": "devastator",
-	"name": "Devastator",
-	"type": "Cruiser",
-	"hull": 500,
-	"shield": 150,
-	"armor": 3,
-	"power": 0, 
-	"hangar": 3,
-	"speed": 25,
-	"maneuverability": 20,
-	"vision": 50,
-	"weapons": [ 50, 50, 49, 49, 49, 49, 51, 0, 0, 0, 0, 0 ],
-	"titanium": 450,
-	"silicium": 250,
-	"energy": 350,
-	"uranium": 0,
-	"space": 12,
-	"buildingTime": 60,
-	"directions": 32,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "m",
-	"events": {
-		"remove": {
-			"effects": ["destruction-medium"],
-			"minWrecks": 5,
-			"maxWrecks": 10,
-			"wrecks": ["tho-wreck-1", "tho-wreck-2", "tho-wreck-3", "fed-wreck-4", "tho-wreck-5"]
-		}
-	}	
+  "id": "devastator",
+  "name": "Devastator",
+  "type": "Cruiser",
+  "hull": 350,
+  "shield": 300,
+  "armor": 3,
+  "power": 0,
+  "hangar": 0,
+  "speed": 60,
+  "maneuverability": 40,
+  "vision": 6,
+  "weapons": [
+    50,
+    50,
+    111,
+    111,
+    51,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 350,
+  "silicium": 200,
+  "energy": 200,
+  "uranium": 0,
+  "space": 9,
+  "buildingTime": 50,
+  "directions": 32,
+  "requiredEntities": [
+    "astrometricstation"
+  ],
+  "requiredResearches": [],
+  "animFrame": 1,
+  "animType": 0,
+  "size": "m",
+  "hasJetEngine": true,
+  "jetEngineSprite": "thorun-thrusters",
+  "jetEngineFrames": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+  ],
+  "jetEngineAlphaOffset": 0.8,
+  "sizeOffset": {
+    "w": 35,
+    "h": 35
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -15
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": -3,
+      "y": 0
+    },
+    {
+      "x": -7,
+      "y": 0
+    },
+    {
+      "x": -5,
+      "y": -7
+    },
+    {
+      "x": -5,
+      "y": -9
+    },
+    {
+      "x": -5,
+      "y": -10
+    },
+    {
+      "x": -5,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -4,
+      "y": -9
+    },
+    {
+      "x": -4,
+      "y": -8
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -10
+    },
+    {
+      "x": -2,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -11
+    },
+    {
+      "x": -2,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -12
+    },
+    {
+      "x": 2,
+      "y": -12
+    },
+    {
+      "x": 0,
+      "y": -11
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": -2,
+      "y": -10
+    },
+    {
+      "x": -3,
+      "y": -12
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 6,
+      "y": -10
+    },
+    {
+      "x": 5,
+      "y": -7
+    },
+    {
+      "x": 3,
+      "y": -8
+    },
+    {
+      "x": 0,
+      "y": -9
+    },
+    {
+      "x": 1,
+      "y": -9
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "devastator-wreckage",
+        "destruction-medium"
+      ],
+      "minWrecks": 5,
+      "maxWrecks": 6,
+      "wrecks": [
+        "tho-wreck-1",
+        "tho-wreck-2",
+        "tho-wreck-3",
+        "tho-wreck-4",
+        "tho-wreck-5"
+      ]
+    }
+  },
+  "damageArea": {
+    "width": 70,
+    "height": 70
+  }
 }
