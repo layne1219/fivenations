@@ -2,9 +2,9 @@
   "id": "kutuzov",
   "name": "Kutuzov",
   "type": "Expansionist",
-  "hull": 600,
+  "hull": 750,
   "shield": 200,
-  "armor": 3,
+  "armor": 4,
   "power": 0,
   "hangar": 0,
   "speed": 40,
@@ -25,11 +25,11 @@
     0
   ],
   "titanium": 800,
-  "silicium": 300,
+  "silicium": 0,
   "energy": 500,
   "uranium": 0,
   "space": 20,
-  "buildingTime": 40,
+  "buildingTime": 60,
   "cargoCapacity": 250,
   "directions": 32,
   "animFrame": 1,
@@ -190,5 +190,12 @@
         "fed-wreck-5"
       ]
     }
-  }
+  },
+  "damageArea": {
+    "width": 80,
+    "height": 80
+  },
+  "cargoTitanium": 0,
+  "cargoSilicium": 0,
+  "cargoUranium": 0
 }

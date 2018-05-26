@@ -7,7 +7,7 @@
   "armor": 3,
   "power": 0,
   "hangar": 8,
-  "speed": 65,
+  "speed": 70,
   "maneuverability": 30,
   "vision": 9,
   "weapons": [
@@ -24,18 +24,17 @@
     0,
     0
   ],
-  "titanium": 500,
+  "titanium": 400,
   "silicium": 150,
-  "energy": 300,
+  "energy": 200,
   "uranium": 0,
-  "space": 12,
-  "buildingTime": 35,
+  "space": 9,
+  "buildingTime": 50,
   "directions": 32,
   "requiredEntities": [
     "astrometricstation"
   ],
-  "requiredResearches": [
-  ],
+  "requiredResearches": [],
   "animFrame": 1,
   "animType": 0,
   "hasJetEngine": true,

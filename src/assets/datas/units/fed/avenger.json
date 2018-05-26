@@ -7,7 +7,7 @@
   "armor": 5,
   "power": 0,
   "hangar": 0,
-  "speed": 45,
+  "speed": 50,
   "maneuverability": 20,
   "vision": 7,
   "weapons": [
@@ -25,11 +25,11 @@
     0
   ],
   "titanium": 800,
-  "silicium": 500,
-  "energy": 700,
+  "silicium": 300,
+  "energy": 500,
   "uranium": 100,
-  "space": 30,
-  "buildingTime": 50,
+  "space": 20,
+  "buildingTime": 90,
   "directions": 32,
   "animFrame": 1,
   "animType": 0,
@@ -191,7 +191,7 @@
     }
   },
   "damageArea": {
-    "width": 90,
-    "height": 90
+    "width": 60,
+    "height": 60
   }
 }
