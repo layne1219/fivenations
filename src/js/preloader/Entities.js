@@ -3,7 +3,6 @@ const ns = window.fivenations;
 const { PUBLIC_URL } = process.env;
 const PATH_ASSETS_DATA = `${PUBLIC_URL}/assets/datas/units/`;
 const PATH_ASSETS_IMG = `${PUBLIC_URL}/assets/images/units/`;
-const PATH_ASSETS_EFFECT_DATA = `${PUBLIC_URL}/assets/datas/effects/`;
 
 // const like object to describe all the entities participating in the gameplay
 ns.entities = ns.entities || {
