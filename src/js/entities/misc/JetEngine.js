@@ -28,7 +28,7 @@ export default class JetEngine {
 
   createSpriteByParent(entity) {
     const dataObject = entity.getDataObject();
-    const sprite = this.game.add.image(0, 0, entity.getJetEngineSprite());
+    const sprite = this.game.add.image(0, 0, dataObject.getJetEngineSprite());
     const frames = dataObject.getJetEngineFrames();
 
     sprite.visible = false;

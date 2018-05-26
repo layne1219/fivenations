@@ -1,10 +1,10 @@
 {
-    "id": "momentumofwill-wreckage",
+    "id": "shieldgenerator-wreckage",
     "size": "m",
     "ttl": 500,
-    "customFrame": 49,
+    "customFrame": 52,
     "frames": [
-        49
+        52
     ],
     "events": {
         "idle": {

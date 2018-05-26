@@ -37,8 +37,8 @@
   "production": [
     "kutuzov",
     "pasteur",
-    "teller"
-	"nuclearmissile"
+    "teller",
+    "nuclearmissile"
   ],  
   "animType": [
     "construction"

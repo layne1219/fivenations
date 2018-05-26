@@ -39,6 +39,16 @@ export default {
       `${PATH_ASSETS}/effects/federation_thrusters.json`,
     );
     preloader.load.atlasJSONHash(
+      'thorun-thrusters',
+      `${PATH_ASSETS}/effects/thorun_thrusters.png`,
+      `${PATH_ASSETS}/effects/thorun_thrusters.json`,
+    );
+    preloader.load.atlasJSONHash(
+      'sylon-thrusters',
+      `${PATH_ASSETS}/effects/sylon_thrusters.png`,
+      `${PATH_ASSETS}/effects/sylon_thrusters.json`,
+    );
+    preloader.load.atlasJSONHash(
       'gui.icons.fed',
       `${PATH_ASSETS}/gui/fed_icons.png`,
       `${PATH_ASSETS}/gui/fed_icons.json`,

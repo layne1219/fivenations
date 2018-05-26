@@ -40,8 +40,8 @@
   "production": [
     "stgeorge",
     "avenger",
-    "avenger2"
-	"dresda"
+    "avenger2",
+    "dresda"
   ],
   "animations": {
     "construction": {

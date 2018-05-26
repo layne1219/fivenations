@@ -678,20 +678,6 @@ ns.effects = Object.assign(ns.effects || {}, {
     dataURL: `${PATH_ASSETS_DATA}invader-wreckage.json`,
   },
 
-  'explorer-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}explorer-wreckage.json`,
-  },
-
-  'drone-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}drone-wreckage.json`,
-  },
-
   'gathering-wreckage': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
@@ -706,32 +692,11 @@ ns.effects = Object.assign(ns.effects || {}, {
     dataURL: `${PATH_ASSETS_DATA}clairvoyant-wreckage.json`,
   },
 
-  'lancet-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}lancet-wreckage.json`,
-  },
-
   'theocrat-wreckage': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
     atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
     dataURL: `${PATH_ASSETS_DATA}theocrat-wreckage.json`,
-  },
-
-  'lifevessel-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}lifevessel-wreckage.json`,
-  },
-
-  'rector-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}rector-wreckage.json`,
   },
 
   'centralpyramid-wreckage': {
@@ -760,20 +725,6 @@ ns.effects = Object.assign(ns.effects || {}, {
     spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
     atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
     dataURL: `${PATH_ASSETS_DATA}powercore-wreckage.json`,
-  },
-
-  'polaronsphere-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}polaronsphere-wreckage.json`,
-  },
-
-  'obelisk-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}ath_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}obelisk-wreckage.json`,
   },
 
   'sanctuary-wreckage': {
@@ -825,20 +776,6 @@ ns.effects = Object.assign(ns.effects || {}, {
     dataURL: `${PATH_ASSETS_DATA}shieldgenerator-wreckage.json`,
   },
 
-  'predator-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}predator-wreckage.json`,
-  },
-
-  'maraduer-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}maraduer-wreckage.json`,
-  },
-
   'devastator-wreckage': {
     preloading: true,
     spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
@@ -872,27 +809,6 @@ ns.effects = Object.assign(ns.effects || {}, {
     spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
     atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
     dataURL: `${PATH_ASSETS_DATA}harvester-wreckage.json`,
-  },
-
-  'welder-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}welder-wreckage.json`,
-  },
-
-  'hunter-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}hunter-wreckage.json`,
-  },
-
-  'corsair-wreckage': {
-    preloading: true,
-    spriteURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.png`,
-    atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
-    dataURL: `${PATH_ASSETS_DATA}corsair-wreckage.json`,
   },
 
   'havoc-wreckage': {
