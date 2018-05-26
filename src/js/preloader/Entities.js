@@ -834,219 +834,219 @@ ns.entities = ns.entities || {
     atlasURL: `${PATH_ASSETS_IMG}tho/tho_build13.json`,
     dataURL: `${PATH_ASSETS_DATA}tho/ioncannon.json`,
   },
-  /*
+
   // ----------------------------------------------------------------------------
   // ZHO
   // ----------------------------------------------------------------------------
   spawn: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit01.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit01.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/spawn.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit01.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit01.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/spawn.json`,
   },
 
   guard: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit02.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit02.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/guard.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit02.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit02.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/guard.json`,
   },
 
   venator: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit03.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit03.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/venator.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit03.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit03.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/venator.json`,
   },
 
   mind: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit04.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit04.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/mind.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit04.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit04.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/mind.json`,
   },
 
   overseer: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit05.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit05.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/overseer.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit05.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit05.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/overseer.json`,
   },
 
   swarmmother: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit06.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit06.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/swarmmother.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit06.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit06.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/swarmmother.json`,
   },
 
   spikeworm: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit07.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit07.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/spikeworm.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit07.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit07.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/spikeworm.json`,
   },
 
   queen: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit08.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit08.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/queen.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit08.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit08.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/queen.json`,
   },
 
   ovum: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit09.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit09.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/ovum.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit09.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit09.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/ovum.json`,
   },
 
   mindovum: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit10.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit10.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/mindovum.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit10.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit10.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/mindovum.json`,
   },
 
   reincarnate: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit11.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit11.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/reincarnate.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit11.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit11.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/reincarnate.json`,
   },
 
   worker: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit12.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit12.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/worker.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit12.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit12.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/worker.json`,
   },
 
   rictus: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit13.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit13.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/rictus.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit13.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit13.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/rictus.json`,
   },
 
   mite: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit14.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit14.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/mite.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit14.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit14.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/mite.json`,
   },
 
   ruptor: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit15.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit15.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/ruptor.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit15.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit15.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/ruptor.json`,
   },
 
   decay: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_unit16.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_unit16.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/decay.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_unit16.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_unit16.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/decay.json`,
   },
 
   cropbed: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build01.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build01.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/cropbed.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build01.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build01.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/cropbed.json`,
   },
 
   nutrientcolony: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build02.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build02.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/nutrientcolony.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build02.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build02.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/nutrientcolony.json`,
   },
 
   metabolist: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build03.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build03.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/metabolist.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build03.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build03.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/metabolist.json`,
   },
 
   agaric: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build04.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build04.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/agaric.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build04.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build04.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/agaric.json`,
   },
 
   mindfungus: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build05.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build05.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/mindfungus.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build05.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build05.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/mindfungus.json`,
   },
 
   clathruscolony: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build06.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build06.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/clathruscolony.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build06.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build06.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/clathruscolony.json`,
   },
 
   symbioticorgan: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build07.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build07.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/symbioticorgan.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build07.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build07.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/symbioticorgan.json`,
   },
 
   evulatory: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build08.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build08.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/evulatory.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build08.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build08.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/evulatory.json`,
   },
 
   swarmmembrane: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build09.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build09.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/swarmmembrane.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build09.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build09.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/swarmmembrane.json`,
   },
 
   chrysodendron: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build10.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build10.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/chrysodendron.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build10.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build10.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/chrysodendron.json`,
   },
 
   chimneyplant: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build11.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build11.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/chimneyplant.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build11.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build11.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/chimneyplant.json`,
   },
 
   decaychamber: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build12.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build12.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/decaychamber.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build12.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build12.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/decaychamber.json`,
   },
 
   fonia: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build13.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build13.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/fonia.json'
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build13.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build13.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/fonia.json`,
   },
 
   seed: {
-      preloading: true,
-      spriteURL: PATH_ASSETS_IMG + 'zho/zho_build14.png',
-      atlasURL: PATH_ASSETS_IMG + 'zho/zho_build14.json',
-      dataURL: PATH_ASSETS_DATA + 'zho/seed.json'
-  }, */
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}zho/zho_build14.png`,
+    atlasURL: `${PATH_ASSETS_IMG}zho/zho_build14.json`,
+    dataURL: `${PATH_ASSETS_DATA}zho/seed.json`,
+  },
 
   // ----------------------------------------------------------------------------
   // ASTEROIDS
