@@ -30,8 +30,6 @@ export default class JetEngine {
     const dataObject = entity.getDataObject();
     const sprite = this.game.add.image(0, 0, entity.getJetEngineSprite());
     const frames = dataObject.getJetEngineFrames();
-    const id = dataObject.getId();
-    const frames = frames[id];
 
     sprite.visible = false;
     sprite.anchor.setTo(0.5, 0.5);
