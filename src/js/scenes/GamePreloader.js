@@ -2,7 +2,6 @@
 import GUI from '../preloader/GUI';
 import Starfield from '../preloader/Starfield';
 import Entities from '../preloader/Entities';
-import Wreckages from '../preloader/Wreckages';
 import Effects from '../preloader/Effects';
 import Projectiles from '../preloader/Projectiles';
 import Audio from '../preloader/Audio';
@@ -19,7 +18,6 @@ function loadResources(preloader) {
   GUI.load(preloader);
   Starfield.load(preloader);
   Entities.load(preloader);
-  Wreckages.load(preloader);
   Effects.load(preloader);
   Projectiles.load(preloader);
   Audio.load(preloader);
