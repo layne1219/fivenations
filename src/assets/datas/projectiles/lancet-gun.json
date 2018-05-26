@@ -25,8 +25,7 @@
         "muzzleflash-red"
       ],
       "audio": [
-        "fed_cannon1",
-        "fed_cannon2"
+        "lancet_gun"
       ]
     },
     "remove": {
@@ -38,8 +37,8 @@
       "damageTarget": true,
       "removeEffect": true,
       "audio": [
-        "DestAtckExplosion1",
-        "DestAtckExplosion2"
+        "lancet_hit01",
+        "lancet_hit02"
       ]
     }
   }

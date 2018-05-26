@@ -25,8 +25,7 @@
         "muzzleflash-red"
       ],
       "audio": [
-        "fed_cannon1",
-        "fed_cannon2"
+        "proton"
       ]
     },
     "remove": {
@@ -38,8 +37,8 @@
       "damageTarget": true,
       "removeEffect": true,
       "audio": [
-        "DestAtckExplosion1",
-        "DestAtckExplosion2"
+        "proton_hit01",
+        "proton_hit02"
       ]
     }
   }
