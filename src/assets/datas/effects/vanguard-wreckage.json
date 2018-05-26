@@ -1,0 +1,26 @@
+{
+    "id": "vanguard-wreckage",
+    "size": "m",
+    "ttl": 300,
+    "customFrame": 64,
+    "frames": [
+        64, 65, 66, 67, 68, 69, 70, 71
+    ],
+    "persistOrienationFromEmitter": true,
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-medium"]
+        }
+    }
+}

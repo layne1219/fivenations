@@ -1,0 +1,26 @@
+{
+    "id": "flagship-wreckage",
+    "size": "m",
+    "ttl": 300,
+    "customFrame": 24,
+    "frames": [
+        24, 25, 26, 27, 28, 29, 30, 31
+    ],
+    "persistOrienationFromEmitter": true,
+    "events": {
+        "idle": {
+            "effects": [
+                "blow-1",
+                "blow-2",
+                "blow-3"
+            ],
+            "randomExecution": true,
+            "randomRate": 25,
+            "offsetX": [-25, 25],
+            "offsetY": [-25, 25]
+        },
+        "remove": {
+            "effects": ["destruction-big"]
+        }
+    }
+}
