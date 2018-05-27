@@ -75,6 +75,13 @@ ns.effects = Object.assign(ns.effects || {}, {
     atlasURL: `${PATH_ASSETS_IMG}/weapon_projectiles.json`,
     dataURL: `${PATH_ASSETS_DATA}/thermobaric-bomb.json`,
   },
+
+  'q-disruptor': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}/weapon_projectiles.png`,
+    atlasURL: `${PATH_ASSETS_IMG}/weapon_projectiles.json`,
+    dataURL: `${PATH_ASSETS_DATA}/q-disruptor.json`,
+  },
 });
 
 export default {
