@@ -1,32 +1,237 @@
 {
-	"id": "grinder",
-	"name": "Grinder",
-	"type": "Cruiser",
-	"hull": 500,
-	"shield": 150,
-	"armor": 3,
-	"power": 0, 
-	"hangar": 0,
-	"speed": 20,
-	"maneuverability": 10,
-	"vision": 50,
-	"weapons": [ 52, 52, 49, 49, 51, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 400,
-	"silicium": 250,
-	"energy": 300,
-	"uranium": 10,
-	"space": 12,
-	"buildingTime": 60,
-	"directions": 32,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "m",
-	"events": {
-		"remove": {
-			"effects": ["destruction-medium"],
-			"minWrecks": 5,
-			"maxWrecks": 10,
-			"wrecks": ["tho-wreck-1", "tho-wreck-2", "tho-wreck-3", "fed-wreck-4", "tho-wreck-5"]
-		}
-	}	
+  "id": "grinder",
+  "name": "Grinder",
+  "type": "Cruiser",
+  "hull": 250,
+  "shield": 250,
+  "armor": 2,
+  "power": 0,
+  "hangar": 8,
+  "speed": 40,
+  "maneuverability": 20,
+  "vision": 3,
+  "weapons": [
+    52,
+    21,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 200,
+  "silicium": 250,
+  "energy": 200,
+  "uranium": 25,
+  "space": 9,
+  "buildingTime": 50,
+  "directions": 32,
+  "requiredEntities": [
+    "astrometricstation"
+  ],
+  "requiredResearches": [],
+  "animFrame": 1,
+  "animType": 0,
+  "size": "m",
+  "hasJetEngine": true,
+  "jetEngineSprite": "thorun-thrusters",
+  "jetEngineFrames": [
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95
+  ],
+  "jetEngineAlphaOffset": 0.8,
+  "sizeOffset": {
+    "w": 35,
+    "h": 35
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -15
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 0
+    },
+    {
+      "x": -3,
+      "y": 0
+    },
+    {
+      "x": -7,
+      "y": 0
+    },
+    {
+      "x": -5,
+      "y": -7
+    },
+    {
+      "x": -5,
+      "y": -9
+    },
+    {
+      "x": -5,
+      "y": -10
+    },
+    {
+      "x": -5,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -4,
+      "y": -9
+    },
+    {
+      "x": -4,
+      "y": -8
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -10
+    },
+    {
+      "x": -2,
+      "y": -9
+    },
+    {
+      "x": -3,
+      "y": -11
+    },
+    {
+      "x": -2,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -12
+    },
+    {
+      "x": 2,
+      "y": -12
+    },
+    {
+      "x": 0,
+      "y": -11
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": 0,
+      "y": -10
+    },
+    {
+      "x": -2,
+      "y": -10
+    },
+    {
+      "x": -3,
+      "y": -12
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 2,
+      "y": -10
+    },
+    {
+      "x": 6,
+      "y": -10
+    },
+    {
+      "x": 5,
+      "y": -7
+    },
+    {
+      "x": 3,
+      "y": -8
+    },
+    {
+      "x": 0,
+      "y": -9
+    },
+    {
+      "x": 1,
+      "y": -9
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "grinder-wreckage",
+        "destruction-medium"
+      ],
+      "minWrecks": 5,
+      "maxWrecks": 6,
+      "wrecks": [
+        "tho-wreck-1",
+        "tho-wreck-2",
+        "tho-wreck-3",
+        "tho-wreck-4",
+        "tho-wreck-5"
+      ]
+    }
+  },
+  "damageArea": {
+    "width": 70,
+    "height": 70
+  }
 }

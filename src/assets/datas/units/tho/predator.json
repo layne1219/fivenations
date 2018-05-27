@@ -1,32 +1,147 @@
 {
-	"id": "predator",
-	"name": "Predator",
-	"type": "Fighter",
-	"hull": 70,
-	"shield": 30,
-	"armor": 0,
-	"power": 0, 
-	"hangar": 0,
-	"speed": 40,
-	"maneuverability": 35,
-	"vision": 35,
-	"weapons": [ 49, 49, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-	"titanium": 80,
-	"silicium": 10,
-	"energy": 50,
-	"uranium": 0,
-	"space": 2,
-	"buildingTime": 15,
-	"directions": 16,
-	"animFrame": 1,
-	"animType": 0,
-	"size": "xsm",
-	"events": {
-		"remove": {
-			"effects": ["destruction-small"],
-			"minWrecks": 0,
-			"maxWrecks": 0,
-			"wrecks": []
-		}
-	}
+  "id": "predator",
+  "name": "predator",
+  "type": "Fighter",
+  "hull": 70,
+  "shield": 50,
+  "armor": 0,
+  "power": 0,
+  "hangar": 0,
+  "speed": 150,
+  "maneuverability": 40,
+  "realManeuverSystem": true,
+  "vision": 2,
+  "weapons": [
+    49,
+    49,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "titanium": 100,
+  "silicium": 0,
+  "energy": 50,
+  "uranium": 0,
+  "space": 2,
+  "buildingTime": 14,
+  "directions": 16,
+  "animFrame": 1,
+  "animType": 0,
+  "size": "xsm",
+  "hasJetEngine": true,
+  "jetEngineSprite": "thorun-thrusters",
+  "jetEngineFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "jetEngineAlphaOffset": 0.4,
+  "sizeOffset": {
+    "w": 2,
+    "h": 2
+  },
+  "selectionOffset": {
+    "x": 0,
+    "y": -9
+  },
+  "initialPoints": [
+    {
+      "x": 0,
+      "y": 5
+    },
+    {
+      "x": -6,
+      "y": 6
+    },
+    {
+      "x": -9,
+      "y": 3
+    },
+    {
+      "x": -11,
+      "y": 0
+    },
+    {
+      "x": -13,
+      "y": -1
+    },
+    {
+      "x": -13,
+      "y": -5
+    },
+    {
+      "x": -10,
+      "y": -7
+    },
+    {
+      "x": -6,
+      "y": -9
+    },
+    {
+      "x": 0,
+      "y": -9
+    },
+    {
+      "x": 4,
+      "y": -8
+    },
+    {
+      "x": 7,
+      "y": -7
+    },
+    {
+      "x": 8,
+      "y": -5
+    },
+    {
+      "x": 10,
+      "y": -3
+    },
+    {
+      "x": 10,
+      "y": 2
+    },
+    {
+      "x": 9,
+      "y": 5
+    },
+    {
+      "x": 5,
+      "y": 5
+    }
+  ],
+  "events": {
+    "remove": {
+      "effects": [
+        "destruction-small"
+      ],
+      "minWrecks": 0,
+      "maxWrecks": 0,
+      "wrecks": []
+    }
+  },
+  "damageArea": {
+    "width": 4,
+    "height": 4
+  }
 }
