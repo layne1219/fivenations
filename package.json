@@ -10,7 +10,9 @@
     "express": "^4.14.0",
     "font-face-observer": "^1.0.0",
     "forever": "^0.15.2",
+    "phaser": "^2.4.9",
     "phaser-ce": "^2.10.3",
+    "pixi.js": "^4.8.0",
     "webpack-s3-plugin": "^1.0.0-rc.0"
   },
   "devDependencies": {
