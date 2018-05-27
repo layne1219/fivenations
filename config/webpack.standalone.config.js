@@ -5,7 +5,7 @@ const defaultConfig = require('./webpack.default.config.js');
 const paths = require('./paths.js');
 
 const version = require(paths.appPackageJson).version;
-const bundleName = `fivenations.${version}.js`;
+const bundleName = `fivenations.${version}.with-phaser2.4.js`;
 
 const plugins = defaultConfig.plugins;
 plugins.push(
