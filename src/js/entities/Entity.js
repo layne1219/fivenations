@@ -1050,6 +1050,18 @@ class Entity {
   }
 
   /**
+   * Returns if the entity can be mined
+   * @param {boolean}
+   */
+  isMinable() {
+    return (
+      this.dataObject.getCargoTitanium() ||
+      this.dataObject.getCargoSilicium() ||
+      this.dataObject.getCargoUranium()
+    );
+  }
+
+  /**
    * Returns wether the entity can dock
    * @return {boolean}
    */
@@ -1084,6 +1096,18 @@ class Entity {
    */
   hasNoUserControl() {
     return this.noUserControl;
+  }
+
+  /**
+   * Returns true if it cannot be managed by the user
+   * (e.g.: Federation Icarus)
+   * @return {boolean}
+   */
+  canMine() {
+    const weaponsThatCanMine = [
+      10, // mining-laser
+    ];
+    return weaponsThatCanMine.some(id => this.weaponManager.hasWeapon(id));
   }
 
   /**

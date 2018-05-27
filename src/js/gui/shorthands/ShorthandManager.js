@@ -5,7 +5,13 @@ import Dock from './Dock';
 
 let singleton;
 
-const shorthands = [new Attack(), new Dock(), new Follow(), new Move()];
+const shorthands = [
+  new Attack(),
+  new Mine(),
+  new Dock(),
+  new Follow(),
+  new Move(),
+];
 
 class ShorthandManager {
   /**

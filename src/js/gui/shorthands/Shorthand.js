@@ -41,7 +41,7 @@ class Shorthand {
    */
   getEventEmitter(entities) {
     const eventEmitter = EventEmitter.getInstance();
-    return this.eventEmitter.synced.entities(entities);
+    return eventEmitter.synced.entities(entities);
   }
 }
 

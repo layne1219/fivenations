@@ -1,7 +1,7 @@
 import Shorthand from './Shorthand';
 import PlayerManager from '../../players/PlayerManager';
 
-class Dock extends Shorthand {
+class Mine extends Shorthand {
   /**
    * Executes the bound logic
    * @param {object} manager - ShorthandManager instance
@@ -11,7 +11,7 @@ class Dock extends Shorthand {
     const resetActivityQueue = manager.willActivityQueueReset();
     const targetEntity = manager.getTargetEntity();
 
-    this.getEventEmitter(selectedEntities).getToDock({
+    this.getEventEmitter(selectedEntities).mine({
       targetEntity,
       resetActivityQueue,
     });
@@ -32,21 +32,12 @@ class Dock extends Shorthand {
     if (!targetEntity) return false;
 
     // if there is at least one unit that cannot dock
-    if (selectedEntities.some(entity => !entity.canDock())) return false;
+    if (selectedEntities.some(entity => !entity.canMine())) return false;
 
-    // if the selected entity is not friendly
-    if (
-      playerManager.isEntityHostileToPlayer(
-        targetEntity,
-        playerManager.getUser(),
-      )
-    ) {
-      return false;
-    }
     // if the selected entity does not have hanger capacity
-    if (!targetEntity.isDockable()) return false;
+    if (!targetEntity.isMinable()) return false;
     return true;
   }
 }
 
-export default Dock;
+export default Mine;
