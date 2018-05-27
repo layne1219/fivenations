@@ -1055,9 +1055,10 @@ class Entity {
    */
   isMinable() {
     return (
-      this.dataObject.getCargoTitanium() ||
-      this.dataObject.getCargoSilicium() ||
-      this.dataObject.getCargoUranium()
+      this.dataObject.isSpaceObject() &&
+      (this.dataObject.getCargoTitanium() ||
+        this.dataObject.getCargoSilicium() ||
+        this.dataObject.getCargoUranium())
     );
   }
 
