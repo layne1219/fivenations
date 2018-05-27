@@ -1,6 +1,7 @@
 import Move from './Move';
 import Attack from './Attack';
 import Follow from './Follow';
+import Dock from './Dock';
 
 let singleton;
 
