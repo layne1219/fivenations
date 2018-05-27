@@ -429,6 +429,21 @@ EntityManager.prototype = {
   getSelector(targetEntities) {
     return createSelector(targetEntities);
   },
+
+  /**
+   * Returns the first entity that is hovered by the UserPointer
+   * @return {object} Entity instance
+   */
+  getHoveredEntity() {
+    // checks whether the user hovers an entity
+    const candidates = this.entities(':not(hibernated)');
+    for (let i = candidates.length - 1; i >= 0; i -= 1) {
+      if (candidates[i].isHover()) {
+        return candidates[i];
+      }
+    }
+    return null;
+  },
 };
 
 export default {

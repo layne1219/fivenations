@@ -11,7 +11,7 @@ import TranslationManager from '../common/TranslationManager';
 import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserPointer from '../gui/UserPointer';
-import Shorthand from '../gui/Shorthand';
+import ShorthandManager from '../gui/shorthands/ShorthandManager';
 import AudioManager from '../audio/AudioManager';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
@@ -115,14 +115,11 @@ class Game extends Util.EventDispatcher {
     // -----------------------------------------------------------------------
     UserPointer.setGame(this.game);
     this.userPointer = UserPointer.getInstance(true);
-    this.shorthand = Shorthand.getInstance();
+    this.shorthandManager = ShorthandManager.getInstance();
 
     // Right Mouse Button to send units to a position
     this.userPointer.on('rightbutton/down', () => {
-      // @TODO refactor this function as it has become too complex and long
-      const coords = this.userPointer.getRealCoords();
       let resetActivityQueue = true;
-      let targetEntity;
 
       // If the user is hovering the mouse pointer above the GUI, the selection
       // must remain untouched
@@ -131,26 +128,17 @@ class Game extends Util.EventDispatcher {
         return;
       }
 
-      // checks whether the user hovers an entity
-      const entitiesHovering = this.entityManager.entities().filter((entity) => {
-        if (entity.isHover()) {
-          targetEntity = entity;
-          return true;
-        }
-        return false;
-      });
-
-      const targetingEntities = entitiesHovering.length > 0;
-      const selectedEntities = this.eventEmitter.synced.entities(':user:selected');
-
       if (UserKeyboard.getInstance().isDown(Phaser.KeyCode.SHIFT)) {
         resetActivityQueue = false;
       }
 
-      this.shorthand.execute({
+      const selectedEntities = this.eventEmitter.synced.entities(':user:selected');
+      const targetEntity = this.entityManager.getHoveredEntity();
+
+      this.shorthandManager.execute({
         targetEntity,
-        targetingEntities,
         selectedEntities,
+        resetActivityQueue,
       });
     });
 

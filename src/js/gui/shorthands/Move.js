@@ -18,6 +18,16 @@ class Move extends Shorthand {
 
     this.displayClickAnimation(x, y);
   }
+
+  /**
+   * Returns true if the shorthand must be executed
+   * @param {object} manager - ShorthandManager instance
+   * @return {boolean}
+   */
+  test(manager) {
+    const targetEntity = manager.getTargetEntity();
+    return !targetEntity;
+  }
 }
 
 export default Move;

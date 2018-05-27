@@ -12,14 +12,13 @@ class ShorthandManager {
    * @param {object} params
    */
   execute(params) {
-    this.targetingEntities = params.targetingEntities;
     this.selectedEntities = params.selectedEntities;
     this.targetEntity = params.targetEntity;
     this.resetActivityQueue = params.resetActivityQueue;
 
     for (let i = 0; i < shorthands.length - 1; i += 1) {
       shorthand = shorthands[i];
-      if (shorthand.test()) {
+      if (shorthand.test(this)) {
         shorthand.execute(this);
         return;
       }

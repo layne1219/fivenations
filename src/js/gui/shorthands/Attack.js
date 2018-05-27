@@ -4,6 +4,7 @@ import PlayerManager from '../../players/PlayerManager';
 class Attack extends Shorthand {
   /**
    * Executes the bound logic
+   * @param {object} manager - ShorthandManager instance
    */
   execute(manager) {
     const selectedEntities = manager.getSelectedEntities();
@@ -20,9 +21,12 @@ class Attack extends Shorthand {
 
   /**
    * Returns true if the shorthand must be executed
+   * @param {object} manager - ShorthandManager instance
    * @return {boolean}
    */
-  test() {
+  test(manager) {
+    const targetEntity = manager.getTargetEntity();
+    if (!targetEntity) return false;
     const playerManager = PlayerManager.getInstance();
     return playerManager.isEntityHostileToPlayer(
       targetEntity,

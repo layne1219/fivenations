@@ -29,7 +29,7 @@ class Shorthand {
    * @return {object} { x, y }
    */
   getCoords() {
-    return UserPointer.getInstane().getScreenCoords();
+    return UserPointer.getInstane().getRealCoords();
   }
 }
 
