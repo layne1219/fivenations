@@ -101,19 +101,64 @@
       "end": 64.2669387755102,
       "loop": false
     },
-    "laserhit1": {
+    "lancet_gun": {
       "start": 66,
-      "end": 67.15374149659864,
+      "end": 66.58775510204082,
+      "loop": false
+    },
+    "lancet_hit01": {
+      "start": 68,
+      "end": 68.63709750566893,
+      "loop": false
+    },
+    "lancet_hit02": {
+      "start": 70,
+      "end": 70.63709750566893,
+      "loop": false
+    },
+    "laserhit1": {
+      "start": 72,
+      "end": 73.15374149659864,
       "loop": false
     },
     "laserhit2": {
-      "start": 69,
-      "end": 70.74294784580499,
+      "start": 75,
+      "end": 76.74294784580499,
+      "loop": false
+    },
+    "proton": {
+      "start": 78,
+      "end": 79.30757369614513,
+      "loop": false
+    },
+    "proton_hit01": {
+      "start": 81,
+      "end": 82.81551020408163,
+      "loop": false
+    },
+    "proton_hit02": {
+      "start": 84,
+      "end": 85.95192743764173,
       "loop": false
     },
     "putbuilding": {
-      "start": 72,
-      "end": 74.10285714285715,
+      "start": 87,
+      "end": 89.10285714285715,
+      "loop": false
+    },
+    "qdisruptor": {
+      "start": 91,
+      "end": 92.02022675736961,
+      "loop": false
+    },
+    "qdisruptor_hit01": {
+      "start": 94,
+      "end": 95.73714285714286,
+      "loop": false
+    },
+    "qdisruptor_hit02": {
+      "start": 97,
+      "end": 98.27854875283447,
       "loop": false
     }
   }
