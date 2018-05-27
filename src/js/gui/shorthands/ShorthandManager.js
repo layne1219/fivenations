@@ -1,10 +1,10 @@
 import Move from './Move';
 import Attack from './Attack';
-import Follow from './Move';
+import Follow from './Follow';
 
 let singleton;
 
-const shorthands = [new Attack(), new Follow(), new Move()];
+const shorthands = [new Attack(), new Dock(), new Follow(), new Move()];
 
 class ShorthandManager {
   /**
@@ -16,8 +16,8 @@ class ShorthandManager {
     this.targetEntity = params.targetEntity;
     this.resetActivityQueue = params.resetActivityQueue;
 
-    for (let i = 0; i < shorthands.length - 1; i += 1) {
-      shorthand = shorthands[i];
+    for (let i = 0; i < shorthands.length; i += 1) {
+      const shorthand = shorthands[i];
       if (shorthand.test(this)) {
         shorthand.execute(this);
         return;

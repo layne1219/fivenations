@@ -132,7 +132,7 @@ class Game extends Util.EventDispatcher {
         resetActivityQueue = false;
       }
 
-      const selectedEntities = this.eventEmitter.synced.entities(':user:selected');
+      const selectedEntities = this.entityManager.entities(':user:selected');
       const targetEntity = this.entityManager.getHoveredEntity();
 
       this.shorthandManager.execute({

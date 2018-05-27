@@ -1,7 +1,7 @@
 import Shorthand from './Shorthand';
 import PlayerManager from '../../players/PlayerManager';
 
-class Follow extends Shorthand {
+class Dock extends Shorthand {
   /**
    * Executes the bound logic
    * @param {object} manager - ShorthandManager instance
@@ -11,7 +11,7 @@ class Follow extends Shorthand {
     const resetActivityQueue = manager.willActivityQueueReset();
     const targetEntity = manager.getTargetEntity();
 
-    this.getEventEmitter(selectedEntities).follow({
+    this.getEventEmitter(selectedEntities).getToDock({
       targetEntity,
       resetActivityQueue,
     });
@@ -25,14 +25,28 @@ class Follow extends Shorthand {
    * @return {boolean}
    */
   test(manager) {
-    const targetEntity = manager.getTargetEntity();
-    if (!targetEntity) return false;
+    const selectedEntities = manager.getSelectedEntities();
     const playerManager = PlayerManager.getInstance();
-    return !playerManager.isEntityHostileToPlayer(
-      targetEntity,
-      playerManager.getUser(),
-    );
+    const targetEntity = manager.getTargetEntity();
+    // if there is no target selected
+    if (!targetEntity) return false;
+
+    // if there is at least one unit that cannot dock
+    if (selectedEntities.some(entity => !entity.canDock())) return false;
+
+    // if the selected entity is not friendly
+    if (
+      !playerManager.isEntityHostileToPlayer(
+        targetEntity,
+        playerManager.getUser(),
+      )
+    ) {
+      return false;
+    }
+    // if the selected entity does not have hanger capacity
+    if (!targetEntity.isDockable()) return false;
+    return true;
   }
 }
 
-export default Follow;
+export default Dock;

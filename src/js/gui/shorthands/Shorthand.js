@@ -1,4 +1,6 @@
 import GUI from '../GUI';
+import UserPointer from '../UserPointer';
+import EventEmitter from '../../sync/EventEmitter';
 
 class Shorthand {
   /**
@@ -29,8 +31,18 @@ class Shorthand {
    * @return {object} { x, y }
    */
   getCoords() {
-    return UserPointer.getInstane().getRealCoords();
+    return UserPointer.getInstance().getRealCoords();
+  }
+
+  /**
+   * Returns the EventEmitter wrapped around the given entities
+   * @param {object} entities - Array of Entity instances
+   * @return {object} EventEmitter.synced.entities(entitites)
+   */
+  getEventEmitter(entities) {
+    const eventEmitter = EventEmitter.getInstance();
+    return this.eventEmitter.synced.entities(entities);
   }
 }
 
-export default Move;
+export default Shorthand;

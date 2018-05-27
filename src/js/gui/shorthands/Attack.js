@@ -11,7 +11,7 @@ class Attack extends Shorthand {
     const resetActivityQueue = manager.willActivityQueueReset();
     const targetEntity = manager.getTargetEntity();
 
-    selectedEntities.attack({
+    this.getEventEmitter(selectedEntities).attack({
       targetEntity,
       resetActivityQueue,
     });
@@ -35,4 +35,4 @@ class Attack extends Shorthand {
   }
 }
 
-export default Follow;
+export default Attack;
