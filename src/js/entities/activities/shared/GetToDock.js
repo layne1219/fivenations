@@ -24,7 +24,7 @@ class GetToDock extends GetInRange {
       return;
     }
 
-    // checks whether the target has moved sinec the last check
+    // checks whether the target has moved since the last check
     if (
       this.coords.x === this.target.getSprite().x &&
       this.coords.y === this.target.getSprite().y
@@ -32,6 +32,18 @@ class GetToDock extends GetInRange {
     } else {
       this.moveTowardsTarget();
     }
+  }
+
+  /**
+   * Move towards the target entity
+   * @return {void}
+   */
+  moveTowardsTarget() {
+    this.setCoords({
+      x: this.target.getSprite().x,
+      y: this.target.getSprite().y,
+    });
+    this.entity.getMotionManager().moveTo(this);
   }
 
   /**

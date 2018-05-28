@@ -491,9 +491,9 @@ MotionManager.prototype = {
       // instance with separate Move Activities to each of the tiles
       // that EasyStarJs calculates, so we've got to kill the original
       // activity instead
-      if (this.originalActivity) {
+      if (this.originalActivity && this.originalActivity.isKillable()) {
         this.originalActivity.kill();
-      } else if (this.activity) {
+      } else if (this.activity && this.activity.isKillable()) {
         this.activity.kill();
       }
       this.dispatcher.dispatch('arrive');
