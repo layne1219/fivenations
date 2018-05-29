@@ -29,7 +29,7 @@ function MotionManager(entity) {
 
   this.isEntityArrivedAtDestination = false;
   this.isEntityStoppedAtDestination = false;
-  this.isEntityHeadedToDestination = false;
+  this.isEntityHeadedToDestination = true;
 
   this.isUsingPathFinding = false;
 
@@ -50,7 +50,7 @@ function createMovementObject(entity) {
     currentAngle: Phaser.Math.degToRad(90),
     maxVelocity: dataObject.getSpeed(),
     maxAcceleration: dataObject.getSpeed(),
-    maxTargetDragTreshold: dataObject.getSpeed(),
+    maxTargetDragTreshold: dataObject.getSpeed() / 2,
     stopping: false,
   };
 }
@@ -383,6 +383,7 @@ MotionManager.prototype = {
     if (this.rotation.currentAngleCode === this.rotation.targetAngleCode) {
       if (!this.isEntityHeadedToDestination) {
         this.isEntityHeadedToDestination = true;
+        this.movement.currentAngle = this.movement.targetAngle;
         this.effectManager.addEffectToTop(Effects.get('startMoveAnimation'));
       }
       return;
@@ -393,6 +394,11 @@ MotionManager.prototype = {
       const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
       const step =
         this.rotation.maxAngularVelocity / 10 * this.game.time.physicsElapsed;
+
+      this.movement.targetAngle = Math.atan2(
+        this.movement.targetY - this.sprite.y,
+        this.movement.targetX - this.sprite.x,
+      );
 
       // Determines the direction of the rotation
       if (Math.abs(a - b) > step * 2) {
@@ -420,10 +426,6 @@ MotionManager.prototype = {
         this.movement.currentAngle = this.movement.targetAngle;
       }
 
-      this.movement.targetAngle = Math.atan2(
-        this.movement.targetY - this.sprite.y,
-        this.movement.targetX - this.sprite.x,
-      );
       this.rotation.targetAngleCode = this.getAngleCodeByAngle(this.movement.targetAngle);
       this.rotation.currentAngleCode = this.getAngleCodeByAngle(this.movement.currentAngle);
 
