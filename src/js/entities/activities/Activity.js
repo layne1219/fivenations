@@ -6,6 +6,7 @@ class Activity {
     if (entity) {
       this.entity = entity;
     }
+    this.killable = true;
   }
 
   /**
@@ -46,6 +47,13 @@ class Activity {
    */
   isActivated() {
     return this.active;
+  }
+
+  /**
+   * Returns whether the Activity can be killed from outside
+   */
+  isKillable() {
+    return this.killable;
   }
 
   /**

@@ -81,9 +81,12 @@ class FogOfWar {
 
   update(entityManager) {
     this.dirty = false;
-    entityManager.entities(':user').forEach((entity) => {
-      this.visitTilesByEntityVisibility(entity);
-    });
+    entityManager
+      .entities(':user')
+      .filter(entity => !entity.isHibernated())
+      .forEach((entity) => {
+        this.visitTilesByEntityVisibility(entity);
+      });
   }
 
   getMatrix() {

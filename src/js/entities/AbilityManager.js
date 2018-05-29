@@ -99,11 +99,7 @@ AbilityManager.prototype = {
    * @return {boolean}
    */
   canMine() {
-    const weaponManager = this.entity.getWeaponManager();
-    const weaponsThatCanMine = [
-      10, // mining-laser
-    ];
-    return weaponsThatCanMine.some(id => weaponManager.hasWeapon(id));
+    return this.entity.canMine();
   },
 
   /**
