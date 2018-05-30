@@ -56,7 +56,9 @@ function ActivityManager(entity) {
       // activity.activate() function can refer to elements in the
       // activity queue therefore this must be excecuted after
       // this activity is added to the activities collection
-      activity.activate();
+      if (!addAsLast) {
+        activity.activate();
+      }
     },
 
     remove(activity) {
