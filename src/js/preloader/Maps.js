@@ -1,6 +1,12 @@
 const { PUBLIC_URL } = process.env;
 // default maps to be preloaded regardless of the game mode
-const DEFAULT_MAPS = ['promotionalmap01-1', 'mining', 'demo', 'demo2'];
+const DEFAULT_MAPS = [
+  'thorun_test',
+  'promotionalmap01-1',
+  'mining',
+  'demo',
+  'demo2',
+];
 
 export default {
   /**
