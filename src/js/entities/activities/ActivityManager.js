@@ -55,8 +55,11 @@ function ActivityManager(entity) {
       activity.setManager(this);
       // activity.activate() function can refer to elements in the
       // activity queue therefore this must be excecuted after
-      // this activity is added to the activities collection
-      if (!addAsLast) {
+      // this activity is added to the activities collection.
+      // The execution is triggered only if the element was not
+      // intentionally added to the end of the queue or there is
+      // only one element
+      if (!addAsLast || l === 1) {
         activity.activate();
       }
     },
@@ -113,6 +116,15 @@ function ActivityManager(entity) {
       const l = activities.length;
       const currentIdx = l - 1;
       return activities[currentIdx] instanceof Idle;
+    },
+
+    /**
+     * Returns true if the current Activity is Attack
+     */
+    isAttacking() {
+      const l = activities.length;
+      const currentIdx = l - 1;
+      return activities[currentIdx] instanceof Attack;
     },
 
     /**

@@ -217,7 +217,7 @@ class MainAttributeGroup extends Phaser.Group {
     // Hangar
     if (maxHangar > 0) {
       const hangarTitle = 'Hangar: ';
-      const hangarValue = entity.getNumberOfDockerEntities();
+      const hangarValue = entity.getNumberOfDockedEntities();
       const hangarMaxValue = `/${maxHangar}`;
 
       this.hangarElm.text = hangarTitle + hangarValue + hangarMaxValue;

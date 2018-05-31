@@ -71,6 +71,8 @@ class Attack extends Activity {
    * Updates the activity on every tick
    */
   update() {
+    this.releaseDockedEntities();
+
     // if the target cannot be attacked the activity gets destroyed
     if (!this.target.isTargetableByEntity(this.entity)) {
       const dispatcher = EventEmitter.getInstance().local;
@@ -233,9 +235,22 @@ class Attack extends Activity {
       .isAuthorised();
     const emitter = EventEmitter.getInstance().synced.entities;
 
-    if (!authorised || !dockedEntities || !dockedEntities.length) return;
+    if (
+      !authorised ||
+      !dockedEntities ||
+      !dockedEntities.length ||
+      this._entitiesWillBeReleased
+    ) {
+      return;
+    }
 
-    emitter(this.entity).undock();
+    emitter(this.entity)
+      .undock()
+      .then(() => {
+        // enable further execution of the release
+        this._entitiesWillBeReleased = false;
+      });
+
     emitter(dockedEntities)
       .attack({
         targetEntity: this.target,
@@ -245,6 +260,10 @@ class Attack extends Activity {
         targetEntity: this.entity,
         addAsLast: true,
       });
+
+    // block any potential dupliation of the events above until
+    // the Undock Activity is fully completed
+    this._entitiesWillBeReleased = true;
   }
 
   /**

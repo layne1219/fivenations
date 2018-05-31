@@ -135,6 +135,18 @@ WeaponManager.prototype = {
   },
 
   /**
+   * Returns the first valid target by looping through the weapons
+   * @return {object} Entity instance
+   */
+  getTargetEntity() {
+    for (let i = 0, l = this.weapons.length - 1; i < l; i += 1) {
+      const targetEntity = this.weapons[i].getTargetEntity();
+      if (targetEntity) return targetEntity;
+    }
+    return null;
+  },
+
+  /**
    * Returning an array of IDs each of representing a weapon
    * @return {array} A collection of weapons the entity is in a possesion of
    */

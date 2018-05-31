@@ -277,23 +277,24 @@ function createEntityEventAPI(entityManager) {
         const resetActivityQueue =
           (options && options.resetActivityQueue) || false;
 
-        EventBus.getInstance().add({
-          id: 'entity/undock',
-          targets: entities,
-          data: {
-            rnd: entities.map((entity) => {
-              const dockCapacity = entity.getDataObject().getMaxHangar();
-              const randomFactors = [];
-              for (let i = dockCapacity - 1; i >= 0; i -= 1) {
-                randomFactors.push(Math.random());
-              }
-              return randomFactors;
-            }),
-          },
-          resetActivityQueue,
+        return new Promise((resolve) => {
+          EventBus.getInstance().add({
+            id: 'entity/undock',
+            targets: entities,
+            data: {
+              rnd: entities.map((entity) => {
+                const dockCapacity = entity.getDataObject().getMaxHangar();
+                const randomFactors = [];
+                for (let i = dockCapacity - 1; i >= 0; i -= 1) {
+                  randomFactors.push(Math.random());
+                }
+                return randomFactors;
+              }),
+            },
+            resetActivityQueue,
+            callback: resolve,
+          });
         });
-
-        return this;
       },
       /**
        * Executes the attached logic of mining the given target resource
