@@ -3,6 +3,7 @@ import PlayerManager from '../../../players/PlayerManager';
 import EventEmitter from '../../../sync/EventEmitter';
 import EntityManager from '../../EntityManager';
 import Util from '../../../common/Util';
+import { TILE_WIDTH } from '../../../common/Const';
 
 const ns = window.fivenations;
 
@@ -325,7 +326,7 @@ class Deliver extends Activity {
    */
   isPickUpPointInMinRange() {
     const distance = Util.distanceBetween(this.entity, this.pickUpPoint);
-    return distance <= this._pickUpPointRange;
+    return distance <= this._pickUpPointRange + TILE_WIDTH;
   }
 
   /**
@@ -334,7 +335,7 @@ class Deliver extends Activity {
    */
   isDeliveryPointInMinRange() {
     const distance = Util.distanceBetween(this.entity, this.dropOffPoint);
-    return distance <= this._dropOffPointRange;
+    return distance <= this._dropOffPointRange + TILE_WIDTH;
   }
 }
 
