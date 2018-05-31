@@ -1,5 +1,6 @@
 /* global window */
 import EntityManager from '../entities/EntityManager';
+import EventEmitter from '../sync/EventEmitter';
 
 import Util from '../common/Util';
 
@@ -8,6 +9,7 @@ const ns = window.fivenations;
 class Player {
   constructor(config) {
     this.initDispatcher();
+    this.initEventListeners();
     this.setGUID(config);
     this.setName(config);
     this.setTeamInformation(config);
@@ -17,6 +19,14 @@ class Player {
 
   initDispatcher() {
     this.dispatcher = new Util.EventDispatcher();
+  }
+
+  initEventListeners() {
+    const emitter = EventEmitter.getInstance().local;
+    emitter.addEventListener(
+      'entity/number/change',
+      this.onEntityNumberChange.bind(this),
+    );
   }
 
   setGUID(config) {
@@ -71,12 +81,16 @@ class Player {
   }
 
   setEnergy(value) {
+    let newValue = value;
     if (value === undefined) return;
+    if (value > this.maxEnergyStorage) {
+      newValue = this.maxEnergyStorage;
+    }
     this.dispatcher.dispatch('change/energy', {
       old: this.energy,
-      new: value,
+      new: newValue,
     });
-    this.energy = value;
+    this.energy = newValue;
   }
 
   setUranium(value) {
@@ -113,17 +127,56 @@ class Player {
   }
 
   getCurrentEntityNumber() {
-    const { entityManager } = ns.game;
-    return entityManager
-      .entities(`:player(${this.team})`)
-      .reduce((sum, entity) => sum + entity.getDataObject().getSpace(), 0);
+    return this.currentEntityCount;
   }
 
   getSupply() {
+    return this.supply;
+  }
+
+  /**
+   * Returns the aggregated number of Energy Storage
+   * @return {number}
+   */
+  getMaxEnergyStorage() {
+    return this.maxEnergyStorage;
+  }
+
+  /**
+   * Executed when the number of entities changes
+   */
+  onEntityNumberChange() {
     const { entityManager } = ns.game;
-    return entityManager
+
+    // recalculates storage number
+    this.maxEnergyStorage = entityManager
+      .entities(`:player(${this.team})`)
+      .reduce(
+        (sum, entity) => sum + entity.getDataObject().getEnergyStorage(),
+        0,
+      );
+
+    // recalculates the current entity number
+    this.currentEntityCount = entityManager
+      .entities(`:player(${this.team})`)
+      .reduce((sum, entity) => sum + entity.getDataObject().getSpace(), 0);
+
+    // recalculates the current supply
+    this.supply = entityManager
       .entities(`:player(${this.team})`)
       .reduce((sum, entity) => sum + entity.getDataObject().getSupply(), 0);
+
+    // AUTHORITIVE ACTIONS
+    if (this.authorised) {
+      // updates resources if energy is maxed out
+      if (this.energy > this.maxEnergyStorage) {
+        const emitter = EventEmitter.getInstance().synced.players(this);
+        emitter.alter({
+          energy: this.maxEnergyStorage,
+          overwrite: true,
+        });
+      }
+    }
   }
 
   getGUID() {
