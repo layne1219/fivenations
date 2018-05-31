@@ -116,6 +116,15 @@ function ActivityManager(entity) {
     },
 
     /**
+     * Returns true if the current Activity is Attack
+     */
+    isAttacking() {
+      const l = activities.length;
+      const currentIdx = l - 1;
+      return activities[currentIdx] instanceof Attack;
+    },
+
+    /**
      * Display debug information about the activities
      */
     debug() {

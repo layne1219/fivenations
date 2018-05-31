@@ -636,7 +636,7 @@ class Entity {
    * @return {void}
    */
   dockTarget(targetEntity) {
-    if (this.getNumberOfDockerEntities() >= this.dataObject.getMaxHangar()) {
+    if (this.getNumberOfDockedEntities() >= this.dataObject.getMaxHangar()) {
       return;
     }
     targetEntity.hibernate();
@@ -1033,6 +1033,14 @@ class Entity {
   }
 
   /**
+   * Returns whether the entity is executing the Attack activity
+   * @return {boolean}
+   */
+  isAttacking() {
+    return this.activityManager.isAttacking();
+  }
+
+  /**
    * Returns whether the entity is executing the Produce activity
    * @return {boolean}
    */
@@ -1301,7 +1309,7 @@ class Entity {
    * Returns the number of docked entities
    * @return {number}
    */
-  getNumberOfDockerEntities() {
+  getNumberOfDockedEntities() {
     if (!this.docker) {
       return 0;
     }
