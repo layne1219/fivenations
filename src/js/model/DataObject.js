@@ -210,6 +210,18 @@ function DataObject(json) {
       return data.supply || 0;
     },
 
+    getEnergyStorage() {
+      return data.energyStorage || 0;
+    },
+
+    getEnergyEmission() {
+      return data.energyEmission;
+    },
+
+    getEnergyEmissionRate() {
+      return data.energyEmissionRate;
+    },
+
     getBuildingTime() {
       return data.buildingTime;
     },

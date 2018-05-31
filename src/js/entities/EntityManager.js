@@ -270,6 +270,7 @@ EntityManager.prototype = {
    */
   notifyListenersThatEntityCountHasChanged() {
     const emitter = EventEmitter.getInstance();
+    emitter.local.dispatch('entity/number/change');
     // to alter resource display
     emitter.local.dispatch('user/resource/alter');
     // to alter control panel (to potentially disable production buttons)

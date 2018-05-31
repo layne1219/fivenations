@@ -290,6 +290,7 @@ class Entity {
     // timestamp of creation to syncronize events across remote clients
     this.createdAt = config.createdAt;
     this._lastShieldUpdate = this.createdAt;
+    this._lastEnergyEmission = this.createdAt;
 
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
@@ -420,6 +421,7 @@ class Entity {
 
     // local behaviour
     this.updateShield();
+    this.updateEnergyEmission(authoritative);
   }
 
   /**
@@ -443,6 +445,36 @@ class Entity {
       this._lastShieldUpdate = this.game.time.time;
 
       this.updateDamageArea();
+    }
+  }
+
+  /**
+   * Updates the entity's shield at regular intervals (synced)
+   */
+  updateEnergyEmission(authoritative) {
+    const energyEmission = this.dataObject.getEnergyEmission();
+    const energyEmissionRate = this.dataObject.getEnergyEmissionRate() * 1000; // in ms
+    const maxedOut =
+      this.player.getEnergy() >= this.player.getMaxEnergyStorage();
+
+    if (!authoritative || !energyEmission || maxedOut) return;
+
+    const timeElapsedSinceLastUpdate =
+      this.game.time.time - this._lastEnergyEmission;
+
+    // update the entity's shield by one unit at every second
+    if (timeElapsedSinceLastUpdate > energyEmissionRate) {
+      const emitter = EventEmitter.getInstance();
+      let expectedTick =
+        Math.floor(timeElapsedSinceLastUpdate / energyEmissionRate) || 0;
+      // if there is more execution to be triggered we update the shield accordingly
+      while (expectedTick) {
+        emitter.synced.players(this.player).alter({
+          energy: energyEmission,
+        });
+        expectedTick -= 1;
+      }
+      this._lastEnergyEmission = this.game.time.time;
     }
   }
 
