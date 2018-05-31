@@ -31,7 +31,7 @@
   "uranium": 0,
   "space": 0,
   "energyStorage": 250,
-  "energyEmission": 10,
+  "energyEmission": 5,
   "energyEmissionRate": 1,
   "buildingTime": 40,
   "directions": 0,
