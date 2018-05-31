@@ -289,8 +289,6 @@ class Entity {
 
     // timestamp of creation to syncronize events across remote clients
     this.createdAt = config.createdAt;
-    this._lastShieldUpdate = this.createdAt;
-    this._lastEnergyEmission = this.createdAt;
 
     // storing entityManager locally to prevent recursive mutual dependency
     this.entityManager = config.entityManager;
@@ -428,6 +426,9 @@ class Entity {
    * Updates the entity's shield at regular intervals (synced)
    */
   updateShield() {
+    if (this._lastShieldUpdate === undefined) {
+      this._lastShieldUpdate = this.game.time.time;
+    }
     const timeElapsedSinceLastUpdate =
       this.game.time.time - this._lastShieldUpdate;
 
@@ -452,6 +453,10 @@ class Entity {
    * Updates the entity's shield at regular intervals (synced)
    */
   updateEnergyEmission(authoritative) {
+    if (this._lastEnergyEmission === undefined) {
+      this._lastEnergyEmission = this.game.time.time;
+    }
+
     const energyEmission = this.dataObject.getEnergyEmission();
     const energyEmissionRate = this.dataObject.getEnergyEmissionRate() * 1000; // in ms
     const maxedOut =

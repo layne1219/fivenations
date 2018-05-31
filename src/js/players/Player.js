@@ -81,12 +81,16 @@ class Player {
   }
 
   setEnergy(value) {
+    let newValue = value;
     if (value === undefined) return;
+    if (value > this.maxEnergyStorage) {
+      newValue = this.maxEnergyStorage;
+    }
     this.dispatcher.dispatch('change/energy', {
       old: this.energy,
-      new: value,
+      new: newValue,
     });
-    this.energy = value;
+    this.energy = newValue;
   }
 
   setUranium(value) {
