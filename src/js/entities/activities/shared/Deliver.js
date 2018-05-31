@@ -3,7 +3,7 @@ import PlayerManager from '../../../players/PlayerManager';
 import EventEmitter from '../../../sync/EventEmitter';
 import EntityManager from '../../EntityManager';
 import Util from '../../../common/Util';
-import { TILE_WIDTH } from '../common/Const';
+import { TILE_WIDTH } from '../../../common/Const';
 
 const ns = window.fivenations;
 
