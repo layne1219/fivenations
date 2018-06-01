@@ -15,6 +15,15 @@ class Scriptbox {
   has(key) {
     return !!scripts[key];
   }
+
+  setCurrentScript(key) {
+    this.currentScript = key;
+  }
+
+  runCurrentScript(...args) {
+    if (!this.currentScript) return;
+    scripts[this.currentScript].apply(null, args);
+  }
 }
 
 export default {

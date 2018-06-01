@@ -29,7 +29,7 @@ Boot.prototype = {
 
     // setting up the callback one the preloading is completed
     this.game.load.onLoadComplete.addOnce(() => {
-      this.game.state.start('game-preloader');
+      this.game.state.start('menu-preloader');
     }, this);
   },
 
