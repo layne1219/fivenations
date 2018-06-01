@@ -2,7 +2,7 @@
   "id": "maraduer",
   "name": "Maraduer",
   "type": "Destroyer",
-  "hull": 140,
+  "hull": 120,
   "shield": 120,
   "armor": 1,
   "power": 0,
@@ -56,8 +56,8 @@
   ],
   "jetEngineAlphaOffset": 0.6,
   "sizeOffset": {
-    "w": 15,
-    "h": 15
+    "w": 25,
+    "h": 25
   },
   "selectionOffset": {
     "x": 0,

@@ -101,7 +101,7 @@ function initGUIDisplayElements() {
     userPointer,
     playerManager,
   });
-  minimap.appendTo(panel, 0, 61);
+  minimap.appendTo(panel, 1, 61);
 
   // Sets up the EntityDetailsDisplay and links it to the Panel
   entityDetailsDisplay = new EntityDetailsDisplay({
