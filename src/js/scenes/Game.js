@@ -24,14 +24,6 @@ let authoritative = false;
 
 class Game extends Util.EventDispatcher {
   /**
-   * Initialises the script that will be automatically fetched
-   * from the ScriptBox upon creation
-   */
-  init(params = {}) {
-    this.script = params.script;
-  }
-
-  /**
    * Creates and links managers/controllers together
    */
   create() {
@@ -240,7 +232,7 @@ class Game extends Util.EventDispatcher {
     //                              Scriptbox
     // -----------------------------------------------------------------------
     this.scriptbox = Scriptbox.getInstance();
-    this.scriptbox.run(this.script || 'default', this);
+    this.scriptbox.runCurrentScript(this);
 
     // -----------------------------------------------------------------------
     //                              GUI.ActivityManager

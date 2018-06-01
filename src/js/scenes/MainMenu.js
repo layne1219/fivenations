@@ -1,5 +1,6 @@
 /* global window */
 import Header from '../menu/Header';
+import ScriptBox from '../common/Scriptbox';
 
 const ns = window.fivenations;
 
@@ -11,7 +12,18 @@ class MainMenu {
     this.createBackground();
     this.createHeader();
     this.createWebellionLogo();
-    this.createDemoButton();
+    this.createDemoButton({
+      label: 'Play Demo 1',
+      x: 75,
+      y: 150,
+      script: 'demo1',
+    });
+    this.createDemoButton({
+      label: 'Play Demo 2',
+      x: 75,
+      y: 250,
+      script: 'demo2',
+    });
   }
 
   /**
@@ -31,8 +43,11 @@ class MainMenu {
   /**
    * Creates Demo Button
    */
-  createDemoButton() {
-    const callback = () => this.game.state.start('game-preloader');
+  createDemoButton(options) {
+    const callback = () => {
+      this.game.state.start('game-preloader');
+      ScriptBox.getInstance().setCurrentScript(options.script);
+    };
     this.demoButton = this.game.add.button(
       0,
       0,
@@ -45,7 +60,7 @@ class MainMenu {
     );
     this.demoButton.anchor.set(0.5);
 
-    const text = this.game.add.text(0, 0, 'Play Demo', {
+    const text = this.game.add.text(0, 0, options.label || 'Play Demo', {
       font: '25px conthraxsemibold',
       fill: '#99eded',
       boundsAlignH: 'center',
@@ -55,8 +70,8 @@ class MainMenu {
     });
     text.anchor.set(0.5);
 
-    this.demoButton.x = 75 + this.demoButton.width / 2;
-    this.demoButton.y = 150 + this.demoButton.height / 2;
+    this.demoButton.x = options.x + this.demoButton.width / 2;
+    this.demoButton.y = options.y + this.demoButton.height / 2;
     text.x = this.demoButton.x;
     text.y = this.demoButton.y + 5;
   }
