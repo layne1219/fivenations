@@ -1,0 +1,282 @@
+{"frames": [
+
+{
+	"filename": "destruction_meteor_small_00000.png",
+	"frame": {"x":400,"y":103,"w":25,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":91,"y":91,"w":25,"h":22},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00001.png",
+	"frame": {"x":371,"y":442,"w":39,"h":31},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":85,"y":87,"w":39,"h":31},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00002.png",
+	"frame": {"x":400,"y":59,"w":54,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":78,"y":81,"w":54,"h":42},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00003.png",
+	"frame": {"x":400,"y":1,"w":75,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":71,"y":72,"w":75,"h":56},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00004.png",
+	"frame": {"x":202,"y":262,"w":175,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":37,"w":175,"h":107},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00005.png",
+	"frame": {"x":1,"y":1,"w":200,"h":144},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":37,"w":200,"h":144},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00006.png",
+	"frame": {"x":203,"y":1,"w":195,"h":139},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":36,"w":195,"h":139},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00007.png",
+	"frame": {"x":1,"y":147,"w":199,"h":136},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":35,"w":199,"h":136},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00008.png",
+	"frame": {"x":1,"y":285,"w":195,"h":133},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":35,"w":195,"h":133},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00009.png",
+	"frame": {"x":1,"y":420,"w":190,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":34,"w":190,"h":130},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00010.png",
+	"frame": {"x":1,"y":552,"w":188,"h":127},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":33,"w":188,"h":127},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00011.png",
+	"frame": {"x":1,"y":681,"w":184,"h":123},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":34,"w":184,"h":123},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00012.png",
+	"frame": {"x":1,"y":806,"w":181,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":33,"w":181,"h":121},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00013.png",
+	"frame": {"x":1,"y":929,"w":179,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":33,"w":179,"h":118},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00014.png",
+	"frame": {"x":203,"y":142,"w":177,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":33,"w":177,"h":118},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00015.png",
+	"frame": {"x":198,"y":371,"w":171,"h":112},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":29,"y":34,"w":171,"h":112},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00016.png",
+	"frame": {"x":193,"y":485,"w":167,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":33,"w":167,"h":113},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00017.png",
+	"frame": {"x":191,"y":600,"w":163,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":37,"y":33,"w":163,"h":117},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00018.png",
+	"frame": {"x":187,"y":719,"w":161,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":33,"w":161,"h":120},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00019.png",
+	"frame": {"x":184,"y":841,"w":156,"h":123},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":33,"w":156,"h":123},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00020.png",
+	"frame": {"x":182,"y":966,"w":153,"h":126},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":33,"w":153,"h":126},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00021.png",
+	"frame": {"x":350,"y":756,"w":151,"h":129},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":33,"w":151,"h":129},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00022.png",
+	"frame": {"x":356,"y":622,"w":149,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":51,"y":33,"w":149,"h":132},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00023.png",
+	"frame": {"x":362,"y":485,"w":143,"h":135},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":33,"w":143,"h":135},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00024.png",
+	"frame": {"x":337,"y":996,"w":142,"h":104},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":67,"w":142,"h":104},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00025.png",
+	"frame": {"x":342,"y":887,"w":143,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":57,"y":67,"w":143,"h":107},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00026.png",
+	"frame": {"x":1,"y":1049,"w":133,"h":66},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":67,"y":68,"w":133,"h":66},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00027.png",
+	"frame": {"x":371,"y":371,"w":130,"h":69},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":69,"w":130,"h":69},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00028.png",
+	"frame": {"x":136,"y":1049,"w":36,"h":62},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":70,"w":36,"h":62},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "destruction_meteor_small_00029.png",
+	"frame": {"x":477,"y":1,"w":28,"h":20},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":76,"y":70,"w":28,"h":20},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "effect_destruction_meteor_sm.png",
+	"format": "RGBA8888",
+	"size": {"w":506,"h":1116},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:985e550c25179f4c215919ad7b52a8db:30e61ce5e6bf51f2afda88a71eea21c7:ad1cac5a48102f04ae6ee1b7e90b41d0$"
+}
+}
