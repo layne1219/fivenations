@@ -1,0 +1,147 @@
+{"frames": [
+
+{
+	"filename": "nebula_sm03_00000.png",
+	"frame": {"x":1,"y":1,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00001.png",
+	"frame": {"x":286,"y":1,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00002.png",
+	"frame": {"x":571,"y":1,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00003.png",
+	"frame": {"x":1,"y":250,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00004.png",
+	"frame": {"x":286,"y":250,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00005.png",
+	"frame": {"x":571,"y":250,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00006.png",
+	"frame": {"x":1,"y":499,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00007.png",
+	"frame": {"x":286,"y":499,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00008.png",
+	"frame": {"x":571,"y":499,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00009.png",
+	"frame": {"x":1,"y":748,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00010.png",
+	"frame": {"x":286,"y":748,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00011.png",
+	"frame": {"x":571,"y":748,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00012.png",
+	"frame": {"x":1,"y":997,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00013.png",
+	"frame": {"x":286,"y":997,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "nebula_sm03_00014.png",
+	"frame": {"x":571,"y":997,"w":283,"h":247},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":283,"h":247},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "nebulafog_03.png",
+	"format": "RGBA8888",
+	"size": {"w":855,"h":1245},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4429bfb56f951a3dfb458045a2f9eaae:d2db94d12161e6a97cc9cc5c92bdc630:df01a703b42b1252e18a7fd71cbb0576$"
+}
+}
