@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "meteor_swarm_01.png",
+	"frame": {"x":498,"y":1,"w":241,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":50,"w":241,"h":232},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_02.png",
+	"frame": {"x":506,"y":235,"w":230,"h":232},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":48,"w":230,"h":232},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_03.png",
+	"frame": {"x":1,"y":258,"w":264,"h":222},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":40,"w":264,"h":222},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_04.png",
+	"frame": {"x":267,"y":236,"w":237,"h":243},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":17,"w":237,"h":243},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_05.png",
+	"frame": {"x":1,"y":1,"w":244,"h":255},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":19,"w":244,"h":255},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_06.png",
+	"frame": {"x":738,"y":235,"w":204,"h":241},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":23,"w":204,"h":241},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_07.png",
+	"frame": {"x":247,"y":1,"w":249,"h":233},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":20,"w":249,"h":233},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_swarm_08.png",
+	"frame": {"x":741,"y":1,"w":199,"h":231},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":55,"w":199,"h":231},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "asteroid_swarm.png",
+	"format": "RGBA8888",
+	"size": {"w":943,"h":481},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:21a44cf481caf9b7e06a57c9b28149e7:db627d655e060a67f4dbd09d1c168881:7ff1f6919e7a425268741bab4bdf73fb$"
+}
+}

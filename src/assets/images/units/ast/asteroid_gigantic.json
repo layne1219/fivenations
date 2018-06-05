@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "meteor_giga01.png",
+	"frame": {"x":286,"y":1,"w":308,"h":259},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":44,"y":63,"w":308,"h":259},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga02.png",
+	"frame": {"x":626,"y":740,"w":274,"h":242},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":73,"w":274,"h":242},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga03.png",
+	"frame": {"x":1,"y":1,"w":283,"h":294},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":54,"y":42,"w":283,"h":294},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga04.png",
+	"frame": {"x":626,"y":494,"w":285,"h":244},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":87,"w":285,"h":244},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga05.png",
+	"frame": {"x":1,"y":566,"w":270,"h":283},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":53,"w":270,"h":283},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga06.png",
+	"frame": {"x":601,"y":262,"w":300,"h":230},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":90,"w":300,"h":230},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga07.png",
+	"frame": {"x":319,"y":562,"w":305,"h":272},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":71,"w":305,"h":272},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga08.png",
+	"frame": {"x":1,"y":297,"w":316,"h":267},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":71,"w":316,"h":267},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga09.png",
+	"frame": {"x":596,"y":1,"w":303,"h":259},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":49,"y":84,"w":303,"h":259},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "meteor_giga10.png",
+	"frame": {"x":319,"y":262,"w":280,"h":298},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":56,"y":69,"w":280,"h":298},
+	"sourceSize": {"w":400,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "asteroid_gigantic.png",
+	"format": "RGBA8888",
+	"size": {"w":912,"h":983},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:dba73b1fea70dbe65c7e25d9603f1a1a:a547576b4c34b15b110da3a897765346:58ee4e1bfc40fab9ba9460955df05076$"
+}
+}
