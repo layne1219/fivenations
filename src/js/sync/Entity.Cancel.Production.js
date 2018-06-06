@@ -1,8 +1,38 @@
 /* global window */
 /* eslint class-methods-use-this: 0 */
 import Event from './Event';
+import EventEmitter from './EventEmitter';
 
 const ns = window.fivenations;
+
+/**
+ * Returns collection of key-value pairs of the required resources of
+ * the given entity
+ * @param {string} id
+ * @return {object}
+ */
+function getRequiredResources(id) {
+  const targetDO = ns.game.game.cache.getJSON(id);
+  const {
+    titanium, silicium, uranium, energy,
+  } = targetDO;
+  return {
+    titanium,
+    silicium,
+    uranium,
+    energy,
+  };
+}
+
+/**
+ * Emits Resource.Alter event to refund the player on cancellation
+ * @param {object} player - Player instance
+ * @param {string} id - Entity id
+ */
+function refundPlayer(player, id) {
+  const emitter = EventEmitter.getInstance();
+  emitter.synced.players(player).alter(getRequiredResources(id));
+}
 
 class EntityCancelProduction extends Event {
   /**
@@ -15,8 +45,15 @@ class EntityCancelProduction extends Event {
     }
     options.targets.forEach((id) => {
       const entity = ns.game.entityManager.entities(id);
+      const player = entity.getPlayer();
       const idx = options.data.productionSlotIdx;
-      entity.cancelProduction(idx);
+      const slot = entity.getProductionManager().getSlotByIdx(idx);
+      if (slot) {
+        if (player.isAuthorised()) {
+          refundPlayer(player, slot.id);
+        }
+        entity.cancelProduction(idx);
+      }
     });
   }
 }

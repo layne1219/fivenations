@@ -148,6 +148,14 @@ class ProductionManager {
   }
 
   /**
+   * Returns the slot by the given index
+   * @return {object}
+   */
+  getSlotByIdx(idx) {
+    return this.slots[idx];
+  }
+
+  /**
    * Returns all the slots in the production queue
    * @return {object}
    */
