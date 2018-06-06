@@ -13,10 +13,9 @@ const ns = window.fivenations;
  */
 function getRequiredResources(id) {
   const targetDO = ns.game.game.cache.getJSON(id);
-  const titanium = targetDO.titanium;
-  const silicium = targetDO.silicium;
-  const uranium = targetDO.uranium;
-  const energy = targetDO.energy;
+  const {
+    titanium, silicium, uranium, energy,
+  } = targetDO;
   return {
     titanium,
     silicium,
