@@ -436,15 +436,10 @@ class Entity {
 
     // update the entity's shield by one unit at every second
     if (timeElapsedSinceLastUpdate > Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) {
-      let expectedTick =
+      const expectedTick =
         Math.floor(timeElapsedSinceLastUpdate / Const.SHIELD_CHARGE_RATE_IN_MILLISECONDS) || 0;
-      // if there is more execution to be triggered we update the shield accordingly
-      while (expectedTick) {
-        this.dataObject.restoreShield(1);
-        expectedTick -= 1;
-      }
+      this.dataObject.restoreShield(expectedTick);
       this._lastShieldUpdate = this.game.time.time;
-
       this.updateDamageArea();
     }
   }
@@ -462,7 +457,17 @@ class Entity {
     const maxedOut =
       this.player.getEnergy() >= this.player.getMaxEnergyStorage();
 
-    if (!authoritative || !energyEmission || maxedOut) return;
+    // update only for authoritative player and if the entity has
+    // energy emission
+    if (!authoritative || !energyEmission) return;
+
+    // if the player's been maxed out at energy we need to
+    // update the last energy emission time so that it won't
+    // accumulate until the energy falls below maxEnergy
+    if (maxedOut) {
+      this._lastEnergyEmission = this.game.time.time;
+      return;
+    }
 
     const timeElapsedSinceLastUpdate =
       this.game.time.time - this._lastEnergyEmission;
@@ -470,15 +475,11 @@ class Entity {
     // update the entity's shield by one unit at every second
     if (timeElapsedSinceLastUpdate > energyEmissionRate) {
       const emitter = EventEmitter.getInstance();
-      let expectedTick =
-        Math.floor(timeElapsedSinceLastUpdate / energyEmissionRate) || 0;
-      // if there is more execution to be triggered we update the shield accordingly
-      while (expectedTick) {
-        emitter.synced.players(this.player).alter({
-          energy: energyEmission,
-        });
-        expectedTick -= 1;
-      }
+      const expectedTick =
+        Math.floor(timeElapsedSinceLastUpdate / energyEmissionRate) || 1;
+      emitter.synced.players(this.player).alter({
+        energy: energyEmission * expectedTick,
+      });
       this._lastEnergyEmission = this.game.time.time;
     }
   }
