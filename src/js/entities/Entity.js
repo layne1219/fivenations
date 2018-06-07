@@ -1375,7 +1375,7 @@ class Entity {
    * @return {array} Entity[]
    */
   getClosestAllyEntitiesInRange() {
-    return this.closestAllyEntities;
+    return this.closestAllyEntities || [];
   }
 
   /**
