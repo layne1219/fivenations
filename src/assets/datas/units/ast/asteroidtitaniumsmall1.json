@@ -24,6 +24,7 @@
 	"size": "sm",
 	"resource": true,
 	"cargoTitanium": 250,
+	"customMinimapColor": "0xffed98",
     "animations": {
         "idle-forever": {
             "rate": 27,

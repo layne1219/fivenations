@@ -23,7 +23,8 @@
 	"animType": ["idle-forever"],
 	"size": "m",
 	"resource": true,
-	"cargoUranium": 5000,
+	"cargoUranium": 2500,
+	"customMinimapColor": "0xffed98",
     "animations": {
         "idle-forever": {
             "rate": 19,
