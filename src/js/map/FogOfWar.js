@@ -1,5 +1,6 @@
 import Util from '../common/Util';
 import FogOfWarMasks from './FogOfWarMasks';
+import EventEmitter from '../sync/EventEmitter';
 
 const FAKE_ROW = [];
 const FAKE_VALUE = 0;
@@ -13,13 +14,27 @@ function addFakeRows(map) {
 class FogOfWar {
   constructor(map) {
     this.initMatrix(map);
+    this.initEventListener();
     addFakeRows(map);
   }
 
+  /**
+   * Generates the matrix to contain the visibility information of
+   * each tiles on the given map
+   * @param {object} map - Map instance
+   */
   initMatrix(map) {
     this.tiles = Util.matrix(map.getWidth(), map.getHeight());
     this.tileWidth = map.getTileWidth();
     this.map = map;
+    this.updatedTiles = [];
+  }
+
+  /**
+   * Creates a local event dispatcher
+   */
+  initEventListener() {
+    this.dispatcher = EventEmitter.getInstance().local;
   }
 
   /**
@@ -37,9 +52,9 @@ class FogOfWar {
         if (this.map.isTileOnScreen(x, y)) {
           this.dirty = true;
         }
+        this.updatedTiles.push({ x, y });
       }
     }
-    return this;
   }
 
   /**
@@ -55,6 +70,10 @@ class FogOfWar {
     }
   }
 
+  /**
+   * Visits all the tiles that are inside the given entity's range
+   * @param {object} entity - Entity instance
+   */
   visitTilesByEntityVisibility(entity) {
     const vision = Math.max(entity.getDataObject().getVision(), 1);
     const mask = FogOfWarMasks.getMaskBySize(vision);
@@ -87,6 +106,10 @@ class FogOfWar {
       .forEach((entity) => {
         this.visitTilesByEntityVisibility(entity);
       });
+    if (this.updatedTiles.length) {
+      this.dispatcher.dispatch('fogofwar/change', this.updatedTiles);
+      this.updatedTiles = [];
+    }
   }
 
   getMatrix() {
