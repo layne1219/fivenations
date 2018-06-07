@@ -4,6 +4,7 @@
   "size": "xsm",
   "ttl": 750,
   "followTarget": false,
+  "removeIfOutOfRange": true,
   "animations": {
     "idle": {
       "rate": 20,

@@ -184,6 +184,10 @@ class Weapon {
     return this.manager;
   }
 
+  getEntity() {
+    return this.entity;
+  }
+
   getName() {
     return this.data.name;
   }
