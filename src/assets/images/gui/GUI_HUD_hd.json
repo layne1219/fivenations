@@ -1,0 +1,57 @@
+{"frames": [
+
+{
+	"filename": "gui_panel_description_command.png",
+	"frame": {"x":1,"y":1,"w":238,"h":559},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":238,"h":559},
+	"sourceSize": {"w":238,"h":559},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_panel_minimap.png",
+	"frame": {"x":1,"y":562,"w":182,"h":178},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":178},
+	"sourceSize": {"w":182,"h":179},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_panel_resourceback.png",
+	"frame": {"x":185,"y":562,"w":48,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":48},
+	"sourceSize": {"w":48,"h":48},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXX_gui_construction_statusbar.png",
+	"frame": {"x":1,"y":742,"w":200,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":5,"w":200,"h":19},
+	"sourceSize": {"w":209,"h":28},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXX_gui_construction_statusbar_indicator.png",
+	"frame": {"x":1,"y":763,"w":194,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":10,"w":194,"h":9},
+	"sourceSize": {"w":209,"h":28},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "GUI_HUD_hd.png",
+	"format": "RGBA8888",
+	"size": {"w":240,"h":773},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b9f0bba56fbea4283361db034b09771a:0d3547ebe627d7630cdb7208838e8052:24135c227c8cbd3d02e9f4b668fc1a45$"
+}
+}
