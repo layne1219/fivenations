@@ -472,12 +472,22 @@ function DataObject(json) {
     },
 
     /**
-     * Returns an array of strings representing resouches that
+     * Returns an array of strings representing resources that
      * must be finished prior to the production of this entity
      * @return {object} array of research IDs
      */
-    getRequiredResourches() {
-      return data.requiredResourches;
+    getRequiredResources() {
+      return data.requiredResources;
+    },
+
+    /**
+     * Returns the custom colour with which the entity is displayed
+     * on the Minimap
+     * @return {string}
+     * @example '0x123456'
+     */
+    getCustomMinimapColor() {
+      return data.customMinimapColor;
     },
   };
 }

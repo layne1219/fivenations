@@ -187,24 +187,25 @@ export default class Minimap extends Phaser.Group {
         return fogOfWar.isVisible(coords[0], coords[1]);
       })
       .forEach((entity) => {
+        const DO = entity.getDataObject();
         const x =
           entity.getSprite().x / this.map.getScreenWidth() * MINIMIZED_WIDTH;
         const y =
           entity.getSprite().y / this.map.getScreenHeight() * MINIMIZED_HEIGHT;
         const w = Math.max(
           1,
-          entity.getDataObject().getWidth() /
-            this.map.getScreenWidth() *
-            MINIMIZED_WIDTH,
+          DO.getWidth() / this.map.getScreenWidth() * MINIMIZED_WIDTH,
         );
         const h = Math.max(
           1,
-          entity.getDataObject().getHeight() /
-            this.map.getScreenHeight() *
-            MINIMIZED_HEIGHT,
+          DO.getHeight() / this.map.getScreenHeight() * MINIMIZED_HEIGHT,
         );
-        const colors = this.playerManager.getColors();
-        const color = colors[entity.getDataObject().getTeam() - 1];
+
+        let color = DO.getCustomMinimapColor();
+        if (!color) {
+          const colors = this.playerManager.getColors();
+          color = colors[DO.getTeam() - 1];
+        }
 
         this.graphics.beginFill(color);
         this.graphics.drawRect(x, y, w, h);
