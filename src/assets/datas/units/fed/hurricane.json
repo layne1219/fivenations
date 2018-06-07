@@ -53,12 +53,12 @@
     12,
     13,
     14,
-    15    
+    15
   ],
   "jetEngineAlphaOffset": 0.4,
   "sizeOffset": {
-    "w": 2,
-    "h": 2
+    "w": 4,
+    "h": 4
   },
   "selectionOffset": {
     "x": 0,
