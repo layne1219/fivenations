@@ -2,13 +2,13 @@
   "id": "maraduer",
   "name": "Maraduer",
   "type": "Destroyer",
-  "hull": 120,
-  "shield": 120,
+  "hull": 100,
+  "shield": 125,
   "armor": 1,
   "power": 0,
   "hangar": 0,
-  "speed": 100,
-  "maneuverability": 40,
+  "speed": 125,
+  "maneuverability": 50,
   "vision": 4,
   "weapons": [
     111,
@@ -146,7 +146,7 @@
     }
   },
   "damageArea": {
-    "width": 30,
-    "height": 30
+    "width": 50,
+    "height": 50
   }
 }

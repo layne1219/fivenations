@@ -25,11 +25,11 @@
     0
   ],
   "titanium": 350,
-  "silicium": 200,
+  "silicium": 100,
   "energy": 200,
   "uranium": 0,
   "space": 9,
-  "buildingTime": 50,
+  "buildingTime": 45,
   "directions": 32,
   "requiredEntities": [
     "astrometricstation"
