@@ -323,6 +323,10 @@ function DataObject(json) {
       return data.ttl;
     },
 
+    shouldBeRemovedIfOutOfRange() {
+      return data.removeIfOutOfRange;
+    },
+
     getFollowTarget() {
       return data.followTarget;
     },

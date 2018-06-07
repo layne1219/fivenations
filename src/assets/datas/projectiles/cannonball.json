@@ -3,6 +3,7 @@
   "targetGraphicsGroup": "projectiles",
   "size": "xsm",
   "ttl": 200,
+  "removeIfOutOfRange": true,
   "animations": {
     "idle": {
       "rate": 20,

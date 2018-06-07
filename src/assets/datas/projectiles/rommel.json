@@ -2,7 +2,8 @@
     "id": "rommel",
     "targetGraphicsGroup": "projectiles",
     "size": "xsm",
-    "ttl": 75,
+    "ttl": 100,
+    "removeIfOutOfRange": true,
     "followTarget": false,
     "customFrame": 20,    
     "events": {

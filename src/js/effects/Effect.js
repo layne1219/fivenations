@@ -29,6 +29,7 @@ class Effect {
     this.setSprite(config);
     this.setAnimations(config);
     this.setTTL(config);
+    this.setShouldBeRemovedIfOutOfRange(config);
   }
 
   /**
@@ -65,6 +66,9 @@ class Effect {
     if (config.emitter) {
       this.emitter = config.emitter;
       if (this.emitter instanceof Effect || this.emitter instanceof Weapon) {
+        if (this.emitter instanceof Weapon) {
+          this.emitterIsWeapon = true;
+        }
         this.targetEntity = this.emitter.getTargetEntity();
         if (!this.targetEntity) return;
         this.onTargetEntityRemove = this.removeTargetEntity.bind(this);
@@ -168,6 +172,10 @@ class Effect {
     this.ttl = config.dataObject.getTTL();
   }
 
+  setShouldBeRemovedIfOutOfRange(config) {
+    this.shouldBeRemovedIfOutOfRange = config.dataObject.shouldBeRemovedIfOutOfRange();
+  }
+
   remove() {
     if (this.targetEntity) {
       this.targetEntity.off('remove', this.onTargetEntityRemove);
@@ -230,6 +238,10 @@ class Effect {
 
   getIdleEffects() {
     return this.idle.effects;
+  }
+
+  shouldBeRemovedIfOutOfRange() {
+    return this.shouldBeRemovedIfOutOfRange;
   }
 
   shouldIdleEffectsGetRandomized() {

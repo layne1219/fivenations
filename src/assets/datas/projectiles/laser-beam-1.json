@@ -3,6 +3,7 @@
   "targetGraphicsGroup": "projectiles",
   "size": "xsm",
   "ttl": 50,
+  "removeIfOutOfRange": true,
   "animations": {
     "idle": {
       "oncomplete": "keepLastFrame",

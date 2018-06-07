@@ -214,6 +214,7 @@ class EffectManager {
           .synced.effects(effects[i])
           .remove();
       } else {
+        this.updateExpiry(effects[i]);
         this.followTarget(effects[i]);
         this.emitTrails(effects[i]);
         this.idle(effects[i]);
@@ -226,10 +227,27 @@ class EffectManager {
    * @param {object} effect Effect entity
    * @return {boolean} true if the effect needs to be removed
    */
-  isEffectExpired(effect) {
-    if (effect.ttl === 0) return true;
+  updateExpiry(effect) {
     if (effect.ttl > 0) effect.ttl -= 1;
-    return false;
+    // if the effect gets out of the range of the emitter it must be removed
+    if (effect.emitterIsWeapon && effect.shouldBeRemovedIfOutOfRange) {
+      const emitter = effect.getEmitter();
+      const entity = emitter.getEntity();
+      const range = emitter.getRange();
+      const distance = Util.distanceBetween(entity, effect);
+      if (distance > range) {
+        effect.ttl = 0;
+      }
+    }
+  }
+
+  /**
+   * Updates ttl attribute of the given effect entity and returns
+   * @param {object} effect Effect entity
+   * @return {boolean} true if the effect needs to be removed
+   */
+  isEffectExpired(effect) {
+    return effect.ttl === 0;
   }
 
   /**
