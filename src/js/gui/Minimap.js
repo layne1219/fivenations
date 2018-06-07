@@ -186,8 +186,8 @@ export default class Minimap extends Phaser.Group {
     const width = MINIMIZED_WIDTH * ratioX;
     const height = MINIMIZED_HEIGHT * ratioY;
     const mouseCoords = userPointer.getRealCoords();
-    let mouseX = mouseCoords.x - this.panel.x - this.entityGraphics.x;
-    let mouseY = mouseCoords.y - this.panel.y - this.entityGraphics.y;
+    let mouseX = mouseCoords.x - this.panel.x - this.x - this.entityGraphics.x;
+    let mouseY = mouseCoords.y - this.panel.y - this.y - this.entityGraphics.y;
 
     if (mouseX > MINIMIZED_WIDTH || mouseY > MINIMIZED_HEIGHT || mouseY < 0) {
       return false;
