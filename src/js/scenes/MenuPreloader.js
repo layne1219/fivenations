@@ -56,7 +56,7 @@ class MenuPreloader {
    */
   update() {
     if (this.ready) {
-      this.game.state.start('mainmenu');
+      this.game.state.start('game-preloader');
     }
   }
 }

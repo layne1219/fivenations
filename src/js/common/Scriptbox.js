@@ -21,7 +21,7 @@ class Scriptbox {
   }
 
   runCurrentScript(...args) {
-    if (!this.currentScript) return;
+    if (!this.currentScript) this.currentScript = 'default';
     scripts[this.currentScript].apply(null, args);
   }
 }
