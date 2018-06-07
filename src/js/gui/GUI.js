@@ -168,13 +168,8 @@ GUI.prototype = {
    * @return {void}
    */
   update() {
-    if (minimap) {
-      minimap.update();
-    }
-
-    if (entityDetailsDisplay) {
-      entityDetailsDisplay.update();
-    }
+    minimap.update();
+    entityDetailsDisplay.update();
   },
 
   /**

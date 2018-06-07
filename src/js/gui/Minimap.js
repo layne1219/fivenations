@@ -8,7 +8,11 @@ const ns = window.fivenations;
 const MINIMIZED_WIDTH = 160;
 const MINIMIZED_HEIGHT = 160;
 
+const COLOR_EXPLORED = '0x001A45';
+const COLOR_UNEXPLORED = '0x101010';
+
 const notifications = [];
+let timer;
 
 export default class Minimap extends Phaser.Group {
   /**
@@ -26,10 +30,6 @@ export default class Minimap extends Phaser.Group {
     this.userPointer = userPointer;
     this.playerManager = playerManager;
 
-    // Create a graphics object to display the desired elements
-    this.graphics = phaserGame.make.graphics(0, 0);
-    this.add(this.graphics);
-
     // referencies to local variables
     this.map = map;
     this.entityManager = entityManager;
@@ -44,9 +44,88 @@ export default class Minimap extends Phaser.Group {
     };
   }
 
+  /**
+   * Attaches the Minimap object to the given GUI Panel
+   * @param {object} panel Main GUI Panel
+   * @param {integer} x Horizontal offset from the parent's anchor point
+   * @param {integer} y Vertical offset from the parent's anchor point
+   */
+  appendTo(panel, x, y) {
+    if (!panel) {
+      throw new Error('Invalid Phaser.Sprite object!');
+    }
+
+    panel.addChild(this);
+    this.x = x;
+    this.y = y; // this is the place for the minimap on the big panel sprite
+
+    this.panel = panel;
+
+    // creates the display layers
+    this.initDisplayLayers();
+
+    // registering the callbacks listening for the mouse event in order to execute
+    // further logic when the user interacts with the Minimap
+    this.setEventListeners();
+
+    // executes a timeout to redraw the minimap at regular
+    // intervals
+    this.startDelayedEntityUpdateLoop();
+  }
+
+  /**
+   * Creates the display layers for entities, fogofwar and other
+   * dynamic indicators that will be displayed on the Minimap
+   */
+  initDisplayLayers() {
+    // fog of war layer goes at the bottom
+    this.initFogOfWarLayer();
+    this.initEntityLayer();
+    this.initIndicatorLayer();
+  }
+
+  /**
+   * Creates the graphics layer onto which the Minimap elements
+   * will be drawn during the update function
+   */
+  initEntityLayer() {
+    this.entityGraphics = this.phaserGame.make.graphics(0, 0);
+    this.add(this.entityGraphics);
+  }
+
+  /**
+   * Creates the minimap layer onto which the FogOfWar tiles will be shown
+   */
+  initFogOfWarLayer() {
+    this.fogOfWarGraphics = this.phaserGame.make.graphics(0, 0);
+    this.fogOfWarGraphics.beginFill(COLOR_UNEXPLORED);
+    this.fogOfWarGraphics.drawRect(0, 0, MINIMIZED_WIDTH, MINIMIZED_HEIGHT);
+    this.fogOfWarGraphics.endFill();
+    this.add(this.fogOfWarGraphics);
+  }
+
+  /**
+   * Creates the minimap layer onto which the FogOfWar tiles will be shown
+   */
+  initIndicatorLayer() {
+    this.indicatorGraphics = this.phaserGame.make.graphics(0, 0);
+    this.add(this.indicatorGraphics);
+  }
+
+  /**
+   * Registers the event listeners
+   */
   setEventListeners() {
     this.setLeftButtonListeners();
     this.setRightButtonListeners();
+
+    // registers listener to the fogofwar/change event that is
+    // emitted when the fogOfWar has been updated
+    const dispatcher = EventEmitter.getInstance().local;
+    dispatcher.addEventListener(
+      'fogofwar/change',
+      this.updateFogOfWar.bind(this),
+    );
   }
 
   setLeftButtonListeners() {
@@ -99,7 +178,7 @@ export default class Minimap extends Phaser.Group {
     });
   }
 
-  getMouseCoords(userPointer, map, panel, graphics, alignToCentre) {
+  getMouseCoords(userPointer, map, alignToCentre) {
     const mapWidth = map.getScreenWidth();
     const mapHeight = map.getScreenHeight();
     let ratioX = ns.window.width / mapWidth;
@@ -107,8 +186,8 @@ export default class Minimap extends Phaser.Group {
     const width = MINIMIZED_WIDTH * ratioX;
     const height = MINIMIZED_HEIGHT * ratioY;
     const mouseCoords = userPointer.getRealCoords();
-    let mouseX = mouseCoords.x - panel.x - graphics.x;
-    let mouseY = mouseCoords.y - panel.y - graphics.y;
+    let mouseX = mouseCoords.x - this.panel.x - this.entityGraphics.x;
+    let mouseY = mouseCoords.y - this.panel.y - this.entityGraphics.y;
 
     if (mouseX > MINIMIZED_WIDTH || mouseY > MINIMIZED_HEIGHT || mouseY < 0) {
       return false;
@@ -132,54 +211,32 @@ export default class Minimap extends Phaser.Group {
   }
 
   /**
-   *
-   * Attach the Minimap object to the main GUI Panel
-   * @param {object} panel Main GUI Panel
-   * @param {integer} x Horizontal offset from the parent's anchor point
-   * @param {integer} y Vertical offset from the parent's anchor point
+   * Starts the indepenent timer to update the minimap at regular intervals
    */
-  appendTo(panel, x, y) {
-    if (!panel) {
-      throw new Error('Invalid Phaser.Sprite object!');
-    }
-
-    panel.addChild(this.getGraphics());
-    this.graphics.x = x;
-    this.graphics.y = y; // this is the place for the minimap on the big panel sprite
-
-    this.panel = panel;
-
-    // registering the callbacks listening for the mouse event in order to execute
-    // further logic when the user interacts with the Minimap
-    this.setEventListeners();
+  startDelayedEntityUpdateLoop() {
+    if (timer) clearTimeout(timer);
+    const loop = () => {
+      this.updateEntities();
+      timer = setTimeout(loop, 500);
+    };
+    loop();
   }
 
   /**
-   * Resetting the graphics object
-   * @return {void}
-   */
-  reset() {
-    this.graphics.clear();
-  }
-
-  /**
-   * Updating the minimap
-   * @return {void}
+   * Updates the minimap
    */
   update() {
-    this.reset();
-    this.updateFogOfWar();
-    this.updateEntities();
+    this.indicatorGraphics.clear();
     this.updateCamera();
     this.updateNotifications();
   }
 
   /**
    * update all entities on the minimap
-   * @return {void}
    */
   updateEntities() {
     const fogOfWar = this.map.getFogOfWar();
+    this.entityGraphics.clear();
     this.entityManager
       .entities(':not(hibernated)')
       .filter((entity) => {
@@ -207,15 +264,14 @@ export default class Minimap extends Phaser.Group {
           color = colors[DO.getTeam() - 1];
         }
 
-        this.graphics.beginFill(color);
-        this.graphics.drawRect(x, y, w, h);
-        this.graphics.endFill();
+        this.entityGraphics.beginFill(color);
+        this.entityGraphics.drawRect(x, y, w, h);
+        this.entityGraphics.endFill();
       });
   }
 
   /**
    * Redrawing the rectangle showing the viewport of the phaser camera object
-   * @return {void}
    */
   updateCamera() {
     const ratioX = ns.window.width / this.map.getScreenWidth();
@@ -232,8 +288,8 @@ export default class Minimap extends Phaser.Group {
       (MINIMIZED_HEIGHT - h);
     const color = '0xFFFFFF';
 
-    this.graphics.lineStyle(1, color, 1);
-    this.graphics.drawRect(x, y, w, h);
+    this.indicatorGraphics.lineStyle(1, color, 1);
+    this.indicatorGraphics.drawRect(x, y, w, h);
   }
 
   /**
@@ -241,49 +297,37 @@ export default class Minimap extends Phaser.Group {
    * @return {void}
    */
   updateNotifications() {
-    notifications.forEach(notification => notification.update(this.graphics));
+    notifications.forEach(notification =>
+      notification.update(this.indicatorGraphics));
   }
 
   /**
    * Updates Minimap with the visible tiles of the FogOfWar layer
    */
-  updateFogOfWar() {
+  updateFogOfWar(updatedTiles) {
     const fogOfWar = this.map.getFogOfWar();
     const tiles = fogOfWar.getMatrix();
     let cache = this.cache.fogOfWar;
     if (!cache) {
       cache = {};
-      cache.color = '0x001A45';
       cache.mapWidth = tiles.length - 1;
       cache.mapHeight = tiles[0].length - 1;
       cache.tileWidthOnMinimap = MINIMIZED_WIDTH / cache.mapWidth;
       cache.tileHeightOnMinimap = MINIMIZED_HEIGHT / cache.mapHeight;
       this.cache.fogOfWar = cache;
     }
-    for (let i = tiles.length - 1; i >= 0; i -= 1) {
-      for (let j = tiles[i].length - 1; j >= 0; j -= 1) {
-        if (tiles[j][i]) {
-          const x = i / cache.mapWidth * MINIMIZED_WIDTH;
-          const y = j / cache.mapHeight * MINIMIZED_HEIGHT;
-          this.graphics.beginFill(cache.color);
-          this.graphics.drawRect(
-            x,
-            y,
-            cache.tileWidthOnMinimap,
-            cache.tileHeightOnMinimap,
-          );
-          this.graphics.endFill();
-        }
-      }
-    }
-  }
-
-  /**
-   * Returning the Phaser.Graphics object being used
-   * @return {Phaser.Graphics}
-   */
-  getGraphics() {
-    return this.graphics;
+    updatedTiles.forEach((tile) => {
+      const x = tile.x / cache.mapWidth * MINIMIZED_WIDTH;
+      const y = tile.y / cache.mapHeight * MINIMIZED_HEIGHT;
+      this.fogOfWarGraphics.beginFill(COLOR_EXPLORED);
+      this.fogOfWarGraphics.drawRect(
+        x,
+        y,
+        cache.tileWidthOnMinimap,
+        cache.tileHeightOnMinimap,
+      );
+      this.fogOfWarGraphics.endFill();
+    });
   }
 
   /**
