@@ -4,7 +4,7 @@
 // ===                           CANVAS                       ===
 // ==============================================================
 // Canvas
-export const DEFAULT_CANVAS_WIDTH = 1024;
+export const DEFAULT_CANVAS_WIDTH = 1366;
 export const DEFAULT_CANVAS_HEIGHT = 768;
 
 // ==============================================================
