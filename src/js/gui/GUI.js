@@ -4,6 +4,7 @@ import {
   GROUP_GUI,
   NOTIFICATION_PANEL,
   CLICK_ANIMATIONS,
+  DEFAULT_CANVAS_HEIGHT,
 } from '../common/Const';
 import Selector from './Selector';
 import ColorIndicator from './ColorIndicator';
@@ -90,18 +91,12 @@ function initClickAnimations() {
 
 function initGUIDisplayElements() {
   // Creating the Panel
-  panel = new Panel(phaserGame);
+  panel = new Panel();
   panel.appendTo(group);
 
   // Sets up the Minimap and attches it to the Panel
-  minimap = new Minimap({
-    phaserGame,
-    map,
-    entityManager,
-    userPointer,
-    playerManager,
-  });
-  minimap.appendTo(panel, 1, 61);
+  minimap = new Minimap(map);
+  minimap.appendTo(panel, 0, DEFAULT_CANVAS_HEIGHT - minimap.height);
 
   // Sets up the EntityDetailsDisplay and links it to the Panel
   entityDetailsDisplay = new EntityDetailsDisplay({
@@ -250,7 +245,7 @@ GUI.prototype = {
    * @return {Boolean} [true if the primary input is over the panel sprite]
    */
   isHover() {
-    return panel.isHover();
+    return false;
   },
 };
 

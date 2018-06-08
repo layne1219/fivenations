@@ -1,13 +1,25 @@
 /* global window, Phaser */
 /* eslint class-methods-use-this: 0 */
+import PlayerManager from '../players/PlayerManager';
+import EntityManager from '../entities/EntityManager';
+import UserPointer from './UserPointer';
 import UserKeyboard from './UserKeyboard';
 import EventEmitter from '../sync/EventEmitter';
 import MinimapNotification from './MinimapNotification';
 
 const ns = window.fivenations;
+
+// background
+const BACKGROUND_SPRITE = 'gui-hd';
+const BACKGROUND_FRAME = 'gui_panel_minimap.png';
+const BACKGROUND_PADDING_X = 10;
+const BACKGROUND_PADDING_Y = 7;
+
+// dimensions
 const MINIMIZED_WIDTH = 160;
 const MINIMIZED_HEIGHT = 160;
 
+// styling
 const COLOR_EXPLORED = '0x001A45';
 const COLOR_UNEXPLORED = '0x101010';
 
@@ -16,50 +28,14 @@ let timer;
 
 export default class Minimap extends Phaser.Group {
   /**
-   * Creats a Minimap instance
-   * @param {[object]} phaserGame     [reference to a Game instance]
-   * @param {[object]} map()          [reference to a Map instance]
-   * @param {[object]} entityManager  [reference to EntityManager]
-   * @param {[object]} UserPointer    [reference to UserPointer]
+   * Creates a Minimap instance
+   * @param {object} map - reference to a Map instance
    */
-  constructor({
-    phaserGame, map, entityManager, userPointer, playerManager,
-  }) {
-    super(phaserGame);
-    this.phaserGame = phaserGame;
-    this.userPointer = userPointer;
-    this.playerManager = playerManager;
-
-    // referencies to local variables
+  constructor(map) {
+    super(ns.game.game);
     this.map = map;
-    this.entityManager = entityManager;
 
-    // cache to optimaze rendering
-    this.cache = {};
-
-    // calculating the ratio
-    this.ratio = {
-      x: MINIMIZED_WIDTH / this.map.getScreenWidth(),
-      y: MINIMIZED_HEIGHT / this.map.getScreenHeight(),
-    };
-  }
-
-  /**
-   * Attaches the Minimap object to the given GUI Panel
-   * @param {object} panel Main GUI Panel
-   * @param {integer} x Horizontal offset from the parent's anchor point
-   * @param {integer} y Vertical offset from the parent's anchor point
-   */
-  appendTo(panel, x, y) {
-    if (!panel) {
-      throw new Error('Invalid Phaser.Sprite object!');
-    }
-
-    panel.addChild(this);
-    this.x = x;
-    this.y = y; // this is the place for the minimap on the big panel sprite
-
-    this.panel = panel;
+    this.initHelpers();
 
     // creates the display layers
     this.initDisplayLayers();
@@ -74,14 +50,60 @@ export default class Minimap extends Phaser.Group {
   }
 
   /**
+   * Attaches the Minimap object to the given GUI Panel
+   * @param {object} panel Main GUI Panel
+   * @param {integer} x Horizontal offset from the parent's anchor point
+   * @param {integer} y Vertical offset from the parent's anchor point
+   */
+  appendTo(panel, x, y) {
+    if (!panel) {
+      throw new Error('Invalid Phaser.Sprite object!');
+    }
+
+    this.x = x;
+    this.y = y;
+    this.panel = panel;
+    this.panel.addChild(this);
+  }
+
+  /**
+   * Instantiates the helper components
+   */
+  initHelpers(map) {
+    this.userPointer = UserPointer.getInstance();
+    this.playerManager = PlayerManager.getInstance();
+    this.entityManager = EntityManager.getInstance();
+
+    // cache to optimaze rendering
+    this.cache = {};
+
+    // calculating the ratio
+    this.ratio = {
+      x: MINIMIZED_WIDTH / this.map.getScreenWidth(),
+      y: MINIMIZED_HEIGHT / this.map.getScreenHeight(),
+    };
+  }
+
+  /**
    * Creates the display layers for entities, fogofwar and other
    * dynamic indicators that will be displayed on the Minimap
    */
   initDisplayLayers() {
-    // fog of war layer goes at the bottom
+    // background
+    this.initBackground();
+    // fog of war layer goes first when it comes to layers
     this.initFogOfWarLayer();
     this.initEntityLayer();
     this.initIndicatorLayer();
+  }
+
+  /**
+   * Adds the sprite to the group
+   */
+  initBackground() {
+    const background = this.game.add.sprite(0, 0, BACKGROUND_SPRITE);
+    background.frameName = BACKGROUND_FRAME;
+    this.add(background);
   }
 
   /**
@@ -89,7 +111,9 @@ export default class Minimap extends Phaser.Group {
    * will be drawn during the update function
    */
   initEntityLayer() {
-    this.entityGraphics = this.phaserGame.make.graphics(0, 0);
+    const x = BACKGROUND_PADDING_X;
+    const y = BACKGROUND_PADDING_Y;
+    this.entityGraphics = this.game.make.graphics(x, y);
     this.add(this.entityGraphics);
   }
 
@@ -97,7 +121,9 @@ export default class Minimap extends Phaser.Group {
    * Creates the minimap layer onto which the FogOfWar tiles will be shown
    */
   initFogOfWarLayer() {
-    this.fogOfWarGraphics = this.phaserGame.make.graphics(0, 0);
+    const x = BACKGROUND_PADDING_X;
+    const y = BACKGROUND_PADDING_Y;
+    this.fogOfWarGraphics = this.game.make.graphics(x, y);
     this.fogOfWarGraphics.beginFill(COLOR_UNEXPLORED);
     this.fogOfWarGraphics.drawRect(0, 0, MINIMIZED_WIDTH, MINIMIZED_HEIGHT);
     this.fogOfWarGraphics.endFill();
@@ -108,7 +134,9 @@ export default class Minimap extends Phaser.Group {
    * Creates the minimap layer onto which the FogOfWar tiles will be shown
    */
   initIndicatorLayer() {
-    this.indicatorGraphics = this.phaserGame.make.graphics(0, 0);
+    const x = BACKGROUND_PADDING_X;
+    const y = BACKGROUND_PADDING_Y;
+    this.indicatorGraphics = this.game.make.graphics(x, y);
     this.add(this.indicatorGraphics);
   }
 
@@ -131,13 +159,7 @@ export default class Minimap extends Phaser.Group {
   setLeftButtonListeners() {
     // making the minimap area clickable
     this.userPointer.on('leftbutton/move', (userPointer) => {
-      const coords = this.getMouseCoords(
-        userPointer,
-        this.map,
-        this.panel,
-        this.graphics,
-        true,
-      );
+      const coords = this.getMouseCoords(userPointer, this.map, true);
 
       // if getMouseCoords returns with false then the coordinates are not legit
       if (!coords) {
@@ -151,12 +173,7 @@ export default class Minimap extends Phaser.Group {
   setRightButtonListeners() {
     // making the minimap area clickable
     this.userPointer.on('rightbutton/down', (userPointer) => {
-      const coords = this.getMouseCoords(
-        userPointer,
-        this.map,
-        this.panel,
-        this.graphics,
-      );
+      const coords = this.getMouseCoords(userPointer, this.map);
       let resetActivityQueue = true;
 
       // if getMouseCoords returns with false then the coordinates are not legit
@@ -279,11 +296,11 @@ export default class Minimap extends Phaser.Group {
     const w = MINIMIZED_WIDTH * ratioX;
     const h = MINIMIZED_HEIGHT * ratioY;
     const x =
-      this.phaserGame.camera.x /
+      this.game.camera.x /
       (this.map.getScreenWidth() - ns.window.width) *
       (MINIMIZED_WIDTH - w);
     const y =
-      this.phaserGame.camera.y /
+      this.game.camera.y /
       (this.map.getScreenHeight() - ns.window.height) *
       (MINIMIZED_HEIGHT - h);
     const color = '0xFFFFFF';
