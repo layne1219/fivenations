@@ -5,19 +5,29 @@ import ProductionTabButton, { SPRITESHEET_ID } from './ProductionTabButton';
 const ns = window.fivenations;
 
 // Number of slots to be shown in the Production Tab
-const SLOTS_COUNT = 9;
+const SLOTS_COUNT = 10;
 
-// Paddings between Slot elements
-const SLOTS_PADDING_X = 5;
-const SLOTS_PADDING_Y = 5;
+// Slots
+const SLOTS_X = 0;
+const SLOTS_Y = 20;
+const SLOTS_PADDING_X = 3;
+const SLOTS_PADDING_Y = 3;
 
 // Status Bar
 const STATUS_BAR_COLOR = '0x84e1e3';
 const STATUS_BAR_PADDING = 2;
-const STATUS_BAR_X = 43;
-const STATUS_BAR_Y = 10;
-const STATUS_BAR_WIDTH = 300;
+const STATUS_BAR_X = 0;
+const STATUS_BAR_Y = 0;
+const STATUS_BAR_WIDTH = 200;
 const STATUS_BAR_HEIGHT = 15;
+
+// Production title font
+const STATUS_TITLE_FONT = {
+  marginLeft: 25,
+  marginTop: 0,
+  font: '12px BerlinSansFB-Reg',
+  color: '#77C7D2',
+};
 
 // Rainbow table for the dynamically generated ProductionTabButton
 // spritesheet. The table associates the indices with frame names
@@ -32,6 +42,7 @@ class ProductionTab extends Phaser.Group {
     this.createProductionTabButtonSpriteSheet();
     this.addButtons();
     this.addStatusBar();
+    this.addStatusText();
   }
 
   /**
@@ -48,7 +59,7 @@ class ProductionTab extends Phaser.Group {
           this.updateStatusBar(slots[0]);
         }
       } else {
-        this.buttons[i].frame = i;
+        this.buttons[i].frame = i - 1;
       }
     }
   }
@@ -63,20 +74,24 @@ class ProductionTab extends Phaser.Group {
 
       // according to the layout the first two slots must be
       // below one another and the rest spread out horizontally
-      if (i === 0) {
-        button.x = 0;
-        button.y = 0;
-      } else {
-        const space = button.width + SLOTS_PADDING_X;
-        button.x = (i - 1) * space;
-        button.y = button.height + SLOTS_PADDING_Y;
-      }
-
+      const spaceX = button.width + SLOTS_PADDING_X;
+      const spaceY = button.height + SLOTS_PADDING_Y;
+      button.x = (i % 5) * spaceX + SLOTS_X;
+      button.y = Math.floor(i / 5) * spaceY + SLOTS_Y;
       button.setSlotIdx(i);
 
       this.buttons.push(button);
       this.add(button);
     }
+  }
+
+  addStatusText() {
+    const text = this.game.add.text(0, 0, '', {
+      font: STATUS_TITLE_FONT.font,
+      fill: STATUS_TITLE_FONT.color,
+    });
+    text.anchor.set(0.5);
+    this.statusText = this.add(text);
   }
 
   /**
@@ -97,7 +112,7 @@ class ProductionTab extends Phaser.Group {
    */
   addSlotIcons(sprites) {
     const slotNamePrefix = 'slot-';
-    for (let i = 1; i <= SLOTS_COUNT; i += 1) {
+    for (let i = 1; i < SLOTS_COUNT; i += 1) {
       const sprite = this.createElement({
         assetId: 'gui',
         id: `XXX_gui_construction_queue_${i}.png`,

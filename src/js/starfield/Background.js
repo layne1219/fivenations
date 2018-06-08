@@ -1,4 +1,8 @@
-import { DEFAULT_STARFIELD_BACKGROUND_TILE } from '../common/Const';
+import {
+  DEFAULT_STARFIELD_BACKGROUND_TILE,
+  DEFAULT_CANVAS_WIDTH,
+  DEFAULT_CANVAS_HEIGHT,
+} from '../common/Const';
 import Graphics from '../common/Graphics';
 
 const BACKGROUND_SPEED = 0.1;
@@ -27,7 +31,13 @@ class Background {
     if (this.background) {
       this.remove();
     }
-    this.background = this.game.add.tileSprite(0, 0, 1024, 1024, tile);
+    this.background = this.game.add.tileSprite(
+      0,
+      0,
+      DEFAULT_CANVAS_WIDTH,
+      DEFAULT_CANVAS_HEIGHT,
+      tile,
+    );
     this.background.fixedToCamera = true;
     this.group.add(this.background);
   }

@@ -161,24 +161,26 @@ class UserPointer {
    * @return {Boolean} [returns true if the mouse pointer is over the target item]
    */
   isHover(sprite) {
+    const offsetX = sprite.offsetX || 0;
+    const offsetY = sprite.offsetY || 0;
     let mouseX = phaserGame.input.mousePointer.x;
     let mouseY = phaserGame.input.mousePointer.y;
 
-    if (!sprite.fixedToCamera) {
+    if (!sprite.fixedToCamera && !sprite.parent.fixedToCamera) {
       mouseX += phaserGame.camera.x;
       mouseY += phaserGame.camera.y;
     }
 
-    if (mouseX < sprite.x - sprite.offsetX) {
+    if (mouseX < sprite.x + offsetX) {
       return false;
     }
-    if (mouseX > sprite.x - (sprite.offsetX + sprite.width)) {
+    if (mouseX > sprite.x + (offsetX + sprite.width)) {
       return false;
     }
-    if (mouseY < sprite.y - sprite.offsetY) {
+    if (mouseY < sprite.y + offsetY) {
       return false;
     }
-    if (mouseY > sprite.y - (sprite.offsetY + sprite.height)) {
+    if (mouseY > sprite.y + (offsetY + sprite.height)) {
       return false;
     }
     return true;

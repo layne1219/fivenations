@@ -1,6 +1,8 @@
-/* global Phaser */
+/* global Phaser, window */
 /* eslint class-methods-use-this: 0 */
+import EntityManager from '../entities/EntityManager';
 import EventEmitter from '../sync/EventEmitter';
+import UserPointer from './UserPointer';
 import ProductionTab from './ProductionTab';
 import Util from '../common/Util';
 import {
@@ -10,20 +12,26 @@ import {
   ENTITY_ICON_SMALL_DIMENSIONS,
 } from '../common/Const';
 
+const ns = window.fivenations;
+
+const BACKGROUND_SPRITE = 'gui-hd';
+const BACKGROUND_FRAME = 'gui_panel_description_command.png';
+
 const weaponNumber = 12;
 const weaponPopupPaddingX = 20;
 const weaponPopupPaddingY = 0;
 
+// Multiselection group
 const iconWidth = 51;
 const iconHeight = 51;
 const margin = 1;
-const columns = 11;
-const rows = 2;
+const columns = 4;
+const rows = 6;
 const statusBarHeight = 3;
 const statusBarMargin = 2;
 
 const text = {
-  marginLeft: 132,
+  marginLeft: 125,
   marginTop: 5,
   titleFont: '12px BerlinSansFB-Reg',
   defaultFont: '11px BerlinSansFB-Reg',
@@ -278,8 +286,8 @@ class WeaponGroup extends Phaser.Group {
     this.weaponTexts = [];
 
     for (let i = 0; i < weaponNumber; i += 1) {
-      x = text.marginLeft + Math.floor(i / 8) * 100;
-      y = text.marginTop + (i % 8 + 1) * 11;
+      x = Math.floor(i / 8) * 100;
+      y = (i % 8 + 1) * 14;
       weaponText = this.add(phaserGame.add.text(x, y, '', {
         font: text.defaultFont,
         fill: text.color,
@@ -519,49 +527,42 @@ class MultiselectionGroup extends Phaser.Group {
   }
 }
 
-class EntityDetailsDisplay {
-  /**
-   * Constructing an EntityDetailsDisplay instance
-   * @param {object} entityManager [reference to the singleton instance of EntityManager]
-   */
-  constructor({ entityManager, phaserGame }) {
-    // creating the group for the individual StatusBar objects
-    this.group = phaserGame.add.group();
-    this.group.visible = false;
+class EntityDetailsDisplay extends Phaser.Group {
+  constructor() {
+    super(ns.game.game);
+    this.visible = false;
+    this.entityManager = EntityManager.getInstance();
+    this.userPointer = UserPointer.getInstance();
 
-    // storing the entity manager locally
-    this.entityManager = entityManager;
-
-    // setting up the text group
-    this.attributeGroup = this.createAttributeGroup(0, 0, phaserGame);
-
-    // setting up the group for the icons showing up when it comes to multiselection
-    this.multiselectionGroup = this.createMultiselectionGroup(
-      0,
-      5,
-      phaserGame,
-      this.entityManager,
-    );
-
-    this.group.add(this.attributeGroup);
-    this.group.add(this.multiselectionGroup);
+    this.addBackground();
+    this.createAttributeGroup(0, 5);
+    this.createMultiselectionGroup(15, 16);
   }
 
-  createAttributeGroup(x, y, phaserGame) {
-    const container = phaserGame.add.group();
+  /**
+   * Adds the sprite to the group
+   */
+  addBackground() {
+    const background = this.game.add.sprite(0, 0, BACKGROUND_SPRITE);
+    background.frameName = BACKGROUND_FRAME;
+    this.add(background);
+  }
 
-    this.mainAttributeGroup = new MainAttributeGroup(phaserGame);
-    this.mainAttributeGroup.x = x;
-    this.mainAttributeGroup.y = y;
+  createAttributeGroup(x, y) {
+    const container = this.game.add.group();
 
-    this.weaponGroup = new WeaponGroup(phaserGame);
-    this.weaponGroup.x = x + 100;
-    this.weaponGroup.y = y - 10;
+    this.mainAttributeGroup = new MainAttributeGroup(this.game);
+    this.mainAttributeGroup.x = x + 9;
+    this.mainAttributeGroup.y = y + 15;
 
-    const weaponGroupPopup = new WeaponGroupPopup(phaserGame);
+    this.weaponGroup = new WeaponGroup(this.game);
+    this.weaponGroup.x = x + 20;
+    this.weaponGroup.y = y + 135;
+
+    const weaponGroupPopup = new WeaponGroupPopup(this.game);
     this.weaponGroup.add(weaponGroupPopup);
     this.weaponGroup.on('over', (item) => {
-      weaponGroupPopup.x = item.x + weaponPopupPaddingX;
+      weaponGroupPopup.x = Math.min(item.x + weaponPopupPaddingX, 35);
       weaponGroupPopup.y =
         item.y - weaponGroupPopup.height + weaponPopupPaddingY;
       weaponGroupPopup.visible = true;
@@ -577,23 +578,25 @@ class EntityDetailsDisplay {
       );
     });
 
-    this.productionTab = new ProductionTab(phaserGame);
-    this.productionTab.x = x + 240;
-    this.productionTab.y = y + 15;
+    this.productionTab = new ProductionTab(this.game);
+    this.productionTab.x = x + 20;
+    this.productionTab.y = y + 185;
 
     container.add(this.mainAttributeGroup);
     container.add(this.weaponGroup);
     container.add(this.productionTab);
 
-    return container;
+    this.attributeGroup = container;
+    this.add(this.attributeGroup);
   }
 
-  createMultiselectionGroup(x, y, phaserGame, entityManager) {
-    const group = new MultiselectionGroup(phaserGame, entityManager);
+  createMultiselectionGroup(x, y) {
+    const group = new MultiselectionGroup(this.game, this.entityManager);
     group.x = x;
     group.y = y;
 
-    return group;
+    this.multiselectionGroup = group;
+    this.add(this.multiselectionGroup);
   }
 
   /**
@@ -607,11 +610,9 @@ class EntityDetailsDisplay {
       throw new Error('Invalid Phaser.Sprite object!');
     }
 
-    this.group.x = x;
-    this.group.y = y;
-    panel.addChild(this.group);
-
-    this.panel = panel;
+    this.x = x;
+    this.y = y;
+    panel.addChild(this);
   }
 
   /**
@@ -680,7 +681,7 @@ class EntityDetailsDisplay {
    * @return {[void]}
    */
   show() {
-    this.group.visible = true;
+    this.visible = true;
   }
 
   /**
@@ -688,7 +689,15 @@ class EntityDetailsDisplay {
    * @return {[void]}
    */
   hide() {
-    this.group.visible = false;
+    this.visible = false;
+  }
+
+  /**
+   * Returns true if the user pointer is above the minimap
+   * @return {boolean}
+   */
+  isHover() {
+    return this.userPointer.isHover(this);
   }
 }
 

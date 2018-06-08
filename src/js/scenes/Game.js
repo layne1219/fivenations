@@ -216,9 +216,6 @@ class Game extends Util.EventDispatcher {
     // Set up the GUI object
     this.GUI = GUI.setGame(this.game)
       .setMap(this.map)
-      .setEntityManager(this.entityManager)
-      .setUserPointer(this.userPointer)
-      .setPlayerManager(this.playerManager)
       .getInstance(true);
 
     // -----------------------------------------------------------------------

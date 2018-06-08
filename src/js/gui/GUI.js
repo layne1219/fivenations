@@ -4,6 +4,8 @@ import {
   GROUP_GUI,
   NOTIFICATION_PANEL,
   CLICK_ANIMATIONS,
+  DEFAULT_CANVAS_WIDTH,
+  DEFAULT_CANVAS_HEIGHT,
 } from '../common/Const';
 import Selector from './Selector';
 import ColorIndicator from './ColorIndicator';
@@ -22,10 +24,7 @@ import Button from './Button';
 const ns = window.fivenations;
 
 let phaserGame;
-let entityManager;
-let playerManager;
 let map;
-let userPointer;
 let singleton;
 
 // reference to a Phaser.Group object that incorporate all the GUI elements
@@ -90,33 +89,28 @@ function initClickAnimations() {
 
 function initGUIDisplayElements() {
   // Creating the Panel
-  panel = new Panel(phaserGame);
+  panel = new Panel();
   panel.appendTo(group);
 
   // Sets up the Minimap and attches it to the Panel
-  minimap = new Minimap({
-    phaserGame,
-    map,
-    entityManager,
-    userPointer,
-    playerManager,
-  });
-  minimap.appendTo(panel, 1, 61);
+  minimap = new Minimap(map);
+  minimap.appendTo(panel, 0, DEFAULT_CANVAS_HEIGHT - minimap.height);
 
   // Sets up the EntityDetailsDisplay and links it to the Panel
-  entityDetailsDisplay = new EntityDetailsDisplay({
-    entityManager,
-    phaserGame,
-  });
-  entityDetailsDisplay.appendTo(panel, 200, 110);
+  entityDetailsDisplay = new EntityDetailsDisplay();
+  entityDetailsDisplay.appendTo(
+    panel,
+    DEFAULT_CANVAS_WIDTH - 238,
+    DEFAULT_CANVAS_HEIGHT - entityDetailsDisplay.height,
+  );
 
   // ControlPanel
-  controlPanel = new ControlPanel({ entityManager, phaserGame });
-  controlPanel.appendTo(panel, 815, 15);
+  controlPanel = new ControlPanel();
+  controlPanel.appendTo(panel, 1142, 553);
 
   // Resource display
-  resourceDisplay = new ResourceDisplay({ playerManager, phaserGame });
-  resourceDisplay.appendTo(panel, 425, 88);
+  resourceDisplay = new ResourceDisplay();
+  resourceDisplay.appendTo(panel, 875, 20);
 
   // Notification Bar
   notificationBar = new NotificationBar(phaserGame);
@@ -250,7 +244,7 @@ GUI.prototype = {
    * @return {Boolean} [true if the primary input is over the panel sprite]
    */
   isHover() {
-    return panel.isHover();
+    return minimap.isHover() || entityDetailsDisplay.isHover();
   },
 };
 
@@ -265,41 +259,12 @@ export default {
   },
 
   /**
-   * Passing the entityManager object to retrive Entity objects in order to display
-   * entity attributes on the Panel
-   * @param {objet} [_entityManager] [reference to EntityManager singleton]
-   * @param {void}
-   */
-  setEntityManager(_entityManager) {
-    entityManager = _entityManager;
-    return this;
-  },
-
-  /**
    * Passing the Map object to fetch map details mostly for rendering the Minimap
    * @param {objet} [_map] [reference to Map singleton]
    * @param {void}
    */
   setMap(_map) {
     map = _map;
-    return this;
-  },
-
-  /**
-   * UserPointer object to register custom listeners for interactions with the mouse
-   * @param {object} _userPointer UserPointer
-   */
-  setUserPointer(_userPointer) {
-    userPointer = _userPointer;
-    return this;
-  },
-
-  /**
-   * Registers the playerManager instance into the execution context
-   * @param {object} _playerManager [PlayerManager]
-   */
-  setPlayerManager(_playerManager) {
-    playerManager = _playerManager;
     return this;
   },
 

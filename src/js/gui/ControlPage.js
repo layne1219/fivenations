@@ -155,6 +155,7 @@ class ControlPanelPage extends Phaser.Group {
     abilities.forEach((ability, idx) => {
       const buttonIdx = ABILITY_POSITIONS[ability] || idx;
       const button = this.buttons[buttonIdx];
+      if (!button) return;
       // if the ability equals to the name of an entity
       // the button must be converted into a produce button
       if (shouldControlButtonBeAProduceButton(ability)) {
