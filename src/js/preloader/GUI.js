@@ -14,6 +14,11 @@ export default {
       `${PATH_ASSETS}/gui/GUI_element.json`,
     );
     preloader.load.atlasJSONHash(
+      'gui-hd',
+      `${PATH_ASSETS}/gui/GUI_HUD_hd.png`,
+      `${PATH_ASSETS}/gui/GUI_HUD_hd.json`,
+    );
+    preloader.load.atlasJSONHash(
       'gui.buttons',
       `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.png`,
       `${PATH_ASSETS}/gui/GUI_element_mute_fullscreen.json`,
