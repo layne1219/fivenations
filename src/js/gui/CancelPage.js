@@ -1,3 +1,4 @@
+/* eslint class-methods-use-this: 0 */
 import ControlPage from './ControlPage';
 
 class CancelPage extends ControlPage {
@@ -11,6 +12,11 @@ class CancelPage extends ControlPage {
 
     this.addControlButton(button);
   }
+
+  /**
+   * Updates the page according to the currently selected collection of entities
+   */
+  update() {}
 }
 
 export default CancelPage;

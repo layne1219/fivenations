@@ -69,7 +69,7 @@ export default class Minimap extends Phaser.Group {
   /**
    * Instantiates the helper components
    */
-  initHelpers(map) {
+  initHelpers() {
     this.userPointer = UserPointer.getInstance();
     this.playerManager = PlayerManager.getInstance();
     this.entityManager = EntityManager.getInstance();
@@ -370,6 +370,14 @@ export default class Minimap extends Phaser.Group {
         notifications.splice(i, 1);
       }
     }
+  }
+
+  /**
+   * Returns true if the user pointer is above the minimap
+   * @return {boolean}
+   */
+  isHover() {
+    return this.userPointer.isHover(this);
   }
 }
 

@@ -61,7 +61,7 @@ export const ENTITY_GUI_SIZES = {
 
 // helper constants for entity related functionalities
 export const SLOW_MANOUVERABAILITY_TRESHOLD = 25;
-export const MAX_SELECTABLE_UNITS = 22;
+export const MAX_SELECTABLE_UNITS = 24;
 export const SHIELD_CHARGE_RATE_IN_MILLISECONDS = 2000;
 export const SHIELD_ACTIVITY_TRESHOLD = 10;
 export const ANIMATION_IDLE_FOREVER = 'idle-forever';
@@ -221,7 +221,7 @@ export const GUI_POPUP = {
 export const NOTIFICATION_PANEL = {
   x: 0,
   // offset from Panel
-  y: -100,
+  y: DEFAULT_CANVAS_HEIGHT - 300,
   width: DEFAULT_CANVAS_WIDTH,
   height: Math.round(DEFAULT_CANVAS_HEIGHT / 10),
   fadeAnimationDuration: 500,

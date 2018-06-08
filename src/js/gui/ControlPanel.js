@@ -1,21 +1,23 @@
-/* global Phaser */
+/* global Phaser, window */
 import ControlPage from './ControlPage';
 import CancelPage from './CancelPage';
 import EventEmitter from '../sync/EventEmitter';
+import EntityManager from '../entities/EntityManager';
+
+const ns = window.fivenations;
 
 export default class ControlPanel extends Phaser.Group {
   /**
    * Constructing an ControlPanel instance
    * @param {object} entityManager [reference to the singleton instance of EntityManager]
    */
-  constructor({ entityManager, phaserGame }) {
-    super(phaserGame);
-    // initialising the pages and buttons
-    this.init(entityManager);
+  constructor() {
+    super(ns.game.game);
+    this.init();
   }
 
-  init(entityManager) {
-    this.entityManager = entityManager;
+  init() {
+    this.entityManager = EntityManager.getInstance();
 
     // we are creating two pages for all the possible controls
     this.controlPanelPages = [
