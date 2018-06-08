@@ -7,7 +7,7 @@
   "armor": 1,
   "power": 0,
   "hangar": 0,
-  "speed": 90,
+  "speed": 110,
   "maneuverability": 40,
   "vision": 4,
   "weapons": [
@@ -146,7 +146,7 @@
     }
   },
   "damageArea": {
-    "width": 30,
-    "height": 30
+    "width": 50,
+    "height": 50
   }
 }
