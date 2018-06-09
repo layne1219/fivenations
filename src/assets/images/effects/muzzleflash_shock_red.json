@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "muzzleflash_shock_red_00000.png",
+	"frame": {"x":698,"y":1,"w":12,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":94,"y":95,"w":12,"h":10},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00001.png",
+	"frame": {"x":571,"y":1,"w":64,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":80,"w":64,"h":44},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00002.png",
+	"frame": {"x":505,"y":1,"w":64,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":78,"w":64,"h":48},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00003.png",
+	"frame": {"x":1,"y":1,"w":83,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":75,"w":83,"h":50},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00004.png",
+	"frame": {"x":86,"y":1,"w":83,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":75,"w":83,"h":50},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00005.png",
+	"frame": {"x":171,"y":1,"w":83,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":75,"w":83,"h":50},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00006.png",
+	"frame": {"x":256,"y":1,"w":83,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":58,"y":75,"w":83,"h":50},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00007.png",
+	"frame": {"x":341,"y":1,"w":81,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":59,"y":76,"w":81,"h":49},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00008.png",
+	"frame": {"x":424,"y":1,"w":79,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":60,"y":76,"w":79,"h":49},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "muzzleflash_shock_red_00009.png",
+	"frame": {"x":637,"y":1,"w":59,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":70,"y":81,"w":59,"h":41},
+	"sourceSize": {"w":200,"h":200},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "muzzleflash_shock_red.png",
+	"format": "RGBA8888",
+	"size": {"w":711,"h":52},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:78e23513c7ca8c33f0c50439ea374f51:068f34cfca7cf5351437a84ab8f09b06:51443b09a318f937f5c19448472fc337$"
+}
+}
