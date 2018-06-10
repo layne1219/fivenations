@@ -255,6 +255,7 @@ class Attack extends Activity {
       .attack({
         targetEntity: this.target,
         addAsLast: true,
+        carrierEntity: this.entity,
       })
       .getToDock({
         targetEntity: this.entity,

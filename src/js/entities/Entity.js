@@ -628,11 +628,13 @@ class Entity {
    * Registers a Attack activity with the given entity set as target
    * @param {object} targetEntity
    * @param {boolean} addAsLast - Registers the activity as the last to excecute
+   * @param {object} carrierEntity
    * @return {void}
    */
-  attack(targetEntity, addAsLast) {
+  attack(targetEntity, addAsLast, carrierEntity) {
     const attack = new ActivityManager.Attack(this);
     attack.setTarget(targetEntity);
+    attack.setCarrierEntity(carrierEntity);
     this.activityManager.add(attack, addAsLast);
     this.weaponManager.setTargetEntity(targetEntity);
   }

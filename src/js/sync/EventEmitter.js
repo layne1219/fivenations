@@ -187,7 +187,7 @@ function createEntityEventAPI(entityManager) {
        * @chainable
        */
       attack(options) {
-        const { targetEntity } = options;
+        const { targetEntity, carrierEntity } = options;
         if (!targetEntity) return this;
 
         EventBus.getInstance().add({
@@ -196,6 +196,7 @@ function createEntityEventAPI(entityManager) {
           data: {
             targetEntity: targetEntity.getGUID(),
             addAsLast: options.addAsLast,
+            carrierEntity: carrierEntity.getGUID(),
           },
           resetActivityQueue: options.resetActivityQueue,
         });
