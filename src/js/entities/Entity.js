@@ -634,7 +634,9 @@ class Entity {
   attack(targetEntity, addAsLast, carrierEntity) {
     const attack = new ActivityManager.Attack(this);
     attack.setTarget(targetEntity);
-    attack.setCarrierEntity(carrierEntity);
+    if (carrierEntity) {
+      attack.setCarrierEntity(carrierEntity);
+    }
     this.activityManager.add(attack, addAsLast);
     this.weaponManager.setTargetEntity(targetEntity);
   }

@@ -23,9 +23,11 @@ Dock.prototype.execute = (options) => {
   options.targets.forEach((id) => {
     const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
     const entity = ns.game.entityManager.entities(id);
+    if (!entity) return;
     if (options.resetActivityQueue) {
       entity.reset();
     }
+    if (!targetEntity) return;
     targetEntity.dockTarget(entity, addAsLast);
   });
 };

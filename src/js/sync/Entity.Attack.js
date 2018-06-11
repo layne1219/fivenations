@@ -23,10 +23,13 @@ EntityAttack.prototype.execute = (options) => {
   const addAsLast = options.data.addAsLast || false;
   options.targets.forEach((id) => {
     const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
-    const carrierEntity = ns.game.entityManager.entities(options.data.carrierEntity);
     const entity = ns.game.entityManager.entities(id);
     if (options.resetActivityQueue) {
       entity.reset();
+    }
+    let carrierEntity;
+    if (options.data.carrierEntity) {
+      carrierEntity = ns.game.entityManager.entities(options.data.carrierEntity);
     }
     entity.attack(targetEntity, addAsLast, carrierEntity);
   });
