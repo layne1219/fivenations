@@ -27,7 +27,11 @@ EntityAttack.prototype.execute = (options) => {
     if (options.resetActivityQueue) {
       entity.reset();
     }
-    entity.attack(targetEntity, addAsLast);
+    let carrierEntity;
+    if (options.data.carrierEntity) {
+      carrierEntity = ns.game.entityManager.entities(options.data.carrierEntity);
+    }
+    entity.attack(targetEntity, addAsLast, carrierEntity);
   });
 };
 

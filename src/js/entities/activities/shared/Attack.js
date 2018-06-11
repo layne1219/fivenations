@@ -40,6 +40,9 @@ class Attack extends Activity {
 
     // gracefully cleans up the activity when the target is removed
     this.onTargetEntityRemove = () => this.kill();
+    this.onCarrierEntityRemove = () => {
+      this.carrierEntity = null;
+    };
   }
 
   /**
@@ -77,6 +80,13 @@ class Attack extends Activity {
     if (!this.target.isTargetableByEntity(this.entity)) {
       const dispatcher = EventEmitter.getInstance().local;
       dispatcher.dispatch('attack/invalid-target');
+      this.kill();
+      return;
+    }
+
+    // if the entity has a carrier entity attached to it and it is out of
+    // range
+    if (this.isCarrierEntityOutOfRange()) {
       this.kill();
       return;
     }
@@ -166,6 +176,21 @@ class Attack extends Activity {
   }
 
   /**
+   * Saving the carrier entity that will be attacked
+   * @return {[void]}
+   */
+  setCarrierEntity(entity) {
+    if (!entity) return;
+
+    if (this.carrierEntity) {
+      this.carrierEntity.off('remove', this.onCarrierEntityRemove);
+    }
+
+    this.carrierEntity = entity;
+    this.carrierEntity.on('remove', this.onCarrierEntityRemove);
+  }
+
+  /**
    * Checks whether the specified target entity is in range
    * @return {boolean}
    */
@@ -235,6 +260,8 @@ class Attack extends Activity {
       .isAuthorised();
     const emitter = EventEmitter.getInstance().synced.entities;
 
+    // only if the user is authorised and the entity has docked
+    // fighters in the hanger
     if (
       !authorised ||
       !dockedEntities ||
@@ -243,6 +270,10 @@ class Attack extends Activity {
     ) {
       return;
     }
+
+    // do not do pre-mature release, only when the carrier entity
+    // has approached the target closely enough
+    if (!this.isTargetInMinRange()) return;
 
     emitter(this.entity)
       .undock()
@@ -255,6 +286,7 @@ class Attack extends Activity {
       .attack({
         targetEntity: this.target,
         addAsLast: true,
+        carrierEntity: this.entity,
       })
       .getToDock({
         targetEntity: this.entity,
@@ -264,6 +296,18 @@ class Attack extends Activity {
     // block any potential dupliation of the events above until
     // the Undock Activity is fully completed
     this._entitiesWillBeReleased = true;
+  }
+
+  /**
+   * Returns if the entity has a carrier entity registered and that is
+   * currently out of its range
+   * @return {boolean}
+   */
+  isCarrierEntityOutOfRange() {
+    if (!this.carrierEntity) return false;
+    const distance = Util.distanceBetween(this.entity, this.carrierEntity);
+    const range = this.carrierEntity.getWeaponManager().getMinRange();
+    return distance > range;
   }
 
   /**
