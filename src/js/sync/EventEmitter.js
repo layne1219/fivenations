@@ -224,6 +224,7 @@ function createEntityEventAPI(entityManager) {
 
         if (emitter) {
           data.emitterEntity = emitter.getGUID();
+          data.emitterTeam = emitter.getTeam();
         }
 
         EventBus.getInstance().add({

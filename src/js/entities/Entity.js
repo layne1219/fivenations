@@ -1227,11 +1227,19 @@ class Entity {
   }
 
   /**
-   * Return the Player instance to which this entity belongs
+   * Returns the Player instance to which this entity belongs
    * @return {object} Player
    */
   getPlayer() {
     return this.player;
+  }
+
+  /**
+   * Returns the team of the Player that owns this entity
+   * @return {number}
+   */
+  getTeam() {
+    return this.player.getTeam();
   }
 
   /**

@@ -9,17 +9,18 @@ const ns = window.fivenations;
 
 /**
  * Returns nearby entities in the given splash range
- * @param {object} Entity
+ * @param {object} entity - Entity instance
  * @param {object} data { splashRange, splash }
  */
 function getNearbyEntitiesinSplashRange(entity, data) {
-  const { splashRange, doesSplashDamageAllies } = data;
-  let entities = [];
   const hostileEntities = entity.getClosestHostileEntityInRange();
+  const alliedEntities = entity.getClosestAllyEntitiesInRange();
+  const { splashRange, doesSplashDamageAllies, emitterTeam } = data;
+  let entities = [];
+
   if (hostileEntities) {
     entities = entities.concat(hostileEntities);
   }
-  const alliedEntities = entity.getClosestAllyEntitiesInRange();
   if (alliedEntities) {
     entities = entities.concat(alliedEntities);
   }
@@ -28,12 +29,17 @@ function getNearbyEntitiesinSplashRange(entity, data) {
       entity: nearbyEntity,
       distance: Util.distanceBetween(entity, nearbyEntity),
     }))
-    .filter(obj => obj.distance <= splashRange);
+    .filter(obj => obj.distance <= splashRange)
+    .filter((obj) => {
+      if (doesSplashDamageAllies) return true;
+      return emitterTeam !== obj.entity.getTeam();
+    });
 }
 
 /**
  * Damages nearby entities
- * @param {object} Entity
+ * @param {object} entity - Entity instance
+ * @param {object} data - further details about the Damage event
  */
 function damageEntitiesInSplashRange(entity, data) {
   const list = getNearbyEntitiesinSplashRange(entity, data);
@@ -66,6 +72,7 @@ function getNearbyAlliedEntitiesToEntity(entity) {
  * @param {object} Entity - target
  */
 function attackTarget(entity, targetEntity) {
+  if (!targetEntity) return;
   if (!entity.isIdling()) return;
 
   EventEmitter.getInstance()
@@ -79,6 +86,7 @@ function attackTarget(entity, targetEntity) {
  * @param {object} Entity - target
  */
 function notifyNearbyEntities(entity, targetEntity) {
+  if (!targetEntity) return;
   const entities = getNearbyAlliedEntitiesToEntity(entity);
   // attack
   EventEmitter.getInstance()
