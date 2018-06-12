@@ -15,9 +15,13 @@ const ns = window.fivenations;
 function getNearbyEntitiesinSplashRange(entity, data) {
   const { splashRange, doesSplashDamageAllies } = data;
   let entities = [];
-  entities = entities.concat(entity.getClosestHostileEntityInRange());
-  if (doesSplashDamageAllies) {
-    entities = entities.concat(entity.getClosestAllyEntitiesInRange());
+  const hostileEntities = entity.getClosestHostileEntityInRange();
+  if (hostileEntities) {
+    entities = entities.concat(hostileEntities);
+  }
+  const alliedEntities = entity.getClosestAllyEntitiesInRange();
+  if (alliedEntities) {
+    entities = entities.concat(alliedEntities);
   }
   return entities
     .map(nearbyEntity => ({
