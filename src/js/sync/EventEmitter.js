@@ -190,8 +190,9 @@ function createEntityEventAPI(entityManager) {
         if (!options.targetEntity) return this;
         const data = {
           ...options,
-          targetEntity: targetEntity.getGUID(),
-          carrierEntity: carrierEntity && carrierEntity.getGUID(),
+          targetEntity: options.targetEntity.getGUID(),
+          carrierEntity:
+            options.carrierEntity && options.carrierEntity.getGUID(),
         };
 
         EventBus.getInstance().add({

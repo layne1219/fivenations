@@ -29,7 +29,12 @@ function collisionHandler(effectSprite, entitySprite) {
   if (entity.isHibernated()) return false;
 
   // effect cannot collide with friendly entities unless the friendly fire is on
-  if (!getEmitterEntity.isEnemy(entity) && !weapon.hasFriendlyFire()) {
+  // or the effect was released through target firing
+  if (
+    !effect.hasReleasedThroughTargetFiring() &&
+    !getEmitterEntity.isEnemy(entity) &&
+    !weapon.hasFriendlyFire()
+  ) {
     return false;
   }
 

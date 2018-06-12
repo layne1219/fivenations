@@ -30,6 +30,7 @@ class Effect {
     this.setAnimations(config);
     this.setTTL(config);
     this.setShouldBeRemovedIfOutOfRange(config);
+    this.setTargetFiring(config);
   }
 
   /**
@@ -176,6 +177,10 @@ class Effect {
     this.shouldBeRemovedIfOutOfRange = config.dataObject.shouldBeRemovedIfOutOfRange();
   }
 
+  setTargetFiring(config) {
+    this.targetFiring = config.targetFiring;
+  }
+
   remove() {
     if (this.targetEntity) {
       this.targetEntity.off('remove', this.onTargetEntityRemove);
@@ -222,6 +227,10 @@ class Effect {
 
   hasTrails() {
     return !!this.trails;
+  }
+
+  hasReleasedThroughTargetFiring() {
+    return this.targetFiring;
   }
 
   getTrailsRate() {

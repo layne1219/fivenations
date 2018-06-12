@@ -629,9 +629,10 @@ class Entity {
    * @param {object} targetEntity
    * @param {boolean} addAsLast - Registers the activity as the last to excecute
    * @param {object} carrierEntity
+   * @param {boolean} targetFiring - true if the entity is using target firing
    * @return {void}
    */
-  attack(targetEntity, addAsLast, carrierEntity) {
+  attack(targetEntity, addAsLast, carrierEntity, targetFiring) {
     const attack = new ActivityManager.Attack(this);
     attack.setTarget(targetEntity);
     if (carrierEntity) {
@@ -639,6 +640,7 @@ class Entity {
     }
     this.activityManager.add(attack, addAsLast);
     this.weaponManager.setTargetEntity(targetEntity);
+    this.targetFiring = targetFiring;
   }
 
   /**
@@ -1110,6 +1112,14 @@ class Entity {
         this.dataObject.getCargoSilicium() ||
         this.dataObject.getCargoUranium())
     );
+  }
+
+  /**
+   * Returns true if the entity is using target firing
+   * @return {boolean}
+   */
+  isTargetFiring() {
+    return this.targetFiring;
   }
 
   /**

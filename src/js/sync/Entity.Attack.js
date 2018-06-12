@@ -24,6 +24,7 @@ EntityAttack.prototype.execute = (options) => {
   options.targets.forEach((id) => {
     const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
     const entity = ns.game.entityManager.entities(id);
+    const { targetFiring } = options.data;
     if (options.resetActivityQueue) {
       entity.reset();
     }
@@ -31,7 +32,7 @@ EntityAttack.prototype.execute = (options) => {
     if (options.data.carrierEntity) {
       carrierEntity = ns.game.entityManager.entities(options.data.carrierEntity);
     }
-    entity.attack(targetEntity, addAsLast, carrierEntity);
+    entity.attack(targetEntity, addAsLast, carrierEntity, targetFiring);
   });
 };
 
