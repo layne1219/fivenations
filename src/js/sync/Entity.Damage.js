@@ -8,6 +8,42 @@ import Util from '../common/Util';
 const ns = window.fivenations;
 
 /**
+ * Returns nearby entities in the given splash range
+ * @param {object} Entity
+ * @param {object} data { splashRange, splash }
+ */
+function getNearbyEntitiesinSplashRange(entity, data) {
+  const { splashRange, doesSplashDamageAllies } = data;
+  let entities = [];
+  entities = entities.concat(entity.getClosestHostileEntityInRange());
+  if (doesSplashDamageAllies) {
+    entities = entities.concat(entity.getClosestAllyEntitiesInRange());
+  }
+  return entities
+    .map(nearbyEntity => ({
+      entity: nearbyEntity,
+      distance: Util.distanceBetween(entity, nearbyEntity),
+    }))
+    .filter(obj => obj.distance <= splashRange);
+}
+
+/**
+ * Damages nearby entities
+ * @param {object} Entity
+ */
+function damageEntitiesInSplashRange(entity, data) {
+  const list = getNearbyEntitiesinSplashRange(entity, data);
+  const { damage, damageShield, splashRange } = data;
+  list.forEach((obj) => {
+    const factor = Math.max(0, 1 - obj.distance / splashRange);
+    obj.entity.damage({
+      damage: Math.ceil(damage * factor),
+      damageShield: Math.ceil(damageShield * factor),
+    });
+  });
+}
+
+/**
  * Returns nearby allied entities of the given entity
  * @param {object} Entity
  */
@@ -52,19 +88,26 @@ class EntityDamage extends Event {
    * @param {object} options
    */
   execute(options) {
-    if (!options.targets || !options.data) {
+    const { targets, data } = options;
+
+    if (!targets || !data) {
       return;
     }
     const authorised = PlayerManager.getInstance()
       .getUser()
       .isAuthorised();
-    const emitter = ns.game.entityManager.entities(options.data.emitterEntity);
+    const emitter = ns.game.entityManager.entities(data.emitterEntity);
 
-    options.targets.forEach((id) => {
+    targets.forEach((id) => {
       const entity = ns.game.entityManager.entities(id);
 
       if (!entity) return;
-      const isKilled = entity.damage(options.data);
+      const isKilled = entity.damage(data);
+
+      // if Splash damage range is
+      if (data.splashRange) {
+        damageEntitiesInSplashRange(entity, data);
+      }
 
       // if authorised we notify all the nearby allied entities
       // to attack the target who initially inflicted the damage

@@ -217,6 +217,8 @@ function createEntityEventAPI(entityManager) {
         const data = {
           damage: weapon.getDamage(),
           damageShield: weapon.getDamageShield(),
+          splashRange: weapon.getSplashRange(),
+          doesSplashDamageAllies: weapon.doesSplashDamageAllies(),
         };
         const emitter = weapon.getManager().getEntity();
 
