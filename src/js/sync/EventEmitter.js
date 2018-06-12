@@ -188,15 +188,11 @@ function createEntityEventAPI(entityManager) {
        */
       attack(options) {
         if (!options.targetEntity) return this;
-        const { targetEntity, carrierEntity } = options;
         const data = {
+          ...options,
           targetEntity: targetEntity.getGUID(),
-          addAsLast: options.addAsLast,
+          carrierEntity: carrierEntity && carrierEntity.getGUID(),
         };
-
-        if (carrierEntity) {
-          data.carrierEntity = carrierEntity.getGUID();
-        }
 
         EventBus.getInstance().add({
           id: 'entity/attack',
