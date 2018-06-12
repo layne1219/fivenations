@@ -236,6 +236,10 @@ class Weapon {
     return this.data.minRange;
   }
 
+  getSplashRange() {
+    return this.data.splash_range;
+  }
+
   getEffect() {
     return this.data.effect;
   }
@@ -246,6 +250,10 @@ class Weapon {
 
   toJSON() {
     return JSON.stringify(this.data, null, '  ');
+  }
+
+  doesSplashDamageAllies() {
+    return this.data.splash_damges_allies;
   }
 
   isSelfContained() {
