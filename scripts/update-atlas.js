@@ -20,21 +20,21 @@ const files = [
 	'ath/ath_build13.json',
 	'ath/ath_build14.json',
 
-	'ath/ath_unit01.json',
-	'ath/ath_unit02.json',
-	'ath/ath_unit03.json',
-	'ath/ath_unit04.json',
-	'ath/ath_unit05.json',
-	'ath/ath_unit06.json',
-	'ath/ath_unit07.json',
-	'ath/ath_unit08.json',
-	'ath/ath_unit09.json',
-	'ath/ath_unit10.json',
-	'ath/ath_unit11.json',
-	'ath/ath_unit12.json',
-	'ath/ath_unit13.json',
+*/ 'ath/ath_unit01.json',
+  'ath/ath_unit02.json',
+  'ath/ath_unit03.json',
+  'ath/ath_unit04.json',
+  'ath/ath_unit05.json',
+  'ath/ath_unit06.json',
+  'ath/ath_unit07.json',
+  'ath/ath_unit08.json',
+  'ath/ath_unit09.json',
+  'ath/ath_unit10.json',
+  'ath/ath_unit11.json',
+  'ath/ath_unit12.json',
+  'ath/ath_unit13.json',
 
-	'fed/fed_build01.json',
+  /*	'fed/fed_build01.json',
 	'fed/fed_build02.json',
 	'fed/fed_build03.json',
 	'fed/fed_build04.json',
@@ -49,7 +49,7 @@ const files = [
 	'fed/fed_build13.json',
 	'fed/fed_build14.json',
 
-*/ 'fed/fed_unit01.json',
+ 'fed/fed_unit01.json',
   'fed/fed_unit02.json',
   'fed/fed_unit03.json',
   'fed/fed_unit04.json',
@@ -109,7 +109,7 @@ const files = [
 	'tho/tho_build13.json',
 	'tho/tho_build14.json',
 
-*/ 'tho/tho_unit01.json',
+ 'tho/tho_unit01.json',
   'tho/tho_unit02.json',
   'tho/tho_unit03.json',
   'tho/tho_unit04.json',
@@ -187,7 +187,7 @@ const files = [
   'ast/asteroid_uranium01.json',
   'ast/asteroid_uranium02.json',
   'ast/asteroid_uranium_sm01.json',
-  'ast/asteroid_uranium_sm02.json',*/
+  'ast/asteroid_uranium_sm02.json', */
 ];
 
 files.forEach((file) => {
