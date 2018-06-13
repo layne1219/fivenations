@@ -3,7 +3,7 @@
   "description": "",
   "readme": "",
   "repository": "",
-  "version": "0.56.1",
+  "version": "0.56.2",
   "dependencies": {
     "ansi-regex": "^3.0.0",
     "easystarjs": "^0.4.1",
