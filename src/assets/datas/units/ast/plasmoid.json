@@ -1,14 +1,4 @@
 {"frames": [
-
-{
-	"filename": "gui_ico_plasmoid.png",
-	"frame": {"x":353,"y":391,"w":116,"h":89},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":5,"y":12,"w":116,"h":89},
-	"sourceSize": {"w":127,"h":111},
-	"pivot": {"x":0.5,"y":0.5}
-},
 {
 	"filename": "gui_ico_sm_plasmoid.png",
 	"frame": {"x":1,"y":1,"w":51,"h":51},
@@ -16,6 +6,15 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
 	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_plasmoid.png",
+	"frame": {"x":353,"y":391,"w":116,"h":89},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":12,"w":116,"h":89},
+	"sourceSize": {"w":127,"h":111},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
