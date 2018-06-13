@@ -1,8 +1,26 @@
 {"frames": [
 
 {
+	"filename": "gui_ico_plasmoid.png",
+	"frame": {"x":353,"y":391,"w":116,"h":89},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":12,"w":116,"h":89},
+	"sourceSize": {"w":127,"h":111},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "gui_ico_sm_plasmoid.png",
+	"frame": {"x":1,"y":1,"w":51,"h":51},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":51,"h":51},
+	"sourceSize": {"w":51,"h":51},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "plasmoid_01_00000.png",
-	"frame": {"x":182,"y":320,"w":86,"h":70},
+	"frame": {"x":418,"y":1,"w":86,"h":70},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":117,"w":86,"h":70},
@@ -11,7 +29,7 @@
 },
 {
 	"filename": "plasmoid_01_00001.png",
-	"frame": {"x":182,"y":392,"w":85,"h":67},
+	"frame": {"x":147,"y":1,"w":85,"h":67},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":119,"w":85,"h":67},
@@ -20,7 +38,7 @@
 },
 {
 	"filename": "plasmoid_01_00002.png",
-	"frame": {"x":87,"y":395,"w":91,"h":66},
+	"frame": {"x":54,"y":1,"w":91,"h":66},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":119,"w":91,"h":66},
@@ -29,7 +47,7 @@
 },
 {
 	"filename": "plasmoid_01_00003.png",
-	"frame": {"x":351,"y":396,"w":95,"h":69},
+	"frame": {"x":234,"y":1,"w":95,"h":69},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":102,"y":118,"w":95,"h":69},
@@ -38,7 +56,7 @@
 },
 {
 	"filename": "plasmoid_01_00004.png",
-	"frame": {"x":90,"y":167,"w":90,"h":76},
+	"frame": {"x":362,"y":149,"w":90,"h":76},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":105,"y":110,"w":90,"h":76},
@@ -47,7 +65,7 @@
 },
 {
 	"filename": "plasmoid_01_00005.png",
-	"frame": {"x":1,"y":247,"w":87,"h":75},
+	"frame": {"x":273,"y":148,"w":87,"h":75},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":111,"w":87,"h":75},
@@ -56,7 +74,7 @@
 },
 {
 	"filename": "plasmoid_01_00006.png",
-	"frame": {"x":272,"y":166,"w":87,"h":78},
+	"frame": {"x":264,"y":225,"w":87,"h":78},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":110,"w":87,"h":78},
@@ -65,7 +83,7 @@
 },
 {
 	"filename": "plasmoid_01_00007.png",
-	"frame": {"x":183,"y":86,"w":87,"h":79},
+	"frame": {"x":353,"y":227,"w":87,"h":79},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":110,"w":87,"h":79},
@@ -74,7 +92,7 @@
 },
 {
 	"filename": "plasmoid_01_00008.png",
-	"frame": {"x":276,"y":1,"w":85,"h":81},
+	"frame": {"x":264,"y":305,"w":85,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":108,"w":85,"h":81},
@@ -83,7 +101,7 @@
 },
 {
 	"filename": "plasmoid_01_00009.png",
-	"frame": {"x":94,"y":83,"w":87,"h":82},
+	"frame": {"x":1,"y":381,"w":87,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":107,"w":87,"h":82},
@@ -92,7 +110,7 @@
 },
 {
 	"filename": "plasmoid_01_00010.png",
-	"frame": {"x":363,"y":1,"w":83,"h":82},
+	"frame": {"x":90,"y":384,"w":83,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":107,"w":83,"h":82},
@@ -101,7 +119,7 @@
 },
 {
 	"filename": "plasmoid_01_00011.png",
-	"frame": {"x":187,"y":1,"w":87,"h":83},
+	"frame": {"x":264,"y":391,"w":87,"h":83},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":107,"w":87,"h":83},
@@ -110,7 +128,7 @@
 },
 {
 	"filename": "plasmoid_01_00012.png",
-	"frame": {"x":1,"y":1,"w":91,"h":81},
+	"frame": {"x":351,"y":308,"w":91,"h":81},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":108,"w":91,"h":81},
@@ -119,7 +137,7 @@
 },
 {
 	"filename": "plasmoid_01_00013.png",
-	"frame": {"x":362,"y":85,"w":82,"h":80},
+	"frame": {"x":1,"y":296,"w":82,"h":80},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":109,"w":82,"h":80},
@@ -128,7 +146,7 @@
 },
 {
 	"filename": "plasmoid_01_00014.png",
-	"frame": {"x":1,"y":84,"w":87,"h":82},
+	"frame": {"x":175,"y":384,"w":87,"h":82},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":107,"w":87,"h":82},
@@ -137,7 +155,7 @@
 },
 {
 	"filename": "plasmoid_01_00015.png",
-	"frame": {"x":94,"y":1,"w":91,"h":80},
+	"frame": {"x":171,"y":302,"w":91,"h":80},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":108,"w":91,"h":80},
@@ -146,7 +164,7 @@
 },
 {
 	"filename": "plasmoid_01_00016.png",
-	"frame": {"x":276,"y":84,"w":84,"h":80},
+	"frame": {"x":85,"y":299,"w":84,"h":80},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":108,"w":84,"h":80},
@@ -155,7 +173,7 @@
 },
 {
 	"filename": "plasmoid_01_00017.png",
-	"frame": {"x":269,"y":393,"w":80,"h":71},
+	"frame": {"x":83,"y":70,"w":80,"h":71},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":112,"y":115,"w":80,"h":71},
@@ -164,7 +182,7 @@
 },
 {
 	"filename": "plasmoid_01_00018.png",
-	"frame": {"x":357,"y":321,"w":83,"h":73},
+	"frame": {"x":251,"y":72,"w":83,"h":73},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":110,"y":116,"w":83,"h":73},
@@ -173,7 +191,7 @@
 },
 {
 	"filename": "plasmoid_01_00019.png",
-	"frame": {"x":183,"y":245,"w":86,"h":73},
+	"frame": {"x":336,"y":73,"w":86,"h":73},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":115,"w":86,"h":73},
@@ -182,7 +200,7 @@
 },
 {
 	"filename": "plasmoid_01_00020.png",
-	"frame": {"x":1,"y":324,"w":84,"h":72},
+	"frame": {"x":165,"y":72,"w":84,"h":72},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":115,"w":84,"h":72},
@@ -191,7 +209,7 @@
 },
 {
 	"filename": "plasmoid_01_00021.png",
-	"frame": {"x":271,"y":246,"w":84,"h":74},
+	"frame": {"x":424,"y":73,"w":84,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":115,"w":84,"h":74},
@@ -200,7 +218,7 @@
 },
 {
 	"filename": "plasmoid_01_00022.png",
-	"frame": {"x":90,"y":245,"w":91,"h":73},
+	"frame": {"x":1,"y":143,"w":91,"h":73},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":104,"y":114,"w":91,"h":73},
@@ -209,7 +227,7 @@
 },
 {
 	"filename": "plasmoid_01_00023.png",
-	"frame": {"x":90,"y":320,"w":90,"h":73},
+	"frame": {"x":94,"y":146,"w":90,"h":73},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":105,"y":113,"w":90,"h":73},
@@ -218,7 +236,7 @@
 },
 {
 	"filename": "plasmoid_01_00024.png",
-	"frame": {"x":361,"y":167,"w":84,"h":76},
+	"frame": {"x":1,"y":218,"w":84,"h":76},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":111,"w":84,"h":76},
@@ -227,7 +245,7 @@
 },
 {
 	"filename": "plasmoid_01_00025.png",
-	"frame": {"x":182,"y":167,"w":86,"h":76},
+	"frame": {"x":87,"y":221,"w":86,"h":76},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":107,"y":111,"w":86,"h":76},
@@ -236,7 +254,7 @@
 },
 {
 	"filename": "plasmoid_01_00026.png",
-	"frame": {"x":1,"y":168,"w":87,"h":77},
+	"frame": {"x":175,"y":223,"w":87,"h":77},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":106,"y":110,"w":87,"h":77},
@@ -245,7 +263,7 @@
 },
 {
 	"filename": "plasmoid_01_00027.png",
-	"frame": {"x":361,"y":245,"w":85,"h":74},
+	"frame": {"x":186,"y":147,"w":85,"h":74},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":111,"w":85,"h":74},
@@ -254,7 +272,7 @@
 },
 {
 	"filename": "plasmoid_01_00028.png",
-	"frame": {"x":270,"y":322,"w":85,"h":69},
+	"frame": {"x":331,"y":1,"w":85,"h":69},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":108,"y":116,"w":85,"h":69},
@@ -263,7 +281,7 @@
 },
 {
 	"filename": "plasmoid_01_00029.png",
-	"frame": {"x":1,"y":398,"w":80,"h":70},
+	"frame": {"x":1,"y":69,"w":80,"h":70},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":109,"y":118,"w":80,"h":70},
@@ -275,8 +293,8 @@
 	"version": "1.0",
 	"image": "plasmoid.png",
 	"format": "RGBA8888",
-	"size": {"w":447,"h":469},
+	"size": {"w":509,"h":481},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b709a2c44c003fabe7b1c9cc51dbea34:03b3ba2618941da8967a2fca37a03e0c:b5ca859c7eb6b149203d6f24612aff27$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e3cae1238d0bdb5b86ee41b506390f72:393409b3898ddf91258bb4cae722e5df:b5ca859c7eb6b149203d6f24612aff27$"
 }
 }
