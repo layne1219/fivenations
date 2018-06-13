@@ -20,22 +20,25 @@ function collisionHandler(effectSprite, entitySprite) {
 
   if (effect._readyToUnmount) return false;
 
-  const getEmitterEntity = weapon.getManager().getEntity();
+  const emitterEntity = weapon.getManager().getEntity();
+  const targetEntity = weapon.getManager().getTargetEntity();
 
   // effect mainly cannot collide with the entity that initially emitted it
-  if (getEmitterEntity === entity) return false;
+  if (emitterEntity === entity) return false;
 
   // effect cannot collide with hibernated entities
   if (entity.isHibernated()) return false;
 
   // effect cannot collide with friendly entities unless the friendly fire is on
   // or the effect was released through target firing
-  if (
-    !effect.hasReleasedThroughTargetFiring() &&
-    !getEmitterEntity.isEnemy(entity) &&
-    !weapon.hasFriendlyFire()
-  ) {
-    return false;
+  if (!emitterEntity.isEnemy(entity) && !weapon.hasFriendlyFire()) {
+    if (!effect.hasReleasedThroughTargetFiring()) {
+      return false;
+      // if the effect was released through target firing it must collide
+      // only with the target when it comes to allied entities
+    } else if (entity !== targetEntity) {
+      return false;
+    }
   }
 
   // effect cannot hit Fighters if CHF is zero

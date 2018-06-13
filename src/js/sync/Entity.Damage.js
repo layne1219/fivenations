@@ -123,7 +123,7 @@ class EntityDamage extends Event {
 
       // if authorised we notify all the nearby allied entities
       // to attack the target who initially inflicted the damage
-      if (authorised) {
+      if (authorised && emitter.getTeam() !== entity.getTeam()) {
         notifyNearbyEntities(entity, emitter);
         if (!isKilled) {
           attackTarget(entity, emitter);
