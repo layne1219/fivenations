@@ -45,6 +45,7 @@ class EffectManager {
       guid: config.guid || Util.getGUID(),
       emitter: config.emitter,
       manager: this,
+      targetFiring: config.targetFiring,
       sprite,
       dataObject,
     });

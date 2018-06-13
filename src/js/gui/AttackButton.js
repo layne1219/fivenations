@@ -20,6 +20,7 @@ export default {
           .synced.entities(':user:selected')
           .attack({
             targetEntity,
+            targetFiring: true,
           });
         targetEntity.selectedAsTarget();
       }

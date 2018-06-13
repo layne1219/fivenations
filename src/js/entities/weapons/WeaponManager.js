@@ -139,7 +139,7 @@ WeaponManager.prototype = {
    * @return {object} Entity instance
    */
   getTargetEntity() {
-    for (let i = 0, l = this.weapons.length - 1; i < l; i += 1) {
+    for (let i = 0, l = this.weapons.length; i < l; i += 1) {
       const targetEntity = this.weapons[i].getTargetEntity();
       if (targetEntity) return targetEntity;
     }

@@ -94,6 +94,7 @@ class Weapon {
 
   fire(targetEntity) {
     const targetSprite = this.targetEntity.getSprite();
+    const targetFiring = this.entity.isTargetFiring();
     const sprite = this.entity.getSprite();
     const projectileOffset = this.entity.getProjectileOffsetByHeading();
     const accuracy = this.data.accuracy || 100;
@@ -116,6 +117,7 @@ class Weapon {
       emitter: this,
       maxVelocity: this.data.maxVelocity,
       acceleration: this.data.acceleration,
+      targetFiring,
       rotation,
       velocity,
       x,
