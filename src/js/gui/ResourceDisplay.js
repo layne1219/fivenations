@@ -14,6 +14,9 @@ const ICON_ENERGY = 'gui_resource_04_energy.png';
 const ICON_SUPPLY = 'gui_resource_05_place.png';
 const ICON_BG_FRAME = 'gui_panel_resourceback.png';
 
+// Bang up/down frequency in ms
+const BANG_FREQUENCY = 16;
+
 const style = {
   font: '13px BerlinSansFB-Reg',
   fill: '#FFFFFF',
@@ -24,6 +27,7 @@ class ResourceGroup extends Phaser.Group {
   constructor(config) {
     super(ns.game.game);
     this.initResourceComponents(config);
+    this.values = {};
   }
 
   initResourceComponents(config = {}) {
@@ -41,20 +45,60 @@ class ResourceGroup extends Phaser.Group {
     icon.frameName = config.icon;
     this.icon = this.add(icon);
 
-    const text = this.game.add.text(config.x || 0, config.y || 0, '', style);
+    const text = this.game.add.text(config.x || 0, config.y || 0, '0', style);
     this.textGroup = this.add(text);
     this.textGroup.setTextBounds(0, 0, 60, 15);
   }
 
-  updateContent(values = {}) {
+  updateTextGroup(values = {}) {
     const { current, max } = values;
 
     this.textGroup.text = current || 0;
     if (max !== undefined) {
       this.textGroup.text += ` / ${max}`;
     }
-    this.textGroup.addColor('#FFFFFF', 0);
-    // this.textGroup.addColor('#475D86', current.toString().length + 1);
+  }
+
+  bang(values) {
+    const { max } = values;
+    const goal = values.current;
+    let previous = this.textGroup.text;
+    const maxSeparatorIdx = this.textGroup.text.indexOf('/');
+    if (maxSeparatorIdx !== -1) {
+      previous = previous.substring(0, maxSeparatorIdx).trim();
+    }
+    previous = parseInt(previous, 10);
+    let step = Math.ceil(Math.abs(goal - previous) / 60);
+    step *= goal - previous < 0 ? -1 : 1;
+
+    if (previous === goal) return;
+
+    const anim = () => {
+      previous += step;
+      if ((step < 0 && previous < goal) || (step > 0 && previous > goal)) {
+        previous = goal;
+      }
+      this.updateTextGroup({
+        current: previous,
+        max,
+      });
+      if (previous !== goal) {
+        this.timeout = setTimeout(anim, BANG_FREQUENCY);
+      }
+    };
+
+    if (this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(anim, BANG_FREQUENCY);
+  }
+
+  updateContent(values = {}) {
+    if (
+      values.current !== this.values.current ||
+      values.max !== this.values.max
+    ) {
+      this.values = values;
+      this.bang(values);
+    }
   }
 }
 
