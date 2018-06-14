@@ -1,6 +1,15 @@
 {"frames": [
 
 {
+	"filename": "gui_btn_41_spc.png",
+	"frame": {"x":85,"y":742,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "gui_panel_description_command.png",
 	"frame": {"x":1,"y":1,"w":238,"h":559},
 	"rotated": false,
@@ -29,7 +38,7 @@
 },
 {
 	"filename": "XXX_gui_construction_statusbar.png",
-	"frame": {"x":1,"y":742,"w":200,"h":19},
+	"frame": {"x":1,"y":784,"w":200,"h":19},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":5,"w":200,"h":19},
@@ -38,11 +47,65 @@
 },
 {
 	"filename": "XXX_gui_construction_statusbar_indicator.png",
-	"frame": {"x":1,"y":763,"w":194,"h":9},
+	"frame": {"x":1,"y":805,"w":194,"h":9},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":10,"w":194,"h":9},
 	"sourceSize": {"w":209,"h":28},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXXX_miningfirst_01metal.png",
+	"frame": {"x":185,"y":612,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXXX_miningfirst_01metal_active.png",
+	"frame": {"x":185,"y":654,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXXX_miningfirst_02helium3.png",
+	"frame": {"x":185,"y":696,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXXX_miningfirst_02helium3_active.png",
+	"frame": {"x":185,"y":738,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXXX_miningfirst_03tachyon.png",
+	"frame": {"x":1,"y":742,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "XXXX_miningfirst_03tachyon_active.png",
+	"frame": {"x":43,"y":742,"w":40,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":40,"h":40},
+	"sourceSize": {"w":48,"h":49},
 	"pivot": {"x":0.5,"y":0.5}
 }],
 "meta": {
@@ -50,8 +113,8 @@
 	"version": "1.0",
 	"image": "GUI_HUD_hd.png",
 	"format": "RGBA8888",
-	"size": {"w":240,"h":773},
+	"size": {"w":240,"h":815},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b9f0bba56fbea4283361db034b09771a:0d3547ebe627d7630cdb7208838e8052:24135c227c8cbd3d02e9f4b668fc1a45$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fa574812ca8ae42047ef8152c410a8a0:0b68c8396863dfee16ad1f53fcac6986:24135c227c8cbd3d02e9f4b668fc1a45$"
 }
 }
