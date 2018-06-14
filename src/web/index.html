@@ -238,6 +238,7 @@
               entity.player = playerManager.getPlayerByTeam(2);
               entity.colorIndicator = game.GUI.addColorIndicator(entity);
               entity.selectedAsTarget();
+              game.eventEmitter.local.dispatch('entity/number/change');
             });
             baseResouced = true;
           }
@@ -279,7 +280,7 @@
         showMissionOjbective();
       });
 
-      scriptBox.setCurrentScript('demo2');
+      scriptBox.setCurrentScript('demo1');
       app.start();
     </script>
   </body>
