@@ -20,8 +20,10 @@ class Move extends Activity {
 
   /**
    * Executes the activity against an entity
+   * @param {boolean} killWhenCoordsEqual - Indicator to kill the activity
+   * if the entity is already occupying the same tile as the target
    */
-  activate() {
+  activate(killWhenCoordsEqual = true) {
     super.activate();
 
     if (!this.entity.canMove()) {
@@ -29,7 +31,10 @@ class Move extends Activity {
       return;
     }
 
-    if (Util.areCoordsEqual(this.entity.getTileObj(), this.getTile())) {
+    if (
+      killWhenCoordsEqual &&
+      Util.areCoordsEqual(this.entity.getTileObj(), this.getTile())
+    ) {
       this.kill();
       return;
     }
