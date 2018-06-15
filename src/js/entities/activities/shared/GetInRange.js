@@ -50,12 +50,13 @@ class GetInRange extends Move {
   }
 
   /**
-   * Applying the activity on an entity
-   * @return {void}
+   * Executes the initialisation of the Activity
+   * @param {boolean} killWhenCoordsEqual - Indicator to kill the activity
+   * if the entity is already occupying the same tile as the target
    */
-  activate() {
+  activate(killWhenCoordsEqual = true) {
     this.setCoordsToTarget();
-    super.activate();
+    super.activate(killWhenCoordsEqual);
   }
 
   /**

@@ -5,6 +5,19 @@ import Util from '../../../common/Util';
 
 class GetToDock extends GetInRange {
   /**
+   * Executes the initialisation of the Activity
+   */
+  activate() {
+    // !!! IMPORTANT !!!
+    // First param is an indicator that can be used to determine whether
+    // the activity is automatically killed if the entity actually occupies
+    // the same tile as the target.
+    // Here it must be set to "false" as Fighters can occupy the same
+    // tile as the target Carriers and they stil must be able to Dock
+    super.activate(false);
+  }
+
+  /**
    * Updating the activity on every tick
    * @return {[void]}
    */
