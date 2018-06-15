@@ -1,4 +1,5 @@
 /* global window */
+/* eslint class-methods-use-this: 0 */
 const ns = window.fivenations;
 let singleton;
 
