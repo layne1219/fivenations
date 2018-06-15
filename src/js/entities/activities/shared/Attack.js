@@ -1,6 +1,7 @@
 import Activity from '../Activity';
 import PlayerManager from '../../../players/PlayerManager';
 import EventEmitter from '../../../sync/EventEmitter';
+import SyncedRandom from '../../../common/SyncedRandom';
 import Util from '../../../common/Util';
 import { TILE_WIDTH, TILE_HEIGHT } from '../../../common/Const';
 
@@ -24,8 +25,6 @@ class Attack extends Activity {
 
     // Helper variables for the DogFight logic
     this._dogFight = this.entity.getDataObject().isFighter();
-    // -1 means that there is no selected DogFight coordinate just yet
-    this._dogFightCoordIdx = -1;
 
     // helper variable to avoid calculating the distance between
     // the main and target entity more than once per tick
@@ -43,6 +42,9 @@ class Attack extends Activity {
     this.onCarrierEntityRemove = () => {
       this.carrierEntity = null;
     };
+
+    // set local reference to synced random
+    this.syncedRandom = SyncedRandom.getInstance();
   }
 
   /**
@@ -115,21 +117,10 @@ class Attack extends Activity {
     // around their target entity and fly around it while the
     // Attack activity is being executed
     if (this.isDogFightEnabled()) {
-      // _dogFightCoordIdx === -1 indicates the first execution of
-      // the logic whilst we assign a coordinate to the entity
-      // straightaway
-      if (this._dogFightCoordIdx === -1) {
+      if (!this._dogFightCoords) {
         this.moveToNextDogFightCoordinate();
-      } else {
-        // otherwise we wait until the coordinate is approached and
-        // then assign it
-        const distanceToTargetCoords = Util.distanceBetweenEntityAndCoords(
-          this.entity,
-          this._dogFightCoords,
-        );
-        if (distanceToTargetCoords < dogFightDistanceTreshold) {
-          this.moveToNextDogFightCoordinate();
-        }
+      } else if (this.shouldMoveToNextDogFightCoordinate()) {
+        this.moveToNextDogFightCoordinate();
       }
     } else {
       if (this.motionManager.isMoving()) {
@@ -228,6 +219,23 @@ class Attack extends Activity {
   }
 
   /**
+   * Returns true if the entity should move to the next dog-fight coordinate
+   * @return {boolean}
+   */
+  shouldMoveToNextDogFightCoordinate() {
+    // if the entity is stopping
+    if (!this.motionManager.isMoving()) {
+      return true;
+    }
+    // or it approaches the target closer than the treshold
+    const distanceToTargetCoords = Util.distanceBetweenEntityAndCoords(
+      this.entity,
+      this._dogFightCoords,
+    );
+    return distanceToTargetCoords < dogFightDistanceTreshold;
+  }
+
+  /**
    * Makes the entity move to the next dog fight coordinates
    */
   moveToNextDogFightCoordinate() {
@@ -242,9 +250,10 @@ class Attack extends Activity {
    */
   getNextDogFightCoordinate() {
     const { x, y, hitArea } = this.target.getSprite();
+    const radius = Math.max(hitArea.width, 50);
     return {
-      x: x - hitArea.width / 2,
-      y: y - hitArea.height / 2,
+      x: x - radius / 2 + this.syncedRandom.get() * radius,
+      y: y - radius / 2 + this.syncedRandom.get() * radius,
     };
   }
 

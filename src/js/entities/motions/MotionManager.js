@@ -390,6 +390,15 @@ MotionManager.prototype = {
     }
 
     if (this.hasRealManeuverSystem()) {
+      if (this.movement.distance < 50) {
+        this.rotation.isRealManeuverSystemActive = false;
+        this.rotation.angularVelocity = this.rotation.maxAngularVelocity;
+      } else {
+        this.rotation.isRealManeuverSystemActive = true;
+      }
+    }
+
+    if (this.isRealManeuverSystemActive()) {
       const a = Phaser.Math.normalizeAngle(this.movement.targetAngle);
       const b = Phaser.Math.normalizeAngle(this.movement.currentAngle);
       const step =
@@ -402,6 +411,7 @@ MotionManager.prototype = {
 
       // Determines the direction of the rotation
       if (Math.abs(a - b) > step * 2) {
+        const pi2 = Math.PI * 2;
         if (!this.rotation.angularDirection) {
           const target = {
             x: this.movement.targetX,
@@ -415,13 +425,14 @@ MotionManager.prototype = {
           let delta = rotation - this.sprite.rotation;
 
           // Keep it in range from -180 to 180 to make the most efficient turns.
-          if (delta > Math.PI) delta -= Math.PI * 2;
-          if (delta < -Math.PI) delta += Math.PI * 2;
+          if (delta > Math.PI) delta -= pi2;
+          if (delta < -Math.PI) delta += pi2;
 
           this.rotation.angularDirection = delta > 0 ? 1 : -1;
         }
 
         this.movement.currentAngle += this.rotation.angularDirection * step;
+        this.movement.currentAngle %= pi2;
       } else {
         this.movement.currentAngle = this.movement.targetAngle;
       }
@@ -710,6 +721,14 @@ MotionManager.prototype = {
    */
   hasRealManeuverSystem() {
     return this.rotation.realManeuverSystem;
+  },
+
+  /**
+   * Returns whether the entity's real maneuver system is activated
+   * @returns {boolean}
+   */
+  isRealManeuverSystemActive() {
+    return this.rotation.isRealManeuverSystemActive;
   },
 
   /**

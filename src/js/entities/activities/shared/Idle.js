@@ -29,6 +29,9 @@ Idle.prototype.setEntity = function (entity) {
  */
 Idle.prototype.activate = function () {
   Activity.prototype.activate.call(this);
+  if (this.entity.getMotionManager().isMoving()) {
+    this.entity.getMotionManager().stop();
+  }
   this.entity.animate(ANIMATION_KEY);
   this.entity.levitate();
 };
