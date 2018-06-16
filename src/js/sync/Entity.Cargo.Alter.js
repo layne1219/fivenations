@@ -15,6 +15,9 @@ class EntityCargoAlter extends Event {
     }
     options.targets.forEach((id) => {
       const entity = ns.game.entityManager.entities(id);
+
+      if (!entity) return;
+
       const dataObject = entity.getDataObject();
       const {
         titanium, silicium, uranium, damage, overwrite,
