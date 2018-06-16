@@ -162,6 +162,11 @@ EntityManager.prototype = {
         entities.splice(i, 1);
       }
     }
+    if (entity.getNumberOfDockedEntities() > 0) {
+      entity.getDockedEntities().forEach((dockedEntity) => {
+        this.remove(dockedEntity);
+      });
+    }
     entity.remove();
     // eslint-disable-next-line no-param-reassign
     entity = null;
