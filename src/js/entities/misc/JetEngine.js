@@ -19,6 +19,7 @@ export default class JetEngine {
 
     entity.on('move', () => this.show());
     entity.on('stop', () => this.hide());
+    entity.on('forceStop', () => this.hide());
     entity.on('remove', () => this.remove());
     entity.on('hibernate', () => this.hide());
     entity.on('reactivated', () => this.show());
