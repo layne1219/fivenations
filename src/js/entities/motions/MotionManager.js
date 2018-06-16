@@ -273,6 +273,7 @@ MotionManager.prototype = {
     this._forceStopped = true;
     this.effectManager.resetEffects();
     this.effectManager.addEffect(Effects.get('resetMovement'));
+    this.entity.dispatch('forceStop');
   },
 
   /**
