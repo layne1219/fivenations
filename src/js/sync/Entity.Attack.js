@@ -25,6 +25,9 @@ EntityAttack.prototype.execute = (options) => {
     const targetEntity = ns.game.entityManager.entities(options.data.targetEntity);
     const entity = ns.game.entityManager.entities(id);
     const { targetFiring } = options.data;
+
+    if (!entity || !targetEntity) return;
+
     if (options.resetActivityQueue) {
       entity.reset();
     }
