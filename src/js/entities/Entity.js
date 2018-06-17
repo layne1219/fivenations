@@ -690,6 +690,8 @@ class Entity {
     targetEntity.unselect();
     targetEntity.reset();
     this.docker.push(targetEntity);
+
+    this.eventDispatcher.dispatch('updateHangar');
   }
 
   /**
@@ -705,6 +707,8 @@ class Entity {
       entitiesToRelease.push(entity);
     });
     this.docker = [];
+
+    this.eventDispatcher.dispatch('updateHangar');
 
     return entitiesToRelease;
   }
@@ -1139,6 +1143,20 @@ class Entity {
    */
   canMove() {
     return this.dataObject.getSpeed() > 0;
+  }
+
+  /**
+   * Returns whether the given entity can carry or has cargo
+   * @paran {object} entity - Entity instance
+   * @return {boolean}
+   */
+  canCarryCargo() {
+    return (
+      this.dataObject.getCargoCapacity() ||
+      this.dataObject.getCargoTitanium() ||
+      this.dataObject.getCargoSilicium() ||
+      this.dataObject.getCargoUranium()
+    );
   }
 
   /**
