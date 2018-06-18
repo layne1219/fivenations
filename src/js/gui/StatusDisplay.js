@@ -1,5 +1,6 @@
 import StatusBar from './StatusBar';
 import CargoDisplay from './CargoDisplay';
+import HangarDisplay from './HangarDisplay';
 import Graphics from '../common/Graphics';
 
 let phaserGame;
@@ -13,21 +14,6 @@ const ICON_URANIUM = 'gui_resource_03_uranium.png';
 const COLOR_TITANIUM = '#FFFFFF';
 const COLOR_SILICIUM = '#FFFFFF';
 const COLOR_URANIUM = '#FFFFFF';
-
-/**
- * Returns whether the given entity can carry or has cargo
- * @paran {object} entity - Entity instance
- * @return {boolean}
- */
-function canCarryCargo(entity) {
-  const dataObject = entity.getDataObject();
-  return (
-    dataObject.getCargoCapacity() ||
-    dataObject.getCargoTitanium() ||
-    dataObject.getCargoSilicium() ||
-    dataObject.getCargoUranium()
-  );
-}
 
 export default class StatusDisplay {
   constructor(_phaserGame) {
@@ -73,7 +59,7 @@ export default class StatusDisplay {
       this.group.add(this.powerBar.getGroup());
     }
 
-    if (canCarryCargo(entity) > 0) {
+    if (entity.canCarryCargo()) {
       const cargoOffsetX = this.healthBar.getGroup().x;
       // Titanium Cargo
       this.cargoTitanium = new CargoDisplay(
@@ -103,12 +89,23 @@ export default class StatusDisplay {
       this.group.add(this.cargoUranium);
     }
 
+    // if the entity can accomodate other entities in its hangar
+    if (entity.isDockable()) {
+      const offsetX = this.healthBar.getGroup().x;
+      const offsetY = entity.getDataObject().getHeight() * 0.75;
+      this.hangarDisplay = new HangarDisplay(entity);
+      this.hangarDisplay.x = offsetX;
+      this.hangarDisplay.y = offsetY;
+      this.group.add(this.hangarDisplay);
+    }
+
     // registers event listeners against entity events
     entity.on('select', this.show.bind(this));
     entity.on('unselect', this.hide.bind(this));
     entity.on('damage', this.update.bind(this));
     entity.on('remove', this.remove.bind(this));
     entity.on('updateCargo', this.update.bind(this));
+    entity.on('updateHangar', this.updateHangar.bind(this));
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
@@ -185,6 +182,13 @@ export default class StatusDisplay {
         this.cargoUranium.visible = false;
       }
     }
+  }
+
+  /**
+   * Updates the hangar display
+   */
+  updateHangar() {
+    this.hangarDisplay.update();
   }
 
   /**
