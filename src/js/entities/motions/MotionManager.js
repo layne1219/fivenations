@@ -200,7 +200,6 @@ MotionManager.prototype = {
     // it is important to be updated here as the tile that is
     // checked against any obstacles is the nextTile above
     collisionMap.updateObstaclesForEntity(this.entity);
-
     this.setUpEffectsForMoving(activity, stopWhenArrives);
   },
 

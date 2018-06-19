@@ -14,6 +14,7 @@ const effects = {
    * @return {boolean} always returns false
    */
   initMovement(motionManager) {
+    const entity = motionManager.getEntity();
     const targetCoords = motionManager.activity.getCoords();
     const distance = Phaser.Math.distance(
       motionManager.sprite.x,
@@ -60,6 +61,8 @@ const effects = {
     motionManager.isEntityArrivedAtDestination = false;
     motionManager.isEntityStoppedAtDestination = false;
     motionManager.isEntityHeadedToDestination = false;
+
+    entity.dispatch('initMovement');
 
     return false;
   },
@@ -171,7 +174,8 @@ const effects = {
    * @return {boolean} returns false if the effect is no longer appropriate
    */
   startMovement(motionManager) {
-    motionManager.getEntity().dispatch('move');
+    const entity = motionManager.getEntity();
+    entity.dispatch('move');
     return false;
   },
 

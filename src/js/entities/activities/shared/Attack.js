@@ -250,7 +250,7 @@ class Attack extends Activity {
    */
   getNextDogFightCoordinate() {
     const { x, y, hitArea } = this.target.getSprite();
-    const radius = Math.max(hitArea.width, 50);
+    const radius = Math.max(hitArea.width, 125);
     return {
       x: x - radius / 2 + this.syncedRandom.get() * radius,
       y: y - radius / 2 + this.syncedRandom.get() * radius,
