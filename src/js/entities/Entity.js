@@ -247,6 +247,27 @@ function setHomeStation(manager, entity, guid) {
 }
 
 /**
+ * Adds internal private listeners to various entity events
+ * @param {object} entity - Entity instance
+ */
+function addEventListeners(entity) {
+  const collisionMap = ns.game.map.getCollisionMap();
+
+  entity.on('initMovement', () => {
+    entity.forceUnvisitNextTile(collisionMap);
+  });
+
+  entity.on('move', () => {
+    entity.forceUnvisitNextTile(collisionMap);
+    entity.forceVisitNextTile(collisionMap);
+  });
+
+  entity.on('tile/unvisit', () => {
+    entity.forceUnvisitNextTile(collisionMap);
+  });
+}
+
+/**
  * Executes the predefined "create" event in the DataObject
  * E.g.: "create": {"activity": }
  */
@@ -361,6 +382,9 @@ class Entity {
 
     // execute predefined create event in DataObject
     executeCreateEvent(this);
+
+    // add internal event listeners
+    addEventListeners(this);
   }
 
   /**
@@ -968,6 +992,26 @@ class Entity {
     this.eventDispatcher.dispatch(event);
   }
 
+  /**
+   * Visits a tile regardless of the position of the entity
+   * @param {object} collisionMap
+   */
+  forceVisitNextTile(collisionMap) {
+    const tile = this.motionManager.getNextTileToTarget();
+    if (!tile) return;
+    collisionMap.forceVisit(tile, this);
+    this.forceVisitedTile = tile;
+  }
+
+  /**
+   * Unvisits a tile regardless of the position of the entity
+   * @param {object} collisionMap
+   */
+  forceUnvisitNextTile(collisionMap) {
+    if (!this.forceVisitedTile) return;
+    collisionMap.forceUnvisit(this.forceVisitedTile, this);
+  }
+
   hasSlowManeuverability() {
     return (
       this.getDataObject().getManeuverability() <
@@ -1124,6 +1168,15 @@ class Entity {
    */
   isTargetFiring() {
     return this.targetFiring;
+  }
+
+  /**
+   * Wrapper around the local MotionManager.isMoving function. It returns
+   * true if the entity is in motion (velocity > 0)
+   * @return {boolean}
+   */
+  isMoving() {
+    return this.motionManager.isMoving();
   }
 
   /**

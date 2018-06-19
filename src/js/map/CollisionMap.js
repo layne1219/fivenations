@@ -1,4 +1,6 @@
 /* global Phaser, window */
+// @TODO remove turning off 'no-unused-vars'
+/* eslint no-unused-vars: 0 */
 import EasyStar from 'easystarjs';
 import Util from '../common/Util';
 import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
@@ -27,19 +29,21 @@ function getCollisionTileDataByEntity(entity) {
   } else if (dataObject.isBuilding()) {
     type = OBSTACLE_BUILDING;
   }
-  return type;
+  return {
+    entity,
+    type,
+  };
 }
 
 /**
  * Returns true if the entity is actually sitting on the same tile
  * that has been passed for checking
- * @param {object} tile - { x, y }
+ * @param {object} tile - data of the tile
  * @param {object} entity - Entity instance
  * @returns {boolean}
  */
 function isItsOwnTile(tile, entity) {
-  const entityTile = entity.getTileObj();
-  return tile.x === entityTile.x && tile.y === entityTile.y;
+  return tile.entity === entity;
 }
 
 /**
@@ -48,12 +52,6 @@ function isItsOwnTile(tile, entity) {
  * @param {object} entity - Entity
  */
 function isTileOccupiedForEntity(tile, entity) {
-  const dataObject = entity.getDataObject();
-  // if the entity is a Destroyer it can go through all obstacles
-  // apart from Space Objects
-  if (dataObject.isDestroyer()) {
-    return tile === OBSTACLE_SPACE_OBJECT;
-  }
   return true;
 }
 
@@ -66,7 +64,12 @@ function isTileOccupiedForEntity(tile, entity) {
  */
 function doesNeedToVisitCollisionMap(entity) {
   const dataObject = entity.getDataObject();
-  return !dataObject.isFighter() && !dataObject.isWorker();
+  // if the entity is not a fighter or worker
+  if (dataObject.isFighter() || dataObject.isWorker()) {
+    // if the entity is a fighter or worker and settles on a tile
+    return !entity.isMoving();
+  }
+  return true;
 }
 
 /**
@@ -156,6 +159,8 @@ class CollisionMap {
   visit(entity, previous = false) {
     const tile = previous ? this.getPreviousTile(entity) : entity.getTile();
     if (!tile) return this;
+    // if the entity does not need to visit any tiles
+    if (!doesNeedToVisitCollisionMap(entity) && !previous) return this;
 
     const [x, y] = tile;
     const {
@@ -173,6 +178,7 @@ class CollisionMap {
         if (previous) {
           // if it's belonged to the given entity only
           this.tiles[tileY][tileX] = 0;
+          entity.dispatch('tile/unvisit');
         } else {
           const data = getCollisionTileDataByEntity(entity);
           this.tiles[tileY][tileX] = data;
@@ -266,9 +272,7 @@ class CollisionMap {
   update(entityManager) {
     this.setDirtyFlag(false);
 
-    const entities = entityManager
-      .entities(':not(hibernated)')
-      .filter(entity => doesNeedToVisitCollisionMap(entity));
+    const entities = entityManager.entities(':not(hibernated)');
 
     this.visitTilesByEntities(entities);
     // if the map has been altered since the last check
@@ -289,6 +293,34 @@ class CollisionMap {
    */
   calculateEasyStarPaths() {
     this.easyStar.calculate();
+  }
+
+  /**
+   * Force visits the give tile by the given entity
+   * @param {object} tile - { x, y }
+   * @param {object} entity - Entity instance by which the tile will
+   * be visited
+   */
+  forceVisit(tile, entity) {
+    const { x, y } = tile;
+    if (entity) {
+      this.tiles[y][x] = getCollisionTileDataByEntity(entity);
+    } else if (!this.tiles[y][x] || this.tiles[y][x].entity === entity) {
+      this.tiles[y][x] = 0;
+    }
+  }
+
+  /**
+   * Force unvisits the give tile by the given entity
+   * @param {object} tile - { x, y }
+   * @param {object} entity - Entity instance by which the tile will
+   * be visited
+   */
+  forceUnvisit(tile, entity) {
+    const { x, y } = tile;
+    if (!this.tiles[y][x] || this.tiles[y][x].entity === entity) {
+      this.tiles[y][x] = 0;
+    }
   }
 
   /**
@@ -320,7 +352,12 @@ class CollisionMap {
           const height = TILE_HEIGHT;
           const x = j * width;
           const y = i * height;
-          const rect = new Phaser.Rectangle(x, y, width, height);
+          const rect = new Phaser.Rectangle(
+            x - 1,
+            y - 1,
+            width + 2,
+            height + 2,
+          );
           const color = '#fa0000';
           phaserGame.debug.geom(rect, color, false);
         }
@@ -514,7 +551,7 @@ class CollisionMap {
       if (!tile) {
         return false;
       }
-      if (isItsOwnTile(coords, entity)) {
+      if (isItsOwnTile(tile, entity)) {
         return false;
       }
       return isTileOccupiedForEntity(tile, entity);
@@ -541,9 +578,10 @@ class CollisionMap {
    * @return {boolean}
    */
   isObstacleAheadForEntity(entity) {
+    const DO = entity.getDataObject();
     // only if the entity cannot go through everything
     // e.g.: Fighter and Worker class entities can go through anything
-    if (!doesNeedToVisitCollisionMap(entity)) return false;
+    if (DO.isFighter() || DO.isWorker()) return false;
     // get the array of tiles ahead
     const tilesAhead = entity.getTilesAhead();
     return tilesAhead.some(tile => this.isOccupiedForEntity(tile, entity));
