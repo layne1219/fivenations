@@ -45,15 +45,17 @@ Boot.prototype = {
     this.game.input.maxPointers = 1;
 
     if (this.game.device.desktop) {
+      this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      this.game.scale.maxWidth = 1366;
+      this.game.scale.maxHeight = 768;
       this.game.scale.pageAlignHorizontally = true;
+      this.game.scale.pageAlignVertically = true;
     } else {
       this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-      this.game.scale.minWidth = 480;
-      this.game.scale.minHeight = 260;
-      this.game.scale.maxWidth = 640;
-      this.game.scale.maxHeight = 480;
-      this.game.scale.forceOrientation(true);
+      this.game.scale.maxWidth = 1366;
+      this.game.scale.maxHeight = 768;
       this.game.scale.pageAlignHorizontally = true;
+      this.game.scale.pageAlignVertically = true;
     }
   },
 };
