@@ -21,7 +21,10 @@
 	"directions": 1,
 	"animFrame": 1,
 	"animType": ["idle-forever"],
-	"size": "m",
+	"customSize": {
+		"width": 270,
+		"height": 283
+	},
 	"customMinimapColor": "0x545454",
 	"notClickable": true,
     "animations": {
