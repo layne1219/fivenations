@@ -11,7 +11,8 @@ import FogOfWarMasks from '../map/FogOfWarMasks';
  * @param {object} data - attributes of given entity model
  */
 function getDimensionsBySize(data) {
-  const { size } = data;
+  const { size, customSize } = data;
+  if (customSize && customSize.width && customSize.height) return customSize;
   if (!size || !ENTITY_SIZES[size]) return ENTITY_SIZES.m;
   return ENTITY_SIZES[size];
 }
@@ -288,7 +289,10 @@ function DataObject(json) {
     },
 
     getAnimationOffset() {
-      return data.animationOffset || ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED;
+      if (data.animationOffset === undefined) {
+        return ANIMATION_OFFSET_WHEN_ICONS_ARE_INTEGRATED;
+      }
+      return data.animationOffset;
     },
 
     hasAnimation(key) {
@@ -365,6 +369,10 @@ function DataObject(json) {
 
     isResource() {
       return data.resource;
+    },
+
+    isNotClickable() {
+      return data.notClickable;
     },
 
     getTargetGraphicsGroup() {

@@ -1081,6 +1081,66 @@ ns.entities = ns.entities || {
     atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_uranium_sm02.json`,
     dataURL: `${PATH_ASSETS_DATA}ast/asteroiduraniumsmall2.json`,
   },
+  asteroidgigantic1: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic1.json`,
+  },
+  asteroidgigantic2: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic2.json`,
+  },
+  asteroidgigantic3: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic3.json`,
+  },
+  asteroidgigantic4: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic4.json`,
+  },
+  asteroidgigantic5: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic5.json`,
+  },
+  asteroidgigantic6: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic6.json`,
+  },
+  asteroidgigantic7: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic7.json`,
+  },
+  asteroidgigantic8: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic8.json`,
+  },
+  asteroidgigantic9: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic9.json`,
+  },
+  asteroidgigantic10: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic10.json`,
+  },
 };
 
 export default {

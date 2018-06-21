@@ -33,5 +33,6 @@
             "loopable": true,
             "frames": [ 6 ]
         }
-    }	
+    },
+    "animationOffset": 0
 }
