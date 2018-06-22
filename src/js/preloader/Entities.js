@@ -1141,6 +1141,54 @@ ns.entities = ns.entities || {
     atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_gigantic.json`,
     dataURL: `${PATH_ASSETS_DATA}ast/asteroidgigantic10.json`,
   },
+  asteroidswarm1: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm1.json`,
+  },
+  asteroidswarm2: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm2.json`,
+  },
+  asteroidswarm3: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm3.json`,
+  },
+  asteroidswarm4: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm4.json`,
+  },
+  asteroidswarm5: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm5.json`,
+  },
+  asteroidswarm6: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm6.json`,
+  },
+  asteroidswarm7: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm7.json`,
+  },
+  asteroidswarm8: {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.png`,
+    atlasURL: `${PATH_ASSETS_IMG}ast/asteroid_swarm.json`,
+    dataURL: `${PATH_ASSETS_DATA}ast/asteroidswarm8.json`,
+  },
 };
 
 export default {
