@@ -1,0 +1,38 @@
+{
+	"id": "asteroidgigantic1",
+	"name": "Asteroid",
+	"type": "Space Object",
+	"building": true,
+	"hull": 40000,
+	"shield": 0,
+	"armor": 100,
+	"power": 0, 
+	"hangar": 0,
+	"speed": 0,
+	"maneuverability": 0,
+	"vision": 10,
+	"weapons": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+	"titanium": 0,
+	"silicium": 0,
+	"energy": 0,
+	"uranium": 0,
+	"space": 0,
+	"buildingTime": 0,
+	"directions": 1,
+	"animFrame": 1,
+	"animType": ["idle-forever"],
+	"customSize": {
+		"width": 308,
+		"height": 259
+	},
+	"customMinimapColor": "0x545454",
+	"notClickable": true,
+    "animations": {
+        "idle-forever": {
+            "rate": 1,
+            "loopable": true,
+            "frames": [ 0 ]
+        }
+    },
+	"animationOffset": 0
+}

@@ -886,6 +886,7 @@ class Entity {
    */
   select() {
     if (this.isHibernated()) return;
+    if (this.isNotClickable()) return;
 
     if (
       this.entityManager.entities(':selected').length <
@@ -1021,6 +1022,10 @@ class Entity {
 
   isSelected() {
     return !!this.selected;
+  }
+
+  isNotClickable() {
+    return this.dataObject.isNotClickable() && !ns.mapEditorMode;
   }
 
   isHover() {

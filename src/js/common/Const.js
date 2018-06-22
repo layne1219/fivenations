@@ -49,6 +49,10 @@ export const ENTITY_SIZES = {
     width: 125,
     height: 125,
   },
+  xxl: {
+    width: 150,
+    height: 150,
+  },
 };
 
 // GUI sizes for entities
