@@ -1025,7 +1025,7 @@ class Entity {
   }
 
   isNotClickable() {
-    return this.dataObject.isNotClickable();
+    return this.dataObject.isNotClickable() && !ns.mapEditorMode;
   }
 
   isHover() {
