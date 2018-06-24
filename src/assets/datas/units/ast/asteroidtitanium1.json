@@ -3,7 +3,7 @@
 	"name": "Metal asteroid",
 	"type": "Space Object",
 	"building": true,
-	"hull": 5000,
+	"hull": 2500,
 	"shield": 0,
 	"armor": 20,
 	"power": 0, 
@@ -31,5 +31,10 @@
             "loopable": true,
             "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
         }
-    }	
+    },
+	"events": {
+		"damage": {
+			"callbackCollectionId": "checkAsteroidHull"
+		}
+	}	
 }

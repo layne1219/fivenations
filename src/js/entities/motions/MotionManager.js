@@ -34,6 +34,10 @@ function MotionManager(entity) {
   this.isUsingPathFinding = false;
 
   this.collisionPoints = {};
+
+  entity.on('sprite/update', (sprite) => {
+    this.sprite = sprite;
+  });
 }
 
 /**
