@@ -1,5 +1,6 @@
 /* global Phaser */
 /* eslint class-methods-use-this: 0 */
+/* eslint no-loop-func: 0 */
 import Util from '../common/Util';
 
 let dispatcher;
@@ -24,6 +25,12 @@ class UserKeyboard {
     keyDelete.onDown.add(() => {
       dispatcher.dispatch('key/delete');
     });
+
+    // Control groups
+    for (let i = 9; i >= 0; i -= 1) {
+      const key = phaserGame.input.keyboard.addKey(i.toSrting().charCodeAt(0));
+      key.onDown.add(() => dispatcher.dispatch(`key/${i}`));
+    }
   }
 
   update() {

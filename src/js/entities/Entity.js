@@ -270,7 +270,7 @@ function addEventListeners(entity) {
 
   entity.on(
     'damage',
-    function () {
+    function onDamage() {
       const event = this.dataObject.getEvent('damage');
       if (!event) return;
       const { callbackCollectionId } = event;
@@ -843,7 +843,7 @@ class Entity {
   hibernate() {
     this.sprite.visible = false;
     this.hibarnated = true;
-    this.eventDispatcher.dispatch('hibernate');
+    this.eventDispatcher.dispatch('hibernate', this);
   }
 
   /**
