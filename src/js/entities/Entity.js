@@ -1,5 +1,6 @@
 /* global window, Phaser */
 /* eslint no-underscore-dangle: 0 */
+import DataObject from '../model/DataObject';
 import PlayerManager from '../players/PlayerManager';
 import EventEmitter from '../sync/EventEmitter';
 import ActivityManager from './activities/ActivityManager';
@@ -15,6 +16,7 @@ import UserKeyboard from '../gui/UserKeyboard';
 import UserPointer from '../gui/UserPointer';
 import Util from '../common/Util';
 import Graphics from '../common/Graphics';
+import CallbackCollection from '../common/CallbackCollection';
 import * as Const from '../common/Const';
 
 const ns = window.fivenations;
@@ -265,6 +267,18 @@ function addEventListeners(entity) {
   entity.on('tile/unvisit', () => {
     entity.forceUnvisitNextTile(collisionMap);
   });
+
+  entity.on(
+    'damage',
+    function () {
+      const event = this.dataObject.getEvent('damage');
+      if (!event) return;
+      const { callbackCollectionId } = event;
+      if (callbackCollectionId) {
+        CallbackCollection.getInstance().run(callbackCollectionId, this);
+      }
+    }.bind(entity),
+  );
 }
 
 /**
@@ -989,8 +1003,28 @@ class Entity {
    * Fires the given event against the entity
    * @param {string} event - event id to be fired
    */
-  dispatch(event) {
-    this.eventDispatcher.dispatch(event);
+  dispatch(...args) {
+    this.eventDispatcher.dispatch(...args);
+  }
+
+  /**
+   * Replaces the sprite with the a new one with the given id
+   * @param {string} spriteId
+   */
+  replaceSprite(spriteId) {
+    const oldSprite = this.sprite;
+    const dataSource = this.game.cache.getJSON(spriteId);
+    const dataObject = new DataObject(dataSource);
+    const sprite = this.game.add.sprite(0, 0, spriteId);
+
+    this.sprite = extendSprite(this, sprite, dataObject);
+    this.sprite.x = oldSprite.x;
+    this.sprite.y = oldSprite.y;
+
+    this.dispatch('sprite/update', this.sprite);
+
+    oldSprite._group.remove(oldSprite);
+    oldSprite.destroy();
   }
 
   /**

@@ -1,41 +1,41 @@
-/* eslint class-methods-use-this: 0 */
-const scripts = {};
+import CallbackPool from './CallbackPool';
+import '../entities/callbacks/checkAsteroidHull';
+
 let singleton;
 
-class CallbackCollection {
-  /**
-   * Adds a script manually to the collection by the given key
-   * @param {string} key
-   * @param {function} script
-   */
-  add(key, script) {
-    scripts[key] = script;
-  }
+/**
+ * Returns the name of the given function object
+ * @return {string}
+ */
+function getFnName(fn) {
+  const f = typeof fn === 'function';
+  const s =
+    f &&
+    ((fn.name && ['', fn.name]) || fn.toString().match(/function ([^(]+)/));
+  return (!f && 'not a function') || ((s && s[1]) || 'anonymous');
+}
 
-  /**
-   * Executes the registered callback by the given key
-   * @param {string} key
-   */
-  run(key, ...args) {
-    if (!scripts[key]) return;
-    scripts[key].apply(null, args);
+/**
+ * Returns the singleton instance of the CallbackPool
+ * @return {object} singleton
+ */
+function getInstance() {
+  if (!singleton) {
+    singleton = new CallbackPool();
   }
+  return singleton;
+}
 
-  /**
-   * Returns true if a callback is registered with the given key
-   * @param {string} key
-   * @return {boolean}
-   */
-  has(key) {
-    return !!scripts[key];
-  }
+/**
+ * Registers the given function to the pool
+ * @param {function} callback
+ */
+export function install(callback) {
+  const key = getFnName(callback);
+  const pool = getInstance();
+  pool.add(key, callback);
 }
 
 export default {
-  getInstance() {
-    if (!singleton) {
-      singleton = new CallbackCollection();
-    }
-    return singleton;
-  },
+  getInstance,
 };
