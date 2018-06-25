@@ -12,6 +12,7 @@ import GUI from '../gui/GUI';
 import GUIActivityManager from '../gui/ActivityManager';
 import UserPointer from '../gui/UserPointer';
 import ShorthandManager from '../gui/shorthands/ShorthandManager';
+import ControlGroupManager from '../gui/controlgroups/ControlGroupManager';
 import AudioManager from '../audio/AudioManager';
 import UserKeyboard from '../gui/UserKeyboard';
 import EventBusExecuter from '../sync/EventBusExecuter';
@@ -209,6 +210,9 @@ class Game extends Util.EventDispatcher {
     this.userKeyboard.on('key/delete', () => {
       this.eventEmitter.synced.entities(':selected').remove();
     });
+
+    const controlGroupManager = ControlGroupManager.getInstance();
+    controlGroupManager.addKeyboardListeners(this.userKeyboard);
 
     // -----------------------------------------------------------------------
     //                              GUI
