@@ -1,5 +1,6 @@
 import ControlGroup from './ControlGroup';
 import EntityManager from '../../entities/EntityManager';
+import UserKeyboard from '../UserKeyboard';
 
 let singleton;
 
@@ -19,7 +20,17 @@ class ControlGroupManager {
    * @return {object} instance of ControlGroup
    */
   select(idx) {
-    return this.groups[idx].getEntities().forEach(entity => entity.select());
+    const entities = this.groups[idx].getEntities();
+    if (!entities || !entities.length) return;
+    this.currentGroupIdx = idx;
+    return entities.forEach(entity => entity.select());
+  }
+
+  /**
+   * Unselects the current control group
+   */
+  unselectAll() {
+    EntityManager.getInstance().unselectAll();
   }
 
   /**
@@ -37,10 +48,7 @@ class ControlGroupManager {
    */
   addKeyboardListeners(userKeyboard) {
     for (let i = CONTROL_GROUP_COUNT - 1; i >= 0; i -= 1) {
-      userKeyboard.on(
-        `key/${i}`,
-        this.onControlGroupKeyPressed.bind(this, userKeyboard, i),
-      );
+      userKeyboard.on(`key/${i}`, this.onControlGroupKeyPressed.bind(this, i));
     }
   }
 
@@ -48,10 +56,14 @@ class ControlGroupManager {
    * Callback executed when one of the control group keys are pressed
    * @param {number} idx
    */
-  onControlGroupKeyPressed(userKeyboard, idx) {
+  onControlGroupKeyPressed(idx) {
+    const userKeyboard = UserKeyboard.getInstance();
     if (userKeyboard.isDown(Phaser.KeyCode.CONTROL)) {
       this.save(idx);
     } else {
+      if (!userKeyboard.isDown(Phaser.KeyCode.SHIFT)) {
+        this.unselectAll();
+      }
       this.select(idx);
     }
   }

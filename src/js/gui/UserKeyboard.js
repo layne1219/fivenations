@@ -28,7 +28,7 @@ class UserKeyboard {
 
     // Control groups
     for (let i = 9; i >= 0; i -= 1) {
-      const key = phaserGame.input.keyboard.addKey(i.toSrting().charCodeAt(0));
+      const key = phaserGame.input.keyboard.addKey(i.toString().charCodeAt(0));
       key.onDown.add(() => dispatcher.dispatch(`key/${i}`));
     }
   }

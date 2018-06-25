@@ -1,4 +1,8 @@
 class ControlGroup {
+  constructor() {
+    this.onRemoveEntityFromGroup = this.removeEntityFromGroup.bind(this);
+  }
+
   /**
    * Sets the entities of the control group
    * @param {object} entities - Array of Entity instances
@@ -39,8 +43,8 @@ class ControlGroup {
    * Removes the given entity from the control group
    * @param {object} entity - Entity
    */
-  onRemoveEntityFromGroup(entity) {
-    const idx = entities.indexOf(entity);
+  removeEntityFromGroup(entity) {
+    const idx = this.entities.indexOf(entity);
     this.entities.splice(idx, 1);
   }
 
