@@ -23,11 +23,23 @@
           height: 100%;          
       }
 
+      .editor #fivenations-game {
+          position: relative;
+          top: 0;
+          transform: translate(0%, 0%);
+      }
+
       #fivenations-data-editor {
         text-align: center;
         display: none;
         visibility: hidden;
         position: absolute;
+      }
+
+      .editor #fivenations-data-editor {
+        display: block;
+        position: relative;
+        visibility: visible;
       }
 
       #fivenations-data-editor div {
@@ -91,6 +103,7 @@
           dataEditorManager.onWeaponSelect(game, weapon);
         });
 
+        document.body.classList.add("editor");
       });
 
       scriptBox.add('demo1', function(game) {
@@ -288,7 +301,7 @@
         showMissionOjbective();
       });
 
-      scriptBox.setCurrentScript('demo2');
+      scriptBox.setCurrentScript('default');
       app.start();
     </script>
   </body>
