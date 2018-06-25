@@ -14,13 +14,13 @@ class MainMenu {
     this.createWebellionLogo();
     this.createDemoButton({
       label: 'Play Demo 1',
-      x: 75,
+      x: this.background.x + 75,
       y: 150,
       script: 'demo1',
     });
     this.createDemoButton({
       label: 'Play Demo 2',
-      x: 75,
+      x: this.background.x + 75,
       y: 250,
       script: 'demo2',
     });
@@ -30,7 +30,9 @@ class MainMenu {
    * Creates the background element
    */
   createBackground() {
-    this.game.add.image(0, 0, 'menu-background-1');
+    const x = (ns.window.width - 1024) / 2;
+    const y = 0;
+    this.background = this.game.add.image(x, y, 'menu-background-1');
   }
 
   /**
@@ -38,6 +40,7 @@ class MainMenu {
    */
   createHeader() {
     this.header = new Header(this.game);
+    this.header.x = (ns.window.width - 1024) / 2;
   }
 
   /**

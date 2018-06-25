@@ -31,8 +31,10 @@ class MenuPreloader {
     const popupY = (gameHeight - popupHeight) / 2;
     const barOffsetX = 92;
     const barOffsetY = 558;
+    const backgroundX = (gameWidth - 1024) / 2;
+    const backgroundY = 0;
 
-    this.game.add.sprite(0, 0, 'preloader-background');
+    this.game.add.sprite(backgroundX, backgroundY, 'preloader-background');
     this.game.add.sprite(popupX, popupY, 'preloader-popup');
 
     const bar = this.add.sprite(
@@ -56,7 +58,7 @@ class MenuPreloader {
    */
   update() {
     if (this.ready) {
-      this.game.state.start('game-preloader');
+      this.game.state.start('mainmenu');
     }
   }
 }
