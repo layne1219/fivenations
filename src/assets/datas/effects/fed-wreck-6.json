@@ -1,0 +1,22 @@
+{
+    "id": "fed-wreck-6",
+    "animType": ["idle"],
+    "size": "l",
+    "ttl": 75,
+    "animations": {
+        "idle": {
+            "rate": 20,
+            "loopable": true,
+            "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        }
+    },
+    "events": {
+		"remove": {
+			"effects": ["blow-2"]
+		},
+        "trails": {
+            "rate": 30,
+            "effect": "smoke-trail-1"
+        }
+	}
+}

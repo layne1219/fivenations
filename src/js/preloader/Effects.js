@@ -922,6 +922,13 @@ ns.effects = Object.assign(ns.effects || {}, {
     atlasURL: `${PATH_ASSETS_IMG}tho_unitandbuilding_wreckages.json`,
     dataURL: `${PATH_ASSETS_DATA}ioncannon-wreckage.json`,
   },
+
+  'fed-wreck-6': {
+    preloading: true,
+    spriteURL: `${PATH_ASSETS_IMG}fed_wreck01.png`,
+    atlasURL: `${PATH_ASSETS_IMG}fed_wreck01.json`,
+    dataURL: `${PATH_ASSETS_DATA}fed-wreck-6.json`,
+  },
 });
 
 const NO_WRECKAGES_PER_NATION = 5;
