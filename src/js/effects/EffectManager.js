@@ -324,14 +324,12 @@ class EffectManager {
     }
 
     if (eventData.wrecks && eventData.wrecks.length) {
-      let velocity;
+      let { velocity } = sprite.body;
       minWrecks = eventData.minWrecks || 0;
       maxWrecks = eventData.maxWrecks || 0;
       for (i = minWrecks; i <= maxWrecks; i += 1) {
         effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
-        if (eventData.wrecksKeepVelocity) {
-          velocity = sprite.body.velocity;
-        } else {
+        if (!eventData.wrecksKeepVelocity) {
           velocity = {
             x: (Math.random() - 0.5) * Util.rnd(75, 100),
             y: (Math.random() - 0.5) * Util.rnd(75, 100),
