@@ -21,6 +21,9 @@ import * as Const from '../common/Const';
 
 const ns = window.fivenations;
 
+// low HP treshold in percentage
+const LOW_HP_TRESHOLD = 0.25;
+
 /**
  * Returns details about the dimensions that the given entity
  * might occupy in the collision map
@@ -336,6 +339,7 @@ class Entity {
 
     // setting up the dataObject
     this.dataObject = config.dataObject;
+    this._lowHPTreshold = this.dataObject.getMaxHull() * LOW_HP_TRESHOLD;
 
     // setting up the EventDisatcher
     this.eventDispatcher = new Util.EventDispatcher();
@@ -458,6 +462,7 @@ class Entity {
     // local behaviour
     this.updateShield();
     this.updateEnergyEmission(authoritative);
+    this.updateLowHPEffect();
   }
 
   /**
@@ -519,6 +524,19 @@ class Entity {
         energy: energyEmission * expectedTick,
       });
       this._lastEnergyEmission = this.game.time.time;
+    }
+  }
+
+  /**
+   * Emits low HP Effect if need be
+   */
+  updateLowHPEffect() {
+    if (this.dataObject.getHull() <= this._lowHPTreshold) {
+      const odds = Math.floor(Math.random() * 50);
+      if (odds === 0) {
+        const effectManager = EffectManager.getInstance();
+        effectManager.emitLowHPEffect(this);
+      }
     }
   }
 
