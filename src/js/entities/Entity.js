@@ -815,12 +815,12 @@ class Entity {
     const collisionMap = ns.game.map.getCollisionMap();
     collisionMap.unvisitTilesByEntity(this);
 
-    // removes sprite from the relevant Phaser Scene
-    this.delete();
-
     if (!ns.mapEditorMode) {
       EffectManager.getInstance().explode(this);
     }
+
+    // removes sprite from the relevant Phaser Scene
+    this.delete();
   }
 
   /**

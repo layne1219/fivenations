@@ -135,9 +135,12 @@
       "effects": [
         "destruction-small"
       ],
-      "minWrecks": 0,
-      "maxWrecks": 0,
-      "wrecks": []
+      "minWrecks": 1,
+      "maxWrecks": 1,
+      "wrecksKeepVelocity": true,
+      "wrecks": [
+        "fed-wreck-6"
+      ]
     }
   },
   "damageArea": {
