@@ -119,7 +119,7 @@ class EffectManager {
       sprite.body.maxVelocity.set(config.maxVelocity);
     }
 
-    sprite.body.drag.set(0);
+    sprite.body.drag.set(config.drag || 0);
 
     // adds sprite to the appropriate graphics group
     const groupName =
@@ -325,21 +325,32 @@ class EffectManager {
 
     if (eventData.wrecks && eventData.wrecks.length) {
       let { velocity } = sprite.body;
+      let { x, y } = sprite;
+      let drag;
+
       minWrecks = eventData.minWrecks || 0;
       maxWrecks = eventData.maxWrecks || 0;
+
       for (i = minWrecks; i <= maxWrecks; i += 1) {
         effectId = eventData.wrecks[Util.rnd(0, eventData.wrecks.length - 1)];
+
         if (!eventData.wrecksKeepVelocity) {
           velocity = {
             x: (Math.random() - 0.5) * Util.rnd(75, 100),
             y: (Math.random() - 0.5) * Util.rnd(75, 100),
           };
+          x = sprite.x + Util.rnd(0, 30) - 15;
+          y = sprite.y + Util.rnd(0, 30) - 15;
+        } else {
+          drag = 40;
         }
+
         this.add({
           id: effectId,
-          x: sprite.x + Util.rnd(0, 30) - 15,
-          y: sprite.y + Util.rnd(0, 30) - 15,
+          x,
+          y,
           velocity,
+          drag,
         });
       }
     }

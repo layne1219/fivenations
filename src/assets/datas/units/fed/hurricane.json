@@ -137,7 +137,7 @@
       ],
       "minWrecks": 1,
       "maxWrecks": 1,
-      "keepVelocity": true,
+      "wrecksKeepVelocity": true,
       "wrecks": [
         "fed-wreck-6"
       ]
