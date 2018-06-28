@@ -475,6 +475,30 @@ class EffectManager {
       .to({ alpha: 1 }, 200, Phaser.Easing.Bounce.InOut, true, 0, 0, true);
     flashTween.onComplete.add(() => this.remove(effect));
   }
+
+  /**
+   * Emits local effects to highlight that the given entity's hull
+   * has fallen below 25% of the max
+   * @param {object} entity - Entity instance
+   */
+  emitLowHPEffect(entity) {
+    const sparkleEffects = ['blow-1', 'smoke-trail-1'];
+    const sprite = entity.getSprite();
+    const DO = entity.getDataObject();
+    const idx = Util.rnd(0, sparkleEffects.length);
+    const width = DO.getWidth();
+    const height = DO.getHeight();
+    const offset = {
+      x: width / -2 + Util.rnd(0, width),
+      y: height / -2 + Util.rnd(0, height),
+    };
+
+    this.add({
+      id: sparkleEffects[idx],
+      x: sprite.x + offset.x,
+      y: sprite.y + offset.y,
+    });
+  }
 }
 
 export default {
