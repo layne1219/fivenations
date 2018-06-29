@@ -1,9 +1,9 @@
 {
   "id": "civilianbase",
-  "name": "Civilian Base",
+  "name": "Fleet Depot",
   "type": "building",
   "building": true,
-  "hull": 350,
+  "hull": 400,
   "shield": 0,
   "armor": 3,
   "power": 0,
