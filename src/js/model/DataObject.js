@@ -471,6 +471,15 @@ function DataObject(json) {
     },
 
     /**
+     * Returns an array of strings representing entities that can
+     * be constructed
+     * @return {object} list of producable entities
+     */
+    getConstruction() {
+      return data.construction;
+    },
+
+    /**
      * Returns an array of strings representing entities that
      * must be in existance prior to the production of this entity
      * @return {object} array of entity IDs
