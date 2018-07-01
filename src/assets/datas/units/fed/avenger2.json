@@ -4,7 +4,7 @@
   "type": "Battleship",
   "hull": 800,
   "shield": 600,
-  "armor": 5,
+  "armor": 4,
   "power": 0,
   "hangar": 0,
   "speed": 50,
@@ -12,16 +12,16 @@
   "vision": 7,
   "weapons": [
     5,
-    2,
-    2,
-    2,
-    2,
+    112,
+    112,
     7,
     7,
-    7,
-    3,
-    3,
     8,
+    0,
+    0,
+    0,
+    0,
+    0,
     0
   ],
   "titanium": 800,
@@ -70,10 +70,10 @@
     158,
     159
   ],
-  "jetEngineAlphaOffset": 0.8,  
+  "jetEngineAlphaOffset": 0.8,
   "sizeOffset": {
-    "w": 30,
-    "h": 30
+    "w": 45,
+    "h": 45
   },
   "selectionOffset": {
     "x": 0,
