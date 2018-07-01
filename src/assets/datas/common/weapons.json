@@ -38,7 +38,7 @@
     "maxVelocity": 800,
     "maneuverability": 100,
     "accuracy": 80,
-    "splash_range": 40,
+    "splash_range": 60,
     "splash_damges_allies": true,
     "collusion_effect": 20,
     "power_cost": "-",
@@ -178,7 +178,7 @@
   {
     "name": "Ragnarok Heavy Gun",
     "id": 8,
-    "damage": 160,
+    "damage": 200,
     "upgrade_level": 8,
     "damage_shield": 120,
     "upgrade_shield_level": 7,
@@ -188,7 +188,7 @@
     "velocity": 300,
     "maxVelocity": 600,
     "maneuverability": 100,
-    "accuracy": 80,
+    "accuracy": 100,
     "splash_range": 40,
     "collusion_effect": 20,
     "power_cost": "-",
@@ -2475,9 +2475,9 @@
     "velocity": 500,
     "maxVelocity": 800,
     "maneuverability": 100,
-    "accuracy": 80,
+    "accuracy": 100,
     "splash_damges_allies": true,
-    "splash_range": 40,
+    "splash_range": 100,
     "collusion_effect": 20,
     "power_cost": "-",
     "cooldown": 220,
@@ -2488,7 +2488,7 @@
     "effect": "cannonball",
     "minRange": 0,
     "CAF": 0,
-    "CHF": 1
+    "CHF": 0
   },
   {
     "name": "Spatial beam",
