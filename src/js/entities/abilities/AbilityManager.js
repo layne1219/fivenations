@@ -58,7 +58,7 @@ AbilityManager.prototype = {
     }
 
     if (this.canConstruct()) {
-      this.abilities.push('construction');
+      this.abilities.push('constructionPage');
     }
   },
 

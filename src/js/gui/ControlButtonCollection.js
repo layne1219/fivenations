@@ -24,7 +24,7 @@ buttonLogics.mining = MineButtonLogic;
 buttonLogics.follow = FollowButtonLogic;
 buttonLogics.dock = DockButtonLogic;
 buttonLogics.undock = UndockButtonLogic;
-buttonLogics.construct = ConstructionPageButtonLogic;
+buttonLogics.constructionPage = ConstructionPageButtonLogic;
 
 export default {
   getLogicByControlButton(controlButton) {

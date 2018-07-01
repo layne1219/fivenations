@@ -14,7 +14,7 @@ class ConstructionPage extends ControlPage {
       // last button must be cancelConstructionDisplay
       const id = i === buttonCount - 1 ? CANCEL_BUTTON_ID : null;
       const button = this.createControlButton(id);
-      this.addControlButton(button, i);
+      this.addControlButtonAtPosition(button, i);
     }
   }
 
@@ -27,7 +27,8 @@ class ConstructionPage extends ControlPage {
       return;
     }
     const entity = entities[0];
-    const buttonIds = entity.getConstruction();
+    const DO = entity.getDataObject();
+    const buttonIds = DO.getConstruction();
 
     this.resetAllButtons();
     this.showButtonsByConstructionIds(buttonIds);
@@ -48,6 +49,7 @@ class ConstructionPage extends ControlPage {
   /**
    * Shows the consruction buttons each of which represents a building
    * @param {object} Array<string> - ids - list of entity ids
+   * @param {object}
    */
   showButtonsByConstructionIds(ids) {
     ids.forEach((id, idx) => {

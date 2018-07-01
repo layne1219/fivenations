@@ -1,5 +1,6 @@
 /* global window, Phaser */
 import ControlButtonCollection from './ControlButtonCollection';
+import PlayerManager from '../players/PlayerManager';
 import TranslationManager from '../common/TranslationManager';
 import FilterGray from '../filters/FilterGray';
 import { PRODUCTION_ICON_FRAMES } from './ProductionTab';
@@ -7,7 +8,7 @@ import { SPRITESHEET_ID as entityIcons } from './ProductionTabButton';
 import { Tooltipify } from './Tooltip';
 import { ProductionTooltipify } from './ProductionTooltip';
 
-const abilitiesJSON = require('../../assets/datas/common/abilities.json');
+const abilityIconFrames = require('../../assets/datas/common/ability-icon-frames.json');
 
 const PADDING_ONCLICK = 2;
 const TRANSPARENCY_ONLICK = 0.75;
@@ -180,35 +181,33 @@ class ControlButton extends Phaser.Sprite {
    * @param {number} id
    */
   setButtonFrame(id) {
-    this.frame = abilitiesJSON[id];
+    this.frame = abilityIconFrames[id];
   }
 
   /**
    * Converst the Control Button to Produce Button
    * original id that equals to an Entity Id
    * @param {object} entityId - Entity instance to be produced
-   * @param {object} parentEntity - Entity instance that will
    * produce the entity
    */
-  convertToProduceButton(entityId, parentEntity) {
+  convertToProduceButton(entityId) {
     this.setType(TYPE_PRODUCTION);
     this.setButtonLabelByEntity('produce', entityId);
     this.setProducableEntity(entityId);
-    this.enableOrDisableByParentEntity(entityId, parentEntity);
+    this.enableOrDisableByDependencies(entityId);
   }
 
   /**
    * Adds label on the top of the button according to the
    * original id that equals to an Entity Id
    * @param {object} entityId - Entity instance to be produced
-   * @param {object} parentEntity - Entity instance that will
    * produce the entity
    */
-  convertToConstructionButton(entityId, parentEntity) {
+  convertToConstructionButton(entityId) {
     this.setType(TYPE_CONSTRUCTION);
     this.setButtonLabelByEntity('construct', entityId);
     this.setProducableEntity(entityId);
-    this.enableOrDisableByParentEntity(entityId, parentEntity);
+    this.enableOrDisableByDependencies(entityId);
   }
 
   /**
@@ -242,13 +241,11 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * Checks if the produce button must be disabled or not
+   * Checks if the given entity can be produced or constructed
    * @param {string} entityId - id of the entity represented by this button
-   * @param {object} parentEntity - the entity to which this control button
-   * belongs
    */
-  enableOrDisableByParentEntity(entityId, parentEntity) {
-    const player = parentEntity.getPlayer();
+  enableOrDisableByDependencies(entityId) {
+    const player = PlayerManager.getInstance().getUser();
     const enabled = player.hasAllRequiredEntitiesFor(entityId);
     if (!enabled) {
       this.disable();

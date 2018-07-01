@@ -17,7 +17,7 @@ const BUTTON_COUNT = ROWS * COLUMNS;
 // placed automatically at the next available slot.
 const ABILITY_POSITIONS = {
   cancelProduction: BUTTON_COUNT - 1, // always comes as last
-  construction: BUTTON_COUNT - 5, // always at the bottom left corner
+  constructionPage: BUTTON_COUNT - 5, // always at the bottom left corner
 };
 
 /**
@@ -155,12 +155,15 @@ class ControlPanelPage extends Phaser.Group {
       const buttonIdx = ABILITY_POSITIONS[ability] || idx;
       const button = this.buttons[buttonIdx];
       if (!button) return;
+
+      // constructionPage button must be shown if only on entity is selected
+      if (ability === 'constructionPage' && !hasOnlyOneEntity(entities)) return;
+
       // if the ability equals to the name of an entity
       // the button must be converted into a produce button
       if (shouldControlButtonBeAProduceButton(ability)) {
         if (hasOnlyOneEntity(entities)) {
-          const entity = entities[0];
-          button.convertToProduceButton(ability, entity);
+          button.convertToProduceButton(ability);
           button.visible = true;
         }
       } else {
