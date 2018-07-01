@@ -3,7 +3,7 @@
   "name": "predator",
   "type": "Fighter",
   "hull": 60,
-  "shield": 40,
+  "shield": 50,
   "armor": 0,
   "power": 0,
   "hangar": 0,
