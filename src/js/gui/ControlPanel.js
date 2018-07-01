@@ -1,10 +1,15 @@
 /* global Phaser, window */
 import ControlPage from './ControlPage';
+import ConstructionPage from './ConstructionPage';
 import CancelPage from './CancelPage';
 import EventEmitter from '../sync/EventEmitter';
 import EntityManager from '../entities/EntityManager';
 
 const ns = window.fivenations;
+
+const MAIN_PAGE = 0;
+const CONSTRUCTION_PAGE = 1;
+const CANCEL_PAGE = 2;
 
 export default class ControlPanel extends Phaser.Group {
   /**
@@ -20,11 +25,11 @@ export default class ControlPanel extends Phaser.Group {
     this.entityManager = EntityManager.getInstance();
 
     // we are creating two pages for all the possible controls
-    this.controlPanelPages = [
-      this.add(new ControlPage(this.entityManager)),
-      this.add(new ControlPage(this.entityManager)),
-      this.add(new CancelPage(this.entityManager)),
-    ];
+    this.controlPanelPages = {
+      [MAIN_PAGE]: this.add(new ControlPage(this.entityManager)),
+      [CONSTRUCTION_PAGE]: this.add(new ConstructionPage(this.entityManager)),
+      [CANCEL_PAGE]: this.add(new CancelPage(this.entityManager)),
+    };
     // make the first page visible
     this.selectMainPage();
 
@@ -33,24 +38,17 @@ export default class ControlPanel extends Phaser.Group {
   }
 
   /**
-   * Displaying the main page
-   * @return {[viod]}
-   */
-  selectMainPage() {
-    this.selectPage(0);
-  }
-
-  /**
    * Displaying the page registered with the passed page Index
    * @param  {integer} pageIdx Index of the page in the containing Array
    * @return {void}
    */
   selectPage(pageIdx) {
-    for (let i = 0; i < this.controlPanelPages.length; i += 1) {
+    const keys = Object.keys(this.controlPanelPages);
+    for (let i = 0; i < keys.length; i += 1) {
       if (i === pageIdx) {
-        this.controlPanelPages[i].visible = true;
+        this.controlPanelPages[keys[i]].visible = true;
       } else {
-        this.controlPanelPages[i].visible = false;
+        this.controlPanelPages[keys[i]].visible = false;
       }
     }
 
@@ -113,11 +111,19 @@ export default class ControlPanel extends Phaser.Group {
   }
 
   /**
+   * Displaying the main page
+   * @return {[viod]}
+   */
+  selectMainPage() {
+    this.selectPage(MAIN_PAGE);
+  }
+
+  /**
    * Displaying the secondary page
    * @return {[viod]}
    */
-  selectSecondaryPage() {
-    this.selectPage(1);
+  selectConstructionPage() {
+    this.selectPage(CONSTRUCTION_PAGE);
   }
 
   /**
@@ -125,7 +131,7 @@ export default class ControlPanel extends Phaser.Group {
    * @return {[viod]}
    */
   selectCancelPage() {
-    this.selectPage(2);
+    this.selectPage(CANCEL_PAGE);
   }
 
   /**

@@ -1,5 +1,5 @@
 export default {
   activate(entityManager, controlPanel) {
-    controlPanel.selectCancelPage();
+    controlPanel.selectConstructionPage();
   },
 };

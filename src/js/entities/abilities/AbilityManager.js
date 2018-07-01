@@ -58,7 +58,7 @@ AbilityManager.prototype = {
     }
 
     if (this.canConstruct()) {
-      this.abilities.push('construct');
+      this.abilities.push('construction');
     }
   },
 

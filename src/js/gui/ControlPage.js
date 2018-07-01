@@ -1,4 +1,5 @@
 /* global Phaser, window */
+/* eslint class-methods-use-this: 0 */
 import ControlButton from './ControlButton';
 
 const ns = window.fivenations;
@@ -15,7 +16,8 @@ const BUTTON_COUNT = ROWS * COLUMNS;
 // does not incorporated into this object literal it will be
 // placed automatically at the next available slot.
 const ABILITY_POSITIONS = {
-  cancelProduction: BUTTON_COUNT - 1,
+  cancelProduction: BUTTON_COUNT - 1, // always comes as last
+  construction: BUTTON_COUNT - 5, // always at the bottom left corner
 };
 
 /**
@@ -68,7 +70,7 @@ class ControlPanelPage extends Phaser.Group {
   }
 
   /**
-   * Setting up the table of command buttons
+   * Sets up the table of command buttons
    * @return {void}
    */
   init(entityManager) {
@@ -85,13 +87,8 @@ class ControlPanelPage extends Phaser.Group {
   populate() {
     let button;
     for (let i = 0; i < BUTTON_COUNT; i += 1) {
-      const x = (i % COLUMNS) * (ICON_WIDTH + MARGIN);
-      const y = Math.floor(i / COLUMNS) * (ICON_HEIGHT + MARGIN);
-
       button = this.createControlButton();
-      button.setCoords(x, y);
-
-      this.addControlButton(button);
+      this.addControlButtonAtPosition(button, i);
     }
   }
 
@@ -109,14 +106,16 @@ class ControlPanelPage extends Phaser.Group {
   }
 
   /**
-   * Add ControlButton to the container
-   * @param {[object]} GUI.ControlButton [attaching the ControlButton to the Phaser group layer]
-   * @param {[void]}
+   * Adds ControlButton to the container
+   * @param {object} controlButton - GUI.ControlButton
+   * @param {number} idx - the index count of given control button
    */
-  addControlButton(controlButton) {
+  addControlButtonAtPosition(controlButton, idx) {
     if (!controlButton) {
       throw new Error('Invalid ControlButton instance was passed as the first parameter!');
     }
+    controlButton.x = (idx % COLUMNS) * (ICON_WIDTH + MARGIN);
+    controlButton.y = Math.floor(idx / COLUMNS) * (ICON_HEIGHT + MARGIN);
     this.buttons.push(this.add(controlButton));
   }
 
@@ -178,6 +177,14 @@ class ControlPanelPage extends Phaser.Group {
    */
   getControlPanel() {
     return this.parent;
+  }
+
+  /**
+   * Returns the count of the Conrol Button instances
+   * @return {number}
+   */
+  getButtonCount() {
+    return BUTTON_COUNT;
   }
 }
 

@@ -15,6 +15,7 @@ const TRANSPARENCY_ONLICK = 0.75;
 // possible types of the ControlButton
 const TYPE_DEFAULT = 0;
 const TYPE_PRODUCTION = 1;
+const TYPE_CONSTRUCTION = 2;
 
 // empty icon id
 // this is used to place additional labels on the buttons
@@ -108,7 +109,8 @@ class ControlButton extends Phaser.Sprite {
   addProductionTooltip() {
     ProductionTooltipify({
       target: this,
-      test: () => this.type === TYPE_PRODUCTION,
+      test: () =>
+        this.type === TYPE_PRODUCTION || this.type === TYPE_CONSTRUCTION,
     });
   }
 
@@ -182,7 +184,7 @@ class ControlButton extends Phaser.Sprite {
   }
 
   /**
-   * Adds label on the top of the button according to the
+   * Converst the Control Button to Produce Button
    * original id that equals to an Entity Id
    * @param {object} entityId - Entity instance to be produced
    * @param {object} parentEntity - Entity instance that will
@@ -190,24 +192,38 @@ class ControlButton extends Phaser.Sprite {
    */
   convertToProduceButton(entityId, parentEntity) {
     this.setType(TYPE_PRODUCTION);
-    this.setEntityIconAsLabel(entityId);
+    this.setButtonLabelByEntity('produce', entityId);
     this.setProducableEntity(entityId);
     this.enableOrDisableByParentEntity(entityId, parentEntity);
   }
 
   /**
-   * Shows the given entity's icon as the label on the top of the
-   * button
+   * Adds label on the top of the button according to the
+   * original id that equals to an Entity Id
+   * @param {object} entityId - Entity instance to be produced
+   * @param {object} parentEntity - Entity instance that will
+   * produce the entity
+   */
+  convertToConstructionButton(entityId, parentEntity) {
+    this.setType(TYPE_CONSTRUCTION);
+    this.setButtonLabelByEntity('construct', entityId);
+    this.setProducableEntity(entityId);
+    this.enableOrDisableByParentEntity(entityId, parentEntity);
+  }
+
+  /**
+   * Makes the control button shows the given entity's icon as
+   * the label on the top of the button
+   * @param {string} buttonId - id of the button to be set
    * @param {string} entityId - id of the given entity
    */
-  setEntityIconAsLabel(entityId) {
+  setButtonLabelByEntity(buttonId, entityId) {
     if (!this.entityIconsSprite) {
       this.entityIconsSprite = this.game.add.sprite(5, 6, entityIcons);
       this.addChild(this.entityIconsSprite);
     }
 
     // turns the original button to an empty button
-    const buttonId = 'produce';
     this.id = buttonId;
     this.frameName = EMPTY_ICON_NAME;
 
