@@ -56,6 +56,10 @@ AbilityManager.prototype = {
     if (this.canProduce()) {
       this.abilities = this.abilities.concat(this.getProducableEntitesAsAbilities());
     }
+
+    if (this.canConstruct()) {
+      this.abilities.push('constructionPage');
+    }
   },
 
   /**
@@ -107,16 +111,24 @@ AbilityManager.prototype = {
    * @return {boolean}
    */
   canProduce() {
-    const DO = this.entity.getDataObject();
+    const DO = this.dataObject;
     return DO.getProduction() && DO.getProduction().length;
   },
 
+  /**
+   * Returns whether the entity can consruct buildings type entities
+   * @return {boolean}
+   */
+  canConstruct() {
+    const DO = this.dataObject;
+    return DO.getConstruction() && DO.getConstruction().length;
+  },
   /**
    * Returns the array of entity IDs
    * @return {object} array of entity IDs
    */
   getProducableEntitesAsAbilities() {
-    const DO = this.entity.getDataObject();
+    const DO = this.dataObject;
     return DO.getProduction();
   },
 

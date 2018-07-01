@@ -1,5 +1,6 @@
 /* global window, Phaser */
 import Graphics from '../common/Graphics';
+import EventEmitter from '../sync/EventEmitter';
 import TranslationManager from '../common/TranslationManager';
 import { DEFAULT_FONT, GROUP_TOOLTIPS } from '../common/Const';
 
@@ -277,9 +278,15 @@ class ProductionTooltip extends Phaser.Group {
  */
 function createTooltip(phaserGame) {
   const group = Graphics.getInstance().getGroup(GROUP_TOOLTIPS);
-  tooltip = new ProductionTooltip(phaserGame);
-  group.add(tooltip);
-  return tooltip;
+  const emitter = EventEmitter.getInstance();
+  const elm = new ProductionTooltip(phaserGame);
+
+  emitter.local.addEventListener('gui/controlpanel/change', () => {
+    elm.visible = false;
+  });
+
+  group.add(elm);
+  return elm;
 }
 
 /**

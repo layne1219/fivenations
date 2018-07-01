@@ -5,7 +5,7 @@ import PlayerManager from '../players/PlayerManager';
 import EventEmitter from '../sync/EventEmitter';
 import ActivityManager from './activities/ActivityManager';
 import MotionManager from './motions/MotionManager';
-import AbilityManager from './AbilityManager';
+import AbilityManager from './abilities/AbilityManager';
 import WeaponManager from './weapons/WeaponManager';
 import ProductionManager from './production/ProductionManager';
 import EffectManager from '../effects/EffectManager';
@@ -1257,7 +1257,6 @@ class Entity {
 
   /**
    * Returns whether the given entity can carry or has cargo
-   * @paran {object} entity - Entity instance
    * @return {boolean}
    */
   canCarryCargo() {

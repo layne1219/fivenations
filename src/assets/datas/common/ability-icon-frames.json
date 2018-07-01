@@ -38,7 +38,7 @@
     "protectivecloud": 99,
     "back": 100,
     "demolish": 101,
-    "construct": 102,
+    "constructionPage": 102,
     "cancel": 103,
     "cancelProduction": 103,
     "setrallypoint": 104

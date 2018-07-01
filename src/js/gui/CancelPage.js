@@ -8,9 +8,7 @@ class CancelPage extends ControlPage {
    */
   populate() {
     const button = this.createControlButton('cancel');
-    button.setCoords(0, 0);
-
-    this.addControlButton(button);
+    this.addControlButtonAtPosition(button, 0);
   }
 
   /**

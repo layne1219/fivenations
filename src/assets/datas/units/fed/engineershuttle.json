@@ -31,6 +31,20 @@
   "space": 2,
   "buildingTime": 8,
   "cargoCapacity": 10,
+  "construction": [
+    "astrometricstation",
+    "civilianbase",
+    "defenseplatform",
+    "defensesatellite",
+    "dockyard",
+    "fleetheadquarters",
+    "fusionreactor",
+    "merchantport",
+    "miningstation",
+    "researchcenter",
+    "shipfactory",
+    "solarstation"
+  ],
   "directions": 16,
   "animFrame": 3,
   "animType": [
