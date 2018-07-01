@@ -43,6 +43,7 @@ export default class ControlPanel extends Phaser.Group {
    * @return {void}
    */
   selectPage(pageIdx) {
+    const emitter = EventEmitter.getInstance();
     const keys = Object.keys(this.controlPanelPages);
     for (let i = 0; i < keys.length; i += 1) {
       if (i === pageIdx) {
@@ -53,6 +54,7 @@ export default class ControlPanel extends Phaser.Group {
     }
 
     this.selectedPageIndex = pageIdx;
+    emitter.local.dispatch('gui/controlpanel/change');
   }
 
   /**

@@ -8,6 +8,7 @@ import FollowButtonLogic from './FollowButton';
 import DockButtonLogic from './DockButton';
 import UndockButtonLogic from './UndockButton';
 import ConstructionPageButtonLogic from './ConstructionPageButton';
+import ConstructButtonLogic from './ConstructButton';
 import ProduceButtonLogic from './ProduceButton';
 import CancelProductionLogic from './CancelProductionButton';
 
@@ -25,6 +26,7 @@ buttonLogics.follow = FollowButtonLogic;
 buttonLogics.dock = DockButtonLogic;
 buttonLogics.undock = UndockButtonLogic;
 buttonLogics.constructionPage = ConstructionPageButtonLogic;
+buttonLogics.construct = ConstructButtonLogic;
 
 export default {
   getLogicByControlButton(controlButton) {
