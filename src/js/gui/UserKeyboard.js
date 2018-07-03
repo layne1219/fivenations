@@ -26,6 +26,12 @@ class UserKeyboard {
       dispatcher.dispatch('key/delete');
     });
 
+    // ESC
+    const keyEsc = phaserGame.input.keyboard.addKey(Phaser.Keyboard.ESC);
+    keyEsc.onDown.add(() => {
+      dispatcher.dispatch('key/esc');
+    });
+
     // Control groups
     for (let i = 9; i >= 0; i -= 1) {
       const key = phaserGame.input.keyboard.addKey(i.toString().charCodeAt(0));
@@ -55,9 +61,24 @@ class UserKeyboard {
     dispatcher.reset();
   }
 
+  /**
+   * Shorthand to register listeners against the given event
+   * through the built-in EventDispatcher
+   * @param {string} event - id of the event
+   * @param {function} callback
+   */
   on(event, callback) {
     dispatcher.addEventListener(event, callback);
     return this;
+  }
+
+  /**
+   * Shorthand to remove event listener
+   * @param {string} event - id of the event
+   * @param {function} callback
+   */
+  remove(event, callback) {
+    dispatcher.removeEventListener(event, callback);
   }
 
   isDown(keyCode) {

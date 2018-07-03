@@ -15,6 +15,7 @@ import Minimap from './Minimap';
 import ControlPanel from './ControlPanel';
 import ResourceDisplay from './ResourceDisplay';
 import EntityDetailsDisplay from './EntityDetailsDisplay';
+import BuildingPlacementDisplay from './BuildingPlacementDisplay';
 import NotificationBar from './NotificationBar';
 import FullScreenToggle from './FullScreenToggle';
 import AudioToggle from './AudioToggle';
@@ -47,6 +48,9 @@ let resourceDisplay;
 
 // reference notification bar
 let notificationBar;
+
+// reference to Building Placement Display
+let buildingPlacementDisplay;
 
 // reference to the FullScreenToggle Button
 let fullScreenToggle;
@@ -88,6 +92,10 @@ function initClickAnimations() {
 }
 
 function initGUIDisplayElements() {
+  // Building Placement Display
+  buildingPlacementDisplay = new BuildingPlacementDisplay();
+  buildingPlacementDisplay.appendTo(group);
+
   // Creating the Panel
   panel = new Panel();
   panel.appendTo(group);
@@ -237,6 +245,21 @@ GUI.prototype = {
    */
   showMinimapNotification(config) {
     minimap.showNotification(config);
+  },
+
+  /**
+   * Shows the Building placement display
+   * @param {string} entityId - the Id of the entity to be placed
+   */
+  showBuildingPlacementDisplay(entityId) {
+    buildingPlacementDisplay.activate(entityId);
+  },
+
+  /**
+   * Hides the Building placement display
+   */
+  hideBuildingPlacementDisplay() {
+    buildingPlacementDisplay.deactivate();
   },
 
   /**

@@ -114,6 +114,13 @@ class Game extends Util.EventDispatcher {
     this.userPointer.on('rightbutton/down', () => {
       let resetActivityQueue = true;
 
+      // if the user has selected a ControlButton Activity the
+      // right mouse button must behave as a way to cancel it
+      if (this.guiActivityManager.hasActiveSelection()) {
+        this.userPointer.dispatch('rightbutton/down/activity');
+        return;
+      }
+
       // If the user is hovering the mouse pointer above the GUI, the selection
       // must remain untouched
       if (GUI.getInstance().isHover()) {

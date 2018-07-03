@@ -24,6 +24,9 @@ class UserPointer {
   }
 
   registerEventListeners() {
+    // registers callback against move pointer event
+    phaserGame.input.addMoveCallback(this.dispatcher.dispatch.bind(this.dispatcher, 'move', this));
+
     // Releasing either of the mouse buttons
     phaserGame.input.onUp.add(() => {
       this.dispatcher.dispatch('up');
@@ -97,13 +100,18 @@ class UserPointer {
 
   /**
    * Shorthand to register events through the built-in EventDispatcher
-   * @param {object}
+   * @param {string} event - id of the event
    * @param {function} callback
    */
   on(event, callback) {
     this.dispatcher.addEventListener(event, callback);
   }
 
+  /**
+   * Shorthand to remove event listener
+   * @param {string} event - id of the event
+   * @param {function} callback
+   */
   remove(event, callback) {
     this.dispatcher.removeEventListener(event, callback);
   }

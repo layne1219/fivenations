@@ -3,6 +3,7 @@ import EventEmitter from '../sync/EventEmitter';
 import PlayerManager from '../players/PlayerManager';
 import SelectCoords from './SelectCoords';
 import ActivityManager from './ActivityManager';
+import GUI from './GUI';
 
 const ns = window.fivenations;
 
@@ -61,14 +62,22 @@ function hasUserSufficientResources(entityId) {
 export default {
   activate(entityManager, controlPanel, button) {
     const entityId = button.getProducableEntity();
-    const activity = ActivityManager.getInstance().start(SelectCoords);
+    const activityManager = ActivityManager.getInstance();
+    const gui = GUI.getInstance();
 
     if (hasUserSufficientResources(entityId)) {
+      const activity = activityManager.start(SelectCoords);
       activity.on('select', () => {
         // const coords = mousePointer.getRealCoords();
         controlPanel.selectMainPage();
+        gui.hideBuildingPlacementDisplay();
+      });
+      activity.on('cancel', () => {
+        controlPanel.selectMainPage();
+        gui.hideBuildingPlacementDisplay();
       });
       controlPanel.selectCancelPage();
+      gui.showBuildingPlacementDisplay(entityId);
     }
   },
 };
