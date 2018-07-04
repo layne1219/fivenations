@@ -1,6 +1,7 @@
 /* global window, Phaser */
-import Graphics from '../common/Graphics';
 import UserPointer from './UserPointer';
+import CollisionMonitor from './CollisionMonitor';
+import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
 
 const ns = window.fivenations;
 
@@ -13,7 +14,8 @@ const DEFAULT_FRAME = 4;
 class BuildingPlacementDisplay extends Phaser.Group {
   constructor() {
     super(ns.game.game);
-    this.group = Graphics.getInstance().getGroup('prior-gui-elements');
+    this.collisionMonitor = new CollisionMonitor();
+    this.add(this.collisionMonitor);
   }
 
   /**
@@ -53,7 +55,8 @@ class BuildingPlacementDisplay extends Phaser.Group {
   createSpriteById(id) {
     this.sprite = this.game.add.sprite(0, 0, id);
     this.sprite.frame = DEFAULT_FRAME;
-    this.group.add(this.sprite);
+    this.sprite.anchor.set(0.5);
+    this.add(this.sprite);
   }
 
   /**
@@ -70,9 +73,34 @@ class BuildingPlacementDisplay extends Phaser.Group {
    * @param {object} pointer - UserPointer instance
    */
   followMouse(pointer) {
+    const collisionMap = ns.game.map.getCollisionMap();
     const { x, y } = pointer.getRealCoords();
-    this.sprite.x = x;
-    this.sprite.y = y;
+
+    const collisionWidth = 4;
+    const collisionHeight = 4;
+    const collisionWidthHalf = Math.floor(collisionWidth / 2);
+    const collisionHeightHalf = Math.floor(collisionHeight / 2);
+
+    const tileX = Math.max(Math.floor(x / TILE_WIDTH), collisionWidthHalf);
+    const tileY = Math.max(Math.floor(y / TILE_HEIGHT), collisionHeightHalf);
+    const tileScreenX = tileX * TILE_WIDTH;
+    const tileScreenY = tileY * TILE_HEIGHT;
+
+    const startX = tileX - collisionWidthHalf;
+    const startY = tileY - collisionHeightHalf;
+    const tiles = collisionMap.getMatrixChunk({
+      x: startX,
+      y: startY,
+      width: collisionWidth,
+      height: collisionHeight,
+    });
+
+    this.collisionMonitor.x = startX * TILE_WIDTH;
+    this.collisionMonitor.y = startY * TILE_HEIGHT;
+    this.collisionMonitor.drawTiles(tiles);
+
+    this.sprite.x = tileScreenX;
+    this.sprite.y = tileScreenY;
   }
 
   /**
@@ -81,7 +109,7 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   removeSprite() {
     if (!this.sprite) return;
-    this.group.remove(this.sprite);
+    this.remove(this.sprite);
     this.sprite.destroy();
   }
 
