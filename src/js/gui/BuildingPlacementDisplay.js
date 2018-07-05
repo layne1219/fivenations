@@ -1,6 +1,7 @@
 /* global window, Phaser */
 import UserPointer from './UserPointer';
 import CollisionMonitor from './CollisionMonitor';
+import { getDimensionsBySize } from '../model/DataObject';
 import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
 
 const ns = window.fivenations;
@@ -26,6 +27,7 @@ class BuildingPlacementDisplay extends Phaser.Group {
     if (!entityId) return;
     this.setEntityId(entityId);
     this.createSpriteById(entityId);
+    this.setEntityCollisionDimensionsById(entityId);
     this.addEventListeners();
     this.show();
   }
@@ -60,6 +62,20 @@ class BuildingPlacementDisplay extends Phaser.Group {
   }
 
   /**
+   * Fetches and sets the collision data of the given entity
+   * @param {string} id - Id of the entity to be shown
+   */
+  setEntityCollisionDimensionsById(id) {
+    const data = this.game.cache.getJSON(id);
+    const dimensions = getDimensionsBySize(data);
+    const width = Math.max(Math.floor(dimensions.width / TILE_WIDTH), 1) + 1;
+    const height = Math.max(Math.floor(dimensions.height / TILE_HEIGHT), 1) + 1;
+
+    this.collisionTileWidth = width;
+    this.collisionTileHeight = height;
+  }
+
+  /**
    * Registers event listeners against the UserPointer instance
    */
   addEventListeners() {
@@ -76,15 +92,13 @@ class BuildingPlacementDisplay extends Phaser.Group {
     const collisionMap = ns.game.map.getCollisionMap();
     const { x, y } = pointer.getRealCoords();
 
-    const collisionWidth = 4;
-    const collisionHeight = 4;
+    const collisionWidth = this.collisionTileWidth;
+    const collisionHeight = this.collisionTileHeight;
     const collisionWidthHalf = Math.floor(collisionWidth / 2);
     const collisionHeightHalf = Math.floor(collisionHeight / 2);
 
     const tileX = Math.max(Math.floor(x / TILE_WIDTH), collisionWidthHalf);
     const tileY = Math.max(Math.floor(y / TILE_HEIGHT), collisionHeightHalf);
-    const tileScreenX = tileX * TILE_WIDTH;
-    const tileScreenY = tileY * TILE_HEIGHT;
 
     const startX = tileX - collisionWidthHalf;
     const startY = tileY - collisionHeightHalf;
@@ -95,12 +109,14 @@ class BuildingPlacementDisplay extends Phaser.Group {
       height: collisionHeight,
     });
 
+    this.tiles = tiles;
+
     this.collisionMonitor.x = startX * TILE_WIDTH;
     this.collisionMonitor.y = startY * TILE_HEIGHT;
     this.collisionMonitor.drawTiles(tiles);
 
-    this.sprite.x = tileScreenX;
-    this.sprite.y = tileScreenY;
+    this.sprite.x = startX * TILE_WIDTH + collisionWidth * TILE_WIDTH / 2;
+    this.sprite.y = startY * TILE_HEIGHT + collisionHeight * TILE_HEIGHT / 2;
   }
 
   /**

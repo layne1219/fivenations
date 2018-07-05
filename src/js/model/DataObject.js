@@ -509,4 +509,5 @@ function DataObject(json) {
   };
 }
 
+export { getDimensionsBySize };
 export default DataObject;
