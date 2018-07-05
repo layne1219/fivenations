@@ -90,6 +90,8 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   followMouse(pointer) {
     const collisionMap = ns.game.map.getCollisionMap();
+    const mapWidth = ns.game.map.getWidth();
+    const mapHeight = ns.game.map.getHeight();
     const { x, y } = pointer.getRealCoords();
 
     const collisionWidth = this.collisionTileWidth;
@@ -97,8 +99,14 @@ class BuildingPlacementDisplay extends Phaser.Group {
     const collisionWidthHalf = Math.floor(collisionWidth / 2);
     const collisionHeightHalf = Math.floor(collisionHeight / 2);
 
-    const tileX = Math.max(Math.floor(x / TILE_WIDTH), collisionWidthHalf);
-    const tileY = Math.max(Math.floor(y / TILE_HEIGHT), collisionHeightHalf);
+    const tileX = Math.min(
+      Math.max(Math.floor(x / TILE_WIDTH), collisionWidthHalf),
+      mapWidth - collisionWidthHalf,
+    );
+    const tileY = Math.min(
+      Math.max(Math.floor(y / TILE_HEIGHT), collisionHeightHalf),
+      mapHeight - collisionHeightHalf,
+    );
 
     const startX = tileX - collisionWidthHalf;
     const startY = tileY - collisionHeightHalf;
