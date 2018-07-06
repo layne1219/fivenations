@@ -3,7 +3,6 @@ import UserPointer from './UserPointer';
 import CollisionMonitor from './CollisionMonitor';
 import { getDimensionsBySize } from '../model/DataObject';
 import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
-import CRTFilter from '../filters/CRTFilter';
 
 const ns = window.fivenations;
 
@@ -59,6 +58,7 @@ class BuildingPlacementDisplay extends Phaser.Group {
     this.sprite = this.game.add.sprite(0, 0, id);
     this.sprite.frame = DEFAULT_FRAME;
     this.sprite.anchor.set(0.5);
+    this.sprite.tint = '#00a900';
     this.add(this.sprite);
   }
 
@@ -170,6 +170,25 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   appendTo(parent) {
     parent.add(this);
+  }
+
+  /**
+   * Returns the target coordinates of the placement
+   * @return {object} { x: number, y: number }
+   */
+  getPlacementCoords() {
+    return {
+      x: this.sprite.x,
+      y: this.sprite.y,
+    };
+  }
+
+  /**
+   * Returns the tiles the placement occupies
+   * @return {object} number[][]
+   */
+  getPlacementTiles() {
+    return this.tiles;
   }
 }
 

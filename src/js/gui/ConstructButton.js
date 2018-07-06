@@ -66,18 +66,18 @@ export default {
     const gui = GUI.getInstance();
 
     if (hasUserSufficientResources(entityId)) {
+      const BDP = gui.getBuildingPlacementDisplay();
       const activity = activityManager.start(SelectCoords);
       activity.on('select', () => {
-        // const coords = mousePointer.getRealCoords();
         controlPanel.selectMainPage();
-        gui.hideBuildingPlacementDisplay();
+        BDP.deactivate();
       });
       activity.on('cancel', () => {
         controlPanel.selectMainPage();
-        gui.hideBuildingPlacementDisplay();
+        BDP.deactivate();
       });
       controlPanel.selectCancelPage();
-      gui.showBuildingPlacementDisplay(entityId);
+      BDP.activate(entityId);
     }
   },
 };

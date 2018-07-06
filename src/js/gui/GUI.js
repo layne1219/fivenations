@@ -248,18 +248,11 @@ GUI.prototype = {
   },
 
   /**
-   * Shows the Building placement display
-   * @param {string} entityId - the Id of the entity to be placed
+   * Returns the BuildingPlacementDisplay instance
+   * @return {object} BuildingPlacementDisplay
    */
-  showBuildingPlacementDisplay(entityId) {
-    buildingPlacementDisplay.activate(entityId);
-  },
-
-  /**
-   * Hides the Building placement display
-   */
-  hideBuildingPlacementDisplay() {
-    buildingPlacementDisplay.deactivate();
+  getBuildingPlacementDisplay() {
+    return buildingPlacementDisplay;
   },
 
   /**
