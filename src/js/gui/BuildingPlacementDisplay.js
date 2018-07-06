@@ -3,6 +3,7 @@ import UserPointer from './UserPointer';
 import CollisionMonitor from './CollisionMonitor';
 import { getDimensionsBySize } from '../model/DataObject';
 import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
+import CRTFilter from '../filters/CRTFilter';
 
 const ns = window.fivenations;
 

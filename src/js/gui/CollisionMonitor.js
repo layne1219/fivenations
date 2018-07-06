@@ -16,6 +16,7 @@ class CollisionMonitor extends Phaser.Group {
       MAX_SIZE_IN_TILES * TILE_HEIGHT,
     );
     this.sprite = this.bmd.addToWorld(0, 0);
+    this.sprite.alpha = 0.4;
     this.add(this.sprite);
   }
 
