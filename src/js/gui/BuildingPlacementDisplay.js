@@ -58,7 +58,7 @@ class BuildingPlacementDisplay extends Phaser.Group {
     this.sprite = this.game.add.sprite(0, 0, id);
     this.sprite.frame = DEFAULT_FRAME;
     this.sprite.anchor.set(0.5);
-    this.sprite.tint = '#00a900';
+    this.sprite.alpha = 0.75;
     this.add(this.sprite);
   }
 
