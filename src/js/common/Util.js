@@ -196,6 +196,20 @@ export default {
     },
 
     /**
+     * Sets all values of a matrix to the given value
+     * @param {number}
+     * @return {object}
+     */
+    setMatrixValues(matrix, value) {
+        for (let i = matrix.length - 1; i >= 0; i -= 1) {
+          for (let j = matrix[i].length - 1; j >= 0; j -= 1) {
+            matrix[i][j] = value;
+          }
+        }
+        return matrix;
+    },
+
+    /**
      * Returns if the given coordinates are equal
      * @param {object} source first entity
      * @param {object} target second entity
