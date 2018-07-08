@@ -8,6 +8,6 @@ export default {
 
     controlPanel.selectMainPage();
     activityManager.cancel();
-    gui.hideBuildingPlacementDisplay();
+    gui.getBuildingPlacementDisplay().deactivate();
   },
 };

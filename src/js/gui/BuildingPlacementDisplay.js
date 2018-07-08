@@ -1,8 +1,10 @@
 /* global window, Phaser */
 import UserPointer from './UserPointer';
 import CollisionMonitor from './CollisionMonitor';
+import EntityManager from '../entities/EntityManager';
 import { getDimensionsBySize } from '../model/DataObject';
 import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
+import Util from '../common/Util';
 
 const ns = window.fivenations;
 
@@ -111,12 +113,16 @@ class BuildingPlacementDisplay extends Phaser.Group {
 
     const startX = tileX - collisionWidthHalf;
     const startY = tileY - collisionHeightHalf;
-    const tiles = collisionMap.getMatrixChunk({
+    let tiles = collisionMap.getMatrixChunk({
       x: startX,
       y: startY,
       width: collisionWidth,
       height: collisionHeight,
     });
+
+    if (this.isOutOfBuildingSite()) {
+      tiles = Util.setMatrixValues(tiles, 1);
+    }
 
     this.tiles = tiles;
 
@@ -189,6 +195,47 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   getPlacementTiles() {
     return this.tiles;
+  }
+
+  /**
+   * Returns true if the construction can be placed at the selected
+   * tiles
+   * @return {boolean}
+   */
+  areTilesOccupied() {
+    for (let i = this.tiles.length - 1; i >= 0; i -= 1) {
+      for (let j = this.tiles[i].length - 1; j >= 0; j -= 1) {
+        if (this.tiles[i][j]) return false;
+      }
+    }
+  }
+
+  /**
+   * Returns true if the construction is out of the proximity of
+   * active buildings of the given player
+   * @return {boolean}
+   */
+  isOutOfBuildingSite() {
+    const entityManager = EntityManager.getInstance();
+    const entities = entityManager
+      .entities(':user')
+      .filter(entity => entity.getDataObject().isBuilding());
+    return !entities.some((entity) => {
+      const sprite = entity.getSprite();
+      const distance = Util.distanceBetweenSprites(sprite, this.sprite);
+      return distance <= 400;
+    });
+  }
+
+  /**
+   * Returns true if the construction can be placed at the selected
+   * coordinates and tiles
+   * @return {boolean}
+   */
+  canConstructThere() {
+    if (!this.tiles) return false;
+    if (this.areTilesOccupied()) return false;
+    return true;
   }
 }
 

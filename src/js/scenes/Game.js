@@ -170,6 +170,12 @@ class Game extends Util.EventDispatcher {
     });
 
     this.userPointer.on('multiselector/up', (multiselector) => {
+      // multiselection must be cancelled if any Control Panel activity is
+      // switched on
+      if (this.guiActivityManager.hasActiveSelection()) {
+        return;
+      }
+
       this.entityManager.entities().forEach((entity) => {
         if (!entity.isEntityControlledByUser() && !ns.mapEditorMode) {
           return;

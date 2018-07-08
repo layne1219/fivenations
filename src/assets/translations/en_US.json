@@ -12,7 +12,8 @@
     "notifications.notenough.energy": "Not enough Energy!",
     "notifications.notenough.uranium": "Insufficient Tachyon!",
     "notifications.notenough.space": "You do not have enough supply!",
-    
+    "notifications.cannotBuildThere": "Construction site is blocked!",
+
     "abilities.move": "Move",
     "abilities.stop": "Stop",
     "abilities.follow": "Follow",

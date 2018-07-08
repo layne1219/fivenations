@@ -74,6 +74,7 @@ class NotificationBar extends Phaser.Group {
       'resources/unsufficient/energy': `${notEnoughPrefix}energy`,
       'resources/unsufficient/uranium': `${notEnoughPrefix}uranium`,
       'resources/unsufficient/space': `${notEnoughPrefix}space`,
+      'building/placement/occupied': 'notifications.cannotBuildThere',
     };
     Object.keys(eventsTranslationsMap).forEach((key) => {
       const translation = eventsTranslationsMap[key];

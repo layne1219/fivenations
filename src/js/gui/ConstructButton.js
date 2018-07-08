@@ -68,14 +68,25 @@ export default {
     if (hasUserSufficientResources(entityId)) {
       const BDP = gui.getBuildingPlacementDisplay();
       const activity = activityManager.start(SelectCoords);
+
       activity.on('select', () => {
+        if (!BDP.canConstructThere()) {
+          const emitter = EventEmitter.getInstance();
+          emitter.local.dispatch('building/placement/occupied');
+          activity.doNotCancel();
+          return false;
+        }
+
+        activity.doCancel();
         controlPanel.selectMainPage();
         BDP.deactivate();
       });
+
       activity.on('cancel', () => {
         controlPanel.selectMainPage();
         BDP.deactivate();
       });
+
       controlPanel.selectCancelPage();
       BDP.activate(entityId);
     }

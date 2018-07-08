@@ -23,7 +23,9 @@ class SelectCoords extends Activity {
   prepareCallbacks() {
     this.onSelect = (mousePointer) => {
       this.dispatcher.dispatch('select', mousePointer);
-      this.getActivityManager().cancel();
+      if (this.cancelable !== false) {
+        this.getActivityManager().cancel();
+      }
     };
 
     this.onCancel = () => {
@@ -62,6 +64,20 @@ class SelectCoords extends Activity {
    */
   on(event, callback) {
     this.dispatcher.addEventListener(event, callback);
+  }
+
+  /**
+   * Flags the Acticity so that it won't cancel itself on select.
+   */
+  doNotCancel() {
+    this.cancelable = false;
+  }
+
+  /**
+   * Flags the Acticity that it can be cancelled.
+   */
+  doCancel() {
+    this.cancelable = true;
   }
 }
 
