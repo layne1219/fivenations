@@ -74,7 +74,7 @@ export default {
           const emitter = EventEmitter.getInstance();
           emitter.local.dispatch('building/placement/occupied');
           activity.doNotCancel();
-          return false;
+          return;
         }
 
         activity.doCancel();

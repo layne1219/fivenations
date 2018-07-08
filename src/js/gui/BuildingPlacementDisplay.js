@@ -205,9 +205,10 @@ class BuildingPlacementDisplay extends Phaser.Group {
   areTilesOccupied() {
     for (let i = this.tiles.length - 1; i >= 0; i -= 1) {
       for (let j = this.tiles[i].length - 1; j >= 0; j -= 1) {
-        if (this.tiles[i][j]) return false;
+        if (this.tiles[i][j]) return true;
       }
     }
+    return false;
   }
 
   /**
