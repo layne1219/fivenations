@@ -9,6 +9,7 @@ import {
 } from '../common/Const';
 import Selector from './Selector';
 import ColorIndicator from './ColorIndicator';
+import ProximityMonitor from './ProximityMonitor';
 import StatusDisplay from './StatusDisplay';
 import Panel from './Panel';
 import Minimap from './Minimap';
@@ -189,12 +190,22 @@ GUI.prototype = {
 
   /**
    * Links the given entity to a new ColorIndicator instance
-   * @param {object} entity Instance of Eneity
+   * @param {object} entity Instance of Entity
    */
   addColorIndicator(entity) {
     const colorIndicator = new ColorIndicator(phaserGame);
     colorIndicator.appendTo(entity);
     return colorIndicator;
+  },
+
+  /**
+   * Links the given entity to a new ProximityMonitor instance
+   * @param {object} entity Instance of Entity
+   */
+  addProximityMonitor(entity) {
+    const monitor = new ProximityMonitor();
+    monitor.appendTo(entity);
+    return monitor;
   },
 
   /**

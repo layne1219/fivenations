@@ -380,6 +380,11 @@ class Entity {
       this.colorIndicator = gui.addColorIndicator(this);
     }
 
+    // if the entity is a building
+    if (!this.dataObject.isBuilding()) {
+      this.proximityMonitor = gui.addProximityMonitor(this);
+    }
+
     // initialise collision area
     this.updateDamageArea();
 

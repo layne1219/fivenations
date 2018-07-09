@@ -227,6 +227,10 @@ function DataObject(json) {
       return data.buildingTime;
     },
 
+    getConstructionProximity() {
+      return data.constructionProximity;
+    },
+
     getDirections() {
       return data.directions;
     },
