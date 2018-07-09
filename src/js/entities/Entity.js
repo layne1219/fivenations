@@ -381,7 +381,7 @@ class Entity {
     }
 
     // if the entity is a building
-    if (!this.dataObject.isBuilding()) {
+    if (this.dataObject.getConstructionProximity() > 0) {
       this.proximityMonitor = gui.addProximityMonitor(this);
     }
 

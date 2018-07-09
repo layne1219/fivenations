@@ -65,7 +65,7 @@ class ProximityMonitor extends Phaser.Group {
     const groupName = 'color-indicators';
     Graphics.getInstance()
       .getGroup(groupName)
-      .add(this.sprite);
+      .add(this);
 
     entity.on('remove', this.remove.bind(this));
     entity.on('hibernate', this.hide.bind(this));
@@ -73,12 +73,10 @@ class ProximityMonitor extends Phaser.Group {
 
     // the sprite is not a child of the entity for various overlapping issues
     // therefore it needs to follow it upon every tick
-    this.sprite.update = function update() {
+    this.update = function update() {
       this.x = entity.getSprite().x;
       this.y = entity.getSprite().y;
     };
-
-    this.parent = entity;
 
     this.createProximityDisplay(entity);
   }
