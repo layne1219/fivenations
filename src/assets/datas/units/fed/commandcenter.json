@@ -32,6 +32,7 @@
   "space": 0,
   "supply": 30,
   "buildingTime": 30,
+  "constructionProximity": 1000,
   "directions": 0,
   "animFrame": 1,
   "animType": [

@@ -38,7 +38,7 @@ class CollisionMonitor extends Phaser.Group {
         if (tiles[i][j]) {
           fillStyle = '#ff0000';
         } else {
-          fillStyle = '#ffffff';
+          fillStyle = '#77C7D2';
         }
         x = j * TILE_WIDTH;
         y = i * TILE_HEIGHT;

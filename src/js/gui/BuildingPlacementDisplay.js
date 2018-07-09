@@ -2,6 +2,7 @@
 import UserPointer from './UserPointer';
 import CollisionMonitor from './CollisionMonitor';
 import EntityManager from '../entities/EntityManager';
+import EventEmitter from '../sync/EventEmitter';
 import { getDimensionsBySize } from '../model/DataObject';
 import { TILE_WIDTH, TILE_HEIGHT } from '../common/Const';
 import Util from '../common/Util';
@@ -160,6 +161,7 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   show() {
     this.visible = true;
+    EventEmitter.getInstance().local.dispatch('gui/buildingplacement/show');
   }
 
   /**
@@ -167,6 +169,7 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   hide() {
     this.visible = false;
+    EventEmitter.getInstance().local.dispatch('gui/buildingplacement/hide');
   }
 
   /**
@@ -223,8 +226,11 @@ class BuildingPlacementDisplay extends Phaser.Group {
       .filter(entity => entity.getDataObject().isBuilding());
     return !entities.some((entity) => {
       const sprite = entity.getSprite();
+      const DO = entity.getDataObject();
+      const proximity = DO.getConstructionProximity();
+      if (!proximity) return false;
       const distance = Util.distanceBetweenSprites(sprite, this.sprite);
-      return distance <= 400;
+      return distance <= proximity;
     });
   }
 
