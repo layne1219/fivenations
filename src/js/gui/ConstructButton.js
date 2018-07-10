@@ -59,6 +59,20 @@ function hasUserSufficientResources(entityId) {
   return true;
 }
 
+/**
+ * Checks whether the construction site is blocked or not
+ * @param {object} BPD - BuildingPlacementDisplay instance
+ * @return {boolean}
+ */
+function canConstructThere(BPD) {
+  if (!BPD.canConstructThere()) {
+    const emitter = EventEmitter.getInstance();
+    emitter.local.dispatch('building/placement/occupied');
+    return false;
+  }
+  return true;
+}
+
 export default {
   activate(entityManager, controlPanel, button) {
     const entityId = button.getProducableEntity();
@@ -66,29 +80,37 @@ export default {
     const gui = GUI.getInstance();
 
     if (hasUserSufficientResources(entityId)) {
-      const BDP = gui.getBuildingPlacementDisplay();
+      const BPD = gui.getBuildingPlacementDisplay();
       const activity = activityManager.start(SelectCoords);
 
       activity.on('select', () => {
-        if (!BDP.canConstructThere()) {
-          const emitter = EventEmitter.getInstance();
-          emitter.local.dispatch('building/placement/occupied');
+        if (!canConstructThere(BPD)) {
           activity.doNotCancel();
           return;
         }
 
+        const data = {
+          placementCoords: BPD.getPlacementCoords(),
+          placementTileCoords: BPD.getPlacementTileCoords(),
+          entityId,
+        };
+
+        EventEmitter.getInstance()
+          .synced.entities(':user:selected')
+          .createConstructionSite(data);
+
         activity.doCancel();
         controlPanel.selectMainPage();
-        BDP.deactivate();
+        BPD.deactivate();
       });
 
       activity.on('cancel', () => {
         controlPanel.selectMainPage();
-        BDP.deactivate();
+        BPD.deactivate();
       });
 
       controlPanel.selectCancelPage();
-      BDP.activate(entityId);
+      BPD.activate(entityId);
     }
   },
 };

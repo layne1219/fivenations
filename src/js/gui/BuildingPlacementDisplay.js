@@ -114,18 +114,20 @@ class BuildingPlacementDisplay extends Phaser.Group {
 
     const startX = tileX - collisionWidthHalf;
     const startY = tileY - collisionHeightHalf;
-    let tiles = collisionMap.getMatrixChunk({
+    const chunk = {
       x: startX,
       y: startY,
       width: collisionWidth,
       height: collisionHeight,
-    });
+    };
+    let tiles = collisionMap.getMatrixChunk(chunk);
 
     if (this.isOutOfBuildingSite()) {
       tiles = Util.setMatrixValues(tiles, 1);
     }
 
     this.tiles = tiles;
+    this.tileCoords = chunk;
 
     this.collisionMonitor.x = startX * TILE_WIDTH;
     this.collisionMonitor.y = startY * TILE_HEIGHT;
@@ -198,6 +200,14 @@ class BuildingPlacementDisplay extends Phaser.Group {
    */
   getPlacementTiles() {
     return this.tiles;
+  }
+
+  /**
+   * Returns the tile coordinates that the placement occupies
+   * @return {object} { x, y, width, height }
+   */
+  getPlacementTileCoords() {
+    return this.tileCoords;
   }
 
   /**

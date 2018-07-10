@@ -258,14 +258,19 @@ MotionManager.prototype = {
   },
 
   /**
-   * Terminate the entity from any further movement by applying a suitable drag on it
-   * @return {void}
+   * Terminate the entity from any further movement by applying a suitable drag on it.
+   * It returns a Promise that is executed when the entity comes to a complete
+   * stop
+   * @return {Promise}
    */
   stop() {
-    this.effectManager.resetEffects();
-    this.effectManager.addEffect(Effects.get('stopping'));
-    this.effectManager.addEffect(Effects.get('resetMovement'));
-    this.effectManager.addEffect(Effects.get('stopAnimation'));
+    return new Promise((resolve) => {
+      this.once('arrive', resolve);
+      this.effectManager.resetEffects();
+      this.effectManager.addEffect(Effects.get('stopping'));
+      this.effectManager.addEffect(Effects.get('resetMovement'));
+      this.effectManager.addEffect(Effects.get('stopAnimation'));
+    });
   },
 
   /**
@@ -604,13 +609,13 @@ MotionManager.prototype = {
     if (typeof callback !== 'function') {
       return;
     }
-    this.dispatcher.addEventListener(
-      event,
-      function once() {
-        callback();
-        this.dispatcher.removeEventListener(event, once);
-      }.bind(this),
-    );
+
+    const cb = function once() {
+      callback();
+      this.dispatcher.removeEventListener(event, cb);
+    }.bind(this);
+
+    this.dispatcher.addEventListener(event, cb);
   },
 
   /**

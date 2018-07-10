@@ -811,6 +811,20 @@ class Entity {
   }
 
   /**
+   * Registers a CreateConstructionSite activity with the
+   * given entity (asteroid) set as target
+   * @param {object} data
+   * @return {void}
+   */
+  createConstructionSite(data) {
+    const activity = new ActivityManager.CreateConstructionSite(this);
+    activity.setEntityId(data.entityId);
+    activity.setConstructionSiteCoords(data.placementCoords);
+    activity.setConstructionSiteTileCoords(data.placementTileCoords);
+    this.activityManager.add(activity);
+  }
+
+  /**
    * Revelas the fog of war tile that the entity is belonged to
    */
   revealEntityInFogOfWar() {

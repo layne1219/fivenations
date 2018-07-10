@@ -366,6 +366,21 @@ function createEntityEventAPI(entityManager) {
 
         return this;
       },
+      /**
+       * Creates a construction site at the given coordinates
+       * @param {number} productionSlotIdx
+       * @return {this}
+       * @chainable
+       */
+      createConstructionSite(data) {
+        EventBus.getInstance().add({
+          id: 'entity/construction/create',
+          targets: entities,
+          data,
+        });
+
+        return this;
+      },
     };
   }
 
